@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215bfef304c17e44fbac4e62e0faf285, type: 3}
+  m_Name: PlayerMovementConfig
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerMovementConfig
+  maxRun: 11.25
+  runAccel: 125
+  runReduce: 50
+  airMult: 0.65
+  jumpSpeed: 13.125
+  jumpHBoost: 5
+  varJumpTime: 0.2
+  gravity: 112.5
+  halfGravThreshold: 5
+  maxFall: 20
+  fastMaxFall: 30
+  fastMaxAccel: 37.5
+  dashSpeed: 30
+  endDashSpeed: 20
+  endDashUpMult: 0.75
+  dashTime: 0.15
+  dashCooldown: 0.2
+  dashRefillCooldown: 0.1
+  maxDashes: 1
+  coyoteTime: 0.1
+  inputBuffer: 0.08
+  cornerCorrection: 0.5
+  cornerCorrectionStep: 0.125
+  spriteFacesRight: 1
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  groundProbeOffset: {x: 0, y: 0.1}
+  groundProbeRadius: 0.28

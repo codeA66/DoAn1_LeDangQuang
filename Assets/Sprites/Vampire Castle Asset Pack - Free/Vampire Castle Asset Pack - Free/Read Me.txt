@@ -1,0 +1,8 @@
+Thank you for getting the Vampire Castle Asset Pack!
+
+A quick note on how to use the creature sprite sheets: There are 11 images per creature. The first one is a standing pose. The next 5 (images 2-6) are an attack animation. The last 5 (images 7-11) are a walk cycle. The attack animations typically start with one or two frames of windup. It usually makes sense to not play all five attack frames at once but to give a little pause after the windup. 
+
+Make sure to follow the terms of the license when you use these assets in your project. A file with the license text is included in this asset pack.
+
+If you release something that includes these assets, I'd love to know! It would be great if you left a comment on the assets itch page and told about your project :)
+https://studio-schneeya.itch.io/vampire-castle-asset-pack
