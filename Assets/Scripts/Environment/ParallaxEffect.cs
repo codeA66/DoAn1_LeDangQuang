@@ -7,7 +7,6 @@ using UnityEngine;
 // CinemachineBrain khong dat DefaultExecutionOrder nen chay o order 0. Dat order duong
 // de LateUpdate o day chay SAU Brain: neu chay truoc, parallax doc vi tri camera cua
 // frame truoc va ca background tre mot frame -> nhin nhu bi giat.
-// Phai lon hon CorruptionVisuals (500) de doc duoc ca do rung camera.
 [DefaultExecutionOrder(600)]
 [ExecuteAlways]
 public class ParallaxEffect : MonoBehaviour

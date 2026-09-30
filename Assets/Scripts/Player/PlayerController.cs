@@ -54,10 +54,16 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving => input != null && input.HasHorizontal;
     public bool IsGrounded => ground != null && ground.IsGrounded;
 
+    public PlayerMovementConfig Config => config;
+
+    /// <summary>Ban ra moi khi doi trang thai: (cu, moi). Hieu ung, am thanh nghe o day.</summary>
+    public event System.Action<IState, IState> StateChanged;
+
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        animatorComponent = GetComponent<Animator>();
+        // Animator nam tren object con Visual de co gian sprite khong dung toi scale lat huong.
+        animatorComponent = GetComponentInChildren<Animator>();
 
         if (config == null)
         {
@@ -89,6 +95,7 @@ public class PlayerController : MonoBehaviour
     void BuildStateMachine()
     {
         machine = new StateMachine();
+        machine.Changed += (from, to) => StateChanged?.Invoke(from, to);
 
         idle = new IdleState(context);
         run = new RunState(context);

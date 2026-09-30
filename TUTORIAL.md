@@ -45,8 +45,7 @@ Assets/
   Scenes/              TestGamePlay.unity
   Settings/            PlayerMovementConfig.asset, PlayerNoFriction.physicsMaterial2D, URP settings
   Scripts/
-    Core/              CorruptionSystem, CorruptionHUD, CorruptionDebugDriver
-    Environment/       ParallaxEffect, FogLayer, SubtleSway, CorruptionVisuals
+    Environment/       ParallaxEffect, FogLayer, SubtleSway
     Player/            PlayerController + các lớp di chuyển
       FSM/             StateMachine, IState
       States/          IdleState, RunState, JumpState, FallState, DashState
@@ -99,13 +98,13 @@ Phím tắt: B vẽ · D / Shift xóa · G đổ màu · U hình chữ nhật ·
 ### 4.1 Component trên `Player.prefab`
 | Component | Cài đặt | Vì sao |
 |---|---|---|
-| `SpriteRenderer` | sprite mặc định = khung idle đầu | |
+| *(object con `Visual`)* `SpriteRenderer` + `Animator` | sprite mặc định = khung idle đầu · Controller = `AC_player` | Tách ra object con để co giãn sprite (mục 9.4) không đụng tới `localScale.x` dùng để lật hướng. `PlayerController` tìm Animator bằng `GetComponentInChildren` |
+| *(object con)* `JumpDust`, `LandDust`, `RunDust` | Particle bụi nhảy / tiếp đất / chạy | Xem mục 9.4 |
+| `PlayerMovementFx` | JumpDust, LandDust, Visual | Hiệu ứng nhảy kiểu Hollow Knight |
 | `Rigidbody2D` | Dynamic · Freeze Rotation Z · **Interpolation = Interpolate** · Collision = Discrete | Interpolate: vật lý chạy 50Hz nhưng màn hình vẽ nhanh hơn → không bật thì nhân vật bị giật |
 | `CapsuleCollider2D` | Material = `PlayerNoFriction` · size/offset theo sprite (xem 4.2) | Friction 0 để không dính tường khi nhảy áp vào tường; ma sát mặt đất do code tự xử lý |
-| `Animator` | Controller = `AC_player` | |
 | `PlayerInput` | Actions = `PlayerInputAction` · Behavior = **Invoke Unity Events** · Move → `PlayerController.onMove` · Jump → `PlayerController.onJump` | |
 | `PlayerController` | Config = `PlayerMovementConfig` · điền tên state animation (mục 6) | |
-| `CorruptionAfterimage` | | Hiệu ứng bóng mờ khi Nhiễm cao |
 
 Tạo Physics Material: Project → Create → 2D → Physics Material 2D → Friction = 0, Bounciness = 0 → lưu `Assets/Settings/PlayerNoFriction`.
 
@@ -286,7 +285,6 @@ Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celes
 | Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) |
 | S khi đang rơi | Rơi nhanh |
 
-Phím test Nhiễm (`CorruptionDebugDriver`, gỡ khi làm skill thật): K +5 · L +12 · giữ E thanh tẩy · T Bán Hóa Quỷ · R reset.
 
 ### 5.13 Thêm một state mới (ví dụ)
 1. Tạo file trong `States/`, kế thừa `PlayerStateBase` (hoặc `GroundedStateBase` nếu là state trên mặt đất).
@@ -457,62 +455,172 @@ Script tự tạo nhiều tấm sprite sương nối nhau và cuộn ngang vô t
 ### 9.3 Cây lay nhẹ (`SubtleSway`)
 Gắn vào sprite con `L5_TreesNear_Sprite`: nghiêng (tilt 0.45° tốc độ 0.33), lắc ngang (0.07 / 0.28), nhấp nhô (0.025 / 0.55), pha ngẫu nhiên. Các tần số lệch nhau nên chuyển động không bao giờ lặp y hệt.
 
-### 9.4 Bóng mờ phía sau nhân vật khi bị Nhiễm (`CorruptionAfterimage`)
-Cách hoạt động (script trên Player):
-1. Mỗi frame đọc mức Nhiễm (0–1) từ `CorruptionSystem.Instance`.
-2. Nhiễm dưới `threshold` (0.35) hoặc nhân vật đứng yên → không làm gì.
-3. Càng Nhiễm cao, nhịp nhả bóng càng dày: từ `minInterval × 4` xuống `minInterval` (0.05s).
-4. Mỗi bóng = một `SpriteRenderer` copy **sprite hiện tại** của nhân vật, tô màu `tint` tím (`8C33C7`), alpha đầu `startAlpha` (0.5), đặt lệch **ngược hướng di chuyển** tối đa `maxOffset` (0.18 unit), vẽ sau nhân vật 1 bậc (`sortingOffset` −1).
-5. Bóng mờ dần theo `(1 − k)²` trong `lifetime` (0.45s) → mờ nhanh lúc đầu, vuốt đuôi cuối.
-6. Bóng được **tái sử dụng (pool)**, không tạo/xóa object liên tục → không tốn hiệu suất.
+### 9.4 Hiệu ứng nhảy kiểu Hollow Knight (bụi + co giãn)
+Ba hiệu ứng: **bụi lúc bật nhảy**, **bụi lúc tiếp đất** (rơi càng mạnh bụi càng nhiều), **co giãn** (bật lên thì thân dài ra, chạm đất thì bẹp xuống rồi trở lại).
 
-Hàm `Burst(from, to)` bắn một loạt bóng dọc đường đi — dành cho kỹ năng Cánh Cửa sau này.
-
-### 9.5 Hiệu ứng Nhiễm toàn màn hình (shader + Full Screen Pass)
-**Bước 1 — Shader** `Assets/Art/Shaders/CorruptionFullScreen.shader` (HLSL, dùng `Blit.hlsl` của URP). Nhận `_Corruption` (0–1) và `_CorruptColor`, làm theo thứ tự:
-1. Méo hình bằng sóng ngang (biên độ × c²).
-2. Giật ngang từng dải (chỉ rõ từ Nhiễm ~70 trở lên).
-3. Tách kênh màu R/B theo hướng xuyên tâm.
-4. Đổ màu duotone: bóng tối về tím đen, vùng sáng về tím.
-5. Viền tối khép dần vào giữa.
-6. Hạt nhiễu theo ô 2×2 pixel.
-Màu và viền tăng theo c; méo, giật, nhiễu tăng theo **c²** nên chỉ thật sự xuất hiện ở mức Nhiễm cao.
-
-**Bước 2 — Material** `M_CorruptionFullScreen` dùng shader trên.
-
-**Bước 3 — Gắn vào renderer**: chọn `Assets/Settings/Renderer2D` → **Add Renderer Feature → Full Screen Pass Renderer Feature**:
+#### Bước 1 — Material bụi `M_PlayerDust`
+Nhân bản `M_DustMote` (Ctrl+D) → đổi tên, lưu ở `Assets/Character/Player/Fx/`:
 | Mục | Giá trị |
 |---|---|
-| Name | CorruptionFullScreen |
-| Pass Material | `M_CorruptionFullScreen` |
-| Injection Point | **After Rendering Post Processing** |
-| Fetch Color Buffer | ✔ |
+| Shader | `Universal Render Pipeline/Particles/Unlit` |
+| Surface Type | Transparent |
+| Blending Mode | **Alpha** (bụi nền dùng Premultiply, bụi nhân vật dùng Alpha cho nhìn rõ hơn) |
+| Base Map | `dust_mote`, màu trắng |
 
-**Bước 4 — Điều khiển bằng script** `CorruptionVisuals` (trên `GameSystems`):
+#### Bước 2 — Tách object `Visual`
+Mở `Player.prefab` (bấm đúp):
+1. Tạo object con rỗng **`Visual`**, Position (0, 0, 0), Scale (1, 1, 1).
+2. Trên Player: `SpriteRenderer` → ⋮ → **Copy Component** → chọn `Visual` → ⋮ → **Paste Component As New**. Làm tương tự với `Animator`.
+3. Xóa `SpriteRenderer` và `Animator` trên Player gốc.
+4. Trong code `PlayerController.Awake`, đổi `GetComponent<Animator>()` thành **`GetComponentInChildren<Animator>()`**.
+
+**Vì sao**: `FacingController` lật hướng bằng `localScale.x` của Player. Nếu co giãn cũng dùng scale của Player thì hai việc ghi đè nhau. Tách sprite sang `Visual` thì Player giữ scale để lật hướng, `Visual` giữ scale để co giãn. Clip animation vẫn chạy vì Animator và SpriteRenderer cùng nằm trên `Visual` (binding path rỗng).
+
+#### Bước 3 — Particle `JumpDust`
+Chuột phải Player → Effects → Particle System → tên `JumpDust`, Position (0, 0, 0) (ngay chân). Bỏ tick mọi module không nhắc tới:
+
+| Module | Thuộc tính | Giá trị | Ý nghĩa |
+|---|---|---|---|
+| **Main** | Duration | 0.3 | |
+| | Looping | ✘ | Chỉ bắn 1 lần |
+| | Play On Awake | ✘ | Script gọi `Play()` |
+| | Start Lifetime | Random Between Two Constants **0.25 – 0.45** | Tan nhanh |
+| | Start Speed | Random **1 – 2.5** | |
+| | Start Size | Random **0.15 – 0.35** | |
+| | Start Color | `D9D4E0`, alpha **70%** | Xám trắng như bụi Hollow Knight |
+| | Gravity Modifier | **−0.1** | Bụi bốc nhẹ lên |
+| | Simulation Space | **World** | Bụi ở lại chỗ cũ khi nhân vật bay đi |
+| | Max Particles | 64 | |
+| **Emission** | Rate over Time | 0 | |
+| | Bursts | Time 0 · Count **Random 8 – 12** | Bắn một cụm |
+| **Shape** | Shape | **Cone** · Angle 70 · Radius 0.2 | |
+| | Rotation | **(−90, 0, 0)** | Nón hướng lên → bụi tỏa ra hai bên và bốc lên |
+| **Limit Velocity over Lifetime** | Speed | Curve **3 → 0** · Dampen 0.5 | Bụi phanh lại rồi lơ lửng |
+| **Color over Lifetime** | Alpha | 100% → 0% | Mờ dần |
+| **Size over Lifetime** | Size | Curve **0.7 → 1** | Nở ra khi tan |
+| **Renderer** | Material | `M_PlayerDust` | |
+| | Sorting Layer / Order | **Default / −1** | Ngay sau nhân vật (nhân vật ở Default/0), trước mặt đất (−5) |
+
+#### Bước 4 — Particle `LandDust`
+Duplicate `JumpDust` → đổi tên `LandDust`, chỉnh khác:
+
+| Module | Thuộc tính | Giá trị | Vì sao |
+|---|---|---|---|
+| Main | Start Speed | Random **0.3 – 0.8** | Hướng bay do Velocity over Lifetime quyết định |
+| | Start Size | Random **0.2 – 0.45** | To hơn bụi nhảy |
+| | Gravity Modifier | **0** | |
+| Emission | Bursts | **Xóa hết** | Script gọi `Emit(số hạt)` theo tốc độ rơi |
+| Shape | Shape | **Box** · Scale **(0.6, 0.05, 0.1)** · Rotation (0,0,0) | Hạt sinh thành dải ngang dưới chân |
+| **Velocity over Lifetime** | Space | Local | |
+| | Linear X | Random **−3 → 3** | Tỏa sang hai bên dọc mặt đất |
+| | Linear Y | Random **0.2 → 0.6** | Hơi bốc lên |
+
+#### Bước 4b — Chỉnh thành "đám mây mờ" kiểu Hollow Knight (giá trị đang dùng)
+Bảng ở bước 3–4 cho ra **nhiều hạt nhỏ**. Bụi Hollow Knight là **vài đám mây mềm, nở to rồi tan**, nên đổi lại:
+
+1. Material `M_PlayerDust` → **Base Map = `Default-Particle`** (ảnh có sẵn của Unity: hình tròn trắng mờ dần ra viền). Đây là thay đổi quan trọng nhất; `dust_mote` là chấm nhỏ nên luôn trông như hạt.
+2. Cả `JumpDust` và `LandDust`:
+
 | Thuộc tính | Giá trị | Ý nghĩa |
 |---|---|---|
-| Corruption Material | `M_CorruptionFullScreen` | Script đặt `_Corruption` mỗi frame |
-| Max Intensity | 1 | |
-| Response Speed | 2.5 | Làm mượt, không nhảy hình đột ngột khi dùng skill |
-| Camera To Shake | Main Camera | Rung camera từ mức Nhiễm 50 trở lên |
-| Max Shake / Shake Frequency | 0.06 / 18 | Rung nhẹ, dùng Perlin noise |
-| Global Light | Global Light 2D | Ánh sáng chung đổi theo Nhiễm |
-| Clean → Corrupted Light Color | `B8A8F2` → `732E85` | Tím nhạt → tím đậm |
-| Clean → Corrupted Intensity | 0.95 → 0.55 | Tối dần |
+| Main → Start Color | `D9D4E0`, alpha **50%** | Mờ, nhìn xuyên được, chồng lên nhau thành một khoảng bụi |
+| Main → Start Rotation | Random **0 – 360°** | Mỗi đám xoay khác nhau |
+| Color over Lifetime → Alpha | **0% → 100% (tại 10%) → 0%** | Hiện dần rồi tan, không bật lên đột ngột |
+| Renderer → Max Particle Size | 1 | |
 
-**Test**: Play → bấm **K** / **L** để tăng Nhiễm, giữ **E** để giảm, xem màn hình đổi màu, rung, méo dần.
+3. Riêng từng particle:
 
-### 9.6 Hệ thống Nhiễm (`CorruptionSystem`)
-Singleton trên `GameSystems`, các hiệu ứng khác đọc từ đây.
-| Thuộc tính | Giá trị |
-|---|---|
-| Spirit Eye Cost (Linh Nhãn) | +5 |
-| Doorway Cost (Cánh Cửa) | +12 |
-| Cleanse Rate (Điện Thờ) | −10 / giây |
-| Bán Hóa Quỷ | mất 2% máu tối đa / giây, +50% sát thương, +20% tốc độ |
-| Residual On Death | Hồi sinh giữ 20 Nhiễm nền |
+| Thuộc tính | `JumpDust` | `LandDust` |
+|---|---|---|
+| Start Size | **0.9 – 1.3** | **1.1 – 1.6** |
+| Start Lifetime | 0.4 – 0.6 | 0.45 – 0.7 |
+| Start Speed | 0.5 – 1.2 | (giữ 0.3 – 0.8) |
+| Số đám | Bursts **3 – 4** | Script: `minLandParticles` **2**, `maxLandParticles` **5** |
+| Shape | Cone, Angle **85**, Position Y **0.15** | Box, Scale X **0.4**, Position Y **0.2** |
+| Velocity over Lifetime | — | X **−2.5 → 2.5**, Y **0 → 0.2** (lăn sát mặt đất) |
+| Size over Lifetime | Ease **0.6 → 1.6** | Ease **0.5 → 1.8** (nở to khi tan) |
+| Limit Velocity → Dampen | **0.15** | **0.2** |
 
-API: `Add(amount)`, `Cleanse(dt)`, `TryEnterHalfDemon()`, `ResetToCheckpoint()`, thuộc tính `Value`, `Normalised`, `Tier`, sự kiện `Changed`, `TierChanged`, `FullyCorrupted`.
+Lưu ý: ảnh `Default-Particle` mờ ra viền nên kích thước **nhìn thấy** chỉ khoảng một nửa Start Size. Vì vậy Start Size phải đặt khá lớn (~1).
+
+#### Bước 5 — Script
+**5a.** Trong `PlayerController.cs`, mở sự kiện đổi state ra ngoài:
+```csharp
+/// Ban ra moi khi doi trang thai: (cu, moi). Hieu ung, am thanh nghe o day.
+public event System.Action<IState, IState> StateChanged;
+```
+và trong `BuildStateMachine()`, ngay sau `machine = new StateMachine();`:
+```csharp
+machine.Changed += (from, to) => StateChanged?.Invoke(from, to);
+```
+
+**5b.** Script `Assets/Scripts/Player/PlayerMovementFx.cs` (gắn trên Player). Cách hoạt động:
+1. `OnEnable` đăng ký nghe `StateChanged`, `OnDisable` hủy đăng ký.
+2. `FixedUpdate` nhớ **tốc độ rơi** của bước vật lý gần nhất. Lúc báo tiếp đất thì va chạm đã triệt vận tốc về 0, nên phải nhớ trước.
+3. Khi đổi state:
+   - **vào `JumpState`** → `jumpDust.Play()` + đặt scale `Visual` = `jumpStretch` (0.8, 1.2).
+   - **từ Jump / Fall / Dash sang Idle / Run** (tiếp đất) → `t = tốc độ rơi / hardLandingSpeed` (0–1);
+     `landDust.Emit(lerp(minLandParticles, maxLandParticles, t))`;
+     scale = `lerp((1,1), landSquash, t)` với `landSquash` = (1.25, 0.75). Rơi nhẹ gần như không bẹp, rơi mạnh bẹp rõ.
+4. `LateUpdate` kéo scale `Visual` về (1, 1) mượt: `k = 1 − e^(−recoverSpeed·dt)`, `scale = lerp(scale, 1, k)`. Công thức mũ này cho tốc độ trở về giống nhau dù FPS cao hay thấp.
+
+**5c.** Trên component `PlayerMovementFx`, kéo `JumpDust`, `LandDust`, `Visual` vào các ô.
+
+| Thông số | Mặc định | Tăng lên thì |
+|---|---|---|
+| `hardLandingSpeed` | 20 | Phải rơi nhanh hơn mới ra bụi tối đa |
+| `minLandParticles` / `maxLandParticles` | 4 / 16 | Nhiều bụi hơn |
+| `jumpStretch` | (0.8, 1.2) | Càng xa (1,1) càng giãn mạnh |
+| `landSquash` | (1.25, 0.75) | Càng xa (1,1) càng bẹp mạnh |
+| `recoverSpeed` | 12 | Trở lại dáng thường nhanh hơn |
+
+#### Bước 6 — Bụi khi chạy (`RunDust`): mỗi bước chân hất lên một cụm mây
+**Vì sao không bắn đều liên tục**: bản đầu bắn 1 đám mỗi lần, đều đặn theo tốc độ. Vì bụi đứng yên trong thế giới (World space) còn nhân vật chạy 11 ô/giây, kết quả là **một hàng chấm tròn cách đều** kéo dài sau lưng. Bụi chạy trong Hollow Knight là **từng cụm mây to, mờ, hất lên ngay sau gót theo mỗi bước chân**, rồi tan tại chỗ.
+
+**Particle**: Duplicate `LandDust` → đổi tên `RunDust`, chỉnh:
+| Module → Thuộc tính | Giá trị | Ý nghĩa |
+|---|---|---|
+| Main → Start Size | **1.1 – 1.6** | Đám to (ảnh `Default-Particle` mờ ra viền nên nhìn nhỏ hơn khoảng một nửa) |
+| Main → Start Lifetime | **0.45 – 0.65** | |
+| Main → Start Speed | **0** | Vận tốc do script đặt lúc bắn |
+| Main → Start Color | `D9D4E0`, alpha **35%** | Đám to nên để nhạt, chồng lên nhau thành khoảng mờ |
+| Emission | Rate over Time 0, **không Burst** | Script tự bắn |
+| Shape | Box, Scale **(0.4, 0.05, 0.1)**, Position Y **0.15** | |
+| Velocity over Lifetime | **Tắt** | |
+| Size over Lifetime | Ease **0.4 → 1.6** | Bùng từ nhỏ ra to |
+| Limit Velocity → Dampen | **0.35** | Phanh nhanh → bụi đọng lại đúng chỗ bước chân |
+
+**Script** (`PlayerMovementFx.Update`):
+1. Nghe `StateChanged` → `running = (state mới là RunState)`.
+2. Không chạy hoặc không chạm đất → đặt `runStepTimer = 0` (để bước đầu tiên có bụi ngay) và thoát.
+3. `ratio = |vận tốc ngang| / maxRun` (lấy qua `PlayerController.Config`). `ratio < runDustMinSpeedRatio` (0.3) → không có bụi.
+4. Trừ `runStepTimer` theo thời gian; hết thì **bắn một cụm** và đặt lại:
+   `runStepTimer = Lerp(runStepIntervalSlow, runStepIntervalFast, t)` với `t = InverseLerp(0.3, 1, ratio)`
+   → chạy chậm 0.35 s/bước, hết tốc 0.22 s/bước: **chạy càng nhanh bước càng dày, bụi càng nhiều**.
+5. Mỗi cụm (`EmitRunStep`): `Random.Range(2, 3+1)` đám, sinh ở **sau gót** `runDustBackOffset` (0.3) theo hướng ngược chiều chạy, vận tốc ra sau `0.4–1.4`, bốc lên `0.15–0.6`.
+
+| Thông số trên `Player Movement Fx` | Mặc định | Tăng lên thì |
+|---|---|---|
+| `runDustMinSpeedRatio` | 0.3 | Phải chạy nhanh hơn mới có bụi |
+| `runStepIntervalSlow` / `runStepIntervalFast` | 0.35 / 0.22 | Bước thưa hơn, ít cụm hơn |
+| `runPuffsPerStep` | (2, 3) | Mỗi cụm dày hơn |
+| `runDustBackOffset` | 0.3 | Cụm bụi lùi xa gót hơn |
+| `runDustKickBack` | (0.4, 1.4) | Bụi hất ra sau xa hơn |
+| `runDustKickUp` | (0.15, 0.6) | Bụi bốc cao hơn |
+
+### 9.5 Prefab dùng lại cho màn mới
+Các object dùng chung đã được lưu thành prefab trong `Assets/Prefabs/`:
+
+| Prefab | Gồm | Khi dựng màn mới |
+|---|---|---|
+| `CameraRig` | Main Camera (kèm `DustMotes` là prefab lồng bên trong) + CinemachineCamera | Kéo vào scene → chọn `CinemachineCamera` → gán lại **Tracking Target = Player** |
+| `Background` | 6 lớp parallax, sương, cây lay | Kéo vào scene, chỉnh vị trí từng lớp nếu cần (xem mục 8) |
+| `DustMotes` | Particle bụi | Đã nằm trong `CameraRig`; chỉ kéo riêng nếu dùng camera khác |
+| `Player` | (`Assets/Character/Player/Player.prefab`) | Kéo vào, đặt vị trí xuất phát |
+
+**Vì sao phải gán lại**: prefab không lưu được tham chiếu tới object nằm trong scene (ví dụ Player). Trong scene `TestGamePlay` các tham chiếu này vẫn còn nguyên, chỉ màn mới phải gán lại.
+
+Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Assets/Prefabs` trong cửa sổ Project. Sửa prefab: bấm đúp vào file prefab, hoặc sửa trên object trong scene rồi **Overrides → Apply All**.
 
 ---
 
@@ -529,6 +637,7 @@ API: `Add(amount)`, `Cleanse(dt)`, `TryEnterHalfDemon()`, `ResetToCheckpoint()`,
 | Kéo prefab sang scene khác bị thiếu component | Component chỉ nằm trong scene | Overrides → Apply All |
 | Kéo background bị bật ngược lại | `ParallaxEffect` chạy cả ở Edit | Xem mục 8 |
 | Animation nhân vật rung, lệch | Sheet cắt bằng Slice Automatic | Cắt lại Grid By Cell Size, pivot cố định |
+| Nhân vật không chạy trái/phải được (vẫn nhảy/dash được) | `PlayerInput` → **Actions** bị trống nên phím di chuyển không tới `onMove` (Space/Shift vẫn chạy vì code đọc thẳng bàn phím) | Mở `Player.prefab` → `PlayerInput` → kéo `PlayerInputAction` vào ô **Actions**, Default Map = Player. Sau mỗi lần sửa prefab nên kiểm tra lại ô này |
 
 ---
 
@@ -560,3 +669,10 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 12. Camera Orthographic Size 6 → 7.5.
 13. Cây `L5_TreesNear_Sprite`: phóng to đều x2 (scale 1.3 → 2.6), dời lên để chân cây giữ nguyên.
 14. Tutorial: viết chi tiết lại phần di chuyển (từng hàm, công thức, luật chuyển state) và thêm phần Hiệu ứng hình ảnh (particle bụi, sương, cây lay, bóng mờ Nhiễm, shader toàn màn hình).
+15. Tạo prefab `Assets/Prefabs/`: CameraRig (gom Main Camera + CinemachineCamera, DustMotes lồng bên trong), Background, GameSystems, DustMotes.
+16. Bỏ hoàn toàn hệ thống Nhiễm và hiệu ứng toàn màn hình: xóa CorruptionSystem, CorruptionVisuals, CorruptionHUD (gồm cả thanh máu tạm), CorruptionDebugDriver, CorruptionAfterimage, shader/material CorruptionFullScreen, Renderer Feature Full Screen Pass, object và prefab GameSystems.
+17. Hiệu ứng nhảy kiểu Hollow Knight: tách SpriteRenderer + Animator sang object con Visual, thêm particle JumpDust / LandDust và material M_PlayerDust, script PlayerMovementFx (bụi + co giãn), PlayerController thêm sự kiện StateChanged và tìm Animator ở object con.
+18. Bụi nhân vật thành đám mây mờ kiểu Hollow Knight: M_PlayerDust dùng Default-Particle, ít đám hơn, to hơn, alpha 50%, xoay ngẫu nhiên, nở to khi tan (xem 9.4 bước 4b).
+19. Bụi khi chạy: particle RunDust, PlayerMovementFx bắn bụi theo tốc độ chạy (0 dưới 30% maxRun, tối đa 10 đám/giây), PlayerController thêm thuộc tính Config.
+20. Bụi chạy kiểu Hollow Knight: thay bắn đều liên tục (thành hàng chấm) bằng mỗi bước chân một cụm 2–3 đám sau gót, nhịp bước 0.35 → 0.22 s theo tốc độ; RunDust to hơn (1.1–1.6), nhạt hơn (35%), phanh nhanh hơn (dampen 0.35).
+21. Sửa lỗi không di chuyển được: PlayerInput.Actions trong Player.prefab bị mất tham chiếu trong một lần lưu prefab (sau commit bb2d9c8); gắn lại PlayerInputAction.
