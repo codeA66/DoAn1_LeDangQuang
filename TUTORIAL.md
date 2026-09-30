@@ -100,7 +100,8 @@ Phím tắt: B vẽ · D / Shift xóa · G đổ màu · U hình chữ nhật ·
 |---|---|---|
 | *(object con `Visual`)* `SpriteRenderer` + `Animator` | sprite mặc định = khung idle đầu · Controller = `AC_player` | Tách ra object con để co giãn sprite (mục 9.4) không đụng tới `localScale.x` dùng để lật hướng. `PlayerController` tìm Animator bằng `GetComponentInChildren` |
 | *(object con)* `JumpDust`, `LandDust`, `RunDust` | Particle bụi nhảy / tiếp đất / chạy | Xem mục 9.4 |
-| `PlayerMovementFx` | JumpDust, LandDust, Visual | Hiệu ứng nhảy kiểu Hollow Knight |
+| `PlayerMovementFx` | JumpDust, LandDust, RunDust, Visual | Hiệu ứng nhảy kiểu Hollow Knight |
+| `PlayerAttack` | Config = `PlayerAttackConfig` · Slash Visual = object con `SlashFx` | Đánh thường phím J (mục 5.14) |
 | `Rigidbody2D` | Dynamic · Freeze Rotation Z · **Interpolation = Interpolate** · Collision = Discrete | Interpolate: vật lý chạy 50Hz nhưng màn hình vẽ nhanh hơn → không bật thì nhân vật bị giật |
 | `CapsuleCollider2D` | Material = `PlayerNoFriction` · size/offset theo sprite (xem 4.2) | Friction 0 để không dính tường khi nhảy áp vào tường; ma sát mặt đất do code tự xử lý |
 | `PlayerInput` | Actions = `PlayerInputAction` · Behavior = **Invoke Unity Events** · Move → `PlayerController.onMove` · Jump → `PlayerController.onJump` | |
@@ -283,6 +284,7 @@ Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celes
 | A / D (hoặc mũi tên) | Chạy |
 | Space (giữ để nhảy cao hơn) | Nhảy |
 | Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) |
+| J (giữ W: chém lên · trên không giữ S: chém xuống) | Đánh thường; chém xuống trúng thì nảy lên |
 | S khi đang rơi | Rơi nhanh |
 
 
@@ -291,6 +293,83 @@ Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celes
 2. Viết `Enter()` (phát animation, đặt vận tốc ban đầu), `Tick()` (quay mặt, đọc input), `FixedTick()` (vận tốc, trọng lực).
 3. Trong `PlayerController`: khai báo biến, `new` trong `BuildStateMachine()`, thêm các dòng `AddTransition` / `AddAnyTransition`.
 4. Nếu cần animation mới: thêm giá trị vào enum `PlayerAnim`, thêm ô tên state trong `PlayerAnimationDriver`, tạo state trong `AC_player`.
+
+
+### 5.14 Đánh thường (phím J) kiểu Hollow Knight
+**Mục tiêu**: bấm J chém một nhát nhanh; vừa chạy, vừa nhảy vẫn chém được; giữ **W** chém lên, **trên không** giữ **S** chém xuống; chém xuống trúng thì **nảy lên (pogo)**; chém ngang trúng thì **bị đẩy lùi nhẹ**.
+
+#### Kiến trúc: component riêng, không phải state của FSM
+Nếu làm Attack thành một state, đang nhảy mà chém sẽ phải thoát khỏi Jump và mọi luật chuyển phải viết lại. Hollow Knight cho chém **chồng lên** mọi chuyển động, nên đánh là component `PlayerAttack` chạy song song với `PlayerController`.
+
+| File | Vai trò |
+|---|---|
+| `Scripts/Combat/HitInfo.cs` | Gói thông tin một đòn: `damage`, `direction`, `knockback`, `source` |
+| `Scripts/Combat/IDamageable.cs` | Interface `TakeHit(HitInfo)`: thứ gì bị đánh được (quái, bình vỡ…) |
+| `Scripts/Combat/TrainingDummy.cs` | Hình nộm tập: nhận đòn, nháy đỏ, rung theo hướng đòn, ghi log, không bao giờ chết |
+| `Scripts/Player/PlayerAttackConfig.cs` | ScriptableObject thông số chém → `Assets/Settings/PlayerAttackConfig.asset` |
+| `Scripts/Player/PlayerAttack.cs` | Toàn bộ logic chém |
+| `PlayerController.cs` | Thêm 3 thuộc tính chỉ đọc: `FacingRight`, `IsDashing`, `MoveY` |
+
+#### Luồng một nhát chém (`PlayerAttack`)
+1. **`Update`**: bấm J (đọc thẳng `Keyboard.current.jKey`, giống Space/Shift) → lưu thời điểm bấm (**input buffer** 0.1s).
+2. Nếu còn lệnh trong buffer **và** hết hồi chiêu **và** không đang dash → `StartSwing()`:
+   - Đặt `cooldownTimer = 0.35`, `activeTimer = 0.1`, nhớ hướng đang nhìn lúc bấm.
+   - Chọn hướng: `MoveY == 1` → **Up**; `MoveY == −1` và **không chạm đất** → **Down**; còn lại → **Side**.
+   - Hiện vệt chém, kiểm tra trúng ngay trong frame bấm.
+3. **`FixedUpdate`**: trong 0.1s vùng chém còn bật, mỗi bước vật lý gọi `DetectHits()`.
+4. **`DetectHits()`**: `Physics2D.OverlapBox(tâm, kích thước, 0, filter)`:
+   - Tâm = vị trí chân + offset theo hướng (X nhân ±1 theo hướng nhìn).
+   - `filter`: chỉ layer **Enemy**, **tính cả trigger** (hình nộm/quái là trigger để người chơi đi xuyên qua).
+   - Với mỗi collider: `GetComponentInParent<IDamageable>()`; dùng `HashSet` để **mỗi mục tiêu chỉ trúng 1 lần mỗi nhát**; gọi `TakeHit(HitInfo)`.
+5. **`ReactToHit()`** (chỉ 1 lần mỗi nhát dù trúng nhiều mục tiêu):
+   - Down → `vận tốc Y = jumpSpeed` (13.125) = **pogo**. `pogoSpeed` trong config > 0 thì dùng số đó.
+   - Side → `vận tốc X = ±recoilSpeed` (4) ngược hướng chém.
+6. **Vệt chém**: sprite `SlashFx` (con của Player). Có 2 cách đặt, chọn bằng `slashCentredOnHitArea` trong config:
+   - **Tắt (đang dùng, cho bộ Sugawara)**: đặt `SlashFx` tại **`slashAnchor` = (0, 0.9)** = ngực nhân vật (tâm vòng cung), xoay `slashBaseAngle` (**90°**) + góc theo hướng (0 ngang · +90 lên · −90 xuống), bật `flipX` (**`slashFlipX`**). Kết quả: chém ngang là vòng cung **trước mặt quét từ trên đầu xuống dưới chân**; chém lên vòng cung trên đầu; chém xuống vòng cung dưới chân.
+   - **Bật (cho ảnh vẽ sẵn hướng sang phải, như `slash_0..3` tự vẽ)**: đặt tại tâm vùng chém, chỉ xoay theo hướng.
+   - Chém trái không cần xử lý thêm vì Player đã lật `localScale.x`.
+   - Trong `slashVisualTime` script **phát lần lượt các khung** `slashFrames`: `i = floor(k × số khung)`, scale `1 + slashGrow × k`. Nếu để trống `slashFrames` thì quay về cách cũ (một ảnh, mờ dần `1 − k²`).
+
+#### Vùng chém (tính từ chân nhân vật, đơn vị unit)
+| Hướng | Tâm (offset) | Kích thước |
+|---|---|---|
+| Ngang | (±0.9, 0.9) | 1.6 × 1.2 |
+| Lên | (0, 2.1) | 1.2 × 1.6 |
+| Xuống | (0, −0.5) | 1.2 × 1.6 |
+
+Chọn Player trong Scene → Gizmo đỏ vẽ 3 vùng chém để chỉnh cho khớp hình.
+
+#### Setup trong Unity
+1. **Layer**: Project Settings → Tags and Layers → thêm layer **Enemy** (đang là layer 9).
+2. **Config**: Create → LuHanh → Player Attack Config → lưu `Assets/Settings/PlayerAttackConfig` → **Hit Layers = Enemy**.
+3. **Ảnh vệt chém — bộ [Cel-Shaded Style Slash Animation (Free) – Sugawara Studio](https://sugawara-studio.itch.io/cel-shaded-style-slash-animation-asset-free)** (đang dùng):
+   - Miễn phí, dùng thương mại được, **không cần credit**, được chỉnh sửa, không được phân phối lại. Bản free chỉ có màu **đỏ** (bản trả phí có tím, xanh…).
+   - Đặt ở `Assets/Art/Fx/slash_arc_loop_red_free/`. Dùng thư mục **`slash_arc_loop_red_24fps`**: 24 ảnh 500×500, **chỉ khung 00002 → 00011 có hình** (khung đầu và cuối để trống để canh thời gian) → lấy **10 khung** này.
+   - Hình: vòng cung lớn **xoay quanh tâm ảnh**, bán kính ~235 px, quét từ trên-trái xuống dưới rồi vòng lên phải (hình chữ U).
+   - Import mỗi khung: Sprite · Single · **PPU 180** (→ bán kính ~1.3 unit, ôm vừa thân nhân vật) · Bilinear · tắt Mipmap · pivot **Center** (= tâm vòng cung).
+   - 10 khung gốc chạy 24 fps = 0.42s là quá chậm cho một nhát chém → phát trong **0.18s**.
+   - (Bản tự vẽ bằng code `Assets/Character/Player/Fx/slash_0..3.png` và `slash_arc.png` vẫn giữ lại để dự phòng.)
+4. **Player.prefab**:
+   - Object con **`SlashFx`**: `SpriteRenderer` (sprite bất kỳ trong các khung), cùng sorting layer với nhân vật, **Order = nhân vật + 1**, tắt sẵn (script tự bật).
+   - Component **`PlayerAttack`**: Config = `PlayerAttackConfig`, Slash Visual = `SlashFx`, **Slash Frames = 10 khung `slash_arc_loop_red_00002` … `00011`** (đúng thứ tự).
+   - ⚠️ Lưu prefab xong **kiểm tra lại `PlayerInput → Actions`** (xem mục 10).
+5. **Hình nộm** trong scene: object `TrainingDummy`, **layer Enemy**, `BoxCollider2D` **Is Trigger**, size (0.8, 1.8), offset (0, 0.9), component `TrainingDummy`; object con `Sprite` dùng `Assets/Art/Generated/Props/training_dummy.png` (PPU 64 → 1×2 unit, pivot ở chân).
+
+#### Thông số (`PlayerAttackConfig`)
+| Thông số | Mặc định | Tăng lên thì |
+|---|---|---|
+| `cooldown` | 0.35 | Chém chậm hơn |
+| `activeTime` | 0.1 | Vùng chém tồn tại lâu hơn, dễ trúng hơn |
+| `inputBuffer` | 0.1 | Bấm sớm vẫn ăn |
+| `damage` | 1 | |
+| `knockback` | 6 | Mục tiêu bị đẩy xa hơn (quái sau này dùng) |
+| `pogoSpeed` | 0 (= jumpSpeed) | Pogo nảy cao hơn |
+| `recoilSpeed` | 4 | Bị đẩy lùi xa hơn khi chém ngang trúng |
+| `slashVisualTime` / `slashGrow` | 0.18 / 0 | Vệt chém quét chậm hơn / nở to hơn |
+| `slashCentredOnHitArea` | ✘ | Bật khi dùng ảnh vẽ sẵn hướng sang phải |
+| `slashAnchor` / `slashBaseAngle` / `slashFlipX` | (0, 0.9) / 90 / ✔ | Tâm xoay / góc gốc / đổi chiều quét của vòng cung |
+
+**Chưa làm (để sau)**: hitstop, rung camera khi trúng; pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
 
 ---
 
@@ -647,6 +726,7 @@ Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Asset
 |---|---|---|
 | Hooded Protagonist | Penzilla Design | **Bắt buộc ghi**: "Graphics created by Penzilla Design" |
 | Cloaked Platformer | StudioArtistix | Kiểm tra file license trong gói |
+| Cel-Shaded Style Slash Animation (Free) | Sugawara Studio | Không bắt buộc ghi credit; không được phân phối lại |
 | Industrial Tileset, Vampire Castle, FreeCuteTileset… | (xem file License trong từng thư mục) | |
 
 Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công bố của **Celeste** (Maddy Makes Games).
@@ -676,3 +756,6 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 19. Bụi khi chạy: particle RunDust, PlayerMovementFx bắn bụi theo tốc độ chạy (0 dưới 30% maxRun, tối đa 10 đám/giây), PlayerController thêm thuộc tính Config.
 20. Bụi chạy kiểu Hollow Knight: thay bắn đều liên tục (thành hàng chấm) bằng mỗi bước chân một cụm 2–3 đám sau gót, nhịp bước 0.35 → 0.22 s theo tốc độ; RunDust to hơn (1.1–1.6), nhạt hơn (35%), phanh nhanh hơn (dampen 0.35).
 21. Sửa lỗi không di chuyển được: PlayerInput.Actions trong Player.prefab bị mất tham chiếu trong một lần lưu prefab (sau commit bb2d9c8); gắn lại PlayerInputAction.
+22. Đánh thường phím J kiểu Hollow Knight: HitInfo, IDamageable, PlayerAttack + PlayerAttackConfig (chém ngang/lên/xuống, pogo, recoil, input buffer, hồi chiêu), vệt chém slash_arc vẽ bằng code, layer Enemy, hình nộm TrainingDummy trong TestGamePlay.
+23. Vệt chém kiểu Hollow Knight: 4 khung slash_0..3 (hai đầu nhọn, dày giữa, vệt tốc độ, quét từ trên xuống) thay cho hình bán nguyệt; PlayerAttack phát lần lượt các khung (slashFrames), slashVisualTime 0.14, slashGrow 0.08.
+24. Vệt chém đổi sang bộ Cel-Shaded Slash (Sugawara Studio, bản đỏ miễn phí): 10 khung 24fps (00002–00011), PPU 180, tâm vòng cung ở ngực (slashAnchor 0,0.9), xoay 90° + lật ngang, phát trong 0.18s; PlayerAttackConfig thêm slashCentredOnHitArea, slashAnchor, slashBaseAngle, slashFlipX.

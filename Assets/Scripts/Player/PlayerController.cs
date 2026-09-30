@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
 
     public PlayerMovementConfig Config => config;
 
+    public bool FacingRight => facing != null && facing.FacingRight;
+    public bool IsDashing => machine != null && machine.Current == dash;
+    /// <summary>-1 dang giu xuong, 1 dang giu len, 0 khong giu.</summary>
+    public int MoveY => input != null ? input.MoveY : 0;
+
     /// <summary>Ban ra moi khi doi trang thai: (cu, moi). Hieu ung, am thanh nghe o day.</summary>
     public event System.Action<IState, IState> StateChanged;
 
