@@ -106,6 +106,12 @@ namespace LuHanh.Player
             Body.linearVelocity = v;
         }
 
+        /// <summary>Huy nhay giu phim (vd khi bi danh bat ra) de khong bi keo len tiep.</summary>
+        public void CancelJumpHold() => varJumpTimer = 0f;
+
+        /// <summary>Hoi lai luot dash ngay (vd khi hoi sinh).</summary>
+        public void RefillDash() => DashesLeft = Config.maxDashes;
+
         // ---- Dash ----
 
         float dashCooldownTimer;

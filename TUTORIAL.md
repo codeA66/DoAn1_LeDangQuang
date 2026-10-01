@@ -45,12 +45,17 @@ Assets/
   Scenes/              TestGamePlay.unity
   Settings/            PlayerMovementConfig.asset, PlayerNoFriction.physicsMaterial2D, URP settings
   Scripts/
-    Core/
+    Core/              RespawnManager, IResettable
       FSM/             StateMachine, IState (dùng chung: player, quái, boss)
-    Combat/            HitInfo, IDamageable, TrainingDummy
+    Combat/            Health, ContactDamage, Projectile, ProjectilePool, HitInfo, IDamageable, TrainingDummy
+    Enemies/           EnemyBase, EnemyConfigBase, EnemyController, EnemyConfig, FlyingEnemyController, FlyingEnemyConfig
+      States/          EnemyStateBase, PatrolState, ChaseState, HurtState
+        Flying/        FlyingStateBase, HoverState, CombatState, ShootState, FlyingHurtState
+    Effects/           HaloPulse, RimLight
     Environment/       ParallaxEffect, FogLayer, SubtleSway
-    Player/            PlayerController, PlayerAttack, PlayerMovementFx + các lớp di chuyển
-      States/          IdleState, RunState, JumpState, FallState, DashState
+    Player/            PlayerController, PlayerAttack, PlayerHealth, PlayerMovementFx + các lớp di chuyển
+      States/          IdleState, RunState, JumpState, FallState, DashState, HurtState
+    UI/                HealthUI
   Sprites/             sprite gốc tải về (tileset, nhân vật)
 ```
 
@@ -62,9 +67,15 @@ Assets/
 |---|---|
 | `Scripts/Core/FSM/` | `LuHanh.Core.FSM` |
 | `Scripts/Combat/` | `LuHanh.Combat` |
+| `Scripts/Effects/` | `LuHanh.Effects` |
 | `Scripts/Environment/` | `LuHanh.Environment` |
 | `Scripts/Player/` | `LuHanh.Player` |
 | `Scripts/Player/States/` | `LuHanh.Player.States` |
+| `Scripts/Core/` | `LuHanh.Core` |
+| `Scripts/Enemies/` | `LuHanh.Enemies` |
+| `Scripts/Enemies/States/` | `LuHanh.Enemies.States` |
+| `Scripts/Enemies/States/Flying/` | `LuHanh.Enemies.States.Flying` |
+| `Scripts/UI/` | `LuHanh.UI` |
 
 Không để class ở namespace toàn cục. File mới tạo phải bọc trong `namespace … { }` đúng thư mục.
 
@@ -76,40 +87,88 @@ Không để class ở namespace toàn cục. File mới tạo phải bọc tron
 
 ## 3. Dựng map bằng Tilemap
 
+**Quy ước quan trọng nhất của cả project: 1 ô tile = 1 unit.** Mọi chỉ số di chuyển ở mục 5 (chạy 11.25 unit/s, nhảy cao ~3.5 unit...) đều tính theo ô. Nếu map không theo quy ước này thì nhân vật sẽ "nhảy quá cao" hoặc "chạy như rùa" dù code không đổi.
+
 ### 3.1 Import tileset
+Tileset đang dùng: `Assets/Sprites/Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png` (ô 32×32 px, cắt thành 24 sprite).
+
 **Làm gì**: chọn file tileset → Inspector:
 
-| Mục | Giá trị |
-|---|---|
-| Texture Type | Sprite (2D and UI) |
-| Sprite Mode | Multiple |
-| Pixels Per Unit | **= kích thước 1 ô tính bằng pixel** (tileset 32px → 32) |
-| Filter Mode | Point (no filter) |
-| Compression | None |
+| Mục | Giá trị | Vì sao |
+|---|---|---|
+| Texture Type | Sprite (2D and UI) | Tilemap chỉ nhận sprite |
+| Sprite Mode | Multiple | Một ảnh chứa nhiều ô |
+| Pixels Per Unit | **= kích thước 1 ô tính bằng pixel** (tileset 32px → **32**) | 1 ô = 1 unit, khớp Grid 1×1 |
+| Filter Mode | Point (no filter) | Pixel art giữ cạnh sắc |
+| Compression | None | Nén làm lem màu pixel art, sinh viền lạ giữa các ô |
+| Generate Mip Maps | Tắt | Mipmap làm ô nhòe khi camera ở xa |
 
 Apply → **Sprite Editor → Slice → Grid By Cell Size 32×32 → Slice → Apply**.
 
-**Vì sao**: PPU phải bằng kích thước ô thì 1 ô tile = 1 unit, khớp với Grid 1×1. Point filter giữ pixel sắc nét.
+**Chỉnh gì → ra sao**:
+| Thông số | Đặt lớn hơn kích thước ô | Đặt nhỏ hơn kích thước ô |
+|---|---|---|
+| **Pixels Per Unit** | Mỗi sprite nhỏ hơn 1 ô → giữa các ô có **khe hở** | Sprite to hơn 1 ô → các ô **chồng lên nhau**, hình vẽ lệch khỏi va chạm (collider vẫn theo ô Grid) |
+
+| Thông số | Giá trị khác | Ảnh hưởng |
+|---|---|---|
+| Filter Mode | Bilinear | Pixel art bị nhòe, mép ô có viền mờ |
+| Slice | Automatic thay vì Grid | Mỗi ô có kích thước khác nhau → không khớp lưới |
+
+> ⚠️ **Thấy đường kẻ mảnh giữa các ô khi camera di chuyển?** Thường do Compression hoặc Filter chưa đúng như bảng trên. Nếu đã đúng mà vẫn còn, cách phổ biến trong Unity là gom sprite vào một **Sprite Atlas** có padding (project hiện chưa dùng).
 
 ### 3.2 Tạo Grid và các lớp Tilemap
-**Làm gì**: Hierarchy → 2D Object → Tilemap → Rectangular. Đặt tên Grid là `Level_Man1`, mỗi lớp một Tilemap:
+**Làm gì**: Hierarchy → 2D Object → Tilemap → Rectangular. Unity tạo một object `Grid` (Cell Size **1 × 1 × 0**, Cell Gap 0) và một Tilemap con. Đặt tên Grid là `Level_Man1`, mỗi lớp một Tilemap:
 
-| Tilemap | Collider | Physics Layer | Sorting Layer |
-|---|---|---|---|
-| `Tilemap_Ground` | Có | **Ground** (layer 8) | Default |
+| Tilemap | Collider | Physics Layer | Sorting Layer / Order | Material |
+|---|---|---|---|---|
+| `Tilemap_Ground` | Có | **Ground** (layer 8) | Default / **−5** | `Sprite-Lit-Default` (bị đèn 2D chiếu, xem 9.6) |
 
-(Trước đây có thêm `Tilemap_BackWall`: tường nền trang trí, không collider, sorting Background. Đã xóa vì làm nhân vật tối màu chìm vào nền.)
+(Trước đây có thêm `Tilemap_BackWall`: tường nền trang trí, không collider, sorting Background. Đã xóa vì làm nhân vật tối màu chìm vào nền. Tile `T_BackWall` vẫn còn trong `Assets/Art/Tiles/` nhưng không dùng.)
 
-Với `Tilemap_Ground` thêm:
-1. `TilemapCollider2D` → **Composite Operation = Merge**
-2. `CompositeCollider2D` (Unity tự thêm `Rigidbody2D`) → Rigidbody2D **Body Type = Static**
+Với `Tilemap_Ground`, từng bước:
+1. Inspector → **Layer = Ground**. Bắt buộc: cảm biến chạm đất (`GroundSensor`), corner correction và quái đều chỉ "thấy" layer trong `groundLayers` của config (hiện là layer 8 = Ground).
+2. Add Component → `TilemapCollider2D` → **Composite Operation = Merge**.
+3. Add Component → `CompositeCollider2D`. Unity tự thêm `Rigidbody2D` → đổi **Body Type = Static**.
+4. Giữ `CompositeCollider2D` ở **Geometry Type = Polygons**, **Generation Type = Synchronous** (giá trị đang dùng).
 
 **Vì sao**: Composite gộp hàng trăm ô thành vài khối liền. Nếu để `None`, nhân vật vấp ở mép giữa hai ô và bị khựng lại khi chạy.
 
+**Chỉnh gì → ra sao**:
+| Thông số | Giá trị khác | Ảnh hưởng thấy được trong game |
+|---|---|---|
+| `TilemapCollider2D` Composite Operation | **None** | Mỗi ô là một hộp riêng. Nhân vật chạy trên sàn phẳng thỉnh thoảng **khựng lại** hoặc nảy nhẹ ở đường nối giữa hai ô |
+| `Rigidbody2D` Body Type | Dynamic | Cả mặt đất **rơi xuống** khi bấm Play |
+| | Kinematic | Không rơi, nhưng tốn tính toán hơn Static mà không được lợi gì |
+| `CompositeCollider2D` Geometry Type | Outlines | Collider chỉ là đường viền rỗng. Nhân vật vẫn đứng được trên mặt, nhưng nếu bị đẩy lọt vào trong khối thì không bị đẩy ra. `OverlapCircle` của cảm biến chạm đất cũng chỉ bắt được khi chạm viền |
+| Physics Layer | Để Default | `GroundSensor` không thấy đất → nhân vật **luôn ở trạng thái Fall**, không nhảy được (dù vẫn đứng được trên sàn nhờ va chạm vật lý) |
+| Sorting Order | Lớn hơn 0 | Đất vẽ **đè lên** nhân vật (`Visual` có Order 0) |
+
+**Tile asset** (`Assets/Art/Tiles/`): mỗi ô vẽ được là một file Tile riêng. Đang dùng `T_Ground_Top`, `T_Ground_Fill`, `T_Wall`, cả ba đều **Collider Type = Grid** (va chạm phủ kín đúng 1 ô, không theo hình vẽ).
+
+| Collider Type của tile | Ảnh hưởng |
+|---|---|
+| **Grid** (đang dùng) | Va chạm là hình vuông 1×1, dễ đoán, hợp với platformer |
+| Sprite | Va chạm theo hình dạng sprite (phần trong suốt bị bỏ). Hợp với tile dốc, nhưng mép lởm chởm dễ làm nhân vật vấp |
+| None | Tile chỉ để trang trí, đi xuyên qua được (như `T_BackWall`, `T_BgPanel`) |
+
 ### 3.3 Vẽ map
-Window → 2D → Tile Palette → Create New Palette → kéo tileset đã slice vào.
-**Luôn kiểm tra ô "Active Tilemap"** trước khi vẽ (vẽ nhầm vào BackWall sẽ không có va chạm).
-Phím tắt: B vẽ · D / Shift xóa · G đổ màu · U hình chữ nhật · I lấy mẫu · `[` `]` xoay.
+1. Window → 2D → **Tile Palette** → Create New Palette (Grid = Rectangular, Cell Size = Automatic) → chọn thư mục lưu.
+2. Kéo tileset đã slice (hoặc các file Tile trong `Assets/Art/Tiles/`) vào cửa sổ palette. Kéo sprite vào thì Unity hỏi chỗ lưu và tự tạo file Tile cho từng ô.
+3. **Luôn kiểm tra ô "Active Tilemap"** ở đầu cửa sổ Tile Palette trước khi vẽ (vẽ nhầm vào lớp trang trí sẽ không có va chạm).
+4. Vẽ. Phím tắt: B vẽ · D / Shift xóa · G đổ màu · U hình chữ nhật · I lấy mẫu · `[` `]` xoay.
+
+Map hiện tại của `Tilemap_Ground`: trải từ x = −13 đến 119, y = −5 đến 11, mặt sàn chính ở **y = 1** (khối từ −5 lên 1), có các hố ngắt quãng.
+
+**Kích thước khoảng trống nên vẽ** (tính từ chỉ số di chuyển mặc định, mục 5.8–5.9):
+| Chướng ngại | Kích thước an toàn | Vì sao |
+|---|---|---|
+| Bậc cao phải nhảy lên | ≤ **3 ô** | Giữ Space nhảy cao ≈ 3.5 ô; 3 ô chừa chút dung sai |
+| Bậc cần dash lên mới qua | 4–5 ô | Dash lên đi được ≈ 4.5–4.8 ô rồi còn trôi thêm ~1 ô |
+| Hố nhảy qua khi đang chạy | ≤ **6 ô** | Giữ Space hết cỡ, thời gian trên không (lên rồi rơi về cùng độ cao) ≈ 0.65 s × 11.25 unit/s ≈ 7.3 ô, cộng chút nhờ `jumpHBoost` ≈ 7.5 ô; trừ dung sai cho người chơi bấm muộn |
+| Trần thấp trên đầu | ≥ **2 ô** | Collider nhân vật cao 1.7; trần 2 ô vẫn còn chỗ nhảy nhẹ |
+
+> ⚠️ Các con số trên chỉ đúng khi PPU = kích thước ô (mục 3.1) và Grid Cell Size = 1. Đổi một trong hai thì phải đo lại.
 
 ---
 
@@ -125,11 +184,35 @@ Phím tắt: B vẽ · D / Shift xóa · G đổ màu · U hình chữ nhật ·
 | `Rigidbody2D` | Dynamic · Freeze Rotation Z · **Interpolation = Interpolate** · Collision = Discrete | Interpolate: vật lý chạy 50Hz nhưng màn hình vẽ nhanh hơn → không bật thì nhân vật bị giật |
 | `CapsuleCollider2D` | Material = `PlayerNoFriction` · size/offset theo sprite (xem 4.2) | Friction 0 để không dính tường khi nhảy áp vào tường; ma sát mặt đất do code tự xử lý |
 | `PlayerInput` | Actions = `PlayerInputAction` · Behavior = **Invoke Unity Events** · Move → `PlayerController.onMove` · Jump → `PlayerController.onJump` | |
-| `PlayerController` | Config = `PlayerMovementConfig` · điền tên state animation (mục 6) | |
+| `PlayerController` | Config = `PlayerMovementConfig` · điền tên state animation (mục 6) · **Read Jump From Keyboard = tắt** · Draw Ground Gizmo = bật | Nhảy đã đi qua action `Jump` của `PlayerInput`. Bật cả hai thì một lần bấm Space bị ghi nhận hai lần |
+| `Health` + `PlayerHealth` | Xem mục 5.15 | Máu 5 mask |
+| GameObject `Player` | **Tag = Player**, Layer = Default | |
+
+**Các bước dựng từ đầu**:
+1. Tạo GameObject rỗng `Player` ở chân nhân vật (gốc tọa độ = chân, xem 4.2). Tag = Player.
+2. Tạo con `Visual` → Add `SpriteRenderer` (sprite = khung idle đầu tiên, Order **0**) + `Animator` (Controller = `AC_player`).
+3. Trên `Player`: Add `Rigidbody2D` → chỉnh theo bảng trên. **Gravity Scale để bao nhiêu cũng được**: `PlayerController.Awake` luôn đặt lại về 0 và tự tính trọng lực (mục 5.7). Prefab đang để 3, nhưng không có tác dụng.
+4. Add `CapsuleCollider2D` (Direction Vertical) → Material = `PlayerNoFriction`, size/offset theo 4.2.
+5. Add `PlayerInput` → Actions = `PlayerInputAction`, Default Map = `Player`, Behavior = Invoke Unity Events → mở mục Events → Player → kéo chính object Player vào ô Move và Jump, chọn hàm `PlayerController.onMove` / `onJump`.
+6. Add `PlayerController` → kéo `Assets/Settings/PlayerMovementConfig.asset` vào ô Config.
+7. Chọn Player → **Overrides → Apply All** (hoặc kéo thả vào `Assets/Character/Player/` để tạo prefab).
 
 Tạo Physics Material: Project → Create → 2D → Physics Material 2D → Friction = 0, Bounciness = 0 → lưu `Assets/Settings/PlayerNoFriction`.
 
+**Chỉnh gì → ra sao** (component vật lý):
+| Thông số | Giá trị khác | Ảnh hưởng thấy được |
+|---|---|---|
+| Rigidbody2D **Interpolation** | None | Vật lý chạy 50 lần/giây (Fixed Timestep 0.02) còn màn hình 60–144 Hz → nhân vật và camera **rung nhẹ** khi chạy, rõ nhất trên màn hình tần số cao |
+| | Extrapolate | Mượt nhưng hay **vượt lố** một chút rồi giật lại khi đổi hướng đột ngột hoặc va tường |
+| Rigidbody2D **Freeze Rotation Z** | Tắt | Va vào mép tường là nhân vật **lăn nghiêng**. (Code cũng đặt `freezeRotation = true` trong Awake để chắc chắn) |
+| Rigidbody2D **Collision Detection** | Continuous | Chống xuyên tường ở tốc độ cao. Hiện chưa cần: dash nhanh nhất 30 unit/s × 0.02 s = 0.6 unit/bước, vẫn nhỏ hơn bề dày tường 1 ô |
+| Collider **Friction** (material) | > 0 | Nhảy áp sát tường thì **dính vào tường**, trượt xuống chậm. Ma sát trên mặt đất không cần vì `HorizontalMover` tự hãm |
+| | Không gán material | Unity dùng ma sát mặc định 0.4 → bị dính tường như trên |
+| Collider **Bounciness** | > 0 | Tiếp đất bị nảy lên, cảm biến chạm đất nhấp nháy xanh/đỏ, animation nhảy lung tung |
+
 **Quan trọng về prefab**: sau khi thêm hoặc sửa component trên Player trong scene, bấm **Overrides → Apply All** (trừ vị trí Transform), nếu không thì kéo prefab sang scene khác sẽ bị thiếu.
+
+> ⚠️ **Quên gán Config**: `PlayerController` vẫn chạy với bộ số mặc định trong code và in cảnh báo vàng trong Console. Nhưng bộ mặc định trong code có `groundProbeOffset = (0, −0.92)`, `groundProbeRadius = 0.24`, `spriteFacesRight = false`, `groundLayers` rỗng (viết cho bộ sprite cũ). Kết quả: **không bao giờ chạm đất**, không nhảy được, quay mặt ngược. Luôn kéo `PlayerMovementConfig.asset` vào.
 
 ### 4.2 Gốc tọa độ, collider và cảm biến chạm đất
 Sprite nhân vật đặt **pivot ở chân**, nên gốc tọa độ Player nằm ở chân:
@@ -140,8 +223,40 @@ Sprite nhân vật đặt **pivot ở chân**, nên gốc tọa độ Player n�
 Giá trị hiện tại (sprite Cloaked Platformer, PPU 230, cao ~1.8 unit): collider **0.6 × 1.7**, offset **(0, 0.85)**, probe **(0, 0.1)** bán kính **0.28**.
 (Trước đó với Hooded 32×32: collider 0.45 × 0.85, offset (0, 0.425), probe (0, 0.05) bán kính 0.18.)
 
+**Hình dung vòng cảm biến** với giá trị hiện tại: tâm cao hơn chân 0.1, bán kính 0.28 → đáy vòng thấp hơn chân **0.18**, hai bên rộng ±0.28 (collider rộng ±0.3). Tức là vòng **thò xuống dưới chân một chút** và **hẹp hơn thân một chút**.
+
+**Cách đo cho nhân vật mới**:
+1. Đặt Player đứng trên sàn trong Scene, bật Gizmos.
+2. Chỉnh collider: Edit Collider, kéo cho ôm thân (không ôm áo choàng bay phấp phới, không ôm vũ khí). Đáy capsule trùng chân.
+3. Chọn `PlayerMovementConfig.asset`, chỉnh `groundProbeRadius` ≈ nửa bề ngang collider trừ 0.02–0.05.
+4. Chỉnh `groundProbeOffset.y` sao cho `offset.y − radius` nằm **dưới chân 0.05–0.2**.
+5. Play: đứng yên phải **xanh**, nhảy lên phải **đỏ** ngay, chạy ra khỏi mép phải đổi **đỏ** khi gần hết chân.
+
+**Chỉnh gì → ra sao**:
+| Thông số | Tăng | Giảm |
+|---|---|---|
+| Collider **size.x** | Khó chui qua khe hẹp; đầu dễ cấn mép trần hơn (corner correction phải làm việc nhiều hơn) | Thân "lún" vào tường khi nhìn (sprite to hơn collider); đứng sát mép vực trông như đang lơ lửng |
+| Collider **size.y** | Đụng trần sớm, nhảy qua lối thấp khó hơn | Đầu sprite xuyên vào trần trước khi bị chặn |
+| `groundProbeRadius` | Quá nửa bề ngang collider (> 0.3) → áp sát tường cũng tính là chạm đất → **nhảy tường vô hạn** (mỗi lần chạm tường được hồi coyote và dash) | Đứng ở mép vực bị coi là trên không sớm → đang đứng mà không nhảy được |
+| `groundProbeOffset.y` | `offset.y − radius ≥ 0` (đáy vòng không chạm tới mặt đất) → **không bao giờ chạm đất** | Đáy vòng thò xuống quá sâu → báo chạm đất khi còn lơ lửng; cú nhảy được thực hiện trước khi chân chạm sàn, trông như nhảy giữa không trung |
+
+> ⚠️ Đổi kích thước collider thì **phải đổi cảm biến theo**. Lỗi đã gặp khi đổi từ Hooded (cao 0.85) sang Cloaked (cao 1.7): giữ nguyên probe cũ thì nhân vật chạm đất lúc được lúc không.
+
 ### 4.3 Hướng nhìn
 Sprite gốc nhìn sang phải hay trái → đặt `spriteFacesRight` trong config cho đúng. Code lật nhân vật bằng `localScale.x` (lật cả object con).
+
+- Giá trị hiện tại: `spriteFacesRight = true` (bộ Cloaked vẽ nhìn sang phải). Lưu ý tooltip trong code vẫn ghi "quay TRAI nên để tắt" — đó là ghi chú cũ của bộ sprite trước, giá trị trong asset mới là đúng.
+- `FacingController` nhớ `|localScale.x|` lúc Awake rồi chỉ đổi dấu. Nhìn đúng hướng ảnh gốc → scale dương, ngược lại → scale âm.
+- Vì lật cả object `Player`, mọi object con (`Visual`, `SlashFx`, bụi, quầng sáng) đều lật theo. Đó là lý do không dùng `SpriteRenderer.flipX` (chỉ lật riêng hình).
+- Input ngang gần 0 (|x| < 0.01) thì giữ nguyên hướng cũ, nên thả phím nhân vật không tự quay lại.
+
+| Tình huống | Nguyên nhân | Sửa |
+|---|---|---|
+| Chạy sang phải mà mặt nhìn trái | `spriteFacesRight` sai | Đảo ô này trong config |
+| Lật hướng thì nhân vật "nhảy" sang bên | Pivot sprite không nằm giữa thân | Chỉnh pivot X trong Sprite Editor (Cloaked: 0.51) |
+| Bật `flipX` trên SpriteRenderer | Hai cơ chế lật chồng nhau → ngược hướng | Để `flipX` tắt, chỉ để code lật bằng scale |
+
+> ⚠️ `spriteFacesRight`, `groundLayers` và `inputBuffer` chỉ được đọc **một lần lúc Awake** (truyền vào constructor của `FacingController`, `GroundSensor`, `MovementInput`). Sửa ba ô này khi đang Play **không có tác dụng**, phải tắt Play rồi bật lại.
 
 ---
 
@@ -191,8 +306,10 @@ Thứ tự khai báo **quan trọng**: luật "từ bất kỳ state nào" (`Add
 
 | Từ | Sang | Điều kiện |
 |---|---|---|
-| Bất kỳ | **Dash** | Có lệnh dash trong đệm **và** còn lượt dash **và** hết hồi chiêu |
-| Bất kỳ (trừ Dash) | **Jump** | Có lệnh nhảy trong đệm **và** còn coyote time |
+| Bất kỳ | **Hurt** | `PlayerHealth` vừa gọi `Hurt()` (`hurtRequested`), ưu tiên cao nhất (mục 5.15) |
+| Bất kỳ (trừ Hurt) | **Dash** | Có lệnh dash trong đệm **và** còn lượt dash **và** hết hồi chiêu |
+| Bất kỳ (trừ Dash, Hurt) | **Jump** | Có lệnh nhảy trong đệm **và** còn coyote time |
+| Hurt | Fall / Run / Idle | Hết thời gian mất điều khiển (0.2s): không chạm đất → Fall; chạm đất, có / không giữ phím ngang → Run / Idle |
 | Dash | Fall | Hết thời gian dash **và** không chạm đất |
 | Dash | Run / Idle | Hết thời gian dash, có / không giữ phím ngang |
 | Idle, Run | Fall | Không chạm đất (bước ra khỏi mép) |
@@ -212,6 +329,30 @@ public bool JumpBuffered => !jumpConsumed && Time.time - lastJumpPressedTime <= 
 ```
 - Khi đã nhảy thật, gọi `ConsumeJump()` để một lần bấm không bật ra hai lần. Dash làm y hệt.
 
+**Nguồn input thực tế**:
+| Hành động | Đi vào bằng | Hàm |
+|---|---|---|
+| Chạy (WASD, mũi tên, cần trái tay cầm) | Action `Move` của `PlayerInput` | `onMove` → `SetMove` |
+| Nhảy (Space) | Action `Jump` của `PlayerInput` (`started` → bấm, `canceled` → thả) | `onJump` → `PressJump` / `ReleaseJump` |
+| Dash (Shift trái) | Đọc thẳng bàn phím trong `PollKeyboardDash` (asset input chưa có action Dash) | `PressDash` |
+
+**Ngưỡng làm tròn** (quan trọng khi chơi bằng tay cầm):
+| Thuộc tính | Ngưỡng | Hệ quả |
+|---|---|---|
+| `MoveX` | \|x\| > **0.01** | Nghiêng cần analog một chút xíu cũng chạy **hết tốc** (không có đi chậm) — giống Celeste |
+| `MoveY` | \|y\| > **0.5** | Phải đẩy cần quá nửa mới tính là lên/xuống. Tránh dash chéo ngoài ý muốn khi chỉ định đẩy ngang |
+
+**Buffer hoạt động ra sao theo thời gian**: bấm Space lúc t = 0 → từ t = 0 đến t = 0.08 s, mỗi frame FSM kiểm tra "còn lệnh nhảy và còn coyote không?". Frame đầu tiên nhân vật chạm đất trong khoảng đó → nhảy ngay. Quá 0.08 s mà chưa chạm đất → lệnh hết hạn, bấm coi như mất.
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `inputBuffer` | **0.08 s** | Bấm sớm hơn vẫn ăn: đang rơi 20 unit/s thì 0.08 s ≈ bấm cách đất **1.6 ô** vẫn nhảy. Lên 0.15–0.2 s thì game "dễ tính" nhưng hay bị **nhảy ngoài ý muốn** (bấm nhảy giữa không trung không ăn, rồi tự nảy lên khi vừa chạm đất) | Phải bấm sát lúc chạm đất mới ăn, cảm giác "nuốt phím". 0 = tắt buffer hoàn toàn, rất khó chịu khi nhảy liên tục |
+
+Cùng một `inputBuffer` dùng chung cho **cả nhảy lẫn dash**. Ví dụ: hết lượt dash trên không, bấm Shift trước khi chạm đất ≤ 0.08 s → vừa chạm đất (được hồi lượt) là dash luôn.
+
+> ⚠️ `inputBuffer` được đọc **một lần lúc Awake** (`new MovementInput(config.inputBuffer)`). Sửa khi đang Play không có tác dụng — tắt Play rồi bật lại mới thấy khác.
+
 ### 5.5 Chạm đất và coyote time (`GroundSensor`)
 - Mỗi bước vật lý: `Physics2D.OverlapCircle(tâm, bán kính, filter)` với filter chỉ lấy layer **Ground**.
 - Tâm vòng = vị trí Player + `groundProbeOffset`. Vì pivot sprite ở chân nên offset ≈ (0, 0.1).
@@ -221,6 +362,24 @@ public bool CanCoyoteJump => Time.time - lastGroundedTime <= config.coyoteTime;
 ```
 - Nhảy xong gọi `ConsumeCoyote()` để không nhảy được hai lần.
 - Chọn Player trong Scene → vòng Gizmo **xanh** = đang chạm đất, **đỏ** = trên không. Dùng để chỉnh offset/bán kính.
+
+**Các thuộc tính cảm biến cung cấp**:
+| Thuộc tính | Nghĩa | Ai dùng |
+|---|---|---|
+| `IsGrounded` | Vòng cảm biến đang chồng lên collider layer Ground | Luật chuyển Fall → Idle/Run, hồi lượt dash, gia tốc mặt đất/trên không |
+| `JustLanded` | Bước vật lý này chạm đất, bước trước thì chưa | Hiệu ứng tiếp đất |
+| `CanCoyoteJump` | Lần chạm đất gần nhất cách đây ≤ `coyoteTime` | Điều kiện nhảy (`PlayerContext.CanJump`) |
+
+Lưu ý: điều kiện nhảy **chỉ** là `CanCoyoteJump`, không có `IsGrounded`. Đang đứng trên đất thì `lastGroundedTime` được cập nhật mỗi bước, nên `CanCoyoteJump` tự đúng.
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `coyoteTime` | **0.1 s** | Chạy hết tốc (11.25 unit/s) thì 0.1 s ≈ đã ra khỏi mép **1.1 ô** vẫn nhảy được. Lên 0.2 s (≈ 2.2 ô) thì người chơi thấy rõ mình **nhảy từ không khí** | Phải bấm đúng lúc chân còn trên mép. 0 = không có coyote, người chơi hay than "bấm rồi mà không nhảy" |
+| `groundProbeRadius` / `groundProbeOffset` | 0.28 / (0, 0.1) | Xem bảng ở mục 4.2 | |
+| `groundLayers` | Ground (layer 8) | Thêm layer khác (vd Enemy) → đứng trên đầu quái cũng nhảy được | Bỏ trống → không bao giờ chạm đất |
+
+> ⚠️ Cảm biến chỉ cập nhật trong **FixedUpdate** (50 lần/giây), còn luật chuyển xét trong **Update**. Vì vậy `IsGrounded` có thể giữ nguyên giá trị vài frame hình liền. Đây là lý do luật Jump → Idle/Run phải thêm điều kiện `vy ≤ 0` (mục 5.3).
 
 ### 5.6 Chạy ngang (`HorizontalMover.Move`)
 Công thức giống Celeste: vận tốc luôn **tiến dần về vận tốc mục tiêu** với một gia tốc.
@@ -234,6 +393,27 @@ vx = MoveTowards(vx, max * moveX, rate * mult * dt);
 ```
 - Thả phím → mục tiêu = 0 → nhân vật dừng với cùng gia tốc 125 (từ 11.25 về 0 mất ~0.09s). Đây chính là **ma sát**.
 - Sau dash, nhân vật nhanh hơn `maxRun`; nếu vẫn giữ cùng hướng thì chỉ giảm bằng `runReduce` nên cú dash "trượt" tiếp tự nhiên.
+- Đang nhanh hơn `maxRun` mà **thả phím** hoặc **bấm ngược** thì `overSpeedSameDir` sai → dùng `runAccel` (125) → hãm gắt. Người chơi tự chọn: giữ phím để trượt dài, thả phím để dừng.
+
+**Con số cụ thể với giá trị mặc định** (đo theo công thức, `dt` = 0.02 s):
+| Tình huống | Gia tốc dùng | Kết quả |
+|---|---|---|
+| Đứng yên → chạy hết tốc, trên đất | 125 | 11.25 / 125 = **0.09 s** (≈ 5 bước vật lý). Gần như tức thì |
+| Đứng yên → hết tốc, trên không | 125 × 0.65 = 81.25 | **0.14 s** |
+| Đang chạy → thả phím, trên đất | 125 | Dừng sau 0.09 s, trượt thêm **≈ 0.5 ô** |
+| Quay đầu (+11.25 → −11.25), trên đất | 125 | **0.18 s** |
+| Sau dash ngang (20) → về 11.25, giữ phím, trên đất | 50 | 8.75 / 50 = **0.175 s** |
+| Như trên nhưng trên không | 50 × 0.65 = 32.5 | **0.27 s** |
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `maxRun` | **11.25** unit/s | Chạy nhanh, nhảy xa hơn (khoảng hố nhảy được tăng theo tỷ lệ). Trên ~15 thì camera (damping 1 s, mục 7) bám không kịp, nhân vật chạy ra mép màn hình | Chậm, nặng nề. Hố 6 ô ở mục 3.3 có thể không còn nhảy qua được |
+| `runAccel` | **125** unit/s² | Bắt tốc và dừng gần như tức thì, "dính tay" như Celeste/Mega Man. Trên ~250 thì không còn chút quán tính nào | Trơn như **đi trên băng**: bắt tốc chậm, dừng phải trượt. 40 → dừng mất 0.28 s, trượt ~1.6 ô |
+| `runReduce` | **50** unit/s² | Đà sau dash / `jumpHBoost` mất nhanh, dash ngang ngắn lại | Đà giữ lâu, "lướt" sau dash dài hơn. 0 → giữ phím thì không bao giờ mất đà vượt tốc (lỗi) |
+| `airMult` | **0.65** | Gần 1 → trên không bẻ lái nhanh như trên đất, nhảy dễ canh hơn nhưng mất cảm giác "có trọng lượng" | Gần 0 → **nhảy như ném đá**: đã bật nhảy thì gần như không đổi hướng được (kiểu Castlevania cổ). 0 = hoàn toàn không điều khiển được trên không |
+
+> ⚠️ `runAccel` cũng chính là **ma sát khi thả phím**. Muốn bắt tốc nhanh mà dừng chậm (hoặc ngược lại) thì phải tách thêm một thông số trong code; hiện chưa có.
 
 ### 5.7 Trọng lực tự tính (`PlayerContext.ApplyGravity`)
 Rigidbody2D để `gravityScale = 0`, trọng lực tính tay mỗi bước vật lý, theo thứ tự:
@@ -241,12 +421,34 @@ Rigidbody2D để `gravityScale = 0`, trọng lực tính tay mỗi bước vậ
 2. **Trừ bộ đếm giữ nhảy**: `varJumpTimer -= dt`.
 3. **Rơi nhanh**: đang rơi hết tốc mà giữ **S** → giới hạn rơi tăng dần từ `maxFall` (20) lên `fastMaxFall` (30).
 4. **Nửa trọng lực ở đỉnh**: `|vy| < halfGravThreshold` (5) **và đang giữ Space** → trọng lực × 0.5 → khoảnh khắc lơ lửng để canh đường.
-5. Áp trọng lực: `vy = MoveTowards(vy, -maxFall, gravity * mult * dt)`.
+5. Áp trọng lực: `vy = MoveTowards(vy, -currentMaxFall, gravity * mult * dt)` (`currentMaxFall` là giới hạn rơi hiện tại, nằm giữa `maxFall` và `fastMaxFall`).
 6. **Giữ nhảy**: còn `varJumpTimer` và vẫn giữ Space → `vy = max(vy, jumpSpeed)` (không cho vận tốc đi lên giảm). Thả Space → hủy bộ đếm, trọng lực kéo xuống ngay.
 
 Đây là cách Celeste làm "**giữ phím nhảy cao, nhấn nhanh nhảy thấp**": không cắt vận tốc đột ngột mà **giữ vận tốc đi lên tối đa 0.2s**.
 
 > Lỗi đã gặp: quên bước 2 (trừ bộ đếm) → bộ đếm không bao giờ hết → giữ Space là bay mãi.
+
+`ApplyGravity` được gọi trong `FixedTick` của Idle, Run, Jump, Fall và Hurt. **Dash không gọi** → trong 0.15 s dash nhân vật bay thẳng, không rơi.
+
+**Con số cụ thể với giá trị mặc định**:
+| Đại lượng | Cách tính | Kết quả |
+|---|---|---|
+| Từ đứng yên rơi tới tốc độ tối đa | 20 / 112.5 | **0.18 s**, rơi được ≈ 1.8 ô. Sau đó rơi đều 20 ô/giây |
+| Giữ S: giới hạn rơi tăng 20 → 30 | 10 / 37.5 | **0.27 s** |
+| Vùng nửa trọng lực ở đỉnh (vy từ +5 xuống −5) | 10 / 56.25 | **0.18 s** lơ lửng (không giữ Space chỉ 0.09 s) |
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `gravity` | **112.5** unit/s² | Nhảy **thấp và nhanh**, rơi "rụng" xuống, cảm giác nặng và gắt (kiểu Super Meat Boy). Phần nhảy sau khi hết giữ ngắn lại | Nhảy **cao và bồng bềnh** như trên mặt trăng, thời gian trên không dài, khó canh điểm rơi |
+| `halfGravThreshold` | **5** unit/s | Vùng lơ lửng ở đỉnh rộng ra, đỉnh cú nhảy "treo" lâu, dễ chỉnh hướng giữa không trung. Quá cao (≥ 13.125 = `jumpSpeed`) thì **cả cú nhảy** đều chỉ còn nửa trọng lực → bay rất cao | Đỉnh nhọn, lên tới đỉnh là rơi ngay. 0 = tắt hẳn hiệu ứng |
+| `maxFall` | **20** unit/s | Rơi nhanh hơn, cú rơi dài trông dữ dội, người chơi có ít thời gian phản ứng khi rơi xuống hố có gai | Rơi chậm như **cầm dù**. Dưới ~10 thì rơi khỏi mép trông lơ lửng, thiếu trọng lượng |
+| `fastMaxFall` | **30** unit/s | Giữ S lao xuống càng nhanh. Ở 30 unit/s mỗi bước vật lý đi 0.6 ô, an toàn. Đẩy lên rất cao thì quãng đi mỗi bước có thể vượt bề dày sàn + thân → nguy cơ **xuyên sàn** vì Collision = Discrete (khi đó đổi Rigidbody2D sang Continuous) | Bằng `maxFall` → giữ S không còn tác dụng |
+| `fastMaxAccel` | **37.5** unit/s² | Bấm S là lao xuống gần như ngay | Phải giữ S lâu mới thấy rơi nhanh hơn. Lưu ý thông số này cũng quyết định tốc độ **trở về** `maxFall` khi thả S |
+
+Rơi nhanh chỉ bắt đầu khi **đã rơi hết tốc** (`vy ≤ −maxFall`) **và** giữ S (`MoveY = −1`, tức đẩy xuống quá 0.5). Bấm S ngay khi vừa bắt đầu rơi thì chưa có gì xảy ra cho tới khi đạt 20 unit/s.
+
+> ⚠️ Nửa trọng lực áp dụng khi **đang giữ Space** và |vy| < 5 — kể cả nửa sau (đang rơi, vy từ 0 xuống −5). Vì vậy giữ Space suốt cú nhảy thì cả lúc bắt đầu rơi cũng chậm hơn một chút. Đây là đúng thiết kế của Celeste, không phải lỗi.
 
 ### 5.8 Bật nhảy (`PlayerContext.ExecuteJump`)
 ```csharp
@@ -257,12 +459,65 @@ ConsumeJump(); ConsumeCoyote();
 ```
 Độ cao nhảy (giữ hết) ≈ `jumpSpeed × varJumpTime + jumpSpeed² / (2 × gravity)` ≈ 2.6 + 0.8 ≈ **3.4–3.5 ô** (thêm chút nhờ nửa trọng lực ở đỉnh).
 
+**Một cú nhảy giữ hết Space, chia theo pha** (giá trị mặc định):
+| Pha | Vận tốc dọc | Thời gian | Quãng lên |
+|---|---|---|---|
+| 1. Giữ nhảy (`varJumpTime`) | đứng yên ở 13.125 | 0.2 s | 2.63 ô |
+| 2. Trọng lực đủ | 13.125 → 5 | 0.07 s | 0.65 ô |
+| 3. Nửa trọng lực ở đỉnh | 5 → 0 | 0.09 s | 0.22 ô |
+| **Tổng tới đỉnh** | | **≈ 0.36 s** | **≈ 3.5 ô** |
+
+Nhấn Space thật nhanh rồi thả: bộ đếm bị hủy ngay, chỉ còn `jumpSpeed² / (2 × gravity)` ≈ **0.77 ô**. Khoảng điều khiển độ cao là **0.8 → 3.5 ô** tùy thời gian giữ phím.
+
+**`jumpHBoost`** được **cộng** vào vận tốc ngang đang có (không phải đặt bằng):
+- Đang chạy 11.25 → bật lên với 16.25, vượt `maxRun`. Giữ cùng hướng thì giảm bằng `runReduce × airMult` = 32.5 → về 11.25 sau ≈ 0.15 s, nhảy xa thêm ≈ 0.4 ô.
+- Đứng yên, giữ hướng rồi bấm nhảy → bật ngang ngay 5 unit/s, cú nhảy có "cú đẩy" ban đầu thay vì bò dần lên tốc độ.
+- Không giữ hướng → `MoveX = 0` → không cộng gì.
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `jumpSpeed` | **13.125** unit/s | Nhảy cao hơn **ở cả pha giữ lẫn pha sau** (pha 1 tăng tuyến tính, pha 2 tăng theo bình phương). 15 → ≈ 4.1 ô. Phải nới trần, bậc thềm trong map | Nhảy thấp. 10 → ≈ 2.6 ô, bậc 3 ô ở mục 3.3 không còn qua được |
+| `varJumpTime` | **0.2** s | Khoảng cách giữa nhảy thấp và nhảy cao rộng ra: giữ lâu bay rất cao, phần bay lên thẳng đều trông như **bị kéo bằng dây** (mỗi 0.1 s thêm ≈ 1.3 ô) | Mọi cú nhảy gần như cao bằng nhau, giữ hay nhấn không khác mấy. 0 = độ cao cố định ≈ 0.77 ô |
+| `jumpHBoost` | **5** unit/s | Nhảy khi chạy **phóng xa** hơn; nhảy từ chỗ đứng yên bị "giật" ngang mạnh | Nhảy khi chạy không xa hơn chạy thường. 0 = tắt |
+
+> ⚠️ Đụng trần khi đang giữ nhảy: bước 1 của `ApplyGravity` phát hiện vy tụt dưới `varJumpSpeed − 0.05` → hủy bộ đếm, nhân vật rơi xuống ngay thay vì **dính trần** tới hết 0.2 s. Nếu bạn sửa code `ExecuteJump` mà quên gán `varJumpSpeed`, lỗi dính trần sẽ quay lại.
+
 ### 5.9 Dash (`DashState` + `PlayerContext`)
 1. **Hướng**: `(MoveX, MoveY)` chuẩn hóa → 8 hướng. Không giữ phím nào → dash theo hướng đang nhìn.
 2. **Bắt đầu** (`BeginDash`): trừ 1 lượt, đặt hồi chiêu `dashCooldown` (0.2s), đặt `dashRefillCooldown` (0.1s: vừa dash xong chưa được hồi lượt dù đang chạm đất), hủy giữ nhảy, xóa lệnh dash trong đệm.
 3. **Trong lúc dash** (`dashTime` = 0.15s): vận tốc = hướng × `dashSpeed` (30), **không áp trọng lực**.
 4. **Kết thúc**: nếu không dash xuống → vận tốc còn lại = hướng × `endDashSpeed` (20); dash lên thì vận tốc dọc × `endDashUpMult` (0.75).
 5. **Hồi lượt** (`TickDash`): không đang dash, hết `dashRefillTimer` và chạm đất → lượt dash = `maxDashes` (1).
+
+**Con số cụ thể với giá trị mặc định**:
+- Bộ đếm dash trừ mỗi bước vật lý 0.02 s → 0.15 s thực tế kéo dài **8 bước = 0.16 s** → quãng dash ≈ 30 × 0.16 ≈ **4.8 ô** (trong lúc dash, không kể phần trôi sau).
+
+| Hướng dash | Trong lúc dash (vx, vy) | Ngay khi kết thúc (vx, vy) | Sau đó |
+|---|---|---|---|
+| Ngang → | (30, 0) | (20, 0) | Giữ phím: giảm về 11.25 bằng `runReduce` (trôi xa thêm). Thả phím: hãm bằng `runAccel`, dừng nhanh |
+| Thẳng lên ↑ | (0, 30) | (0, 20 × 0.75 = **15**) | Bay lên thêm ≈ 1 ô rồi rơi. Tổng ≈ 5.8 ô |
+| Chéo lên ↗ | (21.2, 21.2) | (14.1, 10.6) | Bay lên thêm ≈ 0.5 ô, trôi ngang xa |
+| Xuống ↓ / chéo xuống ↘ | (0, −30) / (21.2, −21.2) | **Giữ nguyên** vận tốc đang có | Trọng lực kéo dần tốc độ rơi về `maxFall` (20) |
+| Không giữ phím | Theo hướng đang nhìn | Như dash ngang | |
+
+**Thời gian chờ thực tế**:
+- `dashCooldown` (0.2 s) tính từ **lúc bắt đầu** dash. Dash kéo dài 0.16 s → chỉ phải chờ thêm ~0.04 s sau khi dash xong. Thông số này chỉ thấy rõ khi đứng trên đất bấm Shift liên tục (mỗi lần dash xong lại được hồi lượt): tối đa 5 lần dash/giây.
+- `dashRefillTimer` (0.1 s) cũng đếm **trong lúc dash**, nên với `dashTime` 0.15 hiện tại nó đã hết trước khi dash xong → **gần như không có tác dụng**. Chỉ khi đặt `dashRefillCooldown` > ~0.16 s mới thấy: dash dọc mặt đất xong phải chờ một chút mới được hồi lượt.
+- Trong lúc dash **không nhảy được** (luật Jump loại trừ Dash). Bấm Space trong 0.08 s cuối của dash thì lệnh nằm trong buffer → dash vừa xong (nếu còn chạm đất) là nhảy luôn, lúc đó vận tốc ngang 20 + `jumpHBoost` 5 = **25** → một cú nhảy rất xa. Bấm sớm hơn thì lệnh hết hạn trước khi dash xong.
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `dashSpeed` | **30** unit/s | Dash xa và **gắt** hơn, mắt khó theo kịp. Đẩy quá cao thì quãng đi mỗi bước vật lý (= dashSpeed × 0.02) có thể vượt bề dày tường 1 ô + bề ngang thân 0.6 → nguy cơ **xuyên tường** (Collision = Discrete) | Dash ngắn, chậm, giống một bước lướt |
+| `dashTime` | **0.15** s | Dash dài hơn (quãng = `dashSpeed` × `dashTime`). Trên 0.25 s người chơi cảm thấy **mất điều khiển** vì không đổi hướng/nhảy được trong lúc dash | Dash cụt, gần như dịch chuyển tức thời |
+| `endDashSpeed` | **20** unit/s | Sau dash còn trôi xa, chuỗi dash-nhảy bay xa hơn. Đặt > `dashSpeed` thì cuối dash bị **giật tăng tốc**, trông lỗi | Dash dừng "khựng" ngay. 0 = đứng yên giữa không trung khi kết thúc dash |
+| `endDashUpMult` | **0.75** (0..1) | 1 → dash lên rồi bay lên thêm ≈ 1.8 ô (dễ leo cao hơn) | 0 → dash lên xong rơi ngay, không trôi lên thêm |
+| `dashCooldown` | **0.2** s | Không spam dash được trên mặt đất. Đặt > 0.16 s nhiều thì có cảm giác "bấm mà không ăn" | Spam dash liên tục trên đất, lướt rất nhanh |
+| `dashRefillCooldown` | **0.1** s | Chỉ có tác dụng khi > thời gian dash (xem trên) | Không thấy khác biệt |
+| `maxDashes` | **1** | 2 = dash hai lần trên không (kiểu Celeste khi nhặt pha lê đôi). Đọc trực tiếp từ config mỗi lần hồi lượt, nên sửa khi Play có tác dụng từ lần chạm đất tiếp theo | 0 = **tắt dash** hoàn toàn |
+
+> ⚠️ Dash vào tường: vật lý chặn nhân vật lại nhưng code không đặt lại vận tốc trong lúc dash, nên phần còn lại của 0.16 s nhân vật "dính" vào tường rồi mới rơi. Đây là hành vi hiện tại.
 
 ### 5.10 Corner correction (`PlayerContext.TryCornerCorrection`)
 Khi đang đi lên (nhảy hoặc dash lên) mà đầu sắp đụng mép trần:
@@ -272,8 +527,27 @@ Khi đang đi lên (nhảy hoặc dash lên) mà đầu sắp đụng mép trầ
 
 Kết quả: đầu chạm mép trần một chút thì tự trượt qua thay vì bị chặn đứng — một chi tiết "game feel" quan trọng của Celeste.
 
+**Chi tiết cần biết**:
+- Chỉ chạy khi `vy > 0`, và chỉ được gọi trong **JumpState** và **DashState**. Fall, Hurt (bị đánh bật lên) không có corner correction.
+- Hộp kiểm tra là collider thu nhỏ mỗi bên `2 × defaultContactOffset` (= 0.02) để tường áp sát hai bên không bị tính là trần.
+- Chỉ kiểm tra layer trong `groundLayers` (Ground). Trần làm từ layer khác sẽ không được sửa.
+- Số lần thử mỗi bên = `round(cornerCorrection / cornerCorrectionStep)` = 0.5 / 0.125 = **4 lần** (dịch 0.125, 0.25, 0.375, 0.5). Thử từ gần ra xa, nên luôn chọn chỗ dịch **ít nhất**. Đứng yên (vx = 0) thì ở mỗi khoảng thử bên trái trước.
+- Dịch bằng `Body.position += shift` → dịch tức thời trong một bước vật lý. Nhờ Interpolate nên nhìn vẫn mượt nếu khoảng dịch nhỏ.
+
+**Ví dụ**: collider rộng 0.6. Nhảy lên mà mép trần chồng vào vai **0.3 ô** (nửa thân) → dịch 0.375 là thoát → nhân vật trượt sang 0.375 ô và bay tiếp. Chồng **0.6 ô** (cả thân) → quá 0.5 → bị chặn như thường.
+
+**Chỉnh gì → cảm giác điều khiển**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `cornerCorrection` | **0.5** ô (Celeste 4 px) | Trượt qua được mép trần chồng sâu hơn, nhảy qua khe hẹp rất dễ. Lớn hơn bề ngang thân (> 0.6) thì nhân vật **giật ngang thấy rõ** và có thể "chui" qua chỗ mà người chơi nghĩ là bị chặn | Phải căn chính xác mới lọt khe. 0 = tắt, đầu chạm mép trần là khựng lại |
+| `cornerCorrectionStep` | **0.125** ô (1 px Celeste) | Ít lần thử hơn (nhẹ máy), nhưng khoảng dịch thô, có thể dịch xa hơn mức cần | Tìm chỗ dịch chính xác hơn, mỗi lần thử tốn 1 `OverlapBox` + 1 `BoxCast`. Code chặn tối thiểu 0.01 |
+
+> ⚠️ Nếu `cornerCorrectionStep` > 2 × `cornerCorrection` thì số lần thử làm tròn về **0** → corner correction tắt mà không báo lỗi.
+
 ### 5.11 Bảng chỉ số và cách chỉnh
-Mọi chỉ số nằm ở **`Assets/Settings/PlayerMovementConfig.asset`** (không nằm trên component). Chọn file → sửa trong Inspector, sửa được **ngay khi đang Play** và giá trị **được giữ lại** sau khi tắt Play.
+Mọi chỉ số nằm ở **`Assets/Settings/PlayerMovementConfig.asset`** (không nằm trên component). Chọn file → sửa trong Inspector, sửa được **ngay khi đang Play** và giá trị **được giữ lại** sau khi tắt Play. Ngoại lệ: `inputBuffer`, `spriteFacesRight`, `groundLayers` chỉ đọc lúc Awake, sửa khi đang Play không có tác dụng (xem 4.3).
+
+Bảng dưới là tóm tắt. Giải thích chi tiết từng thông số (con số cụ thể, tăng/giảm thì cảm giác ra sao) nằm trong mục của hệ thống tương ứng: chạy 5.6, trọng lực 5.7, nhảy 5.8, dash 5.9, corner correction 5.10, input buffer 5.4, coyote 5.5.
 
 Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celeste 8px = 1 ô, ở đây 1 unit = 1 ô):
 
@@ -298,21 +572,76 @@ Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celes
 | | `inputBuffer` | 0.08 | 0.08 | Bấm sớm vẫn ăn |
 | | `cornerCorrection` | 0.5 | 4px | Trượt qua mép trần xa hơn |
 
-### 5.12 Điều khiển
-| Phím | Hành động |
+**Tổng hợp: muốn điều khiển… thì chỉnh…**
+| Muốn | Chỉnh |
 |---|---|
-| A / D (hoặc mũi tên) | Chạy |
-| Space (giữ để nhảy cao hơn) | Nhảy |
-| Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) |
-| J (giữ W: chém lên · trên không giữ S: chém xuống) | Đánh thường; chém xuống trúng thì nảy lên |
-| S khi đang rơi | Rơi nhanh |
+| Nhân vật "nặng", gắt, kiểu Super Meat Boy | `gravity` ↑ (140), `jumpSpeed` ↑ (14.5) để giữ độ cao, `airMult` ↑ (0.8) |
+| Bồng bềnh, nhẹ nhàng | `gravity` ↓ (85), `maxFall` ↓ (15), `halfGravThreshold` ↑ (7) |
+| Trơn trượt (màn băng) | `runAccel` ↓ (40), `runReduce` ↓ (20) |
+| Dễ chơi hơn cho người mới | `coyoteTime` ↑ (0.15), `inputBuffer` ↑ (0.12), `cornerCorrection` ↑ (0.6) |
+| Khó, đòi hỏi chính xác | `coyoteTime` ↓ (0.05), `inputBuffer` ↓ (0.04), `airMult` ↓ (0.5) |
+| Dash mạnh, bay xa | `dashSpeed` ↑ (36) hoặc `dashTime` ↑ (0.18), `endDashSpeed` ↑ (24) |
+| Nhảy xa hơn mà không cao hơn | `maxRun` ↑ hoặc `jumpHBoost` ↑ — **không** đụng `jumpSpeed` |
 
+Muốn có nhiều bộ số (vd màn băng, dưới nước): chuột phải → Create → **LuHanh → Player Movement Config** tạo asset mới, rồi kéo vào ô Config của `PlayerController`. Không sửa trực tiếp asset gốc khi đang thử nghiệm để luôn có bản chuẩn quay về.
+
+### 5.12 Điều khiển
+| Phím | Hành động | Đi qua đâu |
+|---|---|---|
+| A / D (hoặc mũi tên ← →) | Chạy | Action `Move` của `PlayerInput` |
+| W / S (hoặc ↑ ↓) | Chọn hướng dash, chém lên/xuống, rơi nhanh | Action `Move` (trục dọc) |
+| Space (giữ để nhảy cao hơn) | Nhảy | Action `Jump` |
+| Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) | Đọc thẳng bàn phím (`PollKeyboardDash`) |
+| J (giữ W: chém lên · trên không giữ S: chém xuống) | Đánh thường; chém xuống trúng thì nảy lên | Đọc thẳng bàn phím (`PlayerAttack`) |
+| S khi đang rơi | Rơi nhanh (chỉ khi đã rơi hết tốc, mục 5.7) | Action `Move` |
+| Cần trái tay cầm | Chạy + hướng | Action `Move` có binding `<Gamepad>/leftStick` |
+
+**Tay cầm hiện chỉ dùng được để chạy**: action `Jump` chỉ có binding `<Keyboard>/space`; dash và đánh đọc thẳng `Keyboard.current`. (Action `Attack` trong asset có binding chuột trái / RT tay cầm nhưng chưa nối vào code nào.)
+
+**Thêm phím / tay cầm cho nhảy**: mở `Assets/Character/Player/PlayerInputAction.inputactions` → map `Player` → action `Jump` → dấu `+` → Add Binding → chọn phím (vd `<Gamepad>/buttonSouth`) → **Save Asset**. Không cần sửa code vì `onJump` đã nghe action này.
+
+> ⚠️ Đừng bật `Read Jump From Keyboard` trên `PlayerController` khi action `Jump` đã nối Space: mỗi lần bấm sẽ gọi `PressJump` hai lần (một từ action, một từ bàn phím).
 
 ### 5.13 Thêm một state mới (ví dụ)
 1. Tạo file trong `States/`, kế thừa `PlayerStateBase` (hoặc `GroundedStateBase` nếu là state trên mặt đất).
 2. Viết `Enter()` (phát animation, đặt vận tốc ban đầu), `Tick()` (quay mặt, đọc input), `FixedTick()` (vận tốc, trọng lực).
 3. Trong `PlayerController`: khai báo biến, `new` trong `BuildStateMachine()`, thêm các dòng `AddTransition` / `AddAnyTransition`.
 4. Nếu cần animation mới: thêm giá trị vào enum `PlayerAnim`, thêm ô tên state trong `PlayerAnimationDriver`, tạo state trong `AC_player`.
+
+**State có sẵn để tham khảo**: `HurtState` (bị đánh bật ra) là ví dụ state được thêm sau cùng — xem cách nó làm:
+- Có thuộc tính `Finished` để luật chuyển biết khi nào thoát (`hurt → fall/run/idle`).
+- Có hàm `Setup(...)` gọi **trước** khi vào state để truyền dữ liệu (vận tốc bật ra, thời gian).
+- Luật vào là `AddAnyTransition(hurt, () => hurtRequested)`, khai báo **đầu tiên** nên đè lên cả Dash và Jump. Dash và Jump đều thêm điều kiện `machine.Current != hurt` để không cắt ngang lúc đang bị đánh.
+
+**Bộ khung một state mới** (ví dụ giả định `WallSlideState`, **chưa có** trong project):
+```csharp
+namespace LuHanh.Player.States
+{
+    public class WallSlideState : PlayerStateBase
+    {
+        public WallSlideState(PlayerContext context) : base(context) { }
+
+        public override void Enter()      { /* Ctx.Animation.Play(...) */ }
+        public override void Tick(float dt) { Ctx.Facing.FaceTowards(Ctx.Input.Horizontal); }
+        public override void FixedTick(float dt)
+        {
+            Ctx.Mover.Move(Ctx.Input.MoveX, grounded: false, deltaTime: dt);
+            Ctx.ApplyGravity(dt);   // bỏ dòng này nếu state không chịu trọng lực (như Dash)
+        }
+    }
+}
+```
+
+**Những điều FSM làm mà bạn cần biết khi thêm state** (`Core/FSM/StateMachine.cs`):
+| Cơ chế | Hệ quả |
+|---|---|
+| Luật chuyển chỉ được xét trong `Update` (`machine.Tick`), không xét trong `FixedUpdate` | Điều kiện dựa trên cảm biến vật lý có thể trễ 1 frame hình so với vật lý |
+| `AddAnyTransition` xét **trước** mọi luật riêng, theo thứ tự khai báo; luật nào đúng trước thì thắng | Đặt luật "bất kỳ" mới ở đâu trong danh sách quyết định nó ưu tiên hơn hay kém Hurt/Dash/Jump |
+| Luật "bất kỳ" tự bỏ qua nếu đích chính là state hiện tại | Không tự vào lại chính mình mỗi frame |
+| Luật riêng được lưu theo **kiểu class** của state (`GetType()`) | Hai state cùng một class sẽ dùng **chung** bộ luật — mỗi state nên là một class riêng |
+| `SetState` gọi `Exit()` của state cũ rồi `Enter()` của state mới ngay trong frame | Đặt vận tốc ban đầu trong `Enter` là có tác dụng ngay |
+
+> ⚠️ Thiếu luật **thoát** khỏi state mới là lỗi hay gặp nhất: nhân vật kẹt mãi trong state đó. Mỗi state mới nên có ít nhất một luật đi ra Fall (trên không) và Idle/Run (trên đất).
 
 
 ### 5.14 Đánh thường (phím J) kiểu Hollow Knight
@@ -353,9 +682,11 @@ Nếu làm Attack thành một state, đang nhảy mà chém sẽ phải thoát 
 #### Vùng chém (tính từ chân nhân vật, đơn vị unit)
 | Hướng | Tâm (offset) | Kích thước |
 |---|---|---|
-| Ngang | (±0.9, 0.9) | 1.6 × 1.2 |
-| Lên | (0, 2.1) | 1.2 × 1.6 |
-| Xuống | (0, −0.5) | 1.2 × 1.6 |
+| Ngang | (±**2.0**, 0.9) | 1.6 × 1.2 |
+| Lên | (0, **2.9**) | 1.2 × 1.6 |
+| Xuống | (0, **−1.2**) | 1.2 × 1.6 |
+
+Vùng chém đặt **xa nhân vật khoảng 2 ô** (ban đầu là 0.9 / 2.1 / −0.5). Vệt chém cũng được đẩy ra **đúng bằng khoảng đã dời** để hình khớp chỗ trúng đòn: `slashSidePush` **1.1**, `slashUpPush` **0.8**, `slashDownPush` **0.7**. Trong `PlayerAttack.ShowSlash`: `localPosition = slashAnchor + hướng chém × push`. Trục X cục bộ đã là phía trước vì Player tự lật `localScale.x`. Muốn đổi khoảng cách thì sửa **cả hai**: offset vùng chém và push tương ứng.
 
 Chọn Player trong Scene → Gizmo đỏ vẽ 3 vùng chém để chỉnh cho khớp hình.
 
@@ -386,10 +717,308 @@ Chọn Player trong Scene → Gizmo đỏ vẽ 3 vùng chém để chỉnh cho k
 | `pogoSpeed` | 0 (= jumpSpeed) | Pogo nảy cao hơn |
 | `recoilSpeed` | 4 | Bị đẩy lùi xa hơn khi chém ngang trúng |
 | `slashVisualTime` / `slashGrow` | 0.18 / 0 | Vệt chém quét chậm hơn / nở to hơn |
+| `slashSidePush` / `slashUpPush` / `slashDownPush` | 1.1 / 0.8 / 0.7 | Vệt chém nằm xa nhân vật hơn (sửa kèm offset vùng chém) |
 | `slashCentredOnHitArea` | ✘ | Bật khi dùng ảnh vẽ sẵn hướng sang phải |
 | `slashAnchor` / `slashBaseAngle` / `slashFlipX` | (0, 0.9) / 90 / ✔ | Tâm xoay / góc gốc / đổi chiều quét của vòng cung |
 
-**Chưa làm (để sau)**: hitstop, rung camera khi trúng; pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
+**Chưa làm (để sau)**: rung camera khi trúng; pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
+
+### 5.15 Máu người chơi kiểu Hollow Knight (5 mask)
+
+**Mục tiêu**: có **5 cục máu** (mask) ở góc trên trái. Mỗi lần bị đánh trúng thì:
+- mất 1 cục, khung hình khựng ~0.1s (hitstop), nhân vật bị hất lùi;
+- sau đó **bất tử 1.3s** và nhấp nháy.
+
+Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, quái cũng hồi sinh lại.
+
+#### Các file
+| File | Namespace | Vai trò |
+|---|---|---|
+| `Scripts/Combat/Health.cs` | `LuHanh.Combat` | **Máu dùng chung** (người chơi, quái, boss): `Max`, `Current`, `Damage(n)`, `Refill()`, event `Changed(current, max)` và `Died`. Không biết gì về bất tử hay hiệu ứng |
+| `Scripts/Player/PlayerHealth.cs` | `LuHanh.Player` | Phản ứng của người chơi: nhận đòn (`IDamageable`), hitstop, hất lùi, bất tử + nhấp nháy, chết → hồi sinh |
+| `Scripts/Player/States/HurtState.cs` | `LuHanh.Player.States` | State **bị thương** trong FSM: hất ra, chịu trọng lực, mất điều khiển 0.2s |
+| `Scripts/Core/RespawnManager.cs` | `LuHanh.Core` | Trình tự hồi sinh: tối dần → đặt lại người chơi → đặt lại mọi `IResettable` → sáng dần |
+| `Scripts/Core/IResettable.cs` | `LuHanh.Core` | Interface `ResetState()` cho thứ cần trở về ban đầu khi hồi sinh (quái...) |
+| `Scripts/UI/HealthUI.cs` | `LuHanh.UI` | Hàng mask trên HUD |
+
+#### Luồng khi bị đánh trúng
+1. `ContactDamage` của quái chạm collider có **tag `Player`** → gọi `PlayerHealth.TakeHit(HitInfo)`.
+2. `PlayerHealth.TakeHit`:
+   - Đang bất tử hoặc đã chết → bỏ qua.
+   - `health.Damage(1)` → `Health` bắn event `Changed` → `HealthUI` đổi sprite mask.
+   - **Hitstop**: `Time.timeScale = 0`, chờ `WaitForSecondsRealtime(0.1)`, rồi trả về 1. Dùng thời gian thực vì lúc timeScale = 0 thì thời gian thường đứng yên.
+   - Còn máu: bật bất tử `1.3s`, gọi `controller.Hurt(vận tốc, 0.2s)` với vận tốc = (±8, 8). Dấu ± theo hướng ra xa quái.
+3. `PlayerController.Hurt()` chỉ ghi lại yêu cầu (`hurtRequested = true`). FSM có luật **`AnyTransition → HurtState`**, khai báo **đầu tiên** nên ưu tiên hơn dash và nhảy. Trong HurtState không dash, không nhảy, không điều khiển được.
+4. Hết 0.2s: HurtState → Fall (đang trên không) / Run / Idle.
+5. Trong `Update`, khi còn bất tử thì `sprite.enabled` bật/tắt theo nhịp `blinkInterval` 0.1s, tạo hiệu ứng nhấp nháy.
+
+#### Khi hết máu
+1. `PlayerHealth.Die()`:
+   - Tắt `PlayerController` và `PlayerAttack`.
+   - `body.simulated = false` để nhân vật đứng hình tại chỗ.
+2. Gọi `RespawnManager.Instance.Respawn(Revive)`:
+   - Lớp `Fade` (Image đen + CanvasGroup) tăng alpha 0 → 1 trong 0.6s.
+   - Gọi `Revive()`: bật lại mọi thứ, `controller.Respawn(checkpoint)` (đặt vị trí, vận tốc 0, hồi dash, về Idle), `health.Refill()`.
+   - `RespawnManager.ResetAll()`: mọi quái gọi `ResetState()`.
+   - Giữ màn đen 0.3s, rồi alpha 1 → 0 trong 0.5s.
+3. **Checkpoint** hiện là **vị trí bắt đầu màn** (lưu trong `PlayerHealth.Awake`). Sau này làm ghế thì gọi `PlayerHealth.SetCheckpoint(vị trí)`.
+
+> Vì sao danh sách quái trong `RespawnManager` là `static` và quái **tự đăng ký** trong `Awake`? Vì quái đã chết thì đang `SetActive(false)`, `FindObjectsOfType` không tìm thấy (và lệnh đó cũng chậm). Tự đăng ký thì quái tắt vẫn nằm trong danh sách. Nhớ `Unregister` trong `OnDestroy`.
+
+#### Setup trong Unity
+1. **Player.prefab**:
+   - Đặt **Tag = `Player`** (ContactDamage và quái tìm người chơi bằng tag).
+   - Thêm `Health` (Max Health = **5**).
+   - Thêm `PlayerHealth`, kéo `Visual` vào ô **Sprite**.
+   - ⚠️ Lưu prefab xong kiểm tra lại `PlayerInput → Actions` (mục 10).
+2. **Hình mask**: `Assets/Art/Generated/UI/mask_full.png` (mặt nạ trắng, 2 sừng, mắt đen) và `mask_empty.png` (bóng tối mờ). Cả hai vẽ bằng code, 128×128, import Sprite.
+3. **HUD** (trong scene):
+   - `HUD`: Canvas **Screen Space - Overlay**, Sort Order 10, Canvas Scaler **Scale With Screen Size** 1920×1080, Match 0.5.
+   - `HUD/HealthBar`: neo góc trên trái, vị trí (60, −50), `HorizontalLayoutGroup` (Spacing 6, tắt Control Child Size và Child Force Expand), component `HealthUI`:
+     - Health = `Health` của Player.
+     - Mask Template = `HUD/HealthBar/Mask`, một Image 64×64 bật Preserve Aspect. Script tự tắt template và nhân bản đủ 5 cái.
+     - Full Sprite = `mask_full`, Empty Sprite = `mask_empty`.
+   - `HUD/Fade`: Image **đen** kéo full màn hình (anchor 0–1, offset 0), tắt Raycast Target, `CanvasGroup` alpha **0**.
+4. **GameSystems** (object rỗng): thêm `RespawnManager`, kéo `HUD/Fade` vào ô **Fade**.
+
+#### Thông số
+| Chỗ chỉnh | Thông số | Mặc định | Ý nghĩa |
+|---|---|---|---|
+| `Health` (Player) | Max Health | 5 | Số mask |
+| `PlayerHealth` | Invulnerable Time | 1.3 | Thời gian bất tử sau khi trúng |
+| | Hit Stop Time | 0.1 | Khựng hình (giây thực) |
+| | Knockback Velocity | (8, 8) | Vận tốc bị hất (X ra xa quái, Y lên trên) |
+| | Hurt Time | 0.2 | Thời gian mất điều khiển |
+| | Blink Interval | 0.1 | Nhịp nhấp nháy |
+| `RespawnManager` | Fade Out / Hold / Fade In | 0.6 / 0.3 / 0.5 | Thời gian tối dần / giữ đen / sáng dần |
+| `HealthUI` | Pop Scale / Pop Time | 1.4 / 0.2 | Mask vừa mất nảy to lên rồi thu về |
+
+**Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, gai/vực gây sát thương, rung camera.
+
+### 5.16 Quái đầu tiên: Ghoul (tuần tra + đuổi theo)
+
+#### Hành vi
+- **Patrol**: đi qua lại 2 unit/s, gặp **tường** hoặc **mép vực** thì quay đầu (không tự rơi xuống).
+- **Chase**: thấy người chơi **ở phía trước**, trong 6 unit, chênh cao ≤ 2 unit thì đuổi 4.5 unit/s.
+  - Tới mép vực hoặc tường thì đứng chờ (animation idle).
+  - Lại gần ≤ 1.5 unit thì phát animation tấn công. Đây chỉ là hình ảnh, sát thương vẫn là chạm thân.
+- **Mất dấu**: người chơi xa quá 9 unit liên tục 1.5s → quay lại Patrol.
+- **Trúng đòn**: 3 máu. Mỗi nhát: **nháy trắng** 0.12s, **bị đẩy lùi** ngang theo hướng đòn (`knockback` của `PlayerAttackConfig` = 6), khựng 0.2s, rồi đuổi tiếp.
+- **Chết**: `SetActive(false)`. Người chơi hồi sinh thì quái về chỗ cũ, đầy máu, tuần tra lại.
+
+#### Các file
+| File | Vai trò |
+|---|---|
+| `Scripts/Enemies/EnemyConfig.cs` | ScriptableObject thông số → `Assets/Settings/Enemies/Ghoul.asset` |
+| `Scripts/Enemies/EnemyController.cs` | (Từ mục 5.17: kế thừa `EnemyBase`, phần chung đã chuyển lên lớp cha.) Giống `PlayerController`: lắp ráp, khai báo luật chuyển FSM, nhận đòn (`IDamageable`), hồi sinh (`IResettable`), ngủ khi xa camera. Có các hàm tiện ích cho state: `Face`, `SetHorizontalSpeed`, `CanSeePlayer`, `IsGrounded`, `IsBlockedAhead`, `PlayAnim` |
+| `Scripts/Enemies/States/EnemyStateBase.cs` | Lớp nền của state quái |
+| `Scripts/Enemies/States/PatrolState.cs`, `ChaseState.cs`, `HurtState.cs` | Hành vi từng trạng thái |
+| `Scripts/Combat/ContactDamage.cs` | Gắn lên trigger: chạm collider có tag `Player` thì gọi `TakeHit` |
+| `Assets/Shaders/SpriteFlash.shader` + `M_SpriteFlash.mat` | Vẽ sprite thành khối **trắng** theo hình sprite. Dùng cho lớp nháy trắng |
+
+#### Luật chuyển FSM (`EnemyController.BuildStateMachine`)
+```
+Any    -> Hurt    khi vừa trúng đòn (ưu tiên nhất)
+Patrol -> Chase   khi CanSeePlayer()
+Chase  -> Patrol  khi LostPlayer (xa > 9 unit liên tục 1.5s)
+Hurt   -> Chase   khi hết 0.2s (vừa bị chém = người chơi ở gần)
+```
+FSM dùng chung `LuHanh.Core.FSM.StateMachine` với người chơi (mục 2).
+
+#### Phát hiện tường / mép vực (`IsBlockedAhead`)
+Không dùng collider phụ, chỉ dùng 2 tia `Physics2D.Raycast` (không cấp phát bộ nhớ), lọc theo layer **Ground**:
+1. **Tường**: tia ngang từ mép trước collider, ở giữa thân, dài `wallCheckDistance` 0.1.
+2. **Mép vực** (chỉ khi đang đứng trên đất): tia đi xuống từ điểm **trước chân 0.1 unit**, dài `edgeCheckDepth` 0.5. Không chạm gì nghĩa là phía trước là vực.
+
+#### Nháy trắng khi trúng đòn
+Shader mặc định `Sprite-Lit-Default` chỉ **nhân** màu nên không thể làm sprite trắng lên. Cách làm ở đây:
+- Object con `Visual/Flash` là một `SpriteRenderer` dùng `M_SpriteFlash`, Order **+1**, tắt sẵn.
+- Shader này lấy **alpha của sprite** và tô màu trắng phẳng.
+- Khi trúng đòn: bật `Flash`. Trong `LateUpdate` (sau khi Animator đổi khung), chép sprite đang hiện sang `Flash` và giảm alpha dần về 0 trong 0.12s.
+
+#### Tối ưu
+| Kỹ thuật | Làm ở đâu |
+|---|---|
+| Chết thì `SetActive(false)`, **không `Destroy`**. Hồi sinh thì bật lại, không `Instantiate` → không tạo rác, không giật GC | `EnemyController.Die` / `ResetState` |
+| Quái tự đăng ký vào danh sách hồi sinh, không dùng `FindObjectsOfType` | `RespawnManager.Register` |
+| Xa camera > **25 unit** thì **ngủ**: không chạy FSM, `body.simulated = false`, tắt Animator | `EnemyController.UpdateSleep` |
+| So khoảng cách bằng `sqrMagnitude` (không khai căn) | `UpdateSleep`, `ChaseState` |
+| Tìm người chơi **một lần** trong `Start` bằng tag | `EnemyController.Start` |
+| Cache component trong `Awake`; tên animation băm sẵn thành hash một lần | `EnemyController.Awake` |
+| `Animator.Play` chỉ gọi khi đổi clip | `PlayAnim` |
+
+#### Đi xuyên qua quái
+Người chơi và quái **không đẩy nhau**. Trong `EnemyController.Start`, mình gọi `Physics2D.IgnoreCollision` giữa collider thân quái và collider của người chơi. Sát thương do `Hitbox` (trigger) lo. Cách này **không phải sửa Layer Collision Matrix** của project.
+
+#### Import hình Ghoul (gói Vampire Castle, pixel 32×32)
+- Đường dẫn: `Assets/Sprites/Vampire Castle Asset Pack - Free/.../creatures_solo/ghoul/`.
+- Các file `ghoul_standing`, `ghoul_walk_1..5`, `ghoul_attack_1..5`, import như sau:
+  - **Sprite Mode Single**, **Pivot Bottom Center**.
+  - **PPU 17**: hình cao khoảng 27px, nên 27 / 17 ≈ **1.6 unit**, gần bằng nhân vật.
+  - **Filter Point**, **Compression None** (pixel art không bị nhòe).
+- ⚠️ **Ghoul gốc quay mặt sang TRÁI** (mặt trắng ở bên trái đầu) → `Ghoul.asset` phải đặt **Art Faces Right = false**. Đặt sai thì quái đi lùi.
+  - Quái đặt trong scene: scale X **dương = nhìn trái**, **âm = nhìn phải**.
+- Clip trong `Assets/Character/Enemies/Ghoul/`: `ghoul_idle` (1 khung), `ghoul_walk` (5 khung, 10 fps), `ghoul_attack` (5 khung, 10 fps), đều loop.
+- `AC_ghoul.controller`: 3 state cùng tên, **không transition, không parameter**. Code gọi `Animator.Play` giống player (mục 6.1).
+
+#### Prefab `Assets/Prefabs/Enemies/Ghoul.prefab`
+```
+Ghoul              layer Enemy
+  Rigidbody2D        Dynamic, Gravity Scale 3, Freeze Rotation Z, Interpolate, Continuous
+  CapsuleCollider2D  size (0.7, 1.5), offset (0, 0.75), material PlayerNoFriction
+  Health             (Max tự lấy từ config = 3)
+  EnemyController    Config = Ghoul.asset, Sprite = Visual, Flash = Visual/Flash, Body Collider = Capsule
+  Visual             SpriteRenderer (Sprite-Lit-Default) + Animator (AC_ghoul)
+    Flash            SpriteRenderer, material M_SpriteFlash, Order 1, tắt sẵn
+  Hitbox             layer Enemy, BoxCollider2D Is Trigger size (0.8, 1.3) offset (0, 0.7),
+                     ContactDamage (Damage 1, Target Tag Player)
+```
+Đòn chém của người chơi trúng **cả** thân lẫn Hitbox (cùng layer Enemy), nhưng `HashSet` trong `PlayerAttack` đảm bảo mỗi nhát chỉ tính 1 lần.
+
+#### Trong scene `TestGamePlay`
+- Object `Enemies` chứa `Ghoul_1` (12, 1), nhìn trái về phía người chơi, và `Ghoul_2` (28, 1).
+- Thêm quái: kéo `Ghoul.prefab` vào `Enemies`, đặt chân lên mặt đất.
+
+#### Thông số (`Ghoul.asset`)
+| Thông số | Mặc định | Tăng lên thì |
+|---|---|---|
+| `maxHealth` | 3 | Chém nhiều nhát hơn mới chết |
+| `patrolSpeed` / `chaseSpeed` | 2 / 4.5 | Đi / đuổi nhanh hơn |
+| `detectRange` / `detectHeight` | 6 / 2 | Phát hiện xa hơn / chênh cao lớn hơn vẫn thấy |
+| `loseRange` / `loseTime` | 9 / 1.5 | Bám dai hơn |
+| `attackAnimRange` | 1.5 | Phát animation tấn công từ xa hơn |
+| `hurtTime` / `flashTime` | 0.2 / 0.12 | Khựng / nháy trắng lâu hơn |
+| `edgeCheckDepth` / `wallCheckDistance` | 0.5 / 0.1 | Kiểm tra vực sâu hơn / tường xa hơn |
+| `sleepDistance` | 25 | Quái hoạt động ở xa camera hơn (tốn hơn) |
+| `artFacesRight` | **false** (Ghoul) | Hình gốc nhìn sang phải hay trái |
+
+Chọn quái trong Scene → Gizmo vàng là vùng phát hiện.
+
+### 5.17 Lớp cha `EnemyBase` dùng chung cho mọi quái
+
+Ghoul (đi bộ) và dơi (bay) giống nhau ở nhiều phần. Phần chung được tách ra **lớp cha trừu tượng**, mỗi loại quái chỉ viết phần riêng.
+
+| Lớp | Chứa gì |
+|---|---|
+| `EnemyConfigBase` (ScriptableObject trừu tượng) | `maxHealth`, `hurtTime`, `flashTime`, `groundLayers`, `sleepDistance`, `artFacesRight` |
+| `EnemyBase` (MonoBehaviour trừu tượng, `IDamageable`, `IResettable`) | Cache component, máu, nhận đòn + nháy trắng, chết `SetActive(false)`, hồi sinh `ResetState`, ngủ khi xa camera, `Face`, `PlayAnimHash`, tìm người chơi + `IgnoreCollision`, chạy FSM |
+| `EnemyController : EnemyBase` + `EnemyConfig : EnemyConfigBase` | Ghoul: tuần tra, đuổi, dò tường/mép vực |
+| `FlyingEnemyController : EnemyBase` + `FlyingEnemyConfig : EnemyConfigBase` | Dơi: bay, giữ khoảng cách, bắn cầu |
+
+Lớp con phải viết 4 thứ:
+
+```csharp
+protected override EnemyConfigBase BaseConfig => config;     // config riêng của loại quái
+protected override IState InitialState => patrol;            // state lúc đầu và lúc hồi sinh
+protected override void BuildStates(StateMachine machine)    // tạo state + AddTransition
+protected override void OnHurt(HitInfo hit)                  // chuẩn bị state Hurt (hướng đẩy lùi)
+```
+
+Còn có thể override thêm `OnResetState()` (phát lại clip sau khi hồi sinh) và `Awake()`. Trong `Awake` nhớ **kiểm tra config khác null trước**, rồi mới gọi `base.Awake()`.
+
+- Luật bị thương dùng chung: `machine.AddAnyTransition(hurt, () => HurtRequested)`. `EnemyBase` bật cờ `HurtRequested` khi trúng đòn và tắt sau mỗi frame.
+- **Đổi sang lớp cha không làm mất thông số đã gắn.** Unity lưu field theo **tên**, và các field chuyển lên lớp cha (`sprite`, `flash`, `bodyCollider`, `maxHealth`…) vẫn giữ nguyên tên. Tên class `EnemyController` và GUID file cũng giữ nguyên, nên `Ghoul.prefab` và `Ghoul.asset` vẫn đúng như cũ.
+
+### 5.18 Quái bay: Dơi bắn cầu (kiểu Aspid trong Hollow Knight)
+
+#### Hành vi
+| Trạng thái | Làm gì |
+|---|---|
+| **Hover** | Lượn qua lại ±2 unit quanh chỗ xuất phát (sóng sin, chu kỳ 4s), tốc độ tối đa 1.5 |
+| **Combat** | Người chơi trong bán kính **8 unit** và không bị tường che → bay giữ khoảng cách ngang **4–6 unit**, cao hơn người chơi **3 unit**, tốc độ tối đa 4. Đếm giờ tới phát bắn |
+| **Shoot** | Hết `shootInterval` (2.5s) và vẫn thấy người chơi → **dừng lại + rung 0.4s** để báo trước, rồi bắn **1 quả cầu** nhắm vào ngực người chơi (cao 0.9 unit tính từ chân) |
+| **FlyingHurt** | Trúng đòn: bị đẩy theo hướng chém (**cả lên/xuống**, vì đang bay), phanh dần trong 0.2s. Bị chém giữa lúc báo trước thì phát bắn bị hủy |
+| Mất dấu | Người chơi xa hơn 12 unit liên tục 2s → về Hover |
+
+- Dơi **2 máu**. Chạm thân dơi cũng mất 1 mask (`Hitbox` + `ContactDamage`, giống Ghoul).
+- **Không chịu trọng lực** (`gravityScale = 0`), nhưng là Rigidbody **Dynamic** có collider nên vẫn va vào tường.
+- Quả cầu **không chém được**, chỉ né được (giống Hollow Knight).
+
+```
+Any        -> FlyingHurt  khi vừa trúng đòn
+Hover      -> Combat      khi CanDetectPlayer() (trong 8 unit + Linecast không chạm Ground)
+Combat     -> Hover       khi LostPlayer
+Combat     -> Shoot       khi ShotCooldown <= 0 và HasLineOfSight()
+Shoot      -> Combat      khi đã bắn xong
+FlyingHurt -> Combat      khi hết 0.2s
+```
+
+#### Bay mượt (`FlyingEnemyController.FlyTowards`)
+```csharp
+Vector2 toTarget = target - body.position;
+float speed = Mathf.Min(maxSpeed, distance * 2f);   // gần đích thì chậm lại, không vọt qua
+Vector2 desired = toTarget.normalized * speed;
+body.linearVelocity = Vector2.MoveTowards(body.linearVelocity, desired, acceleration * dt);
+```
+Vận tốc tiến dần tới vận tốc mong muốn với gia tốc `acceleration` (10), nên dơi đổi hướng mềm, không giật.
+
+- **Nhấp nhô** lên xuống (biên độ 0.25, tần số 1.5) và **rung báo trước** (0.06) chỉ dịch object con `Visual` trong `LateUpdate`, không đụng tới vật lý.
+- `EnemyBase.LateUpdate` là `protected virtual`, lớp con override và gọi `base.LateUpdate()` để giữ phần nháy trắng.
+
+#### Quả cầu (`Projectile`) + object pool (`ProjectilePool`)
+| | |
+|---|---|
+| `Projectile` | Rigidbody2D **Kinematic** + `CircleCollider2D` **trigger** (bán kính 0.3). Bay thẳng bằng `linearVelocity`. Chạm collider có tag `Player` → `TakeHit` → vỡ. Chạm đất → vỡ. Sống tối đa 4s |
+| Vì sao dò đất bằng `OverlapCircle`? | Body Kinematic **không nhận va chạm** với collider tĩnh của Tilemap, nên mỗi bước vật lý tự kiểm tra `Physics2D.OverlapCircle(vị trí, 0.22, Ground)` |
+| `ProjectilePool.For(prefab, burst, 6)` | Mỗi prefab đạn một pool, tạo lần đầu khi dơi `Awake` và **tạo sẵn 6 quả** (con của object `Pools`). Bắn = lấy quả có sẵn ra và bật lên; vỡ = tắt đi và trả về pool. **Không Instantiate/Destroy khi đang chơi** |
+| Particle vỡ | Pool giữ **một** particle `OrbBurst` dùng chung. Quả cầu vỡ ở đâu thì dời particle tới đó rồi `Emit(8)` |
+| Hồi sinh | Pool là `IResettable`. Người chơi hồi sinh thì mọi quả cầu đang bay bị thu về |
+
+#### Hình vẽ bằng code (`Assets/Art/Generated/Enemies/`)
+- `bat_fly_0..3.png` (**256×192**, PPU 80, khoảng **3.2 × 2.4 unit**, to gấp đôi bản đầu): **màu sáng để nổi trên nền tối**. Thân và đầu **trắng ngà** (bụng tối dần xuống dưới), tai và má **hồng**, mắt đen to có chấm sáng. Màng cánh **hồng** đậm dần ra mép, xương cánh trắng ngà. Toàn bộ có **viền tối dày 4px**. Mép dưới cánh lượn sóng (`|sin|`), góc cánh **38° → 12° → −22° → 12°** tạo nhịp vỗ.
+  - Cách làm viền: vẽ hình trước, đánh dấu pixel "bên trong". Pixel trống nào cách hình ≤ 4px thì tô màu viền, độ đậm giảm theo khoảng cách để viền mượt.
+- `bat_attack.png`: cánh giơ cao 55°, **mắt và miệng cam phát sáng**. Đây là khung báo trước khi bắn.
+- `orb.png` (**72×72**, khoảng **0.9 unit**): lõi trắng kem, quầng cam mờ dần ra ngoài. Dùng material **Sprite-Unlit-Default** nên luôn sáng rõ.
+- Animation: `Assets/Character/Enemies/Bat/` gồm `bat_fly` (4 khung, 12 fps, loop) và `bat_attack` (1 khung). `AC_bat` không có transition, code gọi `Animator.Play`.
+
+#### Particle
+- **`Orb/Trail`** (vệt mờ phía sau quả cầu):
+  - Material `M_PlayerDust`, Simulation Space **World**.
+  - **Rate over Distance 8** (bay càng xa càng nhả hạt), Rate over Time 0.
+  - Lifetime 0.35, Size 0.38–0.6, màu cam alpha 0.5, Size over Lifetime 1→0, Color over Lifetime alpha 1→0.
+  - `Projectile.Launch` gọi `trail.Clear()` để quả lấy ra từ pool không kéo theo vệt cũ.
+- **`OrbBurst`** (tóe ra khi vỡ):
+  - Emission **tắt** (code gọi `Emit`), Shape Circle bán kính 0.05.
+  - Speed 1.5–4, Lifetime 0.25–0.45, Size 0.15–0.35, màu cam, nhỏ dần và mờ dần.
+  - Limit Velocity: dampen 0.3 (văng ra rồi khựng lại).
+
+#### Prefab
+```
+Bat                layer Enemy
+  Rigidbody2D        Dynamic, Gravity Scale 0, Freeze Rotation, Interpolate, Continuous
+  CircleCollider2D   radius 0.7, material PlayerNoFriction (va tường)
+  Health             (Max lấy từ config = 2)
+  FlyingEnemyController  Config = Bat.asset, Sprite = Visual, Flash = Visual/Flash, Body Collider = Circle
+  Visual             SpriteRenderer + Animator (AC_bat)
+    Flash            SpriteRenderer, M_SpriteFlash, Order 1, tắt sẵn
+  Hitbox             layer Enemy, CircleCollider2D trigger radius 0.9, ContactDamage
+
+Orb (Assets/Prefabs/Projectiles/)   layer Enemy
+  Rigidbody2D Kinematic, CircleCollider2D trigger 0.3, SpriteRenderer (orb, Unlit, **Order 45**: trên lớp tối VisionMask), Trail Order 44, Projectile
+  Trail              ParticleSystem (vệt mờ)
+OrbBurst (Assets/Prefabs/Projectiles/)  ParticleSystem (tóe khi vỡ)
+```
+- Trong scene: `Enemies/Bat_1` ở (20, 5.5).
+- Thêm dơi: kéo `Bat.prefab` vào `Enemies`, đặt trên cao, có khoảng trống để lượn ±2 unit.
+
+#### Thông số (`Assets/Settings/Enemies/Bat.asset`)
+| Thông số | Mặc định | Tăng lên thì |
+|---|---|---|
+| `maxHealth` | 2 | Bền hơn |
+| `maxSpeed` / `hoverSpeed` / `acceleration` | 4 / 1.5 / 10 | Bay nhanh hơn / lượn nhanh hơn / đổi hướng gắt hơn |
+| `hoverRange` / `hoverPeriod` | 2 / 4 | Lượn rộng hơn / chậm hơn |
+| `bobAmplitude` / `bobFrequency` | 0.25 / 1.5 | Nhấp nhô mạnh / nhanh hơn |
+| `detectRadius` | 8 | Phát hiện từ xa hơn |
+| `loseRange` / `loseTime` | 12 / 2 | Bám dai hơn |
+| `keepDistanceMin` / `keepDistanceMax` / `heightAbovePlayer` | 4 / 6 / 3 | Đứng xa hơn / cao hơn |
+| `shootInterval` | 2.5 | Bắn thưa hơn |
+| `telegraphTime` / `telegraphShake` | 0.4 / 0.06 | Báo trước lâu hơn (dễ né) / rung mạnh hơn |
+| `projectileSpeed` | 7 | Cầu bay nhanh hơn (khó né) |
+| `muzzleOffset` / `aimHeight` | (0.6, −0.2) / 0.9 | Điểm bắn / điểm nhắm trên người chơi |
+| `poolPrewarm` | 6 | Số cầu tạo sẵn |
+| `Orb.prefab → Projectile` | damage 1, lifetime 4 | Sát thương / thời gian tồn tại |
+
+Chọn dơi trong Scene → **vòng tròn cam** là bán kính phát hiện, **đường vàng** là khoảng lượn.
 
 ---
 
@@ -409,6 +1038,32 @@ Tên state được điền trên `PlayerController` → mục **Animations**:
 | Jump State | `player_jump` |
 | Fall State | `player_fall` |
 | Dash State | `player_dash` |
+
+**FSM state → clip** (gọi trong `Enter()` của từng state):
+| State FSM | Gọi | State Animator | Clip (đang gán) |
+|---|---|---|---|
+| `IdleState` | `PlayerAnim.Idle` | `player_idle` | `cloaked_idle` |
+| `RunState` | `PlayerAnim.Walk` | `player_walk` | `cloaked_run` |
+| `JumpState` | `PlayerAnim.Jump` | `player_jump` | `cloaked_jump` |
+| `FallState` | `PlayerAnim.Fall` | `player_fall` | `cloaked_fall` |
+| `HurtState` | `PlayerAnim.Fall` (tạm, bộ Cloaked không có clip bị thương) | `player_fall` | `cloaked_fall` |
+| `DashState` | `PlayerAnim.Dash` | `player_dash` | `cloaked_dash` |
+
+**Cách `PlayerAnimationDriver` chạy**:
+1. Lúc Awake, `Initialise` đổi từng tên state sang hash (`Animator.StringToHash`) và kiểm tra `animator.HasState(0, hash)`. Không có state đó → in cảnh báo vàng `Animator khong co state '...'` và ô đó bị bỏ qua (gọi `Play` không làm gì).
+2. `Play(anim)`: nếu đang phát đúng clip đó thì **không làm gì** (tránh tua lại từ đầu mỗi frame). Khác thì gọi `animator.Play(hash, 0, 0f)` → nhảy sang clip mới **từ khung đầu**, không blend.
+3. `Replay(anim)`: ép phát lại từ đầu dù đang ở chính clip đó.
+
+**Chỉnh gì → ra sao**:
+| Chỗ chỉnh | Thay đổi | Ảnh hưởng |
+|---|---|---|
+| Ô tên state trên `PlayerController` | Gõ sai tên / tên file clip thay vì tên state | Cảnh báo vàng lúc Play; khi vào state đó animation **không đổi**, vẫn phát clip của state trước (vd nhảy mà vẫn chạy chân) |
+| | Để trống | Không cảnh báo, state đó giữ nguyên clip trước (vd dash vẫn phát clip chạy) |
+| | Trỏ nhiều ô về cùng một state | Hợp lệ. Mặc định trong code `fallState` và `dashState` = `player_jump` (dùng khi chưa có clip riêng); prefab đã đổi sang `player_fall` / `player_dash` |
+| State Animator → **Speed** | Tăng (vd 1.3) | Clip chạy nhanh hơn mà không phải sửa clip. Hiện mọi state để **1** |
+| Thêm transition / parameter | | **Không làm**: transition có thời gian blend và Exit Time, kéo clip về state khác, đánh nhau với code |
+
+> ⚠️ Trong `AC_player` còn các state `player_blink`, `player_attack`, `player_attack_magic` (từ bộ sprite cũ) và một sub-state machine `GroundStates`. Code di chuyển hiện **không gọi** các state này; để đó không ảnh hưởng gì.
 
 ### 6.2 Import sprite sheet nhân vật (ví dụ Hooded Protagonist 32×32)
 1. **Sao chép** sheet gốc sang thư mục riêng (`Assets/Sprites/Player/Hooded/hooded_sheet.png`) để không làm hỏng clip cũ đang dùng sheet gốc.
@@ -447,13 +1102,46 @@ Gói gồm các ảnh PNG rời 640×640, mỗi thư mục là một động tá
 | `cloaked_dash` | 4 ảnh đầu của `runloop` (tạm) | `player_dash` |
 
 `run/prerun` (5 ảnh) chưa dùng vì code chưa có state "bắt đầu chạy".
-3. Camera Orthographic Size = **6**.
+3. Camera: lúc mới đổi sang bộ Cloaked, Orthographic Size được đặt 6. **Giá trị hiện tại là 7.5** (xem mục 7).
+
+**Độ dài từng clip ở 24 fps** (đọc từ file `.anim`, mọi clip đều bật Loop Time):
+| Clip | Số khung | Một vòng | So với gameplay |
+|---|---|---|---|
+| `cloaked_idle` | 24 | 1.04 s | Thở chậm, hợp đứng yên |
+| `cloaked_run` | 13 | 0.58 s | Chạy 11.25 unit/s → mỗi vòng chân đi được ≈ 6.5 ô |
+| `cloaked_jump` | 12 | 0.54 s | Pha đi lên chỉ ≈ 0.36 s (mục 5.8) → thường chỉ kịp hiện ~2/3 clip rồi chuyển sang Fall |
+| `cloaked_fall` | 13 | 0.58 s | Lặp liên tục trong lúc rơi |
+| `cloaked_dash` | 4 | 0.21 s | Dash dài 0.16 s → hiện được ~3 khung |
+
+**Chỉnh gì → ra sao** (import ảnh vẽ tay):
+| Thông số | Tăng | Giảm |
+|---|---|---|
+| **Pixels Per Unit** (230) | Nhân vật **nhỏ lại** so với ô tile (PPU 300 → cao ~1.4 ô), map trông rộng lớn, nhảy 3.5 ô trông như nhảy rất cao | Nhân vật **to ra** (PPU 180 → cao ~2.3 ô), nhảy 3.5 ô trông như nhảy thấp. Đổi PPU thì phải đo lại collider + cảm biến (mục 4.2) |
+| **Sample Rate** của clip (24) | Động tác nhanh hơn. Chạy: chân đạp nhanh hơn, bớt cảm giác **trượt chân** trên mặt đất | Động tác chậm, chạy trông như chân trượt trên băng |
+| Pivot Y (0.13) | Nhân vật **lún xuống** dưới mặt đất | Nhân vật **lơ lửng** trên mặt đất |
+
+| Lựa chọn | Thay bằng | Ảnh hưởng |
+|---|---|---|
+| Filter **Bilinear** | Point | Nét vẽ tay bị răng cưa khi thu nhỏ (ảnh 640 px hiển thị ở kích thước nhỏ hơn nhiều) |
+| Pivot **chung một giá trị** cho mọi ảnh | Pivot riêng / Automatic cho từng ảnh | Nhân vật **rung lắc** khi đổi khung, vì mỗi ảnh có gốc khác nhau |
+
+> ⚠️ Chọn nhiều ảnh rồi đổi Pivot trong Inspector chỉ có tác dụng khi Sprite Mode = **Single**. Với Multiple phải sửa trong Sprite Editor từng sprite.
 
 ---
 
 ## 7. Camera Cinemachine
 
-**Làm gì**
+Camera được đóng gói thành prefab **`Assets/Prefabs/CameraRig.prefab`**, cấu trúc:
+
+```
+CameraRig
+ ├─ Main Camera         Camera (Orthographic) + CinemachineBrain + URP camera data (Post Processing bật)
+ │   └─ DustMotes       hạt bụi bay (mục 9.1), z = 12
+ └─ CinemachineCamera   CinemachineCamera + CinemachinePositionComposer + CinemachinePixelPerfect
+```
+Trong scene chỉ ghi đè một thứ: **Tracking Target = Player**.
+
+**Làm gì** (dựng từ đầu)
 1. GameObject → Cinemachine → **Cinemachine Camera** (Main Camera tự có `CinemachineBrain`).
 2. Tracking Target = Player.
 3. Thêm **Position Composer**:
@@ -463,28 +1151,106 @@ Gói gồm các ảnh PNG rời 640×640, mỗi thư mục là một động tá
 
 **Lưu ý**: component `CinemachinePixelPerfect` hiện không có tác dụng vì Main Camera chưa có `PixelPerfectCamera` của URP.
 
+**Giá trị đang dùng** (đọc từ prefab):
+| Component | Thông số | Giá trị |
+|---|---|---|
+| `CinemachineCamera` | Lens → Orthographic Size | **7.5** |
+| | Priority | 10 |
+| `CinemachinePositionComposer` | Camera Distance | 10 |
+| | Target Offset | **(0, 1.5, 0)** |
+| | Damping | **(1, 1, 1)** |
+| | Screen Position | (0, 0) = giữa màn hình |
+| | Dead Zone | **bật, 0.2 × 0.2** |
+| | Hard Limits | tắt |
+| | Center On Activate | bật |
+| | Lookahead | **bật**, Time **0.4444**, Smoothing **6**, Ignore Y **tắt** |
+| `CinemachineBrain` | Update Method | Smart Update |
+| | Default Blend | Ease In Out, 2 s (chỉ dùng khi có nhiều camera ảo để chuyển qua lại) |
+| `Camera` (Main) | Clear Flags | Solid Color (xanh đậm 0.19, 0.30, 0.47) — chỉ thấy khi background không phủ kín |
+
+**Hình dung khung hình** ở màn 16:9: Orthographic Size 7.5 → khung cao **15 ô**, rộng ≈ **26.7 ô**.
+
+**Chỉnh gì → ra sao**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Orthographic Size** | 7.5 | Nhìn rộng hơn, thấy trước chướng ngại, nhân vật nhỏ lại. Trên ~8 thì **hở mép trên/dưới bầu trời**, thấy màu nền xanh của camera | Cận cảnh, nhân vật to, kịch tính nhưng không kịp thấy hố/quái phía trước (chạy 11.25 ô/giây mà nửa khung ngang chỉ ~13 ô → hơn 1 giây phản ứng ở 7.5; size 5 còn ~0.8 s) |
+| **Target Offset Y** | 1.5 | Camera nhìn cao hơn, nhân vật xuống thấp trong khung, thấy nhiều trời, ít thấy hố bên dưới | Nhân vật ở giữa khung, thấy nhiều phía dưới hơn. Âm → nhân vật ở cao trong khung (hợp màn đi xuống) |
+| **Damping X/Y** | 1 | Camera bám **trễ và mềm** hơn (≈ thời gian, tính bằng giây, để đuổi kịp). Trên ~2 thì chạy nhanh hoặc dash là nhân vật **ra sát mép màn hình** | Bám chặt hơn. 0 = dính cứng: mọi rung nhỏ (tiếp đất, corner correction) đều làm cả màn hình giật |
+| **Damping Z** | 1 | Với camera Orthographic gần như không thấy khác biệt (chỉ ảnh hưởng khoảng cách camera) | |
+| **Dead Zone** (W × H) | 0.2 × 0.2 | Vùng giữa màn hình mà nhân vật di chuyển trong đó **camera không nhúc nhích** rộng ra. 0.2 × 0.2 ≈ 5.3 × 3 ô. Tăng lên → nhảy tại chỗ, bước qua lại không làm màn hình lắc, nhưng camera "đứng hình" lâu rồi mới đi | Camera phản ứng với mọi bước nhỏ. 0 = luôn giữ nhân vật đúng điểm giữa |
+| **Lookahead Time** | 0.4444 s | Camera **nhìn trước** theo hướng đang đi xa hơn (theo lý thuyết: vận tốc × thời gian, chạy 11.25 ô/s → tới ~5 ô). Thấy đường phía trước tốt hơn, nhưng đổi hướng liên tục thì camera **đưa qua đưa lại** | Ít nhìn trước, nhân vật ở gần giữa khung hơn. 0 = tắt |
+| **Lookahead Smoothing** | 6 | Phần nhìn trước thay đổi êm, không giật khi vận tốc thay đổi đột ngột (dash) | Nhìn trước phản ứng ngay theo vận tốc, dash là camera giật theo |
+| **Lookahead Ignore Y** | tắt | Bật → chỉ nhìn trước theo chiều ngang. **Nên bật nếu thấy camera nhấp nhô** mỗi lần nhảy/rơi (rơi 20 ô/s × 0.44 s ≈ 9 ô nhìn xuống) | |
+| **Hard Limits** | tắt | Bật → khung cứng nhân vật không bao giờ vượt ra, dù đang damping | |
+
+**Thứ tự cập nhật**: `ParallaxEffect` có `[DefaultExecutionOrder(600)]` để chạy **sau** `CinemachineBrain` trong `LateUpdate`. Nếu đổi số này nhỏ hơn 0, background đọc vị trí camera của frame trước → nền **rung nhẹ** khi chạy.
+
+> ⚠️ Prefab hiện **không có Confiner** (giới hạn vùng camera), nên đứng ở mép trái map (x = −13) vẫn thấy khoảng trống ngoài map.
+
+> ⚠️ Muốn chỉnh thông số camera: chọn **`CinemachineCamera`**, không chỉnh trên `Main Camera` — Brain sẽ ghi đè Orthographic Size và vị trí của Main Camera mỗi frame.
+
 ---
 
 ## 8. Background parallax
 
-**Làm gì**
-- Object cha `Background`, mỗi lớp con có `ParallaxEffect` + một sprite con. Lớp càng xa thì **z càng lớn** → trôi càng chậm:
+Background được đóng gói thành prefab **`Assets/Prefabs/Background.prefab`**.
 
-| Lớp | z | Ghi chú |
-|---|---|---|
-| `L0_Sky` | 90 | **Follow Vertical = true**, **Vertical Damping = 1**, Y = 4 → bầu trời luôn phủ kín theo chiều dọc |
-| `L1_MountainsFar` | 70 | |
-| `L2_FogFar` | 60 | `FogLayer` cuộn sương |
-| `L3_HillsMid` | 45 | |
-| `L4_FogNear` | 30 | `FogLayer` |
-| `L5_TreesNear` | 20 | `SubtleSway` lay nhẹ. Sprite con scale **2.6**, localPos Y **8.19** (chân cây giữ ở y ≈ −1.5) |
+**Nguyên lý một dòng**: mỗi frame, lớp nền đặt tại `x = x_ban_đầu + (camera đã đi bao xa) × factor`.
+- `factor = 1` → lớp đi **cùng** camera → trên màn hình đứng yên (như bầu trời rất xa).
+- `factor = 0` → lớp đứng yên trong thế giới → trên màn hình trôi **bằng** tốc độ mặt đất.
+- `factor < 0` → lớp đi **ngược** camera → trên màn hình trôi **nhanh hơn** mặt đất → mắt hiểu nó ở **trước** nhân vật (tiền cảnh).
+
+Tốc độ trôi thấy được trên màn hình = **(1 − factor) × tốc độ camera**.
+
+**Làm gì**
+- Object cha `Background`, mỗi lớp con có `ParallaxEffect` + một sprite con. Lớp càng xa thì factor càng gần 1 → trôi càng chậm.
+- Mọi lớp đang bật **Override Factor** và dùng **Manual Factor** (không dùng z để tính, xem ⚠️ bên dưới). Z vẫn được đặt giảm dần cho dễ nhìn, nhưng **thứ tự vẽ** do Sorting Layer `Background` + Order của sprite quyết định.
+
+| Lớp | z | Manual Factor | Trôi trên màn hình | Infinite Horizontal | Sprite con (Order, scale) | Ghi chú |
+|---|---|---|---|---|---|---|
+| `L0_Sky` | 90 | **0.97** | 3% | bật | `sky_night`, −100, ×1.35 | **Follow Vertical = true**, **Vertical Damping = 1**, Y = 4 → bầu trời luôn phủ kín theo chiều dọc |
+| `L1_MountainsFar` | 70 | **0.85** | 15% | bật | `mountains_far`, −80, ×1.8 | |
+| `L2_FogFar` | 60 | **0.8** | 20% | **tắt** | (con `L2_FogFar_Scroll` có `FogLayer`, sương tự order −70) | Sương tự cuộn, mục 9.2 |
+| `L3_HillsMid` | 45 | **0.68** | 32% | bật | `hills_mid`, −60, ×1.6 | |
+| `L4_FogNear` | 30 | **0.55** | 45% | **tắt** | (con `L4_FogNear_Scroll`, order −50) | Mục 9.2 |
+| `L5_TreesNear` | 20 | **0.45** | 55% | bật | `trees_near`, −40, ×2.6, localPos (5.28, 5.09) | `SubtleSway` lay nhẹ, mục 9.3 |
+| *(tiền cảnh, mục 9.6 lớp 5)* `FG_*` | — | **−0.3** | 130% | tắt | Default, Order 50 | Trôi nhanh hơn đất |
+| *(mặt đất, nhân vật)* | — | *(0)* | 100% | — | — | Mốc so sánh |
+
+Ảnh nền nằm ở `Assets/Art/Generated/Background/`, PPU 32, Filter Bilinear. Ví dụ `sky_night.png` 640×384 px → 20 × 12 unit, × 1.35 = **27 × 16.2 unit**.
 
 - `Infinite Horizontal` bật → khi **Play**, sprite tự nhân bản sang hai bên (ở chế độ Edit sẽ thấy hở hai bên, là bình thường).
+
+**Infinite Horizontal hoạt động thế nào**:
+1. Lúc bắt đầu Play, lấy bề ngang sprite con (`bounds.size.x`, đã tính scale) làm `tileWidth`.
+2. Số bản sao mỗi bên = `ceil(bề ngang khung camera / tileWidth)`, tối thiểu 1. Bầu trời 27 unit, khung 26.7 unit → 1 bản mỗi bên, tổng 3 tấm.
+3. Mỗi frame, nếu lớp đã lệch khỏi camera quá nửa `tileWidth` thì dời cả lớp đi đúng một `tileWidth` → người chơi không thấy chỗ nối.
+
+**Dựng một lớp mới**:
+1. Trong `Background`, tạo GameObject rỗng `L6_Ten` → Add Component `ParallaxEffect`.
+2. Tạo con `L6_Ten_Sprite` → `SpriteRenderer`, Sorting Layer **Background**, Order nằm giữa hai lớp kề nó (vd lớp giữa −80 và −60 thì đặt −70).
+3. Trên `ParallaxEffect`: để trống `Cam` (tự lấy `Camera.main`), tích **Override Factor**, đặt **Manual Factor** giữa factor của hai lớp kề.
+4. Ảnh nền cần **nối liền hai mép trái/phải** nếu bật Infinite Horizontal, nếu không sẽ thấy đường nối.
+
+**Chỉnh gì → ra sao**:
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `manualFactor` (−1..1) | tùy lớp | Lớp trôi **chậm** hơn, cảm giác **xa** hơn. 1 = dính camera, đứng yên trên màn hình | Lớp trôi **nhanh** hơn, cảm giác **gần** hơn. 0 = như mặt đất. Âm = tiền cảnh trước nhân vật, −0.6 trở xuống thì lướt rất nhanh, dễ chóng mặt |
+| Khoảng cách factor giữa các lớp | 0.97 → 0.45 | Chiều sâu rõ, các lớp tách bạch | Các lớp trôi gần bằng nhau → trông như **một tấm ảnh phẳng** |
+| `followVertical` | chỉ bật ở `L0_Sky` | Lớp trôi cả theo chiều dọc khi nhân vật nhảy/rơi | Lớp đứng yên theo chiều dọc. Map cao (leo lên nhiều) thì sẽ đi lên **khỏi** lớp nền, thấy hở |
+| `verticalDamping` (0..1) | 1 (sky), 0.3 (khác, đang tắt follow) | Theo chiều dọc bám camera nhiều hơn. Công thức dọc: `y = y_ban_đầu + Δy_camera × factor × verticalDamping` | Theo chiều dọc trôi nhiều hơn so với màn hình, tạo chiều sâu dọc nhưng dễ hở mép |
+| `infiniteHorizontal` | bật (trừ 2 lớp sương) | Ảnh lặp vô hạn | Chỉ có một tấm ảnh, đi xa là hết nền |
 
 **Không kéo được lớp background?**
 `ParallaxEffect` có `[ExecuteAlways]` và đặt lại vị trí mỗi frame. Cách chỉnh:
 - Kéo **object con** (`L0_Sky_Sprite`) thay vì object cha, **hoặc**
 - Bỏ tick `ParallaxEffect` → kéo → tick lại (script ghi nhớ vị trí mới lúc bật).
+
+> ⚠️ **Vì sao không dùng z để tính factor?** Khi tắt Override Factor, script tính `factor = |z| / |camera.z + farClipPlane|` = z / (−10 + 1000) = z / 990. Lớp xa nhất z = 90 chỉ ra factor ≈ **0.09**, tức gần như trôi như mặt đất — sai cảm giác hoàn toàn. Vì vậy mọi lớp đều bật Override Factor. Nếu thêm lớp mới mà quên tích ô này, lớp đó sẽ trôi gần bằng tốc độ đất.
+
+> ⚠️ Số bản sao của Infinite Horizontal chỉ tính **một lần lúc bắt đầu Play** theo kích thước camera lúc đó. Tăng Orthographic Size khi đang Play có thể làm lộ khoảng hở hai bên.
+
+> ⚠️ Tiền cảnh `FG_*` (factor âm) nên **tắt** Infinite Horizontal: chúng là các khối đặt riêng lẻ, không phải ảnh lặp.
 
 ---
 
@@ -550,9 +1316,82 @@ Script tự tạo nhiều tấm sprite sương nối nhau và cuộn ngang vô t
 | Breath Amplitude / Speed | 0.06 / 0.25 | 0.06 / 0.25 | Độ mờ "thở" theo thời gian, mỗi tấm lệch pha |
 | Tile Count | 4 | 4 | Số tấm nối ngang, tăng nếu camera rộng |
 | Scale Multiplier | 1.6 | 2 | |
+| Sorting Layer | Background | Background | |
+
+**Script làm gì mỗi frame** (`Scripts/Environment/FogLayer.cs`):
+1. `Start`: tạo `Tile Count` object con `FogTile_0..n`, mỗi tấm một `SpriteRenderer` dùng `fog_wisp`, scale = `Scale Multiplier`, Order = `Sorting Order + i` (tấm sau vẽ đè tấm trước).
+2. `Update`:
+   - Cộng dồn `scrollOffset += Scroll Speed × deltaTime`, quấn vòng trong khoảng một bề ngang tấm → các tấm trượt ngang đều, nối đuôi nhau vô hạn.
+   - Đặt `y = y_ban_đầu + sin(t × Drift Speed) × Drift Amplitude` → cả dải sương nhấp nhô lên xuống.
+   - Alpha mỗi tấm = `alpha của Tint + sin(t × Breath Speed + i × 1.7) × Breath Amplitude` → mỗi tấm đậm nhạt lệch pha nhau, dải sương không phẳng một màu.
+
+**Hình dung bằng số**: `fog_wisp.png` 512×128 px, PPU 32 → 16 × 4 unit. Sương xa ×1.6 → mỗi tấm **25.6 × 6.4** unit, 4 tấm dài ≈ 102 unit. Sương gần ×2 → **32 × 8** unit, 4 tấm dài 128 unit.
+
+Lưu ý các "Speed" là **rad/giây** (đưa vào `sin`), nên một chu kỳ = 2π / Speed:
+| Thông số | Giá trị | Một chu kỳ |
+|---|---|---|
+| Drift Speed | 0.15 | ≈ **42 s** lên xuống một lần |
+| Breath Speed | 0.25 | ≈ **25 s** đậm → nhạt → đậm |
+
+**Chỉnh gì → ra sao**:
+| Thông số | Mặc định (xa / gần) | Tăng | Giảm |
+|---|---|---|---|
+| **Tint alpha** | 16% / 13% | Sương đặc, che mờ núi đồi phía sau, cảnh "ẩm ướt". Trên ~30% thì nền thành một mảng tím đục | Sương mỏng, gần như không thấy. Lưu ý alpha thật = Tint alpha ± Breath Amplitude, nên alpha < Breath Amplitude (0.06) thì có lúc sương **biến mất hẳn** |
+| **Tint màu** | tím `9E80F2` / `B894FF` | Ngả trắng → sương lạnh, ban ngày. Ngả xanh → u buồn | Ngả tối → như khói, nặng nề. Nên cùng tông với nền (mục 9.6) |
+| **Scroll Speed** | −0.22 / +0.34 | Sương trôi nhanh như có gió mạnh. Trên ~1 thì mắt bị kéo vào sương, phân tâm khỏi gameplay | Trôi chậm, tĩnh lặng. 0 = đứng yên (vẫn nhấp nhô + thở). Dấu **âm = trôi sang trái**, dương = sang phải |
+| **Drift Amplitude** | 0.25 / 0.25 unit | Dải sương dập dềnh rõ như sóng | Đứng yên theo chiều dọc |
+| **Drift Speed** | 0.15 / 0.15 | Dập dềnh nhanh, trông như bị rung | Chậm tới mức khó nhận ra |
+| **Breath Amplitude** | 0.06 / 0.06 | Đậm nhạt rõ, sương như "thở". Lớn quá thì nhấp nháy, rối mắt | Đều màu, phẳng |
+| **Breath Speed** | 0.25 / 0.25 | Đổi đậm nhạt nhanh | Đổi chậm |
+| **Tile Count** | 4 / 4 | Dải sương dài hơn, phủ map dài hơn (xem ⚠️) | Dải ngắn, đi xa thấy hết sương |
+| **Scale Multiplier** | 1.6 / 2 | Mảng sương to, mềm, ít lặp lại | Mảng nhỏ, thấy rõ hình lặp lại của `fog_wisp` |
+| **Sorting Order** | −70 / −50 | Sương vẽ trước nhiều lớp hơn (che cả đồi, cây) | Sương lùi ra sau các lớp khác |
+
+Hai lớp cuộn **ngược chiều** và **khác tốc độ** (−0.22 và +0.34) là mẹo chính: mắt thấy hai dải sương trượt qua nhau nên cảm giác có chiều sâu và có gió.
+
+> ⚠️ **Sương không tự lặp theo camera.** Lớp cha `L2_FogFar` / `L4_FogNear` tắt Infinite Horizontal, và `FogLayer` chỉ cuộn trong phạm vi các tấm của nó. Dải sương xa dài ~102 unit + trôi theo factor 0.8, dải gần dài 128 unit + factor 0.55 — đủ cho map hiện tại (x từ −13 đến 119). Làm map dài hơn nhiều thì **tăng Tile Count**.
+
+> ⚠️ Sương chỉ hiện khi **Play** (script tạo tấm trong `Start`, không chạy ở chế độ Edit). `Tile Count`, `Scale Multiplier`, `Sorting Layer/Order` chỉ đọc lúc `Start` — sửa khi đang Play không có tác dụng. Tint, Scroll, Drift, Breath sửa khi Play thấy ngay.
+
+> ⚠️ `FogLayer` ghi đè **vị trí Y thế giới** của chính nó mỗi frame (dựa trên Y lúc `Start`). Nếu bật Follow Vertical cho lớp cha thì sương **không đi theo chiều dọc** cùng lớp cha. Quên gán `Fog Sprite` thì script in cảnh báo và tự tắt.
 
 ### 9.3 Cây lay nhẹ (`SubtleSway`)
 Gắn vào sprite con `L5_TreesNear_Sprite`: nghiêng (tilt 0.45° tốc độ 0.33), lắc ngang (0.07 / 0.28), nhấp nhô (0.025 / 0.55), pha ngẫu nhiên. Các tần số lệch nhau nên chuyển động không bao giờ lặp y hệt.
+
+**Công thức** (`Scripts/Environment/SubtleSway.cs`), `t` = thời gian, `phase` = số ngẫu nhiên 0..2π chọn lúc `Start`:
+```
+góc nghiêng = sin(t × tiltSpeed  + phase)       × tiltAmplitude   (độ, quay quanh trục Z)
+lệch ngang  = sin(t × swaySpeed  + phase × 1.3) × swayAmplitude   (unit)
+nhấp nhô    = sin(t × bobSpeed   + phase × 0.7) × bobAmplitude    (unit)
+```
+Ba sóng có tần số và pha khác nhau → cộng lại thành chuyển động "tự nhiên", không đều đặn như con lắc.
+
+| Thông số | Mặc định trong code | Đang dùng (`Background.prefab`) | Một chu kỳ (2π / Speed) |
+|---|---|---|---|
+| `tiltAmplitude` / `tiltSpeed` | 1.5° / 0.5 | **0.45° / 0.33** | ≈ 19 s |
+| `swayAmplitude` / `swaySpeed` | 0.05 / 0.35 | **0.07 / 0.28** | ≈ 22 s |
+| `bobAmplitude` / `bobSpeed` | 0.03 / 0.7 | **0.025 / 0.55** | ≈ 11 s |
+| `randomisePhase` | bật | **bật** | |
+
+**Cách gắn**:
+1. Chọn **sprite con** (vd `L5_TreesNear_Sprite`), không phải lớp cha có `ParallaxEffect` — vì `ParallaxEffect` ghi đè vị trí lớp cha mỗi frame, còn `SubtleSway` chỉnh `localPosition`/`localRotation` của object nó gắn vào.
+2. Add Component → `SubtleSway`, nhập giá trị theo bảng.
+3. Play để xem (script không chạy ở chế độ Edit).
+
+Khi `ParallaxEffect` nhân bản sprite cho Infinite Horizontal, mỗi bản sao **mang theo `SubtleSway`** và tự bốc pha ngẫu nhiên riêng → các hàng cây cạnh nhau không lay cùng nhịp.
+
+**Chỉnh gì → ra sao**:
+| Thông số | Tăng | Giảm |
+|---|---|---|
+| `tiltAmplitude` | Cây nghiêng nhiều, như có gió. Lưu ý sprite cây to (≈ 41.6 × 20.8 unit) và **pivot ở giữa ảnh**, nên mép ngoài di chuyển nhiều: 0.45° đã làm mép trái/phải lên xuống ≈ 0.16 unit; 1.5° (mặc định code) ≈ 0.55 unit, gốc cây trông **bập bênh** như trên thuyền | Gần như đứng yên |
+| `tiltSpeed` / `swaySpeed` / `bobSpeed` | Lay nhanh, như gió giật, bão | Chậm, êm, như gió thoảng. Giữ ba tốc độ **khác nhau** để không lặp |
+| `swayAmplitude` | Cả hàng cây trượt ngang qua lại rõ | Không trượt |
+| `bobAmplitude` | Nhấp nhô lên xuống. Lớn thì trông như cây **nổi trên nước** | Không nhấp nhô |
+| `randomisePhase` | — | Tắt → mọi object có `SubtleSway` (kể cả các bản sao Infinite) lay **cùng lúc** như đồng diễn, mất tự nhiên |
+
+> ⚠️ `SubtleSway` lưu `localPosition` / `localRotation` gốc lúc `Start` rồi ghi đè mỗi frame. Kéo sprite trong Scene khi đang Play sẽ bị kéo về; muốn dời vị trí thì tắt Play rồi chỉnh.
+
+> ⚠️ Với sprite to, ưu tiên **sway/bob nhỏ** thay vì tilt lớn: vì xoay quanh tâm ảnh nên tilt lớn làm cả gốc cây di chuyển, dễ lộ là "một tấm ảnh bị xoay".
 
 ### 9.4 Hiệu ứng nhảy kiểu Hollow Knight (bụi + co giãn)
 Ba hiệu ứng: **bụi lúc bật nhảy**, **bụi lúc tiếp đất** (rơi càng mạnh bụi càng nhiều), **co giãn** (bật lên thì thân dài ra, chạm đất thì bẹp xuống rồi trở lại).
@@ -721,6 +1560,316 @@ Các object dùng chung đã được lưu thành prefab trong `Assets/Prefabs/`
 
 Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Assets/Prefabs` trong cửa sổ Project. Sửa prefab: bấm đúp vào file prefab, hoặc sửa trên object trong scene rồi **Overrides → Apply All**.
 
+### 9.6 Ánh sáng nghệ thuật kiểu Hollow Knight
+
+**Ý đồ**: "Đêm tím, ánh trăng lạnh, nhân vật là ngọn đèn duy nhất". Cả cảnh chỉ dùng 3 tông màu:
+- **Tối**: chàm tím sâu (không dùng đen thuần).
+- **Trung gian**: tím lavender.
+- **Điểm nhấn**: tím sáng quanh nhân vật, trắng trăng ở tia sáng, cam ấm ở quả cầu và mắt quái.
+
+Hình ảnh cuối cùng do **6 lớp** chồng lên nhau tạo thành:
+
+| # | Lớp | Nằm ở đâu | Vai trò |
+|---|---|---|---|
+| 1 | Hai đèn toàn cục (Global Light 2D) | Scene | Đặt độ tối chung: nền sáng vừa, thế giới gameplay tối |
+| 2 | Quầng sáng tím `Halo` + đèn `PlayerLight` | `Player.prefab` | Nhân vật là nguồn sáng, phủ một lớp tím nhẹ quanh mình |
+| 3 | Viền sáng `RimLight` | `Player.prefab → Visual` | Áo choàng đen tách khỏi nền tối |
+| 4 | Tia trăng `MoonBeams` | Scene `Lighting/MoonBeams` | Không khí huyền ảo, có hướng sáng |
+| 5 | Tiền cảnh bóng đen `Foreground` | Scene `Lighting/Foreground` | Khung tranh và chiều sâu |
+| 6 | Hậu kỳ `PostFX Volume` | Scene `Lighting/PostFX Volume` | Bloom, vignette, chỉnh màu: gắn mọi thứ thành một bức tranh |
+
+Trước khi đi vào từng lớp cần biết: dự án dùng **URP 2D Renderer**, và sprite dùng `Sprite-Lit-Default` thì bị đèn 2D ảnh hưởng. Background nằm ở **sorting layer `Background`**, còn nhân vật, quái và tilemap ở `Default`. Ô **Target Sorting Layers** của mỗi đèn quyết định đèn đó chiếu lớp nào, nhờ vậy nền và gameplay được chiếu sáng riêng.
+
+---
+
+#### Lớp 1 — Hai đèn toàn cục
+
+| Object | Intensity | Color | Target Sorting Layers |
+|---|---|---|---|
+| `Global Light - Background` | **0.8** | (0.72, 0.66, 0.95) tím nhạt | chỉ **Background** |
+| `Global Light - World` | **0.2** | (0.60, 0.58, 0.90) tím xanh | chỉ **Default** |
+
+**Tạo**:
+1. Chọn `Global Light 2D` có sẵn, đổi tên thành `World`, chỉnh theo bảng.
+2. Hierarchy → Create → Light → **Global Light 2D**, đặt tên `Background`, chỉnh theo bảng.
+
+**Chỉnh gì → ra sao**:
+| Thông số | Tăng | Giảm | Ghi chú |
+|---|---|---|---|
+| World **Intensity** | Đất, quái, hình nộm sáng hơn, dễ thấy nhưng mất bóng tối, quầng nhân vật bớt nổi | Thế giới chìm vào bóng tối, chỉ thấy rõ quanh nhân vật | 0.2 là điểm cân bằng. Dưới 0.1 thì người chơi khó thấy chỗ đứng. Độ sáng mắt thấy **không tỷ lệ thuận** (gamma): 0.35 chỉ tối hơn 0.95 khoảng 40% |
+| World **Color** | Ngả xanh → lạnh, buồn. Ngả tím → huyền ảo | | Nên gần màu nền để thế giới hòa với nền |
+| Background **Intensity** | Nền sáng, nổi lên, tranh giành sự chú ý với nhân vật | Nền chìm, cảnh nặng nề | Nên luôn **sáng hơn World**, vì nền xa phải "thoáng" hơn gameplay (giống ảnh mẫu Hollow Knight) |
+
+---
+
+#### Lớp 2 — Quầng sáng tím quanh nhân vật
+
+Gồm **2 tầng sprite** (để thấy quầng sáng trong không khí) và **1 đèn** (để mặt đất, quái ở gần sáng lên).
+
+**`Player.prefab → Halo`**: object rỗng ở ngực (0, 0.9) có component `HaloPulse`, bên trong có 2 con:
+
+| Con | Sprite | Scale (= đường kính, unit) | Color (RGBA) | Order | Material |
+|---|---|---|---|---|---|
+| `HaloWide` | `halo_radial` | **14** | (0.72, 0.60, 1.0, **0.24**) | **−1** (trên đất và hình nộm, dưới nhân vật: tạo **sương sáng** phủ lên thế giới quanh nhân vật, mục 9.8) | Sprite-Unlit-Default |
+| `HaloCore` | `halo_radial` | **4** | (0.80, 0.68, 1.0, **0.22**) | −2 | Sprite-Unlit-Default |
+
+- `Assets/Art/Generated/Lighting/halo_radial.png`: ảnh tròn trắng 128×128, PPU 128 (= 1 unit), alpha = `(1 − khoảng cách tới tâm)^1.6`, tức mờ dần mềm ra mép. Màu thật lấy từ **Color** của SpriteRenderer, nên đổi màu không cần vẽ lại ảnh.
+- Dùng **Unlit** để quầng luôn hiện ra, không bị đèn World làm tối.
+- **Order âm** nên quầng nằm sau nhân vật (nhân vật là 0).
+
+**Chỉnh gì → ra sao**:
+| Thông số | Ảnh hưởng |
+|---|---|
+| `HaloWide` **Scale** | Độ phủ của lớp tím. 14 ≈ hơn nửa màn hình. Tăng → tím loang khắp cảnh. Giảm (6–8) → quầng gọn, tập trung |
+| `HaloWide` **alpha** (Color A) | Độ đậm lớp tím. 0.22 là "phủ nhẹ". Trên 0.35 thì nền bị tím đục, mất chi tiết |
+| `HaloCore` Scale / alpha | Độ sáng ngay sát người. Tăng alpha → nhân vật như cầm đèn. Đừng để màu gần trắng, sẽ thành "đốm trắng" (đã thử và bị loại) |
+| **Màu R, G, B** | Tăng R → hồng tím. Tăng G → nhạt, ngả trắng. Giảm B → mất chất tím. Giữ **B = 1** và **R > G** để luôn ra tím |
+| Mũ 1.6 trong ảnh (vẽ lại) | Lớn hơn → mép tắt nhanh, quầng gọn. Nhỏ hơn → loang rộng, phẳng |
+
+**`HaloPulse` (Scripts/Effects/HaloPulse.cs)**: quầng "thở" để nhân vật như sinh vật mang ánh sáng.
+- Mỗi frame: `scale = scaleGốc × (1 + sin(t·2π/period) × scaleAmount)`, `alpha = alphaGốc × (1 + sin(...) × alphaAmount)`.
+- Tầng thứ hai lệch pha 0.8 rad để hai tầng không thở cùng lúc.
+- Chỉ đổi transform và color, **không cấp phát bộ nhớ** mỗi frame.
+
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `period` | 4 s | Thở chậm, êm, như ngủ | Thở nhanh → cảm giác hồi hộp (có thể tăng khi máu thấp) |
+| `scaleAmount` | 0.05 | Quầng phập phồng rõ (trên 0.15 thì lố) | 0 = đứng yên |
+| `alphaAmount` | 0.15 | Sáng tối rõ, như nhấp nháy | 0 = không đổi độ sáng |
+
+**`Player.prefab → PlayerLight`** (Light 2D, Point, chiếu Default): Color **(0.78, 0.65, 1.0)**, Intensity **1.9**, Inner Radius 1.2, Outer Radius **10**, Falloff 0.6.
+
+| Thông số | Ảnh hưởng |
+|---|---|
+| **Outer Radius** | Bán kính vùng mặt đất và quái được soi. Nên ≈ 70% đường kính `HaloWide` để ánh sáng trên đất khớp với quầng trong không khí |
+| **Inner Radius** | Vùng sáng đều 100% quanh tâm. Lớn → vùng sáng phẳng, kém tự nhiên |
+| **Intensity** | Độ sáng trên vật thể. 1.5 bù cho World tối. Quá cao thì gạch bị cháy sáng |
+| **Falloff Intensity** | 0 = tắt dần tuyến tính, cứng. 1 = tắt rất mềm. 0.6 là mềm vừa |
+| **Color** | Nên trùng tông với `Halo`, nếu không thì quầng (tím) và đất (màu khác) bị lệch nhau |
+
+> ⚠️ Đèn tạo bằng **script** (AddComponent) có `m_LocalBounds` = 0 nên bị **cull** (không sáng). Lúc sửa trong Inspector, Unity tự tính lại vùng này, nhưng trong prefab mở bằng code thì không. Cách sửa: qua `SerializedObject` đặt `m_LocalBounds` = tâm (0, 0, 0), extents (1, 1, 0). Tạo đèn bằng tay trong Inspector thì không gặp lỗi này.
+
+---
+
+#### Lớp 3 — Viền sáng (Rim light)
+
+Nhân vật Cloaked toàn màu đen nên bị chìm vào nền tối. Viền sáng mảnh giúp tách nhân vật ra, giống mặt nạ trắng của Knight.
+
+**`RimLight` (Scripts/Effects/RimLight.cs)** gắn trên `Player.prefab → Visual`:
+1. `Awake`: tạo **8 bản sao** SpriteRenderer làm con của `Visual`, lệch ra 8 hướng (mỗi 45°) một khoảng `thickness`. Bản sao dùng material `M_RimLight` (shader `LuHanh/SpriteFlash` tô màu phẳng), **Order = sprite gốc − 1** nên nằm sau. Vì vậy chỉ phần **thò ra ở mép** là nhìn thấy, tạo thành viền.
+2. `LateUpdate` (chạy sau Animator): chép sprite đang hiện, flipX/flipY sang 8 bản sao, để viền chạy theo animation.
+3. Lúc nhân vật nhấp nháy bất tử (`sprite.enabled` tắt/bật) thì viền tắt/bật theo.
+
+| Thông số | Mặc định | Ảnh hưởng |
+|---|---|---|
+| `rimMaterial` | `Assets/Shaders/M_RimLight.mat` | Màu viền = **Flash Color** của material: (0.80, 0.78, 1.0). Đổi sang cam → viền ấm. Trắng → lạnh, gắt |
+| `thickness` | 0.02 unit | Độ dày viền. 0.035 thì viền to, nhân vật trông như sticker (đã thử và bị loại) |
+| `opacity` | 0.5 | Độ rõ viền. Cao thì cộng với Bloom thành chói, nhòe |
+
+Chi phí: 8 SpriteRenderer thêm, cùng material nên Unity gộp draw call được. Chỉ dùng cho nhân vật chính.
+
+---
+
+#### Lớp 4 — Tia trăng (`Lighting/MoonBeams`)
+
+- `moon_beam.png`: 64×512, PPU 64 (1 × 8 unit), **pivot ở đỉnh**.
+  - Chiều ngang mờ dần ra hai mép theo hàm mũ 2.
+  - Chiều dọc sáng ở trên, tắt dần xuống dưới, 15% cuối mờ hẳn.
+- 3 tia, material Unlit, sorting Default **Order −20** (trước nền, sau đất và nhân vật):
+
+| Tia | Vị trí (đỉnh) | Scale | Góc | Alpha |
+|---|---|---|---|---|
+| `Beam_1` | (4.5, 12) | (2.2, 2.2) | 22° | 0.10 |
+| `Beam_2` | (7.5, 12) | (1.2, 2.0) | 22° | 0.07 |
+| `Beam_3` | (−2.5, 12) | (1.6, 2.1) | 18° | 0.06 |
+
+| Chỉnh | Ảnh hưởng |
+|---|---|
+| **Alpha** | 0.05–0.12 là "thoang thoảng". Trên 0.2 thì thành vệt đèn sân khấu, mất tự nhiên |
+| **Góc** | Mọi tia nên **cùng hướng** (lệch nhau ≤ 5°) vì cùng một mặt trăng. Hướng tia nên chỉ về phía mặt trăng trên nền |
+| **Scale X** | Độ rộng tia. Xen kẽ to/nhỏ để không đều đặn |
+| Đặt ở đâu | Nơi muốn kéo mắt người chơi: lối đi tiếp, vật phẩm, ghế checkpoint |
+
+Bụi `DustMotes` (mục 9.1) bay qua tia trăng sẽ sáng lên nhờ Bloom. Đây là lý do cảnh trông "có không khí".
+
+---
+
+#### Lớp 5 — Tiền cảnh bóng đen (`Lighting/Foreground`)
+
+Khối đá và rễ cây **đen tuyền, mép mềm**, nằm **trước mọi thứ** (sorting Default **Order 50**), material Unlit (luôn đen, không bị đèn làm sáng).
+
+| Object | Sprite | Vị trí | Scale |
+|---|---|---|---|
+| `FG_RocksLeft` | `fg_rocks_a` (8×5 unit, pivot đáy) | (−11.5, −3.6) | 1.15 |
+| `FG_RocksRight` | `fg_rocks_b` (8×6.25, pivot đáy) | (14, −4.4) | 0.78 |
+| `FG_RootsLeft` | `fg_roots_a` (8×4, pivot đỉnh) | (−7, 11.6) | 1.1 |
+| `FG_RootsRight` | `fg_roots_b` (6.25×3.4, pivot đỉnh) | (9.5, 11.6) | 1 |
+
+- Ảnh vẽ bằng code:
+  - **Đá**: ghép 9 "metaball" (tổng trường `r²/d²`), mép làm mềm bằng `SmoothStep`, nên trông như bị nhòe (out of focus) giống tiền cảnh trong Hollow Knight.
+  - **Rễ**: 7 sợi uốn sin, nhỏ dần xuống dưới, treo từ một mảng tối ở đỉnh.
+  - Màu (0.02, 0.015, 0.045): đen ngả tím, không phải đen thuần.
+- Mỗi object có **`ParallaxEffect`** với `overrideFactor = true`, **`manualFactor = −0.3`**, tắt `infiniteHorizontal`.
+  - Hệ số âm: khi camera đi, lớp này **trôi ngược và nhanh hơn**, mắt hiểu nó ở **gần camera hơn** nhân vật. Đây chính là chiều sâu.
+  - `ParallaxEffect.manualFactor` đã được mở rộng cho phép từ −1 đến 1 (trước đây chỉ 0..1).
+
+| Chỉnh | Ảnh hưởng |
+|---|---|
+| `manualFactor` | −0.3: gần vừa. −0.6: rất gần, lướt nhanh, dễ chóng mặt. 0: đứng yên như đất (mất chiều sâu) |
+| Scale / vị trí | **Không được che đường đi, quái hay đạn.** Đặt ở góc và mép màn hình, như khung tranh. Bản xem trước đầu tiên bị loại vì đá che mất Ghoul |
+| Mật độ | 1–2 khối mỗi màn hình là đủ. Nhiều hơn thì cảnh bị bí |
+
+Khi dựng màn mới: kéo thêm sprite `fg_*`, gắn `ParallaxEffect` như trên, đặt ở những chỗ trống phía trước.
+
+---
+
+#### Lớp 6 — Hậu kỳ (`Lighting/PostFX Volume`)
+
+- **Global Volume**, profile `Assets/Settings/Lighting/PostFX_Night.asset`.
+- **Bắt buộc**: Main Camera → Rendering → **Post Processing = bật**. Nếu tắt thì Volume không có tác dụng.
+
+| Hiệu ứng | Thông số | Ảnh hưởng khi chỉnh |
+|---|---|---|
+| **Bloom** | Threshold **0.7**, Intensity **0.5**, Scatter **0.75**, Tint (0.9, 0.88, 1) | Vật sáng (quầng, trăng, cầu cam, bụi trong tia trăng) **tỏa** ra xung quanh. Threshold thấp → nhiều thứ tỏa, cảnh mờ sương. Intensity cao (0.9) → nhân vật chói, mất chi tiết (đã thử và bị loại). Scatter cao → tỏa rộng, mềm |
+| **Vignette** | Intensity **0.42**, Smoothness **0.55**, Color (0.02, 0.01, 0.05) | Mép màn hình tối dần, mắt dồn vào giữa (nhân vật). Intensity trên 0.55 thì như nhìn qua ống. Smoothness thấp → viền tối cứng |
+| **Split Toning** | Shadows (0.36, 0.26, 0.62), Highlights (1, 0.95, 0.86), Balance **−15** | Vùng tối ngả **tím**, vùng sáng ngả **trắng ngà**. Đây là "chữ ký màu" của cảnh. Balance âm → phần tím chiếm nhiều hơn |
+| **Color Adjustments** | Contrast **+12**, Saturation **−8** | Tương phản cao một chút cho sáng tối rõ. Giảm bão hòa nhẹ cho màu "trầm", tránh rực rỡ kiểu cartoon |
+
+**Tạo**:
+1. Hierarchy → Volume → **Global Volume**.
+2. Profile → New.
+3. Add Override, lần lượt thêm từng hiệu ứng theo bảng: tích ô bên trái thông số rồi nhập giá trị.
+
+---
+
+#### Tổng hợp: muốn cảnh… thì chỉnh…
+| Muốn | Chỉnh |
+|---|---|
+| Tối và căng thẳng hơn | World Intensity ↓ (0.12), Vignette ↑ (0.5), `HaloWide` Scale ↓ (8) |
+| Mơ màng, cổ tích hơn | Bloom Threshold ↓ (0.5), tia trăng alpha ↑ (0.15), `HaloWide` alpha ↑ (0.3) |
+| Nhân vật nổi hơn | `RimLight` opacity ↑ (0.7), `HaloCore` alpha ↑ (0.3) |
+| Đổi tông sang xanh lạnh | Màu `Halo`, `PlayerLight`, World và Split Toning Shadows cùng ngả xanh (giảm R) |
+| Máy yếu, cần nhẹ hơn | Tắt Bloom (hiệu ứng tốn nhất), bỏ `RimLight` |
+
+**Hiệu năng**:
+- 2 đèn Global gần như không tốn.
+- 1 đèn Point cho nhân vật, cộng mỗi quả cầu đang bay một đèn nhỏ.
+- 2 sprite quầng sáng, 8 bản sao viền, 3 tia trăng, 4 sprite tiền cảnh: đều là sprite thường.
+- Bloom là phần tốn nhất nhưng vẫn nhẹ với game 2D.
+
+### 9.7 Đèn trang trí tỏa sáng (đèn lồng treo, cột đèn, tinh thể)
+
+**Ý đồ**: những đốm **vàng cam ấm** giữa cảnh tím lạnh. Tương phản nóng/lạnh làm cảnh có điểm nhấn, đồng thời đèn **dẫn đường** cho người chơi. Sau này đặt cạnh checkpoint thì đèn còn mang nghĩa "nơi an toàn".
+
+#### Ba prefab (`Assets/Prefabs/Lighting/`)
+| Prefab | Gốc tọa độ (đặt ở đâu) | Cấu trúc |
+|---|---|---|
+| `Lamp_Hanging` | **Đầu dây xích** (điểm treo) | `Pivot` (có `SubtleSway`) → `Sprite`, `Glow`, `Light`. Cả 3 nằm dưới Pivot nên đung đưa cùng nhau, ánh sáng cũng lắc theo |
+| `Lamp_Post` | **Chân cột** (đặt lên mặt đất) | `Sprite`, `Glow`, `Light` ở bóng đèn (0.4, 2.95) |
+| `Lamp_Crystal` | **Chân cụm tinh thể** (đặt lên mặt đất) | `Sprite`, `Glow`, `Light` ở giữa cụm (0, 0.6) |
+
+Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 9.6):
+
+| Phần | Thiết lập | Vai trò |
+|---|---|---|
+| `Sprite` | Material **Sprite-Unlit-Default**, Order **41** (trên lớp tối `VisionMask` = 40, nên đèn ở xa vẫn sáng xuyên bóng tối, mục 9.8) | Hình đèn. Unlit nên phần kính sáng luôn rực, không bị World làm tối |
+| `Glow` (+ `HaloPulse`) | `GlowWide` Ø **7** (tinh thể 5), alpha **0.18**, Order **42**. `GlowCore` Ø **2.5** (tinh thể 2), alpha **0.45**, Order **43**. Màu (1, 0.65, 0.28). Dùng ảnh `halo_radial` có sẵn | Quầng sáng trong không khí. `HaloPulse`: period **3**, scaleAmount **0.04**, alphaAmount **0.12**, như ngọn lửa thở nhẹ |
+| `Light` | Light 2D **Point**, màu (1, 0.68, 0.32), Intensity **1.6**, Inner 0.4, Outer **5** (tinh thể 4), Falloff **0.7**, chiếu **Default** | Soi sáng gạch, quái, nhân vật khi đi ngang qua đèn |
+
+**Đèn lồng đung đưa**: dùng lại `SubtleSway` (mục 9.3) trên `Pivot`: `tiltAmplitude` **4°**, `tiltSpeed` **0.8**, `swayAmplitude` 0, `bobAmplitude` 0. Vì `Pivot` ở đầu dây xích, xoay quanh điểm này sẽ ra chuyển động **con lắc**: đèn ở đầu dưới lắc rộng, dây phía trên lắc ít. Mỗi đèn tự lệch pha ngẫu nhiên nên nhiều đèn không lắc cùng nhịp.
+
+#### Hình vẽ bằng code (`Assets/Art/Generated/Lighting/`, PPU 80)
+| File | Kích thước | Pivot | Mô tả |
+|---|---|---|---|
+| `lamp_lantern.png` | 64×256 (0.8 × 3.2 unit) | đỉnh giữa | Dây xích mắt dọc/ngang xen kẽ, nắp hình thang, lồng đèn hơi phình có khung sắt và 2 ô kính vàng sáng dần từ tâm, đế và chóp nhọn |
+| `lamp_post.png` | 96×320 (1.2 × 4 unit) | chân cột | Đế 2 bậc, cột có vòng trang trí, cần cong 1/4 vòng tròn, chụp đèn, bóng tròn phát sáng |
+| `lamp_crystal.png` | 128×128 (1.6 × 1.6 unit) | đáy giữa | 5 tinh thể nghiêng tỏa ra từ một mỏm đá tối. Mặt trái sáng hơn mặt phải (tạo khối), sáng dần lên đỉnh |
+
+- Kim loại: (0.10, 0.08, 0.12), viền tối 2 px.
+- Phần phát sáng: chuyển từ vàng kem (1, 0.93, 0.70) ở tâm sang cam (1, 0.62, 0.22) ở rìa.
+
+#### Đặt trong scene (`Lighting/Lamps`)
+| Object | Vị trí | Lý do |
+|---|---|---|
+| `Lamp_Post_1` | (8, 1) | Ngay trong tầm nhìn lúc vào game, cạnh hình nộm |
+| `Lamp_Hanging_1` | (28, 8.5) | Treo giữa 2 bục cao. Đáy đèn ở khoảng y = 5.3, trên đầu người chơi |
+| `Lamp_Crystal_1` | (49.5, 1) | Mọc dưới chân bục cao x = 51–53 |
+
+**Thêm đèn**: kéo prefab vào `Lighting/Lamps`. Cột đèn và tinh thể đặt **chân trùng mặt đất**. Đèn treo đặt **điểm treo ở trần** hoặc mép bục phía trên.
+
+#### Chỉnh gì → ra sao
+| Thông số | Tăng | Giảm |
+|---|---|---|
+| `Light` **Outer Radius** | Vùng đất sáng rộng, đèn "chiếm" nhiều cảnh. Nhiều đèn sẽ chồng ánh sáng lên nhau làm mất bóng tối | Chỉ sáng sát chân đèn, đèn thành điểm nhấn nhỏ |
+| `Light` **Intensity** | Gạch quanh đèn cháy sáng, màu cam đậm | Ánh sáng mờ, chỉ còn thấy quầng |
+| `GlowWide` Scale / alpha | Quầng cam loang rộng, cảnh ấm lên, lấn quầng tím của nhân vật | Đèn trông như dán lên, thiếu "tỏa" |
+| `GlowCore` alpha | Ngay quanh đèn chói, Bloom tỏa mạnh | Đèn dịu |
+| `HaloPulse` period / alphaAmount | Chậm và êm / chập chờn rõ như lửa sắp tắt | Nhanh / đứng yên |
+| `SubtleSway` tiltAmplitude | Lắc mạnh như có gió (trên 8° thì như bị đánh) | 0 = treo yên |
+| Màu (Glow + Light) | Đổi đồng thời cả hai. Chỉ đổi một bên thì quầng và ánh sáng trên đất lệch màu | |
+
+> ⚠️ Light 2D tạo bằng script phải đặt `m_LocalBounds` extents (1, 1, 0), nếu không đèn bị cull và không sáng (xem mục 9.6).
+
+**Hiệu năng**: mỗi đèn = 1 Light 2D Point + 3 sprite. Light 2D chỉ tốn khi nằm trong khung hình. Khoảng 10 đèn trong một màn vẫn nhẹ. Nhưng **đừng để 3–4 đèn cùng lúc trong một màn hình**: vừa tốn hơn, vừa mất bóng tối.
+
+### 9.8 Vùng nhìn quanh nhân vật (sáng ở giữa, tối dần ra mép màn hình)
+
+**Mục tiêu** (theo ảnh mẫu Hollow Knight, đổi sang tông tím):
+- Quanh nhân vật **sáng hẳn lên**, như có sương sáng phủ lên đất và nền.
+- Ra xa thì **tối dần rất từ từ**, góc và mép màn hình chìm vào bóng tối.
+- Không có "vòng tròn" rõ ràng.
+- Nhân vật luôn sắc nét. Đèn trang trí và quả cầu ở xa vẫn sáng xuyên bóng tối.
+
+#### Các thành phần (tất cả nằm trong `Player.prefab`, đi theo nhân vật)
+| Object | Loại | Thiết lập | Vai trò |
+|---|---|---|---|
+| `VisionMask` | SpriteRenderer, Unlit | Ảnh `vision_mask.png`, ở ngực (0, 0.9), **Order 40** | Lớp **tối** phủ cả màn hình, có lỗ mềm ở giữa |
+| `Halo/HaloWide` | SpriteRenderer, Unlit | Ø **14**, màu (0.72, 0.60, 1.0, **0.24**), **Order −1** | Lớp **sương sáng tím** phủ lên đất, nền, hình nộm quanh nhân vật |
+| `PlayerLight` | Light 2D Point, chiếu **Default** | Intensity **1.9**, Outer **10** | Gạch, quái gần nhân vật **đọc rõ** |
+| `BackLight` | Light 2D Point, chiếu **Background** | Màu (0.78, 0.65, 1.0), Intensity **1.2**, Inner 1, Outer **11**, Falloff 0.8 | Soi sáng **nền phía sau** (trăng, tháp, đồi) quanh nhân vật, giống bức tường sáng sau lưng Knight |
+
+#### Thứ tự vẽ (Order trong sorting layer Default) — quan trọng nhất
+| Order | Thứ được vẽ |
+|---|---|
+| −5 | Tilemap đất |
+| −2 | Hình nộm, `HaloCore` |
+| **−1** | **`HaloWide` (sương sáng)**: đè lên đất nên đất quanh nhân vật sáng mờ lên |
+| 0 | **Nhân vật**, quái: nằm **trên** sương nên vẫn sắc nét |
+| **40** | **`VisionMask` (lớp tối)**: đè lên mọi thứ phía dưới |
+| **41–43** | Đèn trang trí (Sprite / GlowWide / GlowCore) |
+| **44–45** | Quả cầu của dơi (vệt mờ / quả cầu) |
+| 50 | Tiền cảnh bóng đen (mục 9.6) |
+| (Canvas) | HUD 5 mask luôn ở trên cùng |
+
+> Đã thử và **bị loại**: đặt sương ở Order 30 (trên nhân vật) thì áo choàng bị bạc màu, mất chi tiết. Sương phải nằm **giữa thế giới và nhân vật**.
+>
+> Đèn và quả cầu đặt **trên** lớp tối (phương án A, đã chọn) để đèn ở xa vẫn lấp lánh và quả cầu bay tới vẫn né được. Nếu đặt dưới (B) thì chúng bị phủ tối.
+
+#### Ảnh lớp tối `Assets/Art/Generated/Lighting/vision_mask.png`
+- 1024×1024 px phủ **60 × 60 unit** (PPU ≈ 17.07), đủ lớn để luôn che kín màn hình dù nhân vật đứng lệch tâm. Camera rộng khoảng 26.7 × 15 unit.
+- Mỗi pixel: `d` = khoảng cách tới tâm (unit). `k = smoothstep(InverseLerp(3, 13, d))`. Màu (0.03, 0.02, 0.07), **alpha = 0.85 × k**.
+  - `d < 3`: trong suốt hoàn toàn (vùng rõ).
+  - `3 → 13`: tối dần theo đường cong S, rất mềm, nên không thấy mép vòng tròn.
+  - `d > 13`: tối 85% (vẫn lờ mờ thấy hình dáng, không đen kịt).
+- Import: Sprite, Clamp, không mipmap, **Compression None**. Nén sẽ làm dải chuyển màu bị vằn (banding).
+
+#### Chỉnh gì → ra sao
+| Muốn | Chỉnh | Ghi chú |
+|---|---|---|
+| Vùng sáng **rộng hơn** | Tăng `VisionMask` **Scale** (1 → 1.2 = mọi bán kính × 1.2) | Không cần vẽ lại ảnh. Kèm tăng `HaloWide` Scale cho khớp |
+| Mép **tối hơn / nhạt hơn** | Color **A** của `VisionMask` (1 = 85% như ảnh; 0.7 → khoảng 60%) | Alpha của SpriteRenderer nhân với alpha trong ảnh |
+| Đổi tông bóng tối | Color **RGB** của `VisionMask` (nhân với màu ảnh). Muốn đổi hẳn màu thì vẽ lại ảnh | Bóng tối ngả xanh → lạnh, ngả đỏ → nguy hiểm |
+| Chuyển rõ → tối **gắt hơn** (ra vòng tròn rõ như Soul Knight) | Vẽ lại với khoảng mờ hẹp, ví dụ `InverseLerp(4, 7, d)` | Bản v1 dùng 4 → 7: trông như cái lỗ, đã loại |
+| Quanh nhân vật **sáng sương hơn** | `HaloWide` alpha ↑ (0.24 → 0.35), Scale ↑ | Trên 0.45 thì đất bị tím đục |
+| Đất gần **rõ hơn** | `PlayerLight` Intensity ↑, Outer ↑ | |
+| Nền sau lưng **sáng hơn** | `BackLight` Intensity ↑ (1.2 → 2) | Quá cao thì nền lấn nhân vật |
+| Hiệu ứng "tầm nhìn thu hẹp" khi máu thấp (gợi ý cho sau) | Viết script đổi Scale `VisionMask` theo máu | Chưa làm |
+
+#### Thêm đèn hoặc đạn mới muốn sáng xuyên bóng tối
+Đặt **Order > 40** cho SpriteRenderer hoặc ParticleSystemRenderer của nó. Vật nào cần bị bóng tối che thì để **Order < 40**.
+
+**Hiệu năng**: 1 sprite lớn (vẽ nhiều pixel trong suốt nhưng rất nhẹ với 2D) + 1 đèn Point. Không có script.
+
 ---
 
 ## 10. Lỗi hay gặp và cách xử lý
@@ -737,6 +1886,13 @@ Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Asset
 | Kéo background bị bật ngược lại | `ParallaxEffect` chạy cả ở Edit | Xem mục 8 |
 | Animation nhân vật rung, lệch | Sheet cắt bằng Slice Automatic | Cắt lại Grid By Cell Size, pivot cố định |
 | Nhân vật không chạy trái/phải được (vẫn nhảy/dash được) | `PlayerInput` → **Actions** bị trống nên phím di chuyển không tới `onMove` (Space/Shift vẫn chạy vì code đọc thẳng bàn phím) | Mở `Player.prefab` → `PlayerInput` → kéo `PlayerInputAction` vào ô **Actions**, Default Map = Player. Sau mỗi lần sửa prefab nên kiểm tra lại ô này |
+| Quái đi lùi (mặt quay ngược hướng đi) | `Art Faces Right` trong config không khớp hình gốc | Xem hình gốc quay trái hay phải, đặt lại `Art Faces Right` trong `Ghoul.asset` |
+| Quái chạm vào không mất máu | Player chưa có tag `Player` hoặc thiếu `PlayerHealth` | Đặt Tag = Player trên `Player.prefab`, thêm `Health` + `PlayerHealth` |
+| Dơi không bắn | `Bat.asset` thiếu Projectile Prefab, hoặc tường che giữa dơi và người chơi (cần thấy mới bắn) | Gán `Orb.prefab` vào Projectile Prefab; kiểm tra Gizmo vòng tròn phát hiện |
+| Thêm Light 2D bằng script mà không sáng | `m_LocalBounds` của đèn = 0 nên bị cull | Sửa một giá trị trong Inspector để Unity tính lại, hoặc đặt `m_LocalBounds` extents (1, 1, 0) (mục 9.6) |
+| Đèn hoặc đạn ở xa bị tối, không thấy | Order < 40 nên bị `VisionMask` phủ | Đặt Order > 40 (mục 9.8) |
+| Nhân vật bị bạc màu, mờ | `HaloWide` hoặc sprite sương đặt Order cao hơn nhân vật | Đặt Order −1 (giữa đất và nhân vật) |
+| Quả cầu bay xuyên đất | `Projectile → Solid Layers` chưa chọn Ground | Chọn layer **Ground** |
 
 ---
 
@@ -780,3 +1936,13 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 23. Vệt chém kiểu Hollow Knight: 4 khung slash_0..3 (hai đầu nhọn, dày giữa, vệt tốc độ, quét từ trên xuống) thay cho hình bán nguyệt; PlayerAttack phát lần lượt các khung (slashFrames), slashVisualTime 0.14, slashGrow 0.08.
 24. Vệt chém đổi sang bộ Cel-Shaded Slash (Sugawara Studio, bản đỏ miễn phí): 10 khung 24fps (00002–00011), PPU 180, tâm vòng cung ở ngực (slashAnchor 0,0.9), xoay 90° + lật ngang, phát trong 0.18s; PlayerAttackConfig thêm slashCentredOnHitArea, slashAnchor, slashBaseAngle, slashFlipX.
 25. Chuẩn hóa cấu trúc code: mọi script có namespace theo thư mục (PlayerController/PlayerAttack/PlayerMovementFx → LuHanh.Player; HitInfo/IDamageable/TrainingDummy → LuHanh.Combat; FogLayer/ParallaxEffect/SubtleSway → LuHanh.Environment). FSM chuyển từ Scripts/Player/FSM sang Scripts/Core/FSM (namespace LuHanh.Core.FSM) để quái, boss dùng chung. Sửa m_TargetAssemblyTypeName của 2 UnityEvent onMove/onJump trong Player.prefab.
+26. Quái đầu tiên + máu kiểu Hollow Knight: Health (dùng chung), ContactDamage, PlayerHealth (5 mask, hitstop 0.1s, hất lùi, bất tử 1.3s nhấp nháy), HurtState cho player, RespawnManager + IResettable (tối dần → hồi sinh ở điểm bắt đầu, quái hồi sinh), HealthUI + mask vẽ bằng code; quái Ghoul (Vampire Castle, PPU 17, nhìn trái) với EnemyController/EnemyConfig + Patrol/Chase/Hurt, nháy trắng bằng shader LuHanh/SpriteFlash; tối ưu: chết SetActive(false), tự đăng ký hồi sinh, ngủ khi xa camera 25 unit. Player.prefab có tag Player.
+27. Quái bay Dơi bắn cầu (kiểu Aspid): tách lớp cha EnemyBase + EnemyConfigBase (Ghoul giữ nguyên thông số), FlyingEnemyController/FlyingEnemyConfig với Hover/Combat/Shoot/FlyingHurt (giữ khoảng cách 4–6, cao hơn 3, báo trước 0.4s rồi bắn 1 cầu mỗi 2.5s, 2 máu); Projectile (Kinematic trigger, dò đất bằng OverlapCircle) + ProjectilePool (tạo sẵn 6, particle vỡ dùng chung, thu về khi hồi sinh); hình dơi 4 khung + khung tấn công + quả cầu vẽ bằng code; Bat_1 trong TestGamePlay ở (20, 5.5).
+28. Vẽ lại dơi màu sáng, to gấp đôi: trắng ngà + hồng, viền tối 4px, 256×192 (3.2 × 2.4 unit); va chạm thân 0.35 → 0.7, Hitbox 0.45 → 0.9, điểm bắn (0.6, −0.2); quả cầu to 1.5 lần (72px ≈ 0.9 unit, collider 0.3, dò đất 0.22, vệt mờ 0.38–0.6).
+29. Đẩy vết chém ra xa nhân vật khoảng 2 ô: vùng chém ngang (±0.9 → ±2.0, 0.9), lên (0, 2.1 → 2.9), xuống (0, −0.5 → −1.2); PlayerAttackConfig thêm slashSidePush / slashUpPush / slashDownPush (1.1 / 0.8 / 0.7) để vệt chém dời theo hướng chém, khớp chỗ trúng đòn. Không làm tự nhắm (giữ giống Hollow Knight).
+30. Ánh sáng 2D kiểu Hollow Knight: tách Global Light thành Background (0.8, chỉ layer Background) và World (0.35, chỉ layer Default); PlayerLight (Point, inner 1.2, outer 6, intensity 1, trắng ấm) trong Player.prefab; Glow cam (outer 2) trong Orb.prefab; sửa lỗi đèn tạo bằng script bị cull do m_LocalBounds = 0.
+31. Ánh sáng nghệ thuật 6 lớp: World 0.2; quầng sáng tím 2 tầng (Halo: HaloWide Ø11 α0.22, HaloCore Ø4 α0.22) + HaloPulse (thở 4s); PlayerLight tím (0.78, 0.65, 1), intensity 1.5, bán kính 8; RimLight (8 bản sao, dày 0.02, độ đậm 0.5, M_RimLight); 3 tia trăng; tiền cảnh đá và rễ đen với ParallaxEffect −0.3 (manualFactor mở rộng −1..1); Global Volume PostFX_Night (Bloom 0.5, Vignette 0.42, Split Toning tím/ngà, Contrast +12, Saturation −8). Script mới trong Scripts/Effects.
+32. Đèn trang trí tỏa sáng màu vàng cam: 3 prefab Lamp_Hanging (đung đưa bằng SubtleSway 4°), Lamp_Post, Lamp_Crystal trong Assets/Prefabs/Lighting; mỗi đèn = sprite Unlit + quầng Glow 2 tầng có HaloPulse + Light 2D Point (bán kính 5/4, intensity 1.2); đặt tại x = 8, 28, 49.5 trong Lighting/Lamps.
+33. Bổ sung chi tiết tutorial các mục 3, 4, 5.4–5.13, 6, 7, 8, 9.2, 9.3 (bảng tăng/giảm → ảnh hưởng, đọc số thật từ code và asset); sửa các chỗ ghi sai: parallax dùng manualFactor chứ không theo z, vị trí cây L5 (5.28, 5.09), camera size 7.5, inputBuffer/spriteFacesRight/groundLayers chỉ đọc lúc Awake, ApplyGravity dùng currentMaxFall.
+34. Vùng nhìn quanh nhân vật kiểu Hollow Knight (tông tím): VisionMask (lớp tối 60×60 unit, rõ 3, tối dần tới 13, alpha 0.85, Order 40) + BackLight (Point chiếu Background, 1.4, bán kính 11) trong Player.prefab; HaloWide thành sương sáng (Ø14, α0.30, Order −1); PlayerLight 2.2, bán kính 10; đèn trang trí Order 41–43 và quả cầu 44–45 để sáng xuyên bóng tối.
+35. Tinh chỉnh ánh sáng: 3 đèn trang trí sáng hơn (Light 1.2 → 1.6, GlowCore α 0.35 → 0.45, GlowWide α 0.12 → 0.18); ánh sáng nhân vật dịu hơn (HaloWide α 0.30 → 0.24, PlayerLight 2.2 → 1.9, BackLight 1.4 → 1.2).

@@ -53,5 +53,10 @@ namespace LuHanh.Player
         public float slashBaseAngle = 90f;
         [Tooltip("Lat ngang anh truoc khi xoay (doi chieu quet).")]
         public bool slashFlipX = true;
+        [Tooltip("Day vet chem ra xa nhan vat theo huong chem (unit): ngang / len / xuong. " +
+                 "Nen bang khoang da doi tam vung chem de hinh khop cho trung don.")]
+        public float slashSidePush = 0f;
+        public float slashUpPush = 0f;
+        public float slashDownPush = 0f;
     }
 }

@@ -17,11 +17,11 @@ MonoBehaviour:
   inputBuffer: 0.1
   damage: 1
   knockback: 6
-  sideOffset: {x: 0.9, y: 0.9}
+  sideOffset: {x: 2, y: 0.9}
   sideSize: {x: 1.6, y: 1.2}
-  upOffset: {x: 0, y: 2.1}
+  upOffset: {x: 0, y: 2.9}
   upSize: {x: 1.2, y: 1.6}
-  downOffset: {x: 0, y: -0.5}
+  downOffset: {x: 0, y: -1.2}
   downSize: {x: 1.2, y: 1.6}
   hitLayers:
     serializedVersion: 2
@@ -34,3 +34,6 @@ MonoBehaviour:
   slashAnchor: {x: 0, y: 0.9}
   slashBaseAngle: 90
   slashFlipX: 1
+  slashSidePush: 1.1
+  slashUpPush: 0.8
+  slashDownPush: 0.7

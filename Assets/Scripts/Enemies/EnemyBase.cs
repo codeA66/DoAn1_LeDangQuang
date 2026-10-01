@@ -1,0 +1,210 @@
+using LuHanh.Combat;
+using LuHanh.Core;
+using LuHanh.Core.FSM;
+using UnityEngine;
+
+namespace LuHanh.Enemies
+{
+    /// <summary>
+    /// Phan chung cua moi quai: mau, nhan don + nhay trang, hoi sinh cung nguoi choi,
+    /// ngu khi xa camera, quay mat, phat animation. Lop con (di bo, bay...) chi khai bao
+    /// trang thai va luat chuyen rieng.
+    ///
+    /// Toi uu: chet thi SetActive(false) chu khong Destroy; nguoi choi hoi sinh thi
+    /// bat lai tai cho cu (khong cap phat, khong rac). Xa camera thi ngu.
+    /// </summary>
+    [RequireComponent(typeof(Rigidbody2D), typeof(Health))]
+    public abstract class EnemyBase : MonoBehaviour, IDamageable, IResettable
+    {
+        [Tooltip("Sprite chinh (object con Visual).")]
+        [SerializeField] protected SpriteRenderer sprite;
+        [Tooltip("Lop phu trang de nhay khi trung don (dung material LuHanh/SpriteFlash).")]
+        [SerializeField] protected SpriteRenderer flash;
+        [Tooltip("Collider than.")]
+        [SerializeField] protected Collider2D bodyCollider;
+
+        protected Rigidbody2D body;
+        protected Health health;
+        protected Animator animator;
+        Transform cameraTransform;
+        Collider2D[] ownColliders;
+
+        Vector3 startPosition;
+        bool startFacingRight;
+        bool asleep;
+        float flashTimer;
+        int currentAnim;
+
+        protected StateMachine Machine { get; private set; }
+        /// <summary>Vua trung don trong frame nay; luat chuyen sang trang thai Hurt doc co nay.</summary>
+        protected bool HurtRequested { get; private set; }
+
+        public Rigidbody2D Body => body;
+        public Transform Player { get; private set; }
+        public bool FacingRight { get; private set; }
+        public float FacingSign => FacingRight ? 1f : -1f;
+        public Vector3 StartPosition => startPosition;
+
+        public float PlayerDistanceSqr =>
+            Player ? ((Vector2)(Player.position - transform.position)).sqrMagnitude : float.MaxValue;
+
+        protected abstract EnemyConfigBase BaseConfig { get; }
+        /// <summary>Trang thai luc bat dau va luc hoi sinh.</summary>
+        protected abstract IState InitialState { get; }
+        /// <summary>Tao cac trang thai va khai bao luat chuyen vao <paramref name="machine"/>.</summary>
+        protected abstract void BuildStates(StateMachine machine);
+        /// <summary>Chuan bi trang thai Hurt (vd luu huong day lui). Goi truoc khi bat co HurtRequested.</summary>
+        protected abstract void OnHurt(HitInfo hit);
+        /// <summary>Viec rieng sau khi hoi sinh (vd phat lai clip).</summary>
+        protected virtual void OnResetState() { }
+
+        /// <summary>Lop con dam bao config khac null roi moi goi base.Awake().</summary>
+        protected virtual void Awake()
+        {
+            body = GetComponent<Rigidbody2D>();
+            health = GetComponent<Health>();
+            animator = GetComponentInChildren<Animator>();
+            if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>();
+            if (bodyCollider == null) bodyCollider = GetComponent<Collider2D>();
+            ownColliders = GetComponentsInChildren<Collider2D>(true);
+
+            body.freezeRotation = true;
+            health.SetMax(BaseConfig.maxHealth);
+            if (flash) flash.enabled = false;
+
+            startPosition = transform.position;
+            FacingRight = (transform.localScale.x >= 0f) == BaseConfig.artFacesRight;
+            startFacingRight = FacingRight;
+
+            Machine = new StateMachine();
+            BuildStates(Machine);
+            Machine.SetState(InitialState);
+            RespawnManager.Register(this);
+        }
+
+        protected virtual void Start()
+        {
+            // Tim mot lan, khong tim lai moi frame.
+            var playerObject = GameObject.FindWithTag("Player");
+            if (playerObject)
+            {
+                Player = playerObject.transform;
+                // Di xuyen qua nhau nhu Hollow Knight; sat thuong do Hitbox (trigger) lo.
+                foreach (var mine in ownColliders)
+                {
+                    if (mine.isTrigger) continue;
+                    foreach (var theirs in playerObject.GetComponentsInChildren<Collider2D>())
+                        Physics2D.IgnoreCollision(mine, theirs);
+                }
+            }
+            if (Camera.main) cameraTransform = Camera.main.transform;
+        }
+
+        protected virtual void OnDestroy() => RespawnManager.Unregister(this);
+
+        void Update()
+        {
+            UpdateSleep();
+            if (asleep) return;
+
+            Machine.Tick(Time.deltaTime);
+            HurtRequested = false;
+        }
+
+        void FixedUpdate()
+        {
+            if (asleep) return;
+            Machine.FixedTick(Time.fixedDeltaTime);
+        }
+
+        protected virtual void LateUpdate()
+        {
+            if (!flash || !flash.enabled) return;
+            flashTimer -= Time.deltaTime;
+            if (flashTimer <= 0f) { flash.enabled = false; return; }
+
+            // Chep sprite sau khi Animator da doi khung trong frame nay.
+            flash.sprite = sprite.sprite;
+            var c = flash.color;
+            c.a = flashTimer / BaseConfig.flashTime;
+            flash.color = c;
+        }
+
+        // ---- Ngu khi xa camera ----
+
+        void UpdateSleep()
+        {
+            if (!cameraTransform) return;
+            float limit = BaseConfig.sleepDistance;
+            bool far = ((Vector2)(transform.position - cameraTransform.position)).sqrMagnitude > limit * limit;
+            if (far == asleep) return;
+
+            asleep = far;
+            body.simulated = !far;
+            if (animator) animator.enabled = !far;
+        }
+
+        // ---- Nhan don ----
+
+        public void TakeHit(HitInfo hit)
+        {
+            if (!health.Damage(hit.damage)) return;
+
+            if (flash)
+            {
+                flashTimer = BaseConfig.flashTime;
+                flash.enabled = true;
+            }
+
+            if (health.IsDead)
+            {
+                // Tat ngay trong frame chet: xac khong con gay sat thuong, khong ton gi nua.
+                gameObject.SetActive(false);
+                return;
+            }
+
+            OnHurt(hit);
+            HurtRequested = true;
+        }
+
+        /// <summary>Goi khi nguoi choi hoi sinh: ve cho cu, day mau, ve trang thai dau.</summary>
+        public void ResetState()
+        {
+            transform.position = startPosition;
+            body.position = startPosition;
+            body.linearVelocity = Vector2.zero;
+            Face(startFacingRight ? 1f : -1f);
+            health.Refill();
+            HurtRequested = false;
+            flashTimer = 0f;
+            if (flash) flash.enabled = false;
+            currentAnim = 0;
+
+            gameObject.SetActive(true);
+            Machine.SetState(InitialState);
+            OnResetState();
+        }
+
+        // ---- Tien ich cho cac trang thai ----
+
+        /// <summary>Quay mat theo dau cua <paramref name="direction"/>. Lat bang localScale.x giong player.</summary>
+        public void Face(float direction)
+        {
+            if (Mathf.Abs(direction) < 0.01f) return;
+            bool right = direction > 0f;
+            FacingRight = right;
+            var s = transform.localScale;
+            float x = Mathf.Abs(s.x);
+            s.x = right == BaseConfig.artFacesRight ? x : -x;
+            transform.localScale = s;
+        }
+
+        /// <summary>Doi clip neu khac clip dang phat (khong goi lai Animator.Play moi frame).</summary>
+        protected void PlayAnimHash(int hash)
+        {
+            if (!animator || hash == currentAnim) return;
+            currentAnim = hash;
+            animator.Play(hash, 0, 0f);
+        }
+    }
+}

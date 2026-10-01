@@ -176,7 +176,12 @@ namespace LuHanh.Player
             }
             else
             {
-                t.localPosition = new Vector3(config.slashAnchor.x, config.slashAnchor.y, t.localPosition.z);
+                // Day ra xa theo huong chem; X cuc bo da la phia truoc vi object cha tu lat.
+                Vector2 push = currentDirection == Direction.Up ? new Vector2(0f, config.slashUpPush)
+                    : currentDirection == Direction.Down ? new Vector2(0f, -config.slashDownPush)
+                    : new Vector2(config.slashSidePush, 0f);
+                Vector2 pos = config.slashAnchor + push;
+                t.localPosition = new Vector3(pos.x, pos.y, t.localPosition.z);
                 t.localRotation = Quaternion.Euler(0f, 0f, config.slashBaseAngle + dirAngle);
                 slashVisual.flipX = config.slashFlipX;
             }

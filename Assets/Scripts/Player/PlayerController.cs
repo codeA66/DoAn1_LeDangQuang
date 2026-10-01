@@ -12,8 +12,8 @@ namespace LuHanh.Player
     /// Ban than lop nay khong chua logic di chuyen - moi phep tinh nam trong
     /// <see cref="HorizontalMover"/>, <see cref="GroundSensor"/> va cac trang thai.
     ///
-    /// De o global namespace de khong lam dut tham chieu component da gan san trong scene
-    /// va cac UnityEvent cua PlayerInput dang tro toi <see cref="onMove"/>.
+    /// Luu y: UnityEvent cua PlayerInput tro toi <see cref="onMove"/> / <see cref="onJump"/>
+    /// theo ten class kem namespace - doi namespace thi sua m_TargetAssemblyTypeName trong prefab.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour
@@ -48,6 +48,8 @@ namespace LuHanh.Player
         JumpState jump;
         FallState fall;
         DashState dash;
+        HurtState hurt;
+        bool hurtRequested;
 
         /// <summary>Ten trang thai dang chay - tien cho HUD debug.</summary>
         public string CurrentStateName => machine?.Current?.GetType().Name ?? "-";
@@ -61,6 +63,7 @@ namespace LuHanh.Player
         public bool IsDashing => machine != null && machine.Current == dash;
         /// <summary>-1 dang giu xuong, 1 dang giu len, 0 khong giu.</summary>
         public int MoveY => input != null ? input.MoveY : 0;
+        public bool IsHurt => machine != null && machine.Current == hurt;
 
         /// <summary>Ban ra moi khi doi trang thai: (cu, moi). Hieu ung, am thanh nghe o day.</summary>
         public event System.Action<IState, IState> StateChanged;
@@ -108,18 +111,27 @@ namespace LuHanh.Player
             jump = new JumpState(context);
             fall = new FallState(context);
             dash = new DashState(context);
+            hurt = new HurtState(context);
+
+            // Bi danh trung de len moi thu khac.
+            machine.AddAnyTransition(hurt, () => hurtRequested);
 
             // Dash uu tien cao nhat, giong Celeste xet dash truoc nhay.
-            machine.AddAnyTransition(dash, () => context.WantsDash && context.CanDash);
+            machine.AddAnyTransition(dash, () => machine.Current != hurt && context.WantsDash && context.CanDash);
 
             // Nhay: dung o dau cung nhay duoc mien la con coyote va con lenh trong dem,
             // tru luc dang dash. Nho vay bam nhay luon phan hoi ngay, khong tre frame nao.
-            machine.AddAnyTransition(jump, () => machine.Current != dash && context.WantsJump && context.CanJump);
+            machine.AddAnyTransition(jump, () => machine.Current != dash && machine.Current != hurt && context.WantsJump && context.CanJump);
 
             // Het dash
             machine.AddTransition(dash, fall, () => dash.Finished && !ground.IsGrounded);
             machine.AddTransition(dash, run, () => dash.Finished && input.HasHorizontal);
             machine.AddTransition(dash, idle, () => dash.Finished && !input.HasHorizontal);
+
+            // Het bi thuong
+            machine.AddTransition(hurt, fall, () => hurt.Finished && !ground.IsGrounded);
+            machine.AddTransition(hurt, run, () => hurt.Finished && input.HasHorizontal);
+            machine.AddTransition(hurt, idle, () => hurt.Finished && !input.HasHorizontal);
 
             // Roi khoi mep ma khong nhay
             machine.AddTransition(idle, fall, () => !ground.IsGrounded);
@@ -147,6 +159,7 @@ namespace LuHanh.Player
             if (readJumpFromKeyboard) PollKeyboardJump();
             PollKeyboardDash();
             machine.Tick(Time.deltaTime);
+            hurtRequested = false;
         }
 
         void PollKeyboardJump()
@@ -171,6 +184,25 @@ namespace LuHanh.Player
             ground.FixedTick();
             context.TickDash(Time.fixedDeltaTime, dashing: machine.Current == dash);
             machine.FixedTick(Time.fixedDeltaTime);
+        }
+
+        /// <summary>Bi danh trung: bat ra voi van toc cho truoc, mat dieu khien trong <paramref name="seconds"/>.</summary>
+        public void Hurt(Vector2 launchVelocity, float seconds)
+        {
+            hurt.Setup(launchVelocity, seconds);
+            hurtRequested = true;
+        }
+
+        /// <summary>Dua nhan vat ve vi tri hoi sinh: dung yen, dung tren dat, day dash.</summary>
+        public void Respawn(Vector2 position)
+        {
+            body.position = position;
+            transform.position = position;
+            body.linearVelocity = Vector2.zero;
+            hurtRequested = false;
+            context.CancelJumpHold();
+            context.RefillDash();
+            machine.SetState(idle);
         }
 
         // ---- Input System: giu nguyen ten ham de khong phai noi lai UnityEvent trong scene ----

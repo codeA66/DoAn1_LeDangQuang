@@ -16,9 +16,10 @@ namespace LuHanh.Environment
         public Camera cam;
         public Transform followTarget;
 
-        [Tooltip("Bo qua tinh toan theo z, dung truc tiep gia tri ben duoi (0 = dung yen theo camera, 1 = bam chat camera).")]
+        [Tooltip("Bo qua tinh toan theo z, dung truc tiep gia tri ben duoi (0 = dung yen theo camera, 1 = bam chat camera, " +
+                 "am = tien canh troi nhanh hon camera).")]
         public bool overrideFactor = false;
-        [Range(0f, 1f)] public float manualFactor = 0.5f;
+        [Range(-1f, 1f)] public float manualFactor = 0.5f;
 
         [Tooltip("Nhan ban sprite sang hai ben de nen khong bao gio het.")]
         public bool infiniteHorizontal = true;
