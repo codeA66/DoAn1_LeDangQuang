@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LuHanh.Player.FSM
+namespace LuHanh.Core.FSM
 {
     /// <summary>
     /// May trang thai huu han dieu khien bang dieu kien.

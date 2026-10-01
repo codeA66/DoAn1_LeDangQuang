@@ -45,12 +45,32 @@ Assets/
   Scenes/              TestGamePlay.unity
   Settings/            PlayerMovementConfig.asset, PlayerNoFriction.physicsMaterial2D, URP settings
   Scripts/
+    Core/
+      FSM/             StateMachine, IState (dùng chung: player, quái, boss)
+    Combat/            HitInfo, IDamageable, TrainingDummy
     Environment/       ParallaxEffect, FogLayer, SubtleSway
-    Player/            PlayerController + các lớp di chuyển
-      FSM/             StateMachine, IState
+    Player/            PlayerController, PlayerAttack, PlayerMovementFx + các lớp di chuyển
       States/          IdleState, RunState, JumpState, FallState, DashState
   Sprites/             sprite gốc tải về (tileset, nhân vật)
 ```
+
+### Quy tắc namespace
+
+**Namespace = `LuHanh.` + đường dẫn thư mục trong `Scripts/`**. Nhìn namespace là biết file nằm ở đâu:
+
+| Thư mục | Namespace |
+|---|---|
+| `Scripts/Core/FSM/` | `LuHanh.Core.FSM` |
+| `Scripts/Combat/` | `LuHanh.Combat` |
+| `Scripts/Environment/` | `LuHanh.Environment` |
+| `Scripts/Player/` | `LuHanh.Player` |
+| `Scripts/Player/States/` | `LuHanh.Player.States` |
+
+Không để class ở namespace toàn cục. File mới tạo phải bọc trong `namespace … { }` đúng thư mục.
+
+> ⚠️ **Đổi namespace của class có UnityEvent trỏ tới.** Unity tìm component theo GUID trong file `.meta`, nên component đã gắn không bị mất. Riêng UnityEvent (ví dụ `PlayerInput → Events → onMove/onJump`) lưu tên class kèm namespace trong `m_TargetAssemblyTypeName`. Đổi namespace xong phải sửa dòng này trong prefab, ví dụ thành `LuHanh.Player.PlayerController, Assembly-CSharp`. Có thể sửa trực tiếp trong file `.prefab`, hoặc chọn lại hàm trong ô Events của Inspector.
+>
+> Di chuyển script sang thư mục khác thì **kéo thả trong cửa sổ Project của Unity** (hoặc dùng `AssetDatabase.MoveAsset`) để file `.meta` đi theo và giữ nguyên GUID.
 
 ---
 
@@ -759,3 +779,4 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 22. Đánh thường phím J kiểu Hollow Knight: HitInfo, IDamageable, PlayerAttack + PlayerAttackConfig (chém ngang/lên/xuống, pogo, recoil, input buffer, hồi chiêu), vệt chém slash_arc vẽ bằng code, layer Enemy, hình nộm TrainingDummy trong TestGamePlay.
 23. Vệt chém kiểu Hollow Knight: 4 khung slash_0..3 (hai đầu nhọn, dày giữa, vệt tốc độ, quét từ trên xuống) thay cho hình bán nguyệt; PlayerAttack phát lần lượt các khung (slashFrames), slashVisualTime 0.14, slashGrow 0.08.
 24. Vệt chém đổi sang bộ Cel-Shaded Slash (Sugawara Studio, bản đỏ miễn phí): 10 khung 24fps (00002–00011), PPU 180, tâm vòng cung ở ngực (slashAnchor 0,0.9), xoay 90° + lật ngang, phát trong 0.18s; PlayerAttackConfig thêm slashCentredOnHitArea, slashAnchor, slashBaseAngle, slashFlipX.
+25. Chuẩn hóa cấu trúc code: mọi script có namespace theo thư mục (PlayerController/PlayerAttack/PlayerMovementFx → LuHanh.Player; HitInfo/IDamageable/TrainingDummy → LuHanh.Combat; FogLayer/ParallaxEffect/SubtleSway → LuHanh.Environment). FSM chuyển từ Scripts/Player/FSM sang Scripts/Core/FSM (namespace LuHanh.Core.FSM) để quái, boss dùng chung. Sửa m_TargetAssemblyTypeName của 2 UnityEvent onMove/onJump trong Player.prefab.

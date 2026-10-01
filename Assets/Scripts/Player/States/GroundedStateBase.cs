@@ -1,4 +1,4 @@
-using LuHanh.Player.FSM;
+using LuHanh.Core.FSM;
 
 namespace LuHanh.Player.States
 {

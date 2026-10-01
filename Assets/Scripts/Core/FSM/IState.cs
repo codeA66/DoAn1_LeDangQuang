@@ -1,4 +1,4 @@
-namespace LuHanh.Player.FSM
+namespace LuHanh.Core.FSM
 {
     /// <summary>Mot trang thai trong may trang thai. Vong doi: Enter -> Tick/FixedTick* -> Exit.</summary>
     public interface IState

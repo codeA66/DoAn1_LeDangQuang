@@ -9997,7 +9997,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2517054795955068375}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_TargetAssemblyTypeName: LuHanh.Player.PlayerController, Assembly-CSharp
         m_MethodName: onMove
         m_Mode: 0
         m_Arguments:
@@ -10061,7 +10061,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2517054795955068375}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_TargetAssemblyTypeName: LuHanh.Player.PlayerController, Assembly-CSharp
         m_MethodName: onJump
         m_Mode: 0
         m_Arguments:
