@@ -3,9 +3,9 @@ using UnityEngine;
 namespace LuHanh.Combat
 {
     /// <summary>
-    /// Cham vao la mat mau - kieu quai Hollow Knight. Gan len object co collider trigger
-    /// (vd object con "Hitbox" cua quai). Bat tu sau khi trung do ben nhan don tu lo,
-    /// nen o day cu ban don moi buoc vat ly ma khong can dem gio.
+    /// Vung gay sat thuong (trigger) cua mot don tan cong, vd object con "Hitbox" cua Ghoul.
+    /// Nguoi choi khong co bat tu sau khi trung don, nen moi lan bat component nay chi trung
+    /// toi da 1 lan (trung xong tu tat). Ben tan cong bat lai khi bat dau don moi.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class ContactDamage : MonoBehaviour
@@ -31,6 +31,7 @@ namespace LuHanh.Combat
                 knockback = 0f,
                 source = gameObject
             });
+            enabled = false;
         }
     }
 }

@@ -16,7 +16,8 @@ MonoBehaviour:
   activeTime: 0.1
   inputBuffer: 0.1
   damage: 1
-  knockback: 6
+  knockback: 18
+  hitEffectPrefab: {fileID: 1211546051468613633, guid: 466a0871843d6f44687400396a74dd33, type: 3}
   sideOffset: {x: 2, y: 0.9}
   sideSize: {x: 1.6, y: 1.2}
   upOffset: {x: 0, y: 2.9}

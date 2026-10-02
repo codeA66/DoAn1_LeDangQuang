@@ -1,5 +1,6 @@
 using LuHanh.Combat;
 using LuHanh.Core.FSM;
+using LuHanh.Effects;
 using LuHanh.Enemies.States;
 using UnityEngine;
 
@@ -9,18 +10,25 @@ namespace LuHanh.Enemies
     public enum EnemyAnim { Idle, Walk, Attack }
 
     /// <summary>
-    /// Quai di bo: tuan tra -> thay nguoi choi thi duoi -> mat dau thi quay lai.
+    /// Quai di bo: tuan tra -> thay nguoi choi thi duoi -> du gan thi gong roi lao toi
+    /// (chi gay sat thuong luc lao) -> mat dau thi quay lai.
     /// Phan chung (mau, nhay trang, hoi sinh, ngu) nam o <see cref="EnemyBase"/>;
     /// lop nay chi khai bao trang thai, luat chuyen va cach do tuong / mep vuc.
     /// </summary>
     public class EnemyController : EnemyBase
     {
         [SerializeField] EnemyConfig config;
+        [Tooltip("Vung gay sat thuong cua cu lao (object con Hitbox). Chi bat trong luc dang lao.")]
+        [SerializeField] ContactDamage attackHitbox;
+        [Tooltip("Khoi bao truoc luc gong de lao (object con WindupFx). De trong thi khong co khoi.")]
+        [SerializeField] FrameAnimation windupFx;
 
         PatrolState patrol;
         ChaseState chase;
+        DashAttackState dash;
         HurtState hurt;
         int idleHash, walkHash, attackHash;
+        float nextDashTime;
 
         public EnemyConfig Config => config;
         protected override EnemyConfigBase BaseConfig => config;
@@ -37,6 +45,8 @@ namespace LuHanh.Enemies
             idleHash = Animator.StringToHash(config.idleState);
             walkHash = Animator.StringToHash(config.walkState);
             attackHash = Animator.StringToHash(config.attackState);
+            if (attackHitbox == null) attackHitbox = GetComponentInChildren<ContactDamage>(true);
+            SetAttackHitbox(false);
 
             base.Awake();
         }
@@ -45,11 +55,14 @@ namespace LuHanh.Enemies
         {
             patrol = new PatrolState(this);
             chase = new ChaseState(this);
+            dash = new DashAttackState(this);
             hurt = new HurtState(this);
 
             machine.AddAnyTransition(hurt, () => HurtRequested);
             machine.AddTransition(patrol, chase, CanSeePlayer);
+            machine.AddTransition(chase, dash, CanDash);
             machine.AddTransition(chase, patrol, () => chase.LostPlayer);
+            machine.AddTransition(dash, chase, () => dash.Finished);
             // Vua bi chem nghia la nguoi choi o gan -> duoi luon.
             machine.AddTransition(hurt, chase, () => hurt.Finished);
         }
@@ -57,7 +70,13 @@ namespace LuHanh.Enemies
         protected override void OnHurt(HitInfo hit) => hurt.Setup(hit.direction * hit.knockback);
 
         // Dang o Patrol san thi SetState khong goi lai Enter, nen tu phat lai clip.
-        protected override void OnResetState() => PlayAnim(EnemyAnim.Walk);
+        protected override void OnResetState()
+        {
+            PlayAnim(EnemyAnim.Walk);
+            SetAttackHitbox(false);
+            PlayWindupFx(false);
+            nextDashTime = 0f;
+        }
 
         // ---- Tien ich cho cac trang thai ----
 
@@ -76,6 +95,31 @@ namespace LuHanh.Enemies
             if (Mathf.Abs(d.y) > config.detectHeight) return false;
             if (Mathf.Abs(d.x) > config.detectRange) return false;
             return d.x * FacingSign >= 0f;
+        }
+
+        /// <summary>Het hoi chieu, dang dung tren dat va nguoi choi o phia truoc trong tam lao.</summary>
+        bool CanDash()
+        {
+            if (!Player || Time.time < nextDashTime || !IsGrounded() || IsBlockedAhead()) return false;
+            Vector2 d = Player.position - transform.position;
+            if (Mathf.Abs(d.y) > config.detectHeight) return false;
+            return Mathf.Abs(d.x) <= config.dashTriggerRange && d.x * FacingSign >= 0f;
+        }
+
+        public void StartDashCooldown() => nextDashTime = Time.time + config.dashCooldown;
+
+        /// <summary>Bat / tat khoi gong. Khoi chay het dung bang dashWindup.</summary>
+        public void PlayWindupFx(bool on)
+        {
+            if (!windupFx) return;
+            if (on) windupFx.Play(config.dashWindup);
+            else windupFx.Stop();
+        }
+
+        /// <summary>Bat/tat vung gay sat thuong. Moi lan bat, ContactDamage chi trung toi da 1 lan.</summary>
+        public void SetAttackHitbox(bool on)
+        {
+            if (attackHitbox) attackHitbox.enabled = on;
         }
 
         public bool IsGrounded()

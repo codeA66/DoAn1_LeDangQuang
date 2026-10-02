@@ -15,6 +15,10 @@ namespace LuHanh.Enemies
         [Tooltip("Thoi gian khung lai, bi day lui sau moi nhat chem.")]
         public float hurtTime = 0.2f;
         public float flashTime = 0.12f;
+        [Tooltip("Hinh bi bop lai khi trung don (X rong ra, Y dep xuong) roi bat ve 1.")]
+        public Vector2 hitSquash = new Vector2(1.3f, 0.7f);
+        [Tooltip("Thoi gian bat ve hinh dang cu (giay).")]
+        public float squashTime = 0.1f;
 
         [Header("Dia hinh")]
         public LayerMask groundLayers = 1 << 8;

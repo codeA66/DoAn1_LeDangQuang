@@ -45,13 +45,13 @@ Assets/
   Scenes/              TestGamePlay.unity
   Settings/            PlayerMovementConfig.asset, PlayerNoFriction.physicsMaterial2D, URP settings
   Scripts/
-    Core/              RespawnManager, IResettable
+    Core/              RespawnManager, IResettable, HitStop
       FSM/             StateMachine, IState (dùng chung: player, quái, boss)
-    Combat/            Health, ContactDamage, Projectile, ProjectilePool, HitInfo, IDamageable, TrainingDummy
+    Combat/            Health, ContactDamage, HazardZone, IHazardReceiver, Projectile, ProjectilePool, HitInfo, IDamageable, TrainingDummy
     Enemies/           EnemyBase, EnemyConfigBase, EnemyController, EnemyConfig, FlyingEnemyController, FlyingEnemyConfig
-      States/          EnemyStateBase, PatrolState, ChaseState, HurtState
+      States/          EnemyStateBase, PatrolState, ChaseState, DashAttackState, HurtState
         Flying/        FlyingStateBase, HoverState, CombatState, ShootState, FlyingHurtState
-    Effects/           HaloPulse, RimLight
+    Effects/           HaloPulse, RimLight, HitEffect, FrameAnimation
     Environment/       ParallaxEffect, FogLayer, SubtleSway
     Player/            PlayerController, PlayerAttack, PlayerHealth, PlayerMovementFx + các lớp di chuyển
       States/          IdleState, RunState, JumpState, FallState, DashState, HurtState
@@ -142,7 +142,7 @@ Với `Tilemap_Ground`, từng bước:
 | | Kinematic | Không rơi, nhưng tốn tính toán hơn Static mà không được lợi gì |
 | `CompositeCollider2D` Geometry Type | Outlines | Collider chỉ là đường viền rỗng. Nhân vật vẫn đứng được trên mặt, nhưng nếu bị đẩy lọt vào trong khối thì không bị đẩy ra. `OverlapCircle` của cảm biến chạm đất cũng chỉ bắt được khi chạm viền |
 | Physics Layer | Để Default | `GroundSensor` không thấy đất → nhân vật **luôn ở trạng thái Fall**, không nhảy được (dù vẫn đứng được trên sàn nhờ va chạm vật lý) |
-| Sorting Order | Lớn hơn 0 | Đất vẽ **đè lên** nhân vật (`Visual` có Order 0) |
+| Sorting Order | Lớn hơn 9 | Đất vẽ **đè lên** quái (Order 10) và nhân vật (`Visual` Order 20). Giữ −5 |
 
 **Tile asset** (`Assets/Art/Tiles/`): mỗi ô vẽ được là một file Tile riêng. Đang dùng `T_Ground_Top`, `T_Ground_Fill`, `T_Wall`, cả ba đều **Collider Type = Grid** (va chạm phủ kín đúng 1 ô, không theo hình vẽ).
 
@@ -183,14 +183,14 @@ Map hiện tại của `Tilemap_Ground`: trải từ x = −13 đến 119, y = �
 | `PlayerAttack` | Config = `PlayerAttackConfig` · Slash Visual = object con `SlashFx` | Đánh thường phím J (mục 5.14) |
 | `Rigidbody2D` | Dynamic · Freeze Rotation Z · **Interpolation = Interpolate** · Collision = Discrete | Interpolate: vật lý chạy 50Hz nhưng màn hình vẽ nhanh hơn → không bật thì nhân vật bị giật |
 | `CapsuleCollider2D` | Material = `PlayerNoFriction` · size/offset theo sprite (xem 4.2) | Friction 0 để không dính tường khi nhảy áp vào tường; ma sát mặt đất do code tự xử lý |
-| `PlayerInput` | Actions = `PlayerInputAction` · Behavior = **Invoke Unity Events** · Move → `PlayerController.onMove` · Jump → `PlayerController.onJump` | |
-| `PlayerController` | Config = `PlayerMovementConfig` · điền tên state animation (mục 6) · **Read Jump From Keyboard = tắt** · Draw Ground Gizmo = bật | Nhảy đã đi qua action `Jump` của `PlayerInput`. Bật cả hai thì một lần bấm Space bị ghi nhận hai lần |
+| `PlayerInput` | Actions = `PlayerInputAction` · Behavior = **Invoke Unity Events** · Move → `PlayerController.onMove` · Jump → `PlayerController.onJump` · Dash → `PlayerController.onDash` · Attack → `PlayerAttack.onAttack` | Mọi phím đi qua Input System, đổi phím chỉ cần sửa file `.inputactions` (mục 5.12) |
+| `PlayerController` | Config = `PlayerMovementConfig` · điền tên state animation (mục 6) · Draw Ground Gizmo = bật | |
 | `Health` + `PlayerHealth` | Xem mục 5.15 | Máu 5 mask |
 | GameObject `Player` | **Tag = Player**, Layer = Default | |
 
 **Các bước dựng từ đầu**:
 1. Tạo GameObject rỗng `Player` ở chân nhân vật (gốc tọa độ = chân, xem 4.2). Tag = Player.
-2. Tạo con `Visual` → Add `SpriteRenderer` (sprite = khung idle đầu tiên, Order **0**) + `Animator` (Controller = `AC_player`).
+2. Tạo con `Visual` → Add `SpriteRenderer` (sprite = khung idle đầu tiên, Order **20**, trên quái, xem bảng Order mục 9.8) + `Animator` (Controller = `AC_player`).
 3. Trên `Player`: Add `Rigidbody2D` → chỉnh theo bảng trên. **Gravity Scale để bao nhiêu cũng được**: `PlayerController.Awake` luôn đặt lại về 0 và tự tính trọng lực (mục 5.7). Prefab đang để 3, nhưng không có tác dụng.
 4. Add `CapsuleCollider2D` (Direction Vertical) → Material = `PlayerNoFriction`, size/offset theo 4.2.
 5. Add `PlayerInput` → Actions = `PlayerInputAction`, Default Map = `Player`, Behavior = Invoke Unity Events → mở mục Events → Player → kéo chính object Player vào ô Move và Jump, chọn hàm `PlayerController.onMove` / `onJump`.
@@ -221,7 +221,6 @@ Sprite nhân vật đặt **pivot ở chân**, nên gốc tọa độ Player n�
 - Nút Gizmo: chọn Player → vòng tròn cảm biến hiện **xanh** khi chạm đất, **đỏ** khi trên không.
 
 Giá trị hiện tại (sprite Cloaked Platformer, PPU 230, cao ~1.8 unit): collider **0.6 × 1.7**, offset **(0, 0.85)**, probe **(0, 0.1)** bán kính **0.28**.
-(Trước đó với Hooded 32×32: collider 0.45 × 0.85, offset (0, 0.425), probe (0, 0.05) bán kính 0.18.)
 
 **Hình dung vòng cảm biến** với giá trị hiện tại: tâm cao hơn chân 0.1, bán kính 0.28 → đáy vòng thấp hơn chân **0.18**, hai bên rộng ±0.28 (collider rộng ±0.3). Tức là vòng **thò xuống dưới chân một chút** và **hẹp hơn thân một chút**.
 
@@ -285,10 +284,10 @@ PlayerController   (MonoBehaviour trên Player) lắp ráp mọi thứ, khai bá
 ```csharp
 void Update()                                   // chạy mỗi khung hình (60-300 lần/giây)
 {
-    if (readJumpFromKeyboard) PollKeyboardJump(); // đọc Space trực tiếp từ bàn phím
-    PollKeyboardDash();                           // đọc Shift trái
     machine.Tick(Time.deltaTime);                 // 1) xét luật chuyển  2) chạy Tick của state
+    hurtRequested = false;                        // yêu cầu bị thương chỉ sống trong 1 frame
 }
+// Input không đọc trong Update: PlayerInput gọi onMove / onJump / onDash khi có phím (mục 5.4).
 
 void FixedUpdate()                              // chạy theo nhịp vật lý (50 lần/giây)
 {
@@ -297,7 +296,7 @@ void FixedUpdate()                              // chạy theo nhịp vật lý 
     machine.FixedTick(Time.fixedDeltaTime);       // state tính vận tốc
 }
 ```
-- **Update** xử lý input và chuyển state → phản hồi nút bấm ngay trong frame.
+- **Update** xét chuyển state (đọc lệnh đã nằm trong bộ đệm input) → phản hồi nút bấm ngay trong frame.
 - **FixedUpdate** xử lý vật lý (vận tốc, trọng lực) → ổn định, không phụ thuộc FPS.
 - Rigidbody2D bật **Interpolate** để hình ảnh mượt giữa các bước vật lý.
 
@@ -334,7 +333,8 @@ public bool JumpBuffered => !jumpConsumed && Time.time - lastJumpPressedTime <= 
 |---|---|---|
 | Chạy (WASD, mũi tên, cần trái tay cầm) | Action `Move` của `PlayerInput` | `onMove` → `SetMove` |
 | Nhảy (Space) | Action `Jump` của `PlayerInput` (`started` → bấm, `canceled` → thả) | `onJump` → `PressJump` / `ReleaseJump` |
-| Dash (Shift trái) | Đọc thẳng bàn phím trong `PollKeyboardDash` (asset input chưa có action Dash) | `PressDash` |
+| Dash (Shift trái) | Action `Dash` của `PlayerInput` (`started` → bấm) | `onDash` → `PressDash` |
+| Chém (J) | Action `Attack` của `PlayerInput` (`started`) | `PlayerAttack.onAttack` → lưu thời điểm bấm (mục 5.14) |
 
 **Ngưỡng làm tròn** (quan trọng khi chơi bằng tay cầm):
 | Thuộc tính | Ngưỡng | Hệ quả |
@@ -591,16 +591,35 @@ Muốn có nhiều bộ số (vd màn băng, dưới nước): chuột phải �
 | A / D (hoặc mũi tên ← →) | Chạy | Action `Move` của `PlayerInput` |
 | W / S (hoặc ↑ ↓) | Chọn hướng dash, chém lên/xuống, rơi nhanh | Action `Move` (trục dọc) |
 | Space (giữ để nhảy cao hơn) | Nhảy | Action `Jump` |
-| Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) | Đọc thẳng bàn phím (`PollKeyboardDash`) |
-| J (giữ W: chém lên · trên không giữ S: chém xuống) | Đánh thường; chém xuống trúng thì nảy lên | Đọc thẳng bàn phím (`PlayerAttack`) |
+| Shift trái + W/A/S/D | Dash 8 hướng (1 lần, chạm đất thì hồi) | Action `Dash` |
+| J (giữ W: chém lên · trên không giữ S: chém xuống) | Đánh thường; chém xuống trúng thì nảy lên | Action `Attack` |
 | S khi đang rơi | Rơi nhanh (chỉ khi đã rơi hết tốc, mục 5.7) | Action `Move` |
-| Cần trái tay cầm | Chạy + hướng | Action `Move` có binding `<Gamepad>/leftStick` |
 
-**Tay cầm hiện chỉ dùng được để chạy**: action `Jump` chỉ có binding `<Keyboard>/space`; dash và đánh đọc thẳng `Keyboard.current`. (Action `Attack` trong asset có binding chuột trái / RT tay cầm nhưng chưa nối vào code nào.)
+**Toàn bộ input đi qua Input System** (`Assets/Character/Player/PlayerInputAction.inputactions`, map `Player`). Code không đọc bàn phím trực tiếp ở đâu cả.
 
-**Thêm phím / tay cầm cho nhảy**: mở `Assets/Character/Player/PlayerInputAction.inputactions` → map `Player` → action `Jump` → dấu `+` → Add Binding → chọn phím (vd `<Gamepad>/buttonSouth`) → **Save Asset**. Không cần sửa code vì `onJump` đã nghe action này.
+| Action | Kiểu | Binding | Nối tới (`PlayerInput` → Events → Player) |
+|---|---|---|---|
+| `Move` | Value / Vector2 | WASD + phím mũi tên (composite), cần trái tay cầm | `PlayerController.onMove` |
+| `Jump` | Button | `<Keyboard>/space` | `PlayerController.onJump` (`started` = bấm, `canceled` = thả → nhảy giữ phím) |
+| `Dash` | Button | `<Keyboard>/leftShift` | `PlayerController.onDash` (`started`) |
+| `Attack` | Button | `<Keyboard>/j` | `PlayerAttack.onAttack` (`started`) |
 
-> ⚠️ Đừng bật `Read Jump From Keyboard` trên `PlayerController` khi action `Jump` đã nối Space: mỗi lần bấm sẽ gọi `PressJump` hai lần (một từ action, một từ bàn phím).
+Tay cầm: hiện chỉ `Move` có binding tay cầm. Nhảy, dash và chém mới có phím bàn phím (chưa làm tay cầm).
+
+**Đổi hoặc thêm phím** (không cần sửa code):
+1. Mở `PlayerInputAction.inputactions` → map `Player` → chọn action.
+2. Dấu `+` → **Add Binding** → Path → chọn phím, ví dụ `<Keyboard>/k` hoặc `<Gamepad>/buttonSouth`.
+3. Bấm **Save Asset**.
+
+**Thêm một action mới** (ví dụ `Heal`):
+1. Thêm action trong file `.inputactions` → Save Asset.
+2. Viết hàm `public void onHeal(InputAction.CallbackContext c)` trong script cần nhận.
+3. Chọn Player → `PlayerInput` → mục **Events → Player** sẽ có thêm ô `Heal` → bấm `+` → kéo object Player vào → chọn hàm `onHeal`.
+4. Lưu prefab, rồi **kiểm tra lại ô `Actions`** (mục 10).
+
+> Hàm nhận input chỉ làm việc nhỏ: ghi nhận "đã bấm", "đã thả" vào bộ đệm (`MovementInput`, `lastPressedTime`). Quyết định có nhảy, dash hay chém hay không thì để `Update` hoặc FSM làm, nhờ vậy input buffer và coyote time vẫn hoạt động.
+>
+> ⚠️ UnityEvent **vẫn gọi hàm khi component đang tắt**. Vì vậy `PlayerAttack.onAttack` kiểm tra `enabled`, để bấm J lúc đang chết không làm nhân vật chém ngay khi hồi sinh.
 
 ### 5.13 Thêm một state mới (ví dụ)
 1. Tạo file trong `States/`, kế thừa `PlayerStateBase` (hoặc `GroundedStateBase` nếu là state trên mặt đất).
@@ -660,8 +679,8 @@ Nếu làm Attack thành một state, đang nhảy mà chém sẽ phải thoát 
 | `PlayerController.cs` | Thêm 3 thuộc tính chỉ đọc: `FacingRight`, `IsDashing`, `MoveY` |
 
 #### Luồng một nhát chém (`PlayerAttack`)
-1. **`Update`**: bấm J (đọc thẳng `Keyboard.current.jKey`, giống Space/Shift) → lưu thời điểm bấm (**input buffer** 0.1s).
-2. Nếu còn lệnh trong buffer **và** hết hồi chiêu **và** không đang dash → `StartSwing()`:
+1. **`onAttack`** (action `Attack` = phím J, gọi từ `PlayerInput`): lưu thời điểm bấm (**input buffer** 0.1s).
+2. **`Update`**: nếu còn lệnh trong buffer **và** hết hồi chiêu **và** không đang dash → `StartSwing()`:
    - Đặt `cooldownTimer = 0.35`, `activeTimer = 0.1`, nhớ hướng đang nhìn lúc bấm.
    - Chọn hướng: `MoveY == 1` → **Up**; `MoveY == −1` và **không chạm đất** → **Down**; còn lại → **Side**.
    - Hiện vệt chém, kiểm tra trúng ngay trong frame bấm.
@@ -713,7 +732,8 @@ Chọn Player trong Scene → Gizmo đỏ vẽ 3 vùng chém để chỉnh cho k
 | `activeTime` | 0.1 | Vùng chém tồn tại lâu hơn, dễ trúng hơn |
 | `inputBuffer` | 0.1 | Bấm sớm vẫn ăn |
 | `damage` | 1 | |
-| `knockback` | 6 | Mục tiêu bị đẩy xa hơn (quái sau này dùng) |
+| `knockback` | **18** | Quái văng xa hơn (khoảng 3.6 ô với Ghoul) |
+| `hitEffectPrefab` | `HitFx` | Hiệu ứng lóe sáng + mảnh vụn khi trúng |
 | `pogoSpeed` | 0 (= jumpSpeed) | Pogo nảy cao hơn |
 | `recoilSpeed` | 4 | Bị đẩy lùi xa hơn khi chém ngang trúng |
 | `slashVisualTime` / `slashGrow` | 0.18 / 0 | Vệt chém quét chậm hơn / nở to hơn |
@@ -721,36 +741,171 @@ Chọn Player trong Scene → Gizmo đỏ vẽ 3 vùng chém để chỉnh cho k
 | `slashCentredOnHitArea` | ✘ | Bật khi dùng ảnh vẽ sẵn hướng sang phải |
 | `slashAnchor` / `slashBaseAngle` / `slashFlipX` | (0, 0.9) / 90 / ✔ | Tâm xoay / góc gốc / đổi chiều quét của vòng cung |
 
-**Chưa làm (để sau)**: rung camera khi trúng; pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
+
+#### Hiệu ứng trúng đòn (lóe sáng + mảnh vụn cam) và đánh bay quái
+Mỗi khi chém trúng một `IDamageable` (quái, hình nộm), ngay tại **điểm trúng** sẽ có:
+1. **Flash**: một chớp sáng trắng to, rất ngắn.
+2. **Shards**: 14–20 mảnh cam dạng vệt dài văng theo **hướng chém**, lệch tối đa ±35°, rơi nhẹ và mờ dần.
+3. **Máu quái** (các hạt cam là **máu của quái vật**), gồm 2 dạng:
+   - **Puffs = máu gần**: 6–9 đốm **to (2.0–3.0), nhạt** (cam nhạt 75%), bay chậm, phanh mạnh nên **đọng gần chỗ trúng** rồi tan (0.5–0.9s).
+   - **BloodFar = máu xa**: 14–20 **giọt nhỏ (0.45–0.8)**, màu **pha ngẫu nhiên giữa cam nhạt của máu gần và cam tươi** (100%, hòa cùng máu gần), bay nhanh 11–18, quạt **100° nghiêng lên 50°** theo hướng chém, **trọng lực 1.5** nên bắn lên rồi rơi xuống thành đường cong (0.55–1.0s).
+   - **Shards** dùng cùng dải màu pha đó, để mọi hạt cam đều đọc ra là máu.
+4. **StreaksShort**: **8–12 vệt chém ngắn, mảnh** (dài 0.4–1.0, dày **0.2–0.35**, màu trắng ngả kem), **rải thành vòng** cách điểm trúng 0.4–1.8 ô trong **quạt 270°** (±135° quanh hướng chém). **Hiện ngay, tắt sau 0.06–0.1s.**
+5. **StreaksLong**: **2–3 vệt trắng tinh, to, rất dài** (3–6 ô, dày **0.6–0.9**) gần song song với hướng chém (±5°), **lệch ngang ±0.7 ô** để các đường tách nhau. **Hiện trễ 0.04s, sống 0.22–0.32s**, mờ dần.
+
+**Nhịp thời gian** (giống ảnh mẫu Hollow Knight): **0s** Flash + Shards + vệt ngắn → **0.04s** vệt dài → **0.08s** đốm cam (`puffDelay`). Vệt chém trắng phải thấy **trước**, đốm cam đến sau làm dư âm.
+
+**Tác dụng của từng lớp** (mỗi lớp lo một cảm giác, theo nhịp **chớp tức thì → vệt nhanh → đốm đọng lại**):
+| Lớp | Tác dụng | Bỏ đi thì |
+|---|---|---|
+| **Flash** | **Xác nhận "trúng rồi!"** đúng khoảnh khắc chạm, và đánh dấu chính xác điểm trúng. Mắt người phản ứng với chớp sáng nhanh nhất | Người chơi phải nhìn quái giật hoặc nháy trắng mới biết đã trúng, cảm giác bị trễ |
+| **Shards** | **Cho thấy lực và hướng đòn**: vệt dài bay vọt theo hướng chém nên nhát chém trông nhanh và mạnh. Mảnh rơi xuống gợi cảm giác có thứ vỡ ra | Đòn đánh trông "nhẹ", không rõ chém từ phía nào |
+| **Puffs (máu gần)** | **Khối máu bắn ra**: đốm to, nhạt đọng quanh chỗ trúng khoảng 0.7s, tạo dư âm và cho thấy quái **mất máu** | Không thấy quái bị thương, cú đánh trôi qua mà không để lại ấn tượng |
+| **BloodFar (máu xa)** | **Lực của nhát chém**: giọt nhỏ, đậm bắn xa rồi rơi theo đường cong. Nghiêng lên 50° để giọt bắn vồng cao rồi rơi xuống thành đường cong đẹp | Máu chỉ là một cục quanh chỗ trúng, thiếu cảm giác văng |
+| **StreaksShort** | **Độ sắc của nhát chém**: chùm tia trắng ngắn bung ra rồi tắt ngay, như tia lửa lóe khi lưỡi kiếm va vào | Cú đánh mềm, thiếu cảm giác "bén" |
+| **StreaksLong** | **Quỹ đạo và tốc độ của nhát chém**: đường trắng dài vạch theo hướng chém, đọng lâu hơn một chút nên mắt kịp thấy | Không thấy rõ nhát chém đi theo hướng nào, mất cảm giác nhanh và mạnh |
+
+**Luồng**:
+- `PlayerAttack.DetectHits` → với mỗi mục tiêu trúng: `hitEffect.Play(hits[i].ClosestPoint(tâm vùng chém), hướng chém)`.
+- `ClosestPoint` lấy điểm trên collider mục tiêu gần tâm vùng chém nhất, tức là đúng mép thân quái phía người chơi.
+
+**Tối ưu**: chỉ có **một** `HitFx` cho cả game.
+- `PlayerAttack.Awake` gọi `Instantiate(config.hitEffectPrefab)` một lần. Không gắn làm con của Player, để không bị lật theo hướng nhìn.
+- Mỗi lần trúng chỉ dời tới điểm trúng rồi `Emit`.
+- Particle dùng Simulation Space **World**, nên các hạt đã bắn ra vẫn bay tiếp dù `HitFx` bị dời đi chỗ khác.
+
+**`Scripts/Effects/HitEffect.cs`**: `Play(point, direction)`.
+- Đặt vị trí.
+- Xoay `Shards` để trục **+Z** trỏ theo hướng chém: `Quaternion.LookRotation(direction, Vector3.back)`. Shape **Cone** luôn phát theo +Z của transform.
+- `Shards.Emit(Random 14..20)`.
+- `Puffs`: xoay `Euler(0, 0, gócHướngChém − arc/2)` (cung của Shape Circle bắt đầu từ trục +X cục bộ, nên lùi nửa cung để giữa cung trùng hướng chém) rồi `Emit(Random 10..14)`.
+- `Flash.Emit(1)`.
+- `EmitShortStreaks`: mỗi vệt là **1 particle đứng yên** (Start Speed 0). `EmitParams` đặt riêng **vị trí** (lùi ra nửa chiều dài theo hướng vệt, để vệt tỏa ra từ tâm), **Start Size 3D** = (dài, dày, 1), **rotation = −góc** (góc xoay của particle tính theo chiều kim đồng hồ), lifetime.
+- `Schedule(lớp, delay)`: vệt dài và đốm cam được đưa vào **hàng đợi cố định 8 chỗ** (mảng có sẵn, không cấp phát). `Update` phát khi tới giờ (`longDelay` 0.04s, `puffDelay` 0.08s). Hàng đợi đầy (chém trúng quá nhiều cùng lúc) thì phát ngay.
+
+**Prefab `Assets/Prefabs/Fx/HitFx.prefab`** (material `M_HitFx`: bản sao `M_PlayerDust`, shader URP Particles/Unlit, ảnh hạt tròn mềm, màu trắng 100%):
+
+| Particle | Thiết lập |
+|---|---|
+| `Flash` (Order 46) | Lifetime **0.12**, Speed 0, Size **2.2**, Start Rotation 0–360°, Color (1, 0.97, 0.9). Size over Lifetime 0.6 → 1.2 (nở ra). Color over Lifetime: alpha 1 → 0.8 → 0, chuyển sang cam nhạt. Emission **tắt**, Shape tắt |
+| `Shards` (Order 45) | Lifetime **0.25–0.45**, Speed **8–15**, Size **0.2–0.32**, Color ngẫu nhiên giữa **(1, 0.72, 0.42) và (1, 0.5, 0.1)** (cùng dải màu pha với máu), **Gravity 1.2**. Shape **Cone** góc **35°**, bán kính 0.05. **Limit Velocity** dampen 0.15 (văng mạnh rồi khựng lại). Size over Lifetime 1 → 0.3. Color over Lifetime alpha 1 → 0. Renderer **Stretched Billboard**: Speed Scale 0.06, Length Scale **2.5** (hạt kéo dài theo vận tốc thành vệt). Emission **tắt** |
+| `Puffs` = máu gần (Order 44) | Lifetime **0.5–0.9**, Speed **2.5–6**, Size **2.0–3.0**, Color **(1, 0.72, 0.42, 0.75)** cam nhạt, Gravity **−0.05**. Shape **Circle**, Arc **170°**. Limit Velocity dampen **0.08**, limit **1** (đọng gần). Size over Lifetime 1 → 0.6. Color over Lifetime alpha giữ 1 tới 40% rồi về 0. Renderer **Billboard** |
+| `BloodFar` = máu xa (Order 45) | Lifetime **0.55–1.0**, Speed **11–18**, Size **0.45–0.8**, Color **Random Between Two Colors (1, 0.72, 0.42) ↔ (1, 0.5, 0.1)** (pha giữa màu máu gần và cam tươi), **Gravity 1.5** (rơi xuống), Max Particles 120. Shape **Circle**, Arc **100°**. Limit Velocity dampen **0.02**, limit 6 (văng xa). Size over Lifetime 1 → 0.4. Color over Lifetime alpha giữ 1 tới 60%. Renderer **Stretched Billboard**, Speed Scale 0.02, Length Scale 1.2 (giọt hơi kéo dài theo hướng bay). Quạt được `HitEffect` nghiêng lên `bloodFarUpTilt` **50°** (chém trái thì nghiêng lên về bên trái, chém lên/xuống không nghiêng) |
+| `StreaksShort` / `StreaksLong` (Order 47) | Material **`M_Streak`** (bản sao `M_HitFx`, Base Map = `Assets/Art/Generated/Fx/streak.png`: ảnh 256×16, trắng, sáng ở giữa, **nhọn dần hai đầu**, vẽ bằng code). **Start Size 3D** bật, Start Speed **0**, Emission tắt, Shape tắt, Renderer **Billboard**. Size over Lifetime **tách trục**: X 0.85 → 1.1 (vệt dài ra một chút), Y 1 → 0.4 (mỏng dần). Color over Lifetime trắng → trắng xanh nhạt, alpha 1 → 0.9 → 0. Kích thước, góc, thời gian sống do `HitEffect` đặt cho từng vệt |
+
+Cả hai đều có Order > 40 nên nổi trên lớp tối `VisionMask` (mục 9.8).
+
+| Chỉnh | Ảnh hưởng |
+|---|---|
+| `HitEffect.shardCount` (14, 20) | Nhiều mảnh hơn → đòn đánh "nặng" hơn |
+| `HitEffect.puffCount` (6, 9) / `bloodFarCount` (14, 20) | Số khối máu gần / số giọt máu xa |
+| `HitEffect.bloodFarUpTilt` (**50°**) | Quạt giọt máu nghiêng lên bao nhiêu. 0 thì giọt bắn ngang rồi rơi ngay. 45° thì bắn vồng cao, rơi xa |
+| **Gần nhạt – xa đậm** | Quy tắc tạo chiều sâu cho máu: hạt **to, nhạt, chậm** ở gần + hạt **nhỏ, đậm, nhanh** văng xa. Đảo ngược thì máu trông như khói |
+| Màu máu xa / Shards (**Start Color → Random Between Two Colors**) | Đặt một đầu bằng màu máu gần để hai loại hạt **hòa vào nhau** thành một vụ máu bắn, đầu kia là cam tươi cho có điểm đậm. Hai đầu càng khác nhau thì máu càng lốm đốm |
+| `HitEffect` → Short Count / Length / **Width** / Lifetime | **8–12** / 0.4–1.0 / **0.2–0.35** / 0.06–0.1s. Dày hơn thì vệt đậm, rõ hơn. Lifetime dài hơn thì vệt đọng lâu, mất cảm giác "lóe" |
+| `HitEffect` → Short Along Direction / Short Spread | **1 / 135°** (mọi vệt nằm trong quạt 270°). Along Direction < 1 thì một phần vệt tỏa ngẫu nhiên mọi hướng (kiểu nổ). Spread nhỏ (55°) thì chùm tập trung về phía trước |
+| `HitEffect` → Long Count / Length / **Width** / Lifetime / Spread | **2–3** / 3–6 / **0.6–0.9** / 0.22–0.32s / 5°. Spread lớn (12°) thì các vệt dài bắt chéo thành chữ X (đã thử, không giống mẫu) |
+| `HitEffect` → **Long Delay** (0.04) / **Puff Delay** (0.08) | Thứ tự xuất hiện. Delay = 0 thì lớp đó hiện cùng lúc với vệt ngắn |
+| `HitEffect` → **Short Offset** (0.4–1.8) | Khoảng cách từ điểm trúng tới đầu gần của vệt ngắn. Hẹp (0.05–0.4) thì các vệt **chồng lên nhau thành một cục** (đã gặp, đã sửa). Rộng thì rải thành vòng tỏa |
+| `HitEffect` → **Short Color** | Màu vệt ngắn (trắng ngả kem) để phân biệt với vệt dài trắng tinh |
+| `HitEffect` → **Long Side Offset** (0.7) | Độ lệch ngang giữa các vệt dài. 0 thì các vệt chồng thành một đường. Lớn thì các đường song song tách xa nhau |
+| **Phân biệt vệt ngắn / dài** | Ngắn: mảnh, nhỏ, màu kem, rải rộng, tắt sau 0.06–0.1s. Dài: to, trắng tinh, song song, trễ 0.04s, đọng 0.22–0.32s. Hai loại phải khác **độ dày, độ dài, màu và thời gian**, nếu không sẽ nhìn lẫn vào nhau |
+| Puffs **Start Size** (2.2–3.0) | Đốm to hơn. Ảnh hạt tròn mềm chỉ sáng rõ ở giữa nên nhìn nhỏ hơn số thật khoảng một nửa |
+| Puffs **Limit Velocity → Dampen** (0.039) | Nhỏ → đốm trôi xa mới dừng. Lớn → đốm dừng gần chỗ trúng |
+| Puffs **Limit Velocity → Limit** (1.5) | Quá nhỏ (0.5) thì đốm bị hãm ngay, tụ thành cụm gần chỗ trúng (đã thử, bị loại) |
+| Puffs Shape **Arc** (170°) | Hẹp → tỏa tập trung về phía trước. 360° → tỏa đều mọi hướng |
+| Shards **Speed** | Mảnh văng xa hơn hoặc gần hơn |
+| Shards Shape **Angle** | Hẹp (15°) → tia tập trung; rộng (60°) → tung tóe khắp nơi |
+| Shards **Length Scale** | Vệt dài hơn, trông nhanh hơn. 1 = gần như hạt tròn |
+| Shards **Gravity** | Cao → mảnh rơi nhanh như vụn. 0 → bay thẳng như tia lửa |
+| Shards **Start Color** | Đổi màu mảnh (vd trắng → giống ảnh mẫu Hollow Knight, cam → tia lửa) |
+| Flash **Size** / **Lifetime** | Chớp to hơn / lâu hơn. Lifetime > 0.2 thì thành "đốm sáng", mất cảm giác chớp |
+
+> ⚠️ Lần đầu dùng chung `M_PlayerDust` thì hiệu ứng **nhỏ và tối**. Bản thân material không làm mờ, nhưng mảnh nhỏ và màu cam sẫm nên khó thấy. Sau đó đã tách material riêng `M_HitFx`, tăng kích thước, số mảnh, độ dài vệt và làm màu sáng hơn.
+>
+> ⚠️ **Đừng dùng Shape Cone với góc rộng cho hiệu ứng 2D.** Cone là hình nón 3D quanh trục +Z: góc càng rộng thì càng nhiều hạt bị bắn **vào chiều sâu**, mà game 2D không nhìn thấy chiều này. Khi thử Cone 85° cho Puffs, các đốm tụ thành một cột dọc thay vì tỏa ra. Muốn tỏa rộng thì dùng **Circle + Arc**: hình tròn nằm phẳng trên mặt phẳng XY. Shards vẫn dùng Cone vì góc nhỏ (35°).
+
+
+#### Cảm giác lực của nhát chém: hitstop + bóp hình quái
+Hạt chỉ là trang trí. Cảm giác "đòn có lực" chủ yếu đến từ **thời gian và chuyển động**. Hai kỹ thuật dưới đây xảy ra mỗi lần chém trúng:
+
+| Kỹ thuật | Hoạt động | Tác dụng |
+|---|---|---|
+| **Hitstop** (khựng hình) | Chém trúng thì **dừng cả game 0.05s** (`Time.timeScale = 0`), chỉ 1 lần mỗi nhát dù trúng nhiều mục tiêu | Lưỡi kiếm như **"cắm vào"** mục tiêu. Đây là kỹ thuật quan trọng nhất cho cảm giác lực trong Hollow Knight |
+| **Bóp hình quái** (squash) | Quái trúng đòn thì object `Visual` bị **bẹt ra (rộng 1.3, cao 0.7)** rồi bật về hình cũ trong 0.1s | Quái **"ăn đòn"** thấy rõ bằng hình dạng, không chỉ bằng màu |
+
+Hai kỹ thuật **cộng hưởng với nhau**: bộ đếm bóp hình dùng `Time.deltaTime`, mà trong lúc hitstop thì `deltaTime = 0`. Vì vậy quái **đứng yên ở hình bẹp nhất** suốt 0.05s khựng, rồi mới bật lại. Mắt thấy rất rõ cú va chạm.
+
+**`Scripts/Core/HitStop.cs`**: hitstop **dùng chung** cho mọi nguồn (chém trúng, người chơi bị đánh, rơi bẫy).
+- `HitStop.Request(giây)`: lần đầu gọi thì tự tạo object `HitStop` để điều khiển.
+- Đặt `timeScale = 0`. Thời điểm kết thúc = **lớn nhất** trong các yêu cầu, nên yêu cầu chồng nhau chỉ kéo dài thêm, không cắt ngang nhau.
+- `Update` (vẫn chạy khi `timeScale = 0`) đếm bằng **thời gian thực** (`Time.unscaledTime`). Hết giờ thì trả `timeScale = 1`.
+- `OnDisable`: bị hủy giữa chừng (thoát Play, đổi scene) thì trả `timeScale = 1`, game không bị đứng mãi.
+
+> ⚠️ Vì sao phải dùng chung? Trước đây `PlayerHealth` tự có coroutine khựng hình riêng. Nếu `PlayerAttack` cũng tự làm một cái, khi hai lần khựng chồng nhau (vừa chém trúng vừa bị đánh), bên kết thúc trước sẽ trả `timeScale = 1` và **cắt ngang** bên kia. Chỉ một nơi điều khiển `Time.timeScale` thì không bao giờ xảy ra lỗi này.
+
+**Code**:
+- `PlayerAttack.ReactToHit()` (chạy 1 lần mỗi nhát trúng) → `HitStop.Request(config.hitStopTime)`.
+- `EnemyBase.TakeHit` → `squashTimer = squashTime`.
+- `EnemyBase.LateUpdate` → `UpdateSquash()`: scale của `Visual` = `scaleGốc × Lerp(1, hitSquash, timer / squashTime)`.
+- Pivot của Ghoul ở chân nên bị bẹt xuống từ chân. Pivot của dơi ở giữa nên bẹt quanh tâm.
+- Khi quái hồi sinh thì scale được trả về như cũ.
+
+| Thông số | Ở đâu | Mặc định | Tăng | Giảm |
+|---|---|---|---|---|
+| `hitStopTime` | `PlayerAttackConfig.asset` | **0.05s** | Đòn nặng hơn. Trên 0.1s thì game có cảm giác giật, khựng khi đánh liên tục | 0 = tắt, đòn trôi tuột |
+| `hitSquash` | `Ghoul.asset`, `Bat.asset` | **(1.3, 0.7)** | Xa 1 hơn (vd 1.5, 0.5) → bị bóp mạnh, kiểu hoạt hình | (1, 1) = tắt |
+| `squashTime` | `Ghoul.asset`, `Bat.asset` | **0.1s** | Bật về chậm, mềm như cao su | Bật về gần như ngay |
+| `hitStopTime` (bị đánh) | `Player.prefab` → `PlayerHealth` | 0.1s | (dùng chung `HitStop`, mục 5.15) | |
+
+**Đánh bay quái**:
+- `PlayerAttackConfig.knockback` = **18** (trước là 6). Kèm `EnemyConfig.knockbackUp` = **4** cho quái đi bộ.
+- `HurtState.Enter`: bị chém **ngang** thì vận tốc = (±18, 4), bay ra sau và nảy lên. Chém lên/xuống thì không hất quái bay.
+- Quái bị đẩy trong `hurtTime` 0.2s nên văng khoảng **3.6 ô**.
+- Dơi (`FlyingHurtState`) bị đẩy theo hướng đòn rồi phanh dần, nên văng ngắn hơn.
+
+| Chỉnh | Ảnh hưởng |
+|---|---|
+| `knockback` (PlayerAttackConfig) | Mọi quái văng xa hơn. Trên 25 thì quái văng ra khỏi màn hình, khó chém nối đòn |
+| `knockbackUp` (Ghoul.asset) | Nảy cao hơn. 0 = chỉ trượt ngang |
+| `hurtTime` (Ghoul.asset) | Thời gian bị đẩy dài hơn → văng xa hơn và khựng lâu hơn |
+
+> Lưu ý: Ghoul bị đánh văng có thể **rơi xuống hố**. `HazardZone` chỉ tác dụng lên `Player`, nên quái rơi xuống sẽ rơi mãi (tới khi ngủ vì xa camera). Muốn quái chết khi rơi xuống hố thì cần làm thêm (chưa làm).
+
+**Chưa làm (để sau)**: rung camera khi trúng (đã đề xuất, chưa chọn làm); pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
 
 ### 5.15 Máu người chơi kiểu Hollow Knight (5 mask)
 
 **Mục tiêu**: có **5 cục máu** (mask) ở góc trên trái. Mỗi lần bị đánh trúng thì:
-- mất 1 cục, khung hình khựng ~0.1s (hitstop), nhân vật bị hất lùi;
-- sau đó **bất tử 1.3s** và nhấp nháy.
+- mất 1 cục, khung hình khựng ~0.1s (hitstop), nhân vật bị **hất văng** một đoạn (≈ 1.6 ô);
+- **không có bất tử, không nhấp nháy** sau khi trúng. Bù lại, **mỗi đòn của quái chỉ trúng tối đa 1 lần**: đạn biến mất khi trúng, còn cú lao của Ghoul tự tắt hitbox sau khi trúng (mục 5.16).
+- **Chạm thân quái không mất máu.** Chỉ mất máu khi quái **đang tấn công** (Ghoul đang lao, quả cầu của dơi).
 
 Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, quái cũng hồi sinh lại.
 
 #### Các file
 | File | Namespace | Vai trò |
 |---|---|---|
-| `Scripts/Combat/Health.cs` | `LuHanh.Combat` | **Máu dùng chung** (người chơi, quái, boss): `Max`, `Current`, `Damage(n)`, `Refill()`, event `Changed(current, max)` và `Died`. Không biết gì về bất tử hay hiệu ứng |
-| `Scripts/Player/PlayerHealth.cs` | `LuHanh.Player` | Phản ứng của người chơi: nhận đòn (`IDamageable`), hitstop, hất lùi, bất tử + nhấp nháy, chết → hồi sinh |
+| `Scripts/Combat/Health.cs` | `LuHanh.Combat` | **Máu dùng chung** (người chơi, quái, boss): `Max`, `Current`, `Damage(n)`, `Refill()`, event `Changed(current, max)` và `Died`. Không biết gì về hiệu ứng |
+| `Scripts/Player/PlayerHealth.cs` | `LuHanh.Player` | Phản ứng của người chơi: nhận đòn (`IDamageable`), hitstop, hất văng, chết → hồi sinh |
 | `Scripts/Player/States/HurtState.cs` | `LuHanh.Player.States` | State **bị thương** trong FSM: hất ra, chịu trọng lực, mất điều khiển 0.2s |
 | `Scripts/Core/RespawnManager.cs` | `LuHanh.Core` | Trình tự hồi sinh: tối dần → đặt lại người chơi → đặt lại mọi `IResettable` → sáng dần |
 | `Scripts/Core/IResettable.cs` | `LuHanh.Core` | Interface `ResetState()` cho thứ cần trở về ban đầu khi hồi sinh (quái...) |
 | `Scripts/UI/HealthUI.cs` | `LuHanh.UI` | Hàng mask trên HUD |
 
 #### Luồng khi bị đánh trúng
-1. `ContactDamage` của quái chạm collider có **tag `Player`** → gọi `PlayerHealth.TakeHit(HitInfo)`.
+1. Đòn của quái trúng collider có **tag `Player`** → gọi `PlayerHealth.TakeHit(HitInfo)`. Có 2 nguồn:
+   - `ContactDamage` trên `Hitbox` của Ghoul, **chỉ bật lúc Ghoul đang lao**. Gọi `TakeHit` xong thì **tự tắt** (`enabled = false`), nên một cú lao không trúng lặp lại mỗi frame.
+   - `Projectile` (quả cầu của dơi): trúng xong thì vỡ, về pool.
 2. `PlayerHealth.TakeHit`:
-   - Đang bất tử hoặc đã chết → bỏ qua.
+   - Đã chết hoặc đang hồi về sau khi rơi hố → bỏ qua.
    - `health.Damage(1)` → `Health` bắn event `Changed` → `HealthUI` đổi sprite mask.
-   - **Hitstop**: `Time.timeScale = 0`, chờ `WaitForSecondsRealtime(0.1)`, rồi trả về 1. Dùng thời gian thực vì lúc timeScale = 0 thì thời gian thường đứng yên.
-   - Còn máu: bật bất tử `1.3s`, gọi `controller.Hurt(vận tốc, 0.2s)` với vận tốc = (±8, 8). Dấu ± theo hướng ra xa quái.
+   - **Hitstop**: `HitStop.Request(0.1)` (dùng chung với đòn chém, xem 5.14). Đặt `Time.timeScale = 0`, đếm bằng thời gian thực rồi trả về 1.
+   - Còn máu: gọi `controller.Hurt(vận tốc, 0.2s)` với vận tốc = (±8, 8). Dấu ± theo hướng ra xa nguồn đòn (Ghoul lao từ trái thì văng sang phải).
 3. `PlayerController.Hurt()` chỉ ghi lại yêu cầu (`hurtRequested = true`). FSM có luật **`AnyTransition → HurtState`**, khai báo **đầu tiên** nên ưu tiên hơn dash và nhảy. Trong HurtState không dash, không nhảy, không điều khiển được.
 4. Hết 0.2s: HurtState → Fall (đang trên không) / Run / Idle.
-5. Trong `Update`, khi còn bất tử thì `sprite.enabled` bật/tắt theo nhịp `blinkInterval` 0.1s, tạo hiệu ứng nhấp nháy.
+
+> **Vì sao bỏ được bất tử?** Bất tử sinh ra để một lần chạm quái không bị trừ máu liên tục mỗi frame. Giờ chạm thân không gây sát thương, còn mỗi đòn tự giới hạn 1 lần trúng, nên không cần bất tử nữa. Hệ quả: nếu 2 quái đánh trúng **cùng lúc** thì mất 2 mask. Muốn thêm lại bất tử thì thêm bộ đếm thời gian trong `PlayerHealth.TakeHit` (bỏ qua đòn khi bộ đếm > 0).
 
 #### Khi hết máu
 1. `PlayerHealth.Die()`:
@@ -769,7 +924,7 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 1. **Player.prefab**:
    - Đặt **Tag = `Player`** (ContactDamage và quái tìm người chơi bằng tag).
    - Thêm `Health` (Max Health = **5**).
-   - Thêm `PlayerHealth`, kéo `Visual` vào ô **Sprite**.
+   - Thêm `PlayerHealth`.
    - ⚠️ Lưu prefab xong kiểm tra lại `PlayerInput → Actions` (mục 10).
 2. **Hình mask**: `Assets/Art/Generated/UI/mask_full.png` (mặt nạ trắng, 2 sừng, mắt đen) và `mask_empty.png` (bóng tối mờ). Cả hai vẽ bằng code, 128×128, import Sprite.
 3. **HUD** (trong scene):
@@ -785,25 +940,29 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 | Chỗ chỉnh | Thông số | Mặc định | Ý nghĩa |
 |---|---|---|---|
 | `Health` (Player) | Max Health | 5 | Số mask |
-| `PlayerHealth` | Invulnerable Time | 1.3 | Thời gian bất tử sau khi trúng |
-| | Hit Stop Time | 0.1 | Khựng hình (giây thực) |
-| | Knockback Velocity | (8, 8) | Vận tốc bị hất (X ra xa quái, Y lên trên) |
-| | Hurt Time | 0.2 | Thời gian mất điều khiển |
-| | Blink Interval | 0.1 | Nhịp nhấp nháy |
+| `PlayerHealth` | Hit Stop Time | 0.1 | Khựng hình (giây thực). Tăng → đòn nặng hơn; 0 = tắt |
+| | Knockback Velocity | (8, 8) | Vận tốc bị hất (X ra xa quái, Y lên trên). X lớn → văng xa hơn; Y lớn → bay cao hơn. (8, 8) ≈ 1.6 ô |
+| | Hurt Time | 0.2 | Thời gian mất điều khiển. Tăng → văng hết đà mới điều khiển lại được (văng xa hơn vì không tự hãm) |
 | `RespawnManager` | Fade Out / Hold / Fade In | 0.6 / 0.3 / 0.5 | Thời gian tối dần / giữ đen / sáng dần |
 | `HealthUI` | Pop Scale / Pop Time | 1.4 / 0.2 | Mask vừa mất nảy to lên rồi thu về |
 
-**Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, gai/vực gây sát thương, rung camera.
+**Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, rung camera. (Vực gây sát thương: đã làm ở mục 5.19.)
 
-### 5.16 Quái đầu tiên: Ghoul (tuần tra + đuổi theo)
+### 5.16 Quái đầu tiên: Ghoul (tuần tra + đuổi theo + lao tới)
 
 #### Hành vi
 - **Patrol**: đi qua lại 2 unit/s, gặp **tường** hoặc **mép vực** thì quay đầu (không tự rơi xuống).
 - **Chase**: thấy người chơi **ở phía trước**, trong 6 unit, chênh cao ≤ 2 unit thì đuổi 4.5 unit/s.
   - Tới mép vực hoặc tường thì đứng chờ (animation idle).
-  - Lại gần ≤ 1.5 unit thì phát animation tấn công. Đây chỉ là hình ảnh, sát thương vẫn là chạm thân.
+- **DashAttack** (đòn lao, đòn tấn công duy nhất của Ghoul): đang đuổi mà người chơi ở phía trước trong **5 unit** thì:
+  1. **Gồng 0.45s**: đứng yên, quay về phía người chơi, phát `ghoul_attack`, và **quầng khói tím phát sáng** (VFX3) bùng lên quanh Ghoul. Đây là **dấu hiệu báo trước** để người chơi kịp nhảy qua hoặc dash né.
+  2. **Lao 14 unit/s trong 0.3s** (≈ 4.2 unit) theo hướng đã quay. **Chỉ lúc này Hitbox mới gây sát thương**, và trúng tối đa 1 lần. Gặp tường hoặc mép vực thì dừng ngay, không lao xuống vực.
+  3. **Đứng thở 0.6s** (idle). Đây là lúc người chơi phản công.
+  4. Quay lại Chase, **chờ hồi chiêu 1.5s** mới lao tiếp được.
+  - Bị chém trúng giữa lúc gồng hoặc lao thì **cú lao bị hủy** (chuyển sang Hurt), hitbox tắt, vẫn tính hồi chiêu.
+- **Chạm thân Ghoul không mất máu** (lúc đi bộ, đuổi, gồng, đứng thở). Người chơi đi xuyên qua được.
 - **Mất dấu**: người chơi xa quá 9 unit liên tục 1.5s → quay lại Patrol.
-- **Trúng đòn**: 3 máu. Mỗi nhát: **nháy trắng** 0.12s, **bị đẩy lùi** ngang theo hướng đòn (`knockback` của `PlayerAttackConfig` = 6), khựng 0.2s, rồi đuổi tiếp.
+- **Trúng đòn**: 3 máu. Mỗi nhát: **nháy trắng** 0.12s, **bị đẩy lùi** ngang theo hướng đòn (`knockback` của `PlayerAttackConfig` = **18**, nảy lên `knockbackUp` = 4, văng khoảng 3.6 ô), khựng 0.2s, rồi đuổi tiếp.
 - **Chết**: `SetActive(false)`. Người chơi hồi sinh thì quái về chỗ cũ, đầy máu, tuần tra lại.
 
 #### Các file
@@ -813,16 +972,21 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 | `Scripts/Enemies/EnemyController.cs` | (Từ mục 5.17: kế thừa `EnemyBase`, phần chung đã chuyển lên lớp cha.) Giống `PlayerController`: lắp ráp, khai báo luật chuyển FSM, nhận đòn (`IDamageable`), hồi sinh (`IResettable`), ngủ khi xa camera. Có các hàm tiện ích cho state: `Face`, `SetHorizontalSpeed`, `CanSeePlayer`, `IsGrounded`, `IsBlockedAhead`, `PlayAnim` |
 | `Scripts/Enemies/States/EnemyStateBase.cs` | Lớp nền của state quái |
 | `Scripts/Enemies/States/PatrolState.cs`, `ChaseState.cs`, `HurtState.cs` | Hành vi từng trạng thái |
-| `Scripts/Combat/ContactDamage.cs` | Gắn lên trigger: chạm collider có tag `Player` thì gọi `TakeHit` |
+| `Scripts/Enemies/States/DashAttackState.cs` | Đòn lao: 3 pha Windup → Dash → Recover. Bật hitbox khi vào Dash, tắt khi vào Recover và trong `Exit` (kể cả bị chém ngắt giữa chừng). `Exit` gọi `StartDashCooldown()` |
+| `Scripts/Combat/ContactDamage.cs` | Gắn lên trigger: chạm collider có tag `Player` thì gọi `TakeHit`, rồi **tự tắt** (mỗi lần bật chỉ trúng 1 lần). Bên tấn công bật lại khi ra đòn mới |
 | `Assets/Shaders/SpriteFlash.shader` + `M_SpriteFlash.mat` | Vẽ sprite thành khối **trắng** theo hình sprite. Dùng cho lớp nháy trắng |
 
 #### Luật chuyển FSM (`EnemyController.BuildStateMachine`)
 ```
 Any    -> Hurt    khi vừa trúng đòn (ưu tiên nhất)
 Patrol -> Chase   khi CanSeePlayer()
+Chase  -> Dash    khi CanDash(): hết hồi chiêu, đang đứng trên đất, phía trước không phải tường/vực,
+                  người chơi ở phía trước trong dashTriggerRange và chênh cao ≤ detectHeight
 Chase  -> Patrol  khi LostPlayer (xa > 9 unit liên tục 1.5s)
+Dash   -> Chase   khi xong pha đứng thở
 Hurt   -> Chase   khi hết 0.2s (vừa bị chém = người chơi ở gần)
 ```
+Hitbox được bật/tắt qua `EnemyController.SetAttackHitbox(bool)` (bật/tắt component `ContactDamage`, collider vẫn để nguyên). `Awake` và `OnResetState` luôn tắt hitbox, nên quái mới sinh hoặc vừa hồi sinh không gây sát thương.
 FSM dùng chung `LuHanh.Core.FSM.StateMachine` với người chơi (mục 2).
 
 #### Phát hiện tường / mép vực (`IsBlockedAhead`)
@@ -848,7 +1012,9 @@ Shader mặc định `Sprite-Lit-Default` chỉ **nhân** màu nên không thể
 | `Animator.Play` chỉ gọi khi đổi clip | `PlayAnim` |
 
 #### Đi xuyên qua quái
-Người chơi và quái **không đẩy nhau**. Trong `EnemyController.Start`, mình gọi `Physics2D.IgnoreCollision` giữa collider thân quái và collider của người chơi. Sát thương do `Hitbox` (trigger) lo. Cách này **không phải sửa Layer Collision Matrix** của project.
+Người chơi và quái **không đẩy nhau**. Trong `EnemyBase.Start`, mình gọi `Physics2D.IgnoreCollision` giữa collider thân quái và collider của người chơi. Cách này **không phải sửa Layer Collision Matrix** của project. Sát thương chỉ đến từ đòn tấn công (Hitbox lúc lao, quả cầu).
+
+Khi đi qua quái, **nhân vật luôn vẽ đè lên quái** nhờ thứ tự vẽ: quái Order 10, nhân vật Order 20 (bảng Order ở mục 9.8).
 
 #### Import hình Ghoul (gói Vampire Castle, pixel 32×32)
 - Đường dẫn: `Assets/Sprites/Vampire Castle Asset Pack - Free/.../creatures_solo/ghoul/`.
@@ -867,12 +1033,23 @@ Ghoul              layer Enemy
   Rigidbody2D        Dynamic, Gravity Scale 3, Freeze Rotation Z, Interpolate, Continuous
   CapsuleCollider2D  size (0.7, 1.5), offset (0, 0.75), material PlayerNoFriction
   Health             (Max tự lấy từ config = 3)
-  EnemyController    Config = Ghoul.asset, Sprite = Visual, Flash = Visual/Flash, Body Collider = Capsule
-  Visual             SpriteRenderer (Sprite-Lit-Default) + Animator (AC_ghoul)
-    Flash            SpriteRenderer, material M_SpriteFlash, Order 1, tắt sẵn
+  EnemyController    Config = Ghoul.asset, Sprite = Visual, Flash = Visual/Flash, Body Collider = Capsule,
+                     Attack Hitbox = Hitbox (ContactDamage)
+  Visual             SpriteRenderer (Sprite-Lit-Default) + Animator (AC_ghoul), Order 10
+    Flash            SpriteRenderer, material M_SpriteFlash, Order 11, tắt sẵn
   Hitbox             layer Enemy, BoxCollider2D Is Trigger size (0.8, 1.3) offset (0, 0.7),
-                     ContactDamage (Damage 1, Target Tag Player)
+                     ContactDamage (Damage 1, Target Tag Player) - code tắt sẵn, chỉ bật lúc lao
+  WindupFx           vị trí (0, 0.8), scale 1.6, SpriteRenderer (VFX3 Warlock_skill3_frame1..8, PPU 64,
+                     material M_SpriteAdditive, Order 9 - ngay sau Ghoul), FrameAnimation (8 khung)
 ```
+`EnemyController → Windup Fx` = `WindupFx`. Khói chạy **đúng bằng `dashWindup`** (code truyền thời gian vào `Play`), nên đổi `dashWindup` thì khói tự khớp theo. Bị chém ngắt giữa lúc gồng thì `DashAttackState.Exit` tắt khói.
+
+| Chỉnh khói gồng | Ở đâu | Tăng | Giảm |
+|---|---|---|---|
+| Kích thước | `Ghoul.prefab → WindupFx` → Scale (1.6) | Quầng to, báo trước rõ, nhưng che bớt cảnh | Quầng sát người Ghoul |
+| Độ sáng | `M_SpriteAdditive.mat → Intensity` (3) | Sáng rực, Bloom tỏa (dùng chung với quả cầu dơi) | Mờ, khó thấy trên nền tối |
+| Vị trí | `WindupFx` → Position Y (0.8) | Quầng lệch lên đầu | Quầng lệch xuống chân |
+Muốn cú lao trúng rộng hơn: tăng **size X** của `Hitbox` (vd 1.2) hoặc dời **offset X** ra trước.
 Đòn chém của người chơi trúng **cả** thân lẫn Hitbox (cùng layer Enemy), nhưng `HashSet` trong `PlayerAttack` đảm bảo mỗi nhát chỉ tính 1 lần.
 
 #### Trong scene `TestGamePlay`
@@ -886,13 +1063,22 @@ Ghoul              layer Enemy
 | `patrolSpeed` / `chaseSpeed` | 2 / 4.5 | Đi / đuổi nhanh hơn |
 | `detectRange` / `detectHeight` | 6 / 2 | Phát hiện xa hơn / chênh cao lớn hơn vẫn thấy |
 | `loseRange` / `loseTime` | 9 / 1.5 | Bám dai hơn |
-| `attackAnimRange` | 1.5 | Phát animation tấn công từ xa hơn |
 | `hurtTime` / `flashTime` | 0.2 / 0.12 | Khựng / nháy trắng lâu hơn |
 | `edgeCheckDepth` / `wallCheckDistance` | 0.5 / 0.1 | Kiểm tra vực sâu hơn / tường xa hơn |
 | `sleepDistance` | 25 | Quái hoạt động ở xa camera hơn (tốn hơn) |
 | `artFacesRight` | **false** (Ghoul) | Hình gốc nhìn sang phải hay trái |
 
 Chọn quái trong Scene → Gizmo vàng là vùng phát hiện.
+
+#### Thông số đòn lao (`Ghoul.asset` → nhóm **Don lao (dash)**)
+| Thông số | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| `dashTriggerRange` | 5 | Lao từ xa hơn, người chơi khó áp sát mà không bị lao | Phải lại rất gần mới lao |
+| `dashWindup` | 0.45s | Báo trước lâu, **dễ né** | Lao gần như ngay, **khó né**. Dưới 0.25s thì gần như không phản ứng kịp |
+| `dashSpeed` | 14 | Lao nhanh và xa hơn (khó né) | Lao chậm, dễ nhảy qua |
+| `dashTime` | 0.3s | Lao xa hơn. Quãng đường ≈ `dashSpeed × dashTime` (14 × 0.3 = 4.2 unit) | Lao ngắn |
+| `dashRecover` | 0.6s | Đứng thở lâu, người chơi **dễ phản công** | Lao xong đuổi tiếp ngay, áp lực hơn |
+| `dashCooldown` | 1.5s | Lao thưa hơn | Lao liên tục (tính từ lúc hết pha đứng thở) |
 
 ### 5.17 Lớp cha `EnemyBase` dùng chung cho mọi quái
 
@@ -930,7 +1116,7 @@ Còn có thể override thêm `OnResetState()` (phát lại clip sau khi hồi s
 | **FlyingHurt** | Trúng đòn: bị đẩy theo hướng chém (**cả lên/xuống**, vì đang bay), phanh dần trong 0.2s. Bị chém giữa lúc báo trước thì phát bắn bị hủy |
 | Mất dấu | Người chơi xa hơn 12 unit liên tục 2s → về Hover |
 
-- Dơi **2 máu**. Chạm thân dơi cũng mất 1 mask (`Hitbox` + `ContactDamage`, giống Ghoul).
+- Dơi **2 máu**. **Chạm thân dơi không mất máu**, chỉ quả cầu gây sát thương (prefab không còn object `Hitbox`).
 - **Không chịu trọng lực** (`gravityScale = 0`), nhưng là Rigidbody **Dynamic** có collider nên vẫn va vào tường.
 - Quả cầu **không chém được**, chỉ né được (giống Hollow Knight).
 
@@ -958,29 +1144,36 @@ Vận tốc tiến dần tới vận tốc mong muốn với gia tốc `accelera
 #### Quả cầu (`Projectile`) + object pool (`ProjectilePool`)
 | | |
 |---|---|
-| `Projectile` | Rigidbody2D **Kinematic** + `CircleCollider2D` **trigger** (bán kính 0.3). Bay thẳng bằng `linearVelocity`. Chạm collider có tag `Player` → `TakeHit` → vỡ. Chạm đất → vỡ. Sống tối đa 4s |
-| Vì sao dò đất bằng `OverlapCircle`? | Body Kinematic **không nhận va chạm** với collider tĩnh của Tilemap, nên mỗi bước vật lý tự kiểm tra `Physics2D.OverlapCircle(vị trí, 0.22, Ground)` |
+| `Projectile` | Rigidbody2D **Kinematic** + `CircleCollider2D` **trigger** (bán kính **0.55**, khít với khối khói). Bay thẳng bằng `linearVelocity`. Chạm collider có tag `Player` → `TakeHit` → vỡ. Chạm đất → vỡ. Sống tối đa 4s |
+| Vì sao dò đất bằng `OverlapCircle`? | Body Kinematic **không nhận va chạm** với collider tĩnh của Tilemap, nên mỗi bước vật lý tự kiểm tra `Physics2D.OverlapCircle(vị trí, 0.45, Ground)`. 0.45 ≈ bán kính khối khói, nên quả cầu vỡ đúng lúc mép khói chạm đất |
 | `ProjectilePool.For(prefab, burst, 6)` | Mỗi prefab đạn một pool, tạo lần đầu khi dơi `Awake` và **tạo sẵn 6 quả** (con của object `Pools`). Bắn = lấy quả có sẵn ra và bật lên; vỡ = tắt đi và trả về pool. **Không Instantiate/Destroy khi đang chơi** |
-| Particle vỡ | Pool giữ **một** particle `OrbBurst` dùng chung. Quả cầu vỡ ở đâu thì dời particle tới đó rồi `Emit(8)` |
+| Hiệu ứng nổ khi vỡ | Pool tạo sẵn **3 bản** `OrbExplode` (FrameAnimation, mục 9.10) và dùng **xoay vòng**: quả vỡ thì lấy bản kế tiếp, dời tới chỗ vỡ rồi `Play()`. Có 3 bản để 2–3 quả vỡ gần nhau thì mỗi quả vẫn có một vụ nổ riêng, không cắt ngang nhau. Muốn đổi số bản: tham số `burstCopies` của `ProjectilePool.For` |
 | Hồi sinh | Pool là `IResettable`. Người chơi hồi sinh thì mọi quả cầu đang bay bị thu về |
 
 #### Hình vẽ bằng code (`Assets/Art/Generated/Enemies/`)
 - `bat_fly_0..3.png` (**256×192**, PPU 80, khoảng **3.2 × 2.4 unit**, to gấp đôi bản đầu): **màu sáng để nổi trên nền tối**. Thân và đầu **trắng ngà** (bụng tối dần xuống dưới), tai và má **hồng**, mắt đen to có chấm sáng. Màng cánh **hồng** đậm dần ra mép, xương cánh trắng ngà. Toàn bộ có **viền tối dày 4px**. Mép dưới cánh lượn sóng (`|sin|`), góc cánh **38° → 12° → −22° → 12°** tạo nhịp vỗ.
   - Cách làm viền: vẽ hình trước, đánh dấu pixel "bên trong". Pixel trống nào cách hình ≤ 4px thì tô màu viền, độ đậm giảm theo khoảng cách để viền mượt.
 - `bat_attack.png`: cánh giơ cao 55°, **mắt và miệng cam phát sáng**. Đây là khung báo trước khi bắn.
-- `orb.png` (**72×72**, khoảng **0.9 unit**): lõi trắng kem, quầng cam mờ dần ra ngoài. Dùng material **Sprite-Unlit-Default** nên luôn sáng rõ.
+- `orb.png` (72×72): hình quả cầu cam **cũ**, giờ không còn dùng (quả cầu đã đổi sang khói tím VFX3, xem phần Hình quả cầu bên dưới). File vẫn giữ lại.
 - Animation: `Assets/Character/Enemies/Bat/` gồm `bat_fly` (4 khung, 12 fps, loop) và `bat_attack` (1 khung). `AC_bat` không có transition, code gọi `Animator.Play`.
 
-#### Particle
-- **`Orb/Trail`** (vệt mờ phía sau quả cầu):
-  - Material `M_PlayerDust`, Simulation Space **World**.
-  - **Rate over Distance 8** (bay càng xa càng nhả hạt), Rate over Time 0.
-  - Lifetime 0.35, Size 0.38–0.6, màu cam alpha 0.5, Size over Lifetime 1→0, Color over Lifetime alpha 1→0.
-  - `Projectile.Launch` gọi `trail.Clear()` để quả lấy ra từ pool không kéo theo vệt cũ.
-- **`OrbBurst`** (tóe ra khi vỡ):
-  - Emission **tắt** (code gọi `Emit`), Shape Circle bán kính 0.05.
-  - Speed 1.5–4, Lifetime 0.25–0.45, Size 0.15–0.35, màu cam, nhỏ dần và mờ dần.
-  - Limit Velocity: dampen 0.3 (văng ra rồi khựng lại).
+#### Hình quả cầu và vụ nổ (VFX trong `Assets/Art/Fx/`)
+| Phần | Ảnh | Thiết lập | Tác dụng |
+|---|---|---|---|
+| **Quả cầu đang bay** (`Orb/Visual`) | **VFX3**: `Warlock_skill3_frame1..8` (khói tím, 128×128, PPU 64) | FrameAnimation **Loop** + **Play On Enable**, Duration **0.5s**; material **`M_SpriteAdditive`** (cộng sáng); scale **1.16** → khối khói ≈ **1.2 unit**; Order 45 | Quả cầu khói tím xoáy liên tục, tự phát sáng trên nền tối nên luôn thấy để né. Lấy từ pool ra là tự chạy lại |
+| **Nổ khi vỡ** (`OrbExplode.prefab`) | **VFX1 đã đổi màu sang tông ấm**: `Assets/Art/Generated/Fx/OrbExplode/orb_explode_0..7.png` (128×128, PPU 80 ≈ 1.6 unit). Lõi trắng ngà, vòng và tia cam, khói nâu tối | FrameAnimation phát 1 lần **0.35s**; material Sprite-Unlit-Default; Order 45 | Cam ấm khác hẳn quả cầu tím nên **nhìn là biết đạn đã vỡ** (trúng người hoặc trúng tường). Cùng màu với máu, hạt khi chém và đèn, theo quy ước "cam = sự kiện" của game |
+
+- Đã **bỏ vệt mờ cam** (`Orb/Trail`) để quả cầu đồng màu tím. `Projectile.trail` để trống (code bỏ qua khi trống).
+- `Orb/Glow` (Light 2D cam, Intensity 0.8, bán kính 2) **vẫn giữ**: soi sáng đất quanh quả cầu khi bay.
+- Prefab `OrbBurst` (particle tóe cam cũ) **vẫn giữ trong project** nhưng không dùng nữa.
+
+| Chỉnh gì | Ở đâu | Tăng | Giảm |
+|---|---|---|---|
+| Kích thước quả cầu | `Orb.prefab → Visual` → Scale | To hơn. **Nhớ tăng theo** `CircleCollider2D → Radius` (0.55) và `Projectile → Solid Check Radius` (0.45), nếu không hình to mà trúng nhỏ | Nhỏ hơn (giảm cả 2 số trên) |
+| Tốc độ xoáy | `Orb/Visual → FrameAnimation → Duration` | Xoáy chậm, êm | Xoáy nhanh, gắt |
+| Độ sáng quả cầu | `Assets/Shaders/M_SpriteAdditive.mat → Intensity` (3) | Sáng chói hơn, Bloom tỏa mạnh. ⚠️ Dùng chung với khói Ghoul (mục 5.16) | Mờ, chìm vào nền |
+| Thời gian nổ | `OrbExplode.prefab → FrameAnimation → Duration` | Nổ chậm, rõ | Nổ chớp nhoáng |
+| Kích thước nổ | `OrbExplode.prefab` → Scale | To | Nhỏ |
 
 #### Prefab
 ```
@@ -989,15 +1182,17 @@ Bat                layer Enemy
   CircleCollider2D   radius 0.7, material PlayerNoFriction (va tường)
   Health             (Max lấy từ config = 2)
   FlyingEnemyController  Config = Bat.asset, Sprite = Visual, Flash = Visual/Flash, Body Collider = Circle
-  Visual             SpriteRenderer + Animator (AC_bat)
-    Flash            SpriteRenderer, M_SpriteFlash, Order 1, tắt sẵn
-  Hitbox             layer Enemy, CircleCollider2D trigger radius 0.9, ContactDamage
+  Visual             SpriteRenderer + Animator (AC_bat), Order 10
+    Flash            SpriteRenderer, M_SpriteFlash, Order 11, tắt sẵn
 
 Orb (Assets/Prefabs/Projectiles/)   layer Enemy
-  Rigidbody2D Kinematic, CircleCollider2D trigger 0.3, SpriteRenderer (orb, Unlit, **Order 45**: trên lớp tối VisionMask), Trail Order 44, Projectile
-  Trail              ParticleSystem (vệt mờ)
-OrbBurst (Assets/Prefabs/Projectiles/)  ParticleSystem (tóe khi vỡ)
+  Rigidbody2D Kinematic, CircleCollider2D trigger 0.55, Projectile (Solid Check Radius 0.45, Trail trống)
+  Visual             SpriteRenderer (VFX3, M_SpriteAdditive, **Order 45**: trên lớp tối VisionMask), scale 1.16,
+                     FrameAnimation (Loop, Play On Enable, 0.5s)
+  Glow               Light 2D Point cam
+OrbExplode (Assets/Prefabs/Projectiles/)  SpriteRenderer (orb_explode_0..7 = VFX1 tông ấm, Unlit, Order 45) + FrameAnimation (0.35s)
 ```
+`Bat.asset → Projectile Burst Prefab` = `OrbExplode` (kiểu `FrameAnimation`).
 - Trong scene: `Enemies/Bat_1` ở (20, 5.5).
 - Thêm dơi: kéo `Bat.prefab` vào `Enemies`, đặt trên cao, có khoảng trống để lượn ±2 unit.
 
@@ -1019,6 +1214,71 @@ OrbBurst (Assets/Prefabs/Projectiles/)  ParticleSystem (tóe khi vỡ)
 | `Orb.prefab → Projectile` | damage 1, lifetime 4 | Sát thương / thời gian tồn tại |
 
 Chọn dơi trong Scene → **vòng tròn cam** là bán kính phát hiện, **đường vàng** là khoảng lượn.
+
+### 5.19 Vùng chết dưới hố (kiểu Hollow Knight)
+
+**Hành vi** giống Hollow Knight khi rơi xuống vực hoặc chạm gai:
+1. Mất **1 mask**.
+2. Khựng hình 0.1s (hitstop).
+3. Màn hình **tối nhanh 0.25s**, nhân vật hiện lại ở **chỗ đứng an toàn cuối cùng** (không phải điểm đầu màn), giữ màn đen 0.05s rồi **sáng lại 0.3s**.
+4. **Quái không hồi sinh** (khác với chết).
+5. Nếu mask đó là mask cuối thì **chết bình thường** (mục 5.15): về điểm đầu màn, quái hồi sinh.
+
+#### Các file
+| File | Vai trò |
+|---|---|
+| `Scripts/Combat/IHazardReceiver.cs` | Interface `TakeHazardHit(int damage)`. Thứ gì phản ứng với bẫy kiểu "đưa về chỗ an toàn" thì cài interface này |
+| `Scripts/Combat/HazardZone.cs` | Gắn lên collider **trigger**. Collider có tag `Player` đi vào (`OnTriggerEnter2D`) thì gọi `TakeHazardHit(damage)`. Có Gizmo **hộp đỏ** để thấy vùng chết trong Scene |
+| `Scripts/Player/PlayerHealth.cs` | Cài `IHazardReceiver`. Ghi nhớ chỗ đứng an toàn; xử lý mất máu, dừng hình, hồi về |
+| `Scripts/Core/RespawnManager.cs` | Thêm `HazardRespawn(placePlayer, onFinished)`: tối nhanh → đặt người chơi → sáng → báo xong. **Không** gọi `ResetAll()` |
+| `Assets/Prefabs/Hazards/HazardZone.prefab` | `BoxCollider2D` (Is Trigger, size 1×1) + `HazardZone` (Damage 1, Target Tag Player) |
+
+> Vì sao `HazardZone` dùng interface mà không gọi thẳng `PlayerHealth`? `HazardZone` nằm trong `LuHanh.Combat`, còn `PlayerHealth` trong `LuHanh.Player`. Combat là phần dùng chung nên **không được phụ thuộc** vào Player. Interface đặt trong Combat, Player cài nó, nên chiều phụ thuộc vẫn đúng (giống `IDamageable`).
+
+#### Ghi nhớ chỗ đứng an toàn (`PlayerHealth.TrackSafeGround`, mỗi frame)
+- Nếu đang chết, đang hồi về, **không chạm đất**, hoặc đang bị đánh bật ra (`IsHurt`) thì đặt bộ đếm về 0.
+- Ngược lại cộng dồn thời gian. Đứng vững liên tục **≥ `safeGroundTime` (0.2s)** thì lưu `safePosition = vị trí hiện tại`. Đứng yên càng lâu thì vị trí càng được cập nhật liên tục.
+- Vì phải **đứng vững** mới lưu, nên lúc nhảy, dash hoặc vừa chạm mép một chút rồi rơi sẽ không tính. Nhân vật được đưa về chỗ chắc chắn đứng được.
+- Lúc đầu màn và sau khi chết, `safePosition` = điểm đầu màn.
+
+#### Luồng `TakeHazardHit(damage)`
+```
+đang chết / đang hồi về            → bỏ qua (không bị tính 2 lần)
+health.Damage(damage) → hitstop 0.1s
+hết máu → Die() (chết thường)  → dừng
+Freeze(): tắt PlayerController + PlayerAttack, vận tốc = 0, body.simulated = false
+RespawnManager.HazardRespawn(
+    lúc màn đen: controller.Respawn(safePosition)    // đặt vị trí, về Idle, hồi dash
+    khi sáng xong: FinishHazard() → Unfreeze())
+```
+`Freeze` / `Unfreeze` dùng chung cho cả chết và rơi bẫy.
+
+#### Đặt vùng chết trong scene (`Hazards`)
+| Object | Tâm | Kích thước | Phủ hố (ô tile) |
+|---|---|---|---|
+| `Pit_1` | (16.5, −4) | 3.2 × 4 | x 15–17 |
+| `Pit_2` | (37.5, −4) | 5.2 × 4 | x 35–39 |
+| `Pit_3` | (61, −4) | 4.2 × 4 | x 59–62 |
+| `Pit_4` | (87, −4) | 4.2 × 4 | x 85–88 |
+| `KillFloor` | (52.5, −12) | 145.2 × 4 | Sàn chết dọc **cả map**, phòng chỗ nào lọt ra ngoài |
+
+- Mỗi vùng hố rộng hơn hố **0.1 ô mỗi bên**, để rơi sát mép vẫn trúng.
+- Mép trên của vùng ở **y = −2**, tức 3 ô dưới mặt đất (y = 1). Nhân vật rơi khuất khỏi mặt đất một đoạn rồi mới tối màn, giống Hollow Knight.
+
+**Thêm vùng chết mới** (hố mới, gai sau này):
+1. Kéo `HazardZone.prefab` vào nhóm `Hazards`.
+2. Đặt Position vào giữa hố.
+3. Chỉnh **BoxCollider2D → Size** để phủ hố. Chỉnh Size, không chỉnh Scale, vì Gizmo đỏ vẽ theo Size.
+
+#### Chỉnh gì → ra sao
+| Thông số | Ở đâu | Mặc định | Tăng | Giảm |
+|---|---|---|---|---|
+| `damage` | `HazardZone` | 1 | Hố nguy hiểm hơn (2 = mất 2 mask) | Tối thiểu 1 |
+| `safeGroundTime` | `PlayerHealth` | 0.2s | Phải đứng lâu hơn mới lưu, nên hay bị đưa về xa hơn (chỗ đứng trước đó) | Lưu nhanh hơn. Gần 0 thì có thể lưu cả chỗ vừa chạm mép rồi trượt (dễ hồi về rồi rơi lại ngay) |
+| `hazardFadeOutTime` | `RespawnManager` | 0.25s | Tối từ từ, cảm giác nặng nề | Gần như cắt cảnh ngay |
+| `hazardHoldTime` | `RespawnManager` | 0.05s | Giữ màn đen lâu hơn | |
+| `hazardFadeInTime` | `RespawnManager` | 0.3s | Sáng lại chậm | Sáng lại gần như tức thì |
+| Mép trên vùng hố (Position Y + Size Y/2) | `Pit_n` | −2 | Gần mặt đất: vừa rớt xuống là tối màn | Sâu hơn: thấy nhân vật rơi lâu hơn (camera vẫn bám theo) |
 
 ---
 
@@ -1065,25 +1325,7 @@ Tên state được điền trên `PlayerController` → mục **Animations**:
 
 > ⚠️ Trong `AC_player` còn các state `player_blink`, `player_attack`, `player_attack_magic` (từ bộ sprite cũ) và một sub-state machine `GroundStates`. Code di chuyển hiện **không gọi** các state này; để đó không ảnh hưởng gì.
 
-### 6.2 Import sprite sheet nhân vật (ví dụ Hooded Protagonist 32×32)
-1. **Sao chép** sheet gốc sang thư mục riêng (`Assets/Sprites/Player/Hooded/hooded_sheet.png`) để không làm hỏng clip cũ đang dùng sheet gốc.
-2. Import: Sprite · Multiple · PPU 32 · Point · Compression None.
-3. Sprite Editor → Slice → **Grid By Cell Size 32×32** · Pivot **Custom (0.47, 0)** = giữa thân, sát chân.
-   **Không dùng Slice Automatic**: mỗi khung sẽ có kích thước và tâm khác nhau → nhân vật rung khi chạy animation.
-4. Tạo clip: chọn các sprite của một động tác → kéo vào Animation window, hoặc Create → Animation, đặt Sample Rate, bật **Loop Time**.
-5. Mở `AC_player` → chọn state → kéo clip vào ô **Motion**.
-
-Clip đang dùng:
-
-| Clip | Khung | FPS |
-|---|---|---|
-| `hooded_idle` | hàng 1: 0–1 | 4 |
-| `hooded_run` | hàng 4: 0–7 | 12 |
-| `hooded_jump` | hàng 6: 2–3 | 10 |
-| `hooded_fall` | hàng 6: 4–5 | 10 |
-| `hooded_dash` | hàng 4: 0, 4 (tạm) | 15 |
-
-### 6.3 Import nhân vật vẽ tay dạng từng ảnh (Cloaked Platformer — đang dùng)
+### 6.2 Import nhân vật vẽ tay dạng từng ảnh (Cloaked Platformer)
 Gói gồm các ảnh PNG rời 640×640, mỗi thư mục là một động tác (`idle`, `run/prerun`, `run/runloop`, `jump`, `fall`).
 1. Chọn **tất cả** ảnh (67 file) → Inspector:
    - Sprite Mode **Single**
@@ -1658,7 +1900,7 @@ Nhân vật Cloaked toàn màu đen nên bị chìm vào nền tối. Viền sá
 **`RimLight` (Scripts/Effects/RimLight.cs)** gắn trên `Player.prefab → Visual`:
 1. `Awake`: tạo **8 bản sao** SpriteRenderer làm con của `Visual`, lệch ra 8 hướng (mỗi 45°) một khoảng `thickness`. Bản sao dùng material `M_RimLight` (shader `LuHanh/SpriteFlash` tô màu phẳng), **Order = sprite gốc − 1** nên nằm sau. Vì vậy chỉ phần **thò ra ở mép** là nhìn thấy, tạo thành viền.
 2. `LateUpdate` (chạy sau Animator): chép sprite đang hiện, flipX/flipY sang 8 bản sao, để viền chạy theo animation.
-3. Lúc nhân vật nhấp nháy bất tử (`sprite.enabled` tắt/bật) thì viền tắt/bật theo.
+3. Sprite gốc bị tắt (`sprite.enabled = false`) thì viền tắt theo.
 
 | Thông số | Mặc định | Ảnh hưởng |
 |---|---|---|
@@ -1772,9 +2014,18 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 
 | Phần | Thiết lập | Vai trò |
 |---|---|---|
-| `Sprite` | Material **Sprite-Unlit-Default**, Order **41** (trên lớp tối `VisionMask` = 40, nên đèn ở xa vẫn sáng xuyên bóng tối, mục 9.8) | Hình đèn. Unlit nên phần kính sáng luôn rực, không bị World làm tối |
-| `Glow` (+ `HaloPulse`) | `GlowWide` Ø **7** (tinh thể 5), alpha **0.18**, Order **42**. `GlowCore` Ø **2.5** (tinh thể 2), alpha **0.45**, Order **43**. Màu (1, 0.65, 0.28). Dùng ảnh `halo_radial` có sẵn | Quầng sáng trong không khí. `HaloPulse`: period **3**, scaleAmount **0.04**, alphaAmount **0.12**, như ngọn lửa thở nhẹ |
+| `Sprite` | Material **Sprite-Unlit-Default**, Order **1** (sau quái và nhân vật, dưới lớp tối `VisionMask`, mục 9.8) | Hình đèn. Unlit nên phần kính sáng luôn rực, không bị World làm tối |
+| `Glow` (+ `HaloPulse`) | `GlowWide` Ø **7** (tinh thể 5), alpha **0.18**, Order **2**. `GlowCore` Ø **2.5** (tinh thể 2), alpha **0.45**, Order **3**. Màu (1, 0.65, 0.28). Dùng ảnh `halo_radial` có sẵn | Quầng sáng trong không khí. `HaloPulse`: period **3**, scaleAmount **0.04**, alphaAmount **0.12**, như ngọn lửa thở nhẹ |
 | `Light` | Light 2D **Point**, màu (1, 0.68, 0.32), Intensity **1.6**, Inner 0.4, Outer **5** (tinh thể 4), Falloff **0.7**, chiếu **Default** | Soi sáng gạch, quái, nhân vật khi đi ngang qua đèn |
+
+#### Đèn nằm ở lớp nào (theo cách Hollow Knight làm)
+Trong Hollow Knight, đèn lồng đom đóm và cột đèn là **đồ trang trí lớp giữa**: luôn nằm **sau** Knight và quái. Quầng sáng là sprite mờ đặt ngay sau đèn, cũng nằm sau nhân vật. Ở vùng tối, lớp bóng tối phủ đều lên mọi thứ, **kể cả đèn**. Đèn nổi bật nhờ hình sáng (Unlit) và ánh sáng nó chiếu lên đất xung quanh.
+
+Vì vậy ở đây:
+- Thứ tự: **Background < đèn (1–3) < quái (10–11) < nhân vật (20–21)**. Quái hay nhân vật đi ngang đèn thì **che lên đèn**, đèn không bao giờ đè lên nhân vật.
+- Đèn nằm **dưới** `VisionMask` (40), nên đèn ở xa nhân vật bị tối theo, giống vùng tối của Hollow Knight. Lại gần thì đèn sáng rõ.
+- `Light` (Light 2D) không có Order. Nó vẫn soi sáng gạch, quái, nhân vật quanh đèn như cũ.
+- Muốn đèn ở xa vẫn sáng xuyên bóng tối (cách cũ): đặt Order của `Sprite`/`GlowWide`/`GlowCore` **> 40** (vd 41/42/43). Khi đó đèn sẽ vẽ đè lên cả quái và nhân vật đi ngang qua.
 
 **Đèn lồng đung đưa**: dùng lại `SubtleSway` (mục 9.3) trên `Pivot`: `tiltAmplitude` **4°**, `tiltSpeed` **0.8**, `swayAmplitude` 0, `bobAmplitude` 0. Vì `Pivot` ở đầu dây xích, xoay quanh điểm này sẽ ra chuyển động **con lắc**: đèn ở đầu dưới lắc rộng, dây phía trên lắc ít. Mỗi đèn tự lệch pha ngẫu nhiên nên nhiều đèn không lắc cùng nhịp.
 
@@ -1818,7 +2069,7 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 - Quanh nhân vật **sáng hẳn lên**, như có sương sáng phủ lên đất và nền.
 - Ra xa thì **tối dần rất từ từ**, góc và mép màn hình chìm vào bóng tối.
 - Không có "vòng tròn" rõ ràng.
-- Nhân vật luôn sắc nét. Đèn trang trí và quả cầu ở xa vẫn sáng xuyên bóng tối.
+- Nhân vật luôn sắc nét. Quả cầu ở xa vẫn sáng xuyên bóng tối (để còn né). Đèn trang trí ở xa thì tối theo cảnh (mục 9.7).
 
 #### Các thành phần (tất cả nằm trong `Player.prefab`, đi theo nhân vật)
 | Object | Loại | Thiết lập | Vai trò |
@@ -1834,16 +2085,20 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 | −5 | Tilemap đất |
 | −2 | Hình nộm, `HaloCore` |
 | **−1** | **`HaloWide` (sương sáng)**: đè lên đất nên đất quanh nhân vật sáng mờ lên |
-| 0 | **Nhân vật**, quái: nằm **trên** sương nên vẫn sắc nét |
+| −1 | Bụi chân nhân vật (RunDust / JumpDust / LandDust) |
+| **1–3** | **Đèn trang trí** (Sprite / GlowWide / GlowCore): sau quái và nhân vật |
+| **10–11** | **Quái** (`Visual` / `Flash` nháy trắng) |
+| **19–21** | **Nhân vật**: RimLight (tự đặt = Order của `Visual` − 1) / `Visual` / `SlashFx`. Luôn **trên** quái, đi qua quái thì nhân vật ở trước |
 | **40** | **`VisionMask` (lớp tối)**: đè lên mọi thứ phía dưới |
-| **41–43** | Đèn trang trí (Sprite / GlowWide / GlowCore) |
 | **44–45** | Quả cầu của dơi (vệt mờ / quả cầu) |
 | 50 | Tiền cảnh bóng đen (mục 9.6) |
 | (Canvas) | HUD 5 mask luôn ở trên cùng |
 
 > Đã thử và **bị loại**: đặt sương ở Order 30 (trên nhân vật) thì áo choàng bị bạc màu, mất chi tiết. Sương phải nằm **giữa thế giới và nhân vật**.
 >
-> Đèn và quả cầu đặt **trên** lớp tối (phương án A, đã chọn) để đèn ở xa vẫn lấp lánh và quả cầu bay tới vẫn né được. Nếu đặt dưới (B) thì chúng bị phủ tối.
+> Quả cầu đặt **trên** lớp tối để bay tới từ xa vẫn thấy mà né. Đèn trang trí đặt **dưới** quái/nhân vật và dưới lớp tối, theo cách Hollow Knight (mục 9.7).
+>
+> Thêm thứ mới thì chọn Order theo bảng: đồ trang trí sau nhân vật dùng 1–9, quái 10–18, nhân vật 19–29, thứ cần sáng xuyên bóng tối dùng 41–49.
 
 #### Ảnh lớp tối `Assets/Art/Generated/Lighting/vision_mask.png`
 - 1024×1024 px phủ **60 × 60 unit** (PPU ≈ 17.07), đủ lớn để luôn che kín màn hình dù nhân vật đứng lệch tâm. Camera rộng khoảng 26.7 × 15 unit.
@@ -1870,6 +2125,211 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 
 **Hiệu năng**: 1 sprite lớn (vẽ nhiều pixel trong suốt nhưng rất nhẹ với 2D) + 1 đèn Point. Không có script.
 
+### 9.9 Bảng tra nhanh: tác dụng của từng hiệu ứng và chỉnh ở đâu
+
+Mục này gom tất cả hiệu ứng hình ảnh về một chỗ, để biết **mở cái gì, chỉnh ô nào**. Chi tiết từng hiệu ứng xem ở mục được ghi trong cột cuối.
+
+#### Mỗi hiệu ứng để làm gì (tác dụng)
+Mọi hiệu ứng trong game đều phục vụ một trong 4 mục đích:
+- **Phản hồi (feedback)**: cho người chơi biết điều gì vừa xảy ra.
+- **Cảm giác điều khiển (game feel)**: làm thao tác thấy nặng, nhanh, đã tay.
+- **Đọc được cảnh (readability)**: thấy rõ nhân vật, quái, đường đi, nguy hiểm.
+- **Không khí (mood)**: làm cảnh sống động, có chiều sâu.
+
+Trước khi thêm hoặc chỉnh một hiệu ứng, nên tự hỏi nó phục vụ mục đích nào. Hiệu ứng không phục vụ mục đích nào thì chỉ làm rối màn hình.
+
+**Hiệu ứng hạt (particle) và hình ảnh**
+| Hiệu ứng | Mục đích | Tác dụng cụ thể | Mục |
+|---|---|---|---|
+| `HitFx/Flash` | Phản hồi | Xác nhận đòn trúng ngay khoảnh khắc chạm, đánh dấu điểm trúng | 5.14 |
+| `HitFx/Shards` | Cảm giác | Cho thấy lực và hướng của nhát chém | 5.14 |
+| `HitFx/Puffs` (máu gần) | Phản hồi + Không khí | Khối máu nhạt đọng quanh chỗ trúng: quái mất máu, dư âm cú đánh | 5.14 |
+| `HitFx/BloodFar` (máu xa) | Cảm giác | Giọt máu đậm văng xa rồi rơi: lực của nhát chém | 5.14 |
+| `HitFx/StreaksShort` | Cảm giác | Độ "bén" của nhát chém: chùm tia trắng lóe rồi tắt ngay | 5.14 |
+| `HitFx/StreaksLong` | Cảm giác + Đọc được | Vạch quỹ đạo và hướng nhát chém, đọng lâu hơn một chút | 5.14 |
+| Hitstop khi chém trúng (0.05s) | Cảm giác | Lưỡi kiếm như "cắm vào" mục tiêu, kỹ thuật quan trọng nhất cho cảm giác lực | 5.14 |
+| Quái bị bóp hình khi trúng đòn | Phản hồi + Cảm giác | Quái "ăn đòn" thấy rõ bằng hình dạng. Đứng yên ở hình bẹp suốt lúc hitstop | 5.14 |
+| Vết chém (`SlashFx`) | Phản hồi + Đọc được | Cho thấy **vùng** đòn đánh tới đâu, giúp người chơi canh khoảng cách | 5.14 |
+| Quái nháy trắng (`Flash` của quái) | Phản hồi | Xác nhận **con nào** vừa mất máu khi có nhiều quái | 5.16 |
+| Quái bị đánh bay + nảy lên | Cảm giác + Gameplay | Đòn đánh có lực, đồng thời đẩy quái ra xa để người chơi có khoảng thở | 5.14 |
+| Ghoul gồng trước khi lao (`ghoul_attack`, đứng yên 0.45s, quầng khói tím `WindupFx`) | Phản hồi + Đọc được | Báo trước đòn lao để người chơi kịp né. Khói phát sáng nên nhìn ra ngay cả trong bóng tối. Chỉnh `dashWindup` trong `Ghoul.asset` | 5.16 |
+| Mask vỡ nảy lên trên HUD | Phản hồi | Cho biết vừa mất máu, mất cục nào | 5.15 |
+| Khựng hình 0.1s khi bị đánh (hitstop) | Cảm giác + Phản hồi | Nhấn mạnh "bị trúng đòn", cho người chơi một nhịp để nhận ra | 5.15 |
+| Màn hình tối khi rơi hố hoặc chết | Phản hồi | Che cú dịch chuyển về chỗ an toàn hay điểm đầu màn, để không bị "nhảy cóc" khó chịu | 5.15, 5.19 |
+| Bụi khi bật nhảy (`JumpDust`) | Cảm giác | Lực đạp chân, cho thấy nhân vật thật sự rời mặt đất | 9.4 |
+| Bụi khi đáp (`LandDust`, nhiều theo tốc độ rơi) | Cảm giác + Phản hồi | Cảm giác trọng lượng. Rơi càng mạnh bụi càng nhiều, nên người chơi cảm được độ cao vừa rơi | 9.4 |
+| Bụi chạy (`RunDust`) | Cảm giác | Cảm giác tốc độ và ma sát với đất, chạy nhanh thì bụi dày | 9.4 |
+| Co giãn khi nhảy/đáp (squash & stretch) | Cảm giác | Nhân vật có "đàn hồi", chuyển động sống động không cứng | 9.4 |
+| Quả cầu khói tím xoáy (`Orb/Visual`, VFX3) | Đọc được | Đạn phát sáng tím, xoáy liên tục nên dễ thấy và dễ đoán hướng bay. Hình khít với vùng trúng (collider 0.55) nên né "đúng như nhìn thấy" | 5.18 |
+| Nổ khi quả cầu vỡ (`OrbExplode`, VFX1) | Phản hồi | Cho biết đạn đã biến mất (trúng tường hoặc trúng người). Màu cam ấm khác hẳn quả cầu tím nên phân biệt ngay | 5.18 |
+| Dơi rung + mắt cam trước khi bắn | Phản hồi + Đọc được | **Báo trước** 0.4s để người chơi kịp né. Đây là luật công bằng của Hollow Knight | 5.18 |
+| Bụi lơ lửng (`DustMotes`) | Không khí | Không khí có hạt bụi, cảnh không chết. Sáng lên khi bay qua tia trăng | 9.1 |
+| Sương mù cuộn (`FogLayer`) | Không khí + chiều sâu | Tách các lớp nền xa/gần, tạo cảm giác ẩm, huyền bí | 9.2 |
+| Cây lay nhẹ (`SubtleSway`) | Không khí | Cảnh có gió, sống động, không như tranh tĩnh | 9.3 |
+| Parallax nền | Chiều sâu | Lớp xa trôi chậm hơn lớp gần, nên màn 2D có chiều sâu | 8 |
+
+**Ánh sáng và bóng tối**
+| Hiệu ứng | Mục đích | Tác dụng cụ thể | Mục |
+|---|---|---|---|
+| `Global Light - World` (tối, 0.2) | Không khí + Đọc được | Thế giới chìm trong bóng tối, để mọi nguồn sáng khác nổi lên | 9.6 |
+| `Global Light - Background` (0.8) | Đọc được | Nền vẫn thấy rõ hình dáng, người chơi không bị "mù" phía sau | 9.6 |
+| `PlayerLight` | Đọc được | Mặt đất và quái **gần nhân vật** thấy rõ, đủ để canh bước nhảy và né đòn | 9.6, 9.8 |
+| `BackLight` | Không khí | Bức nền sau lưng sáng lên quanh nhân vật, như Hollow Knight | 9.8 |
+| Quầng tím `HaloWide` / `HaloCore` | Không khí + Đọc được | Nhân vật là "ngọn đèn" của cảnh, mắt người xem luôn tìm được nhân vật | 9.6, 9.8 |
+| Quầng "thở" (`HaloPulse`) | Không khí | Nhân vật như sinh vật sống, không đứng im cứng nhắc | 9.6 |
+| Viền sáng (`RimLight`) | Đọc được | Áo choàng đen không bị chìm vào nền tối, luôn thấy rõ hình dáng nhân vật | 9.6 |
+| Lớp tối mép màn hình (`VisionMask`) | Không khí + Tập trung | Dồn mắt vào giữa (nhân vật), tạo cảm giác khám phá trong bóng tối | 9.8 |
+| Đèn trang trí (cam ấm) | Đọc được + Không khí | **Dẫn đường**: người chơi tự đi về phía có ánh sáng. Điểm nhấn ấm giữa cảnh lạnh. Sau này đặt cạnh checkpoint thì báo "nơi an toàn" | 9.7 |
+| Quả cầu soi sáng đất (`Orb/Glow`, Light 2D) | Đọc được | Đất quanh đạn sáng lên khi bay qua, càng dễ thấy đạn đang tới | 5.18 |
+| Tia trăng (`MoonBeams`) | Không khí + Dẫn mắt | Có hướng sáng tự nhiên, làm bụi lơ lửng hiện lên. Đặt ở chỗ muốn người chơi chú ý | 9.6 |
+| Tiền cảnh bóng đen (`Foreground`) | Chiều sâu + Khung tranh | Trôi nhanh hơn camera nên cảnh có lớp gần, như nhìn qua khe đá | 9.6 |
+| Bloom | Không khí | Mọi thứ sáng (quầng, đèn, cầu, đốm cam) **tỏa mềm**, nhìn như phát sáng thật | 9.6 |
+| Vignette | Tập trung | Tối nhẹ 4 góc, mắt dồn vào giữa | 9.6 |
+| Split Toning + Contrast + Saturation | Không khí | "Chữ ký màu": vùng tối ngả tím, vùng sáng ngả ngà. Cả cảnh thống nhất một tông | 9.6 |
+
+#### Nguyên tắc chung
+1. **Hiệu ứng nằm trong prefab** (HitFx, đèn, quả cầu, Player…):
+   - **Double-click** prefab trong cửa sổ Project để vào chế độ sửa prefab.
+   - Chỉnh xong bấm **Save** (hoặc bật **Auto Save** ở góc trên Scene view).
+   - Mọi chỗ dùng prefab đó đều đổi theo.
+2. **Hiệu ứng nằm trong scene** (đèn tổng, tia trăng, tiền cảnh, PostFX): chọn trong Hierarchy, chỉnh xong **Ctrl+S**.
+3. ⚠️ **Chỉnh lúc đang Play sẽ mất khi thoát Play.** Cách làm đúng: thử trong Play → ghi nhớ số → thoát Play → nhập lại. Ngoại lệ là **ScriptableObject** (`PlayerAttackConfig`, `PlayerMovementConfig`, `Ghoul.asset`, `Bat.asset`, `PostFX_Night.asset`): chỉnh lúc Play vẫn được giữ lại.
+4. **Xem trước Particle không cần Play:**
+   - Chọn object có Particle System. Góc dưới phải Scene view hiện bảng **Particle Effect**, bấm **Play**.
+   - Với `HitFx`, `LandDust`: Emission đang tắt vì code tự gọi `Emit`. Muốn xem trong Editor thì tạm bật **Emission → Bursts** (Count 10), xem xong **tắt lại**.
+   - Hiệu ứng dạng khung hình (`FrameAnimation`: khói Ghoul, quả cầu, nổ) chỉ chạy lúc Play. Muốn xem một khung trong Editor: bật Sprite Renderer và kéo khung muốn xem vào ô **Sprite**, xem xong trả lại (mục 9.10).
+5. Rê chuột lên tên ô trong Inspector để đọc **Tooltip**. Các script của dự án đều có giải thích.
+
+#### Bảng tra
+| Hiệu ứng | Mở ở đâu | Component | Ô chỉnh chính | Chi tiết |
+|---|---|---|---|---|
+| Chém trúng: chớp trắng | `Assets/Prefabs/Fx/HitFx.prefab` → `Flash` | Particle System | Start Size, Start Lifetime, Start Color | 5.14 |
+| Chém trúng: mảnh vụn cam | `HitFx` → `Shards` | Particle System | Start Speed, Start Size, Gravity Modifier, Shape → Angle, Renderer → Length Scale | 5.14 |
+| Chém trúng: máu gần / máu xa | `HitFx` → `Puffs` (máu gần), `BloodFar` (máu xa) ; `HitFx` (gốc) → **Hit Effect** | Particle System ; Hit Effect | Start Size, Start Color, Start Speed, Gravity, Shape → Arc ; Puff Count, Blood Far Count, **Blood Far Up Tilt** | 5.14 |
+| Chém trúng: vệt trắng ngắn / dài | `HitFx` → `StreaksShort`, `StreaksLong` (màu, mờ dần) ; `HitFx` (gốc) → **Hit Effect** (số lượng, dài, dày, thời gian, độ lệch, độ trễ) | Particle System ; Hit Effect | Short/Long Width, Length, Lifetime, Long Delay, Puff Delay | 5.14 |
+| Khựng hình khi chém trúng | `PlayerAttackConfig.asset` | ScriptableObject | Hit Stop Time | 5.14 |
+| Quái bị bóp hình | `Ghoul.asset`, `Bat.asset` | ScriptableObject | Hit Squash, Squash Time | 5.14 |
+| Số mảnh / đốm mỗi lần trúng | `HitFx` (gốc) | Hit Effect | Shard Count, Puff Count | 5.14 |
+| Đánh bay quái | `Assets/Settings/PlayerAttackConfig.asset` ; `Assets/Settings/Enemies/Ghoul.asset` | ScriptableObject | Knockback ; Knockback Up, Hurt Time | 5.14, 5.16 |
+| Vết chém | `PlayerAttackConfig.asset` | ScriptableObject | Slash Visual Time, Slash Side/Up/Down Push, Slash Base Angle | 5.14 |
+| Bụi nhảy / đáp / chạy | `Player.prefab` → `JumpDust` / `LandDust` / `RunDust` | Particle System | Main, Shape, Size/Color over Lifetime | 9.4 |
+| Lượng bụi theo tốc độ, co giãn | `Player.prefab` (gốc) | Player Movement Fx | Hard Landing Speed, Run Step Interval, Jump Stretch, Land Squash | 9.4 |
+| Quầng tím quanh nhân vật | `Player.prefab` → `Halo/HaloWide`, `Halo/HaloCore` | Sprite Renderer + Transform | **Color → A** (độ đậm), **Scale** (độ phủ) | 9.6, 9.8 |
+| Nhịp "thở" của quầng | `Player.prefab` → `Halo` | Halo Pulse | Period, Scale Amount, Alpha Amount | 9.6 |
+| Đèn soi đất quanh nhân vật | `Player.prefab` → `PlayerLight` | Light 2D | Intensity, Outer Radius, Color, Falloff | 9.6, 9.8 |
+| Đèn soi nền sau lưng | `Player.prefab` → `BackLight` | Light 2D | Intensity, Outer Radius | 9.8 |
+| Viền sáng nhân vật | `Player.prefab` → `Visual` ; `Assets/Shaders/M_RimLight.mat` | Rim Light ; Material | Thickness, Opacity ; Flash Color (màu viền) | 9.6 |
+| Bóng tối mép màn hình | `Player.prefab` → `VisionMask` | Sprite Renderer + Transform | **Scale** (vùng sáng), **Color → A** (độ tối) | 9.8 |
+| Độ tối chung | Scene → `Global Light - World`, `Global Light - Background` | Light 2D | Intensity, Color | 9.6 |
+| Bloom / Vignette / màu | `Assets/Settings/Lighting/PostFX_Night.asset` | Volume Profile | Bloom (Threshold, Intensity), Vignette (Intensity), Split Toning, Color Adjustments | 9.6 |
+| Tia trăng | Scene → `Lighting/MoonBeams/Beam_n` | Sprite Renderer + Transform | Color → A, Rotation Z, Scale | 9.6 |
+| Tiền cảnh bóng đen | Scene → `Lighting/Foreground/FG_*` | Sprite Renderer + Parallax Effect | Transform, Manual Factor (âm = trôi nhanh hơn camera) | 9.6 |
+| Đèn trang trí | `Assets/Prefabs/Lighting/Lamp_*.prefab` → `Glow/GlowWide`, `Glow/GlowCore`, `Light` | Sprite Renderer, Light 2D | Color → A, Scale ; Intensity, Outer Radius | 9.7 |
+| Đèn lồng lắc | `Lamp_Hanging.prefab` → `Pivot` | Subtle Sway | Tilt Amplitude, Tilt Speed | 9.7 |
+| Quả cầu của dơi | `Assets/Prefabs/Projectiles/Orb.prefab` → `Visual`, `Glow` ; gốc `Orb` | Frame Animation + Transform, Light 2D ; Circle Collider 2D, Projectile | Duration, Scale ; Intensity ; Radius, Solid Check Radius | 5.18 |
+| Nổ khi quả cầu vỡ | `Assets/Prefabs/Projectiles/OrbExplode.prefab` | Frame Animation + Transform | Duration, Scale | 5.18 |
+| Khói gồng của Ghoul | `Ghoul.prefab` → `WindupFx` ; `Assets/Shaders/M_SpriteAdditive.mat` | Transform ; Material | Scale, Position ; Intensity | 5.16 |
+| Nháy trắng khi quái trúng đòn | `Ghoul.asset` / `Bat.asset` | ScriptableObject | Flash Time | 5.16 |
+| Bụi lơ lửng | Scene → `CameraRig/DustMotes` | Particle System | Rate over Time, Start Size, Noise | 9.1 |
+| Sương mù | `Background.prefab` → `L2_FogFar/L2_FogFar_Scroll`, `L4_FogNear/L4_FogNear_Scroll` | Fog Layer | Tốc độ trôi, độ đậm (xem mục 9.2) | 9.2 |
+
+#### Các module Particle System hay chỉnh (dùng cho mọi hiệu ứng hạt)
+| Module | Ô | Tăng thì | Giảm thì |
+|---|---|---|---|
+| **Main** | Start Lifetime | Hạt sống lâu, bay xa, đọng lâu trên màn hình | Hạt tắt nhanh, gọn |
+| | Start Speed | Bay nhanh, tỏa xa | Bay chậm, tụ gần điểm phát |
+| | Start Size | Hạt to hơn. Ảnh hạt tròn mềm chỉ sáng rõ ở giữa nên nhìn nhỏ hơn số thật | Hạt nhỏ, lấm tấm |
+| | Start Color (chữ A) | Đậm, rõ | Mờ, nhẹ |
+| | Gravity Modifier | Dương: rơi xuống như vụn. Âm: bay lên như hơi | 0: bay thẳng |
+| | Simulation Space | **World**: hạt đã phát ra không đi theo object (bắt buộc cho HitFx, bụi) | **Local**: hạt dính theo object |
+| **Emission** | Rate over Time / Bursts | Nhiều hạt hơn | Ít hạt. **Tắt hẳn** khi code tự gọi `Emit` |
+| **Shape** | Cone → Angle | Tỏa rộng hơn. ⚠️ Góc lớn sẽ bắn hạt vào trục Z, trong 2D không thấy (mục 5.14) | Tia tập trung |
+| | Circle → Arc | Tỏa thành quạt rộng hơn trên mặt phẳng 2D (dùng cái này khi muốn tỏa rộng) | Quạt hẹp |
+| **Limit Velocity over Lifetime** | Dampen | Hạt phanh mạnh, dừng gần điểm phát | Hạt trôi xa |
+| | Limit | Cho phép bay nhanh hơn trước khi bị phanh | Hạt bị hãm ngay, tụ cụm |
+| **Size over Lifetime** | Đường cong | Cuối đời to ra (nở) | Cuối đời nhỏ lại (tan) |
+| **Color over Lifetime** | Gradient alpha | Giữ alpha 1 lâu hơn → đốm sáng lâu | Alpha về 0 sớm → tắt nhanh |
+| **Renderer** | Render Mode | **Stretched Billboard**: hạt kéo dài theo vận tốc (vệt, tia lửa) | **Billboard**: hạt tròn (đốm, bụi) |
+| | Length Scale (Stretched) | Vệt dài hơn | Gần tròn |
+| | Order in Layer | Vẽ trên các thứ có Order nhỏ hơn. **> 40** thì nổi trên lớp tối `VisionMask` | Bị bóng tối che |
+| | Material | `M_HitFx` (sáng 100%) cho hiệu ứng đánh. `M_PlayerDust` cho bụi | |
+
+#### Các ô hay chỉnh của Light 2D (đèn)
+| Ô | Ảnh hưởng |
+|---|---|
+| Intensity | Độ sáng trên vật thể. Không tỷ lệ thuận với mắt thấy (gamma) |
+| Outer Radius / Inner Radius | Vùng được soi / vùng sáng đều 100% ở giữa |
+| Falloff Intensity | 0 = tắt cứng, 1 = tắt rất mềm |
+| Target Sorting Layers | Đèn chiếu lớp nào: `Default` (đất, nhân vật, quái) hay `Background` (nền) |
+| ⚠️ Đèn tạo bằng script mà không sáng | Xem mục 9.6 (lỗi `m_LocalBounds` = 0) |
+
+### 9.10 Hiệu ứng vẽ tay dạng từng khung (`FrameAnimation`) + material cộng sáng
+
+Bộ VFX trong `Assets/Art/Fx/` (VFX1, VFX2, VFX3) là **ảnh rời từng khung** (`Frames/Warlock_skillN_frameK.png`), không phải Particle System. Mình phát chúng bằng một component nhỏ thay vì tạo Animator + clip cho từng cái.
+
+| VFX | Hình | Dùng ở đâu |
+|---|---|---|
+| **VFX1** (8 khung) | Khối xanh lá + vòng hồng quét ngang | Nổ khi quả cầu dơi vỡ (`OrbExplode`, mục 5.18), dùng **bản đổi màu tông ấm** (xem "Đổi màu VFX cho hợp tông" bên dưới) |
+| **VFX2** (13 khung) | Sóng chém vòng cung tím | **Chưa dùng.** Đã thử thay vệt chém phím J nhưng giữ vệt cũ |
+| **VFX3** (8 khung) | Khói tím bùng ra | Khói gồng của Ghoul (`WindupFx`, mục 5.16) và hình quả cầu dơi (`Orb/Visual`, mục 5.18) |
+| `slash_arc_loop_red_free` | Vệt chém đỏ | Chưa dùng |
+
+#### `Scripts/Effects/FrameAnimation.cs`
+Gắn lên object có `SpriteRenderer`. Chia đều các khung trong `duration` giây và đổi `sprite` mỗi frame.
+
+| Ô | Tác dụng |
+|---|---|
+| **Frames** | Các khung theo thứ tự. Kéo thả cả loạt ảnh từ cửa sổ Project vào (nhớ kiểm tra thứ tự 1→8) |
+| **Duration** | Thời gian chạy hết các khung. Số khung/giây = số khung / Duration. Tăng → chậm, êm; giảm → nhanh, gắt |
+| **Loop** | Bật: chạy lặp mãi (quả cầu đang bay). Tắt: chạy 1 lần rồi **tự ẩn** (nổ, khói gồng) |
+| **Play On Enable** | Bật: tự chạy mỗi khi object được bật (đạn lấy ra từ pool). Tắt: phải gọi `Play()` từ code |
+
+Trong code:
+- `Play()`: chạy lại từ khung đầu với Duration đã đặt.
+- `Play(giây)`: chạy với thời gian khác, không đổi ô Duration. Ghoul gọi `Play(dashWindup)` để khói khớp đúng thời gian gồng.
+- `Stop()`: ẩn ngay (dùng khi Ghoul bị chém ngắt lúc đang gồng).
+- `Awake` tự **tắt SpriteRenderer**, nên lúc chưa phát thì không hiện gì. Vì vậy trong Editor (chưa Play) bạn vẫn thấy khung đầu, vào Play mới ẩn.
+
+Vì sao không dùng Animator? Mỗi hiệu ứng chỉ là "chạy một dãy ảnh". Animator cần thêm Controller + clip + state cho từng cái, nặng hơn và khó chỉnh thời gian từ code. `FrameAnimation` không cấp phát gì khi chạy, hợp với pool.
+
+#### Import khung hình
+| Bộ khung | PPU | Kích thước thật | Ghi chú |
+|---|---|---|---|
+| VFX1 bản ấm `orb_explode_0..7` (128×128) | 80 | 1.6 unit | Nổ quả cầu (ảnh gốc VFX1 giữ nguyên, không dùng) |
+| VFX3 (128×128) | 64 | 2 unit (cả khung). Khói chỉ chiếm khoảng 1/2 khung | Khói Ghoul scale 1.6; quả cầu scale 1.16 |
+| VFX2 (192×128) | 100 | (để mặc định, chưa dùng) | |
+
+Thiết lập chung: Texture Type **Sprite (2D and UI)**, Sprite Mode **Single**, Alpha Is Transparency bật, Generate Mip Maps tắt, Compression **None** (ảnh vẽ tay nhiều chi tiết mờ, nén sẽ bị vệt khối).
+- **PPU càng nhỏ, hình càng to** (vd PPU 64 → 128 px = 2 unit; PPU 128 → 1 unit). Muốn đổi kích thước một chỗ mà không ảnh hưởng chỗ khác dùng chung bộ ảnh: chỉnh **Scale** của object, đừng đổi PPU.
+
+#### Đổi màu VFX cho hợp tông (gradient map)
+Tông của game: **nền đêm tím**, **cam ấm = sự kiện, nguy hiểm** (máu, hạt chém, đèn), **trắng ngà** cho chỗ sáng nhất. VFX1 gốc màu xanh lá + hồng neon thì lệch hẳn, nên mình tạo **bản màu mới** (ảnh gốc giữ nguyên):
+- Mỗi pixel lấy **độ sáng** `t = 0.6 × max(R,G,B) + 0.4 × độ chói`, rồi tra màu trên một dải màu, giữ nguyên alpha:
+
+| `t` | Màu | Thành phần nào của ảnh rơi vào đây |
+|---|---|---|
+| 0 → 0.35 | nâu tím tối (0.16, 0.07, 0.10) → cam đậm (0.85, 0.32, 0.06) | Khói xám, bóng |
+| 0.35 → 0.65 | cam đậm → cam (1, 0.62, 0.18) | Vòng hồng, tia xanh dương |
+| 0.65 → 1 | cam → trắng ngà (1, 0.94, 0.78) | Lõi xanh lá sáng nhất |
+
+- Lấy theo độ sáng nên **hình dạng và chi tiết giữ nguyên**, chỉ đổi màu. Không dùng ô Color của SpriteRenderer được, vì ô đó chỉ **nhân** màu: xanh lá nhân cam ra màu bẩn, không thành cam được.
+- Ảnh được tạo bằng một lệnh chạy trong Editor và lưu ở `Assets/Art/Generated/Fx/OrbExplode/`. Muốn đổi sang dải màu khác (vd tím → trắng) thì chạy lại cách này với 4 màu mới.
+
+#### Material cộng sáng `M_SpriteAdditive` (shader `LuHanh/SpriteAdditive`)
+- File: `Assets/Shaders/SpriteAdditive.shader` + `Assets/Shaders/M_SpriteAdditive.mat`.
+- Material bình thường **phủ** màu sprite lên cảnh. Material này **cộng** màu sprite vào những gì phía sau (`Blend SrcAlpha One`):
+  - phần **tối** của ảnh gần như biến mất (cộng thêm gần 0);
+  - phần **sáng** thành **quầng phát sáng**, và Bloom tỏa thêm.
+- Vì sao cần? Khói VFX3 màu tím rất đậm. Vẽ bình thường thì trên nền đêm tím gần như không thấy (đã thử, mục 5.16). Đổi sang cộng sáng thì khói thành quầng tím phát quang, nổi rõ.
+
+| Ô | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Intensity** | 3 | Sáng chói, Bloom tỏa mạnh. Trên 4 thì cháy trắng, mất màu tím | Mờ dần; 1 là cộng đúng màu gốc (vẫn khá tối với VFX3) |
+
+⚠️ Material **dùng chung** cho khói Ghoul và quả cầu dơi. Muốn chỉnh riêng một bên: chuột phải `M_SpriteAdditive` → **Duplicate**, đổi tên, chỉnh Intensity, rồi kéo vào SpriteRenderer của bên đó.
+
+Lưu ý: cộng sáng **không làm tối được**. Hiệu ứng màu đen hoặc cần che khuất (khói đen, bóng) thì dùng material thường (Sprite-Unlit-Default).
+
 ---
 
 ## 10. Lỗi hay gặp và cách xử lý
@@ -1886,6 +2346,8 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 | Kéo background bị bật ngược lại | `ParallaxEffect` chạy cả ở Edit | Xem mục 8 |
 | Animation nhân vật rung, lệch | Sheet cắt bằng Slice Automatic | Cắt lại Grid By Cell Size, pivot cố định |
 | Nhân vật không chạy trái/phải được (vẫn nhảy/dash được) | `PlayerInput` → **Actions** bị trống nên phím di chuyển không tới `onMove` (Space/Shift vẫn chạy vì code đọc thẳng bàn phím) | Mở `Player.prefab` → `PlayerInput` → kéo `PlayerInputAction` vào ô **Actions**, Default Map = Player. Sau mỗi lần sửa prefab nên kiểm tra lại ô này |
+| Bấm Shift / J không dash, không chém | Event `Dash` / `Attack` của `PlayerInput` chưa nối hàm, hoặc action chưa có binding | Player → `PlayerInput` → Events → Player → ô Dash phải trỏ `PlayerController.onDash`, ô Attack trỏ `PlayerAttack.onAttack`; kiểm tra binding trong `.inputactions` (mục 5.12) |
+| Rơi xuống hố mà không có gì xảy ra | Không có `HazardZone` dưới hố, hoặc collider chưa bật **Is Trigger**, hoặc Player chưa có tag `Player` | Đặt `HazardZone.prefab`, kiểm tra Gizmo hộp đỏ phủ đúng hố (mục 5.19) |
 | Quái đi lùi (mặt quay ngược hướng đi) | `Art Faces Right` trong config không khớp hình gốc | Xem hình gốc quay trái hay phải, đặt lại `Art Faces Right` trong `Ghoul.asset` |
 | Quái chạm vào không mất máu | Player chưa có tag `Player` hoặc thiếu `PlayerHealth` | Đặt Tag = Player trên `Player.prefab`, thêm `Health` + `PlayerHealth` |
 | Dơi không bắn | `Bat.asset` thiếu Projectile Prefab, hoặc tường che giữa dơi và người chơi (cần thấy mới bắn) | Gán `Orb.prefab` vào Projectile Prefab; kiểm tra Gizmo vòng tròn phát hiện |
@@ -1900,7 +2362,6 @@ Mỗi đèn gồm 3 phần, giống cách làm quầng sáng nhân vật (mục 
 
 | Asset | Tác giả | Yêu cầu |
 |---|---|---|
-| Hooded Protagonist | Penzilla Design | **Bắt buộc ghi**: "Graphics created by Penzilla Design" |
 | Cloaked Platformer | StudioArtistix | Kiểm tra file license trong gói |
 | Cel-Shaded Style Slash Animation (Free) | Sugawara Studio | Không bắt buộc ghi credit; không được phân phối lại |
 | Industrial Tileset, Vampire Castle, FreeCuteTileset… | (xem file License trong từng thư mục) | |
@@ -1946,3 +2407,33 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 33. Bổ sung chi tiết tutorial các mục 3, 4, 5.4–5.13, 6, 7, 8, 9.2, 9.3 (bảng tăng/giảm → ảnh hưởng, đọc số thật từ code và asset); sửa các chỗ ghi sai: parallax dùng manualFactor chứ không theo z, vị trí cây L5 (5.28, 5.09), camera size 7.5, inputBuffer/spriteFacesRight/groundLayers chỉ đọc lúc Awake, ApplyGravity dùng currentMaxFall.
 34. Vùng nhìn quanh nhân vật kiểu Hollow Knight (tông tím): VisionMask (lớp tối 60×60 unit, rõ 3, tối dần tới 13, alpha 0.85, Order 40) + BackLight (Point chiếu Background, 1.4, bán kính 11) trong Player.prefab; HaloWide thành sương sáng (Ø14, α0.30, Order −1); PlayerLight 2.2, bán kính 10; đèn trang trí Order 41–43 và quả cầu 44–45 để sáng xuyên bóng tối.
 35. Tinh chỉnh ánh sáng: 3 đèn trang trí sáng hơn (Light 1.2 → 1.6, GlowCore α 0.35 → 0.45, GlowWide α 0.12 → 0.18); ánh sáng nhân vật dịu hơn (HaloWide α 0.30 → 0.24, PlayerLight 2.2 → 1.9, BackLight 1.4 → 1.2).
+36. Đồng nhất input qua Input System: thêm action Dash (Left Shift) nối PlayerController.onDash; Attack chỉ còn phím J, nối PlayerAttack.onAttack; xóa action Look, các binding Attack cũ (chuột trái, RT, touch, joystick, XR), field readJumpFromKeyboard và các hàm đọc Keyboard.current. Tutorial: viết lại mục 5.12, sửa 4.1, 5.2, 5.4, 5.14; bỏ mục import Hooded (sprite đã xóa) và credit Hooded.
+37. Vùng chết dưới hố kiểu Hollow Knight: HazardZone (trigger) + IHazardReceiver; PlayerHealth nhớ chỗ đứng an toàn (đứng vững 0.2s) và khi rơi bẫy thì mất 1 mask, tối nhanh 0.25s → hiện lại chỗ an toàn → sáng 0.3s, bất tử 1.3s, quái không hồi sinh; RespawnManager.HazardRespawn; prefab Assets/Prefabs/Hazards/HazardZone; 4 vùng dưới 4 hố + KillFloor dọc đáy map.
+38. Hiệu ứng chém trúng kiểu Hollow Knight: HitFx (Flash trắng + 14–20 mảnh cam Stretched Billboard, cone 35°, material M_HitFx), một bản dùng chung, phát ở ClosestPoint trên collider mục tiêu; đánh bay quái xa hơn: knockback 6 → 18, Ghoul knockbackUp 4 (≈ 3.6 ô).
+39. HitFx thêm lớp Puffs: 10–14 đốm cam tròn to (2.2–3.0) tỏa hình quạt 170° (Shape Circle + Arc, xoay theo hướng chém trong HitEffect.Play), dampen 0.039, sống 0.7–1.3s; ghi chú Cone góc rộng bắn hạt vào trục Z nên không dùng cho hiệu ứng tỏa rộng trong 2D.
+40. Thêm mục 9.9 Bảng tra nhanh: chỉnh hiệu ứng ở đâu (mọi hiệu ứng particle, đèn, bóng tối, PostFX → prefab/object, component, ô chỉnh, mục chi tiết), nguyên tắc chỉnh prefab/scene/Play mode, bảng các module Particle System và Light 2D hay chỉnh.
+41. Tutorial: thêm tác dụng của từng hiệu ứng (Flash / Shards / Puffs trong 5.14 có bảng "tác dụng, bỏ đi thì sao"; mục 9.9 thêm bảng "Mỗi hiệu ứng để làm gì" cho mọi hiệu ứng hạt, phản hồi và ánh sáng, chia theo 4 mục đích: phản hồi, cảm giác, đọc được cảnh, không khí).
+42. HitFx thêm chùm vệt chém trắng kiểu Hollow Knight: StreaksShort (8–12 vệt ngắn, dày 0.2–0.3, hiện ngay, sống 0.06–0.1s) và StreaksLong (2–3 vệt dài 3–6 ô, dày 0.2–0.3, gần song song ±5°, trễ 0.04s, sống 0.18–0.25s); đốm cam trễ 0.08s để vệt chém thấy trước; ảnh streak.png + material M_Streak; HitEffect có hàng đợi phát trễ cố định 8 chỗ (không cấp phát).
+43. Vệt chém đậm hơn: số vệt ×3 (ngắn 24–36, dài 6–9), vệt ngắn tỏa trong quạt 270° (Short Along Direction 1, Short Spread 135°), độ dày ×3 (0.6–0.9); Max Particles StreaksShort 160, StreaksLong 48.
+44. Tách rõ vệt ngắn và vệt dài, hết tụ một chỗ: vệt ngắn mảnh 0.2–0.35, dài 0.4–1.0, màu kem, rải cách tâm 0.4–1.8 (Short Offset); vệt dài giữ dày 0.6–0.9, lệch ngang ±0.7 (Long Side Offset), sống 0.22–0.32s. HitEffect thêm shortOffset, shortColor, longSideOffset.
+45. Cảm giác lực khi chém trúng: hitstop 0.05s (PlayerAttackConfig.hitStopTime) và quái bị bóp hình (1.3, 0.7) rồi bật lại trong 0.1s (EnemyConfigBase.hitSquash, squashTime); thêm Core/HitStop dùng chung cho mọi nguồn khựng hình, PlayerHealth chuyển sang dùng HitStop để không giành Time.timeScale.
+46. Giảm số vệt chém: vệt ngắn về lại 8–12, vệt dài 2–3 (bản ×3 trước đó quá dày).
+47. Hạt cam thành máu quái, 2 dạng: Puffs = máu gần (6–9 đốm to 1.6–2.4, cam nhạt 75%, đọng gần) và BloodFar mới = máu xa (14–20 giọt 0.25–0.5, cam đỏ đậm, speed 8–14, quạt 120° nghiêng lên 25°, gravity 1.5 rơi thành đường cong); Shards đổi cam đỏ đậm; HitEffect thêm bloodFar, bloodFarCount, bloodFarUpTilt và hàm EmitArc dùng chung.
+48. Máu to hơn, văng xa hơn: máu xa size 0.25–0.5 → 0.45–0.8, speed 8–14 → 11–18, sống 0.4–0.8 → 0.55–1.0s; máu gần size 1.6–2.4 → 2.0–3.0, speed 1.5–4 → 2.5–6.
+49. Máu xa: quạt 100° (Arc), nghiêng lên 50° (bloodFarUpTilt), trọng lực 1.5 - giọt bắn vồng cao rồi rơi xuống.
+50. Đổi màu máu bay xa và Shards từ cam đỏ sang cam tươi (BloodFar (1, 0.5, 0.1), Shards (1, 0.58, 0.15)–(1, 0.45, 0.08)); máu gần giữ cam nhạt để vẫn gần nhạt – xa đậm.
+51. Màu máu xa và Shards pha ngẫu nhiên giữa màu máu gần (1, 0.72, 0.42) và cam tươi (1, 0.5, 0.1), để hạt bay ra hòa cùng hạt cam gần.
+52. Chiến đấu kiểu "chỉ đòn tấn công mới gây sát thương":
+    - Bỏ bất tử 1.3s và nhấp nháy sau khi bị đánh (xóa `invulnerableTime`, `blinkInterval`, ô Sprite trong `PlayerHealth`). Vẫn hitstop 0.1s và văng (8, 8).
+    - `ContactDamage` trúng xong tự tắt, nên mỗi lần bật chỉ trúng 1 lần.
+    - Chạm thân quái không mất máu. Dơi bỏ object `Hitbox`, chỉ quả cầu gây sát thương.
+    - Ghoul có đòn lao `DashAttackState`: gồng 0.45s → lao 14 u/s trong 0.3s (chỉ lúc này hitbox bật) → đứng thở 0.6s, hồi chiêu 1.5s, tầm kích hoạt 5 unit. Thông số mới trong `EnemyConfig`, bỏ `attackAnimRange`.
+    - Order mới theo cách Hollow Knight: đèn 1/2/3 < quái 10/11 < nhân vật 20 (SlashFx 21, RimLight 19). Đèn nằm dưới VisionMask nên ở xa bị tối theo.
+53. Dùng bộ VFX vẽ tay trong `Assets/Art/Fx/` (mục 9.10):
+    - Component mới `FrameAnimation` (Frames, Duration, Loop, Play On Enable; `Play()`, `Play(giây)`, `Stop()`).
+    - Shader + material cộng sáng `LuHanh/SpriteAdditive` / `M_SpriteAdditive` (Intensity 3).
+    - Ghoul: object `WindupFx` (VFX3, scale 1.6, Order 9, cộng sáng) chạy đúng `dashWindup` lúc gồng, bị chém ngắt thì tắt.
+    - Quả cầu dơi: hình đổi sang VFX3 lặp (scale 1.16 ≈ 1.2 unit, cộng sáng), bỏ `Trail` cam, collider 0.3 → 0.55, Solid Check Radius 0.22 → 0.45 cho khít hình.
+    - Nổ khi vỡ: prefab mới `OrbExplode` (VFX1, 0.35s) thay particle `OrbBurst`; `ProjectilePool` giữ 3 bản xoay vòng; `FlyingEnemyConfig.projectileBurstPrefab` đổi kiểu sang `FrameAnimation`. `OrbBurst` và `orb.png` vẫn giữ trong project.
+    - Thử VFX2 làm vệt chém phím J nhưng giữ vệt cũ.
+54. Đổi màu vụ nổ VFX1 cho hợp tông game: gradient map theo độ sáng (nâu tím tối → cam → trắng ngà) ra bộ khung mới `Assets/Art/Generated/Fx/OrbExplode/orb_explode_0..7.png` (PPU 80), gán vào `OrbExplode`. Ảnh gốc VFX1 giữ nguyên.

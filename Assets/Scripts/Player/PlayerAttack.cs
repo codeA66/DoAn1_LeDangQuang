@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using LuHanh.Combat;
+using LuHanh.Core;
+using LuHanh.Effects;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,6 +37,7 @@ namespace LuHanh.Player
         readonly Collider2D[] hits = new Collider2D[8];
         readonly HashSet<IDamageable> hitThisSwing = new();
         ContactFilter2D filter;
+        HitEffect hitEffect;
 
         public bool IsAttacking => activeTimer > 0f;
 
@@ -53,14 +56,13 @@ namespace LuHanh.Player
             filter = new ContactFilter2D { useLayerMask = true, layerMask = config.hitLayers, useTriggers = true };
 
             if (slashVisual) slashVisual.enabled = false;
+
+            // Tao san mot ban hieu ung trung don dung chung (khong gan vao Player de khong bi lat theo).
+            if (config.hitEffectPrefab) hitEffect = Instantiate(config.hitEffectPrefab);
         }
 
         void Update()
         {
-            // Input Actions chua co action Attack nen doc J thang tu ban phim, giong Space va Shift.
-            var kb = Keyboard.current;
-            if (kb != null && kb.jKey.wasPressedThisFrame) lastPressedTime = Time.time;
-
             if (cooldownTimer > 0f) cooldownTimer -= Time.deltaTime;
 
             bool buffered = Time.time - lastPressedTime <= config.inputBuffer;
@@ -71,6 +73,13 @@ namespace LuHanh.Player
             }
 
             UpdateSlashVisual();
+        }
+
+        /// <summary>Goi tu PlayerInput (action Attack). Chi ghi lai thoi diem bam, Update quyet dinh chem.</summary>
+        public void onAttack(InputAction.CallbackContext callback)
+        {
+            // UnityEvent van goi khi component bi tat (vd luc chet) - bo qua de khong chem ngay khi hoi sinh.
+            if (callback.started && enabled) lastPressedTime = Time.time;
         }
 
         void FixedUpdate()
@@ -120,13 +129,16 @@ namespace LuHanh.Player
                 var target = hits[i].GetComponentInParent<IDamageable>();
                 if (target == null || !hitThisSwing.Add(target)) continue;   // moi muc tieu trung 1 lan / nhat
 
+                var direction = HitDirection();
                 target.TakeHit(new HitInfo
                 {
                     damage = config.damage,
-                    direction = HitDirection(),
+                    direction = direction,
                     knockback = config.knockback,
                     source = gameObject
                 });
+                // Diem tren collider muc tieu gan tam vung chem nhat = cho loe sang.
+                if (hitEffect) hitEffect.Play(hits[i].ClosestPoint(centre), direction);
                 ReactToHit();
             }
         }
@@ -146,6 +158,9 @@ namespace LuHanh.Player
         {
             if (reactedThisSwing) return;
             reactedThisSwing = true;
+
+            // Khung hinh khung lai mot thoang: luoi kiem nhu "cam vao" muc tieu.
+            HitStop.Request(config.hitStopTime);
 
             var v = body.linearVelocity;
             if (currentDirection == Direction.Down)

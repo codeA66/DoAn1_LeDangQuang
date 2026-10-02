@@ -33,6 +33,8 @@ namespace LuHanh.Enemies
         bool startFacingRight;
         bool asleep;
         float flashTimer;
+        float squashTimer;
+        Vector3 visualBaseScale = Vector3.one;
         int currentAnim;
 
         protected StateMachine Machine { get; private set; }
@@ -71,6 +73,7 @@ namespace LuHanh.Enemies
             body.freezeRotation = true;
             health.SetMax(BaseConfig.maxHealth);
             if (flash) flash.enabled = false;
+            if (sprite) visualBaseScale = sprite.transform.localScale;
 
             startPosition = transform.position;
             FacingRight = (transform.localScale.x >= 0f) == BaseConfig.artFacesRight;
@@ -119,6 +122,7 @@ namespace LuHanh.Enemies
 
         protected virtual void LateUpdate()
         {
+            UpdateSquash();
             if (!flash || !flash.enabled) return;
             flashTimer -= Time.deltaTime;
             if (flashTimer <= 0f) { flash.enabled = false; return; }
@@ -128,6 +132,19 @@ namespace LuHanh.Enemies
             var c = flash.color;
             c.a = flashTimer / BaseConfig.flashTime;
             flash.color = c;
+        }
+
+        /// <summary>
+        /// Bop hinh khi trung don roi bat ve: scale cua object Visual di tu hitSquash ve 1 trong
+        /// squashTime. Dem bang Time.deltaTime nen dung yen trong luc hitstop -> thay ro hinh bi bop.
+        /// </summary>
+        void UpdateSquash()
+        {
+            if (squashTimer <= 0f || !sprite) return;
+            squashTimer -= Time.deltaTime;
+            float k = Mathf.Clamp01(squashTimer / Mathf.Max(0.001f, BaseConfig.squashTime));   // 1 -> 0
+            var squash = Vector2.Lerp(Vector2.one, BaseConfig.hitSquash, k);
+            sprite.transform.localScale = new Vector3(visualBaseScale.x * squash.x, visualBaseScale.y * squash.y, visualBaseScale.z);
         }
 
         // ---- Ngu khi xa camera ----
@@ -150,6 +167,7 @@ namespace LuHanh.Enemies
         {
             if (!health.Damage(hit.damage)) return;
 
+            squashTimer = BaseConfig.squashTime;
             if (flash)
             {
                 flashTimer = BaseConfig.flashTime;
@@ -178,6 +196,8 @@ namespace LuHanh.Enemies
             HurtRequested = false;
             flashTimer = 0f;
             if (flash) flash.enabled = false;
+            squashTimer = 0f;
+            if (sprite) sprite.transform.localScale = visualBaseScale;
             currentAnim = 0;
 
             gameObject.SetActive(true);

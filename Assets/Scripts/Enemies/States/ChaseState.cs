@@ -41,8 +41,7 @@ namespace LuHanh.Enemies.States
             }
 
             Enemy.SetHorizontalSpeed(Enemy.FacingSign * c.chaseSpeed);
-            bool close = Enemy.PlayerDistanceSqr <= c.attackAnimRange * c.attackAnimRange;
-            Enemy.PlayAnim(close ? EnemyAnim.Attack : EnemyAnim.Walk);
+            Enemy.PlayAnim(EnemyAnim.Walk);
         }
     }
 }

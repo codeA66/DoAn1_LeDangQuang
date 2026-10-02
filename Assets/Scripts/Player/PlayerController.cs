@@ -25,11 +25,6 @@ namespace LuHanh.Player
         [Header("Animation")]
         [SerializeField] PlayerAnimationDriver animations = new PlayerAnimationDriver();
 
-        [Header("Input")]
-        [Tooltip("Doc Space thang tu ban phim. Bat cho toi khi Input Actions asset co action 'Jump' " +
-                 "noi vao onJump(); luc do tat di de tranh nhan hai lan.")]
-        [SerializeField] bool readJumpFromKeyboard = true;
-
         [Header("Debug")]
         [SerializeField] bool drawGroundGizmo = true;
 
@@ -156,26 +151,8 @@ namespace LuHanh.Player
 
         void Update()
         {
-            if (readJumpFromKeyboard) PollKeyboardJump();
-            PollKeyboardDash();
             machine.Tick(Time.deltaTime);
             hurtRequested = false;
-        }
-
-        void PollKeyboardJump()
-        {
-            var kb = Keyboard.current;
-            if (kb == null) return;
-
-            if (kb.spaceKey.wasPressedThisFrame) input.PressJump();
-            else if (kb.spaceKey.wasReleasedThisFrame) input.ReleaseJump();
-        }
-
-        // Input Actions asset chua co action Dash nen doc Shift thang tu ban phim.
-        void PollKeyboardDash()
-        {
-            var kb = Keyboard.current;
-            if (kb != null && kb.leftShiftKey.wasPressedThisFrame) input.PressDash();
         }
 
         void FixedUpdate()
@@ -217,6 +194,11 @@ namespace LuHanh.Player
             if (input == null) return;
             if (callback.started) input.PressJump();
             else if (callback.canceled) input.ReleaseJump();
+        }
+
+        public void onDash(InputAction.CallbackContext callback)
+        {
+            if (callback.started) input?.PressDash();
         }
 
         void OnDrawGizmosSelected()

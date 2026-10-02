@@ -17,8 +17,11 @@ namespace LuHanh.Enemies.States
         public override void Enter()
         {
             timer = Enemy.Config.hurtTime;
-            // Chi day ngang; chem len/xuong khong hat quai bay len.
-            Enemy.SetHorizontalSpeed(knockback.x);
+            // Chem ngang: bi danh bay ra sau va nay len. Chem len/xuong: khong hat quai bay.
+            if (Mathf.Abs(knockback.x) > 0.01f)
+                Enemy.Body.linearVelocity = new Vector2(knockback.x, Enemy.Config.knockbackUp);
+            else
+                Enemy.SetHorizontalSpeed(0f);
             Enemy.PlayAnim(EnemyAnim.Idle);
         }
 

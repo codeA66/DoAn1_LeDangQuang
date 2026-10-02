@@ -15,6 +15,8 @@ MonoBehaviour:
   maxHealth: 2
   hurtTime: 0.2
   flashTime: 0.12
+  hitSquash: {x: 1.3, y: 0.7}
+  squashTime: 0.1
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -34,7 +36,7 @@ MonoBehaviour:
   keepDistanceMax: 6
   heightAbovePlayer: 3
   projectilePrefab: {fileID: 9020317778373149340, guid: b36210646b7504248bef0de3501de9d8, type: 3}
-  projectileBurstPrefab: {fileID: 8311909765750184604, guid: b6bb2c8749619c341abf76b73aaf3930, type: 3}
+  projectileBurstPrefab: {fileID: 1343262832354942523, guid: 1bded75a7cf23c14985f716643e9e3e1, type: 3}
   shootInterval: 2.5
   telegraphTime: 0.4
   telegraphShake: 0.06

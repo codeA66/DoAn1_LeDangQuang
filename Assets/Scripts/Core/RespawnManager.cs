@@ -32,6 +32,11 @@ namespace LuHanh.Core
         [SerializeField] float holdTime = 0.3f;
         [SerializeField] float fadeInTime = 0.5f;
 
+        [Header("Roi vao bay / ho (kieu Hollow Knight)")]
+        [SerializeField] float hazardFadeOutTime = 0.25f;
+        [SerializeField] float hazardHoldTime = 0.05f;
+        [SerializeField] float hazardFadeInTime = 0.3f;
+
         public bool IsRespawning { get; private set; }
 
         void Awake()
@@ -57,6 +62,29 @@ namespace LuHanh.Core
         {
             if (IsRespawning) return;
             StartCoroutine(RespawnRoutine(placePlayer));
+        }
+
+        /// <summary>
+        /// Roi vao bay: toi nhanh -> <paramref name="placePlayer"/> (dua ve cho dung an toan) -> sang lai
+        /// -> <paramref name="onFinished"/>. Khong dat lai quai, khac voi chet.
+        /// </summary>
+        public void HazardRespawn(Action placePlayer, Action onFinished)
+        {
+            if (IsRespawning) return;
+            StartCoroutine(HazardRoutine(placePlayer, onFinished));
+        }
+
+        IEnumerator HazardRoutine(Action placePlayer, Action onFinished)
+        {
+            IsRespawning = true;
+
+            yield return Fade(0f, 1f, hazardFadeOutTime);
+            placePlayer?.Invoke();
+            yield return new WaitForSecondsRealtime(hazardHoldTime);
+            yield return Fade(1f, 0f, hazardFadeInTime);
+
+            IsRespawning = false;
+            onFinished?.Invoke();
         }
 
         IEnumerator RespawnRoutine(Action placePlayer)

@@ -272,7 +272,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 21
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 35c9d2923862e654f8ed31e31178b809, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5487,7 +5487,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ffdf0fc86de2abd4da410841274ceffb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10467,7 +10467,6 @@ MonoBehaviour:
     jumpState: player_jump
     fallState: player_fall
     dashState: player_dash
-  readJumpFromKeyboard: 0
   drawGroundGizmo: 1
 --- !u!114 &6674216230490119835
 MonoBehaviour:
@@ -10511,11 +10510,19 @@ MonoBehaviour:
     m_ActionId: 65b887bf-678b-42b1-ac1a-969e9e8f6fc7
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 42787d2e-f51c-488b-ab9a-76d21e2e5c68
-    m_ActionName: 'Player/Look[/Mouse/delta]'
-  - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5845239563516955970}
+        m_TargetAssemblyTypeName: LuHanh.Player.PlayerAttack, Assembly-CSharp
+        m_MethodName: onAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f553290b-a3e7-43ac-b3ed-4408e9ed7307
     m_ActionName: 'Player/Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
@@ -10574,6 +10581,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c8915cc0-97a3-465f-8ab6-9e82c971e91a
     m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2517054795955068375}
+        m_TargetAssemblyTypeName: LuHanh.Player.PlayerController, Assembly-CSharp
+        m_MethodName: onDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8324f109-17ea-4074-9068-cd1bb9b25fea
+    m_ActionName: Player/Dash
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -10695,12 +10718,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9959ed54dbad65f40b5dcac237047bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerHealth
-  invulnerableTime: 1.3
   hitStopTime: 0.1
   knockbackVelocity: {x: 8, y: 8}
   hurtTime: 0.2
-  sprite: {fileID: 7630255942092001789}
-  blinkInterval: 0.1
+  safeGroundTime: 0.2
 --- !u!1 &7962428662256493690
 GameObject:
   m_ObjectHideFlags: 0

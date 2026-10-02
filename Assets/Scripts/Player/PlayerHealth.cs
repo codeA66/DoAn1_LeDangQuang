@@ -1,4 +1,3 @@
-using System.Collections;
 using LuHanh.Combat;
 using LuHanh.Core;
 using UnityEngine;
@@ -6,16 +5,17 @@ using UnityEngine;
 namespace LuHanh.Player
 {
     /// <summary>
-    /// Mau nguoi choi kieu Hollow Knight: moi don mat 1 mask, khung hinh khung lai mot
-    /// thoang, bi bat lui, bat tu + nhap nhay mot luc. Het mask thi hoi sinh o checkpoint.
+    /// Mau nguoi choi: moi don mat 1 mask, khung hinh khung lai mot thoang va bi bat lui.
+    /// Khong co bat tu sau khi trung don - moi don cua quai tu lo chi trung 1 lan
+    /// (dan bien mat khi trung, cu lao cua Ghoul tat hitbox sau khi trung).
+    /// Het mask thi hoi sinh o checkpoint.
+    /// Roi vao ho / bay thi mat 1 mask va hien lai o cho dung an toan gan nhat.
     /// So mau nam o <see cref="Health"/>; lop nay lo phan phan ung.
     /// </summary>
     [RequireComponent(typeof(PlayerController), typeof(Health))]
-    public class PlayerHealth : MonoBehaviour, IDamageable
+    public class PlayerHealth : MonoBehaviour, IDamageable, IHazardReceiver
     {
         [Header("Bi danh trung")]
-        [Tooltip("Thoi gian bat tu sau khi trung don (Hollow Knight ~1.3s).")]
-        [SerializeField] float invulnerableTime = 1.3f;
         [Tooltip("Khung hinh dung lai bao lau luc trung don (giay thuc).")]
         [SerializeField] float hitStopTime = 0.1f;
         [Tooltip("Van toc bat ra: X theo huong ra xa nguon don, Y huong len.")]
@@ -23,23 +23,22 @@ namespace LuHanh.Player
         [Tooltip("Mat dieu khien bao lau sau khi bi bat ra.")]
         [SerializeField] float hurtTime = 0.2f;
 
-        [Header("Nhap nhay khi bat tu")]
-        [Tooltip("Sprite cua nhan vat (object con Visual).")]
-        [SerializeField] SpriteRenderer sprite;
-        [SerializeField] float blinkInterval = 0.1f;
+        [Header("Roi vao bay / ho")]
+        [Tooltip("Dung vung tren dat lien tuc bao lau thi vi tri do moi duoc nho lam cho an toan.")]
+        [SerializeField] float safeGroundTime = 0.2f;
 
         Health health;
         PlayerController controller;
         PlayerAttack attack;
         Rigidbody2D body;
 
-        float invulnerableTimer;
         bool dead;
+        bool hazardRespawning;
         Vector2 checkpoint;
-        Coroutine hitStopRoutine;
+        Vector2 safePosition;
+        float groundedTimer;
 
         public Health Health => health;
-        public bool IsInvulnerable => invulnerableTimer > 0f;
 
         void Awake()
         {
@@ -47,10 +46,10 @@ namespace LuHanh.Player
             controller = GetComponent<PlayerController>();
             attack = GetComponent<PlayerAttack>();
             body = GetComponent<Rigidbody2D>();
-            if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>();
 
             // Chua co ghe/checkpoint: hoi sinh tai cho bat dau man.
             checkpoint = transform.position;
+            safePosition = checkpoint;
         }
 
         /// <summary>Doi diem hoi sinh (ghe ngoi, cua man...).</summary>
@@ -58,7 +57,7 @@ namespace LuHanh.Player
 
         public void TakeHit(HitInfo hit)
         {
-            if (dead || IsInvulnerable) return;
+            if (dead || hazardRespawning) return;
             if (!health.Damage(hit.damage)) return;
 
             StartHitStop();
@@ -69,32 +68,63 @@ namespace LuHanh.Player
                 return;
             }
 
-            invulnerableTimer = invulnerableTime;
             float side = hit.direction.x != 0f ? Mathf.Sign(hit.direction.x) : (controller.FacingRight ? -1f : 1f);
             controller.Hurt(new Vector2(side * knockbackVelocity.x, knockbackVelocity.y), hurtTime);
         }
 
-        void Update()
+        /// <summary>
+        /// Roi vao ho / bay: mat mau, man hinh toi nhanh, hien lai o cho dung an toan cuoi cung.
+        /// Het mau thi chet nhu binh thuong.
+        /// </summary>
+        public void TakeHazardHit(int damage)
         {
-            if (invulnerableTimer > 0f)
+            if (dead || hazardRespawning) return;
+
+            if (health.Damage(damage)) StartHitStop();
+            if (health.IsDead)
             {
-                invulnerableTimer -= Time.deltaTime;
-                // Tat/bat xen ke theo nhip blinkInterval, het bat tu thi luon hien.
-                if (sprite) sprite.enabled = invulnerableTimer <= 0f || Mathf.FloorToInt(invulnerableTimer / blinkInterval) % 2 == 0;
+                Die();
+                return;
             }
+
+            hazardRespawning = true;
+            Freeze();
+            if (RespawnManager.Instance)
+                RespawnManager.Instance.HazardRespawn(() => controller.Respawn(safePosition), FinishHazard);
+            else
+            {
+                controller.Respawn(safePosition);
+                FinishHazard();
+            }
+        }
+
+        void FinishHazard()
+        {
+            Unfreeze();
+            hazardRespawning = false;
+            groundedTimer = 0f;
+        }
+
+        void Update() => TrackSafeGround();
+
+        /// <summary>Nho vi tri moi khi da dung vung tren dat du lau (khong tinh luc bi danh bat ra).</summary>
+        void TrackSafeGround()
+        {
+            if (dead || hazardRespawning || !controller.IsGrounded || controller.IsHurt)
+            {
+                groundedTimer = 0f;
+                return;
+            }
+            groundedTimer += Time.deltaTime;
+            if (groundedTimer >= safeGroundTime) safePosition = transform.position;
         }
 
         void Die()
         {
             dead = true;
-            invulnerableTimer = 0f;
-            if (sprite) sprite.enabled = true;
 
             // Dung hinh tai cho trong luc man hinh toi dan.
-            controller.enabled = false;
-            if (attack) attack.enabled = false;
-            body.linearVelocity = Vector2.zero;
-            body.simulated = false;
+            Freeze();
 
             if (RespawnManager.Instance) RespawnManager.Instance.Respawn(Revive);
             else Revive();
@@ -102,33 +132,31 @@ namespace LuHanh.Player
 
         void Revive()
         {
-            body.simulated = true;
-            controller.enabled = true;
-            if (attack) attack.enabled = true;
+            Unfreeze();
             controller.Respawn(checkpoint);
+            safePosition = checkpoint;
+            groundedTimer = 0f;
             health.Refill();
             dead = false;
         }
 
-        void StartHitStop()
+        /// <summary>Dung hinh tai cho: tat dieu khien, chem va vat ly.</summary>
+        void Freeze()
         {
-            if (hitStopTime <= 0f) return;
-            if (hitStopRoutine != null) StopCoroutine(hitStopRoutine);
-            hitStopRoutine = StartCoroutine(HitStop());
+            controller.enabled = false;
+            if (attack) attack.enabled = false;
+            body.linearVelocity = Vector2.zero;
+            body.simulated = false;
         }
 
-        IEnumerator HitStop()
+        void Unfreeze()
         {
-            Time.timeScale = 0f;
-            yield return new WaitForSecondsRealtime(hitStopTime);
-            Time.timeScale = 1f;
-            hitStopRoutine = null;
+            body.simulated = true;
+            controller.enabled = true;
+            if (attack) attack.enabled = true;
         }
 
-        void OnDisable()
-        {
-            // Bi tat giua luc dung hinh thi khong de game dung mai.
-            if (hitStopRoutine != null) Time.timeScale = 1f;
-        }
+        // Dung chung HitStop voi don chem de hai ben khong gianh nhau Time.timeScale.
+        void StartHitStop() => HitStop.Request(hitStopTime);
     }
 }

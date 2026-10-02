@@ -22,6 +22,8 @@ namespace LuHanh.Player
         public int damage = 1;
         [Tooltip("Luc day muc tieu ra, unit/giay.")]
         public float knockback = 6f;
+        [Tooltip("Hieu ung loe sang + manh vun khi chem trung (prefab co component HitEffect).")]
+        public LuHanh.Effects.HitEffect hitEffectPrefab;
 
         [Header("Vung chem (tam, kich thuoc)")]
         public Vector2 sideOffset = new Vector2(0.9f, 0.9f);
@@ -38,6 +40,10 @@ namespace LuHanh.Player
         public float pogoSpeed = 0f;
         [Tooltip("Chem ngang trung thi nguoi choi bi day lui voi van toc nay.")]
         public float recoilSpeed = 4f;
+
+        [Header("Cam giac luc")]
+        [Tooltip("Chem trung thi khung hinh dung lai bao lau (giay thuc). 0 = tat.")]
+        public float hitStopTime = 0.05f;
 
         [Header("Vet chem")]
         [Tooltip("Vet chem hien trong bao lau.")]

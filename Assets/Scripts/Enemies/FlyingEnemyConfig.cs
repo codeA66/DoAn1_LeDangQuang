@@ -1,4 +1,5 @@
 using LuHanh.Combat;
+using LuHanh.Effects;
 using UnityEngine;
 
 namespace LuHanh.Enemies
@@ -43,8 +44,8 @@ namespace LuHanh.Enemies
 
         [Header("Ban cau")]
         public Projectile projectilePrefab;
-        [Tooltip("Particle vo khi cau trung dat / nguoi choi (dung chung trong pool).")]
-        public ParticleSystem projectileBurstPrefab;
+        [Tooltip("Hieu ung no (FrameAnimation) khi cau trung dat / nguoi choi. Pool tao san 3 ban dung xoay vong.")]
+        public FrameAnimation projectileBurstPrefab;
         public float shootInterval = 2.5f;
         [Tooltip("Dung lai rung nhe bao lau truoc khi ban - bao truoc de nguoi choi ne.")]
         public float telegraphTime = 0.4f;
