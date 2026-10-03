@@ -1,0 +1,5525 @@
+fileFormatVersion: 2
+guid: 93d4d8a20c7f86141a48f420c414ad00
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1474951250807874066
+    second: nintendo-switch_sheet_double_0
+  - first:
+      213: 6509190185934407226
+    second: nintendo-switch_sheet_double_1
+  - first:
+      213: 35522785950701299
+    second: nintendo-switch_sheet_double_2
+  - first:
+      213: 8167166241887544962
+    second: nintendo-switch_sheet_double_3
+  - first:
+      213: 7246418420054442288
+    second: nintendo-switch_sheet_double_4
+  - first:
+      213: 2142901402103259745
+    second: nintendo-switch_sheet_double_5
+  - first:
+      213: 7842807897648101634
+    second: nintendo-switch_sheet_double_6
+  - first:
+      213: -106177461823756324
+    second: nintendo-switch_sheet_double_7
+  - first:
+      213: 2732262495529304285
+    second: nintendo-switch_sheet_double_8
+  - first:
+      213: -3201081246546944543
+    second: nintendo-switch_sheet_double_9
+  - first:
+      213: 6896802708267015458
+    second: nintendo-switch_sheet_double_10
+  - first:
+      213: -1481872680486729632
+    second: nintendo-switch_sheet_double_11
+  - first:
+      213: 7351527581678985323
+    second: nintendo-switch_sheet_double_12
+  - first:
+      213: -3214823157691672053
+    second: nintendo-switch_sheet_double_13
+  - first:
+      213: 4268247985910533818
+    second: nintendo-switch_sheet_double_14
+  - first:
+      213: 8405854728186459743
+    second: nintendo-switch_sheet_double_15
+  - first:
+      213: -2848574873358935134
+    second: nintendo-switch_sheet_double_16
+  - first:
+      213: -5302259123545483732
+    second: nintendo-switch_sheet_double_17
+  - first:
+      213: 3877485443068681483
+    second: nintendo-switch_sheet_double_18
+  - first:
+      213: 8570456490641846316
+    second: nintendo-switch_sheet_double_19
+  - first:
+      213: 3475610817323807301
+    second: nintendo-switch_sheet_double_20
+  - first:
+      213: 7503528587739712384
+    second: nintendo-switch_sheet_double_21
+  - first:
+      213: -2914538967698560149
+    second: nintendo-switch_sheet_double_22
+  - first:
+      213: 3197871817557501275
+    second: nintendo-switch_sheet_double_23
+  - first:
+      213: -3045909942565261132
+    second: nintendo-switch_sheet_double_24
+  - first:
+      213: 3531491983938295555
+    second: nintendo-switch_sheet_double_25
+  - first:
+      213: 6222408501374967391
+    second: nintendo-switch_sheet_double_26
+  - first:
+      213: 7953096061813983738
+    second: nintendo-switch_sheet_double_27
+  - first:
+      213: -3108121592334813746
+    second: nintendo-switch_sheet_double_28
+  - first:
+      213: 8282913901647605760
+    second: nintendo-switch_sheet_double_29
+  - first:
+      213: 6426878873331797713
+    second: nintendo-switch_sheet_double_30
+  - first:
+      213: -1904547236731755993
+    second: nintendo-switch_sheet_double_31
+  - first:
+      213: 5984506799551648104
+    second: nintendo-switch_sheet_double_32
+  - first:
+      213: -4128562868931430760
+    second: nintendo-switch_sheet_double_33
+  - first:
+      213: -2666130875127819091
+    second: nintendo-switch_sheet_double_34
+  - first:
+      213: -8748904372525662197
+    second: nintendo-switch_sheet_double_35
+  - first:
+      213: -270905181243654283
+    second: nintendo-switch_sheet_double_36
+  - first:
+      213: 8329077513905754577
+    second: nintendo-switch_sheet_double_37
+  - first:
+      213: -2508357553966840235
+    second: nintendo-switch_sheet_double_38
+  - first:
+      213: 4290733043353855043
+    second: nintendo-switch_sheet_double_39
+  - first:
+      213: 8246929278307919245
+    second: nintendo-switch_sheet_double_40
+  - first:
+      213: -3332985403973068937
+    second: nintendo-switch_sheet_double_41
+  - first:
+      213: -7473843424501991445
+    second: nintendo-switch_sheet_double_42
+  - first:
+      213: 7263465661054713532
+    second: nintendo-switch_sheet_double_43
+  - first:
+      213: 1929433047368391931
+    second: nintendo-switch_sheet_double_44
+  - first:
+      213: -2808121400946915272
+    second: nintendo-switch_sheet_double_45
+  - first:
+      213: 81852191133248169
+    second: nintendo-switch_sheet_double_46
+  - first:
+      213: 8666337596933319821
+    second: nintendo-switch_sheet_double_47
+  - first:
+      213: 2491558618400846861
+    second: nintendo-switch_sheet_double_48
+  - first:
+      213: -7073841102505299126
+    second: nintendo-switch_sheet_double_49
+  - first:
+      213: -4137433211767262973
+    second: nintendo-switch_sheet_double_50
+  - first:
+      213: 9159593348012361629
+    second: nintendo-switch_sheet_double_51
+  - first:
+      213: -639626671564368624
+    second: nintendo-switch_sheet_double_52
+  - first:
+      213: -9076610793281391682
+    second: nintendo-switch_sheet_double_53
+  - first:
+      213: 3747996756149475015
+    second: nintendo-switch_sheet_double_54
+  - first:
+      213: 7801816000590367013
+    second: nintendo-switch_sheet_double_55
+  - first:
+      213: 2555039297570745495
+    second: nintendo-switch_sheet_double_56
+  - first:
+      213: 6577472058118698224
+    second: nintendo-switch_sheet_double_57
+  - first:
+      213: -3883982240631239123
+    second: nintendo-switch_sheet_double_58
+  - first:
+      213: 5696540524327405669
+    second: nintendo-switch_sheet_double_59
+  - first:
+      213: -2793897166823216257
+    second: nintendo-switch_sheet_double_60
+  - first:
+      213: -1568899513820625911
+    second: nintendo-switch_sheet_double_61
+  - first:
+      213: -2068146725003453931
+    second: nintendo-switch_sheet_double_62
+  - first:
+      213: -5943023916139454514
+    second: nintendo-switch_sheet_double_63
+  - first:
+      213: -8525992831000716710
+    second: nintendo-switch_sheet_double_64
+  - first:
+      213: -4596217750705032914
+    second: nintendo-switch_sheet_double_65
+  - first:
+      213: 2798806351912703955
+    second: nintendo-switch_sheet_double_66
+  - first:
+      213: 3144038446022250772
+    second: nintendo-switch_sheet_double_67
+  - first:
+      213: -6494082339507551364
+    second: nintendo-switch_sheet_double_68
+  - first:
+      213: 7146082395122135767
+    second: nintendo-switch_sheet_double_69
+  - first:
+      213: 4739644455874001349
+    second: nintendo-switch_sheet_double_70
+  - first:
+      213: 4570554272187080696
+    second: nintendo-switch_sheet_double_71
+  - first:
+      213: -3124728092649252517
+    second: nintendo-switch_sheet_double_72
+  - first:
+      213: 4908825006948246071
+    second: nintendo-switch_sheet_double_73
+  - first:
+      213: -7273914057773157979
+    second: nintendo-switch_sheet_double_74
+  - first:
+      213: -2252381741884583190
+    second: nintendo-switch_sheet_double_75
+  - first:
+      213: -6886923496995549921
+    second: nintendo-switch_sheet_double_76
+  - first:
+      213: -7231438347338730193
+    second: nintendo-switch_sheet_double_77
+  - first:
+      213: -475946190987585969
+    second: nintendo-switch_sheet_double_78
+  - first:
+      213: 5866327530104102413
+    second: nintendo-switch_sheet_double_79
+  - first:
+      213: -8562866265913993204
+    second: nintendo-switch_sheet_double_80
+  - first:
+      213: -5693913280948697254
+    second: nintendo-switch_sheet_double_81
+  - first:
+      213: -7468991897480743129
+    second: nintendo-switch_sheet_double_82
+  - first:
+      213: -2685491192573050944
+    second: nintendo-switch_sheet_double_83
+  - first:
+      213: -750379943209196614
+    second: nintendo-switch_sheet_double_84
+  - first:
+      213: 3588786862515152240
+    second: nintendo-switch_sheet_double_85
+  - first:
+      213: 4032628428557993572
+    second: nintendo-switch_sheet_double_86
+  - first:
+      213: 1761053208911395253
+    second: nintendo-switch_sheet_double_87
+  - first:
+      213: 8914897675480607255
+    second: nintendo-switch_sheet_double_88
+  - first:
+      213: -198027658112169555
+    second: nintendo-switch_sheet_double_89
+  - first:
+      213: 8454624400600283552
+    second: nintendo-switch_sheet_double_90
+  - first:
+      213: 6554857998594653594
+    second: nintendo-switch_sheet_double_91
+  - first:
+      213: 6649720310086056773
+    second: nintendo-switch_sheet_double_92
+  - first:
+      213: -423402479808004459
+    second: nintendo-switch_sheet_double_93
+  - first:
+      213: -5601785172547478529
+    second: nintendo-switch_sheet_double_94
+  - first:
+      213: 6874300367936922905
+    second: nintendo-switch_sheet_double_95
+  - first:
+      213: -6733160976863241324
+    second: nintendo-switch_sheet_double_96
+  - first:
+      213: 7939484513968027312
+    second: nintendo-switch_sheet_double_97
+  - first:
+      213: -900715193118561132
+    second: nintendo-switch_sheet_double_98
+  - first:
+      213: 385388107010604066
+    second: nintendo-switch_sheet_double_99
+  - first:
+      213: 8230142589632407965
+    second: nintendo-switch_sheet_double_100
+  - first:
+      213: -1751135101049628718
+    second: nintendo-switch_sheet_double_101
+  - first:
+      213: 7018896676395483533
+    second: nintendo-switch_sheet_double_102
+  - first:
+      213: -973585359998726928
+    second: nintendo-switch_sheet_double_103
+  - first:
+      213: 8870705344924216241
+    second: nintendo-switch_sheet_double_104
+  - first:
+      213: 9215302616878580062
+    second: nintendo-switch_sheet_double_105
+  - first:
+      213: 3602743992427899740
+    second: nintendo-switch_sheet_double_106
+  - first:
+      213: -2859845258825622185
+    second: nintendo-switch_sheet_double_107
+  - first:
+      213: -7668358259727767940
+    second: nintendo-switch_sheet_double_108
+  - first:
+      213: -8338782683575392139
+    second: nintendo-switch_sheet_double_109
+  - first:
+      213: 6696999416728574676
+    second: nintendo-switch_sheet_double_110
+  - first:
+      213: -7759582981676642185
+    second: nintendo-switch_sheet_double_111
+  - first:
+      213: 8988623783830722129
+    second: nintendo-switch_sheet_double_112
+  - first:
+      213: -3018425037839169042
+    second: nintendo-switch_sheet_double_113
+  - first:
+      213: 932928685117204814
+    second: nintendo-switch_sheet_double_114
+  - first:
+      213: -3116638198571338414
+    second: nintendo-switch_sheet_double_115
+  - first:
+      213: -6967727367460703976
+    second: nintendo-switch_sheet_double_116
+  - first:
+      213: 175930205669447229
+    second: nintendo-switch_sheet_double_117
+  - first:
+      213: 7283518545340214222
+    second: nintendo-switch_sheet_double_118
+  - first:
+      213: 6289485609966485263
+    second: nintendo-switch_sheet_double_119
+  - first:
+      213: 756933439236199461
+    second: nintendo-switch_sheet_double_120
+  - first:
+      213: -9163580035304875869
+    second: nintendo-switch_sheet_double_121
+  - first:
+      213: 1164283243337165405
+    second: nintendo-switch_sheet_double_122
+  - first:
+      213: -9040061388805710093
+    second: nintendo-switch_sheet_double_123
+  - first:
+      213: -207092440176752547
+    second: nintendo-switch_sheet_double_124
+  - first:
+      213: -2866469708780293623
+    second: nintendo-switch_sheet_double_125
+  - first:
+      213: -7572398472521038595
+    second: nintendo-switch_sheet_double_126
+  - first:
+      213: 7723421567625605254
+    second: nintendo-switch_sheet_double_127
+  - first:
+      213: 2477321503518818113
+    second: nintendo-switch_sheet_double_128
+  - first:
+      213: -1135200042031766986
+    second: nintendo-switch_sheet_double_129
+  - first:
+      213: 411554378829817886
+    second: nintendo-switch_sheet_double_130
+  - first:
+      213: -1324245485942658568
+    second: nintendo-switch_sheet_double_131
+  - first:
+      213: 1188515790239947679
+    second: nintendo-switch_sheet_double_132
+  - first:
+      213: 1051881707444197979
+    second: nintendo-switch_sheet_double_133
+  - first:
+      213: 1794538415237301611
+    second: nintendo-switch_sheet_double_134
+  - first:
+      213: -292825178433790265
+    second: nintendo-switch_sheet_double_135
+  - first:
+      213: -4608654526345285385
+    second: nintendo-switch_sheet_double_136
+  - first:
+      213: 5351605939272410137
+    second: nintendo-switch_sheet_double_137
+  - first:
+      213: 3637461475637208922
+    second: nintendo-switch_sheet_double_138
+  - first:
+      213: -2481779244301260763
+    second: nintendo-switch_sheet_double_139
+  - first:
+      213: -1670978544745068509
+    second: nintendo-switch_sheet_double_140
+  - first:
+      213: 346981415777374873
+    second: nintendo-switch_sheet_double_141
+  - first:
+      213: -1832981500482893581
+    second: nintendo-switch_sheet_double_142
+  - first:
+      213: -6573249060841629766
+    second: nintendo-switch_sheet_double_143
+  - first:
+      213: -2878648134531754819
+    second: nintendo-switch_sheet_double_144
+  - first:
+      213: -3399158189538123362
+    second: nintendo-switch_sheet_double_145
+  - first:
+      213: -4925862615974326131
+    second: nintendo-switch_sheet_double_146
+  - first:
+      213: 5115285342949115844
+    second: nintendo-switch_sheet_double_147
+  - first:
+      213: -1220257854725833847
+    second: nintendo-switch_sheet_double_148
+  - first:
+      213: 4528051576145620429
+    second: nintendo-switch_sheet_double_149
+  - first:
+      213: 5607591839080652687
+    second: nintendo-switch_sheet_double_150
+  - first:
+      213: -64464521480551887
+    second: nintendo-switch_sheet_double_151
+  - first:
+      213: -5738143680820787419
+    second: nintendo-switch_sheet_double_152
+  - first:
+      213: -9174764900296093073
+    second: nintendo-switch_sheet_double_153
+  - first:
+      213: -2925668142696459648
+    second: nintendo-switch_sheet_double_154
+  - first:
+      213: -9171799931029335972
+    second: nintendo-switch_sheet_double_155
+  - first:
+      213: 2442919151394294861
+    second: nintendo-switch_sheet_double_156
+  - first:
+      213: -2761544711595603771
+    second: nintendo-switch_sheet_double_157
+  - first:
+      213: -4708832801011497200
+    second: nintendo-switch_sheet_double_158
+  - first:
+      213: -8312206556238830383
+    second: nintendo-switch_sheet_double_159
+  - first:
+      213: -6724986678975553331
+    second: nintendo-switch_sheet_double_160
+  - first:
+      213: 7378778308572255346
+    second: nintendo-switch_sheet_double_161
+  - first:
+      213: 4396146011974878294
+    second: nintendo-switch_sheet_double_162
+  - first:
+      213: 8603552253420516505
+    second: nintendo-switch_sheet_double_163
+  - first:
+      213: 5809800427691955314
+    second: nintendo-switch_sheet_double_164
+  - first:
+      213: -416650255405924406
+    second: nintendo-switch_sheet_double_165
+  - first:
+      213: -2703410557191063415
+    second: nintendo-switch_sheet_double_166
+  - first:
+      213: 3794116403525372398
+    second: nintendo-switch_sheet_double_167
+  - first:
+      213: -1740802087032333151
+    second: nintendo-switch_sheet_double_168
+  - first:
+      213: -4812994809860219955
+    second: nintendo-switch_sheet_double_169
+  - first:
+      213: 7382177170162931941
+    second: nintendo-switch_sheet_double_170
+  - first:
+      213: 2347640801280219517
+    second: nintendo-switch_sheet_double_171
+  - first:
+      213: 1794548172001514646
+    second: nintendo-switch_sheet_double_172
+  - first:
+      213: 375193556785925190
+    second: nintendo-switch_sheet_double_173
+  - first:
+      213: -5303161071380037555
+    second: nintendo-switch_sheet_double_174
+  - first:
+      213: -3265618882778078994
+    second: nintendo-switch_sheet_double_175
+  - first:
+      213: -7902614920682138038
+    second: nintendo-switch_sheet_double_176
+  - first:
+      213: 9169827921696902572
+    second: nintendo-switch_sheet_double_177
+  - first:
+      213: 2009927004753108261
+    second: nintendo-switch_sheet_double_178
+  - first:
+      213: 668335942732210882
+    second: nintendo-switch_sheet_double_179
+  - first:
+      213: -6048726681358805474
+    second: nintendo-switch_sheet_double_180
+  - first:
+      213: -1405096125589754614
+    second: nintendo-switch_sheet_double_181
+  - first:
+      213: 3446726719612171722
+    second: nintendo-switch_sheet_double_182
+  - first:
+      213: 3786387155268946988
+    second: nintendo-switch_sheet_double_183
+  - first:
+      213: -8094526298988520771
+    second: nintendo-switch_sheet_double_184
+  - first:
+      213: 7296727309637500978
+    second: nintendo-switch_sheet_double_185
+  - first:
+      213: 8316371407197283731
+    second: nintendo-switch_sheet_double_186
+  - first:
+      213: -1482214408363132961
+    second: nintendo-switch_sheet_double_187
+  - first:
+      213: 1540176548869013290
+    second: nintendo-switch_sheet_double_188
+  - first:
+      213: -6325128301434132818
+    second: nintendo-switch_sheet_double_189
+  - first:
+      213: -1905701623474647865
+    second: nintendo-switch_sheet_double_190
+  - first:
+      213: 8116071682617565653
+    second: nintendo-switch_sheet_double_191
+  - first:
+      213: 8103700127542274006
+    second: nintendo-switch_sheet_double_192
+  - first:
+      213: -4147446241840724685
+    second: nintendo-switch_sheet_double_193
+  - first:
+      213: -1496509349833170401
+    second: nintendo-switch_sheet_double_194
+  - first:
+      213: -1171706213143046668
+    second: nintendo-switch_sheet_double_195
+  - first:
+      213: 5328910575475990353
+    second: nintendo-switch_sheet_double_196
+  - first:
+      213: 9168336686967279178
+    second: nintendo-switch_sheet_double_197
+  - first:
+      213: -2305477516980646631
+    second: nintendo-switch_sheet_double_198
+  - first:
+      213: -8959764116295041989
+    second: nintendo-switch_sheet_double_199
+  - first:
+      213: -6663283694300949438
+    second: nintendo-switch_sheet_double_200
+  - first:
+      213: 7889589551168731393
+    second: nintendo-switch_sheet_double_201
+  - first:
+      213: -7652538113129074792
+    second: nintendo-switch_sheet_double_202
+  - first:
+      213: 2534155691193224707
+    second: nintendo-switch_sheet_double_203
+  - first:
+      213: -6277046521656270350
+    second: nintendo-switch_sheet_double_204
+  - first:
+      213: 5839941520975606450
+    second: nintendo-switch_sheet_double_205
+  - first:
+      213: 3001480052941560420
+    second: nintendo-switch_sheet_double_206
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1295
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed149ae6abe78be0800000000000000
+      internalID: -1474951250807874066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1295
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a364418acf9455a50800000000000000
+      internalID: 6509190185934407226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1279
+        width: 1153
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f6160e19c33e7000800000000000000
+      internalID: 35522785950701299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1167
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286e44dec6a975170800000000000000
+      internalID: 8167166241887544962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_4
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1242
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031413de823709460800000000000000
+      internalID: 7246418420054442288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_5
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1167
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1622d0db87d1dbd10800000000000000
+      internalID: 2142901402103259745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_6
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1167
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20971fcda3047dc60800000000000000
+      internalID: 7842807897648101634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1251
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd7a7d83928c68ef0800000000000000
+      internalID: -106177461823756324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_8
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1167
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd085277342fae520800000000000000
+      internalID: 2732262495529304285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_9
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 1167
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed976af0997393d0800000000000000
+      internalID: -3201081246546944543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_10
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1255
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d1538b58d56bf50800000000000000
+      internalID: 6896802708267015458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_11
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 1167
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0688b3df5a45f6be0800000000000000
+      internalID: -1481872680486729632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_12
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1255
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60667ea26fd50660800000000000000
+      internalID: 7351527581678985323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_13
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 1243
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a9616fe57a263d0800000000000000
+      internalID: -3214823157691672053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_14
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 1243
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe4975ddecdb3b30800000000000000
+      internalID: 4268247985910533818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_15
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 1167
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f567713d65897a470800000000000000
+      internalID: 8405854728186459743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_16
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1167
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab565dbe34d778d0800000000000000
+      internalID: -2848574873358935134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_17
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1211
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c265ff17b679a66b0800000000000000
+      internalID: -5302259123545483732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_18
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1167
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0d5bd777789fc530800000000000000
+      internalID: 3877485443068681483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_19
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1205
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c20f5af15c060f670800000000000000
+      internalID: 8570456490641846316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_20
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1211
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5423710bf99db3030800000000000000
+      internalID: 3475610817323807301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_21
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1211
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08bc632ce73e12860800000000000000
+      internalID: 7503528587739712384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_22
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 1211
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6b2b42304a7d87d0800000000000000
+      internalID: -2914538967698560149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_23
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1167
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b556fba997f116c20800000000000000
+      internalID: 3197871817557501275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_24
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1167
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0319f8b01cab5d0800000000000000
+      internalID: -3045909942565261132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_25
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30718cdaf31620130800000000000000
+      internalID: 3531491983938295555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_26
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e53d3709f6a5650800000000000000
+      internalID: 6222408501374967391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_27
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af90bfc1bb21f5e60800000000000000
+      internalID: 7953096061813983738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_28
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec5792a11ebbdd4d0800000000000000
+      internalID: -3108121592334813746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_29
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1114
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000b9dc0f42d2f270800000000000000
+      internalID: 8282913901647605760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_30
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1039
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de8763c84cd03950800000000000000
+      internalID: 6426878873331797713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_31
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 1039
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 722e6a00160b195e0800000000000000
+      internalID: -1904547236731755993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_32
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 1123
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8619f271a3d3d0350800000000000000
+      internalID: 5984506799551648104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_33
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1039
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 896797cd1f564b6c0800000000000000
+      internalID: -4128562868931430760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_34
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1039
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da41e474810000bd0800000000000000
+      internalID: -2666130875127819091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_35
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 1127
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b000fbda3d5a59680800000000000000
+      internalID: -8748904372525662197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_36
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 1039
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57fb8284c2d8d3cf0800000000000000
+      internalID: -270905181243654283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_37
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 1127
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1db0b9ed3d69370800000000000000
+      internalID: 8329077513905754577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_38
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55683223816803dd0800000000000000
+      internalID: -2508357553966840235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_39
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1083
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344232b38febb8b30800000000000000
+      internalID: 4290733043353855043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_40
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1039
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85ef490c7af27270800000000000000
+      internalID: 8246929278307919245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_41
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1077
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7779f9a1f6bdeb1d0800000000000000
+      internalID: -3332985403973068937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_42
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 1083
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be77ba7e003974890800000000000000
+      internalID: -7473843424501991445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_43
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1083
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbef96509830dc460800000000000000
+      internalID: 7263465661054713532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_44
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 1083
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfcda4e4229b6ca10800000000000000
+      internalID: 1929433047368391931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_45
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 914
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8380362c67c8709d0800000000000000
+      internalID: -2808121400946915272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_46
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 912
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aaa598522cc22100800000000000000
+      internalID: 81852191133248169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_47
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 911
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ca2d0d024054870800000000000000
+      internalID: 8666337596933319821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_48
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 911
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0478d2dc5bc39220800000000000000
+      internalID: 2491558618400846861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_49
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 911
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a433d9ffefaa4dd90800000000000000
+      internalID: -7073841102505299126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_50
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 915
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30175ba3a62e496c0800000000000000
+      internalID: -4137433211767262973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_51
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 912
+        width: 99
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d97ce43de996d1f70800000000000000
+      internalID: 9159593348012361629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_52
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 911
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0155a8c5ee69f17f0800000000000000
+      internalID: -639626671564368624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_53
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 975
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb37cfdc296690280800000000000000
+      internalID: -9076610793281391682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_54
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 911
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c61b95213f830430800000000000000
+      internalID: 3747996756149475015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_55
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 975
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 529c526115e954c60800000000000000
+      internalID: 7801816000590367013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_56
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 911
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c2ed634b2557320800000000000000
+      internalID: 2555039297570745495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_57
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 911
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f4f838ecffd74b50800000000000000
+      internalID: 6577472058118698224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_58
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 947
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ecf39fab2591ac0800000000000000
+      internalID: -3883982240631239123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_59
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 947
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5680721ec6d2e0f40800000000000000
+      internalID: 5696540524327405669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_60
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 947
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b288854551a39d0800000000000000
+      internalID: -2793897166823216257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_61
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 947
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 904407e54362a3ae0800000000000000
+      internalID: -1568899513820625911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_62
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 911
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a18c8d2877c43e0800000000000000
+      internalID: -2068146725003453931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_63
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 911
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf5bda5c33268da0800000000000000
+      internalID: -5943023916139454514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_64
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 911
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5adcae51b69da980800000000000000
+      internalID: -8525992831000716710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_65
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 911
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21b1eabe44f630c0800000000000000
+      internalID: -4596217750705032914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_66
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 782
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d71dd06c8b57d620800000000000000
+      internalID: 2798806351912703955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_67
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 781
+        width: 99
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 411d35f0f4ed1ab20800000000000000
+      internalID: 3144038446022250772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_68
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 783
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c73c383f48260e5a0800000000000000
+      internalID: -6494082339507551364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_69
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 783
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d27de8a31cfb2360800000000000000
+      internalID: 7146082395122135767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_70
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 783
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c9f40a558996c140800000000000000
+      internalID: 4739644455874001349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_71
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 839
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ffda5c05eedd6f30800000000000000
+      internalID: 4570554272187080696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_72
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 781
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5915f1fa5cb2a4d0800000000000000
+      internalID: -3124728092649252517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_73
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 839
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73264b3f556af1440800000000000000
+      internalID: 4908825006948246071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_74
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 781
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1f5bb04bddd0b90800000000000000
+      internalID: -7273914057773157979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_75
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 783
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2d4684dbeedb0e0800000000000000
+      internalID: -2252381741884583190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_76
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 847
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1d0a46619bbc60a0800000000000000
+      internalID: -6886923496995549921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_77
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 783
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25bcbb0325c4ab90800000000000000
+      internalID: -7231438347338730193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_78
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 847
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f461cf106791569f0800000000000000
+      internalID: -475946190987585969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_79
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0e13f7bec1696150800000000000000
+      internalID: 5866327530104102413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_80
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 783
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c085509cf769a2980800000000000000
+      internalID: -8562866265913993204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_81
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 819
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a578c23e9082bf0b0800000000000000
+      internalID: -5693913280948697254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_82
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 819
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 727b360117fc85890800000000000000
+      internalID: -7468991897480743129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_83
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 819
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf3e3b1df73bbad0800000000000000
+      internalID: -2685491192573050944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_84
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 819
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab32076da6d1695f0800000000000000
+      internalID: -750379943209196614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_85
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 783
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 075edc223aeedc130800000000000000
+      internalID: 3588786862515152240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_86
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 783
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4664753a036c6f730800000000000000
+      internalID: 4032628428557993572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_87
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9b9b32094807810800000000000000
+      internalID: 1761053208911395253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_88
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a2af3e33418bb70800000000000000
+      internalID: 8914897675480607255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_89
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da98586e4e6704df0800000000000000
+      internalID: -198027658112169555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_90
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a9312b091cd45570800000000000000
+      internalID: 8454624400600283552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_91
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9dbc5fde9887fa50800000000000000
+      internalID: 6554857998594653594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_92
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b316ae36d884c50800000000000000
+      internalID: 6649720310086056773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_93
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59e360a10b5cf1af0800000000000000
+      internalID: -423402479808004459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_94
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbd14aa0167242b0800000000000000
+      internalID: -5601785172547478529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_95
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 915a73653cb666f50800000000000000
+      internalID: 6874300367936922905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_96
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 655
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b5b8ee3c10f82a0800000000000000
+      internalID: -6733160976863241324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_97
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 655
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b677caa917be2e60800000000000000
+      internalID: 7939484513968027312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_98
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 655
+        width: 46
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49cee56dd440083f0800000000000000
+      internalID: -900715193118561132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_99
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cf603017c295500800000000000000
+      internalID: 385388107010604066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_100
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 591
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d996ad18417573270800000000000000
+      internalID: 8230142589632407965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_101
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7183c47e7b2b7e0800000000000000
+      internalID: -1751135101049628718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_102
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8109b7e651286160800000000000000
+      internalID: 7018896676395483533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_103
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 591
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc41caf5412d72f0800000000000000
+      internalID: -973585359998726928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_104
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bbed5f13831b1b70800000000000000
+      internalID: 8870705344924216241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_105
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5186c0c7e453ef70800000000000000
+      internalID: 9215302616878580062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_106
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 591
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b665da2948ff130800000000000000
+      internalID: 3602743992427899740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_107
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 559
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d1d13a3e9cf48d0800000000000000
+      internalID: -2859845258825622185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_108
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c766e7e9ac4849590800000000000000
+      internalID: -7668358259727767940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_109
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5786f4e7451b64c80800000000000000
+      internalID: -8338782683575392139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_110
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dada1fbc7580fc50800000000000000
+      internalID: 6696999416728574676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_111
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7705ff3e36c605490800000000000000
+      internalID: -7759582981676642185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_112
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1569bd625b10ebc70800000000000000
+      internalID: 8988623783830722129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_113
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9837e9b666c16d0800000000000000
+      internalID: -3018425037839169042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_114
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49ee2d32bd62fc00800000000000000
+      internalID: 932928685117204814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_115
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255fdb0321a7fb4d0800000000000000
+      internalID: -3116638198571338414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_116
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 527
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811bcba30e8ad4f90800000000000000
+      internalID: -6967727367460703976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_117
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 527
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3650360797017200800000000000000
+      internalID: 175930205669447229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_118
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 527
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb29f9f681441560800000000000000
+      internalID: 7283518545340214222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_119
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0fbbf1d6ddb84750800000000000000
+      internalID: 6289485609966485263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_120
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524d94cd3fa218a00800000000000000
+      internalID: 756933439236199461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_121
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a89ac4328c64d080800000000000000
+      internalID: -9163580035304875869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_122
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5a2d01f07d582010800000000000000
+      internalID: 1164283243337165405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_123
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fed28c20104b8280800000000000000
+      internalID: -9040061388805710093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_124
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58889bd582402df0800000000000000
+      internalID: -207092440176752547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_125
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902bbb0bcf04838d0800000000000000
+      internalID: -2866469708780293623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_126
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df44ca3a5bf69e690800000000000000
+      internalID: -7572398472521038595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_127
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6803aeccefa1f2b60800000000000000
+      internalID: 7723421567625605254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_128
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ffca338c6316220800000000000000
+      internalID: 2477321503518818113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_129
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63220b98395fe30f0800000000000000
+      internalID: -1135200042031766986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_130
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1868ebe68226b500800000000000000
+      internalID: 411554378829817886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_131
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f929f62fb55f9de0800000000000000
+      internalID: -1324245485942658568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_132
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9bd13f60d47e7010800000000000000
+      internalID: 1188515790239947679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_133
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5a51fdf6d8099e00800000000000000
+      internalID: 1051881707444197979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_134
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6503084e2b77e810800000000000000
+      internalID: 1794538415237301611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_135
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ced92a3d0dafebf0800000000000000
+      internalID: -292825178433790265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_136
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f071b04025ca00c0800000000000000
+      internalID: -4608654526345285385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_137
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914e33c6f39b44a40800000000000000
+      internalID: 5351605939272410137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_138
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a572683a0fbda7230800000000000000
+      internalID: 3637461475637208922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_139
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5286c742de2fe8dd0800000000000000
+      internalID: -2481779244301260763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_140
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 328cb25eddd7fc8e0800000000000000
+      internalID: -1670978544745068509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_141
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992921f52c9b0d400800000000000000
+      internalID: 346981415777374873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_142
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8cadf6901ff86e0800000000000000
+      internalID: -1832981500482893581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_143
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab75d544ec027c4a0800000000000000
+      internalID: -6573249060841629766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_144
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4d4ebf5ccfc08d0800000000000000
+      internalID: -2878648134531754819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_145
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e916839d2a3c3d0d0800000000000000
+      internalID: -3399158189538123362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_146
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8059729c02d3abb0800000000000000
+      internalID: -4925862615974326131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_147
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c78e3fdae42df640800000000000000
+      internalID: 5115285342949115844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_148
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98bbfa242f5c01fe0800000000000000
+      internalID: -1220257854725833847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_149
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdaec8faeed6de30800000000000000
+      internalID: 4528051576145620429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_150
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 463
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8f18cd311b22dd40800000000000000
+      internalID: 5607591839080652687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_151
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 431
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1324988fbd9fa1ff0800000000000000
+      internalID: -64464521480551887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_152
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 527468a69b40e50b0800000000000000
+      internalID: -5738143680820787419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_153
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f621124eeefaca080800000000000000
+      internalID: -9174764900296093073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_154
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08296e73350f567d0800000000000000
+      internalID: -2925668142696459648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_155
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c505b089e8837b080800000000000000
+      internalID: -9171799931029335972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_156
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c0bd9660ef6e120800000000000000
+      internalID: 2442919151394294861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_157
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c84cf157b50da9d0800000000000000
+      internalID: -2761544711595603771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_158
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0178005148dd6aeb0800000000000000
+      internalID: -4708832801011497200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_159
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d426b35d2c15ac80800000000000000
+      internalID: -8312206556238830383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_160
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0ad68fe3c0ca2a0800000000000000
+      internalID: -6724986678975553331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_161
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2749ec6f6cfa66660800000000000000
+      internalID: 7378778308572255346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_162
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 399
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6544380918f320d30800000000000000
+      internalID: 4396146011974878294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_163
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99434afd035f56770800000000000000
+      internalID: 8603552253420516505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_164
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274dd7415be80a050800000000000000
+      internalID: 5809800427691955314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_165
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acf34fadcc2c73af0800000000000000
+      internalID: -416650255405924406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_166
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988f598eb6e8b7ad0800000000000000
+      internalID: -2703410557191063415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_167
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9cc9454c867a430800000000000000
+      internalID: 3794116403525372398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_168
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1acdd2a99bd67d7e0800000000000000
+      internalID: -1740802087032333151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_169
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 275
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb9b7488bec43db0800000000000000
+      internalID: -4812994809860219955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_170
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 275
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e85f881603c27660800000000000000
+      internalID: 7382177170162931941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_171
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 275
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d795584dede749020800000000000000
+      internalID: 2347640801280219517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_172
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 275
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6941a74fd0487e810800000000000000
+      internalID: 1794548172001514646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_173
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 303
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c8d325d84f43500800000000000000
+      internalID: 375193556785925190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_174
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 335
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4086b95a136766b0800000000000000
+      internalID: -5303161071380037555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_175
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 303
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee064389de03ea2d0800000000000000
+      internalID: -3265618882778078994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_176
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 271
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a461a087995445290800000000000000
+      internalID: -7902614920682138038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_177
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 151
+        width: 90
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cadc33439e5c14f70800000000000000
+      internalID: 9169827921696902572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_178
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d16c636f1b4eb10800000000000000
+      internalID: 2009927004753108261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_179
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2ed29bff7664900800000000000000
+      internalID: 668335942732210882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_180
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e165e2e712b9e0ca0800000000000000
+      internalID: -6048726681358805474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_181
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0de1fea488108ce0800000000000000
+      internalID: -1405096125589754614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_182
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 151
+        width: 90
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5b450a0bb35df20800000000000000
+      internalID: 3446726719612171722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_183
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 151
+        width: 90
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c48eb7e03fb8430800000000000000
+      internalID: 3786387155268946988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_184
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dba5bbbb7377aaf80800000000000000
+      internalID: -8094526298988520771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_185
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230c5d114de234560800000000000000
+      internalID: 7296727309637500978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_186
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395a53a9bbfa96370800000000000000
+      internalID: 8316371407197283731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_187
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd7bc8449dd1e6be0800000000000000
+      internalID: -1482214408363132961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_188
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 41
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f79b6396ecf5510800000000000000
+      internalID: 1540176548869013290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_189
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 41
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea6af326251a838a0800000000000000
+      internalID: -6325128301434132818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_190
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 41
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cc88e468769d85e0800000000000000
+      internalID: -1905701623474647865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_191
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 73
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d1e60ec13412a070800000000000000
+      internalID: 8116071682617565653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_192
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 35
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d7e17ca450267070800000000000000
+      internalID: 8103700127542274006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_193
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 73
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3350e0efd9f4176c0800000000000000
+      internalID: -4147446241840724685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_194
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 35
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f12a428dca45b3be0800000000000000
+      internalID: -1496509349833170401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_195
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 31
+        width: 98
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f59d7838634dbfe0800000000000000
+      internalID: -1171706213143046668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_196
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f91134fe714f940800000000000000
+      internalID: 5328910575475990353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_197
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4ecddf04a97c3f70800000000000000
+      internalID: 9168336686967279178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_198
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d08bac96c4100e0800000000000000
+      internalID: -2305477516980646631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_199
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c31f0d10688a380800000000000000
+      internalID: -8959764116295041989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_200
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2441a8b98c24783a0800000000000000
+      internalID: -6663283694300949438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_201
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109bb0d55e37d7d60800000000000000
+      internalID: 7889589551168731393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_202
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 23
+        width: 90
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fadc88129bcc590800000000000000
+      internalID: -7652538113129074792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_203
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 21
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30e4b13bc212b2320800000000000000
+      internalID: 2534155691193224707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_204
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 21
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1a31e127373e8a0800000000000000
+      internalID: -6277046521656270350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_205
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 21
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b23eca3fd3ab0150800000000000000
+      internalID: 5839941520975606450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-switch_sheet_double_206
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 23
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46a9004a43667a920800000000000000
+      internalID: 3001480052941560420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nintendo-switch_sheet_double_0: -1474951250807874066
+      nintendo-switch_sheet_double_1: 6509190185934407226
+      nintendo-switch_sheet_double_10: 6896802708267015458
+      nintendo-switch_sheet_double_100: 8230142589632407965
+      nintendo-switch_sheet_double_101: -1751135101049628718
+      nintendo-switch_sheet_double_102: 7018896676395483533
+      nintendo-switch_sheet_double_103: -973585359998726928
+      nintendo-switch_sheet_double_104: 8870705344924216241
+      nintendo-switch_sheet_double_105: 9215302616878580062
+      nintendo-switch_sheet_double_106: 3602743992427899740
+      nintendo-switch_sheet_double_107: -2859845258825622185
+      nintendo-switch_sheet_double_108: -7668358259727767940
+      nintendo-switch_sheet_double_109: -8338782683575392139
+      nintendo-switch_sheet_double_11: -1481872680486729632
+      nintendo-switch_sheet_double_110: 6696999416728574676
+      nintendo-switch_sheet_double_111: -7759582981676642185
+      nintendo-switch_sheet_double_112: 8988623783830722129
+      nintendo-switch_sheet_double_113: -3018425037839169042
+      nintendo-switch_sheet_double_114: 932928685117204814
+      nintendo-switch_sheet_double_115: -3116638198571338414
+      nintendo-switch_sheet_double_116: -6967727367460703976
+      nintendo-switch_sheet_double_117: 175930205669447229
+      nintendo-switch_sheet_double_118: 7283518545340214222
+      nintendo-switch_sheet_double_119: 6289485609966485263
+      nintendo-switch_sheet_double_12: 7351527581678985323
+      nintendo-switch_sheet_double_120: 756933439236199461
+      nintendo-switch_sheet_double_121: -9163580035304875869
+      nintendo-switch_sheet_double_122: 1164283243337165405
+      nintendo-switch_sheet_double_123: -9040061388805710093
+      nintendo-switch_sheet_double_124: -207092440176752547
+      nintendo-switch_sheet_double_125: -2866469708780293623
+      nintendo-switch_sheet_double_126: -7572398472521038595
+      nintendo-switch_sheet_double_127: 7723421567625605254
+      nintendo-switch_sheet_double_128: 2477321503518818113
+      nintendo-switch_sheet_double_129: -1135200042031766986
+      nintendo-switch_sheet_double_13: -3214823157691672053
+      nintendo-switch_sheet_double_130: 411554378829817886
+      nintendo-switch_sheet_double_131: -1324245485942658568
+      nintendo-switch_sheet_double_132: 1188515790239947679
+      nintendo-switch_sheet_double_133: 1051881707444197979
+      nintendo-switch_sheet_double_134: 1794538415237301611
+      nintendo-switch_sheet_double_135: -292825178433790265
+      nintendo-switch_sheet_double_136: -4608654526345285385
+      nintendo-switch_sheet_double_137: 5351605939272410137
+      nintendo-switch_sheet_double_138: 3637461475637208922
+      nintendo-switch_sheet_double_139: -2481779244301260763
+      nintendo-switch_sheet_double_14: 4268247985910533818
+      nintendo-switch_sheet_double_140: -1670978544745068509
+      nintendo-switch_sheet_double_141: 346981415777374873
+      nintendo-switch_sheet_double_142: -1832981500482893581
+      nintendo-switch_sheet_double_143: -6573249060841629766
+      nintendo-switch_sheet_double_144: -2878648134531754819
+      nintendo-switch_sheet_double_145: -3399158189538123362
+      nintendo-switch_sheet_double_146: -4925862615974326131
+      nintendo-switch_sheet_double_147: 5115285342949115844
+      nintendo-switch_sheet_double_148: -1220257854725833847
+      nintendo-switch_sheet_double_149: 4528051576145620429
+      nintendo-switch_sheet_double_15: 8405854728186459743
+      nintendo-switch_sheet_double_150: 5607591839080652687
+      nintendo-switch_sheet_double_151: -64464521480551887
+      nintendo-switch_sheet_double_152: -5738143680820787419
+      nintendo-switch_sheet_double_153: -9174764900296093073
+      nintendo-switch_sheet_double_154: -2925668142696459648
+      nintendo-switch_sheet_double_155: -9171799931029335972
+      nintendo-switch_sheet_double_156: 2442919151394294861
+      nintendo-switch_sheet_double_157: -2761544711595603771
+      nintendo-switch_sheet_double_158: -4708832801011497200
+      nintendo-switch_sheet_double_159: -8312206556238830383
+      nintendo-switch_sheet_double_16: -2848574873358935134
+      nintendo-switch_sheet_double_160: -6724986678975553331
+      nintendo-switch_sheet_double_161: 7378778308572255346
+      nintendo-switch_sheet_double_162: 4396146011974878294
+      nintendo-switch_sheet_double_163: 8603552253420516505
+      nintendo-switch_sheet_double_164: 5809800427691955314
+      nintendo-switch_sheet_double_165: -416650255405924406
+      nintendo-switch_sheet_double_166: -2703410557191063415
+      nintendo-switch_sheet_double_167: 3794116403525372398
+      nintendo-switch_sheet_double_168: -1740802087032333151
+      nintendo-switch_sheet_double_169: -4812994809860219955
+      nintendo-switch_sheet_double_17: -5302259123545483732
+      nintendo-switch_sheet_double_170: 7382177170162931941
+      nintendo-switch_sheet_double_171: 2347640801280219517
+      nintendo-switch_sheet_double_172: 1794548172001514646
+      nintendo-switch_sheet_double_173: 375193556785925190
+      nintendo-switch_sheet_double_174: -5303161071380037555
+      nintendo-switch_sheet_double_175: -3265618882778078994
+      nintendo-switch_sheet_double_176: -7902614920682138038
+      nintendo-switch_sheet_double_177: 9169827921696902572
+      nintendo-switch_sheet_double_178: 2009927004753108261
+      nintendo-switch_sheet_double_179: 668335942732210882
+      nintendo-switch_sheet_double_18: 3877485443068681483
+      nintendo-switch_sheet_double_180: -6048726681358805474
+      nintendo-switch_sheet_double_181: -1405096125589754614
+      nintendo-switch_sheet_double_182: 3446726719612171722
+      nintendo-switch_sheet_double_183: 3786387155268946988
+      nintendo-switch_sheet_double_184: -8094526298988520771
+      nintendo-switch_sheet_double_185: 7296727309637500978
+      nintendo-switch_sheet_double_186: 8316371407197283731
+      nintendo-switch_sheet_double_187: -1482214408363132961
+      nintendo-switch_sheet_double_188: 1540176548869013290
+      nintendo-switch_sheet_double_189: -6325128301434132818
+      nintendo-switch_sheet_double_19: 8570456490641846316
+      nintendo-switch_sheet_double_190: -1905701623474647865
+      nintendo-switch_sheet_double_191: 8116071682617565653
+      nintendo-switch_sheet_double_192: 8103700127542274006
+      nintendo-switch_sheet_double_193: -4147446241840724685
+      nintendo-switch_sheet_double_194: -1496509349833170401
+      nintendo-switch_sheet_double_195: -1171706213143046668
+      nintendo-switch_sheet_double_196: 5328910575475990353
+      nintendo-switch_sheet_double_197: 9168336686967279178
+      nintendo-switch_sheet_double_198: -2305477516980646631
+      nintendo-switch_sheet_double_199: -8959764116295041989
+      nintendo-switch_sheet_double_2: 35522785950701299
+      nintendo-switch_sheet_double_20: 3475610817323807301
+      nintendo-switch_sheet_double_200: -6663283694300949438
+      nintendo-switch_sheet_double_201: 7889589551168731393
+      nintendo-switch_sheet_double_202: -7652538113129074792
+      nintendo-switch_sheet_double_203: 2534155691193224707
+      nintendo-switch_sheet_double_204: -6277046521656270350
+      nintendo-switch_sheet_double_205: 5839941520975606450
+      nintendo-switch_sheet_double_206: 3001480052941560420
+      nintendo-switch_sheet_double_21: 7503528587739712384
+      nintendo-switch_sheet_double_22: -2914538967698560149
+      nintendo-switch_sheet_double_23: 3197871817557501275
+      nintendo-switch_sheet_double_24: -3045909942565261132
+      nintendo-switch_sheet_double_25: 3531491983938295555
+      nintendo-switch_sheet_double_26: 6222408501374967391
+      nintendo-switch_sheet_double_27: 7953096061813983738
+      nintendo-switch_sheet_double_28: -3108121592334813746
+      nintendo-switch_sheet_double_29: 8282913901647605760
+      nintendo-switch_sheet_double_3: 8167166241887544962
+      nintendo-switch_sheet_double_30: 6426878873331797713
+      nintendo-switch_sheet_double_31: -1904547236731755993
+      nintendo-switch_sheet_double_32: 5984506799551648104
+      nintendo-switch_sheet_double_33: -4128562868931430760
+      nintendo-switch_sheet_double_34: -2666130875127819091
+      nintendo-switch_sheet_double_35: -8748904372525662197
+      nintendo-switch_sheet_double_36: -270905181243654283
+      nintendo-switch_sheet_double_37: 8329077513905754577
+      nintendo-switch_sheet_double_38: -2508357553966840235
+      nintendo-switch_sheet_double_39: 4290733043353855043
+      nintendo-switch_sheet_double_4: 7246418420054442288
+      nintendo-switch_sheet_double_40: 8246929278307919245
+      nintendo-switch_sheet_double_41: -3332985403973068937
+      nintendo-switch_sheet_double_42: -7473843424501991445
+      nintendo-switch_sheet_double_43: 7263465661054713532
+      nintendo-switch_sheet_double_44: 1929433047368391931
+      nintendo-switch_sheet_double_45: -2808121400946915272
+      nintendo-switch_sheet_double_46: 81852191133248169
+      nintendo-switch_sheet_double_47: 8666337596933319821
+      nintendo-switch_sheet_double_48: 2491558618400846861
+      nintendo-switch_sheet_double_49: -7073841102505299126
+      nintendo-switch_sheet_double_5: 2142901402103259745
+      nintendo-switch_sheet_double_50: -4137433211767262973
+      nintendo-switch_sheet_double_51: 9159593348012361629
+      nintendo-switch_sheet_double_52: -639626671564368624
+      nintendo-switch_sheet_double_53: -9076610793281391682
+      nintendo-switch_sheet_double_54: 3747996756149475015
+      nintendo-switch_sheet_double_55: 7801816000590367013
+      nintendo-switch_sheet_double_56: 2555039297570745495
+      nintendo-switch_sheet_double_57: 6577472058118698224
+      nintendo-switch_sheet_double_58: -3883982240631239123
+      nintendo-switch_sheet_double_59: 5696540524327405669
+      nintendo-switch_sheet_double_6: 7842807897648101634
+      nintendo-switch_sheet_double_60: -2793897166823216257
+      nintendo-switch_sheet_double_61: -1568899513820625911
+      nintendo-switch_sheet_double_62: -2068146725003453931
+      nintendo-switch_sheet_double_63: -5943023916139454514
+      nintendo-switch_sheet_double_64: -8525992831000716710
+      nintendo-switch_sheet_double_65: -4596217750705032914
+      nintendo-switch_sheet_double_66: 2798806351912703955
+      nintendo-switch_sheet_double_67: 3144038446022250772
+      nintendo-switch_sheet_double_68: -6494082339507551364
+      nintendo-switch_sheet_double_69: 7146082395122135767
+      nintendo-switch_sheet_double_7: -106177461823756324
+      nintendo-switch_sheet_double_70: 4739644455874001349
+      nintendo-switch_sheet_double_71: 4570554272187080696
+      nintendo-switch_sheet_double_72: -3124728092649252517
+      nintendo-switch_sheet_double_73: 4908825006948246071
+      nintendo-switch_sheet_double_74: -7273914057773157979
+      nintendo-switch_sheet_double_75: -2252381741884583190
+      nintendo-switch_sheet_double_76: -6886923496995549921
+      nintendo-switch_sheet_double_77: -7231438347338730193
+      nintendo-switch_sheet_double_78: -475946190987585969
+      nintendo-switch_sheet_double_79: 5866327530104102413
+      nintendo-switch_sheet_double_8: 2732262495529304285
+      nintendo-switch_sheet_double_80: -8562866265913993204
+      nintendo-switch_sheet_double_81: -5693913280948697254
+      nintendo-switch_sheet_double_82: -7468991897480743129
+      nintendo-switch_sheet_double_83: -2685491192573050944
+      nintendo-switch_sheet_double_84: -750379943209196614
+      nintendo-switch_sheet_double_85: 3588786862515152240
+      nintendo-switch_sheet_double_86: 4032628428557993572
+      nintendo-switch_sheet_double_87: 1761053208911395253
+      nintendo-switch_sheet_double_88: 8914897675480607255
+      nintendo-switch_sheet_double_89: -198027658112169555
+      nintendo-switch_sheet_double_9: -3201081246546944543
+      nintendo-switch_sheet_double_90: 8454624400600283552
+      nintendo-switch_sheet_double_91: 6554857998594653594
+      nintendo-switch_sheet_double_92: 6649720310086056773
+      nintendo-switch_sheet_double_93: -423402479808004459
+      nintendo-switch_sheet_double_94: -5601785172547478529
+      nintendo-switch_sheet_double_95: 6874300367936922905
+      nintendo-switch_sheet_double_96: -6733160976863241324
+      nintendo-switch_sheet_double_97: 7939484513968027312
+      nintendo-switch_sheet_double_98: -900715193118561132
+      nintendo-switch_sheet_double_99: 385388107010604066
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

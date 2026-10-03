@@ -1,0 +1,1989 @@
+fileFormatVersion: 2
+guid: 6c41a9b642f591f4e9a0f9a1cd42106e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2857009581249130970
+    second: meta-quest_sheet_double_0
+  - first:
+      213: 2110429853015638536
+    second: meta-quest_sheet_double_1
+  - first:
+      213: 4175255209212846220
+    second: meta-quest_sheet_double_2
+  - first:
+      213: -46261047960978847
+    second: meta-quest_sheet_double_3
+  - first:
+      213: -4621989028388764410
+    second: meta-quest_sheet_double_4
+  - first:
+      213: 9180058841924746254
+    second: meta-quest_sheet_double_5
+  - first:
+      213: 7961865150599209693
+    second: meta-quest_sheet_double_6
+  - first:
+      213: -7973477609590916716
+    second: meta-quest_sheet_double_7
+  - first:
+      213: -4862311590491609336
+    second: meta-quest_sheet_double_8
+  - first:
+      213: -1723724146120404783
+    second: meta-quest_sheet_double_9
+  - first:
+      213: -3059941989798375633
+    second: meta-quest_sheet_double_10
+  - first:
+      213: 6447731783928029274
+    second: meta-quest_sheet_double_11
+  - first:
+      213: 6830089280060187752
+    second: meta-quest_sheet_double_12
+  - first:
+      213: 888357369535598252
+    second: meta-quest_sheet_double_13
+  - first:
+      213: -1319051655068218758
+    second: meta-quest_sheet_double_14
+  - first:
+      213: 2653745587965429509
+    second: meta-quest_sheet_double_15
+  - first:
+      213: -6504359845674054451
+    second: meta-quest_sheet_double_16
+  - first:
+      213: 3473102482790655627
+    second: meta-quest_sheet_double_17
+  - first:
+      213: 4804229586304909516
+    second: meta-quest_sheet_double_18
+  - first:
+      213: -5728613151076955499
+    second: meta-quest_sheet_double_19
+  - first:
+      213: -7870807927525361190
+    second: meta-quest_sheet_double_20
+  - first:
+      213: -7328450346844386093
+    second: meta-quest_sheet_double_21
+  - first:
+      213: -7670819497652345234
+    second: meta-quest_sheet_double_22
+  - first:
+      213: -4955405714543991507
+    second: meta-quest_sheet_double_23
+  - first:
+      213: 6574186184603213784
+    second: meta-quest_sheet_double_24
+  - first:
+      213: -2563855472197981609
+    second: meta-quest_sheet_double_25
+  - first:
+      213: 7661753138442198258
+    second: meta-quest_sheet_double_26
+  - first:
+      213: -7283319634479364541
+    second: meta-quest_sheet_double_27
+  - first:
+      213: -4221026848829529877
+    second: meta-quest_sheet_double_28
+  - first:
+      213: -1390028000030709230
+    second: meta-quest_sheet_double_29
+  - first:
+      213: 2145453050377436490
+    second: meta-quest_sheet_double_30
+  - first:
+      213: 9106591072749532769
+    second: meta-quest_sheet_double_31
+  - first:
+      213: -3682669100132262812
+    second: meta-quest_sheet_double_32
+  - first:
+      213: -3815863710559049700
+    second: meta-quest_sheet_double_33
+  - first:
+      213: 3288370263386808408
+    second: meta-quest_sheet_double_34
+  - first:
+      213: -3893972046362885196
+    second: meta-quest_sheet_double_35
+  - first:
+      213: -5712200903568389314
+    second: meta-quest_sheet_double_36
+  - first:
+      213: 9055935071500135442
+    second: meta-quest_sheet_double_37
+  - first:
+      213: 4365204661187543927
+    second: meta-quest_sheet_double_38
+  - first:
+      213: 4781841248458973704
+    second: meta-quest_sheet_double_39
+  - first:
+      213: -7180683493055162955
+    second: meta-quest_sheet_double_40
+  - first:
+      213: 3147506185552749475
+    second: meta-quest_sheet_double_41
+  - first:
+      213: -2368633325148419350
+    second: meta-quest_sheet_double_42
+  - first:
+      213: -2677962303817210509
+    second: meta-quest_sheet_double_43
+  - first:
+      213: 8441857720150797228
+    second: meta-quest_sheet_double_44
+  - first:
+      213: 7309843363556548385
+    second: meta-quest_sheet_double_45
+  - first:
+      213: 487495511198172057
+    second: meta-quest_sheet_double_46
+  - first:
+      213: 5845991636098200141
+    second: meta-quest_sheet_double_47
+  - first:
+      213: 7389277828817637967
+    second: meta-quest_sheet_double_48
+  - first:
+      213: 7541354586146599699
+    second: meta-quest_sheet_double_49
+  - first:
+      213: 6320380500482079027
+    second: meta-quest_sheet_double_50
+  - first:
+      213: 3856459341041249165
+    second: meta-quest_sheet_double_51
+  - first:
+      213: 3758142700293801015
+    second: meta-quest_sheet_double_52
+  - first:
+      213: 1521717693656690088
+    second: meta-quest_sheet_double_53
+  - first:
+      213: -5339101920084285964
+    second: meta-quest_sheet_double_54
+  - first:
+      213: 476464441775345375
+    second: meta-quest_sheet_double_55
+  - first:
+      213: 3383931602756145035
+    second: meta-quest_sheet_double_56
+  - first:
+      213: -2843067750722476165
+    second: meta-quest_sheet_double_57
+  - first:
+      213: -6409008831250872510
+    second: meta-quest_sheet_double_58
+  - first:
+      213: 4196265215681644323
+    second: meta-quest_sheet_double_59
+  - first:
+      213: -8074966140964072892
+    second: meta-quest_sheet_double_60
+  - first:
+      213: -8067018334760554602
+    second: meta-quest_sheet_double_61
+  - first:
+      213: -1930530247397664285
+    second: meta-quest_sheet_double_62
+  - first:
+      213: 8237894904662648546
+    second: meta-quest_sheet_double_63
+  - first:
+      213: -8475046524395800037
+    second: meta-quest_sheet_double_64
+  - first:
+      213: 5748509531624217185
+    second: meta-quest_sheet_double_65
+  - first:
+      213: -4752817002828979859
+    second: meta-quest_sheet_double_66
+  - first:
+      213: -6495924581345169701
+    second: meta-quest_sheet_double_67
+  - first:
+      213: 232477473547543413
+    second: meta-quest_sheet_double_68
+  - first:
+      213: -3248090925093245462
+    second: meta-quest_sheet_double_69
+  - first:
+      213: 118071743394958658
+    second: meta-quest_sheet_double_70
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 799
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1fd3ab31326a720800000000000000
+      internalID: 2857009581249130970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 799
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802806015c0c94d10800000000000000
+      internalID: 2110429853015638536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 767
+        width: 769
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c802bb7cd7c71f930800000000000000
+      internalID: 4175255209212846220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 655
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a395d62d5ab5ff0800000000000000
+      internalID: -46261047960978847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 743
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 605822f87756bdfb0800000000000000
+      internalID: -4621989028388764410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_5
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 655
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0cbb12f0ee166f70800000000000000
+      internalID: 9180058841924746254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_6
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 743
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd22703bb2a3e7e60800000000000000
+      internalID: 7961865150599209693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_7
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 731
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4997dcffb54885190800000000000000
+      internalID: -7973477609590916716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_8
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 731
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807ab7dbe59958cb0800000000000000
+      internalID: -4862311590491609336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_9
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d0dab3950a1418e0800000000000000
+      internalID: -1723724146120404783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_10
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f04c8f8f6e885d0800000000000000
+      internalID: -3059941989798375633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_11
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 655
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a50a60c55e1fa7950800000000000000
+      internalID: 6447731783928029274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_12
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 655
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 864e03a430a59ce50800000000000000
+      internalID: 6830089280060187752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_13
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 671
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae05c42254145c00800000000000000
+      internalID: 888357369535598252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_14
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 671
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a84432289c1bde0800000000000000
+      internalID: -1319051655068218758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_15
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 527
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50780f65d8ff3d420800000000000000
+      internalID: 2653745587965429509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_16
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 615
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcc88439e2fdbb5a0800000000000000
+      internalID: -6504359845674054451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_17
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 527
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86a34b8e40f23030800000000000000
+      internalID: 3473102482790655627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_18
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 615
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc04027da5d0ca240800000000000000
+      internalID: 4804229586304909516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_19
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a4d6ac0b0ef70b0800000000000000
+      internalID: -5728613151076955499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9b58824e545c290800000000000000
+      internalID: -7870807927525361190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_21
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 602
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc8042cc3d1c4a90800000000000000
+      internalID: -7328450346844386093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_22
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 527
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66aa420f46cb8590800000000000000
+      internalID: -7670819497652345234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_23
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 527
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d252aaae1ccda3bb0800000000000000
+      internalID: -4955405714543991507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_24
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 611
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8df1e8cd0833c3b50800000000000000
+      internalID: 6574186184603213784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_25
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 527
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75aa23c280b5b6cd0800000000000000
+      internalID: -2563855472197981609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_26
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 571
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcd49db2e3045a60800000000000000
+      internalID: 7661753138442198258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_27
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 527
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 346ca3191637cea90800000000000000
+      internalID: -7283319634479364541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_28
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 565
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be02128e176eb65c0800000000000000
+      internalID: -4221026848829529877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_29
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 571
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21aa25e06e0a5bce0800000000000000
+      internalID: -1390028000030709230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_30
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 571
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4d7606ae2e26cd10800000000000000
+      internalID: 2145453050377436490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_31
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 571
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 166baf5f45c116e70800000000000000
+      internalID: 9106591072749532769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_32
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 399
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c1f4d07f784ecc0800000000000000
+      internalID: -3682669100132262812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_33
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 399
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18e2dc2c245b0bc0800000000000000
+      internalID: -3815863710559049700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_34
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 399
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 850e02ff453a2ad20800000000000000
+      internalID: 3288370263386808408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_35
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 399
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b34d331e05d5f9c0800000000000000
+      internalID: -3893972046362885196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_36
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 474
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b0421fa8f2ab0b0800000000000000
+      internalID: -5712200903568389314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_37
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 437
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c64c597f42dad70800000000000000
+      internalID: 9055935071500135442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_38
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 399
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77386f1f282549c30800000000000000
+      internalID: 4365204661187543927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_39
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 399
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80225bab7438c5240800000000000000
+      internalID: 4781841248458973704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_40
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 483
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b59fef6866195c90800000000000000
+      internalID: -7180683493055162955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_41
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 399
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3673613303eab20800000000000000
+      internalID: 3147506185552749475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_42
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 443
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea40635a8ce02fd0800000000000000
+      internalID: -2368633325148419350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_43
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 399
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 375a61f1977f5dad0800000000000000
+      internalID: -2677962303817210509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_44
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 443
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab2afd9ed0872570800000000000000
+      internalID: 8441857720150797228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_45
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 443
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fd8885fc7c17560800000000000000
+      internalID: 7309843363556548385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_46
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 443
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9938096a59ee3c600800000000000000
+      internalID: 487495511198172057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_47
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42b98d6b62212150800000000000000
+      internalID: 5845991636098200141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_48
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f425855090dfb8660800000000000000
+      internalID: 7389277828817637967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_49
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313f7805a0648a860800000000000000
+      internalID: 7541354586146599699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_50
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3393a80149086b750800000000000000
+      internalID: 6320380500482079027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_51
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b20899655e48530800000000000000
+      internalID: 3856459341041249165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_52
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7344d3adfda972430800000000000000
+      internalID: 3758142700293801015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_53
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 271
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ad65d21e2a3e1510800000000000000
+      internalID: 1521717693656690088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_54
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 271
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f525c96713b7e5b0800000000000000
+      internalID: -5339101920084285964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_55
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdecf18a2edbc9600800000000000000
+      internalID: 476464441775345375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_56
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f8f762dd326fe20800000000000000
+      internalID: 3383931602756145035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_57
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7761d5a1f46b88d0800000000000000
+      internalID: -2843067750722476165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_58
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24743f2ac60ae07a0800000000000000
+      internalID: -6409008831250872510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_59
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 327480c1bf02c3a30800000000000000
+      internalID: 4196265215681644323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_60
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 442978ae315ffef80800000000000000
+      internalID: -8074966140964072892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_61
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fa800c0913c0090800000000000000
+      internalID: -8067018334760554602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_62
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e917b7e7f06535e0800000000000000
+      internalID: -1930530247397664285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_63
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6ea6105c1e25270800000000000000
+      internalID: 8237894904662648546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_64
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 15
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1aba7ab616926a80800000000000000
+      internalID: -8475046524395800037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_65
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 15
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a986c46fec6cf40800000000000000
+      internalID: 5748509531624217185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_66
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 15
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6121ff0e1a9a0eb0800000000000000
+      internalID: -4752817002828979859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_67
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 15
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde61399207d9d5a0800000000000000
+      internalID: -6495924581345169701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_68
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 15
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573e41dc70de93300800000000000000
+      internalID: 232477473547543413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_69
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 15
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeda5a343867ce2d0800000000000000
+      internalID: -3248090925093245462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meta-quest_sheet_double_70
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 15
+        width: 58
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24d411300a973a100800000000000000
+      internalID: 118071743394958658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      meta-quest_sheet_double_0: 2857009581249130970
+      meta-quest_sheet_double_1: 2110429853015638536
+      meta-quest_sheet_double_10: -3059941989798375633
+      meta-quest_sheet_double_11: 6447731783928029274
+      meta-quest_sheet_double_12: 6830089280060187752
+      meta-quest_sheet_double_13: 888357369535598252
+      meta-quest_sheet_double_14: -1319051655068218758
+      meta-quest_sheet_double_15: 2653745587965429509
+      meta-quest_sheet_double_16: -6504359845674054451
+      meta-quest_sheet_double_17: 3473102482790655627
+      meta-quest_sheet_double_18: 4804229586304909516
+      meta-quest_sheet_double_19: -5728613151076955499
+      meta-quest_sheet_double_2: 4175255209212846220
+      meta-quest_sheet_double_20: -7870807927525361190
+      meta-quest_sheet_double_21: -7328450346844386093
+      meta-quest_sheet_double_22: -7670819497652345234
+      meta-quest_sheet_double_23: -4955405714543991507
+      meta-quest_sheet_double_24: 6574186184603213784
+      meta-quest_sheet_double_25: -2563855472197981609
+      meta-quest_sheet_double_26: 7661753138442198258
+      meta-quest_sheet_double_27: -7283319634479364541
+      meta-quest_sheet_double_28: -4221026848829529877
+      meta-quest_sheet_double_29: -1390028000030709230
+      meta-quest_sheet_double_3: -46261047960978847
+      meta-quest_sheet_double_30: 2145453050377436490
+      meta-quest_sheet_double_31: 9106591072749532769
+      meta-quest_sheet_double_32: -3682669100132262812
+      meta-quest_sheet_double_33: -3815863710559049700
+      meta-quest_sheet_double_34: 3288370263386808408
+      meta-quest_sheet_double_35: -3893972046362885196
+      meta-quest_sheet_double_36: -5712200903568389314
+      meta-quest_sheet_double_37: 9055935071500135442
+      meta-quest_sheet_double_38: 4365204661187543927
+      meta-quest_sheet_double_39: 4781841248458973704
+      meta-quest_sheet_double_4: -4621989028388764410
+      meta-quest_sheet_double_40: -7180683493055162955
+      meta-quest_sheet_double_41: 3147506185552749475
+      meta-quest_sheet_double_42: -2368633325148419350
+      meta-quest_sheet_double_43: -2677962303817210509
+      meta-quest_sheet_double_44: 8441857720150797228
+      meta-quest_sheet_double_45: 7309843363556548385
+      meta-quest_sheet_double_46: 487495511198172057
+      meta-quest_sheet_double_47: 5845991636098200141
+      meta-quest_sheet_double_48: 7389277828817637967
+      meta-quest_sheet_double_49: 7541354586146599699
+      meta-quest_sheet_double_5: 9180058841924746254
+      meta-quest_sheet_double_50: 6320380500482079027
+      meta-quest_sheet_double_51: 3856459341041249165
+      meta-quest_sheet_double_52: 3758142700293801015
+      meta-quest_sheet_double_53: 1521717693656690088
+      meta-quest_sheet_double_54: -5339101920084285964
+      meta-quest_sheet_double_55: 476464441775345375
+      meta-quest_sheet_double_56: 3383931602756145035
+      meta-quest_sheet_double_57: -2843067750722476165
+      meta-quest_sheet_double_58: -6409008831250872510
+      meta-quest_sheet_double_59: 4196265215681644323
+      meta-quest_sheet_double_6: 7961865150599209693
+      meta-quest_sheet_double_60: -8074966140964072892
+      meta-quest_sheet_double_61: -8067018334760554602
+      meta-quest_sheet_double_62: -1930530247397664285
+      meta-quest_sheet_double_63: 8237894904662648546
+      meta-quest_sheet_double_64: -8475046524395800037
+      meta-quest_sheet_double_65: 5748509531624217185
+      meta-quest_sheet_double_66: -4752817002828979859
+      meta-quest_sheet_double_67: -6495924581345169701
+      meta-quest_sheet_double_68: 232477473547543413
+      meta-quest_sheet_double_69: -3248090925093245462
+      meta-quest_sheet_double_7: -7973477609590916716
+      meta-quest_sheet_double_70: 118071743394958658
+      meta-quest_sheet_double_8: -4862311590491609336
+      meta-quest_sheet_double_9: -1723724146120404783
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

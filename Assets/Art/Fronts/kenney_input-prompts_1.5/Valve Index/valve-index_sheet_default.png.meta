@@ -1,0 +1,1677 @@
+fileFormatVersion: 2
+guid: 737e1d925b6a90b4da02fd911e5e9dc2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7383334482587949474
+    second: valve-index_sheet_default_0
+  - first:
+      213: -8025275878837603972
+    second: valve-index_sheet_default_1
+  - first:
+      213: 2715988463583662005
+    second: valve-index_sheet_default_2
+  - first:
+      213: -3344637795985982910
+    second: valve-index_sheet_default_3
+  - first:
+      213: -316002096745260221
+    second: valve-index_sheet_default_4
+  - first:
+      213: 8026932446521240801
+    second: valve-index_sheet_default_5
+  - first:
+      213: 1829446256551230713
+    second: valve-index_sheet_default_6
+  - first:
+      213: 1516845450194632070
+    second: valve-index_sheet_default_7
+  - first:
+      213: 2445294432990240098
+    second: valve-index_sheet_default_8
+  - first:
+      213: -5663396238566017377
+    second: valve-index_sheet_default_9
+  - first:
+      213: -8841391848897060119
+    second: valve-index_sheet_default_10
+  - first:
+      213: 4704256635004533710
+    second: valve-index_sheet_default_11
+  - first:
+      213: 4737531560065872044
+    second: valve-index_sheet_default_12
+  - first:
+      213: -911722935870606317
+    second: valve-index_sheet_default_13
+  - first:
+      213: 6191681787318176900
+    second: valve-index_sheet_default_14
+  - first:
+      213: 4084193537104836432
+    second: valve-index_sheet_default_15
+  - first:
+      213: -640348627042292238
+    second: valve-index_sheet_default_16
+  - first:
+      213: 4034226249046824406
+    second: valve-index_sheet_default_17
+  - first:
+      213: -7333940113646811204
+    second: valve-index_sheet_default_18
+  - first:
+      213: -4119870887479409855
+    second: valve-index_sheet_default_19
+  - first:
+      213: 6670759923626174809
+    second: valve-index_sheet_default_20
+  - first:
+      213: -4932162253991570985
+    second: valve-index_sheet_default_21
+  - first:
+      213: 6571661387828579344
+    second: valve-index_sheet_default_22
+  - first:
+      213: -7743736428090311899
+    second: valve-index_sheet_default_23
+  - first:
+      213: 3806963179064536084
+    second: valve-index_sheet_default_24
+  - first:
+      213: 4531695411845991732
+    second: valve-index_sheet_default_25
+  - first:
+      213: 3692993422034911953
+    second: valve-index_sheet_default_26
+  - first:
+      213: -1007302465288392346
+    second: valve-index_sheet_default_27
+  - first:
+      213: 4594412291826606846
+    second: valve-index_sheet_default_28
+  - first:
+      213: 615827009777717196
+    second: valve-index_sheet_default_29
+  - first:
+      213: -3629299621604221930
+    second: valve-index_sheet_default_30
+  - first:
+      213: -8094456000545432764
+    second: valve-index_sheet_default_31
+  - first:
+      213: -6452882287062594651
+    second: valve-index_sheet_default_32
+  - first:
+      213: 5245559545574211681
+    second: valve-index_sheet_default_33
+  - first:
+      213: -3990857310421360828
+    second: valve-index_sheet_default_34
+  - first:
+      213: -4749705053274901201
+    second: valve-index_sheet_default_35
+  - first:
+      213: 49386267463856969
+    second: valve-index_sheet_default_36
+  - first:
+      213: -5223544339187407984
+    second: valve-index_sheet_default_37
+  - first:
+      213: -6715677434337065227
+    second: valve-index_sheet_default_38
+  - first:
+      213: 1885716262711539573
+    second: valve-index_sheet_default_39
+  - first:
+      213: -3708525129846382906
+    second: valve-index_sheet_default_40
+  - first:
+      213: -5482587826441479753
+    second: valve-index_sheet_default_41
+  - first:
+      213: 277655759114948715
+    second: valve-index_sheet_default_42
+  - first:
+      213: -1696727235698723509
+    second: valve-index_sheet_default_43
+  - first:
+      213: 1711765852290961208
+    second: valve-index_sheet_default_44
+  - first:
+      213: -2291704246344411981
+    second: valve-index_sheet_default_45
+  - first:
+      213: 6303089103247798646
+    second: valve-index_sheet_default_46
+  - first:
+      213: -748795853855302572
+    second: valve-index_sheet_default_47
+  - first:
+      213: -8597019729123454397
+    second: valve-index_sheet_default_48
+  - first:
+      213: -3413374830037539263
+    second: valve-index_sheet_default_49
+  - first:
+      213: 1081013567602023326
+    second: valve-index_sheet_default_50
+  - first:
+      213: -4368539940529036374
+    second: valve-index_sheet_default_51
+  - first:
+      213: -1201538675858881079
+    second: valve-index_sheet_default_52
+  - first:
+      213: -8473534197645716700
+    second: valve-index_sheet_default_53
+  - first:
+      213: 16197490610851484
+    second: valve-index_sheet_default_54
+  - first:
+      213: -3615839645311176096
+    second: valve-index_sheet_default_55
+  - first:
+      213: -2792155406906177957
+    second: valve-index_sheet_default_56
+  - first:
+      213: -6106452380503149452
+    second: valve-index_sheet_default_57
+  - first:
+      213: -6384554128779053294
+    second: valve-index_sheet_default_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valve-index_sheet_default_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 327
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a91c84e79fd67660800000000000000
+      internalID: 7383334482587949474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 327
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71bf51ab1e70a090800000000000000
+      internalID: -8025275878837603972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 319
+        width: 321
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bf86f12e1121b520800000000000000
+      internalID: 2715988463583662005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_3
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 301
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24af8eb25a57591d0800000000000000
+      internalID: -3344637795985982910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_4
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 301
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b583b64c55d9bf0800000000000000
+      internalID: -316002096745260221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 263
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eca4f61884656f60800000000000000
+      internalID: 8026932446521240801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 263
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc77617daf736910800000000000000
+      internalID: 1829446256551230713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 263
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68db40e76eaec0510800000000000000
+      internalID: 1516845450194632070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_8
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 263
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d9f91c45e6fe120800000000000000
+      internalID: 2445294432990240098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_9
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 263
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f963df180239761b0800000000000000
+      internalID: -5663396238566017377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_10
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 263
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e2e47605f01d4580800000000000000
+      internalID: -8841391848897060119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_11
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 263
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb38bd3c70e84140800000000000000
+      internalID: 4704256635004533710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_12
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 264
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca0bde57ad71fb140800000000000000
+      internalID: 4737531560065872044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_13
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 199
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3143bd102d8e853f0800000000000000
+      internalID: -911722935870606317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_14
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 236
+        width: 40
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c0b57d7c54de550800000000000000
+      internalID: 6191681787318176900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_15
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 199
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057741d0268fda830800000000000000
+      internalID: 4084193537104836432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_16
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 199
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fd2cb001560d17f0800000000000000
+      internalID: -640348627042292238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_17
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 241
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d51ef536637cf730800000000000000
+      internalID: 4034226249046824406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_18
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 199
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb70812d25c983a90800000000000000
+      internalID: -7333940113646811204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_19
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 199
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143015f714743d6c0800000000000000
+      internalID: -4119870887479409855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_20
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 243
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95966adaecc439c50800000000000000
+      internalID: 6670759923626174809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_21
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 199
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d11e3ccf807d8bb0800000000000000
+      internalID: -4932162253991570985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_22
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 243
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c4cadc63b333b50800000000000000
+      internalID: 6571661387828579344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_23
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 221
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bbc692fb8b88490800000000000000
+      internalID: -7743736428090311899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_24
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 199
+        width: 48
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c222957dc05d430800000000000000
+      internalID: 3806963179064536084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_25
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 218
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d095597f0d3ee30800000000000000
+      internalID: 4531695411845991732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_26
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 221
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d2ce3673f5204330800000000000000
+      internalID: 3692993422034911953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_27
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 221
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6613c17aeb75502f0800000000000000
+      internalID: -1007302465288392346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_28
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 221
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2630e13a1a2cf30800000000000000
+      internalID: 4594412291826606846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_29
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 172
+        width: 40
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf44e0176bdb8800800000000000000
+      internalID: 615827009777717196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_30
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 135
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c12d6193322adc0800000000000000
+      internalID: -3629299621604221930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_31
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 135
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44bd57d5727baaf80800000000000000
+      internalID: -8094456000545432764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_32
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 177
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ab493eafb1c276a0800000000000000
+      internalID: -6452882287062594651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_33
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 135
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1604c125d98fbc840800000000000000
+      internalID: 5245559545574211681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_34
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 135
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f501fab60ad98c0800000000000000
+      internalID: -3990857310421360828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_35
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 179
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25fba74b68a51eb0800000000000000
+      internalID: -4749705053274901201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_36
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 135
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94337f07c847fa000800000000000000
+      internalID: 49386267463856969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_37
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 179
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0936b3a591e3287b0800000000000000
+      internalID: -5223544339187407984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_38
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 135
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f68b3464fe1dc2a0800000000000000
+      internalID: -6715677434337065227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_39
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 157
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577391233f86b2a10800000000000000
+      internalID: 1885716262711539573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 135
+        width: 48
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce95e20b0ca88cc0800000000000000
+      internalID: -3708525129846382906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_41
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 154
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9131b7b6fe9e3b0800000000000000
+      internalID: -5482587826441479753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_42
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 157
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6053eb117e6ad300800000000000000
+      internalID: 277655759114948715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_43
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 157
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b45727b91930478e0800000000000000
+      internalID: -1696727235698723509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_44
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 157
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f427c29f961c710800000000000000
+      internalID: 1711765852290961208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_45
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 79
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b41362412b3230e0800000000000000
+      internalID: -2291704246344411981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_46
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67178bae422197750800000000000000
+      internalID: 6303089103247798646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_47
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45c5ba1632ebb95f0800000000000000
+      internalID: -748795853855302572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_48
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3425296fa1041b880800000000000000
+      internalID: -8597019729123454397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_49
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1466a5a4da141a0d0800000000000000
+      internalID: -3413374830037539263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_50
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9bdb4ebc18800f00800000000000000
+      internalID: 1081013567602023326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_51
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 71
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa329a1d114df53c0800000000000000
+      internalID: -4368539940529036374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_52
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 7
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c5c989b0f6435fe0800000000000000
+      internalID: -1201538675858881079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_53
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 7
+        width: 37
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423d33dba85f76a80800000000000000
+      internalID: -8473534197645716700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_54
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 15
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9ecc1a288b893000800000000000000
+      internalID: 16197490610851484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_55
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 7
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 062f3780005f1ddc0800000000000000
+      internalID: -3615839645311176096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_56
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 7
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b56cbad63754049d0800000000000000
+      internalID: -2792155406906177957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_57
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 7
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 474754ec9e5814ba0800000000000000
+      internalID: -6106452380503149452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valve-index_sheet_default_58
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 7
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 217fed0c8d18567a0800000000000000
+      internalID: -6384554128779053294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      valve-index_sheet_default_0: 7383334482587949474
+      valve-index_sheet_default_1: -8025275878837603972
+      valve-index_sheet_default_10: -8841391848897060119
+      valve-index_sheet_default_11: 4704256635004533710
+      valve-index_sheet_default_12: 4737531560065872044
+      valve-index_sheet_default_13: -911722935870606317
+      valve-index_sheet_default_14: 6191681787318176900
+      valve-index_sheet_default_15: 4084193537104836432
+      valve-index_sheet_default_16: -640348627042292238
+      valve-index_sheet_default_17: 4034226249046824406
+      valve-index_sheet_default_18: -7333940113646811204
+      valve-index_sheet_default_19: -4119870887479409855
+      valve-index_sheet_default_2: 2715988463583662005
+      valve-index_sheet_default_20: 6670759923626174809
+      valve-index_sheet_default_21: -4932162253991570985
+      valve-index_sheet_default_22: 6571661387828579344
+      valve-index_sheet_default_23: -7743736428090311899
+      valve-index_sheet_default_24: 3806963179064536084
+      valve-index_sheet_default_25: 4531695411845991732
+      valve-index_sheet_default_26: 3692993422034911953
+      valve-index_sheet_default_27: -1007302465288392346
+      valve-index_sheet_default_28: 4594412291826606846
+      valve-index_sheet_default_29: 615827009777717196
+      valve-index_sheet_default_3: -3344637795985982910
+      valve-index_sheet_default_30: -3629299621604221930
+      valve-index_sheet_default_31: -8094456000545432764
+      valve-index_sheet_default_32: -6452882287062594651
+      valve-index_sheet_default_33: 5245559545574211681
+      valve-index_sheet_default_34: -3990857310421360828
+      valve-index_sheet_default_35: -4749705053274901201
+      valve-index_sheet_default_36: 49386267463856969
+      valve-index_sheet_default_37: -5223544339187407984
+      valve-index_sheet_default_38: -6715677434337065227
+      valve-index_sheet_default_39: 1885716262711539573
+      valve-index_sheet_default_4: -316002096745260221
+      valve-index_sheet_default_40: -3708525129846382906
+      valve-index_sheet_default_41: -5482587826441479753
+      valve-index_sheet_default_42: 277655759114948715
+      valve-index_sheet_default_43: -1696727235698723509
+      valve-index_sheet_default_44: 1711765852290961208
+      valve-index_sheet_default_45: -2291704246344411981
+      valve-index_sheet_default_46: 6303089103247798646
+      valve-index_sheet_default_47: -748795853855302572
+      valve-index_sheet_default_48: -8597019729123454397
+      valve-index_sheet_default_49: -3413374830037539263
+      valve-index_sheet_default_5: 8026932446521240801
+      valve-index_sheet_default_50: 1081013567602023326
+      valve-index_sheet_default_51: -4368539940529036374
+      valve-index_sheet_default_52: -1201538675858881079
+      valve-index_sheet_default_53: -8473534197645716700
+      valve-index_sheet_default_54: 16197490610851484
+      valve-index_sheet_default_55: -3615839645311176096
+      valve-index_sheet_default_56: -2792155406906177957
+      valve-index_sheet_default_57: -6106452380503149452
+      valve-index_sheet_default_58: -6384554128779053294
+      valve-index_sheet_default_6: 1829446256551230713
+      valve-index_sheet_default_7: 1516845450194632070
+      valve-index_sheet_default_8: 2445294432990240098
+      valve-index_sheet_default_9: -5663396238566017377
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

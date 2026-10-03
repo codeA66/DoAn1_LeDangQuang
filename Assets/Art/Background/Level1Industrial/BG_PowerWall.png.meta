@@ -1,0 +1,3133 @@
+fileFormatVersion: 2
+guid: 7995ecd92348cc64c9998e27b563a0c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5800930778237579211
+    second: BG_PowerWall_0
+  - first:
+      213: -1074103109044055213
+    second: BG_PowerWall_1
+  - first:
+      213: 5138173000951554812
+    second: BG_PowerWall_2
+  - first:
+      213: -3454474638533758210
+    second: BG_PowerWall_3
+  - first:
+      213: -4854761032712125003
+    second: BG_PowerWall_4
+  - first:
+      213: -5003917248309864742
+    second: BG_PowerWall_5
+  - first:
+      213: -8713414291377869378
+    second: BG_PowerWall_6
+  - first:
+      213: 2847197225410292377
+    second: BG_PowerWall_7
+  - first:
+      213: -4166348431848251726
+    second: BG_PowerWall_8
+  - first:
+      213: -442689191402135047
+    second: BG_PowerWall_9
+  - first:
+      213: -1489606669524299767
+    second: BG_PowerWall_10
+  - first:
+      213: 8112217331570225871
+    second: BG_PowerWall_11
+  - first:
+      213: 152607584872410532
+    second: BG_PowerWall_12
+  - first:
+      213: -1873485627621764621
+    second: BG_PowerWall_13
+  - first:
+      213: 5003890042039047903
+    second: BG_PowerWall_14
+  - first:
+      213: 4651888784119039729
+    second: BG_PowerWall_15
+  - first:
+      213: -4082704770541382124
+    second: BG_PowerWall_16
+  - first:
+      213: 4151619494270604924
+    second: BG_PowerWall_17
+  - first:
+      213: 1665555428373475913
+    second: BG_PowerWall_18
+  - first:
+      213: -18739111048710469
+    second: BG_PowerWall_19
+  - first:
+      213: -3379800227499700878
+    second: BG_PowerWall_20
+  - first:
+      213: -3473546458112409607
+    second: BG_PowerWall_21
+  - first:
+      213: -3488375410559602126
+    second: BG_PowerWall_22
+  - first:
+      213: -5895270916581462934
+    second: BG_PowerWall_23
+  - first:
+      213: -4793722895896494505
+    second: BG_PowerWall_24
+  - first:
+      213: 8227227135021607790
+    second: BG_PowerWall_25
+  - first:
+      213: 1772788549799758077
+    second: BG_PowerWall_26
+  - first:
+      213: 4683474932693026117
+    second: BG_PowerWall_27
+  - first:
+      213: 5524046388629984566
+    second: BG_PowerWall_28
+  - first:
+      213: 4397560479899059393
+    second: BG_PowerWall_29
+  - first:
+      213: -5951555068280119225
+    second: BG_PowerWall_30
+  - first:
+      213: -6419382055316092817
+    second: BG_PowerWall_31
+  - first:
+      213: 7167507203565460830
+    second: BG_PowerWall_32
+  - first:
+      213: 2201878787892224348
+    second: BG_PowerWall_33
+  - first:
+      213: -6432441374244292971
+    second: BG_PowerWall_34
+  - first:
+      213: 3551634342493227145
+    second: BG_PowerWall_35
+  - first:
+      213: -3809399071238637210
+    second: BG_PowerWall_36
+  - first:
+      213: -1221342072685952336
+    second: BG_PowerWall_37
+  - first:
+      213: 2322146100509355499
+    second: BG_PowerWall_38
+  - first:
+      213: -1956334536369537927
+    second: BG_PowerWall_39
+  - first:
+      213: 6303709486082534242
+    second: BG_PowerWall_40
+  - first:
+      213: 1135653108111975519
+    second: BG_PowerWall_41
+  - first:
+      213: -8822115244721693070
+    second: BG_PowerWall_42
+  - first:
+      213: -8485344890979594197
+    second: BG_PowerWall_43
+  - first:
+      213: 2882626073340016461
+    second: BG_PowerWall_44
+  - first:
+      213: 6188238581409716282
+    second: BG_PowerWall_45
+  - first:
+      213: -7442251718408148697
+    second: BG_PowerWall_46
+  - first:
+      213: -7160986245155912418
+    second: BG_PowerWall_47
+  - first:
+      213: 5174303053733890339
+    second: BG_PowerWall_48
+  - first:
+      213: 2779715322882366992
+    second: BG_PowerWall_49
+  - first:
+      213: 6404992167431141938
+    second: BG_PowerWall_50
+  - first:
+      213: 5681281982524128854
+    second: BG_PowerWall_51
+  - first:
+      213: 8929696699129631831
+    second: BG_PowerWall_52
+  - first:
+      213: -7868799193843818247
+    second: BG_PowerWall_53
+  - first:
+      213: 624231546536286796
+    second: BG_PowerWall_54
+  - first:
+      213: -1012008982796619305
+    second: BG_PowerWall_55
+  - first:
+      213: 9040349742357547212
+    second: BG_PowerWall_56
+  - first:
+      213: 8540177093305374692
+    second: BG_PowerWall_57
+  - first:
+      213: -537067994996232068
+    second: BG_PowerWall_58
+  - first:
+      213: 9112568566015268623
+    second: BG_PowerWall_59
+  - first:
+      213: -1087178242094228089
+    second: BG_PowerWall_60
+  - first:
+      213: -7362000657870149208
+    second: BG_PowerWall_61
+  - first:
+      213: 6951626765261400773
+    second: BG_PowerWall_62
+  - first:
+      213: 9101485816219094960
+    second: BG_PowerWall_63
+  - first:
+      213: 2441856264875606480
+    second: BG_PowerWall_64
+  - first:
+      213: 7989975580335350260
+    second: BG_PowerWall_65
+  - first:
+      213: 2584523863697180848
+    second: BG_PowerWall_66
+  - first:
+      213: -6043286124692190389
+    second: BG_PowerWall_67
+  - first:
+      213: -2607318118613587295
+    second: BG_PowerWall_68
+  - first:
+      213: -1582641267951439542
+    second: BG_PowerWall_69
+  - first:
+      213: 5025548533594402496
+    second: BG_PowerWall_70
+  - first:
+      213: 3645289683048303040
+    second: BG_PowerWall_71
+  - first:
+      213: -5387692235429970391
+    second: BG_PowerWall_72
+  - first:
+      213: -4018854245966384628
+    second: BG_PowerWall_73
+  - first:
+      213: -171016873483637889
+    second: BG_PowerWall_74
+  - first:
+      213: -7175306421808871004
+    second: BG_PowerWall_75
+  - first:
+      213: 1118991345036333935
+    second: BG_PowerWall_76
+  - first:
+      213: -1625562942294575074
+    second: BG_PowerWall_77
+  - first:
+      213: 5319011757882298187
+    second: BG_PowerWall_78
+  - first:
+      213: -5289048428188912100
+    second: BG_PowerWall_79
+  - first:
+      213: 8538551022004514515
+    second: BG_PowerWall_80
+  - first:
+      213: -7910390604327225269
+    second: BG_PowerWall_81
+  - first:
+      213: -3519611032342926586
+    second: BG_PowerWall_82
+  - first:
+      213: -836959622342448911
+    second: BG_PowerWall_83
+  - first:
+      213: 6658954756193981080
+    second: BG_PowerWall_84
+  - first:
+      213: -7013185588089382170
+    second: BG_PowerWall_85
+  - first:
+      213: -5798465223971780919
+    second: BG_PowerWall_86
+  - first:
+      213: -7510232372969322360
+    second: BG_PowerWall_87
+  - first:
+      213: -2563230322979142581
+    second: BG_PowerWall_88
+  - first:
+      213: 6894932828884176106
+    second: BG_PowerWall_89
+  - first:
+      213: 1390095892121283172
+    second: BG_PowerWall_90
+  - first:
+      213: -1720510599025788893
+    second: BG_PowerWall_91
+  - first:
+      213: 7762204566900684228
+    second: BG_PowerWall_92
+  - first:
+      213: 5186792068859354640
+    second: BG_PowerWall_93
+  - first:
+      213: -1597872108996341103
+    second: BG_PowerWall_94
+  - first:
+      213: -7773496514903230422
+    second: BG_PowerWall_95
+  - first:
+      213: 5504616228042777988
+    second: BG_PowerWall_96
+  - first:
+      213: -5274954390721660993
+    second: BG_PowerWall_97
+  - first:
+      213: 8088566089698896729
+    second: BG_PowerWall_98
+  - first:
+      213: 3951003520921981791
+    second: BG_PowerWall_99
+  - first:
+      213: 2936311134759641083
+    second: BG_PowerWall_100
+  - first:
+      213: -7712109052442311296
+    second: BG_PowerWall_101
+  - first:
+      213: 394686941166843152
+    second: BG_PowerWall_102
+  - first:
+      213: -8015695301879397939
+    second: BG_PowerWall_103
+  - first:
+      213: 7139452559501122791
+    second: BG_PowerWall_104
+  - first:
+      213: -8531586060273164662
+    second: BG_PowerWall_105
+  - first:
+      213: -2398082946844983687
+    second: BG_PowerWall_106
+  - first:
+      213: 7846891896559838774
+    second: BG_PowerWall_107
+  - first:
+      213: -150748984864650056
+    second: BG_PowerWall_108
+  - first:
+      213: -4439879389992360200
+    second: BG_PowerWall_109
+  - first:
+      213: -24898953700815689
+    second: BG_PowerWall_110
+  - first:
+      213: 706400129002860426
+    second: BG_PowerWall_111
+  - first:
+      213: -1394906493491749129
+    second: BG_PowerWall_112
+  - first:
+      213: -7375629214106921837
+    second: BG_PowerWall_113
+  - first:
+      213: -5125590493311493479
+    second: BG_PowerWall_114
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BG_PowerWall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 807
+        height: 1774
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf2b73eecb018050800000000000000
+      internalID: 5800930778237579211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1620
+        width: 78
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3535945c9e40811f0800000000000000
+      internalID: -1074103109044055213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1700
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf268340f157e4740800000000000000
+      internalID: 5138173000951554812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_3
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1678
+        width: 62
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2799c6e9d3f00d0800000000000000
+      internalID: -3454474638533758210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_4
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1674
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b509c7ff8c60acb0800000000000000
+      internalID: -4854761032712125003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_5
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1670
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad65a0946c38e8ab0800000000000000
+      internalID: -5003917248309864742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_6
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1650
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd2c9d1edbb31780800000000000000
+      internalID: -8713414291377869378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_7
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 1660
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99aee0a9ac6438720800000000000000
+      internalID: 2847197225410292377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_8
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1628
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bedd2dec282e26c0800000000000000
+      internalID: -4166348431848251726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1563
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f12290a6804bd9f0800000000000000
+      internalID: -442689191402135047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_10
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1551
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90093f750aad35be0800000000000000
+      internalID: -1489606669524299767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_11
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 1577
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc2b205cea2649070800000000000000
+      internalID: 8112217331570225871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_12
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1584
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ada9563acb2e1200800000000000000
+      internalID: 152607584872410532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_13
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1567
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f11ec17fba0006e0800000000000000
+      internalID: -1873485627621764621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_14
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1562
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd61ad24b73617540800000000000000
+      internalID: 5003890042039047903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_15
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1521
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f60a00d334de8040800000000000000
+      internalID: 4651888784119039729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_16
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 1507
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 416961d64a15757c0800000000000000
+      internalID: -4082704770541382124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_17
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 1489
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c76169e0fe38d9930800000000000000
+      internalID: 4151619494270604924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1422
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 942bced66dd3d1710800000000000000
+      internalID: 1665555428373475913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1406
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb6f886b0ec6dbff0800000000000000
+      internalID: -18739111048710469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_20
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1408
+        width: 65
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d881c99998811d0800000000000000
+      internalID: -3379800227499700878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_21
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1413
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ffb46566eb7bcfc0800000000000000
+      internalID: -3473546458112409607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_22
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1370
+        width: 52
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 232336adb0dc69fc0800000000000000
+      internalID: -3488375410559602126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1379
+        width: 39
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c687af55acf2ea0800000000000000
+      internalID: -5895270916581462934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_24
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1386
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ebe66ac66497db0800000000000000
+      internalID: -4793722895896494505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_25
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 1386
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6bea655d7bfc2270800000000000000
+      internalID: 8227227135021607790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_26
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 1360
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df8c1bc1bc53a9810800000000000000
+      internalID: 1772788549799758077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_27
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1327
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5454d9d13ab0ff040800000000000000
+      internalID: 4683474932693026117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_28
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1315
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 635d11d3cea59ac40800000000000000
+      internalID: 5524046388629984566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_29
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1257
+        width: 58
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c40eaa05f5470d30800000000000000
+      internalID: 4397560479899059393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_30
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1325
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 740ecf5b234d76da0800000000000000
+      internalID: -5951555068280119225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_31
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1167
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f680e533806c9e6a0800000000000000
+      internalID: -6419382055316092817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_32
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1069
+        width: 88
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d929993d9187360800000000000000
+      internalID: 7167507203565460830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_33
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 1176
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51a8ce6715ae8e10800000000000000
+      internalID: 2201878787892224348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_34
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1174
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 596b4a196a06bb6a0800000000000000
+      internalID: -6432441374244292971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_35
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1166
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988036cfd90f94130800000000000000
+      internalID: 3551634342493227145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_36
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1120
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6693e1f4abb422bc0800000000000000
+      internalID: -3809399071238637210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_37
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1113
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b280581bdbec0fe0800000000000000
+      internalID: -1221342072685952336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_38
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1005
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed2b6d339be93020800000000000000
+      internalID: 2322146100509355499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_39
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 999
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c7dd1ba14b9d4e0800000000000000
+      internalID: -1956334536369537927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_40
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1003
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ba53d01664b7750800000000000000
+      internalID: 6303709486082534242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_41
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 997
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5425112c76a2cf00800000000000000
+      internalID: 1135653108111975519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_42
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1005
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e1ece2dec819580800000000000000
+      internalID: -8822115244721693070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_43
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 973
+        width: 44
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b205c7867cffd3a80800000000000000
+      internalID: -8485344890979594197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_44
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 948
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d47f5b11425210820800000000000000
+      internalID: 2882626073340016461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_45
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 944
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a381b4ef33a01e550800000000000000
+      internalID: 6188238581409716282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_46
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 934
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729ed3b2e7fc7b890800000000000000
+      internalID: -7442251718408148697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_47
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 922
+        width: 68
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15060853f01f9c90800000000000000
+      internalID: -7160986245155912418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_48
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 910
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32907067631dec740800000000000000
+      internalID: 5174303053733890339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_49
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 886
+        width: 55
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e1d1dcb58839620800000000000000
+      internalID: 2779715322882366992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_50
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 870
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a74e0f07a13e850800000000000000
+      internalID: 6404992167431141938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_51
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 852
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e7d25ccd7f7de40800000000000000
+      internalID: 5681281982524128854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_52
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 844
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754999716d7aceb70800000000000000
+      internalID: 8929696699129631831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_53
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 840
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f02f0ae2d86cc290800000000000000
+      internalID: -7868799193843818247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_54
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 829
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a53e4c847b9a800800000000000000
+      internalID: 624231546536286796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_55
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 833
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d137e6213f94f1f0800000000000000
+      internalID: -1012008982796619305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_56
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 828
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc8048e5136c57d70800000000000000
+      internalID: 9040349742357547212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_57
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 776
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e7156d81ddc48670800000000000000
+      internalID: 8540177093305374692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_58
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 809
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70b40a0183fb88f0800000000000000
+      internalID: -537067994996232068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_59
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 779
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f071bb094d8567e70800000000000000
+      internalID: 9112568566015268623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_60
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 789
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d9070262199e0f0800000000000000
+      internalID: -1087178242094228089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_61
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 773
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9257f386be4d990800000000000000
+      internalID: -7362000657870149208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_62
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 741
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cae08236b3297060800000000000000
+      internalID: 6951626765261400773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_63
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 749
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfcefbc029fe4e70800000000000000
+      internalID: 9101485816219094960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_64
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 727
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d1097cd55733e120800000000000000
+      internalID: 2441856264875606480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_65
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 709
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f12fe5257812ee60800000000000000
+      internalID: 7989975580335350260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_66
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 727
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8c039b2c21ed320800000000000000
+      internalID: 2584523863697180848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_67
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 682
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4bccadc94fe12ca0800000000000000
+      internalID: -6043286124692190389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_68
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 652
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aae89b3cf1f0dbd0800000000000000
+      internalID: -2607318118613587295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_69
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 696
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4171e8e624590ae0800000000000000
+      internalID: -1582641267951439542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_70
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 610
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce216ac3c55eb540800000000000000
+      internalID: 5025548533594402496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_71
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 586
+        width: 43
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c98d7537aba69230800000000000000
+      internalID: 3645289683048303040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_72
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 614
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92ef01405721b35b0800000000000000
+      internalID: -5387692235429970391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_73
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 602
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c027a192b592a38c0800000000000000
+      internalID: -4018854245966384628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_74
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 604
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7be8654f0d60adf0800000000000000
+      internalID: -171016873483637889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_75
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 604
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9c08563d03c6c90800000000000000
+      internalID: -7175306421808871004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_76
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 577
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6390ab13b4778f00800000000000000
+      internalID: 1118991345036333935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_77
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 572
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e183e78dd17d079e0800000000000000
+      internalID: -1625562942294575074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_78
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 569
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f43b0330de0d940800000000000000
+      internalID: 5319011757882298187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_79
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 565
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1636f52a768996b0800000000000000
+      internalID: -5289048428188912100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_80
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 537
+        width: 27
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dea0235ae60f7670800000000000000
+      internalID: 8538551022004514515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_81
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 555
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b48fc7a08a5a83290800000000000000
+      internalID: -7910390604327225269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_82
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 555
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b67ade964d72fc0800000000000000
+      internalID: -3519611032342926586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_83
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 553
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8eeea68a58264f0800000000000000
+      internalID: -836959622342448911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_84
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 491
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8921752f11c596c50800000000000000
+      internalID: 6658954756193981080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_85
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 507
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea1b067dd82cae90800000000000000
+      internalID: -7013185588089382170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_86
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 376
+        width: 70
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6c4b2b996b78fa0800000000000000
+      internalID: -5798465223971780919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_87
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 430
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888468c927b46c790800000000000000
+      internalID: -7510232372969322360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_88
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 457
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4481511a939d6cd0800000000000000
+      internalID: -2563230322979142581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_89
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 455
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec02df70e8bfaf50800000000000000
+      internalID: 6894932828884176106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_90
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 432
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46a6e9d49dc9a4310800000000000000
+      internalID: 1390095892121283172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_91
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 448
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 328f5c0d9b48f18e0800000000000000
+      internalID: -1720510599025788893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_92
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 453
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c5b70c7de3e8bb60800000000000000
+      internalID: 7762204566900684228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_93
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 410
+        width: 55
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01edc24e7ef2bf740800000000000000
+      internalID: 5186792068859354640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_94
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 445
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 192d4c268c733d9e0800000000000000
+      internalID: -1597872108996341103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_95
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 352
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a28b47efa1efe1490800000000000000
+      internalID: -7773496514903230422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_96
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 265
+        width: 57
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48527517b43546c40800000000000000
+      internalID: 5504616228042777988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_97
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 344
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb7f5a6fde89bc6b0800000000000000
+      internalID: -5274954390721660993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_98
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 264
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95be5c6e00c504070800000000000000
+      internalID: 8088566089698896729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_99
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 267
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f535fdad4c8c4d630800000000000000
+      internalID: 3951003520921981791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_100
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 96
+        width: 68
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff5f597b6fdfb820800000000000000
+      internalID: 2936311134759641083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_101
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 215
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0850a146da519f490800000000000000
+      internalID: -7712109052442311296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_102
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 225
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0153cbd8ea53a7500800000000000000
+      internalID: 394686941166843152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_103
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 168
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc106b7879782c090800000000000000
+      internalID: -8015695301879397939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_104
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 110
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec51d3c64e641360800000000000000
+      internalID: 7139452559501122791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_105
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 102
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e5eb23ea7b99980800000000000000
+      internalID: -8531586060273164662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_106
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 102
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97ef163f34c48bed0800000000000000
+      internalID: -2398082946844983687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_107
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 96
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6362755fa92c5ec60800000000000000
+      internalID: 7846891896559838774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_108
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 69
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bc44e2d89e68edf0800000000000000
+      internalID: -150748984864650056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_109
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 96
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f66de1e7316262c0800000000000000
+      internalID: -4439879389992360200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_110
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 61
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bc4265988a87aff0800000000000000
+      internalID: -24898953700815689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_111
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 60
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f6186bc23adc900800000000000000
+      internalID: 706400129002860426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_112
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 21
+        width: 21
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fed9884feb44ace0800000000000000
+      internalID: -1394906493491749129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_113
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 69
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 394d92abe4084a990800000000000000
+      internalID: -7375629214106921837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_PowerWall_114
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 0
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a9c065a9e3ed8b0800000000000000
+      internalID: -5125590493311493479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BG_PowerWall_0: 5800930778237579211
+      BG_PowerWall_1: -1074103109044055213
+      BG_PowerWall_10: -1489606669524299767
+      BG_PowerWall_100: 2936311134759641083
+      BG_PowerWall_101: -7712109052442311296
+      BG_PowerWall_102: 394686941166843152
+      BG_PowerWall_103: -8015695301879397939
+      BG_PowerWall_104: 7139452559501122791
+      BG_PowerWall_105: -8531586060273164662
+      BG_PowerWall_106: -2398082946844983687
+      BG_PowerWall_107: 7846891896559838774
+      BG_PowerWall_108: -150748984864650056
+      BG_PowerWall_109: -4439879389992360200
+      BG_PowerWall_11: 8112217331570225871
+      BG_PowerWall_110: -24898953700815689
+      BG_PowerWall_111: 706400129002860426
+      BG_PowerWall_112: -1394906493491749129
+      BG_PowerWall_113: -7375629214106921837
+      BG_PowerWall_114: -5125590493311493479
+      BG_PowerWall_12: 152607584872410532
+      BG_PowerWall_13: -1873485627621764621
+      BG_PowerWall_14: 5003890042039047903
+      BG_PowerWall_15: 4651888784119039729
+      BG_PowerWall_16: -4082704770541382124
+      BG_PowerWall_17: 4151619494270604924
+      BG_PowerWall_18: 1665555428373475913
+      BG_PowerWall_19: -18739111048710469
+      BG_PowerWall_2: 5138173000951554812
+      BG_PowerWall_20: -3379800227499700878
+      BG_PowerWall_21: -3473546458112409607
+      BG_PowerWall_22: -3488375410559602126
+      BG_PowerWall_23: -5895270916581462934
+      BG_PowerWall_24: -4793722895896494505
+      BG_PowerWall_25: 8227227135021607790
+      BG_PowerWall_26: 1772788549799758077
+      BG_PowerWall_27: 4683474932693026117
+      BG_PowerWall_28: 5524046388629984566
+      BG_PowerWall_29: 4397560479899059393
+      BG_PowerWall_3: -3454474638533758210
+      BG_PowerWall_30: -5951555068280119225
+      BG_PowerWall_31: -6419382055316092817
+      BG_PowerWall_32: 7167507203565460830
+      BG_PowerWall_33: 2201878787892224348
+      BG_PowerWall_34: -6432441374244292971
+      BG_PowerWall_35: 3551634342493227145
+      BG_PowerWall_36: -3809399071238637210
+      BG_PowerWall_37: -1221342072685952336
+      BG_PowerWall_38: 2322146100509355499
+      BG_PowerWall_39: -1956334536369537927
+      BG_PowerWall_4: -4854761032712125003
+      BG_PowerWall_40: 6303709486082534242
+      BG_PowerWall_41: 1135653108111975519
+      BG_PowerWall_42: -8822115244721693070
+      BG_PowerWall_43: -8485344890979594197
+      BG_PowerWall_44: 2882626073340016461
+      BG_PowerWall_45: 6188238581409716282
+      BG_PowerWall_46: -7442251718408148697
+      BG_PowerWall_47: -7160986245155912418
+      BG_PowerWall_48: 5174303053733890339
+      BG_PowerWall_49: 2779715322882366992
+      BG_PowerWall_5: -5003917248309864742
+      BG_PowerWall_50: 6404992167431141938
+      BG_PowerWall_51: 5681281982524128854
+      BG_PowerWall_52: 8929696699129631831
+      BG_PowerWall_53: -7868799193843818247
+      BG_PowerWall_54: 624231546536286796
+      BG_PowerWall_55: -1012008982796619305
+      BG_PowerWall_56: 9040349742357547212
+      BG_PowerWall_57: 8540177093305374692
+      BG_PowerWall_58: -537067994996232068
+      BG_PowerWall_59: 9112568566015268623
+      BG_PowerWall_6: -8713414291377869378
+      BG_PowerWall_60: -1087178242094228089
+      BG_PowerWall_61: -7362000657870149208
+      BG_PowerWall_62: 6951626765261400773
+      BG_PowerWall_63: 9101485816219094960
+      BG_PowerWall_64: 2441856264875606480
+      BG_PowerWall_65: 7989975580335350260
+      BG_PowerWall_66: 2584523863697180848
+      BG_PowerWall_67: -6043286124692190389
+      BG_PowerWall_68: -2607318118613587295
+      BG_PowerWall_69: -1582641267951439542
+      BG_PowerWall_7: 2847197225410292377
+      BG_PowerWall_70: 5025548533594402496
+      BG_PowerWall_71: 3645289683048303040
+      BG_PowerWall_72: -5387692235429970391
+      BG_PowerWall_73: -4018854245966384628
+      BG_PowerWall_74: -171016873483637889
+      BG_PowerWall_75: -7175306421808871004
+      BG_PowerWall_76: 1118991345036333935
+      BG_PowerWall_77: -1625562942294575074
+      BG_PowerWall_78: 5319011757882298187
+      BG_PowerWall_79: -5289048428188912100
+      BG_PowerWall_8: -4166348431848251726
+      BG_PowerWall_80: 8538551022004514515
+      BG_PowerWall_81: -7910390604327225269
+      BG_PowerWall_82: -3519611032342926586
+      BG_PowerWall_83: -836959622342448911
+      BG_PowerWall_84: 6658954756193981080
+      BG_PowerWall_85: -7013185588089382170
+      BG_PowerWall_86: -5798465223971780919
+      BG_PowerWall_87: -7510232372969322360
+      BG_PowerWall_88: -2563230322979142581
+      BG_PowerWall_89: 6894932828884176106
+      BG_PowerWall_9: -442689191402135047
+      BG_PowerWall_90: 1390095892121283172
+      BG_PowerWall_91: -1720510599025788893
+      BG_PowerWall_92: 7762204566900684228
+      BG_PowerWall_93: 5186792068859354640
+      BG_PowerWall_94: -1597872108996341103
+      BG_PowerWall_95: -7773496514903230422
+      BG_PowerWall_96: 5504616228042777988
+      BG_PowerWall_97: -5274954390721660993
+      BG_PowerWall_98: 8088566089698896729
+      BG_PowerWall_99: 3951003520921981791
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

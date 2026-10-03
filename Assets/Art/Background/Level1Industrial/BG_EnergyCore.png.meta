@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: be179eed5130e6c4b8fc8976703ccb9c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3208768592193191948
+    second: BG_EnergyCore_0
+  - first:
+      213: -2065253694251855193
+    second: BG_EnergyCore_1
+  - first:
+      213: -2899975280710441921
+    second: BG_EnergyCore_2
+  - first:
+      213: -3067661071817298532
+    second: BG_EnergyCore_3
+  - first:
+      213: -4494684628919027180
+    second: BG_EnergyCore_4
+  - first:
+      213: -8117125984744024041
+    second: BG_EnergyCore_5
+  - first:
+      213: -7356774256125654729
+    second: BG_EnergyCore_6
+  - first:
+      213: 2863512253844365467
+    second: BG_EnergyCore_7
+  - first:
+      213: 6898594386096872025
+    second: BG_EnergyCore_8
+  - first:
+      213: -2803438303041491212
+    second: BG_EnergyCore_9
+  - first:
+      213: 7576089671408443271
+    second: BG_EnergyCore_10
+  - first:
+      213: 8597593248174711165
+    second: BG_EnergyCore_11
+  - first:
+      213: -5600427621358638316
+    second: BG_EnergyCore_12
+  - first:
+      213: 1035869641390260920
+    second: BG_EnergyCore_13
+  - first:
+      213: -7046804225963512346
+    second: BG_EnergyCore_14
+  - first:
+      213: 2049884166574633331
+    second: BG_EnergyCore_15
+  - first:
+      213: -3041433082238289004
+    second: BG_EnergyCore_16
+  - first:
+      213: 8762998747848041741
+    second: BG_EnergyCore_17
+  - first:
+      213: 3690985650735780073
+    second: BG_EnergyCore_18
+  - first:
+      213: 5866618292330384198
+    second: BG_EnergyCore_19
+  - first:
+      213: -2801290163780300273
+    second: BG_EnergyCore_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BG_EnergyCore_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1254
+        height: 1240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c000b18a806d78c20800000000000000
+      internalID: 3208768592193191948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 1220
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a21e0f05beb653e0800000000000000
+      internalID: -2065253694251855193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_2
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1224
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3427dfc8d731c7d0800000000000000
+      internalID: -2899975280710441921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_3
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 1229
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9d2903228a7d65d0800000000000000
+      internalID: -3067661071817298532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_4
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 1235
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41a7fd3d42caf91c0800000000000000
+      internalID: -4494684628919027180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_5
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1226
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7185d3a5cec2a5f80800000000000000
+      internalID: -8117125984744024041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_6
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1185
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73944eabacc77e990800000000000000
+      internalID: -7356774256125654729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_7
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1183
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b902f5c293d3db720800000000000000
+      internalID: 2863512253844365467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 986
+        width: 31
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95adec83b0bbcbf50800000000000000
+      internalID: 6898594386096872025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_9
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1036
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4feec7577bf2819d0800000000000000
+      internalID: -2803438303041491212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_10
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 1066
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f5ec29a6da32960800000000000000
+      internalID: 7576089671408443271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 647
+        width: 5
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7120c8d189c05770800000000000000
+      internalID: 8597593248174711165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 596
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41be1ae20c84742b0800000000000000
+      internalID: -5600427621358638316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 602
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b28da853f5206e00800000000000000
+      internalID: 1035869641390260920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190
+        width: 17
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed29bd54e8b43e90800000000000000
+      internalID: -7046804225963512346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_15
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 216
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 371f06be9c6a27c10800000000000000
+      internalID: 2049884166574633331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_16
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 216
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49bb015d9b8aac5d0800000000000000
+      internalID: -3041433082238289004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_17
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 162
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d05ecacceec6c9970800000000000000
+      internalID: 8762998747848041741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 39
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e09b27c4e3093330800000000000000
+      internalID: 3690985650735780073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_19
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 47
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b4923114a6a6150800000000000000
+      internalID: 5866618292330384198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_EnergyCore_20
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 20
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f02541b1071df19d0800000000000000
+      internalID: -2801290163780300273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BG_EnergyCore_0: 3208768592193191948
+      BG_EnergyCore_1: -2065253694251855193
+      BG_EnergyCore_10: 7576089671408443271
+      BG_EnergyCore_11: 8597593248174711165
+      BG_EnergyCore_12: -5600427621358638316
+      BG_EnergyCore_13: 1035869641390260920
+      BG_EnergyCore_14: -7046804225963512346
+      BG_EnergyCore_15: 2049884166574633331
+      BG_EnergyCore_16: -3041433082238289004
+      BG_EnergyCore_17: 8762998747848041741
+      BG_EnergyCore_18: 3690985650735780073
+      BG_EnergyCore_19: 5866618292330384198
+      BG_EnergyCore_2: -2899975280710441921
+      BG_EnergyCore_20: -2801290163780300273
+      BG_EnergyCore_3: -3067661071817298532
+      BG_EnergyCore_4: -4494684628919027180
+      BG_EnergyCore_5: -8117125984744024041
+      BG_EnergyCore_6: -7356774256125654729
+      BG_EnergyCore_7: 2863512253844365467
+      BG_EnergyCore_8: 6898594386096872025
+      BG_EnergyCore_9: -2803438303041491212
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

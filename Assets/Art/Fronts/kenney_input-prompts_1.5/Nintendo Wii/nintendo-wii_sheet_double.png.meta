@@ -1,0 +1,3185 @@
+fileFormatVersion: 2
+guid: 3acc67c6e63e4314db7a2488624d570d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 735754217369495333
+    second: nintendo-wii_sheet_double_0
+  - first:
+      213: 2382938514574172109
+    second: nintendo-wii_sheet_double_1
+  - first:
+      213: 8162925457821808326
+    second: nintendo-wii_sheet_double_2
+  - first:
+      213: 6578299565298681768
+    second: nintendo-wii_sheet_double_3
+  - first:
+      213: -5373602498655118509
+    second: nintendo-wii_sheet_double_4
+  - first:
+      213: 5046806873601707028
+    second: nintendo-wii_sheet_double_5
+  - first:
+      213: 5623548024260060758
+    second: nintendo-wii_sheet_double_6
+  - first:
+      213: 5105303275232987964
+    second: nintendo-wii_sheet_double_7
+  - first:
+      213: -2469013103161514955
+    second: nintendo-wii_sheet_double_8
+  - first:
+      213: 6770423005389793890
+    second: nintendo-wii_sheet_double_9
+  - first:
+      213: 3375066122879912061
+    second: nintendo-wii_sheet_double_10
+  - first:
+      213: -3722644997800008724
+    second: nintendo-wii_sheet_double_11
+  - first:
+      213: 9211311497552988624
+    second: nintendo-wii_sheet_double_12
+  - first:
+      213: 4670306420130156450
+    second: nintendo-wii_sheet_double_13
+  - first:
+      213: -7714026503456736468
+    second: nintendo-wii_sheet_double_14
+  - first:
+      213: 7437938315032164812
+    second: nintendo-wii_sheet_double_15
+  - first:
+      213: 3511225639259580942
+    second: nintendo-wii_sheet_double_16
+  - first:
+      213: -370371238879443135
+    second: nintendo-wii_sheet_double_17
+  - first:
+      213: 1471224615249068661
+    second: nintendo-wii_sheet_double_18
+  - first:
+      213: -5402231406664519625
+    second: nintendo-wii_sheet_double_19
+  - first:
+      213: 3897726421903546960
+    second: nintendo-wii_sheet_double_20
+  - first:
+      213: -112949337164695184
+    second: nintendo-wii_sheet_double_21
+  - first:
+      213: -2710626137451555879
+    second: nintendo-wii_sheet_double_22
+  - first:
+      213: -6993681351090204243
+    second: nintendo-wii_sheet_double_23
+  - first:
+      213: 1560191483204936961
+    second: nintendo-wii_sheet_double_24
+  - first:
+      213: 4882296268634528920
+    second: nintendo-wii_sheet_double_25
+  - first:
+      213: 7723293091677335307
+    second: nintendo-wii_sheet_double_26
+  - first:
+      213: 4014929611307460307
+    second: nintendo-wii_sheet_double_27
+  - first:
+      213: -4890456395859503581
+    second: nintendo-wii_sheet_double_28
+  - first:
+      213: 3925928627405984750
+    second: nintendo-wii_sheet_double_29
+  - first:
+      213: 1641332783528024759
+    second: nintendo-wii_sheet_double_30
+  - first:
+      213: -997474092527556450
+    second: nintendo-wii_sheet_double_31
+  - first:
+      213: -793901179488872490
+    second: nintendo-wii_sheet_double_32
+  - first:
+      213: 4071710565889693524
+    second: nintendo-wii_sheet_double_33
+  - first:
+      213: -2935749289563530024
+    second: nintendo-wii_sheet_double_34
+  - first:
+      213: 6046332303936563200
+    second: nintendo-wii_sheet_double_35
+  - first:
+      213: -3295345506999916441
+    second: nintendo-wii_sheet_double_36
+  - first:
+      213: 8193096150725045237
+    second: nintendo-wii_sheet_double_37
+  - first:
+      213: 219769673466767787
+    second: nintendo-wii_sheet_double_38
+  - first:
+      213: -2554676530682106297
+    second: nintendo-wii_sheet_double_39
+  - first:
+      213: 3378679292397963613
+    second: nintendo-wii_sheet_double_40
+  - first:
+      213: 6806920067374866534
+    second: nintendo-wii_sheet_double_41
+  - first:
+      213: 4232255082289494090
+    second: nintendo-wii_sheet_double_42
+  - first:
+      213: -8464826060964462929
+    second: nintendo-wii_sheet_double_43
+  - first:
+      213: -2054123742202579717
+    second: nintendo-wii_sheet_double_44
+  - first:
+      213: 6308538910410580270
+    second: nintendo-wii_sheet_double_45
+  - first:
+      213: 4975281723515981546
+    second: nintendo-wii_sheet_double_46
+  - first:
+      213: 6864683602390482232
+    second: nintendo-wii_sheet_double_47
+  - first:
+      213: 2798135790597389929
+    second: nintendo-wii_sheet_double_48
+  - first:
+      213: 5861882614207760714
+    second: nintendo-wii_sheet_double_49
+  - first:
+      213: 7560810107819561223
+    second: nintendo-wii_sheet_double_50
+  - first:
+      213: -3225284443153100771
+    second: nintendo-wii_sheet_double_51
+  - first:
+      213: -5141861056910774995
+    second: nintendo-wii_sheet_double_52
+  - first:
+      213: 8249383982710768125
+    second: nintendo-wii_sheet_double_53
+  - first:
+      213: -651854378678221822
+    second: nintendo-wii_sheet_double_54
+  - first:
+      213: 97037093005329463
+    second: nintendo-wii_sheet_double_55
+  - first:
+      213: -281177542616529823
+    second: nintendo-wii_sheet_double_56
+  - first:
+      213: -1005424617519169093
+    second: nintendo-wii_sheet_double_57
+  - first:
+      213: 7949352930354077013
+    second: nintendo-wii_sheet_double_58
+  - first:
+      213: -6283245978249517583
+    second: nintendo-wii_sheet_double_59
+  - first:
+      213: -6920662846856661354
+    second: nintendo-wii_sheet_double_60
+  - first:
+      213: 506615516818367213
+    second: nintendo-wii_sheet_double_61
+  - first:
+      213: 2486106823615360486
+    second: nintendo-wii_sheet_double_62
+  - first:
+      213: -5503447311125888271
+    second: nintendo-wii_sheet_double_63
+  - first:
+      213: -3432384287322718606
+    second: nintendo-wii_sheet_double_64
+  - first:
+      213: 5706040663257020559
+    second: nintendo-wii_sheet_double_65
+  - first:
+      213: -8904197438668855968
+    second: nintendo-wii_sheet_double_66
+  - first:
+      213: -1192203119341590082
+    second: nintendo-wii_sheet_double_67
+  - first:
+      213: -243232052894769630
+    second: nintendo-wii_sheet_double_68
+  - first:
+      213: 3808513960170052411
+    second: nintendo-wii_sheet_double_69
+  - first:
+      213: -2338223429253905752
+    second: nintendo-wii_sheet_double_70
+  - first:
+      213: 1569128939600282335
+    second: nintendo-wii_sheet_double_71
+  - first:
+      213: 3023784323032913998
+    second: nintendo-wii_sheet_double_72
+  - first:
+      213: -7126636030829644757
+    second: nintendo-wii_sheet_double_73
+  - first:
+      213: 5866566407949599050
+    second: nintendo-wii_sheet_double_74
+  - first:
+      213: 6645624614644674157
+    second: nintendo-wii_sheet_double_75
+  - first:
+      213: 5097880703875244100
+    second: nintendo-wii_sheet_double_76
+  - first:
+      213: -1336467914912192021
+    second: nintendo-wii_sheet_double_77
+  - first:
+      213: -3832090692637115234
+    second: nintendo-wii_sheet_double_78
+  - first:
+      213: -1167589789831192119
+    second: nintendo-wii_sheet_double_79
+  - first:
+      213: -6160692696456463557
+    second: nintendo-wii_sheet_double_80
+  - first:
+      213: -8374664513225806630
+    second: nintendo-wii_sheet_double_81
+  - first:
+      213: 257130831763008598
+    second: nintendo-wii_sheet_double_82
+  - first:
+      213: -1827056810586438967
+    second: nintendo-wii_sheet_double_83
+  - first:
+      213: 1215365406179331936
+    second: nintendo-wii_sheet_double_84
+  - first:
+      213: 1850798926408808778
+    second: nintendo-wii_sheet_double_85
+  - first:
+      213: -8705867155035512809
+    second: nintendo-wii_sheet_double_86
+  - first:
+      213: 6493832262780900694
+    second: nintendo-wii_sheet_double_87
+  - first:
+      213: 4793256600457920429
+    second: nintendo-wii_sheet_double_88
+  - first:
+      213: 7727141907771492139
+    second: nintendo-wii_sheet_double_89
+  - first:
+      213: -6471800417469445697
+    second: nintendo-wii_sheet_double_90
+  - first:
+      213: 1273851112205721878
+    second: nintendo-wii_sheet_double_91
+  - first:
+      213: 1026882532175335704
+    second: nintendo-wii_sheet_double_92
+  - first:
+      213: -7441017202736904219
+    second: nintendo-wii_sheet_double_93
+  - first:
+      213: 1811945983085426221
+    second: nintendo-wii_sheet_double_94
+  - first:
+      213: -3173635419752971895
+    second: nintendo-wii_sheet_double_95
+  - first:
+      213: 5372295427352940781
+    second: nintendo-wii_sheet_double_96
+  - first:
+      213: 4462854592353274927
+    second: nintendo-wii_sheet_double_97
+  - first:
+      213: -7472168702251810840
+    second: nintendo-wii_sheet_double_98
+  - first:
+      213: 4315557806104760037
+    second: nintendo-wii_sheet_double_99
+  - first:
+      213: -7184058353056862218
+    second: nintendo-wii_sheet_double_100
+  - first:
+      213: -6820766181525279930
+    second: nintendo-wii_sheet_double_101
+  - first:
+      213: -5881990878119477613
+    second: nintendo-wii_sheet_double_102
+  - first:
+      213: 4722654948131535843
+    second: nintendo-wii_sheet_double_103
+  - first:
+      213: -1671070551393065705
+    second: nintendo-wii_sheet_double_104
+  - first:
+      213: -1998215853285942359
+    second: nintendo-wii_sheet_double_105
+  - first:
+      213: -3123166630874727944
+    second: nintendo-wii_sheet_double_106
+  - first:
+      213: 2502494516049788364
+    second: nintendo-wii_sheet_double_107
+  - first:
+      213: 20307511256689328
+    second: nintendo-wii_sheet_double_108
+  - first:
+      213: -2043933837551775929
+    second: nintendo-wii_sheet_double_109
+  - first:
+      213: 1340905675869416764
+    second: nintendo-wii_sheet_double_110
+  - first:
+      213: -3593100328581988806
+    second: nintendo-wii_sheet_double_111
+  - first:
+      213: -7126082107790826044
+    second: nintendo-wii_sheet_double_112
+  - first:
+      213: -8499137099071292836
+    second: nintendo-wii_sheet_double_113
+  - first:
+      213: -2021968928693484298
+    second: nintendo-wii_sheet_double_114
+  - first:
+      213: -9174904483867241619
+    second: nintendo-wii_sheet_double_115
+  - first:
+      213: -5923611687126406421
+    second: nintendo-wii_sheet_double_116
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 527ed40009ce53a00800000000000000
+      internalID: 735754217369495333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1039
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcf5ac224f5e11120800000000000000
+      internalID: 2382938514574172109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_2
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1039
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c636717479884170800000000000000
+      internalID: 8162925457821808326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1127
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a70cbfe990da4b50800000000000000
+      internalID: 6578299565298681768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_4
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1039
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35b928f7ff02d65b0800000000000000
+      internalID: -5373602498655118509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_5
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1127
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c8707cc1cd90640800000000000000
+      internalID: 5046806873601707028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_6
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1023
+        width: 769
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 656ee5b122bda0e40800000000000000
+      internalID: 5623548024260060758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_7
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 911
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b86ee974ea9d640800000000000000
+      internalID: 5105303275232987964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 999
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 534e5400aad4cbdd0800000000000000
+      internalID: -2469013103161514955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 911
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a24672adf55fd50800000000000000
+      internalID: 6770423005389793890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_10
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 911
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7846b3c1c4a6de20800000000000000
+      internalID: 3375066122879912061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_11
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 911
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3ee311912865cc0800000000000000
+      internalID: -3722644997800008724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_12
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 986
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d90e1fd00725df70800000000000000
+      internalID: 9211311497552988624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_13
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 911
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2af851cd1f240d040800000000000000
+      internalID: 4670306420130156450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_14
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 911
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2b338904c542f490800000000000000
+      internalID: -7714026503456736468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_15
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 911
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc972c85d7dd83760800000000000000
+      internalID: 7437938315032164812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_16
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 999
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0aaf4a9d116ab030800000000000000
+      internalID: 3511225639259580942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_17
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 911
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147c19f025d2cdaf0800000000000000
+      internalID: -370371238879443135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_18
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 999
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5724bb02ef6da6410800000000000000
+      internalID: 1471224615249068661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_19
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 911
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7307d4b682b6705b0800000000000000
+      internalID: -5402231406664519625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_20
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05a17399781871630800000000000000
+      internalID: 3897726421903546960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_21
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 079bea02d29be6ef0800000000000000
+      internalID: -112949337164695184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_22
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 911
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d39f46b3ebe16ad0800000000000000
+      internalID: -2710626137451555879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_23
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 949
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da19ef38dd371fe90800000000000000
+      internalID: -6993681351090204243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_24
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105250243e9e6a510800000000000000
+      internalID: 1560191483204936961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_25
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c1d2cb69661c340800000000000000
+      internalID: 4882296268634528920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_26
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0fe7a9a526ae2b60800000000000000
+      internalID: 7723293091677335307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_27
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 955
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d6ad20a535e7b730800000000000000
+      internalID: 4014929611307460307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_28
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326d14791db912cb0800000000000000
+      internalID: -4890456395859503581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_29
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee312124943bb7630800000000000000
+      internalID: 3925928627405984750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_30
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba1460787f27c610800000000000000
+      internalID: 1641332783528024759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_31
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 858
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e986d3209924822f0800000000000000
+      internalID: -997474092527556450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_32
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d75dc1651f7bf4f0800000000000000
+      internalID: -793901179488872490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_33
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 783
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4575f04df2f918830800000000000000
+      internalID: 4071710565889693524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_34
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 858
+        width: 78
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dcd5fd439f1247d0800000000000000
+      internalID: -2935749289563530024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_35
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 783
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 008ab121233e8e350800000000000000
+      internalID: 6046332303936563200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_36
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 783
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768271b88b49442d0800000000000000
+      internalID: -3295345506999916441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_37
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 783
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb269a4a89b3b170800000000000000
+      internalID: 8193096150725045237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_38
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 871
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9e3678a57cc0300800000000000000
+      internalID: 219769673466767787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_39
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e6aa80b37fb8cd0800000000000000
+      internalID: -2554676530682106297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_40
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 783
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5949595aea73ee20800000000000000
+      internalID: 3378679292397963613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_41
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 821
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6606b569cb9077e50800000000000000
+      internalID: 6806920067374866534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_42
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48f4bae29dfbba30800000000000000
+      internalID: 4232255082289494090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_43
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae7ebecb85e68a80800000000000000
+      internalID: -8464826060964462929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_44
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 783
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4b155f6594e73e0800000000000000
+      internalID: -2054123742202579717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_45
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 821
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21a0c607be6c8750800000000000000
+      internalID: 6308538910410580270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_46
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeec9ab0e50cb0540800000000000000
+      internalID: 4975281723515981546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_47
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83dfeef9d51444f50800000000000000
+      internalID: 6864683602390482232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_48
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 827
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96e3dd72da9f4d620800000000000000
+      internalID: 2798135790597389929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_49
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4944e61e27995150800000000000000
+      internalID: 5861882614207760714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_50
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70194c2fbb46de860800000000000000
+      internalID: 7560810107819561223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_51
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10144223ec7d33d0800000000000000
+      internalID: -3225284443153100771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_52
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d2b6a8c9074a8b0800000000000000
+      internalID: -5141861056910774995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_53
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df1c5417603bb7270800000000000000
+      internalID: 8249383982710768125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_54
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2040a9175e524f6f0800000000000000
+      internalID: -651854378678221822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_55
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7348e92d8beb85100800000000000000
+      internalID: 97037093005329463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_56
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1644685c38e091cf0800000000000000
+      internalID: -281177542616529823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_57
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1465823a30c02f0800000000000000
+      internalID: -1005424617519169093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_58
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 655
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d17f76f56c15e60800000000000000
+      internalID: 7949352930354077013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_59
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 527
+        width: 92
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f52906a21d6dc8a0800000000000000
+      internalID: -6283245978249517583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_60
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 527
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6967ddadecdd4ff90800000000000000
+      internalID: -6920662846856661354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_61
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 526
+        width: 98
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de2e8add02cd70700800000000000000
+      internalID: 506615516818367213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_62
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eda44febfc608220800000000000000
+      internalID: 2486106823615360486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_63
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 527
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2434c34d3df93b0800000000000000
+      internalID: -5503447311125888271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_64
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 591
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e3f7d1da8bd50d0800000000000000
+      internalID: -3432384287322718606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_65
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 527
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f887e5750cdef2f40800000000000000
+      internalID: 5706040663257020559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_66
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 591
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06523322b9fed6480800000000000000
+      internalID: -8904197438668855968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_67
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9288b5491747fe0800000000000000
+      internalID: -1192203119341590082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_68
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ed7319cbddf9cf0800000000000000
+      internalID: -243232052894769630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_69
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b5d06b44f8ad430800000000000000
+      internalID: 3808513960170052411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_70
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 527
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a243d5fd26fc8fd0800000000000000
+      internalID: -2338223429253905752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_71
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 527
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd209abf47aa6c510800000000000000
+      internalID: 1569128939600282335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_72
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 527
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4895c332d3a6f920800000000000000
+      internalID: 3023784323032913998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_73
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 407
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2436ead94a191d90800000000000000
+      internalID: -7126636030829644757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_74
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 407
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a41431dc01b3a6150800000000000000
+      internalID: 5866566407949599050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_75
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 407
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6eec7280600a3c50800000000000000
+      internalID: 6645624614644674157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_76
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 407
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4406dcd8d7f4fb640800000000000000
+      internalID: 5097880703875244100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_77
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 399
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be9a3f52389e37de0800000000000000
+      internalID: -1336467914912192021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_78
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 398
+        width: 98
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9cb84e71dda1dac0800000000000000
+      internalID: -3832090692637115234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_79
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 399
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c12db5b543ebcfe0800000000000000
+      internalID: -1167589789831192119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_80
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 435
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b7e5122a2d08aa0800000000000000
+      internalID: -6160692696456463557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_81
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 399
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc2b100ff637cb80800000000000000
+      internalID: -8374664513225806630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_82
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 435
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ce8001123819300800000000000000
+      internalID: 257130831763008598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_83
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 435
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c2898cc28df4a6e0800000000000000
+      internalID: -1827056810586438967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_84
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 399
+        width: 50
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f0e9bc568ddd010800000000000000
+      internalID: 1215365406179331936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_85
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 435
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a49754f41db5fa910800000000000000
+      internalID: 1850798926408808778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_86
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 399
+        width: 67
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7102e5ab2fb8e2780800000000000000
+      internalID: -8705867155035512809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_87
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655d606890abe1a50800000000000000
+      internalID: 6493832262780900694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_88
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf379b7b71158240800000000000000
+      internalID: 4793256600457920429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_89
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 287
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2701cdff925c3b60800000000000000
+      internalID: 7727141907771492139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_90
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 287
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb942833fcb8f26a0800000000000000
+      internalID: -6471800417469445697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_91
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61122cf56d0ada110800000000000000
+      internalID: 1273851112205721878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_92
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8115d5ce838304e00800000000000000
+      internalID: 1026882532175335704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_93
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7cb4f37423cb890800000000000000
+      internalID: -7441017202736904219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_94
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 271
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26b0028543552910800000000000000
+      internalID: 1811945983085426221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_95
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 279
+        width: 94
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981c60f766bf4f3d0800000000000000
+      internalID: -3173635419752971895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_96
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 279
+        width: 94
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0d3df3a3a3e8a40800000000000000
+      internalID: 5372295427352940781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_97
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 151
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c00754b9e3fed30800000000000000
+      internalID: 4462854592353274927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_98
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 151
+        width: 98
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef3d7097268d4890800000000000000
+      internalID: -7472168702251810840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_99
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eec988b5f0f3eb30800000000000000
+      internalID: 4315557806104760037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_100
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff2e5c9df81d4c90800000000000000
+      internalID: -7184058353056862218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_101
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b203ebb45c751a0800000000000000
+      internalID: -6820766181525279930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_102
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 159
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39eb991e578fe5ea0800000000000000
+      internalID: -5881990878119477613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_103
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ebfe1457ad3a8140800000000000000
+      internalID: 4722654948131535843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_104
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 715a99def2a2fc8e0800000000000000
+      internalID: -1671070551393065705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_105
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab5658b449e444e0800000000000000
+      internalID: -1998215853285942359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_106
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f9bb581f7848a4d0800000000000000
+      internalID: -3123166630874727944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_107
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 39
+        width: 98
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccdb289e085aab220800000000000000
+      internalID: 2502494516049788364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_108
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 31
+        width: 98
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ba2abae295284000800000000000000
+      internalID: 20307511256689328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_109
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f4354010d72a3e0800000000000000
+      internalID: -2043933837551775929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_110
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3d60879b9adb9210800000000000000
+      internalID: 1340905675869416764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_111
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ef788c94eb22ec0800000000000000
+      internalID: -3593100328581988806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_112
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c56cdc14121b1d90800000000000000
+      internalID: -7126082107790826044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_113
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5af288b6dffc0a80800000000000000
+      internalID: -8499137099071292836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_114
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 15
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f40952e8f580f3e0800000000000000
+      internalID: -2021968928693484298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_115
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 15
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6354fe8bf03ca080800000000000000
+      internalID: -9174904483867241619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nintendo-wii_sheet_double_116
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 15
+        width: 82
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bea6a712e8a1bcda0800000000000000
+      internalID: -5923611687126406421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nintendo-wii_sheet_double_0: 735754217369495333
+      nintendo-wii_sheet_double_1: 2382938514574172109
+      nintendo-wii_sheet_double_10: 3375066122879912061
+      nintendo-wii_sheet_double_100: -7184058353056862218
+      nintendo-wii_sheet_double_101: -6820766181525279930
+      nintendo-wii_sheet_double_102: -5881990878119477613
+      nintendo-wii_sheet_double_103: 4722654948131535843
+      nintendo-wii_sheet_double_104: -1671070551393065705
+      nintendo-wii_sheet_double_105: -1998215853285942359
+      nintendo-wii_sheet_double_106: -3123166630874727944
+      nintendo-wii_sheet_double_107: 2502494516049788364
+      nintendo-wii_sheet_double_108: 20307511256689328
+      nintendo-wii_sheet_double_109: -2043933837551775929
+      nintendo-wii_sheet_double_11: -3722644997800008724
+      nintendo-wii_sheet_double_110: 1340905675869416764
+      nintendo-wii_sheet_double_111: -3593100328581988806
+      nintendo-wii_sheet_double_112: -7126082107790826044
+      nintendo-wii_sheet_double_113: -8499137099071292836
+      nintendo-wii_sheet_double_114: -2021968928693484298
+      nintendo-wii_sheet_double_115: -9174904483867241619
+      nintendo-wii_sheet_double_116: -5923611687126406421
+      nintendo-wii_sheet_double_12: 9211311497552988624
+      nintendo-wii_sheet_double_13: 4670306420130156450
+      nintendo-wii_sheet_double_14: -7714026503456736468
+      nintendo-wii_sheet_double_15: 7437938315032164812
+      nintendo-wii_sheet_double_16: 3511225639259580942
+      nintendo-wii_sheet_double_17: -370371238879443135
+      nintendo-wii_sheet_double_18: 1471224615249068661
+      nintendo-wii_sheet_double_19: -5402231406664519625
+      nintendo-wii_sheet_double_2: 8162925457821808326
+      nintendo-wii_sheet_double_20: 3897726421903546960
+      nintendo-wii_sheet_double_21: -112949337164695184
+      nintendo-wii_sheet_double_22: -2710626137451555879
+      nintendo-wii_sheet_double_23: -6993681351090204243
+      nintendo-wii_sheet_double_24: 1560191483204936961
+      nintendo-wii_sheet_double_25: 4882296268634528920
+      nintendo-wii_sheet_double_26: 7723293091677335307
+      nintendo-wii_sheet_double_27: 4014929611307460307
+      nintendo-wii_sheet_double_28: -4890456395859503581
+      nintendo-wii_sheet_double_29: 3925928627405984750
+      nintendo-wii_sheet_double_3: 6578299565298681768
+      nintendo-wii_sheet_double_30: 1641332783528024759
+      nintendo-wii_sheet_double_31: -997474092527556450
+      nintendo-wii_sheet_double_32: -793901179488872490
+      nintendo-wii_sheet_double_33: 4071710565889693524
+      nintendo-wii_sheet_double_34: -2935749289563530024
+      nintendo-wii_sheet_double_35: 6046332303936563200
+      nintendo-wii_sheet_double_36: -3295345506999916441
+      nintendo-wii_sheet_double_37: 8193096150725045237
+      nintendo-wii_sheet_double_38: 219769673466767787
+      nintendo-wii_sheet_double_39: -2554676530682106297
+      nintendo-wii_sheet_double_4: -5373602498655118509
+      nintendo-wii_sheet_double_40: 3378679292397963613
+      nintendo-wii_sheet_double_41: 6806920067374866534
+      nintendo-wii_sheet_double_42: 4232255082289494090
+      nintendo-wii_sheet_double_43: -8464826060964462929
+      nintendo-wii_sheet_double_44: -2054123742202579717
+      nintendo-wii_sheet_double_45: 6308538910410580270
+      nintendo-wii_sheet_double_46: 4975281723515981546
+      nintendo-wii_sheet_double_47: 6864683602390482232
+      nintendo-wii_sheet_double_48: 2798135790597389929
+      nintendo-wii_sheet_double_49: 5861882614207760714
+      nintendo-wii_sheet_double_5: 5046806873601707028
+      nintendo-wii_sheet_double_50: 7560810107819561223
+      nintendo-wii_sheet_double_51: -3225284443153100771
+      nintendo-wii_sheet_double_52: -5141861056910774995
+      nintendo-wii_sheet_double_53: 8249383982710768125
+      nintendo-wii_sheet_double_54: -651854378678221822
+      nintendo-wii_sheet_double_55: 97037093005329463
+      nintendo-wii_sheet_double_56: -281177542616529823
+      nintendo-wii_sheet_double_57: -1005424617519169093
+      nintendo-wii_sheet_double_58: 7949352930354077013
+      nintendo-wii_sheet_double_59: -6283245978249517583
+      nintendo-wii_sheet_double_6: 5623548024260060758
+      nintendo-wii_sheet_double_60: -6920662846856661354
+      nintendo-wii_sheet_double_61: 506615516818367213
+      nintendo-wii_sheet_double_62: 2486106823615360486
+      nintendo-wii_sheet_double_63: -5503447311125888271
+      nintendo-wii_sheet_double_64: -3432384287322718606
+      nintendo-wii_sheet_double_65: 5706040663257020559
+      nintendo-wii_sheet_double_66: -8904197438668855968
+      nintendo-wii_sheet_double_67: -1192203119341590082
+      nintendo-wii_sheet_double_68: -243232052894769630
+      nintendo-wii_sheet_double_69: 3808513960170052411
+      nintendo-wii_sheet_double_7: 5105303275232987964
+      nintendo-wii_sheet_double_70: -2338223429253905752
+      nintendo-wii_sheet_double_71: 1569128939600282335
+      nintendo-wii_sheet_double_72: 3023784323032913998
+      nintendo-wii_sheet_double_73: -7126636030829644757
+      nintendo-wii_sheet_double_74: 5866566407949599050
+      nintendo-wii_sheet_double_75: 6645624614644674157
+      nintendo-wii_sheet_double_76: 5097880703875244100
+      nintendo-wii_sheet_double_77: -1336467914912192021
+      nintendo-wii_sheet_double_78: -3832090692637115234
+      nintendo-wii_sheet_double_79: -1167589789831192119
+      nintendo-wii_sheet_double_8: -2469013103161514955
+      nintendo-wii_sheet_double_80: -6160692696456463557
+      nintendo-wii_sheet_double_81: -8374664513225806630
+      nintendo-wii_sheet_double_82: 257130831763008598
+      nintendo-wii_sheet_double_83: -1827056810586438967
+      nintendo-wii_sheet_double_84: 1215365406179331936
+      nintendo-wii_sheet_double_85: 1850798926408808778
+      nintendo-wii_sheet_double_86: -8705867155035512809
+      nintendo-wii_sheet_double_87: 6493832262780900694
+      nintendo-wii_sheet_double_88: 4793256600457920429
+      nintendo-wii_sheet_double_89: 7727141907771492139
+      nintendo-wii_sheet_double_9: 6770423005389793890
+      nintendo-wii_sheet_double_90: -6471800417469445697
+      nintendo-wii_sheet_double_91: 1273851112205721878
+      nintendo-wii_sheet_double_92: 1026882532175335704
+      nintendo-wii_sheet_double_93: -7441017202736904219
+      nintendo-wii_sheet_double_94: 1811945983085426221
+      nintendo-wii_sheet_double_95: -3173635419752971895
+      nintendo-wii_sheet_double_96: 5372295427352940781
+      nintendo-wii_sheet_double_97: 4462854592353274927
+      nintendo-wii_sheet_double_98: -7472168702251810840
+      nintendo-wii_sheet_double_99: 4315557806104760037
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
