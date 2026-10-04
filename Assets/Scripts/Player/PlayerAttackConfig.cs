@@ -64,5 +64,15 @@ namespace LuHanh.Player
         public float slashSidePush = 0f;
         public float slashUpPush = 0f;
         public float slashDownPush = 0f;
+        [Tooltip("Chem lai trong khoang nay (giay) thi vet chem lat nguoc chieu quet voi lan truoc (cheo xuoi / cheo nguoc). Qua lau thi ve lai chieu goc.")]
+        public float slashAlternateWindow = 0.6f;
+
+        [Header("Dong tac chem (than nhan vat)")]
+        [Tooltip("Co gian than luc vung kiem (x = ngang, y = doc), tu tro ve 1. Ngang / len / xuong.")]
+        public Vector2 sideSwingSquash = new Vector2(1.2f, 0.88f);
+        public Vector2 upSwingSquash = new Vector2(0.88f, 1.18f);
+        public Vector2 downSwingSquash = new Vector2(0.9f, 1.15f);
+        [Tooltip("Than nhich ve huong chem bao xa (unit, chi hinh, khong doi vi tri vat ly).")]
+        public float swingLunge = 0.12f;
     }
 }

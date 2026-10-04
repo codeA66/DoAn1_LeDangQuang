@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &201144972775447617
 Transform:
   m_ObjectHideFlags: 0
@@ -4853,7 +4853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3471326062934021798
 Transform:
   m_ObjectHideFlags: 0
@@ -9959,8 +9959,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10661,15 +10661,24 @@ ParticleSystem:
           time: 0
           value: 1
           inSlope: 0
-          outSlope: -0.39999998
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.6
+          value: 0.8
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
           time: 1
-          value: 0.6
-          inSlope: -0.39999998
+          value: 0
+          inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
@@ -11040,14 +11049,14 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     mode: 0
     timeMode: 0
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 0.9999
+      minMaxState: 0
+      scalar: 0
       minScalar: 0.9999
       maxCurve:
         serializedVersion: 2
@@ -11099,8 +11108,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.9999
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -11151,7 +11160,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 1
+    tilesX: 4
     tilesY: 1
     animationType: 0
     rowIndex: 0
@@ -14454,7 +14463,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f76337debe4a7d245a2a4d5ec72f8203, type: 2}
+  - {fileID: 2100000, guid: 5110d3667fd204741a7aabf69cf49ee4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14525,7 +14534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7021881844931935664
 Transform:
   m_ObjectHideFlags: 0
@@ -19394,16 +19403,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36485e2b2c054841b7a9731c490cde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Effects.HitEffect
-  flash: {fileID: 7391744761754674195}
+  impactPrefab: {fileID: 7662543447782959330, guid: c41d1c8c23591ad4cb469d51bfd2cb43, type: 3}
+  impactPoolSize: 3
+  impactArtAngle: 0
+  impactAngleJitter: 12
+  flash: {fileID: 0}
   shards: {fileID: 1094280914607516065}
   shardCount: {x: 14, y: 20}
   puffs: {fileID: 2273484814143888056}
-  puffCount: {x: 3, y: 5}
+  puffCount: {x: 5, y: 7}
   puffDelay: 0.08
   bloodFar: {fileID: 6294618747964175280}
   bloodFarCount: {x: 8, y: 13}
   bloodFarUpTilt: 50
-  shortStreaks: {fileID: 616316129321314712}
+  shortStreaks: {fileID: 0}
   shortCount: {x: 8, y: 12}
   shortLength: {x: 0.4, y: 1}
   shortWidth: {x: 0.2, y: 0.35}
@@ -19412,7 +19425,7 @@ MonoBehaviour:
   shortSpread: 135
   shortOffset: {x: 0.4, y: 1.8}
   shortColor: {r: 1, g: 0.95, b: 0.8, a: 1}
-  longStreaks: {fileID: 6605524048329855824}
+  longStreaks: {fileID: 0}
   longCount: {x: 2, y: 3}
   longLength: {x: 3, y: 6}
   longWidth: {x: 0.6, y: 0.9}
@@ -19707,8 +19720,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.32
-      minScalar: 0.2
+      scalar: 0.14
+      minScalar: 0.08
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24202,7 +24215,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f76337debe4a7d245a2a4d5ec72f8203, type: 2}
+  - {fileID: 2100000, guid: 14486093ef6d2664499f68366e1b6cf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24225,7 +24238,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 45
   m_MaskInteraction: 0
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -24543,8 +24556,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
-      minScalar: 0.45
+      scalar: 0.18
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -29038,7 +29051,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f76337debe4a7d245a2a4d5ec72f8203, type: 2}
+  - {fileID: 2100000, guid: 14486093ef6d2664499f68366e1b6cf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29061,7 +29074,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 45
   m_MaskInteraction: 0
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0

@@ -872,7 +872,49 @@ Hai kỹ thuật **cộng hưởng với nhau**: bộ đếm bóp hình dùng `T
 
 > Lưu ý: Ghoul bị đánh văng có thể **rơi xuống hố**. `HazardZone` chỉ tác dụng lên `Player`, nên quái rơi xuống sẽ rơi mãi (tới khi ngủ vì xa camera). Muốn quái chết khi rơi xuống hố thì cần làm thêm (chưa làm).
 
-**Chưa làm (để sau)**: rung camera khi trúng (đã đề xuất, chưa chọn làm); pogo hồi dash; animation tấn công cho thân nhân vật (gói Cloaked không có).
+#### Động tác thân, vệt chém pixel luân phiên
+
+Gói Cloaked không có animation chém, nên thân nhân vật được **giả động tác** bằng co giãn + nhích người, còn vệt chém đổi kiểu mỗi lần chém liên tiếp.
+
+1. **Động tác thân:** `PlayerAttack.StartSwing` → `PlaySwingPose()` gọi `PlayerMovementFx.Punch(scale, offset)`. Hàm này đặt scale và vị trí cục bộ cho object `Visual`, rồi `LateUpdate` của `PlayerMovementFx` tự kéo về (1,1) và vị trí gốc (cùng cơ chế co giãn khi nhảy/tiếp đất, tốc độ `recoverSpeed` = 12 → về lại trong khoảng 0.15s). Chỉ đổi hình, không đổi vị trí vật lý.
+2. **Vệt chém pixel (bộ "Pixel Art Animations - Slashes", màu 5 xanh lam/xanh ngọc):** cùng phong cách pixel với map và quái. `PlayerAttack → Slash Frames` = **Slash 3** (vòng cung gọn, 9 khung) cho nhát chính; `Alt Slash Frames` = **Slash 1** (nhát ngang rồi móc lưỡi liềm, 9 khung) cho nhát luân phiên. Chém lại trong `slashAlternateWindow` giây thì `alternateSlash` đảo → nhát 1 Slash 3, nhát 2 Slash 1, nhát 3 Slash 3... Ngừng lâu hơn thì về Slash 3. Để trống `Alt Slash Frames` thì quay về cách cũ: lật X cục bộ cùng một bộ khung.
+   - Import (bản 128×128 trong `Assets/Art/Fx/Pixel Art Animations - Slashes/128x128/Slash N/color5/Frames/`): **Filter Point** (giữ pixel sắc), không nén, Mesh Full Rect, pivot giữa, **PPU 34** (ô 128px ≈ 3.8 unit, vòng cung rộng khoảng 2 unit).
+   - Ảnh vẽ sẵn hướng sang phải nên `slashBaseAngle` = 0, `slashFlipX` = tắt; `slashAnchor` = (0, 0.5), `slashSidePush` = 1.2 để vệt nằm trùng vùng chém ngang (tâm x = 2).
+   - Lưu ý tên file khác nhau: Slash 1 là `Slash_color5_frameN.png`, Slash 2/3 là `Slash2_…`, `Slash3_…`.
+   - Bộ cũ (Cel-Shaded đỏ và bản đổi màu `Assets/Art/Generated/Fx/SlashCyan/`) không còn dùng, vẫn để trong project.
+
+#### Hiệu ứng trúng đòn kiểu pixel (`HitEffect` + `HitImpact`)
+
+Hiệu ứng cũ toàn particle mịn (nháy trắng tròn, vệt trắng dài, đốm cam mờ) lệch phong cách pixel nên trông nhòe, nhẹ tay. Bản mới:
+
+| Lớp | Trước | Bây giờ |
+|---|---|---|
+| Chùm nổ tại chỗ trúng | Flash (nháy trắng tròn) + StreaksShort/StreaksLong (vệt trắng) | **`HitImpact.prefab`**: 7 khung **Slash 2** (tia đâm + nổ gai), `FrameAnimation` 0.28s, Order 47. `HitEffect` tạo sẵn 3 bản (không làm con, để chùm cũ đứng yên), phát xoay vòng, xoay ảnh sao cho hướng đâm trùng hướng chém |
+| Máu gần (Puffs), máu xa (BloodFar), mảnh vỡ (Shards) | Đốm tròn mờ / vệt | **Hạt vuông pixel**: material `M_PixelBlood` (texture `pixel_square.png` 4×4 trắng, Filter Point), Billboard, không xoay; size Puffs 0.22–0.36, BloodFar 0.1–0.18, Shards 0.08–0.14. Màu, lượng, hướng văng giữ nguyên |
+| Khựng hình, quái bóp hình, đánh văng | — | Giữ nguyên |
+
+Các object Flash / StreaksShort / StreaksLong trong `HitFx.prefab` đã **tắt** và bỏ gán khỏi `HitEffect` (vẫn còn trong prefab nếu muốn bật lại: bật object rồi kéo lại vào ô tương ứng).
+
+**Chùm nổ — ảnh Slash 2:** pivot đặt ở **chỗ nổ gai** (0.8, 0.22) để điểm nổ trùng điểm trúng; PPU 40. Trong ảnh gốc tia đâm đi từ trên trái xuống dưới phải, góc khoảng **−52°** → `HitEffect.impactArtAngle` = −52; ảnh xoay `góc chém − impactArtAngle`.
+
+| Ô (`HitFx.prefab` → `HitEffect`) | Mặc định | Ghi chú |
+|---|---|---|
+| **Impact Prefab** | HitImpact | Để trống = không có chùm nổ |
+| **Impact Pool Size** | 3 | Chém trúng nhiều quái liền nhau thì cần nhiều hơn |
+| **Impact Art Angle** | −52 | Chùm nổ lệch hướng chém thì chỉnh ô này |
+| `HitImpact` → FrameAnimation **Duration** | 0.28s | Dài hơn = nổ chậm, rõ hơn |
+
+**Chỉnh ở `PlayerAttackConfig`:**
+
+| Ô | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Side Swing Squash** | (1.2, 0.88) | x lớn / y nhỏ: thân bẹt dài ra trước, mạnh tay hơn | Về (1,1) = không co giãn |
+| **Up Swing Squash** | (0.88, 1.18) | y lớn: vươn cao khi chém lên | — |
+| **Down Swing Squash** | (0.9, 1.15) | — | — |
+| **Swing Lunge** | 0.12 | Nhích người xa hơn (trên 0.3 trông như trượt) | 0 = đứng yên |
+| **Slash Alternate Window** | 0.6s | Dễ ra đòn luân phiên dù chém chậm | Phải bấm nhanh mới đổi chiều; 0 = luôn một chiều |
+
+**Chưa làm (để sau)**: rung camera khi trúng (đã đề xuất, chưa chọn làm); pogo hồi dash; phản hồi khi chém vào tường; âm thanh.
 
 ### 5.15 Máu người chơi kiểu Hollow Knight (5 mask)
 
@@ -2330,6 +2372,55 @@ Tông của game: **nền đêm tím**, **cam ấm = sự kiện, nguy hiểm** 
 
 Lưu ý: cộng sáng **không làm tối được**. Hiệu ứng màu đen hoặc cần che khuất (khói đen, bóng) thì dùng material thường (Sprite-Unlit-Default).
 
+### 9.11 Hiệu ứng lướt kiểu Nine Sols (`PlayerDashFx`)
+
+Lúc bấm lướt, ngay chỗ nhân vật vừa đứng để lại **1 bóng xanh ngọc** (cùng màu mắt). Bóng **bị gió thổi tan thành làn khói** bay ngược hướng lướt trong 0.4s, kèm cụm khói vẽ tay, chùm vệt tốc độ và bụi dưới chân.
+
+**4 thành phần:**
+
+| Thành phần | Ở đâu | Làm gì |
+|---|---|---|
+| Bóng tại chỗ | Pool 3 SpriteRenderer trong object `Player_DashGhosts` (tạo lúc chạy, nằm ngoài nhân vật) | Chép khung hình + vị trí + `lossyScale` lúc bấm lướt; shader `LuHanh/SpriteDissolve` làm tan theo gió |
+| Khói | Particle `DashSmoke` (con của Player, World space) | 10 cụm khói vẽ tay (sheet VFX3 đổi màu xanh ngọc) phun trong Box ôm thân bóng, trôi ngược hướng lướt + bay lên, nở to rồi tan |
+| Vệt tốc độ | Particle `DashBurst` (World space, Stretched Billboard) | 8 vệt bắn ngược hướng lướt; script xoay trục +Y của object về hướng sau lưng (Shape Single Sided Edge bắn theo +Y) |
+| Bụi chân | Dùng lại `LandDust` của `PlayerMovementFx` | Chỉ phát khi lướt lúc đang đứng đất |
+
+**Shader `SpriteDissolve` (bóng bị gió thổi):**
+1. Tô phẳng một màu theo hình sprite (nhân vật màu đen nên phải tô màu mới thấy bóng).
+2. Noise đổi nhanh theo chiều ngang gió, chậm dọc gió → chia hình thành nhiều **sợi**.
+3. Mỗi sợi bị kéo đi một độ dài khác nhau; lấy 6 mẫu phía hứng gió để thân bóng kéo thành **vệt liền nhạt dần** (làn khói).
+4. Mặt hứng gió bị ăn trước; mép tan mềm, viền sáng hơn.
+5. `_Color`, `_Dissolve` (0 → 1 theo thời gian), `_Wind` đặt qua **MaterialPropertyBlock** cho từng bóng (shader tự viết không đọc `SpriteRenderer.color`). `_Wind` = ngược hướng lướt + hơi bốc lên, đổi sang không gian UV (nhân vật lật bằng scale âm nên x nhân dấu scale).
+
+Sprite nhân vật phải để **Mesh Type = Full Rect** (đang vậy), nếu Tight thì phần khói kéo ra ngoài hình bị cắt.
+
+**Chỉnh ở `Player.prefab` → `PlayerDashFx`:**
+
+| Ô | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Color** | (0.37, 0.97, 1, 0.6) | — | — đổi màu bóng (khói đổi màu ở sheet `dash_smoke_sheet.png`) |
+| **Dissolve Time** | 0.4s | Bóng tan chậm, còn lâu | Tan nhanh, gọn |
+| **Smoke Count** | 10 | Khói dày | Khói thưa |
+| **Smoke Back Speed** | 1.5 | Khói bị thổi xa ra sau | Khói đọng tại chỗ |
+| **Burst Count** | 8 | Nhiều vệt tốc độ | Ít vệt |
+| **Ground Dust Count** | 8 | Bụi chân nhiều | Ít bụi |
+| **Pool Size** | 3 | Đủ cho lướt liên tục | Thiếu thì bóng cũ bị lấy lại sớm |
+
+**Chỉnh ở material `Assets/Shaders/M_DashGhost.mat`:**
+
+| Ô | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Stretch** | 0.35 | Bóng bị kéo dài thành vệt xa | Tan gần tại chỗ |
+| **Streak Ratio** | 5 | Sợi mảnh, nhiều (dễ thành mành rèm nếu quá cao) | Sợi to, ít (thành mảng) |
+| **Noise Scale** | 1.5 | Vết loang nhỏ, vụn | Vết loang to |
+| **Edge Width** | 0.12 | Mép tan mềm, viền sáng rộng | Mép sắc |
+| **Wobble** | 0.03 | Sợi khói uốn lượn nhiều | Sợi thẳng |
+| **Directional** | 0.35 | Tan rõ từ mặt hứng gió sang | Tan đều mọi chỗ |
+
+**Chỉnh particle:** `DashSmoke` → Start Size (1.6–2.6), Start Lifetime (0.5–0.8s), Size over Lifetime (0.5 → 1.5); `DashBurst` → Start Speed (10–18), Renderer → Speed Scale 0.06 (độ dài vệt).
+
+⚠️ Bắn particle bằng `Emit(EmitParams)` với vận tốc tự đặt cho ra 0 hạt ở hệ này, nên vệt tốc độ dùng `Emit(count)` thường + xoay object.
+
 ---
 
 ## 10. Lỗi hay gặp và cách xử lý
@@ -2437,3 +2528,6 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
     - Nổ khi vỡ: prefab mới `OrbExplode` (VFX1, 0.35s) thay particle `OrbBurst`; `ProjectilePool` giữ 3 bản xoay vòng; `FlyingEnemyConfig.projectileBurstPrefab` đổi kiểu sang `FrameAnimation`. `OrbBurst` và `orb.png` vẫn giữ trong project.
     - Thử VFX2 làm vệt chém phím J nhưng giữ vệt cũ.
 54. Đổi màu vụ nổ VFX1 cho hợp tông game: gradient map theo độ sáng (nâu tím tối → cam → trắng ngà) ra bộ khung mới `Assets/Art/Generated/Fx/OrbExplode/orb_explode_0..7.png` (PPU 80), gán vào `OrbExplode`. Ảnh gốc VFX1 giữ nguyên.
+55. Hiệu ứng lướt kiểu Nine Sols (mục 9.11): `PlayerDashFx` để lại 1 bóng xanh ngọc tại chỗ bấm lướt, bóng bị gió thổi tan thành làn khói bằng shader mới `LuHanh/SpriteDissolve` (`M_DashGhost`, noise `dissolve_noise.png`); particle `DashSmoke` (sheet VFX3 đổi màu xanh ngọc `dash_smoke_sheet.png`, material `M_DashSmoke`), `DashBurst` (vệt tốc độ, dùng `M_Streak`), bụi chân dùng lại `LandDust`.
+56. Hoàn thiện đòn chém (mục 5.14): giả động tác thân bằng co giãn + nhích người (`PlayerMovementFx.Punch`, `PlayerAttackConfig` thêm sideSwingSquash / upSwingSquash / downSwingSquash / swingLunge); vệt chém lật chiều quét luân phiên khi chém liên tiếp trong 0.6s (`slashAlternateWindow`); vệt chém đổi sang xanh ngọc (`Assets/Art/Generated/Fx/SlashCyan/`, gradient map từ bộ đỏ, gán vào `Player.prefab`).
+57. Đòn chém và trúng đòn kiểu pixel (mục 5.14): vệt chém đổi sang bộ "Pixel Art Animations - Slashes" màu 5 (Slash 3 cho nhát chính, Slash 1 cho nhát luân phiên qua ô mới `PlayerAttack.altSlashFrames`; Point, PPU 34; config slashBaseAngle 0, slashFlipX tắt, slashAnchor (0, 0.5), slashSidePush 1.2); `HitEffect` thêm chùm nổ pixel `HitImpact.prefab` (Slash 2, pool 3, impactArtAngle −52), tắt Flash / StreaksShort / StreaksLong; máu và mảnh vỡ thành hạt vuông pixel (`M_PixelBlood`, `pixel_square.png`).

@@ -10,6 +10,15 @@ namespace LuHanh.Effects
     /// </summary>
     public class HitEffect : MonoBehaviour
     {
+        [Header("Chum no pixel tai cho trung (khung ve tay)")]
+        [Tooltip("Prefab co FrameAnimation (o goc va/hoac object con, phat cung luc). Tao san impactPoolSize ban, phat xoay vong.")]
+        [SerializeField] FrameAnimation impactPrefab;
+        [SerializeField] int impactPoolSize = 3;
+        [Tooltip("Goc cua huong dam trong anh goc (do). Anh xoay sao cho huong nay trung huong chem.")]
+        [SerializeField] float impactArtAngle = 0f;
+        [Tooltip("Lech goc ngau nhien moi lan trung (do) de cac cu trung khong giong het nhau.")]
+        [SerializeField] float impactAngleJitter = 12f;
+
         [SerializeField] ParticleSystem flash;
         [SerializeField] ParticleSystem shards;
         [Tooltip("So manh vun moi lan trung (min, max - ca hai deu tinh).")]
@@ -63,6 +72,40 @@ namespace LuHanh.Effects
         readonly Layer[] pendingLayer = new Layer[MaxPending];
         int pendingCount;
 
+        FrameAnimation[] impacts;
+        FrameAnimation[][] impactParts;
+        int nextImpact;
+
+        void Awake()
+        {
+            if (!impactPrefab) return;
+            // Khong lam con cua HitEffect: HitEffect doi cho moi lan trung, chum no cu phai dung yen.
+            impacts = new FrameAnimation[Mathf.Max(1, impactPoolSize)];
+            impactParts = new FrameAnimation[impacts.Length][];
+            for (int i = 0; i < impacts.Length; i++)
+            {
+                impacts[i] = Instantiate(impactPrefab);
+                // Prefab co the gom nhieu lop (chum sao + duong chem dai), phat cung luc.
+                impactParts[i] = impacts[i].GetComponentsInChildren<FrameAnimation>(true);
+            }
+        }
+
+        void OnDestroy()
+        {
+            if (impacts == null) return;
+            foreach (var fx in impacts) if (fx) Destroy(fx.gameObject);
+        }
+
+        void PlayImpact(Vector2 point, float angle)
+        {
+            if (impacts == null) return;
+            int i = nextImpact;
+            nextImpact = (nextImpact + 1) % impacts.Length;
+            float a = angle - impactArtAngle + Random.Range(-impactAngleJitter, impactAngleJitter);
+            impacts[i].transform.SetPositionAndRotation(point, Quaternion.Euler(0f, 0f, a));
+            foreach (var part in impactParts[i]) part.Play();
+        }
+
         /// <summary>Phat tai <paramref name="point"/>, theo huong chem <paramref name="direction"/>.</summary>
         public void Play(Vector2 point, Vector2 direction)
         {
@@ -77,6 +120,7 @@ namespace LuHanh.Effects
                 shards.Emit(Random.Range(shardCount.x, shardCount.y + 1));
             }
             if (flash) flash.Emit(1);
+            PlayImpact(point, angle);
 
             // Nhip: vet ngan ngay lap tuc -> vet dai tre longDelay -> dom cam tre puffDelay.
             EmitShortStreaks(point, angle);

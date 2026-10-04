@@ -22,9 +22,15 @@ namespace LuHanh.Player
         [SerializeField] SpriteRenderer slashVisual;
         [Tooltip("Cac khung vet chem phat lan luot: quet toi -> day du -> thon lai -> tan. De trong thi dung sprite dang gan va chi lam mo.")]
         [SerializeField] Sprite[] slashFrames;
+        [Tooltip("Khung cho nhat chem luan phien (lan 2, 4...). De trong thi lat slashFrames nguoc chieu quet.")]
+        [SerializeField] Sprite[] altSlashFrames;
 
         PlayerController controller;
         Rigidbody2D body;
+        PlayerMovementFx movementFx;
+        Sprite[] activeFrames;
+        float lastSwingTime = float.NegativeInfinity;
+        bool alternateSlash;
 
         float lastPressedTime = float.NegativeInfinity;
         float cooldownTimer;
@@ -40,11 +46,13 @@ namespace LuHanh.Player
         HitEffect hitEffect;
 
         public bool IsAttacking => activeTimer > 0f;
+        bool HasAltFrames => altSlashFrames != null && altSlashFrames.Length > 0;
 
         void Awake()
         {
             controller = GetComponent<PlayerController>();
             body = GetComponent<Rigidbody2D>();
+            movementFx = GetComponent<PlayerMovementFx>();
 
             if (config == null)
             {
@@ -102,6 +110,11 @@ namespace LuHanh.Player
             else if (controller.MoveY == -1 && !controller.IsGrounded) currentDirection = Direction.Down;
             else currentDirection = Direction.Side;
 
+            // Chem lien tiep thi doi chieu quet de chuoi chem trong nhu combo.
+            alternateSlash = Time.time - lastSwingTime <= config.slashAlternateWindow && !alternateSlash;
+            lastSwingTime = Time.time;
+
+            PlaySwingPose();
             ShowSlash();
             DetectHits();   // trung ngay trong frame bam, khong doi buoc vat ly
         }
@@ -174,6 +187,18 @@ namespace LuHanh.Player
             body.linearVelocity = v;
         }
 
+        // Chua co animation chem nen gia dong tac bang co gian + nhich than ve huong chem.
+        void PlaySwingPose()
+        {
+            if (!movementFx) return;
+            switch (currentDirection)
+            {
+                case Direction.Up: movementFx.Punch(config.upSwingSquash, new Vector2(0f, config.swingLunge)); break;
+                case Direction.Down: movementFx.Punch(config.downSwingSquash, new Vector2(0f, -config.swingLunge)); break;
+                default: movementFx.Punch(config.sideSwingSquash, new Vector2(config.swingLunge, 0f)); break;
+            }
+        }
+
         // ---- Vet chem ----
 
         void ShowSlash()
@@ -188,6 +213,7 @@ namespace LuHanh.Player
                 t.position = new Vector3(centre.x, centre.y, t.position.z);
                 t.localRotation = Quaternion.Euler(0f, 0f, dirAngle);
                 slashVisual.flipX = false;
+                slashVisual.flipY = alternateSlash && !HasAltFrames;
             }
             else
             {
@@ -198,10 +224,13 @@ namespace LuHanh.Player
                 Vector2 pos = config.slashAnchor + push;
                 t.localPosition = new Vector3(pos.x, pos.y, t.localPosition.z);
                 t.localRotation = Quaternion.Euler(0f, 0f, config.slashBaseAngle + dirAngle);
-                slashVisual.flipX = config.slashFlipX;
+                // Co bo khung rieng thi dung no; khong thi lat X cuc bo = soi guong qua truc huong chem.
+                slashVisual.flipX = config.slashFlipX != (alternateSlash && !HasAltFrames);
+                slashVisual.flipY = false;
             }
             t.localScale = Vector3.one;
-            if (slashFrames != null && slashFrames.Length > 0) slashVisual.sprite = slashFrames[0];
+            activeFrames = alternateSlash && HasAltFrames ? altSlashFrames : slashFrames;
+            if (activeFrames != null && activeFrames.Length > 0) slashVisual.sprite = activeFrames[0];
             slashVisual.enabled = true;
             slashVisual.color = Color.white;
         }
@@ -213,11 +242,11 @@ namespace LuHanh.Player
             if (slashTimer <= 0f) { slashVisual.enabled = false; return; }
 
             float k = 1f - slashTimer / Mathf.Max(0.001f, config.slashVisualTime);   // 0 -> 1
-            if (slashFrames != null && slashFrames.Length > 0)
+            if (activeFrames != null && activeFrames.Length > 0)
             {
                 // Do mo da ve san trong tung khung nen chi can doi khung.
-                int i = Mathf.Min(slashFrames.Length - 1, Mathf.FloorToInt(k * slashFrames.Length));
-                slashVisual.sprite = slashFrames[i];
+                int i = Mathf.Min(activeFrames.Length - 1, Mathf.FloorToInt(k * activeFrames.Length));
+                slashVisual.sprite = activeFrames[i];
             }
             else
             {

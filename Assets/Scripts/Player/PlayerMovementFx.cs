@@ -49,11 +49,21 @@ namespace LuHanh.Player
         float lastFallSpeed;
         bool running;
         float runStepTimer;
+        Vector3 visualBasePos;
 
         void Awake()
         {
             controller = GetComponent<PlayerController>();
             body = GetComponent<Rigidbody2D>();
+            if (visual) visualBasePos = visual.localPosition;
+        }
+
+        /// <summary>Co gian + nhich than mot thoang (vd luc vung kiem), tu tro ve nhu khi tiep dat.
+        /// <paramref name="offset"/> tinh theo truc cuc bo cua nhan vat: x duong = phia truoc.</summary>
+        public void Punch(Vector2 scale, Vector2 offset)
+        {
+            SetScale(scale);
+            if (visual) visual.localPosition = visualBasePos + (Vector3)offset;
         }
 
         void OnEnable() => controller.StateChanged += OnStateChanged;
@@ -133,6 +143,7 @@ namespace LuHanh.Player
             // Tro ve (1,1) muot, khong phu thuoc FPS.
             float k = 1f - Mathf.Exp(-recoverSpeed * Time.deltaTime);
             visual.localScale = Vector3.Lerp(visual.localScale, Vector3.one, k);
+            visual.localPosition = Vector3.Lerp(visual.localPosition, visualBasePos, k);
         }
     }
 }
