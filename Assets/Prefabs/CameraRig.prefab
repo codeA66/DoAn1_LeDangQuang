@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4424346491533231243}
   - component: {fileID: 43771875776914673}
   - component: {fileID: 882733004009694242}
+  - component: {fileID: 2274332973444373788}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -291,6 +292,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePixelPerfect
+--- !u!114 &2274332973444373788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299717014658397691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487032152ed483949bb432cd1d811b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Core.CameraFollowPlayer
 --- !u!1 &7465267256586645034
 GameObject:
   m_ObjectHideFlags: 0

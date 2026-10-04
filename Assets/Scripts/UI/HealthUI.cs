@@ -27,6 +27,12 @@ namespace LuHanh.UI
 
         void Start()
         {
+            // HUD nam trong prefab LevelEssentials khong giu duoc tham chieu toi Player trong scene.
+            if (!health)
+            {
+                var player = GameObject.FindWithTag("Player");
+                if (player) health = player.GetComponent<Health>();
+            }
             if (!health || !maskTemplate) return;
             maskTemplate.gameObject.SetActive(false);
             Build(health.Max);

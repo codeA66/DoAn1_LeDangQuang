@@ -21,16 +21,26 @@ namespace LuHanh.Player
         [Tooltip("SpriteRenderer vet chem (object con). De trong thi khong hien vet chem.")]
         [SerializeField] SpriteRenderer slashVisual;
         [Tooltip("Cac khung vet chem phat lan luot: quet toi -> day du -> thon lai -> tan. De trong thi dung sprite dang gan va chi lam mo.")]
-        [SerializeField] Sprite[] slashFrames;
-        [Tooltip("Khung cho nhat chem luan phien (lan 2, 4...). De trong thi lat slashFrames nguoc chieu quet.")]
-        [SerializeField] Sprite[] altSlashFrames;
+        [System.Serializable]
+        public class SlashSet
+        {
+            [Tooltip("Cac khung cua mot nhat chem, ve huong sang phai.")]
+            public Sprite[] frames;
+        }
+
+        [Tooltip("Cac bo vet chem ngang. Chem lien tiep (trong slashAlternateWindow) thi lay bo ke tiep, het thi quay lai bo dau.")]
+        [SerializeField] SlashSet[] sideSlashes;
+        [Tooltip("Cac bo vet chem len (xoay 90 do), xoay vong nhu tren.")]
+        [SerializeField] SlashSet[] upSlashes;
+        [Tooltip("Cac bo vet chem xuong (xoay -90 do). De trong thi dung bo chem len.")]
+        [SerializeField] SlashSet[] downSlashes;
 
         PlayerController controller;
         Rigidbody2D body;
         PlayerMovementFx movementFx;
         Sprite[] activeFrames;
         float lastSwingTime = float.NegativeInfinity;
-        bool alternateSlash;
+        int comboIndex;
 
         float lastPressedTime = float.NegativeInfinity;
         float cooldownTimer;
@@ -46,8 +56,6 @@ namespace LuHanh.Player
         HitEffect hitEffect;
 
         public bool IsAttacking => activeTimer > 0f;
-        bool HasAltFrames => altSlashFrames != null && altSlashFrames.Length > 0;
-
         void Awake()
         {
             controller = GetComponent<PlayerController>();
@@ -111,7 +119,7 @@ namespace LuHanh.Player
             else currentDirection = Direction.Side;
 
             // Chem lien tiep thi doi chieu quet de chuoi chem trong nhu combo.
-            alternateSlash = Time.time - lastSwingTime <= config.slashAlternateWindow && !alternateSlash;
+            comboIndex = Time.time - lastSwingTime <= config.slashAlternateWindow ? comboIndex + 1 : 0;
             lastSwingTime = Time.time;
 
             PlaySwingPose();
@@ -201,6 +209,15 @@ namespace LuHanh.Player
 
         // ---- Vet chem ----
 
+        Sprite[] PickFrames()
+        {
+            var sets = currentDirection == Direction.Up ? upSlashes
+                : currentDirection == Direction.Down ? (downSlashes != null && downSlashes.Length > 0 ? downSlashes : upSlashes)
+                : sideSlashes;
+            if (sets == null || sets.Length == 0) return null;
+            return sets[comboIndex % sets.Length].frames;
+        }
+
         void ShowSlash()
         {
             if (!slashVisual) return;
@@ -213,7 +230,7 @@ namespace LuHanh.Player
                 t.position = new Vector3(centre.x, centre.y, t.position.z);
                 t.localRotation = Quaternion.Euler(0f, 0f, dirAngle);
                 slashVisual.flipX = false;
-                slashVisual.flipY = alternateSlash && !HasAltFrames;
+                slashVisual.flipY = false;
             }
             else
             {
@@ -224,12 +241,12 @@ namespace LuHanh.Player
                 Vector2 pos = config.slashAnchor + push;
                 t.localPosition = new Vector3(pos.x, pos.y, t.localPosition.z);
                 t.localRotation = Quaternion.Euler(0f, 0f, config.slashBaseAngle + dirAngle);
-                // Co bo khung rieng thi dung no; khong thi lat X cuc bo = soi guong qua truc huong chem.
-                slashVisual.flipX = config.slashFlipX != (alternateSlash && !HasAltFrames);
-                slashVisual.flipY = false;
+                slashVisual.flipX = config.slashFlipX;
+                // Xoay +90 dua nua tren cua anh ra sau lung; lat doc de phan cong van huong ve phia truoc.
+                slashVisual.flipY = currentDirection == Direction.Up;
             }
             t.localScale = Vector3.one;
-            activeFrames = alternateSlash && HasAltFrames ? altSlashFrames : slashFrames;
+            activeFrames = PickFrames();
             if (activeFrames != null && activeFrames.Length > 0) slashVisual.sprite = activeFrames[0];
             slashVisual.enabled = true;
             slashVisual.color = Color.white;

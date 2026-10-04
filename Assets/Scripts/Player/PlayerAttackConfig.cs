@@ -64,7 +64,7 @@ namespace LuHanh.Player
         public float slashSidePush = 0f;
         public float slashUpPush = 0f;
         public float slashDownPush = 0f;
-        [Tooltip("Chem lai trong khoang nay (giay) thi vet chem lat nguoc chieu quet voi lan truoc (cheo xuoi / cheo nguoc). Qua lau thi ve lai chieu goc.")]
+        [Tooltip("Chem lai trong khoang nay (giay) thi dung bo vet chem ke tiep (combo). Qua lau thi ve lai bo dau.")]
         public float slashAlternateWindow = 0.6f;
 
         [Header("Dong tac chem (than nhan vat)")]

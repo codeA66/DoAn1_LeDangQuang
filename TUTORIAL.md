@@ -877,32 +877,46 @@ Hai kỹ thuật **cộng hưởng với nhau**: bộ đếm bóp hình dùng `T
 Gói Cloaked không có animation chém, nên thân nhân vật được **giả động tác** bằng co giãn + nhích người, còn vệt chém đổi kiểu mỗi lần chém liên tiếp.
 
 1. **Động tác thân:** `PlayerAttack.StartSwing` → `PlaySwingPose()` gọi `PlayerMovementFx.Punch(scale, offset)`. Hàm này đặt scale và vị trí cục bộ cho object `Visual`, rồi `LateUpdate` của `PlayerMovementFx` tự kéo về (1,1) và vị trí gốc (cùng cơ chế co giãn khi nhảy/tiếp đất, tốc độ `recoverSpeed` = 12 → về lại trong khoảng 0.15s). Chỉ đổi hình, không đổi vị trí vật lý.
-2. **Vệt chém pixel (bộ "Pixel Art Animations - Slashes", màu 5 xanh lam/xanh ngọc):** cùng phong cách pixel với map và quái. `PlayerAttack → Slash Frames` = **Slash 3** (vòng cung gọn, 9 khung) cho nhát chính; `Alt Slash Frames` = **Slash 1** (nhát ngang rồi móc lưỡi liềm, 9 khung) cho nhát luân phiên. Chém lại trong `slashAlternateWindow` giây thì `alternateSlash` đảo → nhát 1 Slash 3, nhát 2 Slash 1, nhát 3 Slash 3... Ngừng lâu hơn thì về Slash 3. Để trống `Alt Slash Frames` thì quay về cách cũ: lật X cục bộ cùng một bộ khung.
-   - Import (bản 128×128 trong `Assets/Art/Fx/Pixel Art Animations - Slashes/128x128/Slash N/color5/Frames/`): **Filter Point** (giữ pixel sắc), không nén, Mesh Full Rect, pivot giữa, **PPU 34** (ô 128px ≈ 3.8 unit, vòng cung rộng khoảng 2 unit).
-   - Ảnh vẽ sẵn hướng sang phải nên `slashBaseAngle` = 0, `slashFlipX` = tắt; `slashAnchor` = (0, 0.5), `slashSidePush` = 1.2 để vệt nằm trùng vùng chém ngang (tâm x = 2).
+2. **Vệt chém pixel (bộ "Pixel Art Animations - Slashes", màu 5 xanh lam/xanh ngọc):** cùng phong cách pixel với map và quái. Mỗi hướng chém có **danh sách bộ vệt** riêng trong `PlayerAttack`; chém lại trong `slashAlternateWindow` (0.6s) thì `comboIndex` tăng và lấy bộ kế tiếp, hết danh sách thì quay lại bộ đầu; ngừng lâu hơn thì về bộ đầu.
+
+   | Ô | Bộ vệt (theo thứ tự combo) | Ghi chú |
+   |---|---|---|
+   | **Side Slashes** (chém ngang) | Slash 1 → Slash 2 | Slash 1 = nhát ngang rồi móc lưỡi liềm; Slash 2 = nhát xiên kèm nổ gai. **Không** dùng Slash 3 cho chém ngang |
+   | **Up Slashes** (chém lên, W + J) | Slash 1 → Slash 2 → Slash 3 | Xoay +90° và **lật dọc** (`flipY`) — không lật thì phần cong của ảnh rơi ra sau lưng |
+   | **Down Slashes** (chém xuống trên không, S + J) | (trống) | Để trống thì dùng bộ chém lên, xoay −90° |
+
+   Muốn thêm/bớt/đổi thứ tự: chọn Player → `PlayerAttack` → mở danh sách, mỗi phần tử là một bộ `Frames` (kéo các khung của một nhát vào theo thứ tự).
+   - Import (bản 128×128 trong `Assets/Art/Fx/Pixel Art Animations - Slashes/128x128/Slash N/color5/Frames/`): **Filter Point** (giữ pixel sắc), không nén, Mesh Full Rect, pivot giữa, **PPU 34** (ô 128px ≈ 3.8 unit, vòng cung rộng khoảng 2 unit). Cả 3 bộ cùng thông số.
+   - Ảnh vẽ sẵn hướng sang phải nên `slashBaseAngle` = 0, `slashFlipX` = tắt; `slashAnchor` = (0, 0.5), `slashSidePush` = 1.2 để vệt nằm trùng vùng chém ngang (tâm x = 2), `slashUpPush` = 1.4 để vệt chém lên nằm trên đầu.
    - Lưu ý tên file khác nhau: Slash 1 là `Slash_color5_frameN.png`, Slash 2/3 là `Slash2_…`, `Slash3_…`.
    - Bộ cũ (Cel-Shaded đỏ và bản đổi màu `Assets/Art/Generated/Fx/SlashCyan/`) không còn dùng, vẫn để trong project.
 
 #### Hiệu ứng trúng đòn kiểu pixel (`HitEffect` + `HitImpact`)
 
-Hiệu ứng cũ toàn particle mịn (nháy trắng tròn, vệt trắng dài, đốm cam mờ) lệch phong cách pixel nên trông nhòe, nhẹ tay. Bản mới:
+Hiệu ứng cũ toàn particle mịn (nháy trắng tròn, vệt trắng dài, đốm cam mờ) lệch phong cách pixel nên trông nhòe, nhẹ tay. Bản mới theo kiểu Nine Sols: **to, phẳng màu, cạnh sắc, rất ngắn**:
 
 | Lớp | Trước | Bây giờ |
 |---|---|---|
-| Chùm nổ tại chỗ trúng | Flash (nháy trắng tròn) + StreaksShort/StreaksLong (vệt trắng) | **`HitImpact.prefab`**: 7 khung **Slash 2** (tia đâm + nổ gai), `FrameAnimation` 0.28s, Order 47. `HitEffect` tạo sẵn 3 bản (không làm con, để chùm cũ đứng yên), phát xoay vòng, xoay ảnh sao cho hướng đâm trùng hướng chém |
-| Máu gần (Puffs), máu xa (BloodFar), mảnh vỡ (Shards) | Đốm tròn mờ / vệt | **Hạt vuông pixel**: material `M_PixelBlood` (texture `pixel_square.png` 4×4 trắng, Filter Point), Billboard, không xoay; size Puffs 0.22–0.36, BloodFar 0.1–0.18, Shards 0.08–0.14. Màu, lượng, hướng văng giữ nguyên |
+| Chùm sáng tại chỗ trúng | Flash (nháy trắng tròn) + StreaksShort/StreaksLong (vệt trắng) | **`HitImpact.prefab`** (gốc): chùm **sao pixel trắng kem** 8 gai dài ngắn không đều, 2 gai ngang dài nhất theo hướng chém; 3 khung `hit_star_0..2` (sao đầy → sao gầy → chỉ còn gai mảnh) trong 0.12s, Order 47, rộng khoảng 3.5 unit |
+| Đường chém dài | — | Object con **`Line`**: vệt trắng kem dày 3px vuốt nhọn 2 đầu, dài khoảng 7 unit, xuyên qua điểm trúng theo hướng chém; 2 khung `hit_line_0..1` trong 0.09s, Order 46 |
+| Máu gần (Puffs) | Đốm tròn mờ to | **Cục tròn méo pixel** cạnh sắc (`blood_blobs.png`: 4 hình trong sheet 4×1, mỗi hạt lấy ngẫu nhiên 1 hình), material `M_PixelBlob`, 5–7 cục, size 0.5–1.0, co nhỏ dần rồi mất |
+| Máu xa (BloodFar), mảnh vỡ (Shards) | Đốm tròn mờ / vệt | **Hạt vuông pixel**: material `M_PixelBlood` (`pixel_square.png` 4×4, Point), size BloodFar 0.1–0.18, Shards 0.08–0.14 |
 | Khựng hình, quái bóp hình, đánh văng | — | Giữ nguyên |
+
+Ảnh chùm sao, đường chém, cục máu **vẽ bằng code** (đa giác không khử răng cưa) trong `Assets/Art/Generated/Fx/HitPixel/`, import Point, PPU 18. Màu máu vẫn cam (màu đặt ở Start Color của từng particle; muốn đỏ kiểu Nine Sols thì đổi ở đó).
 
 Các object Flash / StreaksShort / StreaksLong trong `HitFx.prefab` đã **tắt** và bỏ gán khỏi `HitEffect` (vẫn còn trong prefab nếu muốn bật lại: bật object rồi kéo lại vào ô tương ứng).
 
-**Chùm nổ — ảnh Slash 2:** pivot đặt ở **chỗ nổ gai** (0.8, 0.22) để điểm nổ trùng điểm trúng; PPU 40. Trong ảnh gốc tia đâm đi từ trên trái xuống dưới phải, góc khoảng **−52°** → `HitEffect.impactArtAngle` = −52; ảnh xoay `góc chém − impactArtAngle`.
+`HitEffect` tạo sẵn 3 bản `HitImpact` (không làm con, để chùm cũ đứng yên khi HitEffect dời sang chỗ trúng mới), mỗi lần trúng phát **mọi** `FrameAnimation` trong prefab (gốc + con) cùng lúc, xoay theo hướng chém và lệch ngẫu nhiên ±12°.
 
 | Ô (`HitFx.prefab` → `HitEffect`) | Mặc định | Ghi chú |
 |---|---|---|
-| **Impact Prefab** | HitImpact | Để trống = không có chùm nổ |
+| **Impact Prefab** | HitImpact | Để trống = không có chùm sáng |
 | **Impact Pool Size** | 3 | Chém trúng nhiều quái liền nhau thì cần nhiều hơn |
-| **Impact Art Angle** | −52 | Chùm nổ lệch hướng chém thì chỉnh ô này |
-| `HitImpact` → FrameAnimation **Duration** | 0.28s | Dài hơn = nổ chậm, rõ hơn |
+| **Impact Art Angle** | 0 | Góc hướng chém trong ảnh gốc (ảnh vẽ theo trục +X) |
+| **Impact Angle Jitter** | 12 | Lệch góc ngẫu nhiên để các cú trúng không giống hệt nhau |
+| **Puff Count** | (5, 7) | Số cục máu to |
+| `HitImpact` / `Line` → FrameAnimation **Duration** | 0.12s / 0.09s | Dài hơn = sáng lâu, rõ hơn nhưng bớt "chát" |
 
 **Chỉnh ở `PlayerAttackConfig`:**
 
@@ -1831,18 +1845,35 @@ machine.Changed += (from, to) => StateChanged?.Invoke(from, to);
 | `runDustKickUp` | (0.15, 0.6) | Bụi bốc cao hơn |
 
 ### 9.5 Prefab dùng lại cho màn mới
-Các object dùng chung đã được lưu thành prefab trong `Assets/Prefabs/`:
 
-| Prefab | Gồm | Khi dựng màn mới |
-|---|---|---|
-| `CameraRig` | Main Camera (kèm `DustMotes` là prefab lồng bên trong) + CinemachineCamera | Kéo vào scene → chọn `CinemachineCamera` → gán lại **Tracking Target = Player** |
-| `Background` | 6 lớp parallax, sương, cây lay | Kéo vào scene, chỉnh vị trí từng lớp nếu cần (xem mục 8) |
-| `DustMotes` | Particle bụi | Đã nằm trong `CameraRig`; chỉ kéo riêng nếu dùng camera khác |
-| `Player` | (`Assets/Character/Player/Player.prefab`) | Kéo vào, đặt vị trí xuất phát |
+**Dựng màn mới chỉ cần kéo 2 prefab:**
 
-**Vì sao phải gán lại**: prefab không lưu được tham chiếu tới object nằm trong scene (ví dụ Player). Trong scene `TestGamePlay` các tham chiếu này vẫn còn nguyên, chỉ màn mới phải gán lại.
+1. `Assets/Prefabs/LevelEssentials.prefab` — mọi thứ chung của một màn.
+2. `Assets/Character/Player/Player.prefab` — nhân vật (đã gồm toàn bộ hiệu ứng: lướt, chém, trúng đòn, ánh sáng quanh nhân vật, VisionMask). Đặt ở vị trí xuất phát, **tag phải là `Player`**.
 
-Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Assets/Prefabs` trong cửa sổ Project. Sửa prefab: bấm đúp vào file prefab, hoặc sửa trên object trong scene rồi **Overrides → Apply All**.
+Sau đó vẽ map (Tilemap), đặt quái, đèn trang trí, vùng chết.
+
+**`LevelEssentials` gồm (đều là prefab lồng bên trong):**
+
+| Con | Làm gì |
+|---|---|
+| `CameraRig` | Main Camera (+ `DustMotes`) + CinemachineCamera có `CameraFollowPlayer` |
+| `HUD` | Thanh máu 5 mask (`HealthUI`) |
+| `GameSystems` | `RespawnManager` (chết → tối dần → hồi sinh, quái hồi sinh) |
+| `Global Light - World` / `Global Light - Background` | 2 đèn toàn cục chia theo Sorting Layer (mục 9.6) |
+| `Lighting` | Global Volume PostFX_Night (Bloom, Vignette, Split Toning...) |
+| `Background` | 6 lớp parallax, sương, cây lay (mục 8) |
+
+**Tự nối với Player, không cần kéo tay:** prefab không lưu được tham chiếu tới object trong scene, nên:
+- `CameraFollowPlayer` (Scripts/Core, gắn trên CinemachineCamera): lúc `Awake`, nếu **Tracking Target** trống thì tìm object tag `Player`, gán vào và đặt camera ngay tại nhân vật.
+- `HealthUI`: lúc `Start`, nếu ô **Health** trống thì tìm `Health` trên object tag `Player`.
+- Đã kéo tay vào ô (như trong Level1) thì giữ nguyên, không tìm lại.
+
+**Chỉnh riêng cho từng màn** (ví dụ đổi nền, độ sáng): sửa trên object trong scene, **không** bấm Apply → chỉ màn đó đổi. Muốn mọi màn cùng đổi thì **Overrides → Apply All** hoặc bấm đúp vào prefab để sửa.
+
+Các prefab lẻ vẫn dùng riêng được: `CameraRig`, `HUD`, `Background`, `DustMotes`, `Lighting`, 2 Global Light (trong `Assets/Prefabs/` và `Assets/Prefabs/Lighting/`).
+
+Cách tự tạo prefab: kéo object từ Hierarchy thả vào thư mục `Assets/Prefabs` trong cửa sổ Project.
 
 ### 9.6 Ánh sáng nghệ thuật kiểu Hollow Knight
 
@@ -2531,3 +2562,6 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 55. Hiệu ứng lướt kiểu Nine Sols (mục 9.11): `PlayerDashFx` để lại 1 bóng xanh ngọc tại chỗ bấm lướt, bóng bị gió thổi tan thành làn khói bằng shader mới `LuHanh/SpriteDissolve` (`M_DashGhost`, noise `dissolve_noise.png`); particle `DashSmoke` (sheet VFX3 đổi màu xanh ngọc `dash_smoke_sheet.png`, material `M_DashSmoke`), `DashBurst` (vệt tốc độ, dùng `M_Streak`), bụi chân dùng lại `LandDust`.
 56. Hoàn thiện đòn chém (mục 5.14): giả động tác thân bằng co giãn + nhích người (`PlayerMovementFx.Punch`, `PlayerAttackConfig` thêm sideSwingSquash / upSwingSquash / downSwingSquash / swingLunge); vệt chém lật chiều quét luân phiên khi chém liên tiếp trong 0.6s (`slashAlternateWindow`); vệt chém đổi sang xanh ngọc (`Assets/Art/Generated/Fx/SlashCyan/`, gradient map từ bộ đỏ, gán vào `Player.prefab`).
 57. Đòn chém và trúng đòn kiểu pixel (mục 5.14): vệt chém đổi sang bộ "Pixel Art Animations - Slashes" màu 5 (Slash 3 cho nhát chính, Slash 1 cho nhát luân phiên qua ô mới `PlayerAttack.altSlashFrames`; Point, PPU 34; config slashBaseAngle 0, slashFlipX tắt, slashAnchor (0, 0.5), slashSidePush 1.2); `HitEffect` thêm chùm nổ pixel `HitImpact.prefab` (Slash 2, pool 3, impactArtAngle −52), tắt Flash / StreaksShort / StreaksLong; máu và mảnh vỡ thành hạt vuông pixel (`M_PixelBlood`, `pixel_square.png`).
+58. Prefab `LevelEssentials` (mục 9.5): gom CameraRig, HUD, GameSystems (RespawnManager), 2 Global Light, Lighting (Volume) và Background; dựng màn mới chỉ cần kéo `LevelEssentials` + `Player`. Thêm `Core/CameraFollowPlayer` (tự gán Player làm Tracking Target) và `HealthUI` tự tìm Health của Player theo tag khi ô trống. Level1 đã chuyển sang dùng prefab này.
+59. Hiệu ứng trúng đòn kiểu Nine Sols (mục 5.14): `HitImpact` thành chùm sao pixel trắng kem 3 khung (`hit_star_0..2`, 0.12s) + đường chém dài xuyên qua điểm trúng (`hit_line_0..1`, object con Line, 0.09s), ảnh trong `Assets/Art/Generated/Fx/HitPixel/`, Point, PPU 18; `HitEffect` phát mọi `FrameAnimation` trong prefab, lệch góc ngẫu nhiên ±12° (`impactAngleJitter`), `impactArtAngle` 0; máu gần (Puffs) thành cục tròn méo pixel (`blood_blobs.png` 4 hình, `M_PixelBlob`, size 0.5–1.0, co nhỏ rồi mất, 5–7 cục).
+60. Vệt chém theo hướng (mục 5.14): `PlayerAttack` bỏ `slashFrames` / `altSlashFrames`, thay bằng 3 danh sách bộ vệt `sideSlashes` (Slash 1 → 2), `upSlashes` (Slash 1 → 2 → 3), `downSlashes` (trống = dùng bộ chém lên); chém liên tiếp trong `slashAlternateWindow` thì lấy bộ kế tiếp (`comboIndex`). Chém lên lật dọc vệt để phần cong ở phía trước, `slashUpPush` 0.8 → 1.4. Slash 2 về pivot giữa, PPU 34 (không còn dùng làm chùm nổ).

@@ -37,7 +37,7 @@ MonoBehaviour:
   slashBaseAngle: 0
   slashFlipX: 0
   slashSidePush: 1.2
-  slashUpPush: 0.8
+  slashUpPush: 1.4
   slashDownPush: 0.7
   slashAlternateWindow: 0.6
   sideSwingSquash: {x: 1.2, y: 0.88}
