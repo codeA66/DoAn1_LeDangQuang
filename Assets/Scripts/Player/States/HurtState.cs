@@ -28,8 +28,8 @@ namespace LuHanh.Player.States
             timer = duration;
             Ctx.Body.linearVelocity = launchVelocity;
             Ctx.CancelJumpHold();
-            // Bo Cloaked khong co clip bi thuong - dung tam clip roi.
-            Ctx.Animation.Play(PlayerAnim.Fall);
+            // Replay: bi trung lien tiep thi clip chay lai tu dau.
+            Ctx.Animation.Replay(PlayerAnim.Hurt);
         }
 
         public override void FixedTick(float fixedDeltaTime)

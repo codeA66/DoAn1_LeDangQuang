@@ -11,6 +11,10 @@ namespace LuHanh.Enemies
         [Header("Mau")]
         [Min(1)] public int maxHealth = 3;
 
+        [Header("Don danh len nguoi choi")]
+        [Tooltip("Phan ung cua nguoi choi khi trung don cua quai nay (day lui, chop...). De trong = phan ung mac dinh cua nguoi choi.")]
+        public LuHanh.Combat.HitReaction hitReaction;
+
         [Header("Trung don")]
         [Tooltip("Thoi gian khung lai, bi day lui sau moi nhat chem.")]
         public float hurtTime = 0.2f;

@@ -131,7 +131,7 @@ namespace LuHanh.Enemies
             if (!pool) return;
             Vector2 muzzle = body.position + new Vector2(config.muzzleOffset.x * FacingSign, config.muzzleOffset.y);
             Vector2 dir = (PlayerAimPoint - muzzle).normalized;
-            pool.Spawn(muzzle, dir * config.projectileSpeed);
+            pool.Spawn(muzzle, dir * config.projectileSpeed).reaction = config.hitReaction;
         }
 
         public void PlayFly() => PlayAnimHash(flyHash);

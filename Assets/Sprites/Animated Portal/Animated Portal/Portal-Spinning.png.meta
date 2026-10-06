@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 26
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,177 +147,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Portal-Spinning_0
+      name: Portal_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 134
-        width: 43
-        height: 51
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 054d0797d26f2d170800000000000000
-      internalID: 8201888546566493264
+      spriteID: d1407c4977a31024d853392310b1432e
+      internalID: -126526466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_1
+      name: Portal_1
       rect:
         serializedVersion: 2
-        x: 75
-        y: 134
-        width: 44
-        height: 52
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 86ec2774cf10cd700800000000000000
-      internalID: 566329836183932520
+      spriteID: 11a9e403b86784d4bad83c0d76227fde
+      internalID: -1644943594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_2
+      name: Portal_2
       rect:
         serializedVersion: 2
-        x: 137
-        y: 133
-        width: 48
-        height: 54
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 833c848a701749120800000000000000
-      internalID: 2419683177506849592
+      spriteID: d5ccfd113c9ba6b4dae6109413a417bb
+      internalID: 1856268322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_3
+      name: Portal_3
       rect:
         serializedVersion: 2
-        x: 8
-        y: 68
-        width: 50
-        height: 56
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fb1fe345645f16fc0800000000000000
-      internalID: -3503249352707608129
+      spriteID: 08a446533b080e448a70081bfb64bba3
+      internalID: 395730572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_4
+      name: Portal_4
       rect:
         serializedVersion: 2
-        x: 71
-        y: 68
-        width: 51
-        height: 56
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b23c2b24daa8b9b0800000000000000
-      internalID: -5064109952744017224
+      spriteID: d6c5e6c0734e14f46a8b9d2d86aec1c5
+      internalID: 906792424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_5
+      name: Portal_5
       rect:
         serializedVersion: 2
-        x: 135
-        y: 69
-        width: 51
-        height: 55
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3e79a96234ff864d0800000000000000
-      internalID: -3140980076215363613
+      spriteID: f3f5fd593900579458bbb93f4a26d058
+      internalID: 1410280901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_6
+      name: Portal_6
       rect:
         serializedVersion: 2
-        x: 7
-        y: 6
-        width: 50
-        height: 53
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f510074d84206a80800000000000000
-      internalID: -8475734309511096842
+      spriteID: c968b7fb67f5e50469be2481f8898cfc
+      internalID: -2001218821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Portal-Spinning_7
+      name: Portal_7
       rect:
         serializedVersion: 2
-        x: 71
-        y: 7
-        width: 47
-        height: 51
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df5bff78954f371d0800000000000000
-      internalID: -3354068632089938435
+      spriteID: ce3e6276b1031be40a8eb951a190bb2e
+      internalID: -1884916923
       vertices: []
       indices: 
       edges: []
@@ -326,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 96f481077ee6cc44ba56b96c85765b6e
     internalID: 0
     vertices: []
     indices: 
@@ -344,6 +344,14 @@ TextureImporter:
       Portal-Spinning_5: -3140980076215363613
       Portal-Spinning_6: -8475734309511096842
       Portal-Spinning_7: -3354068632089938435
+      Portal_0: -126526466
+      Portal_1: -1644943594
+      Portal_2: 1856268322
+      Portal_3: 395730572
+      Portal_4: 906792424
+      Portal_5: 1410280901
+      Portal_6: -2001218821
+      Portal_7: -1884916923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

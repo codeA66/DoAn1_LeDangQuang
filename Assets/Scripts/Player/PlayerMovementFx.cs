@@ -60,10 +60,13 @@ namespace LuHanh.Player
 
         /// <summary>Co gian + nhich than mot thoang (vd luc vung kiem), tu tro ve nhu khi tiep dat.
         /// <paramref name="offset"/> tinh theo truc cuc bo cua nhan vat: x duong = phia truoc.</summary>
-        public void Punch(Vector2 scale, Vector2 offset)
+        public void Punch(Vector2 scale, Vector2 offset, float angle = 0f)
         {
             SetScale(scale);
-            if (visual) visual.localPosition = visualBasePos + (Vector3)offset;
+            if (!visual) return;
+            visual.localPosition = visualBasePos + (Vector3)offset;
+            // Nhan vat lat bang scale am o object cha nen goc duong luon la "ngua ra sau".
+            visual.localRotation = Quaternion.Euler(0f, 0f, angle);
         }
 
         void OnEnable() => controller.StateChanged += OnStateChanged;
@@ -144,6 +147,7 @@ namespace LuHanh.Player
             float k = 1f - Mathf.Exp(-recoverSpeed * Time.deltaTime);
             visual.localScale = Vector3.Lerp(visual.localScale, Vector3.one, k);
             visual.localPosition = Vector3.Lerp(visual.localPosition, visualBasePos, k);
+            visual.localRotation = Quaternion.Slerp(visual.localRotation, Quaternion.identity, k);
         }
     }
 }

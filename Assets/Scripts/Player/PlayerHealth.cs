@@ -16,12 +16,13 @@ namespace LuHanh.Player
     public class PlayerHealth : MonoBehaviour, IDamageable, IHazardReceiver
     {
         [Header("Bi danh trung")]
-        [Tooltip("Khung hinh dung lai bao lau luc trung don (giay thuc).")]
+        [Tooltip("Phan ung khi don danh khong gui kem HitReaction rieng (day lui, chop sang...).")]
+        [SerializeField] HitReaction defaultReaction;
+        [Tooltip("Khung hinh dung lai bao lau khi roi bay / chet (giay thuc).")]
         [SerializeField] float hitStopTime = 0.1f;
-        [Tooltip("Van toc bat ra: X theo huong ra xa nguon don, Y huong len.")]
-        [SerializeField] Vector2 knockbackVelocity = new Vector2(8f, 8f);
-        [Tooltip("Mat dieu khien bao lau sau khi bi bat ra.")]
-        [SerializeField] float hurtTime = 0.2f;
+        [Tooltip("Lop phu de chop sang (SpriteRenderer con, material LuHanh/SpriteFlash), chep hinh tu Visual.")]
+        [SerializeField] SpriteRenderer hurtFlash;
+        [SerializeField] SpriteRenderer visual;
 
         [Header("Roi vao bay / ho")]
         [Tooltip("Dung vung tren dat lien tuc bao lau thi vi tri do moi duoc nho lam cho an toan.")]
@@ -30,7 +31,14 @@ namespace LuHanh.Player
         Health health;
         PlayerController controller;
         PlayerAttack attack;
+        PlayerMovementFx movementFx;
         Rigidbody2D body;
+
+        static readonly int FlashColorId = Shader.PropertyToID("_FlashColor");
+        MaterialPropertyBlock flashBlock;
+        int flashesLeft;
+        float flashOn, flashOff, flashTimer;
+        bool flashLit;
 
         bool dead;
         bool hazardRespawning;
@@ -45,7 +53,10 @@ namespace LuHanh.Player
             health = GetComponent<Health>();
             controller = GetComponent<PlayerController>();
             attack = GetComponent<PlayerAttack>();
+            movementFx = GetComponent<PlayerMovementFx>();
             body = GetComponent<Rigidbody2D>();
+            flashBlock = new MaterialPropertyBlock();
+            if (hurtFlash) hurtFlash.enabled = false;
 
             // Chua co ghe/checkpoint: hoi sinh tai cho bat dau man.
             checkpoint = transform.position;
@@ -60,16 +71,82 @@ namespace LuHanh.Player
             if (dead || hazardRespawning) return;
             if (!health.Damage(hit.damage)) return;
 
-            StartHitStop();
-
             if (health.IsDead)
             {
+                StartHitStop();
                 Die();
                 return;
             }
 
-            float side = hit.direction.x != 0f ? Mathf.Sign(hit.direction.x) : (controller.FacingRight ? -1f : 1f);
-            controller.Hurt(new Vector2(side * knockbackVelocity.x, knockbackVelocity.y), hurtTime);
+            var reaction = hit.reaction ? hit.reaction : defaultReaction;
+            if (reaction) reaction.Apply(this, hit);
+            else StartHitStop();
+        }
+
+        // ---- Cac phan ung co ban, HitReaction goi tuy y ----
+
+        /// <summary>Khung hinh mot thoang (giay thuc).</summary>
+        public void HitStopFor(float seconds)
+        {
+            if (seconds > 0f) HitStop.Request(seconds);
+        }
+
+        /// <summary>Bat ra xa nguon don: X theo huong <paramref name="direction"/>, Y huong len; mat dieu khien <paramref name="hurtSeconds"/>.</summary>
+        public void Knockback(Vector2 direction, Vector2 velocity, float hurtSeconds)
+        {
+            float side = direction.x != 0f ? Mathf.Sign(direction.x) : (controller.FacingRight ? -1f : 1f);
+            controller.Hurt(new Vector2(side * velocity.x, velocity.y), hurtSeconds);
+        }
+
+        /// <summary>
+        /// Dang bi trung: than ngua ra sau <paramref name="leanAngle"/> do (bi danh tu sau lung thi chui ve truoc)
+        /// va bep theo <paramref name="squash"/>, roi tu tro ve.
+        /// </summary>
+        public void HurtPose(Vector2 direction, Vector2 squash, float leanAngle)
+        {
+            if (!movementFx) return;
+            // direction = huong bi day. Bi day cung chieu dang nhin nghia la don den tu sau lung.
+            bool fromBehind = direction.x != 0f && (direction.x > 0f) == controller.FacingRight;
+            movementFx.Punch(squash, Vector2.zero, fromBehind ? -leanAngle : leanAngle);
+        }
+
+        /// <summary>Chop sang <paramref name="count"/> lan. Dem bang thoi gian thuc nen van chop trong luc khung hinh.</summary>
+        public void Flash(Color color, int count, float onTime, float offTime)
+        {
+            if (!hurtFlash || !visual || count <= 0) return;
+            flashBlock.SetColor(FlashColorId, color);
+            hurtFlash.SetPropertyBlock(flashBlock);
+            flashesLeft = count;
+            flashOn = onTime;
+            flashOff = offTime;
+            SetFlashLit(true);
+        }
+
+        void SetFlashLit(bool lit)
+        {
+            flashLit = lit;
+            flashTimer = lit ? flashOn : flashOff;
+            hurtFlash.enabled = lit;
+            if (lit) flashesLeft--;
+        }
+
+        void UpdateFlash()
+        {
+            if (!hurtFlash || (!flashLit && flashesLeft <= 0)) return;
+            // Chep khung hinh dang chay de lop sang luon khop dang nhan vat.
+            hurtFlash.sprite = visual.sprite;
+            hurtFlash.flipX = visual.flipX;
+            flashTimer -= Time.unscaledDeltaTime;
+            if (flashTimer > 0f) return;
+            if (flashLit) SetFlashLit(false);
+            else if (flashesLeft > 0) SetFlashLit(true);
+        }
+
+        void StopFlash()
+        {
+            flashesLeft = 0;
+            flashLit = false;
+            if (hurtFlash) hurtFlash.enabled = false;
         }
 
         /// <summary>
@@ -105,7 +182,11 @@ namespace LuHanh.Player
             groundedTimer = 0f;
         }
 
-        void Update() => TrackSafeGround();
+        void Update()
+        {
+            TrackSafeGround();
+            UpdateFlash();
+        }
 
         /// <summary>Nho vi tri moi khi da dung vung tren dat du lau (khong tinh luc bi danh bat ra).</summary>
         void TrackSafeGround()
@@ -132,6 +213,7 @@ namespace LuHanh.Player
 
         void Revive()
         {
+            StopFlash();
             Unfreeze();
             controller.Respawn(checkpoint);
             safePosition = checkpoint;

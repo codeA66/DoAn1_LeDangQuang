@@ -13,6 +13,8 @@ namespace LuHanh.Combat
         [Min(1)] public int damage = 1;
         [Tooltip("Chi gay sat thuong cho collider mang tag nay.")]
         public string targetTag = "Player";
+        [Tooltip("Phan ung cua nguoi choi khi trung (de trong = mac dinh). Quai tu gan tu config.")]
+        public HitReaction reaction;
 
         void OnTriggerStay2D(Collider2D other)
         {
@@ -29,7 +31,8 @@ namespace LuHanh.Combat
                 damage = damage,
                 direction = new Vector2(side, 0f),
                 knockback = 0f,
-                source = gameObject
+                source = gameObject,
+                reaction = reaction
             });
             enabled = false;
         }

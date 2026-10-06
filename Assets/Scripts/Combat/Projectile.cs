@@ -24,6 +24,8 @@ namespace LuHanh.Combat
         public float solidCheckRadius = 0.15f;
         [Tooltip("Vet mo bay theo (World space). Xoa sach khi lay ra tu pool.")]
         public ParticleSystem trail;
+        [Tooltip("Phan ung cua nguoi choi khi trung (de trong = mac dinh). Quai ban dat lai moi lan ban.")]
+        public HitReaction reaction;
 
         Rigidbody2D body;
         ProjectilePool pool;
@@ -77,7 +79,8 @@ namespace LuHanh.Combat
                 damage = damage,
                 direction = new Vector2(v.x >= 0f ? 1f : -1f, 0f),
                 knockback = 0f,
-                source = gameObject
+                source = gameObject,
+                reaction = reaction
             });
             Despawn(burst: true);
         }

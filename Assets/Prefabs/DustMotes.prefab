@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3790803618643502442}
   - component: {fileID: 9166469368632591734}
   - component: {fileID: 5202809102454227593}
+  - component: {fileID: 5335750056742753384}
   m_Layer: 0
   m_Name: DustMotes
   m_TagString: Untagged
@@ -4836,3 +4837,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &5335750056742753384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325818695518279293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22204f2173dbc149937027a7102e521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Effects.ParticleWrap
+  size: {x: 0, y: 0}

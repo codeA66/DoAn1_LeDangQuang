@@ -46,6 +46,7 @@ namespace LuHanh.Enemies
             walkHash = Animator.StringToHash(config.walkState);
             attackHash = Animator.StringToHash(config.attackState);
             if (attackHitbox == null) attackHitbox = GetComponentInChildren<ContactDamage>(true);
+            if (attackHitbox) attackHitbox.reaction = config.hitReaction;
             SetAttackHitbox(false);
 
             base.Awake();

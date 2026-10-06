@@ -13,5 +13,7 @@ namespace LuHanh.Combat
         public float knockback;
         /// <summary>Doi tuong gay ra don danh.</summary>
         public GameObject source;
+        /// <summary>Phan ung cua nguoi choi khi trung don nay. Null = phan ung mac dinh cua nguoi choi.</summary>
+        public HitReaction reaction;
     }
 }

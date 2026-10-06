@@ -933,7 +933,7 @@ Các object Flash / StreaksShort / StreaksLong trong `HitFx.prefab` đã **tắt
 ### 5.15 Máu người chơi kiểu Hollow Knight (5 mask)
 
 **Mục tiêu**: có **5 cục máu** (mask) ở góc trên trái. Mỗi lần bị đánh trúng thì:
-- mất 1 cục, khung hình khựng ~0.1s (hitstop), nhân vật bị **hất văng** một đoạn (≈ 1.6 ô);
+- mất 1 cục (mask trên HUD **vỡ thành mảnh**), khung hình khựng 0.08s, nhân vật **bị đẩy lùi nhẹ** và **chớp trắng 2 lần rất nhanh** kiểu Nine Sols — chi tiết ở mục "Phản ứng khi trúng đòn (`HitReaction`)" cuối phần này;
 - **không có bất tử, không nhấp nháy** sau khi trúng. Bù lại, **mỗi đòn của quái chỉ trúng tối đa 1 lần**: đạn biến mất khi trúng, còn cú lao của Ghoul tự tắt hitbox sau khi trúng (mục 5.16).
 - **Chạm thân quái không mất máu.** Chỉ mất máu khi quái **đang tấn công** (Ghoul đang lao, quả cầu của dơi).
 
@@ -944,7 +944,7 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 |---|---|---|
 | `Scripts/Combat/Health.cs` | `LuHanh.Combat` | **Máu dùng chung** (người chơi, quái, boss): `Max`, `Current`, `Damage(n)`, `Refill()`, event `Changed(current, max)` và `Died`. Không biết gì về hiệu ứng |
 | `Scripts/Player/PlayerHealth.cs` | `LuHanh.Player` | Phản ứng của người chơi: nhận đòn (`IDamageable`), hitstop, hất văng, chết → hồi sinh |
-| `Scripts/Player/States/HurtState.cs` | `LuHanh.Player.States` | State **bị thương** trong FSM: hất ra, chịu trọng lực, mất điều khiển 0.2s |
+| `Scripts/Player/States/HurtState.cs` | `LuHanh.Player.States` | State **bị thương** trong FSM: đẩy ra, chịu trọng lực, mất điều khiển trong `Hurt Time` của HitReaction (mặc định 0.15s) |
 | `Scripts/Core/RespawnManager.cs` | `LuHanh.Core` | Trình tự hồi sinh: tối dần → đặt lại người chơi → đặt lại mọi `IResettable` → sáng dần |
 | `Scripts/Core/IResettable.cs` | `LuHanh.Core` | Interface `ResetState()` cho thứ cần trở về ban đầu khi hồi sinh (quái...) |
 | `Scripts/UI/HealthUI.cs` | `LuHanh.UI` | Hàng mask trên HUD |
@@ -956,10 +956,10 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 2. `PlayerHealth.TakeHit`:
    - Đã chết hoặc đang hồi về sau khi rơi hố → bỏ qua.
    - `health.Damage(1)` → `Health` bắn event `Changed` → `HealthUI` đổi sprite mask.
-   - **Hitstop**: `HitStop.Request(0.1)` (dùng chung với đòn chém, xem 5.14). Đặt `Time.timeScale = 0`, đếm bằng thời gian thực rồi trả về 1.
-   - Còn máu: gọi `controller.Hurt(vận tốc, 0.2s)` với vận tốc = (±8, 8). Dấu ± theo hướng ra xa nguồn đòn (Ghoul lao từ trái thì văng sang phải).
+   - Hết máu: hitstop 0.1s (`hitStopTime` của `PlayerHealth`) rồi chết.
+   - Còn máu: lấy `hit.reaction` (quái gửi kèm), không có thì dùng `defaultReaction` (`HR_Default`), rồi gọi `reaction.Apply(this, hit)`. `BasicHitReaction` làm: hitstop 0.08s (`HitStop.Request`, dùng chung với đòn chém) → `Knockback` gọi `controller.Hurt((±5, 3), 0.15s)` (dấu ± theo hướng ra xa nguồn đòn) → `Flash` chớp trắng.
 3. `PlayerController.Hurt()` chỉ ghi lại yêu cầu (`hurtRequested = true`). FSM có luật **`AnyTransition → HurtState`**, khai báo **đầu tiên** nên ưu tiên hơn dash và nhảy. Trong HurtState không dash, không nhảy, không điều khiển được.
-4. Hết 0.2s: HurtState → Fall (đang trên không) / Run / Idle.
+4. Hết `Hurt Time`: HurtState → Fall (đang trên không) / Run / Idle.
 
 > **Vì sao bỏ được bất tử?** Bất tử sinh ra để một lần chạm quái không bị trừ máu liên tục mỗi frame. Giờ chạm thân không gây sát thương, còn mỗi đòn tự giới hạn 1 lần trúng, nên không cần bất tử nữa. Hệ quả: nếu 2 quái đánh trúng **cùng lúc** thì mất 2 mask. Muốn thêm lại bất tử thì thêm bộ đếm thời gian trong `PlayerHealth.TakeHit` (bỏ qua đòn khi bộ đếm > 0).
 
@@ -1003,6 +1003,65 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 | `HealthUI` | Pop Scale / Pop Time | 1.4 / 0.2 | Mask vừa mất nảy to lên rồi thu về |
 
 **Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, rung camera. (Vực gây sát thương: đã làm ở mục 5.19.)
+
+#### Phản ứng khi trúng đòn (`HitReaction`) — dễ mở rộng cho quái mới
+
+Mỗi loại quái sau này đánh trúng sẽ gây hiệu ứng khác nhau (đẩy mạnh hơn, chớp đỏ, độc, choáng...), nên phần "trúng đòn thì người chơi phản ứng ra sao" tách thành **asset có thể kế thừa**, `PlayerHealth` không phải sửa.
+
+| File | Vai trò |
+|---|---|
+| `Scripts/Combat/HitReaction.cs` | Lớp cha **trừu tượng** (ScriptableObject): `abstract void Apply(PlayerHealth target, HitInfo hit)`. Gọi sau khi đã trừ máu và người chơi còn sống |
+| `Scripts/Combat/BasicHitReaction.cs` | Lớp con mặc định: hitstop + đẩy lùi + chớp sáng. Menu tạo: **Create → LuHanh → Hit Reaction → Basic** |
+| `Assets/Settings/HitReactions/HR_Default.asset` | Phản ứng mặc định, gán vào `PlayerHealth → Default Reaction` |
+
+**Đường đi:** `EnemyConfigBase.hitReaction` (ô **Hit Reaction** trong `Ghoul.asset`, `Bat.asset`...) → quái gán vào `ContactDamage.reaction` (Ghoul, lúc `Awake`) hoặc `Projectile.reaction` (dơi, mỗi lần bắn) → gửi trong `HitInfo.reaction` → `PlayerHealth.TakeHit` gọi `Apply`. Để trống ở config = dùng `HR_Default`.
+
+`PlayerHealth` mở sẵn các hàm cho reaction dùng: `HitStopFor(giây)`, `Knockback(hướng, vận tốc, giây mất điều khiển)`, `Flash(màu, số lần, giây sáng, giây tắt)`.
+
+**Thêm hiệu ứng cho quái mới:**
+- Chỉ khác thông số → **Create → LuHanh → Hit Reaction → Basic**, chỉnh, kéo vào ô Hit Reaction của config quái đó.
+- Hiệu ứng mới hẳn (độc, chậm...) → viết lớp con:
+  ```csharp
+  [CreateAssetMenu(menuName = "LuHanh/Hit Reaction/Poison")]
+  public class PoisonHitReaction : BasicHitReaction
+  {
+      public override void Apply(PlayerHealth target, HitInfo hit)
+      {
+          base.Apply(target, hit);   // vẫn đẩy lùi + chớp
+          // thêm: gây độc theo thời gian...
+      }
+  }
+  ```
+
+**`BasicHitReaction` — chỉnh trong `HR_Default`:**
+
+| Ô | Mặc định | Tăng | Giảm |
+|---|---|---|---|
+| **Hit Stop Time** | 0.08s | Khựng lâu, đòn nặng tay | 0 = không khựng |
+| **Knockback** | (5, 3) | Văng xa / nảy cao hơn (cũ là (8, 8)) | Gần như đứng yên |
+| **Hurt Time** | 0.15s | Mất điều khiển lâu hơn | Phản hồi lại nhanh |
+| **Lean Angle** | 15° | Ngửa ra sau mạnh hơn (bị đánh từ sau lưng thì chúi về trước) | 0 = không ngả |
+| **Hurt Squash** | (0.85, 1.1) | — | (1, 1) = không bẹp |
+| **Flash Color** | trắng | — | Đổi màu chớp (vd đỏ cho quái lửa) |
+| **Flash Count** | 2 | Chớp nhiều lần | 0 = không chớp |
+| **Flash On / Off Time** | 0.04 / 0.03s | Chớp chậm, dễ thấy | Chớp gắt hơn |
+
+**Animation bị trúng:** bộ Cloaked không có khung bị đánh, nên clip `Assets/Character/Player/cloaked_hurt.anim` ghép từ 3 khung rơi có sẵn **fall 15 → 16 → 17** (người gù xuống, áo choàng xòe), mỗi khung 0.05s, **không lặp** (giữ khung 17 tới hết `Hurt Time`). State `player_hurt` trong `AC_player`; `PlayerAnimationDriver` có thêm `PlayerAnim.Hurt` (ô `Hurt State`, thiếu state thì tự dùng clip rơi). `HurtState.Enter` gọi `Replay(Hurt)` để bị trúng liên tiếp thì clip chạy lại từ đầu. Kèm động tác thân: `HurtPose` → `PlayerMovementFx.Punch(scale, 0, góc)` ngả `Lean Angle` độ + bẹp `Hurt Squash`, rồi tự xoay/giãn về như cũ (cùng cơ chế co giãn khi nhảy/chém, giữ nguyên trong lúc hitstop vì dùng thời gian game). Đổi khung: mở `cloaked_hurt.anim` trong cửa sổ Animation, kéo sprite khác vào.
+
+**Chớp sáng:** object `Player/Visual/HurtFlash` (SpriteRenderer, material `M_SpriteFlash`, Order 21 = trên nhân vật). `PlayerHealth` mỗi frame chép sprite đang chạy của `Visual` sang để lớp sáng khít hình, bật/tắt theo nhịp, đếm bằng **thời gian thực** nên vẫn chớp trong lúc hitstop. Màu đặt qua MaterialPropertyBlock (`_FlashColor`). **Không có bất tử.**
+
+**Mask HUD vỡ (`HealthUI`):** mất mask nào thì mask đó phóng to rồi thu lại như cũ, kèm **7 mảnh vuông** bung ra (phần lớn hướng lên), rơi theo trọng lực, xoay, mờ dần trong 0.55s. Mảnh tạo sẵn 21 cái lúc `Start`, đặt thẳng dưới Canvas (không nằm trong HorizontalLayoutGroup), chạy bằng thời gian thực.
+
+| Ô (`HUD → HealthBar → HealthUI`) | Mặc định | Ghi chú |
+|---|---|---|
+| **Shard Count** | 7 | Số mảnh mỗi lần vỡ |
+| **Shard Color** | trắng ngà | |
+| **Shard Size** | 6–12 px | |
+| **Shard Speed** | 180–380 px/s | Bung xa hơn khi tăng |
+| **Shard Gravity** | 1400 | Rơi nhanh hơn khi tăng |
+| **Shard Lifetime** | 0.55s | |
+
+Không có máu người chơi (giống Nine Sols).
 
 ### 5.16 Quái đầu tiên: Ghoul (tuần tra + đuổi theo + lao tới)
 
@@ -1598,6 +1657,19 @@ Hiệu ứng: những hạt bụi tím nhạt / trắng ấm trôi chậm trong 
 | | Sorting Layer / Order | **Background / −30** | Vẽ sau nhân vật, trước bầu trời |
 
 **Mẹo chỉnh**: muốn bụi dày hơn → tăng Rate over Time; muốn "ma mị" hơn → tăng Noise Strength; muốn thấy rõ hơn trên nền tối → đổi Start Color sáng hơn.
+
+**Bụi cuộn vòng quanh camera (`ParticleWrap`)**
+
+Vấn đề cũ: hạt sinh trong hộp bám camera nhưng mô phỏng **World space**, nên chạy đi là bỏ lại hạt cũ phía sau. Prewarm lấp sẵn khoảng 100 hạt lúc vào màn, còn hạt mới chỉ 10 hạt/giây (lại mờ dần lên) → đi một đoạn thì khung hình chỉ còn khoảng 1/3 số hạt, trông như bụi "biến mất".
+
+Cách sửa: `Assets/Scripts/Effects/ParticleWrap.cs` gắn trên `DustMotes` (trong `Assets/Prefabs/DustMotes.prefab`). Mỗi `LateUpdate` đọc toàn bộ hạt (`GetParticles`), hạt nào ra khỏi hộp quanh emitter thì đưa sang mép đối diện (lấy dư theo bề rộng/bề cao hộp), rồi ghi lại (`SetParticles`).
+- Số hạt trong khung hình luôn đều dù đi bao xa; hạt vẫn ở World space nên khi chạy vẫn trôi ngược lại (có chiều sâu).
+- Hộp mặc định lấy theo **Shape > Scale** (30 × 16) — phải **lớn hơn khung hình** (khoảng 26.7 × 15 với camera size 7.5, 16:9) để hạt bị dời đi khuất ngoài màn hình, không thấy nhảy. Đổi zoom camera thì tăng Shape > Scale cho tương xứng.
+- Chi phí: khoảng 260 hạt × vài phép tính mỗi frame, không cấp phát bộ nhớ (mảng tạo sẵn lúc `Awake`).
+
+| Ô (`ParticleWrap`) | Mặc định | Ghi chú |
+|---|---|---|
+| **Size** | (0, 0) | 0 = lấy theo Shape > Scale; điền số nếu muốn hộp cuộn khác hộp sinh hạt |
 
 ### 9.2 Sương mù cuộn (`FogLayer`)
 Script tự tạo nhiều tấm sprite sương nối nhau và cuộn ngang vô tận.
@@ -2454,6 +2526,53 @@ Sprite nhân vật phải để **Mesh Type = Full Rect** (đang vậy), nếu T
 
 ---
 
+## 9b. Màn chơi và chuyển màn (kiểu Soul Knight)
+
+Cấu trúc game: **mỗi cụm 3 màn, màn thứ 3 có boss**, mỗi màn dạy một vật cản hoặc kỹ năng mới. Cuối màn có **cổng dịch chuyển**: màn thường thì cổng mở sẵn, màn boss thì cổng ẩn tới khi hạ boss. Bước vào cổng → nhân vật bị hút vào → màn hình tối → **thẻ tên màn** (vd `1-2` / `Test Level`) → vào màn mới.
+
+### Các file (`Assets/Scripts/Level/`, namespace `LuHanh.Level`)
+
+| File | Vai trò |
+|---|---|
+| `LevelList.cs` | ScriptableObject danh sách màn theo thứ tự: mỗi dòng `sceneName`, `code` (1-1), `title`, `hasBoss`; `completeScene` = scene sau màn cuối |
+| `LevelPortal.cs` | Cổng: mở sẵn hoặc ẩn chờ `Open()`; chạm vào thì khóa điều khiển, hút nhân vật vào tâm, gọi chuyển màn |
+| `SceneTransition.cs` | Tự tạo lần đầu dùng, sống xuyên scene (`DontDestroyOnLoad`): tối dần 0.45s → tải scene → thẻ tên màn 1.3s → sáng dần 0.6s. Chạy bằng thời gian thực |
+| `LevelProgress.cs` | Lưu màn xa nhất đã mở (PlayerPrefs `LuHanh.UnlockedLevel`) cho menu chọn màn sau này |
+| `LevelCompleteScreen.cs` | Màn hình sau màn cuối: bấm phím bất kỳ (sau 1.5s) để chơi lại từ màn đầu |
+
+### Danh sách màn hiện tại (`Assets/Settings/LevelList.asset`)
+
+| # | Scene | Mã | Tên |
+|---|---|---|---|
+| 0 | `Level1` | 1-1 | A New Beginning |
+| 1 | `TestGamePlay` | 1-2 | Test Level (tạm, để thử luồng chuyển màn) |
+| — | `LevelComplete` | | sau màn cuối |
+
+Build Profiles: `Level1` (đầu tiên, build chạy từ đây), `TestGamePlay`, `LevelComplete`.
+
+**Thêm màn mới:** tạo scene (kéo `LevelEssentials` + `Player` + `LevelPortal`), thêm scene vào **File → Build Profiles**, thêm một dòng vào `LevelList` đúng thứ tự. Cổng tự tìm màn kế tiếp theo tên scene đang mở.
+
+### Prefab `Assets/Prefabs/Level/LevelPortal.prefab`
+
+| Con | Gì |
+|---|---|
+| (gốc) | `CircleCollider2D` trigger bán kính 0.9 + `LevelPortal` |
+| `Visual` | 8 khung xoáy cắt từ `Animated Portal/Portal-Spinning.png` (bản xanh lam, lưới 3×3 ô 64px, Point, PPU 26 → cao khoảng 2.5 unit), `FrameAnimation` lặp 0.8s, Order 42 (trên VisionMask, luôn thấy) |
+| `Glow` | Light2D Point xanh ngọc, intensity 1.6, bán kính 4.5 |
+| `Swirl` | Hạt vuông xanh sinh trên vòng tròn bán kính 1.5, bay vào tâm (Start Speed âm) + quay quanh (Orbital Z 2.5) |
+| `Burst` | 30 hạt bung ra lúc cổng mở và lúc người chơi bước vào |
+
+| Ô (`LevelPortal`) | Mặc định | Ghi chú |
+|---|---|---|
+| **Levels** | LevelList | |
+| **Open On Start** | bật | Tắt cho màn boss; boss chết gọi `portal.Open()` |
+| **Open Time** | 0.6s | Cổng phóng to vượt 1.15 rồi bật về 1, ánh sáng bật dần |
+| **Suck Time** | 0.6s | Nhân vật bay vào tâm, thu nhỏ, xoay **Suck Spins** = 1.5 vòng |
+
+Khi bị hút, cổng tắt `PlayerController`, `PlayerAttack`, `PlayerMovementFx`, `PlayerInput` và Rigidbody2D (đèn, quầng sáng vẫn giữ). Đổi hình cổng: thay khung trong `Visual → FrameAnimation → Frames`.
+
+---
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -2565,3 +2684,7 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 58. Prefab `LevelEssentials` (mục 9.5): gom CameraRig, HUD, GameSystems (RespawnManager), 2 Global Light, Lighting (Volume) và Background; dựng màn mới chỉ cần kéo `LevelEssentials` + `Player`. Thêm `Core/CameraFollowPlayer` (tự gán Player làm Tracking Target) và `HealthUI` tự tìm Health của Player theo tag khi ô trống. Level1 đã chuyển sang dùng prefab này.
 59. Hiệu ứng trúng đòn kiểu Nine Sols (mục 5.14): `HitImpact` thành chùm sao pixel trắng kem 3 khung (`hit_star_0..2`, 0.12s) + đường chém dài xuyên qua điểm trúng (`hit_line_0..1`, object con Line, 0.09s), ảnh trong `Assets/Art/Generated/Fx/HitPixel/`, Point, PPU 18; `HitEffect` phát mọi `FrameAnimation` trong prefab, lệch góc ngẫu nhiên ±12° (`impactAngleJitter`), `impactArtAngle` 0; máu gần (Puffs) thành cục tròn méo pixel (`blood_blobs.png` 4 hình, `M_PixelBlob`, size 0.5–1.0, co nhỏ rồi mất, 5–7 cục).
 60. Vệt chém theo hướng (mục 5.14): `PlayerAttack` bỏ `slashFrames` / `altSlashFrames`, thay bằng 3 danh sách bộ vệt `sideSlashes` (Slash 1 → 2), `upSlashes` (Slash 1 → 2 → 3), `downSlashes` (trống = dùng bộ chém lên); chém liên tiếp trong `slashAlternateWindow` thì lấy bộ kế tiếp (`comboIndex`). Chém lên lật dọc vệt để phần cong ở phía trước, `slashUpPush` 0.8 → 1.4. Slash 2 về pivot giữa, PPU 34 (không còn dùng làm chùm nổ).
+61. Sửa bụi lơ lửng biến mất khi di chuyển (mục 9.1): thêm `Effects/ParticleWrap` gắn vào `DustMotes.prefab` - hạt World space ra khỏi hộp 30×16 quanh camera thì đưa sang mép đối diện, mật độ bụi luôn đều.
+62. Phản ứng khi người chơi trúng đòn (mục 5.15): lớp cha `Combat/HitReaction` (ScriptableObject, override `Apply`) + `BasicHitReaction` (hitstop 0.08s, đẩy lùi (5, 3) thay cho (8, 8), mất điều khiển 0.15s, chớp trắng 2 lần 0.04/0.03s, không bất tử), asset `HR_Default`; `HitInfo.reaction`, `ContactDamage.reaction`, `Projectile.reaction`, `EnemyConfigBase.hitReaction` để mỗi quái gửi phản ứng riêng. `PlayerHealth` thêm `HitStopFor` / `Knockback` / `Flash`, object `Visual/HurtFlash`. `HealthUI`: mask mất thì vỡ thành 7 mảnh pixel (pool 21).
+63. Animation bị trúng (mục 5.15): clip `cloaked_hurt.anim` (fall 15 → 16 → 17, 0.05s/khung, không lặp) + state `player_hurt`; `PlayerAnim.Hurt` (`hurtState`), `HurtState` phát Hurt thay cho clip rơi. `BasicHitReaction` thêm leanAngle 15° và hurtSquash (0.85, 1.1) qua `PlayerHealth.HurtPose`; `PlayerMovementFx.Punch` nhận thêm góc nghiêng và tự xoay về.
+64. Chuyển màn kiểu Soul Knight (mục 9b): thư mục `Scripts/Level` (`LevelList`, `LevelPortal`, `SceneTransition`, `LevelProgress`, `LevelCompleteScreen`); prefab `Prefabs/Level/LevelPortal` (asset Animated Portal bản xanh lam cắt 8 khung + Light2D + hạt xoáy + hạt bung); `Settings/LevelList` (1-1 Level1 "A New Beginning", 1-2 TestGamePlay "Test Level" tạm); cổng đặt cuối Level1 tại (177, 2.3); scene `LevelComplete`; Build Profiles: Level1, TestGamePlay, LevelComplete.

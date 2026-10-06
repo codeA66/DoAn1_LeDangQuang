@@ -9,7 +9,8 @@ namespace LuHanh.Player
         Walk,
         Jump,
         Fall,
-        Dash
+        Dash,
+        Hurt
     }
 
     /// <summary>
@@ -31,9 +32,11 @@ namespace LuHanh.Player
         public string fallState = "player_jump";
         [Tooltip("Chua co clip dash rieng thi de trung voi jump.")]
         public string dashState = "player_jump";
+        [Tooltip("Clip bi danh trung (khong lap, giu khung cuoi).")]
+        public string hurtState = "player_hurt";
 
         Animator animator;
-        int idleHash, walkHash, jumpHash, fallHash, dashHash;
+        int idleHash, walkHash, jumpHash, fallHash, dashHash, hurtHash;
         PlayerAnim? currentAnim;
 
         public void Initialise(Animator animator)
@@ -46,6 +49,7 @@ namespace LuHanh.Player
             jumpHash = Resolve(jumpState);
             fallHash = Resolve(fallState);
             dashHash = Resolve(dashState);
+            hurtHash = Resolve(hurtState);
         }
 
         /// <summary>Doi clip neu khac clip dang phat. Goi lai cung gia tri thi khong lam gi.</summary>
@@ -76,6 +80,7 @@ namespace LuHanh.Player
                 case PlayerAnim.Jump: return jumpHash;
                 case PlayerAnim.Fall: return fallHash;
                 case PlayerAnim.Dash: return dashHash;
+                case PlayerAnim.Hurt: return hurtHash != 0 ? hurtHash : fallHash;
                 default: return 0;
             }
         }
