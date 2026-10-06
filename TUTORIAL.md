@@ -2571,6 +2571,38 @@ Build Profiles: `Level1` (đầu tiên, build chạy từ đây), `TestGamePlay`
 
 Khi bị hút, cổng tắt `PlayerController`, `PlayerAttack`, `PlayerMovementFx`, `PlayerInput` và Rigidbody2D (đèn, quầng sáng vẫn giữ). Đổi hình cổng: thay khung trong `Visual → FrameAnimation → Frames`.
 
+### Trình tự chuyển màn chi tiết
+
+| Bước | Thời gian | Gì xảy ra | Ai làm |
+|---|---|---|---|
+| 1. Bị hút | 0.6s | Nhân vật bay vào tâm, thu nhỏ, xoay 1.5 vòng; **camera zoom còn 70%**; cổng **phình to 1.3**; hạt xoáy gấp đôi | `LevelPortal.EnterRoutine` |
+| 2. Biến mất | tức thì | **Sóng xung kích** 60 hạt bung ra; tạo **bản sao cổng** (ẩn, `DontDestroyOnLoad`) làm cổng đến | `LevelPortal` |
+| 3. Đóng màn hình | 0.55s | **Chớp trắng xanh** 0.25s + màn hình **đóng lại thành vòng tròn vào tâm cổng** (iris) | `SceneTransition` |
+| 4. Tải scene | — | `LoadSceneAsync`, đợi thêm 1 frame cho camera đặt vào nhân vật; cổng đến ẩn nhân vật (scale 0) | `SceneTransition`, `LevelPortal.BeginArrival` |
+| 5. Thẻ tên màn | ~1.6s + số chữ | 2 **đường kẻ tỏa ra** 0.35s, **mã màn trượt lên** + hiện dần, **tên màn hiện từng chữ** (0.045s/chữ), giữ 0.9s, mờ 0.3s; hạt sáng trôi lên | `SceneTransition.ShowCard` |
+| 6. Mở màn hình | 0.7s | Vòng tròn **mở ra từ chỗ nhân vật**; cùng lúc **cổng đến mở** (0.3s) → **nhân vật bật ra** (phóng vượt 1.15 rồi về 1, 0.35s, kèm hạt bung) → mở khóa điều khiển → cổng **đóng lại** (0.3s) rồi tự hủy | `SceneTransition`, `LevelPortal.ArrivalRoutine` |
+
+**Font và vòng tròn** đặt trong `LevelList` (vì `SceneTransition` tự tạo bằng code, không có ô kéo thả):
+
+| Ô (`LevelList`) | Giá trị |
+|---|---|
+| **Code Font** | `Art/Fronts/beholden-book-font/BeholdenBook-Bold.ttf` (mã màn, cỡ 120, xanh ngọc, viền `Outline` + `Shadow` xanh) |
+| **Title Font** | `BeholdenBook-Italic.ttf` (tên màn, cỡ 52) |
+| **Iris Material** | `Assets/Shaders/M_UIIris.mat` |
+
+**Shader `LuHanh/UIIris`** (`Assets/Shaders/UIIris.shader`): lớp phủ toàn màn hình, ngoài vòng tròn là màu tối, trong vòng trong suốt. `_Center` = tâm theo tọa độ màn hình 0..1 (đổi từ vị trí thế giới bằng `Camera.WorldToViewportPoint`), `_Radius` tính theo chiều cao màn hình đã nhân tỉ lệ khung (2.2 = mở hết, 0 = đóng kín), `_Softness` = độ mềm mép.
+
+| Ô (`LevelPortal`, phần mới) | Mặc định | Ghi chú |
+|---|---|---|
+| **Suck Zoom** | 0.7 | Camera zoom vào còn 70% |
+| **Suck Swell** | 1.3 | Cổng phình to khi hút |
+| **Shockwave Count** | 60 | Số hạt sóng xung kích |
+| **Arrival Open / Pop / Close Time** | 0.3 / 0.35 / 0.3s | Cổng đến mở, nhân vật bật ra, cổng đóng |
+
+**Mở đầu màn khi vào thẳng (`LevelIntro`)**: gắn trên `LevelEssentials/GameSystems`. Bấm Play hoặc mở game vào thẳng một màn thì `Start` tạo một `LevelPortal` (đánh dấu `MarkAsArrival`) và gọi `SceneTransition.PlayIntro`: màn hình tối kín → thẻ tên màn → bước 6 ở bảng trên (vòng tròn mở, cổng mở, nhân vật bật ra). Đến màn bằng cổng thì `SceneTransition.IsBusy` đang bật nên `LevelIntro` tự bỏ qua, không chạy hai lần. Scene không có trong `LevelList` thì bỏ thẻ tên, chỉ có cổng đến. Ô **Play On Start**: tắt khi muốn thử màn nhanh trong Editor.
+
+Thời gian từng bước của thẻ tên màn và vòng tròn là hằng số đầu file `SceneTransition.cs` (`IrisCloseTime`, `CharTime`, `TitleHoldTime`...).
+
 ---
 
 ## 10. Lỗi hay gặp và cách xử lý
@@ -2688,3 +2720,5 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 62. Phản ứng khi người chơi trúng đòn (mục 5.15): lớp cha `Combat/HitReaction` (ScriptableObject, override `Apply`) + `BasicHitReaction` (hitstop 0.08s, đẩy lùi (5, 3) thay cho (8, 8), mất điều khiển 0.15s, chớp trắng 2 lần 0.04/0.03s, không bất tử), asset `HR_Default`; `HitInfo.reaction`, `ContactDamage.reaction`, `Projectile.reaction`, `EnemyConfigBase.hitReaction` để mỗi quái gửi phản ứng riêng. `PlayerHealth` thêm `HitStopFor` / `Knockback` / `Flash`, object `Visual/HurtFlash`. `HealthUI`: mask mất thì vỡ thành 7 mảnh pixel (pool 21).
 63. Animation bị trúng (mục 5.15): clip `cloaked_hurt.anim` (fall 15 → 16 → 17, 0.05s/khung, không lặp) + state `player_hurt`; `PlayerAnim.Hurt` (`hurtState`), `HurtState` phát Hurt thay cho clip rơi. `BasicHitReaction` thêm leanAngle 15° và hurtSquash (0.85, 1.1) qua `PlayerHealth.HurtPose`; `PlayerMovementFx.Punch` nhận thêm góc nghiêng và tự xoay về.
 64. Chuyển màn kiểu Soul Knight (mục 9b): thư mục `Scripts/Level` (`LevelList`, `LevelPortal`, `SceneTransition`, `LevelProgress`, `LevelCompleteScreen`); prefab `Prefabs/Level/LevelPortal` (asset Animated Portal bản xanh lam cắt 8 khung + Light2D + hạt xoáy + hạt bung); `Settings/LevelList` (1-1 Level1 "A New Beginning", 1-2 TestGamePlay "Test Level" tạm); cổng đặt cuối Level1 tại (177, 2.3); scene `LevelComplete`; Build Profiles: Level1, TestGamePlay, LevelComplete.
+65. Chuyển màn đặc sắc hơn (mục 9b): bị hút thì camera zoom 70%, cổng phình 1.3, hạt xoáy gấp đôi, sóng xung kích 60 hạt; màn hình chớp trắng xanh rồi đóng thành vòng tròn vào tâm cổng (shader mới `LuHanh/UIIris`, `M_UIIris`); thẻ tên màn dùng font Beholden Book (Bold cho mã, Italic cho tên) với đường kẻ tỏa ra, mã trượt lên, tên hiện từng chữ, hạt sáng; màn mới mở vòng tròn từ chỗ nhân vật, cổng đến (bản sao cổng) mở ra và nhân vật bật ra. `LevelList` thêm codeFont / titleFont / irisMaterial.
+66. Mở đầu màn khi vào thẳng (mục 9b): `Level/LevelIntro` gắn trong `LevelEssentials/GameSystems` - bấm Play / mở game vào Level1 cũng có thẻ tên màn "1-1 A New Beginning" và cổng đến cho nhân vật bật ra; `SceneTransition.PlayIntro`, `LevelPortal.MarkAsArrival`; đến bằng cổng thì tự bỏ qua.

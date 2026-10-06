@@ -22,7 +22,7 @@ namespace LuHanh.Level
             if (!pressed || !levels) return;
 
             var first = levels.Get(0);
-            if (first != null) SceneTransition.Load(first.sceneName, first.code, first.title);
+            if (first != null) SceneTransition.Load(first.sceneName, first.code, first.title, levels);
         }
     }
 }

@@ -22,3 +22,6 @@ MonoBehaviour:
     title: Test Level
     hasBoss: 0
   completeScene: LevelComplete
+  codeFont: {fileID: 12800000, guid: f28aa2ace5175bc40acfe6a284180287, type: 3}
+  titleFont: {fileID: 12800000, guid: e38dc391ab8a4274f80653f200c69a33, type: 3}
+  irisMaterial: {fileID: 2100000, guid: 39e307c6d5f83a249a9f8904f7eb3f21, type: 2}

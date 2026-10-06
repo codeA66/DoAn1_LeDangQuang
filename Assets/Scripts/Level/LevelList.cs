@@ -27,6 +27,14 @@ namespace LuHanh.Level
         [Tooltip("Scene khi da qua man cuoi cung.")]
         public string completeScene = "LevelComplete";
 
+        [Header("The ten man khi chuyen man")]
+        [Tooltip("Font ma man (vd 1-2).")]
+        public Font codeFont;
+        [Tooltip("Font ten man.")]
+        public Font titleFont;
+        [Tooltip("Material lo tron dong/mo man hinh (shader LuHanh/UIIris).")]
+        public Material irisMaterial;
+
         public int IndexOf(string sceneName) => levels.FindIndex(e => e.sceneName == sceneName);
 
         public Entry Get(int index) => index >= 0 && index < levels.Count ? levels[index] : null;

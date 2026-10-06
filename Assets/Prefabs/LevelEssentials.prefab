@@ -48,6 +48,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152234665079316997}
   - component: {fileID: 1473131471963697022}
+  - component: {fileID: 877301790299980836}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -89,6 +90,21 @@ MonoBehaviour:
   hazardFadeOutTime: 0.25
   hazardHoldTime: 0.05
   hazardFadeInTime: 0.3
+--- !u!114 &877301790299980836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477871365633040500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b04da610a874044a777c857c9aa707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Level.LevelIntro
+  levels: {fileID: 11400000, guid: de9e5680d6b4abd438f1d8a425c40753, type: 2}
+  portalPrefab: {fileID: 5112506727724835070, guid: 1e90e866ad399594ead3f84530c6182f, type: 3}
+  playOnStart: 1
 --- !u!1001 &309681737007660022
 PrefabInstance:
   m_ObjectHideFlags: 0
