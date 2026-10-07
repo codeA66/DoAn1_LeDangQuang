@@ -45,6 +45,7 @@ namespace LuHanh.Player
         public float recoverSpeed = 12f;
 
         PlayerController controller;
+        PlayerActionAnimation actionAnimation;
         Rigidbody2D body;
         float lastFallSpeed;
         bool running;
@@ -54,6 +55,7 @@ namespace LuHanh.Player
         void Awake()
         {
             controller = GetComponent<PlayerController>();
+            actionAnimation = GetComponent<PlayerActionAnimation>();
             body = GetComponent<Rigidbody2D>();
             if (visual) visualBasePos = visual.localPosition;
         }
@@ -93,7 +95,8 @@ namespace LuHanh.Player
             {
                 float t = Mathf.Clamp01(lastFallSpeed / hardLandingSpeed);
                 if (landDust) landDust.Emit(Mathf.RoundToInt(Mathf.Lerp(minLandParticles, maxLandParticles, t)));
-                SetScale(Vector2.Lerp(Vector2.one, landSquash, t));
+                if (!actionAnimation || !actionAnimation.PlayLanding())
+                    SetScale(Vector2.Lerp(Vector2.one, landSquash, t));
                 lastFallSpeed = 0f;
             }
         }

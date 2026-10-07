@@ -1,6 +1,7 @@
 using LuHanh.Combat;
 using LuHanh.Core;
 using LuHanh.Core.FSM;
+using LuHanh.Level;
 using UnityEngine;
 
 namespace LuHanh.Enemies
@@ -28,6 +29,8 @@ namespace LuHanh.Enemies
         protected Animator animator;
         Transform cameraTransform;
         Collider2D[] ownColliders;
+        Collider2D[] playerColliders;
+        Room homeRoom;
 
         Vector3 startPosition;
         bool startFacingRight;
@@ -92,15 +95,30 @@ namespace LuHanh.Enemies
             if (playerObject)
             {
                 Player = playerObject.transform;
-                // Di xuyen qua nhau nhu Hollow Knight; sat thuong do Hitbox (trigger) lo.
-                foreach (var mine in ownColliders)
-                {
-                    if (mine.isTrigger) continue;
-                    foreach (var theirs in playerObject.GetComponentsInChildren<Collider2D>())
-                        Physics2D.IgnoreCollision(mine, theirs);
-                }
+                playerColliders = playerObject.GetComponentsInChildren<Collider2D>();
+                IgnorePlayer();
             }
             if (Camera.main) cameraTransform = Camera.main.transform;
+            // Start chay sau moi OnEnable nen luc nay moi Room da dang ky.
+            homeRoom = Room.At(startPosition);
+        }
+
+        // Physics2D.IgnoreCollision mat hieu luc khi collider bi tat/bat (quai chet roi hoi sinh,
+        // quai cua RoomEncounter duoc bat) nen phai dat lai moi lan bat.
+        void OnEnable()
+        {
+            if (playerColliders != null) IgnorePlayer();
+        }
+
+        /// <summary>Di xuyen qua nguoi choi nhu Hollow Knight; sat thuong do Hitbox (trigger) lo.</summary>
+        void IgnorePlayer()
+        {
+            foreach (var mine in ownColliders)
+            {
+                if (mine.isTrigger) continue;
+                foreach (var theirs in playerColliders)
+                    if (theirs) Physics2D.IgnoreCollision(mine, theirs);
+            }
         }
 
         protected virtual void OnDestroy() => RespawnManager.Unregister(this);
@@ -118,6 +136,32 @@ namespace LuHanh.Enemies
         {
             if (asleep) return;
             Machine.FixedTick(Time.fixedDeltaTime);
+            KeepInHomeRoom();
+        }
+
+        /// <summary>
+        /// Quai chi o trong phong cua minh (phong chua vi tri bat dau), khong duoi nguoi choi sang
+        /// phong khac. Cham mep trai/phai/tren thi dung lai o mep, bo van toc huong ra ngoai.
+        /// Quai dat ngoai moi phong thi khong bi gioi han.
+        /// </summary>
+        void KeepInHomeRoom()
+        {
+            if (!homeRoom) return;
+            var rect = homeRoom.Bounds;
+            Vector2 half = bodyCollider ? (Vector2)bodyCollider.bounds.extents : Vector2.zero;
+            Vector2 offset = bodyCollider ? (Vector2)bodyCollider.bounds.center - body.position : Vector2.zero;
+            Vector2 centre = body.position + offset;
+            Vector2 clamped = new Vector2(
+                Mathf.Clamp(centre.x, rect.xMin + half.x, rect.xMax - half.x),
+                // Khong chan mep duoi: quai roi xuong vuc van phai cham vung chet ben duoi.
+                Mathf.Min(centre.y, rect.yMax - half.y));
+            if (clamped == centre) return;
+
+            var v = body.linearVelocity;
+            if ((clamped.x > centre.x && v.x < 0f) || (clamped.x < centre.x && v.x > 0f)) v.x = 0f;
+            if ((clamped.y > centre.y && v.y < 0f) || (clamped.y < centre.y && v.y > 0f)) v.y = 0f;
+            body.linearVelocity = v;
+            body.position = clamped - offset;
         }
 
         protected virtual void LateUpdate()

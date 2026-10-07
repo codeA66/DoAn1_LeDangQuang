@@ -8,6 +8,8 @@ namespace LuHanh.Effects
     /// 8 huong mot khoang nho va nam SAU sprite goc -> chi lo phan mep. Ban sao duoc tao
     /// mot lan trong Awake; LateUpdate chep khung hinh hien tai (sau Animator).
     /// </summary>
+    // Chay sau PlayerActionAnimation (100) de chep dung khung vua dat, tranh vien tre 1 frame.
+    [DefaultExecutionOrder(200)]
     [RequireComponent(typeof(SpriteRenderer))]
     public class RimLight : MonoBehaviour
     {

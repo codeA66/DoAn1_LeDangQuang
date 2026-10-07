@@ -7,6 +7,7 @@ Shader "LuHanh/SpriteDissolve"
     Properties
     {
         [PerRendererData] _MainTex ("Sprite", 2D) = "white" {}
+        [PerRendererData] _SpriteUVRect ("Vung UV sprite (goc, kich thuoc)", Vector) = (0, 0, 1, 1)
         _NoiseTex ("Noise", 2D) = "gray" {}
         _NoiseScale ("Noise Scale", Float) = 1.5
         _StreakRatio ("Streak Ratio", Float) = 10
@@ -59,6 +60,8 @@ Shader "LuHanh/SpriteDissolve"
 
             TEXTURE2D(_MainTex);  SAMPLER(sampler_MainTex);
             TEXTURE2D(_NoiseTex); SAMPLER(sampler_NoiseTex);
+            // Unity tu dien; de ngoai CBUFFER de khong pha SRP Batcher 2D.
+            float4 _MainTex_TexelSize;
 
             CBUFFER_START(UnityPerMaterial)
                 half4 _Color;
@@ -70,6 +73,7 @@ Shader "LuHanh/SpriteDissolve"
                 half _Wobble;
                 half _Directional;
                 float4 _Wind;
+                float4 _SpriteUVRect;
                 half _Dissolve;
             CBUFFER_END
 
@@ -85,7 +89,9 @@ Shader "LuHanh/SpriteDissolve"
             {
                 float2 w = normalize(_Wind.xy + float2(1e-4, 0));
                 float2 side = float2(-w.y, w.x);
-                float2 uv = input.uv;
+                // Tinh gio/noise trong khung 0..1 rieng, khong tren toan sprite sheet.
+                float2 rectSize = max(_SpriteUVRect.zw, float2(1e-6, 1e-6));
+                float2 uv = (input.uv - _SpriteUVRect.xy) / rectSize;
                 half d = _Dissolve;
 
                 // Noise doi nhanh theo chieu ngang gio, cham doc gio -> chia hinh thanh nhieu soi manh.
@@ -103,7 +109,15 @@ Shader "LuHanh/SpriteDissolve"
                     float f = k / 5.0;
                     float2 suv = uv - w * (trail * f + d * _Stretch * 0.25 * n)
                                + side * sin(along * 14 + n * 6.28 + d * 5) * _Wobble * d * f;
-                    alpha = max(alpha, SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, suv).a * (1 - f * 0.85));
+                    // Ngoai khung la trong suot. Kep vao tam texel de loc bilinear
+                    // khong doc pixel cua khung ke ben ngay ca tai mep.
+                    float inside = step(0.0, suv.x) * step(suv.x, 1.0)
+                                 * step(0.0, suv.y) * step(suv.y, 1.0);
+                    float2 inset = min(abs(_MainTex_TexelSize.xy) * 0.5, rectSize * 0.5);
+                    float2 sampleUV = clamp(_SpriteUVRect.xy + suv * rectSize,
+                        _SpriteUVRect.xy + inset, _SpriteUVRect.xy + rectSize - inset);
+                    alpha = max(alpha, SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, sampleUV).a
+                        * inside * (1 - f * 0.85));
                 }
 
                 // Mat hung gio (along nho) bi an truoc.

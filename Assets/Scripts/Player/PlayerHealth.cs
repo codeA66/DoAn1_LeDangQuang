@@ -32,6 +32,7 @@ namespace LuHanh.Player
         PlayerController controller;
         PlayerAttack attack;
         PlayerMovementFx movementFx;
+        PlayerActionAnimation actionAnimation;
         Rigidbody2D body;
 
         static readonly int FlashColorId = Shader.PropertyToID("_FlashColor");
@@ -54,6 +55,7 @@ namespace LuHanh.Player
             controller = GetComponent<PlayerController>();
             attack = GetComponent<PlayerAttack>();
             movementFx = GetComponent<PlayerMovementFx>();
+            actionAnimation = GetComponent<PlayerActionAnimation>();
             body = GetComponent<Rigidbody2D>();
             flashBlock = new MaterialPropertyBlock();
             if (hurtFlash) hurtFlash.enabled = false;
@@ -165,6 +167,7 @@ namespace LuHanh.Player
             }
 
             hazardRespawning = true;
+            if (actionAnimation) actionAnimation.Cancel();
             Freeze();
             if (RespawnManager.Instance)
                 RespawnManager.Instance.HazardRespawn(() => controller.Respawn(safePosition), FinishHazard);
@@ -203,22 +206,42 @@ namespace LuHanh.Player
         void Die()
         {
             dead = true;
+            StopFlash();
 
             // Dung hinh tai cho trong luc man hinh toi dan.
             Freeze();
 
-            if (RespawnManager.Instance) RespawnManager.Instance.Respawn(Revive);
-            else Revive();
+            if (RespawnManager.Instance && !RespawnManager.Instance.IsRespawning)
+            {
+                if (actionAnimation) actionAnimation.PlayDeath(RespawnManager.Instance.DeathFadeDuration);
+                RespawnManager.Instance.Respawn(Revive, RevealRespawn, FinishRespawn);
+            }
+            else
+            {
+                Revive();
+                FinishRespawn();
+            }
         }
 
         void Revive()
         {
             StopFlash();
-            Unfreeze();
             controller.Respawn(checkpoint);
             safePosition = checkpoint;
             groundedTimer = 0f;
             health.Refill();
+        }
+
+        void RevealRespawn()
+        {
+            if (actionAnimation) actionAnimation.PlayRespawn(
+                RespawnManager.Instance ? RespawnManager.Instance.RespawnFadeDuration : 0.5f);
+        }
+
+        void FinishRespawn()
+        {
+            if (actionAnimation) actionAnimation.Cancel();
+            Unfreeze();
             dead = false;
         }
 

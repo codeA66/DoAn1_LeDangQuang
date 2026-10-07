@@ -38,6 +38,7 @@ namespace LuHanh.Player
         PlayerController controller;
         Rigidbody2D body;
         PlayerMovementFx movementFx;
+        PlayerActionAnimation actionAnimation;
         Sprite[] activeFrames;
         float lastSwingTime = float.NegativeInfinity;
         int comboIndex;
@@ -61,6 +62,7 @@ namespace LuHanh.Player
             controller = GetComponent<PlayerController>();
             body = GetComponent<Rigidbody2D>();
             movementFx = GetComponent<PlayerMovementFx>();
+            actionAnimation = GetComponent<PlayerActionAnimation>();
 
             if (config == null)
             {
@@ -198,6 +200,7 @@ namespace LuHanh.Player
         // Chua co animation chem nen gia dong tac bang co gian + nhich than ve huong chem.
         void PlaySwingPose()
         {
+            if (actionAnimation && actionAnimation.PlayAttack(currentDirection)) return;
             if (!movementFx) return;
             switch (currentDirection)
             {

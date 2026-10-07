@@ -6,6 +6,8 @@ File này hướng dẫn dựng một màn chơi mới từ đầu đến khi ch
 
 Chi tiết kỹ thuật của từng hệ thống (code, thông số) nằm trong `TUTORIAL.md`. File này chỉ tập trung vào **cách làm**.
 
+**Animation Player:** prefab `Assets/Character/Player/Player.prefab` đã gắn `PlayerActionAnimation` và bộ TravelerActions (chém ba hướng, Hurt, Land, Death, Respawn). Kéo prefab này vào màn mới thì có sẵn cấu hình; chỉnh animation ở prefab, không tạo override từng scene. Cần `RespawnManager` trong LevelEssentials để Death/Respawn khớp tối–sáng. Land chỉ phát khi tiếp đất đứng yên; đang chạy tiếp tục chạy. Hết máu thì điều khiển được trả lại sau khi fade-in xong.
+
 ---
 
 ## Mục lục
@@ -297,3 +299,28 @@ Thử nhanh trong Editor: tắt **Play On Start** của `LevelEssentials/GameSys
 | Rơi hố không mất máu | Thiếu HazardZone dưới hố / collider chưa Is Trigger |
 | Đi vào cổng không chuyển màn | Scene chưa có trong Build Profiles, hoặc Scene Name trong LevelList gõ sai |
 | *More than one global light* | Scene có Global Light thừa ngoài LevelEssentials – xóa bớt |
+
+---
+
+## Phòng khóa kiểu Soul Knight (Gate + RoomEncounter)
+
+Vào phòng thì cửa sập, quái ra theo từng đợt, diệt hết thì cửa mở (và có thể mở Portal).
+
+1. Kéo `Assets/Prefabs/Level/Gate.prefab` vào ô cửa. **Gốc object = mép trên ô cửa**, chỉnh `Height` = chiều cao ô cửa (gizmo đỏ). Cửa ở layer Ground, mở sẵn khi vào màn.
+2. Tạo object rỗng `Encounter_RoomX`, thêm `BoxCollider2D` (trigger) phủ phần trong phòng **sau cửa vào** (để người chơi đi hẳn vào rồi mới khóa), thêm `RoomEncounter`.
+3. Kéo quái cho từng đợt vào scene, **tắt sẵn** (bỏ tick GameObject). Gán vào `Waves[i].Enemies`. Gán các Gate vào `Gates`.
+4. Màn cuối: `LevelPortal` bỏ tick `Open On Start`, thêm vào `On Cleared` → `LevelPortal.Open`.
+5. Người chơi chết: phòng về trạng thái chưa đánh, cửa mở, quái tắt lại.
+
+Ví dụ hoàn chỉnh: `Level2.unity` (Room_3 hai cửa hai đợt, Room_5 một cửa một đợt rồi mở Portal).
+
+---
+
+## Dựng không khí kiểu Hollow Knight (tham khảo Level2)
+
+Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tường nền vừa → cột sáng sáng nhất** (điểm hút mắt).
+
+1. **Đất tối + viền mép:** `Tilemap_Ground` → Color khoảng (0.36, 0.32, 0.46). Vẽ địa hình xong bấm **LuHanh → Level → Tao vien mep dat**: tự tạo `Tilemap_GroundEdge` viền sáng ở mọi mặt đứng được. Sửa địa hình thì bấm lại.
+2. **Tường nền:** `Tilemap_BackDeco` (Order −8) vẽ bằng tile `Art/Tiles/Background` (cột c4–c5), Color (1, 0.55, 0.82). Chừa vài ô làm cửa sổ, đặt Light2D tím sau đó.
+3. **Cột sáng:** mỗi phòng 1 cột (`moon_beam`, unlit, Order −6, xoay ~−14°) ở chỗ muốn người chơi chú ý; đỏ/cam = nguy hiểm, xanh ngọc = có lợi/bí mật, tím = bình thường.
+4. **Tiền cảnh** (unlit, màu #0C0A14, Order 30–31): cỏ sắt mép sàn, dây cáp rủ từ trần, giàn thép đè lên tường. **Không đặt chắn khe nhảy, mép platform hay chỗ né đòn.**

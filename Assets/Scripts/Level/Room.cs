@@ -29,6 +29,14 @@ namespace LuHanh.Level
 
         public bool Contains(Vector2 point) => Bounds.Contains(point);
 
+        /// <summary>Phong dang bat chua <paramref name="point"/>, khong co thi null.</summary>
+        public static Room At(Vector2 point)
+        {
+            for (int i = 0; i < all.Count; i++)
+                if (all[i].Contains(point)) return all[i];
+            return null;
+        }
+
         /// <summary>Hai phong cham canh nhau (cho phep ho <paramref name="gap"/> unit).</summary>
         public bool Touches(Room other, float gap = 0.5f)
         {

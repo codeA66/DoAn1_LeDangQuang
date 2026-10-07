@@ -38,6 +38,8 @@ namespace LuHanh.Core
         [SerializeField] float hazardFadeInTime = 0.3f;
 
         public bool IsRespawning { get; private set; }
+        public float DeathFadeDuration => fadeOutTime;
+        public float RespawnFadeDuration => fadeInTime;
 
         void Awake()
         {
@@ -58,10 +60,10 @@ namespace LuHanh.Core
         /// Bat dau hoi sinh. <paramref name="placePlayer"/> duoc goi luc man hinh den hoan toan.
         /// Dung thoi gian khong phu thuoc timeScale de van chay khi game dang khung hinh.
         /// </summary>
-        public void Respawn(Action placePlayer)
+        public void Respawn(Action placePlayer, Action onReveal = null, Action onFinished = null)
         {
             if (IsRespawning) return;
-            StartCoroutine(RespawnRoutine(placePlayer));
+            StartCoroutine(RespawnRoutine(placePlayer, onReveal, onFinished));
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace LuHanh.Core
             onFinished?.Invoke();
         }
 
-        IEnumerator RespawnRoutine(Action placePlayer)
+        IEnumerator RespawnRoutine(Action placePlayer, Action onReveal, Action onFinished)
         {
             IsRespawning = true;
 
@@ -97,9 +99,11 @@ namespace LuHanh.Core
             ResetAll();
 
             yield return new WaitForSecondsRealtime(holdTime);
+            onReveal?.Invoke();
             yield return Fade(1f, 0f, fadeInTime);
 
             IsRespawning = false;
+            onFinished?.Invoke();
         }
 
         /// <summary>Dua moi IResettable ve ban dau. Goi duoc rieng, vd khi ngoi ghe.</summary>

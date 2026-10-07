@@ -149,6 +149,8 @@ namespace LuHanh.Level
             t.fontSize = size;
             t.alignment = TextAnchor.MiddleCenter;
             t.horizontalOverflow = HorizontalWrapMode.Overflow;
+            // Font co ascent lon: dong cao hon khung se bi Truncate an ca dong.
+            t.verticalOverflow = VerticalWrapMode.Overflow;
             t.color = color;
             t.raycastTarget = false;
             return t;
@@ -254,7 +256,7 @@ namespace LuHanh.Level
 
         IEnumerator ShowCard(string code, string title)
         {
-            codeText.text = code;
+            codeText.text = "LEVEL " + code;
             titleText.text = "";
             var codeRt = (RectTransform)codeText.transform;
             foreach (var m in motes)

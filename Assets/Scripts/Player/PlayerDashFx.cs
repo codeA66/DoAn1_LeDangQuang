@@ -20,6 +20,8 @@ namespace LuHanh.Player
         public Color color = new Color(0.37f, 0.97f, 1f, 0.6f);
         [Tooltip("Giay de bong tan het.")]
         public float dissolveTime = 0.4f;
+        [Tooltip("Do tan luc bong vua hien (0 = nguyen hinh dac, de bi loe sang 1 frame).")]
+        [Range(0f, 1f)] public float startDissolve = 0.15f;
         [Tooltip("Order cua bong so voi nhan vat (am = nam sau).")]
         public int orderOffset = -1;
         [Min(1)] public int poolSize = 3;
@@ -40,6 +42,7 @@ namespace LuHanh.Player
         static readonly int ColorId = Shader.PropertyToID("_Color");
         static readonly int DissolveId = Shader.PropertyToID("_Dissolve");
         static readonly int WindId = Shader.PropertyToID("_Wind");
+        static readonly int SpriteUVRectId = Shader.PropertyToID("_SpriteUVRect");
 
         PlayerController controller;
         Rigidbody2D body;
@@ -48,6 +51,7 @@ namespace LuHanh.Player
         SpriteRenderer[] ghosts;
         float[] life;
         Vector4[] winds;
+        Vector4[] spriteUVRects;
         int next;
 
         void Awake()
@@ -61,6 +65,7 @@ namespace LuHanh.Player
             ghosts = new SpriteRenderer[poolSize];
             life = new float[poolSize];
             winds = new Vector4[poolSize];
+            spriteUVRects = new Vector4[poolSize];
             for (int i = 0; i < poolSize; i++)
             {
                 var sr = new GameObject("Ghost").AddComponent<SpriteRenderer>();
@@ -107,12 +112,15 @@ namespace LuHanh.Player
             g.transform.SetPositionAndRotation(t.position, t.rotation);
             g.transform.localScale = t.lossyScale;
             g.sprite = source.sprite;
+            // Luu UV cua chinh khung nay: source co the doi animation khi bong van dang tan.
+            var uv = UnityEngine.Sprites.DataUtility.GetOuterUV(g.sprite);
+            spriteUVRects[i] = new Vector4(uv.x, uv.y, uv.z - uv.x, uv.w - uv.y);
             g.flipX = source.flipX;
             g.sortingLayerID = source.sortingLayerID;
             g.sortingOrder = source.sortingOrder + orderOffset;
             g.enabled = true;
             life[i] = dissolveTime;
-            Apply(i, 0f);
+            Apply(i, startDissolve);
             return g;
         }
 
@@ -148,7 +156,7 @@ namespace LuHanh.Player
                     ghosts[i].enabled = false;
                     continue;
                 }
-                Apply(i, 1f - life[i] / dissolveTime);
+                Apply(i, Mathf.Lerp(startDissolve, 1f, 1f - life[i] / dissolveTime));
             }
         }
 
@@ -157,6 +165,7 @@ namespace LuHanh.Player
             block.SetColor(ColorId, color);
             block.SetFloat(DissolveId, dissolve);
             block.SetVector(WindId, winds[i]);
+            block.SetVector(SpriteUVRectId, spriteUVRects[i]);
             ghosts[i].SetPropertyBlock(block);
         }
     }
