@@ -17,9 +17,9 @@ MonoBehaviour:
     code: 1-1
     title: A New Beginning
     hasBoss: 0
-  - sceneName: TestGamePlay
+  - sceneName: Level2
     code: 1-2
-    title: Test Level
+    title: Rusted Scaffolds
     hasBoss: 0
   completeScene: LevelComplete
   codeFont: {fileID: 12800000, guid: f28aa2ace5175bc40acfe6a284180287, type: 3}

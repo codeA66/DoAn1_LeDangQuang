@@ -74,5 +74,7 @@ namespace LuHanh.Player
         public Vector2 downSwingSquash = new Vector2(0.9f, 1.15f);
         [Tooltip("Than nhich ve huong chem bao xa (unit, chi hinh, khong doi vi tri vat ly).")]
         public float swingLunge = 0.12f;
+        [Tooltip("Than nghieng theo huong chem bao nhieu do (chem ngang/xuong: chui ve truoc, chem len: ngua ra sau mot nua), tu tro ve.")]
+        public float swingLean = 12f;
     }
 }

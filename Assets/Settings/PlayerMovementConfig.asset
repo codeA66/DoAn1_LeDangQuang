@@ -25,10 +25,10 @@ MonoBehaviour:
   fastMaxFall: 30
   fastMaxAccel: 37.5
   dashSpeed: 30
-  endDashSpeed: 20
+  endDashSpeed: 11.25
   endDashUpMult: 0.75
   dashTime: 0.15
-  dashCooldown: 0.2
+  dashCooldown: 0.5
   dashRefillCooldown: 0.1
   maxDashes: 1
   coyoteTime: 0.1

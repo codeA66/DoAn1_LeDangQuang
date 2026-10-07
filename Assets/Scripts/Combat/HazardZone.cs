@@ -3,21 +3,21 @@ using UnityEngine;
 namespace LuHanh.Combat
 {
     /// <summary>
-    /// Vung chet (day ho, gai...). Gan len object co collider trigger; nguoi choi cham vao
-    /// thi mat mau va duoc dua ve cho dung an toan (xem PlayerHealth.TakeHazardHit).
+    /// Vung chet (day ho, gai...). Gan len object co collider trigger. Tac dung len moi thu co
+    /// IHazardReceiver: nguoi choi mat mau va ve cho dung an toan (PlayerHealth.TakeHazardHit),
+    /// quai chet ngay (EnemyBase.TakeHazardHit).
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class HazardZone : MonoBehaviour
     {
         [Min(1)] public int damage = 1;
-        [Tooltip("Chi tac dung len collider mang tag nay.")]
-        public string targetTag = "Player";
 
         void Reset() => GetComponent<Collider2D>().isTrigger = true;
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (!enabled || !other.CompareTag(targetTag)) return;
+            // Bo qua trigger (hitbox don danh, vung cam bien...): chi than that moi roi vao bay.
+            if (!enabled || other.isTrigger) return;
             var receiver = other.GetComponentInParent<IHazardReceiver>();
             receiver?.TakeHazardHit(damage);
         }

@@ -18,6 +18,8 @@ namespace LuHanh.Enemies
         [Header("Trung don")]
         [Tooltip("Thoi gian khung lai, bi day lui sau moi nhat chem.")]
         public float hurtTime = 0.2f;
+        [Tooltip("Nhan luc day cua don chem len quai nay. Quai bay khong co trong luc/ma sat keo lai nen can nho hon.")]
+        [Min(0f)] public float knockbackScale = 1f;
         public float flashTime = 0.12f;
         [Tooltip("Hinh bi bop lai khi trung don (X rong ra, Y dep xuong) roi bat ve 1.")]
         public Vector2 hitSquash = new Vector2(1.3f, 0.7f);

@@ -51,6 +51,8 @@ namespace LuHanh.Player
 
         public bool IsMoving => input != null && input.HasHorizontal;
         public bool IsGrounded => ground != null && ground.IsGrounded;
+        /// <summary>Collider dang dung len (null neu dang tren khong).</summary>
+        public Collider2D GroundCollider => ground?.GroundCollider;
 
         public PlayerMovementConfig Config => config;
 

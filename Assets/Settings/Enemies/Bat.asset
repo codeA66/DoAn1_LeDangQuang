@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Enemies.FlyingEnemyConfig
   maxHealth: 2
+  hitReaction: {fileID: 0}
   hurtTime: 0.2
+  knockbackScale: 0.35
   flashTime: 0.12
   hitSquash: {x: 1.3, y: 0.7}
   squashTime: 0.1

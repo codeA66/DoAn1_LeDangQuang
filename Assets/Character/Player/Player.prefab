@@ -15320,6 +15320,7 @@ GameObject:
   - component: {fileID: 4846272566583128471}
   - component: {fileID: 8237029231580266530}
   - component: {fileID: 4902688804160488018}
+  - component: {fileID: 4654312508494509941}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15399,6 +15400,7 @@ MonoBehaviour:
     jumpState: player_jump
     fallState: player_fall
     dashState: player_dash
+    hurtState: player_hurt
   drawGroundGizmo: 1
 --- !u!114 &6674216230490119835
 MonoBehaviour:
@@ -15718,6 +15720,20 @@ MonoBehaviour:
   burstCount: 8
   groundDust: {fileID: 5325766166018491}
   groundDustCount: 8
+--- !u!114 &4654312508494509941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774313822008665706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f7be4f46ba5f94db40bf071ebb6c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.OneWayDrop
+  dropTime: 0.3
+  dropSpeed: 3
 --- !u!1 &7962428662256493690
 GameObject:
   m_ObjectHideFlags: 0

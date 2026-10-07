@@ -201,9 +201,10 @@ namespace LuHanh.Player
             if (!movementFx) return;
             switch (currentDirection)
             {
-                case Direction.Up: movementFx.Punch(config.upSwingSquash, new Vector2(0f, config.swingLunge)); break;
-                case Direction.Down: movementFx.Punch(config.downSwingSquash, new Vector2(0f, -config.swingLunge)); break;
-                default: movementFx.Punch(config.sideSwingSquash, new Vector2(config.swingLunge, 0f)); break;
+                // Goc am = chui ve phia truoc (nhan vat lat bang scale nen am luon la "ve truoc").
+                case Direction.Up: movementFx.Punch(config.upSwingSquash, new Vector2(0f, config.swingLunge), config.swingLean * 0.5f); break;
+                case Direction.Down: movementFx.Punch(config.downSwingSquash, new Vector2(0f, -config.swingLunge), -config.swingLean); break;
+                default: movementFx.Punch(config.sideSwingSquash, new Vector2(config.swingLunge, 0f), -config.swingLean); break;
             }
         }
 

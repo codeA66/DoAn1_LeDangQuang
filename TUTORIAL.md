@@ -17,7 +17,11 @@ Mỗi mục có **Làm gì** (thao tác) và **Vì sao** (lý do kỹ thuật).
 7. [Camera Cinemachine](#7-camera-cinemachine)
 8. [Background parallax](#8-background-parallax)
 9. [Hiệu ứng hình ảnh](#9-hiệu-ứng-hình-ảnh)
+   - 9b. Màn chơi và chuyển màn (kiểu Soul Knight)
+   - 9c. Phòng kiểu Celeste, camera theo phòng, Rule Tile
 10. [Lỗi hay gặp và cách xử lý](#10-lỗi-hay-gặp-và-cách-xử-lý)
+
+> Dựng màn mới từng bước + thiết kế phòng kiểu Hollow Knight: xem `HUONG_DAN_BUILD_LEVEL.md`.
 11. [Credit asset](#11-credit-asset)
 12. [Nhật ký thay đổi](#12-nhật-ký-thay-đổi)
 
@@ -485,9 +489,9 @@ Nhấn Space thật nhanh rồi thả: bộ đếm bị hủy ngay, chỉ còn `
 
 ### 5.9 Dash (`DashState` + `PlayerContext`)
 1. **Hướng**: `(MoveX, MoveY)` chuẩn hóa → 8 hướng. Không giữ phím nào → dash theo hướng đang nhìn.
-2. **Bắt đầu** (`BeginDash`): trừ 1 lượt, đặt hồi chiêu `dashCooldown` (0.2s), đặt `dashRefillCooldown` (0.1s: vừa dash xong chưa được hồi lượt dù đang chạm đất), hủy giữ nhảy, xóa lệnh dash trong đệm.
+2. **Bắt đầu** (`BeginDash`): trừ 1 lượt, đặt hồi chiêu `dashCooldown` (0.5s), đặt `dashRefillCooldown` (0.1s: vừa dash xong chưa được hồi lượt dù đang chạm đất), hủy giữ nhảy, xóa lệnh dash trong đệm.
 3. **Trong lúc dash** (`dashTime` = 0.15s): vận tốc = hướng × `dashSpeed` (30), **không áp trọng lực**.
-4. **Kết thúc**: nếu không dash xuống → vận tốc còn lại = hướng × `endDashSpeed` (20); dash lên thì vận tốc dọc × `endDashUpMult` (0.75).
+4. **Kết thúc**: nếu không dash xuống → vận tốc còn lại = hướng × `endDashSpeed` (11.25 = maxRun); dash lên thì vận tốc dọc × `endDashUpMult` (0.75).
 5. **Hồi lượt** (`TickDash`): không đang dash, hết `dashRefillTimer` và chạm đất → lượt dash = `maxDashes` (1).
 
 **Con số cụ thể với giá trị mặc định**:
@@ -502,7 +506,7 @@ Nhấn Space thật nhanh rồi thả: bộ đếm bị hủy ngay, chỉ còn `
 | Không giữ phím | Theo hướng đang nhìn | Như dash ngang | |
 
 **Thời gian chờ thực tế**:
-- `dashCooldown` (0.2 s) tính từ **lúc bắt đầu** dash. Dash kéo dài 0.16 s → chỉ phải chờ thêm ~0.04 s sau khi dash xong. Thông số này chỉ thấy rõ khi đứng trên đất bấm Shift liên tục (mỗi lần dash xong lại được hồi lượt): tối đa 5 lần dash/giây.
+- `dashCooldown` (0.5 s) tính từ **lúc bắt đầu** dash. Dash kéo dài 0.16 s → phải chờ thêm ~0.34 s sau khi dash xong (cân lại để lướt liên tục trên đất không nhanh hơn chạy). Thông số này chỉ thấy rõ khi đứng trên đất bấm Shift liên tục (mỗi lần dash xong lại được hồi lượt): tối đa 2 lần dash/giây.
 - `dashRefillTimer` (0.1 s) cũng đếm **trong lúc dash**, nên với `dashTime` 0.15 hiện tại nó đã hết trước khi dash xong → **gần như không có tác dụng**. Chỉ khi đặt `dashRefillCooldown` > ~0.16 s mới thấy: dash dọc mặt đất xong phải chờ một chút mới được hồi lượt.
 - Trong lúc dash **không nhảy được** (luật Jump loại trừ Dash). Bấm Space trong 0.08 s cuối của dash thì lệnh nằm trong buffer → dash vừa xong (nếu còn chạm đất) là nhảy luôn, lúc đó vận tốc ngang 20 + `jumpHBoost` 5 = **25** → một cú nhảy rất xa. Bấm sớm hơn thì lệnh hết hạn trước khi dash xong.
 
@@ -511,9 +515,9 @@ Nhấn Space thật nhanh rồi thả: bộ đếm bị hủy ngay, chỉ còn `
 |---|---|---|---|
 | `dashSpeed` | **30** unit/s | Dash xa và **gắt** hơn, mắt khó theo kịp. Đẩy quá cao thì quãng đi mỗi bước vật lý (= dashSpeed × 0.02) có thể vượt bề dày tường 1 ô + bề ngang thân 0.6 → nguy cơ **xuyên tường** (Collision = Discrete) | Dash ngắn, chậm, giống một bước lướt |
 | `dashTime` | **0.15** s | Dash dài hơn (quãng = `dashSpeed` × `dashTime`). Trên 0.25 s người chơi cảm thấy **mất điều khiển** vì không đổi hướng/nhảy được trong lúc dash | Dash cụt, gần như dịch chuyển tức thời |
-| `endDashSpeed` | **20** unit/s | Sau dash còn trôi xa, chuỗi dash-nhảy bay xa hơn. Đặt > `dashSpeed` thì cuối dash bị **giật tăng tốc**, trông lỗi | Dash dừng "khựng" ngay. 0 = đứng yên giữa không trung khi kết thúc dash |
+| `endDashSpeed` | **11.25** unit/s (= maxRun, trước là 20) | Sau dash còn trôi xa, chuỗi dash-nhảy bay xa hơn. Đặt > `dashSpeed` thì cuối dash bị **giật tăng tốc**, trông lỗi | Dash dừng "khựng" ngay. 0 = đứng yên giữa không trung khi kết thúc dash |
 | `endDashUpMult` | **0.75** (0..1) | 1 → dash lên rồi bay lên thêm ≈ 1.8 ô (dễ leo cao hơn) | 0 → dash lên xong rơi ngay, không trôi lên thêm |
-| `dashCooldown` | **0.2** s | Không spam dash được trên mặt đất. Đặt > 0.16 s nhiều thì có cảm giác "bấm mà không ăn" | Spam dash liên tục trên đất, lướt rất nhanh |
+| `dashCooldown` | **0.5** s (trước là 0.2) | Không spam dash được trên mặt đất. Đặt > 0.16 s nhiều thì có cảm giác "bấm mà không ăn" | Spam dash liên tục trên đất, lướt rất nhanh |
 | `dashRefillCooldown` | **0.1** s | Chỉ có tác dụng khi > thời gian dash (xem trên) | Không thấy khác biệt |
 | `maxDashes` | **1** | 2 = dash hai lần trên không (kiểu Celeste khi nhặt pha lê đôi). Đọc trực tiếp từ config mỗi lần hồi lượt, nên sửa khi Play có tác dụng từ lần chạm đất tiếp theo | 0 = **tắt dash** hoàn toàn |
 
@@ -564,7 +568,7 @@ Giá trị mặc định lấy từ `Player.cs` của Celeste, **chia 8** (Celes
 | | `halfGravThreshold` | 5 | 40 | Lơ lửng ở đỉnh lâu hơn |
 | | `maxFall` / `fastMaxFall` | 20 / 30 | 160 / 240 | Rơi nhanh hơn |
 | | `fastMaxAccel` | 37.5 | 300 | Chuyển sang rơi nhanh gắt hơn |
-| Dash | `dashSpeed` / `endDashSpeed` | 30 / 20 | 240 / 160 | Dash xa hơn |
+| Dash | `dashSpeed` / `endDashSpeed` | 30 / 11.25 | 240 / 160 | Dash xa hơn |
 | | `dashTime` | 0.15 | 0.15 | Dash lâu hơn |
 | | `dashCooldown` / `dashRefillCooldown` | 0.2 / 0.1 | 0.2 / 0.1 | Chờ lâu hơn giữa hai lần dash |
 | | `maxDashes` | 1 | 1 | Dash nhiều lần trên không |
@@ -887,7 +891,7 @@ Gói Cloaked không có animation chém, nên thân nhân vật được **giả
 
    Muốn thêm/bớt/đổi thứ tự: chọn Player → `PlayerAttack` → mở danh sách, mỗi phần tử là một bộ `Frames` (kéo các khung của một nhát vào theo thứ tự).
    - Import (bản 128×128 trong `Assets/Art/Fx/Pixel Art Animations - Slashes/128x128/Slash N/color5/Frames/`): **Filter Point** (giữ pixel sắc), không nén, Mesh Full Rect, pivot giữa, **PPU 34** (ô 128px ≈ 3.8 unit, vòng cung rộng khoảng 2 unit). Cả 3 bộ cùng thông số.
-   - Ảnh vẽ sẵn hướng sang phải nên `slashBaseAngle` = 0, `slashFlipX` = tắt; `slashAnchor` = (0, 0.5), `slashSidePush` = 1.2 để vệt nằm trùng vùng chém ngang (tâm x = 2), `slashUpPush` = 1.4 để vệt chém lên nằm trên đầu.
+   - Ảnh vẽ sẵn hướng sang phải nên `slashBaseAngle` = 0, `slashFlipX` = tắt; `slashAnchor` = (0, 0.9) (ngang ngực), `slashSidePush` = 1.2 để vệt nằm trùng vùng chém ngang (tâm x = 2), `slashUpPush` = 1.0 để vệt chém lên nằm trên đầu.
    - Lưu ý tên file khác nhau: Slash 1 là `Slash_color5_frameN.png`, Slash 2/3 là `Slash2_…`, `Slash3_…`.
    - Bộ cũ (Cel-Shaded đỏ và bản đổi màu `Assets/Art/Generated/Fx/SlashCyan/`) không còn dùng, vẫn để trong project.
 
@@ -922,10 +926,11 @@ Các object Flash / StreaksShort / StreaksLong trong `HitFx.prefab` đã **tắt
 
 | Ô | Mặc định | Tăng | Giảm |
 |---|---|---|---|
-| **Side Swing Squash** | (1.2, 0.88) | x lớn / y nhỏ: thân bẹt dài ra trước, mạnh tay hơn | Về (1,1) = không co giãn |
-| **Up Swing Squash** | (0.88, 1.18) | y lớn: vươn cao khi chém lên | — |
-| **Down Swing Squash** | (0.9, 1.15) | — | — |
-| **Swing Lunge** | 0.12 | Nhích người xa hơn (trên 0.3 trông như trượt) | 0 = đứng yên |
+| **Side Swing Squash** | (1.32, 0.8) | x lớn / y nhỏ: thân bẹt dài ra trước, mạnh tay hơn | Về (1,1) = không co giãn |
+| **Up Swing Squash** | (0.82, 1.28) | y lớn: vươn cao khi chém lên | — |
+| **Down Swing Squash** | (0.85, 1.22) | — | — |
+| **Swing Lunge** | 0.25 | Nhích người xa hơn (trên 0.3 trông như trượt) | 0 = đứng yên |
+| **Swing Lean** | 12° | Thân chúi về hướng chém mạnh hơn (chém lên: ngửa ra sau một nửa) | 0 = không nghiêng |
 | **Slash Alternate Window** | 0.6s | Dễ ra đòn luân phiên dù chém chậm | Phải bấm nhanh mới đổi chiều; 0 = luôn một chiều |
 
 **Chưa làm (để sau)**: rung camera khi trúng (đã đề xuất, chưa chọn làm); pogo hồi dash; phản hồi khi chém vào tường; âm thanh.
@@ -2605,6 +2610,112 @@ Thời gian từng bước của thẻ tên màn và vòng tròn là hằng số
 
 ---
 
+### Platform 1 chiều (`OneWayPlatform`)
+
+Prefab `Assets/Prefabs/Objects/OneWayPlatform.prefab`: thanh dầm kim loại pixel (`Art/Generated/Props/oneway_platform.png`, 32×8, PPU 32, Draw Mode **Tiled** nên kéo dài bao nhiêu cũng được: chỉnh `SpriteRenderer → Size` và `BoxCollider2D` có **Auto Tiling** tự theo), layer **Ground**, `BoxCollider2D` **Used By Effector** + `PlatformEffector2D` (**Use One Way**, Surface Arc 170).
+
+| Hành động | Kết quả |
+|---|---|
+| Đứng / đi trên mặt | Đứng được như đất |
+| Nhảy từ dưới lên | Đi xuyên qua, đáp lên mặt |
+| Lướt / rơi từ trên xuống | Đáp lên, **không xuyên qua** |
+| Đứng trên rồi **nhấn S** | Rơi xuống (bỏ va chạm với đúng platform đó 0.3s) |
+
+- `Player/GroundSensor`: platform 1 chiều chỉ tính là đất khi **không đang bay lên** và tâm dò ở **trên mặt** platform, và bỏ qua platform đang bị tắt va chạm (đang rơi qua). Nhờ vậy nhảy xuyên lên không bị nhận nhầm là chạm đất.
+- `Player/OneWayDrop` (gắn trên Player): lúc **vừa nhấn** xuống (giữ S không rơi liền nhiều tầng) mà đang đứng trên platform 1 chiều → `Physics2D.IgnoreCollision` với platform đó trong `Drop Time` (0.3s) + đẩy xuống `Drop Speed` (3). Bị tắt giữa chừng (vd bị hút vào cổng) cũng tự trả lại va chạm.
+- Đặt thử: 2 platform trong `TestGamePlay` tại (6, 3.6) và (11, 6.2).
+
+### Quái rơi xuống vực thì chết
+
+`HazardZone` giờ tác dụng lên **mọi** collider có `IHazardReceiver` (bỏ ô Target Tag), chỉ bỏ qua collider **trigger** (hitbox đòn đánh). `EnemyBase` nhận `IHazardReceiver`: chạm vùng chết / gai → chết ngay (tắt object như bị chém chết), hồi sinh lại khi người chơi chết. Quái tự đi tuần vẫn dừng ở mép vực, chỉ bị đánh văng xuống mới chết.
+
+### Độ văng theo từng loại quái
+
+`EnemyConfigBase.knockbackScale` (ô **Knockback Scale**, mặc định 1) nhân vào lực đẩy của đòn chém (`PlayerAttackConfig.knockback` = 18) trước khi quái xử lý. Quái bay không có trọng lực và ma sát kéo lại nên văng rất xa → `Bat.asset` = **0.35** (còn ~6.3). Ghoul giữ 1.
+
+---
+
+## 9c. Phòng kiểu Celeste, camera theo phòng, Rule Tile
+
+> Hướng dẫn **cách dựng màn** (từng bước, thiết kế phòng kiểu Hollow Knight): xem file `HUONG_DAN_BUILD_LEVEL.md` ở thư mục gốc project. Mục này mô tả **kỹ thuật**.
+
+### Các file
+
+| File | Vai trò |
+|---|---|
+| `Scripts/Level/Room.cs` | Một phòng: tâm = vị trí object, `size` = kích thước. Tự đăng ký vào `Room.All` khi bật. `Contains(point)`, `Touches(other)`. Gizmo khung xanh; khi chọn, khung đỏ cảnh báo nếu phòng nhỏ hơn khung hình |
+| `Scripts/Editor/RoomEditor.cs` | Kéo cạnh phòng trong Scene view (BoxBoundsHandle), bắt lưới 1 ô |
+| `Scripts/Level/RoomManager.cs` | Trong `LevelEssentials/GameSystems`. Mỗi frame lấy điểm ngực nhân vật (chân + 0.9); ra khỏi phòng hiện tại mà vào phòng kề → chuyển phòng có trượt; phòng không kề / màn hình đang tối (hồi sinh, chuyển màn) → nhảy thẳng (bỏ damping 1 frame). Ngoài mọi phòng (đang rơi xuống hố) → giữ phòng cũ |
+| `Scripts/Level/RoomCameraClamp.cs` | **CinemachineExtension** trên CinemachineCamera (`CameraRig`), chạy ở stage Body: giới hạn camera trong phòng + trượt khi chuyển phòng |
+| `Scripts/Level/RoomTransitionFx.cs` | Dưới Main Camera (`CameraRig/Main Camera/RoomTransitionFx`): Volume riêng + vệt tốc độ lúc chuyển phòng |
+| `Scripts/Core/HitStop.cs` | Thêm `Hold()` / `Unhold()`: giữ game dừng (đếm số lần giữ). Game chỉ chạy lại khi hết hitstop **và** không còn ai giữ – hitstop lúc đang chuyển phòng không làm game chạy lại giữa chừng |
+
+### Giới hạn camera trong phòng (mép mềm)
+Khung hình nửa rộng `halfW = size × aspect`, nửa cao `halfH = size`. Tâm camera hợp lệ: `x ∈ [room.xMin + halfW, room.xMax − halfW]` (tương tự y). Phòng hẹp hơn khung hình theo trục nào → camera đứng **giữa phòng** theo trục đó (Level1 cao 15 < 16 nên camera **khóa dọc**).
+
+Trong vùng `Edge Softness` (1 ô) sát mép, vị trí đi theo hàm mũ `hi − w + w·(1 − e^(−d/w))`: cùng độ dốc 1 ở chỗ nối (không gãy vận tốc) và **không bao giờ vượt mép** → camera chậm dần rồi dừng thay vì khựng.
+
+### Trượt khi chuyển phòng (độ mượt)
+1. `RoomManager` gọi `HitStop.Hold()` (dừng game), `RoomCameraClamp.TransitionTo(phòng mới)` trả về thời gian trượt, `RoomTransitionFx.Play(hướng, thời gian)`.
+2. **Thời gian = quãng đường / Transition Speed (60)**, kẹp trong [0.35, 0.6] giây → tốc độ cảm nhận luôn đều.
+3. Mỗi frame (thời gian **thực**, vì game đang dừng): vị trí = **đường Hermite** từ vị trí camera cũ (vận tốc đầu = **vận tốc camera đang có**, đo liên tục khi chơi) tới vị trí hợp lệ của phòng mới (vận tốc cuối = 0). Vận tốc đầu ngược hướng thì bỏ; lớn quá thì chặn ở 3 × quãng đường → đường cong đi một chiều, không vượt đích rồi giật ngược.
+4. Xong → `HitStop.Unhold()`. Đi lên phòng trên mà đang bay lên → vận tốc dọc tối thiểu `Upward Boost` (10).
+
+Vì sao mượt: (a) không có frame nào vận tốc camera nhảy đột ngột (bắt đầu đúng vận tốc đang có, thường ≈ 0 vì camera đã chậm dần ở mép phòng → giống smoothstep); (b) kết thúc vận tốc 0 rồi Position Composer tiếp tục bám nhân vật; (c) CinemachineBrain đổi sang **LateUpdate** (nhân vật Rigidbody2D Interpolate → cập nhật mỗi frame hình, và vẫn chạy khi timeScale = 0); (d) nền parallax cập nhật sau camera (`DefaultExecutionOrder(600)`).
+
+### Hiệu ứng chuyển phòng (`RoomTransitionFx`)
+| Thành phần | Gì |
+|---|---|
+| `Volume` (global, priority 10 > Volume chính 0, weight 0) | Profile `Assets/Settings/Lighting/VP_RoomTransition`: **Lens Distortion 0.22** (tâm lệch về hướng đi `Distortion Shift` 0.18), **Chromatic Aberration 0.45**, **Vignette 0.55** màu tím đen |
+| Weight theo thời gian | `sin²(π·t)`: 0 → 1 ở giữa → 0, đạo hàm 0 ở hai đầu nên bật/tắt êm |
+| `Streaks` (Particle System, Local space, **Use Unscaled Time**, Stretched Billboard, `M_Streak`, Order 95) | 18 vệt xanh mờ trong hộp 30×17 trước camera, bay ngược hướng đi tốc độ 45 |
+
+### Thông số camera – một nơi duy nhất: `Assets/Prefabs/CameraRig.prefab`
+Đã dọn mọi ghi đè trong `LevelEssentials` (trước đây ghi đè size 8, Target Offset, Dead Zone) – giờ **mọi màn lấy theo `CameraRig`**:
+
+| Thành phần | Giá trị |
+|---|---|
+| Lens Orthographic Size (CinemachineCamera + Main Camera) | **8** → khung hình 28.4 × 16 ô |
+| CinemachineBrain Update Method | **LateUpdate** |
+| Position Composer Target Offset | (0, 3, 0) |
+| Damping | (0.7, 0.9, 0) – ngang bám nhanh, dọc trễ hơn (kiểu Hollow Knight) |
+| Dead Zone | (0.1, 0.2) |
+| Lookahead | Time 0.35, Smoothing 8, **Ignore Y** (dẫn trước theo hướng chạy, không nhấp nhô khi nhảy) |
+| Room Camera Clamp | Edge Softness 1, Transition Speed 60, Min/Max 0.35/0.6 s |
+
+`DustMotes` (bụi cuộn vòng) nới hộp lên **32 × 18** – trước đây cao 16 bằng đúng khung hình nên hạt bị dời ở mép trên/dưới lọt vào màn hình.
+
+`TestGamePlay` vẫn giữ CameraRig cũ ghi đè size 7.5 trong scene (scene thử nghiệm, chưa đổi).
+
+### Level1: 5 phòng (cao −4 → 11)
+| Phòng | x | Nội dung |
+|---|---|---|
+| Room_1 | −10 → 30 | Di chuyển, nhảy bậc |
+| Room_2 | 30 → 70 | Hố gai, lướt qua hố dài |
+| Room_3 | 70 → 121 | Lướt lên, lướt chéo, lướt 8 hướng (phòng rộng 51, camera cuộn ngang) |
+| Room_4 | 121 → 152 | Chém, cú nhảy cuối |
+| Room_5 | 152 → 186 | Kết màn, cổng ra |
+
+Ranh giới đặt ở đoạn đất phẳng (x = 30, 70, 121, 152). Chết hẳn → về điểm xuất phát (Room_1). Rơi hố → chỗ đứng an toàn (có thể ở phòng trước, camera nhảy thẳng vì màn hình đang tối).
+
+### Rule Tile `RT_Industrial` (`Assets/Art/Tiles/Level1/RT_Industrial.asset`)
+Bộ tile `Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png` (6 × 4 ô 32px) theo bản mẫu `0_Template_Tileset.png`. 23 luật (xét 8 ô quanh, thứ tự TL T TR L R BL B BR; cụ thể trước, chung sau), va chạm **Grid**:
+
+| Trường hợp | Ô |
+|---|---|
+| Ô đơn lẻ | r0c3 |
+| Dải ngang dày 1 ô: trái / giữa / phải | r0c0 / r0c1 / r0c2 |
+| Dải dọc rộng 1 ô: trên / giữa / dưới | r1c3 / r2c3 / r3c3 |
+| Góc ngoài: TL / TR / BL / BR | r1c0 / r1c2 / r3c0 / r3c2 |
+| Cạnh: trên / dưới / trái / phải | r1c1 / r3c1 / r2c0 / r2c2 |
+| Góc trong thiếu 2 chéo: TL+BL / TL+TR / TR+BR / BL+BR | r2c4 / r2c5 / r3c4 / r3c5 |
+| Góc trong thiếu 1 chéo: BR / BL / TR / TL | r0c4 / r0c5 / r1c4 / r1c5 |
+| Ruột (mặc định) | r0c4 (giống phần đất Level1; ô ruột gốc r2c1 của bộ tile là màu đen trơn) |
+
+Dùng: kéo `RT_Industrial` vào Tile Palette, tô bằng cọ / Box Fill – Unity tự chọn ô. Không trộn tile lẻ với Rule Tile trong cùng một khối.
+
+---
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -2722,3 +2833,9 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 64. Chuyển màn kiểu Soul Knight (mục 9b): thư mục `Scripts/Level` (`LevelList`, `LevelPortal`, `SceneTransition`, `LevelProgress`, `LevelCompleteScreen`); prefab `Prefabs/Level/LevelPortal` (asset Animated Portal bản xanh lam cắt 8 khung + Light2D + hạt xoáy + hạt bung); `Settings/LevelList` (1-1 Level1 "A New Beginning", 1-2 TestGamePlay "Test Level" tạm); cổng đặt cuối Level1 tại (177, 2.3); scene `LevelComplete`; Build Profiles: Level1, TestGamePlay, LevelComplete.
 65. Chuyển màn đặc sắc hơn (mục 9b): bị hút thì camera zoom 70%, cổng phình 1.3, hạt xoáy gấp đôi, sóng xung kích 60 hạt; màn hình chớp trắng xanh rồi đóng thành vòng tròn vào tâm cổng (shader mới `LuHanh/UIIris`, `M_UIIris`); thẻ tên màn dùng font Beholden Book (Bold cho mã, Italic cho tên) với đường kẻ tỏa ra, mã trượt lên, tên hiện từng chữ, hạt sáng; màn mới mở vòng tròn từ chỗ nhân vật, cổng đến (bản sao cổng) mở ra và nhân vật bật ra. `LevelList` thêm codeFont / titleFont / irisMaterial.
 66. Mở đầu màn khi vào thẳng (mục 9b): `Level/LevelIntro` gắn trong `LevelEssentials/GameSystems` - bấm Play / mở game vào Level1 cũng có thẻ tên màn "1-1 A New Beginning" và cổng đến cho nhân vật bật ra; `SceneTransition.PlayIntro`, `LevelPortal.MarkAsArrival`; đến bằng cổng thì tự bỏ qua.
+67. Đòn chém khớp nhân vật hơn + cân lại lướt: điểm neo vệt chém (0, 0.5) → (0, 0.9) ngang ngực, slashUpPush 1.4 → 1.0; thân giật mạnh hơn (sideSwingSquash (1.32, 0.8), upSwingSquash (0.82, 1.28), downSwingSquash (0.85, 1.22), swingLunge 0.12 → 0.25) và thêm `swingLean` 12° (chúi về hướng chém, `PlayerMovementFx.Punch` nhận góc). Lướt kiểu Celeste cân lại để lướt liên tục không nhanh hơn chạy: dashCooldown 0.2 → 0.5s, endDashSpeed 20 → 11.25 (= maxRun).
+68. Platform 1 chiều + quái rơi vực chết + dơi văng gần hơn: prefab `Objects/OneWayPlatform` (sprite dầm kim loại pixel Tiled, PlatformEffector2D One Way), `Player/OneWayDrop` (đứng trên nhấn S thì rơi qua 0.3s), `GroundSensor` bỏ qua platform 1 chiều khi đang bay lên / đang rơi qua (`PlayerController.GroundCollider` mới); `HazardZone` tác dụng lên mọi `IHazardReceiver` (bỏ Target Tag, bỏ qua trigger), `EnemyBase` nhận hazard thì chết ngay; `EnemyConfigBase.knockbackScale` (Bat 0.35). Đặt 2 platform thử trong TestGamePlay.
+69. Rule Tile `RT_Industrial` (mục 9c): 23 luật cho bộ Industrial 32p (ô đơn, dải ngang/dọc, góc ngoài, cạnh, góc trong 1–2 chéo, ruột r0c4).
+70. Phòng kiểu Celeste + camera theo phòng (mục 9c): `Level/Room`, `Level/RoomManager`, `Level/RoomCameraClamp` (CinemachineExtension: giới hạn mép mềm, trượt Hermite khớp vận tốc, thời gian theo quãng đường 0.35–0.6 s), `Editor/RoomEditor` (kéo cạnh phòng), `HitStop.Hold/Unhold`; CinemachineBrain sang LateUpdate; Level1 chia 5 phòng; chết về phòng đầu, rơi hố về chỗ an toàn.
+71. Hiệu ứng chuyển phòng (mục 9c): `Level/RoomTransitionFx` + Volume `VP_RoomTransition` (Lens Distortion lệch theo hướng đi, Chromatic Aberration, Vignette, weight sin²) + vệt tốc độ unscaled time.
+72. Thống nhất thông số camera về `CameraRig.prefab` (mục 9c): size 8, Target Offset (0,3,0), Damping (0.7,0.9), Dead Zone (0.1,0.2), Lookahead 0.35 Ignore Y; bỏ mọi ghi đè trong `LevelEssentials`; `DustMotes` hộp 32×18. Thêm file `HUONG_DAN_BUILD_LEVEL.md` (dựng màn từng bước, thiết kế phòng kiểu Hollow Knight).

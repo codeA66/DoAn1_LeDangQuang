@@ -14,7 +14,7 @@ namespace LuHanh.Enemies
     /// bat lai tai cho cu (khong cap phat, khong rac). Xa camera thi ngu.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D), typeof(Health))]
-    public abstract class EnemyBase : MonoBehaviour, IDamageable, IResettable
+    public abstract class EnemyBase : MonoBehaviour, IDamageable, IResettable, IHazardReceiver
     {
         [Tooltip("Sprite chinh (object con Visual).")]
         [SerializeField] protected SpriteRenderer sprite;
@@ -181,8 +181,17 @@ namespace LuHanh.Enemies
                 return;
             }
 
+            hit.knockback *= BaseConfig.knockbackScale;
             OnHurt(hit);
             HurtRequested = true;
+        }
+
+        /// <summary>Roi xuong ho / cham bay: chet ngay, khong tinh mau con lai. Hoi sinh lai khi nguoi choi hoi sinh.</summary>
+        public void TakeHazardHit(int damage)
+        {
+            if (health.IsDead) return;
+            health.Damage(health.Current);
+            gameObject.SetActive(false);
         }
 
         /// <summary>Goi khi nguoi choi hoi sinh: ve cho cu, day mau, ve trang thai dau.</summary>

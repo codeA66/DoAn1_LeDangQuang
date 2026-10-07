@@ -33,14 +33,15 @@ MonoBehaviour:
   slashVisualTime: 0.18
   slashGrow: 0
   slashCentredOnHitArea: 0
-  slashAnchor: {x: 0, y: 0.5}
+  slashAnchor: {x: 0, y: 0.9}
   slashBaseAngle: 0
   slashFlipX: 0
   slashSidePush: 1.2
-  slashUpPush: 1.4
+  slashUpPush: 1
   slashDownPush: 0.7
   slashAlternateWindow: 0.6
-  sideSwingSquash: {x: 1.2, y: 0.88}
-  upSwingSquash: {x: 0.88, y: 1.18}
-  downSwingSquash: {x: 0.9, y: 1.15}
-  swingLunge: 0.12
+  sideSwingSquash: {x: 1.32, y: 0.8}
+  upSwingSquash: {x: 0.82, y: 1.28}
+  downSwingSquash: {x: 0.85, y: 1.22}
+  swingLunge: 0.25
+  swingLean: 12

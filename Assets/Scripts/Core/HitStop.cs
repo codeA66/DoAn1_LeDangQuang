@@ -3,10 +3,11 @@ using UnityEngine;
 namespace LuHanh.Core
 {
     /// <summary>
-    /// Khung hinh dung lai mot thoang (hitstop) - dung chung cho moi nguon (chem trung, bi danh...).
-    /// Chi MOT noi dieu khien Time.timeScale nen cac yeu cau chong nhau khong gianh nhau:
-    /// yeu cau moi chi keo dai thoi diem ket thuc neu dai hon. Dem bang thoi gian thuc
-    /// (unscaled) vi luc timeScale = 0 thi thoi gian thuong dung yen.
+    /// Noi DUY NHAT dieu khien Time.timeScale, de cac nguon dung hinh khong gianh nhau:
+    /// - Hitstop (chem trung, bi danh...): dung hinh mot khoang thoi gian; yeu cau moi chi keo dai neu dai hon.
+    /// - Giu dung (vd camera dang truot sang phong moi): dung cho toi khi nha ra, dem so lan giu.
+    /// Game chi chay lai khi het hitstop VA khong con ai giu. Dem bang thoi gian thuc (unscaled)
+    /// vi luc timeScale = 0 thi thoi gian thuong dung yen.
     /// </summary>
     public class HitStop : MonoBehaviour
     {
@@ -14,13 +15,34 @@ namespace LuHanh.Core
 
         float endRealtime;
         bool active;
+        int holds;
 
         /// <summary>Dung hinh <paramref name="seconds"/> giay thuc. Tu tao object dieu khien lan dau.</summary>
         public static void Request(float seconds)
         {
             if (seconds <= 0f) return;
+            Ensure().Begin(seconds);
+        }
+
+        /// <summary>Dung game cho toi khi goi <see cref="Unhold"/> (moi lan Hold phai co mot lan Unhold).</summary>
+        public static void Hold()
+        {
+            var hs = Ensure();
+            hs.holds++;
+            Time.timeScale = 0f;
+        }
+
+        public static void Unhold()
+        {
+            if (!instance || instance.holds == 0) return;
+            instance.holds--;
+            instance.TryResume();
+        }
+
+        static HitStop Ensure()
+        {
             if (!instance) instance = new GameObject("HitStop").AddComponent<HitStop>();
-            instance.Begin(seconds);
+            return instance;
         }
 
         void Begin(float seconds)
@@ -33,19 +55,24 @@ namespace LuHanh.Core
         // Update van chay khi timeScale = 0 (chi deltaTime = 0).
         void Update()
         {
-            if (active && Time.unscaledTime >= endRealtime) Release();
+            if (active && Time.unscaledTime >= endRealtime)
+            {
+                active = false;
+                TryResume();
+            }
         }
 
-        void Release()
+        void TryResume()
         {
-            Time.timeScale = 1f;
-            active = false;
+            if (!active && holds == 0) Time.timeScale = 1f;
         }
 
         // Bi huy giua luc dung hinh (doi scene, thoat Play) thi khong de game dung mai.
         void OnDisable()
         {
-            if (active) Release();
+            active = false;
+            holds = 0;
+            Time.timeScale = 1f;
         }
     }
 }
