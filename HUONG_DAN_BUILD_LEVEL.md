@@ -1,5 +1,7 @@
 # Hướng dẫn build level – Lữ Hành Bí Ẩn
 
+> Trước khi chọn màu tilemap, đèn, nền hoặc tiền cảnh, đọc [AGENTS.md — Quy chuẩn màu sắc](AGENTS.md). Tỷ lệ màu là mục tiêu bố cục khung hình, không phải thông số intensity của đèn.
+
 File này hướng dẫn dựng một màn chơi mới từ đầu đến khi chơi được: tạo scene, vẽ map bằng Rule Tile, chia phòng cho camera, đặt vật cản/quái, nối cổng sang màn tiếp theo, và **cách thiết kế từng phòng theo phong cách Hollow Knight**.
 
 Chi tiết kỹ thuật của từng hệ thống (code, thông số) nằm trong `TUTORIAL.md`. File này chỉ tập trung vào **cách làm**.
@@ -124,8 +126,10 @@ Tạo thêm 2 Tilemap **không có collider**, cùng Grid:
 ## 5. Bước 3 – Chia phòng (camera theo phòng)
 
 ### 5.1 Hoạt động thế nào
+
+> **Đã áp dụng bản được duyệt:** CameraRig có lớp phủ tạo sẵn cho chuyển phòng tối 0.15s → đặt camera khi đen → sáng 0.2s. Level1: Room cao 21 (y −4→17), Dead Zone Y 0.12, Damping Y 0.6, size 8. Phòng cao ≤16 sẽ khóa camera dọc dù đã giảm Damping. Chỉ sửa camera ở CameraRig và Room riêng của màn, không tạo override trong LevelEssentials.
 - Camera **bị giới hạn trong phòng hiện tại** (không lộ phòng bên cạnh); gần mép phòng camera **chậm dần** chứ không khựng.
-- Đi qua mép sang phòng kế bên: **game dừng một thoáng**, camera **trượt êm** sang phòng mới (bắt đầu đúng tốc độ camera đang có, giảm dần, dừng êm), kèm **hiệu ứng chuyển phòng** (méo ống kính về hướng đi, tách màu, viền tối, vệt tốc độ). Thời gian trượt tự tính theo quãng đường (0.35–0.6 giây).
+- Đi qua mép sang phòng kế bên: giữ game bằng HitStop trong lúc tối dần 0.15s, đặt camera vào phòng mới khi đen hoàn toàn, chờ một frame rồi cho chơi tiếp trong lúc sáng lại 0.2s. Không phát méo hình, tách màu, vệt tốc độ. Nếu chưa gán fade thì dùng nhánh trượt cũ.
 - Đi **lên** phòng trên: nhân vật được đẩy lên thêm để không rơi lại.
 - Rơi hố: về chỗ đứng an toàn (có thể ở phòng trước – camera nhảy thẳng tới vì màn hình đang tối). **Hết máu: về phòng đầu tiên** (điểm xuất phát).
 
@@ -146,7 +150,7 @@ Tạo thêm 2 Tilemap **không có collider**, cùng Grid:
 | Phòng dọc (giếng) cao nhiều màn | Camera tự cuộn dọc bên trong |
 | Một phòng = **một ý tưởng** | Dễ cân độ khó, dễ sửa (xem mục 6) |
 
-Ví dụ Level1 (5 phòng, cao −4 → 11):
+Ví dụ Level1 (5 phòng, cao −4 → 17):
 
 | Phòng | x | Nội dung |
 |---|---|---|
@@ -160,13 +164,14 @@ Ví dụ Level1 (5 phòng, cao −4 → 11):
 | Ở đâu | Ô | Mặc định | Ghi chú |
 |---|---|---|---|
 | `CameraRig` → CinemachineCamera → **Room Camera Clamp** | Edge Softness | 1 | Vùng chậm dần sát mép phòng (0 = khựng cứng) |
+| `CameraRig` → **RoomTransitionFx** | Fade Out / In Time | 0.15 / 0.2 s | Thời gian tối/sáng (thời gian thực) |
 | | Transition Speed | 60 | Tốc độ trượt trung bình (unit/giây) |
 | | Min / Max Transition Time | 0.35 / 0.6 s | Giới hạn thời gian trượt |
-| `CameraRig` → Main Camera → **RoomTransitionFx** | Distortion Shift / Peak Weight | 0.18 / 1 | Độ lệch méo ống kính, độ mạnh hiệu ứng |
-| | Streak Count / Speed | 18 / 45 | Vệt tốc độ |
+| `CameraRig` → Main Camera → **RoomTransitionFx** | Distortion Shift / Peak Weight | 0.18 / 0 | Hiệu ứng trượt cũ hiện tắt |
+| | Streak Count / Speed | 0 / 45 | Vệt tốc độ hiện tắt |
 | `Assets/Settings/Lighting/VP_RoomTransition` | Lens Distortion / Chromatic Aberration / Vignette | 0.22 / 0.45 / 0.55 | Độ mạnh từng hiệu ứng ở đỉnh |
 | `LevelEssentials/GameSystems` → **RoomManager** | Upward Boost | 10 | Đẩy lên khi sang phòng trên (0 = tắt) |
-| `CameraRig` → **Position Composer** | Damping / Dead Zone / Lookahead | (0.7, 0.9) / (0.1, 0.2) / 0.35 s | Bám theo nhân vật trong phòng (kiểu Hollow Knight: dẫn trước theo hướng chạy, không nhấp nhô khi nhảy) |
+| `CameraRig` → **Position Composer** | Damping / Dead Zone / Lookahead | (0.7, 0.6) / (0.1, 0.12) / 0.35 s | Bám theo nhân vật trong phòng (kiểu Hollow Knight: dẫn trước theo hướng chạy, không nhấp nhô khi nhảy) |
 
 ---
 

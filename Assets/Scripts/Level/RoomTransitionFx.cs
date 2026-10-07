@@ -6,13 +6,21 @@ using UnityEngine.Rendering.Universal;
 namespace LuHanh.Level
 {
     /// <summary>
-    /// Hieu ung luc camera truot sang phong moi: Volume rieng (meo ong kinh lech ve huong di, tach mau,
-    /// vien toi) manh dan roi tan theo duong chuong, cong vet toc do mo luot nguoc huong di.
-    /// Chay bang thoi gian thuc vi game dang dung trong luc chuyen phong.
-    /// Dat duoi Main Camera (vet toc do di theo man hinh).
+    /// Lop phu toi/sang tao san cho chuyen phong, chay bang thoi gian thuc.
+    /// Giu hieu ung truot cu de prefab chua gan fade van hoat dong trong luc cho duyet preview.
     /// </summary>
     public class RoomTransitionFx : MonoBehaviour
     {
+        [Header("Chuyen phong toi / sang")]
+        [Tooltip("Lop phu den tao san trong CameraRig. De trong de giu kieu truot cu cho prefab chua chuyen doi.")]
+        [SerializeField] CanvasGroup fade;
+        [Tooltip("Thoi gian toi dan truoc khi dat camera vao phong moi (giay thuc).")]
+        [SerializeField, Min(0f)] float fadeOutTime = 0.15f;
+        [Tooltip("Thoi gian sang lai sau khi camera da on dinh (giay thuc).")]
+        [SerializeField, Min(0f)] float fadeInTime = 0.2f;
+
+        public bool HasFade => isActiveAndEnabled && fade && fade.gameObject.activeInHierarchy;
+
         [Tooltip("Volume toan cuc rieng (priority cao hon Volume chinh), weight 0 luc binh thuong.")]
         [SerializeField] Volume volume;
         [Tooltip("Tam meo ong kinh lech ve huong di bao nhieu (0..0.5 man hinh).")]
@@ -31,11 +39,47 @@ namespace LuHanh.Level
 
         void Awake()
         {
+            ResetFade();
             if (volume)
             {
                 volume.weight = 0f;
                 if (volume.profile) volume.profile.TryGet(out lens);
             }
+        }
+
+        /// <summary>Toi hoan toan truoc khi doi phong; khong phat meo hinh hay vet toc do.</summary>
+        public IEnumerator FadeOut()
+        {
+            if (running != null) StopCoroutine(running);
+            running = null;
+            if (volume) volume.weight = 0f;
+            if (streaks) streaks.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            yield return FadeTo(1f, fadeOutTime);
+        }
+
+        public IEnumerator FadeIn() => FadeTo(0f, fadeInTime);
+
+        IEnumerator FadeTo(float target, float duration)
+        {
+            if (!HasFade) yield break;
+            float from = fade.alpha;
+            for (float elapsed = 0f; elapsed < duration; elapsed += Time.unscaledDeltaTime)
+            {
+                if (!HasFade) yield break;
+                float k = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+                fade.alpha = Mathf.Lerp(from, target, k);
+                yield return null;
+            }
+            if (fade) fade.alpha = target;
+        }
+
+        /// <summary>Don lop phu khi chuyen xong hoac bi huy giua chung.</summary>
+        public void ResetFade()
+        {
+            if (!fade) return;
+            fade.alpha = 0f;
+            fade.blocksRaycasts = false;
+            fade.interactable = false;
         }
 
         /// <summary>Phat hieu ung theo huong camera di (<paramref name="direction"/> don vi) trong <paramref name="duration"/> giay thuc.</summary>
@@ -76,6 +120,9 @@ namespace LuHanh.Level
 
         void OnDisable()
         {
+            StopAllCoroutines();
+            running = null;
+            ResetFade();
             if (volume) volume.weight = 0f;
         }
     }

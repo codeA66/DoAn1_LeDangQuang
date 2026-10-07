@@ -6,7 +6,8 @@ namespace LuHanh.Level
 {
     /// <summary>
     /// Theo doi nguoi choi dang o phong nao (<see cref="Room"/>). Ra khoi phong hien tai, vao phong ke ben:
-    /// dung game, camera truot sang phong moi roi choi tiep (kieu Celeste). Di len phong tren duoc day len
+    /// toi dan, dat camera vao phong moi khi da den, roi sang lai. Prefab chua gan fade van truot nhu cu.
+    /// Di len phong tren duoc day len
     /// mot chut de khong roi lai phong cu. Phong moi khong ke ben, hoac man hinh dang toi (hoi sinh,
     /// chuyen man) thi camera nhay thang toi, khong truot.
     /// Dat trong LevelEssentials; man khong co Room nao thi khong lam gi.
@@ -22,6 +23,7 @@ namespace LuHanh.Level
         Rigidbody2D playerBody;
         RoomCameraClamp cameraClamp;
         RoomTransitionFx transitionFx;
+        bool holdingTime;
 
         public Room Current { get; private set; }
         public bool IsTransitioning { get; private set; }
@@ -82,23 +84,52 @@ namespace LuHanh.Level
             IsTransitioning = true;
             Vector2 direction = ExitDirection(Current.Bounds, point);
             bool goingUp = direction.y > 0f;
-            Current = next;
-
-            // Game dung trong luc camera truot; cho toi khi camera bao xong (them chut du phong).
             HitStop.Hold();
-            float duration = cameraClamp.TransitionTo(next.Bounds);
-            if (transitionFx) transitionFx.Play(direction, duration);
-            float timeout = Time.unscaledTime + duration + 0.25f;
-            while (cameraClamp.IsTransitioning && Time.unscaledTime < timeout) yield return null;
-            HitStop.Unhold();
+            holdingTime = true;
 
-            if (goingUp && playerBody && playerBody.linearVelocity.y > 0f && upwardBoost > 0f)
+            try
             {
-                var v = playerBody.linearVelocity;
-                v.y = Mathf.Max(v.y, upwardBoost);
-                playerBody.linearVelocity = v;
+                bool useFade = transitionFx && transitionFx.HasFade;
+                if (useFade)
+                {
+                    yield return transitionFx.FadeOut();
+                    Enter(next, skipDamping: true);
+                    // Cho Cinemachine hoan tat mot LateUpdate khi man hinh van den.
+                    yield return null;
+                }
+                else
+                {
+                    // Giu tuong thich cho prefab chua duoc gan lop phu.
+                    Current = next;
+                    float duration = cameraClamp.TransitionTo(next.Bounds);
+                    if (transitionFx) transitionFx.Play(direction, duration);
+                    float timeout = Time.unscaledTime + duration + 0.25f;
+                    while (cameraClamp.IsTransitioning && Time.unscaledTime < timeout) yield return null;
+                }
+
+                if (goingUp && playerBody && playerBody.linearVelocity.y > 0f && upwardBoost > 0f)
+                {
+                    var v = playerBody.linearVelocity;
+                    v.y = Mathf.Max(v.y, upwardBoost);
+                    playerBody.linearVelocity = v;
+                }
+                // Cho nguoi choi di tiep ngay khi camera da vao phong moi.
+                ReleaseTime();
+                if (useFade && transitionFx) yield return transitionFx.FadeIn();
             }
-            IsTransitioning = false;
+            finally
+            {
+                ReleaseTime();
+                if (transitionFx) transitionFx.ResetFade();
+                IsTransitioning = false;
+            }
+        }
+
+        void ReleaseTime()
+        {
+            if (!holdingTime) return;
+            holdingTime = false;
+            HitStop.Unhold();
         }
 
         /// <summary>Huong nhan vat vuot ra khoi phong cu (theo mep da vuot).</summary>
@@ -112,9 +143,10 @@ namespace LuHanh.Level
         // Bi tat giua luc truot (doi scene...) thi khong de game dung mai.
         void OnDisable()
         {
-            if (!IsTransitioning) return;
+            StopAllCoroutines();
+            if (transitionFx) transitionFx.ResetFade();
+            ReleaseTime();
             IsTransitioning = false;
-            HitStop.Unhold();
         }
     }
 }

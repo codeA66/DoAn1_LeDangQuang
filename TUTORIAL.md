@@ -1,5 +1,7 @@
 # Hướng dẫn setup đồ án "Lữ Hành Bí Ẩn"
 
+> Quy chuẩn hình ảnh: đọc [AGENTS.md](AGENTS.md) để dùng đúng 6 nhóm màu, tỷ lệ mục tiêu và quy trình duyệt trước khi tạo/sửa asset.
+
 Tài liệu ghi lại từng bước dựng project, theo đúng thứ tự đã làm, để có thể dựng lại từ đầu hoặc hiểu vì sao mỗi thứ được cài như vậy.
 Mỗi mục có **Làm gì** (thao tác) và **Vì sao** (lý do kỹ thuật).
 
@@ -2637,6 +2639,17 @@ Prefab `Assets/Prefabs/Objects/OneWayPlatform.prefab`: thanh dầm kim loại pi
 
 ## 9c. Phòng kiểu Celeste, camera theo phòng, Rule Tile
 
+### Chuyển phòng tối/sáng — đã áp dụng sau duyệt preview
+
+Code `RoomManager` / `RoomTransitionFx` đã bổ sung nhánh tối/sáng. Nhánh này chỉ bật khi `RoomTransitionFx.fade` được gán một `CanvasGroup` đang hoạt động, tạo sẵn trong `CameraRig.prefab`; prefab chưa gán vẫn dùng chuyển phòng trượt hiện tại.
+
+- `fadeOutTime = 0.15`, `fadeInTime = 0.2` giây thực, alpha dùng SmoothStep để bắt đầu/kết thúc êm.
+- `HitStop.Hold` → tối hoàn toàn → `SnapTo` phòng mới và bỏ damping → chờ một frame cho Cinemachine → `HitStop.Unhold` → sáng lại trong lúc nhân vật tiếp tục di chuyển. Không phát Volume méo hình/tách màu hay vệt tốc độ trong nhánh này.
+- Khi tắt RoomManager giữa chừng: dừng coroutine, dọn alpha, nhả đúng lượt Hold do hệ thống phòng sở hữu.
+- Cấu hình đã áp dụng: CameraRig giữ size 8, Dead Zone Y 0.12, Damping Y 0.6; Room_1…5 của Level1 từ y −4 đến 17 (tâm Y 6.5, cao 21). Camera được phép di chuyển dọc khoảng 5 unit; giới hạn Room vẫn có ưu tiên cuối cùng.
+- **Đã áp dụng vào CameraRig.prefab và 5 Room của Level1.** CanvasGroup tạo sẵn, alpha 0, không chặn input; Peak Weight và Streak Count bằng 0. LevelEssentials không có thay đổi. Nhánh trượt bên dưới chỉ là tương thích cho prefab không gán fade.
+- Đã chạy preview trong Unity bằng đường di chuyển giả lập (không phải phép đo độ cao nhảy thật): camera Y từ 4.3679 đến 8.999; Room_1→2 và Room_2→1 đều đổi khi alpha = 1; tắt RoomManager khi đang Hold trả timeScale về 1, alpha về 0. Console không có Error/Exception sau lượt chạy. Scene trở lại trạng thái sạch sau khi thoát Play.
+
 > Hướng dẫn **cách dựng màn** (từng bước, thiết kế phòng kiểu Hollow Knight): xem file `HUONG_DAN_BUILD_LEVEL.md` ở thư mục gốc project. Mục này mô tả **kỹ thuật**.
 
 ### Các file
@@ -2645,17 +2658,17 @@ Prefab `Assets/Prefabs/Objects/OneWayPlatform.prefab`: thanh dầm kim loại pi
 |---|---|
 | `Scripts/Level/Room.cs` | Một phòng: tâm = vị trí object, `size` = kích thước. Tự đăng ký vào `Room.All` khi bật. `Contains(point)`, `Touches(other)`. Gizmo khung xanh; khi chọn, khung đỏ cảnh báo nếu phòng nhỏ hơn khung hình |
 | `Scripts/Editor/RoomEditor.cs` | Kéo cạnh phòng trong Scene view (BoxBoundsHandle), bắt lưới 1 ô |
-| `Scripts/Level/RoomManager.cs` | Trong `LevelEssentials/GameSystems`. Mỗi frame lấy điểm ngực nhân vật (chân + 0.9); ra khỏi phòng hiện tại mà vào phòng kề → chuyển phòng có trượt; phòng không kề / màn hình đang tối (hồi sinh, chuyển màn) → nhảy thẳng (bỏ damping 1 frame). Ngoài mọi phòng (đang rơi xuống hố) → giữ phòng cũ |
+| `Scripts/Level/RoomManager.cs` | Trong `LevelEssentials/GameSystems`. Mỗi frame lấy điểm ngực nhân vật (chân + 0.9); ra khỏi phòng hiện tại mà vào phòng kề → tối/sáng (trượt nếu chưa gán fade); phòng không kề / màn hình đang tối (hồi sinh, chuyển màn) → nhảy thẳng (bỏ damping 1 frame). Ngoài mọi phòng (đang rơi xuống hố) → giữ phòng cũ |
 | `Scripts/Level/RoomCameraClamp.cs` | **CinemachineExtension** trên CinemachineCamera (`CameraRig`), chạy ở stage Body: giới hạn camera trong phòng + trượt khi chuyển phòng |
-| `Scripts/Level/RoomTransitionFx.cs` | Dưới Main Camera (`CameraRig/Main Camera/RoomTransitionFx`): Volume riêng + vệt tốc độ lúc chuyển phòng |
+| `Scripts/Level/RoomTransitionFx.cs` | Dưới Main Camera (`CameraRig/Main Camera/RoomTransitionFx`): CanvasGroup tối/sáng tạo sẵn; Volume và vệt tốc độ cũ hiện tắt |
 | `Scripts/Core/HitStop.cs` | Thêm `Hold()` / `Unhold()`: giữ game dừng (đếm số lần giữ). Game chỉ chạy lại khi hết hitstop **và** không còn ai giữ – hitstop lúc đang chuyển phòng không làm game chạy lại giữa chừng |
 
 ### Giới hạn camera trong phòng (mép mềm)
-Khung hình nửa rộng `halfW = size × aspect`, nửa cao `halfH = size`. Tâm camera hợp lệ: `x ∈ [room.xMin + halfW, room.xMax − halfW]` (tương tự y). Phòng hẹp hơn khung hình theo trục nào → camera đứng **giữa phòng** theo trục đó (Level1 cao 15 < 16 nên camera **khóa dọc**).
+Khung hình nửa rộng `halfW = size × aspect`, nửa cao `halfH = size`. Tâm camera hợp lệ: `x ∈ [room.xMin + halfW, room.xMax − halfW]` (tương tự y). Phòng hẹp hơn khung hình theo trục nào → camera đứng **giữa phòng** theo trục đó (Level1 hiện cao 21 > 16 nên camera có khoảng di chuyển dọc 5 ô).
 
 Trong vùng `Edge Softness` (1 ô) sát mép, vị trí đi theo hàm mũ `hi − w + w·(1 − e^(−d/w))`: cùng độ dốc 1 ở chỗ nối (không gãy vận tốc) và **không bao giờ vượt mép** → camera chậm dần rồi dừng thay vì khựng.
 
-### Trượt khi chuyển phòng (độ mượt)
+### Nhánh trượt tương thích (chỉ khi không gán fade)
 1. `RoomManager` gọi `HitStop.Hold()` (dừng game), `RoomCameraClamp.TransitionTo(phòng mới)` trả về thời gian trượt, `RoomTransitionFx.Play(hướng, thời gian)`.
 2. **Thời gian = quãng đường / Transition Speed (60)**, kẹp trong [0.35, 0.6] giây → tốc độ cảm nhận luôn đều.
 3. Mỗi frame (thời gian **thực**, vì game đang dừng): vị trí = **đường Hermite** từ vị trí camera cũ (vận tốc đầu = **vận tốc camera đang có**, đo liên tục khi chơi) tới vị trí hợp lệ của phòng mới (vận tốc cuối = 0). Vận tốc đầu ngược hướng thì bỏ; lớn quá thì chặn ở 3 × quãng đường → đường cong đi một chiều, không vượt đích rồi giật ngược.
@@ -2663,7 +2676,7 @@ Trong vùng `Edge Softness` (1 ô) sát mép, vị trí đi theo hàm mũ `hi �
 
 Vì sao mượt: (a) không có frame nào vận tốc camera nhảy đột ngột (bắt đầu đúng vận tốc đang có, thường ≈ 0 vì camera đã chậm dần ở mép phòng → giống smoothstep); (b) kết thúc vận tốc 0 rồi Position Composer tiếp tục bám nhân vật; (c) CinemachineBrain đổi sang **LateUpdate** (nhân vật Rigidbody2D Interpolate → cập nhật mỗi frame hình, và vẫn chạy khi timeScale = 0); (d) nền parallax cập nhật sau camera (`DefaultExecutionOrder(600)`).
 
-### Hiệu ứng chuyển phòng (`RoomTransitionFx`)
+### Hiệu ứng trượt cũ (`RoomTransitionFx`, Peak Weight = 0, Streak Count = 0 hiện tại)
 | Thành phần | Gì |
 |---|---|
 | `Volume` (global, priority 10 > Volume chính 0, weight 0) | Profile `Assets/Settings/Lighting/VP_RoomTransition`: **Lens Distortion 0.22** (tâm lệch về hướng đi `Distortion Shift` 0.18), **Chromatic Aberration 0.45**, **Vignette 0.55** màu tím đen |
@@ -2678,8 +2691,8 @@ Vì sao mượt: (a) không có frame nào vận tốc camera nhảy đột ng�
 | Lens Orthographic Size (CinemachineCamera + Main Camera) | **8** → khung hình 28.4 × 16 ô |
 | CinemachineBrain Update Method | **LateUpdate** |
 | Position Composer Target Offset | (0, 3, 0) |
-| Damping | (0.7, 0.9, 0) – ngang bám nhanh, dọc trễ hơn (kiểu Hollow Knight) |
-| Dead Zone | (0.1, 0.2) |
+| Damping | (0.7, 0.6, 0) – camera bám dọc sớm hơn khi nhảy cao |
+| Dead Zone | (0.1, 0.12) |
 | Lookahead | Time 0.35, Smoothing 8, **Ignore Y** (dẫn trước theo hướng chạy, không nhấp nhô khi nhảy) |
 | Room Camera Clamp | Edge Softness 1, Transition Speed 60, Min/Max 0.35/0.6 s |
 
@@ -2687,7 +2700,7 @@ Vì sao mượt: (a) không có frame nào vận tốc camera nhảy đột ng�
 
 `TestGamePlay` vẫn giữ CameraRig cũ ghi đè size 7.5 trong scene (scene thử nghiệm, chưa đổi).
 
-### Level1: 5 phòng (cao −4 → 11)
+### Level1: 5 phòng (cao −4 → 17, tâm Y 6.5, chiều cao 21)
 | Phòng | x | Nội dung |
 |---|---|---|
 | Room_1 | −10 → 30 | Di chuyển, nhảy bậc |
@@ -2839,3 +2852,7 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 70. Phòng kiểu Celeste + camera theo phòng (mục 9c): `Level/Room`, `Level/RoomManager`, `Level/RoomCameraClamp` (CinemachineExtension: giới hạn mép mềm, trượt Hermite khớp vận tốc, thời gian theo quãng đường 0.35–0.6 s), `Editor/RoomEditor` (kéo cạnh phòng), `HitStop.Hold/Unhold`; CinemachineBrain sang LateUpdate; Level1 chia 5 phòng; chết về phòng đầu, rơi hố về chỗ an toàn.
 71. Hiệu ứng chuyển phòng (mục 9c): `Level/RoomTransitionFx` + Volume `VP_RoomTransition` (Lens Distortion lệch theo hướng đi, Chromatic Aberration, Vignette, weight sin²) + vệt tốc độ unscaled time.
 72. Thống nhất thông số camera về `CameraRig.prefab` (mục 9c): size 8, Target Offset (0,3,0), Damping (0.7,0.9), Dead Zone (0.1,0.2), Lookahead 0.35 Ignore Y; bỏ mọi ghi đè trong `LevelEssentials`; `DustMotes` hộp 32×18. Thêm file `HUONG_DAN_BUILD_LEVEL.md` (dựng màn từng bước, thiết kế phòng kiểu Hollow Knight).
+73. Chuẩn bị preview camera bám dọc và chuyển phòng tối/sáng: `RoomTransitionFx` thêm CanvasGroup tạo sẵn, thời gian 0.15/0.2s dùng SmoothStep; `RoomManager` đổi camera lúc tối hoàn toàn, chờ cập nhật Cinemachine rồi nhả Hold trước khi sáng lại, dọn trạng thái khi bị tắt. Giữ nhánh trượt cho prefab chưa gán fade. Cấu hình Room cao 21, Dead Zone Y 0.12, Damping Y 0.6 chỉ thử tạm, chờ chủ project duyệt hình trước khi áp dụng scene/prefab.
+
+74. Áp dụng preview đã duyệt: CameraRig có CanvasGroup tối/sáng tạo sẵn (0.15/0.2s, alpha 0, không chặn input), tắt Peak Weight và Streak Count; Damping Y 0.6, Dead Zone Y 0.12, size 8. Nới cả 5 Room Level1 thành y −4→17 (cao 21, tâm Y 6.5). Không thay đổi LevelEssentials hoặc tạo override camera trong scene. Cập nhật hướng dẫn dựng màn.
+75. Thêm `AGENTS.md` làm quy chuẩn màu cho AI: nền xa 40%, kiến trúc 30%, tiền cảnh/tối sâu 15%, người chơi/có lợi 7%, đèn an toàn 5%, nguy hiểm 3%; kèm mã HEX, quy tắc đọc đường đi và duyệt preview. Liên kết từ README, TUTORIAL và hướng dẫn dựng màn. Chỉ thêm tài liệu, chưa đổi màu asset hoặc scene.
