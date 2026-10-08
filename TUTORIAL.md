@@ -1009,7 +1009,7 @@ Hết máu thì màn hình tối dần, nhân vật hồi sinh ở checkpoint, q
 | `RespawnManager` | Fade Out / Hold / Fade In | 0.6 / 0.3 / 0.5 | Thời gian tối dần / giữ đen / sáng dần |
 | `HealthUI` | Pop Scale / Pop Time | 1.4 / 0.2 | Mask vừa mất nảy to lên rồi thu về |
 
-**Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, rung camera. (Vực gây sát thương: đã làm ở mục 5.19.)
+**Chưa làm (để sau)**: Soul + hồi máu bằng Focus, mất tiền + Shade khi chết, ghế checkpoint, rung camera. (Vực gây sát thương: đã làm ở mục 5.20.)
 
 #### Phản ứng khi trúng đòn (`HitReaction`) — dễ mở rộng cho quái mới
 
@@ -1337,7 +1337,39 @@ OrbExplode (Assets/Prefabs/Projectiles/)  SpriteRenderer (orb_explode_0..7 = VFX
 
 Chọn dơi trong Scene → **vòng tròn cam** là bán kính phát hiện, **đường vàng** là khoảng lượn.
 
-### 5.19 Vùng chết dưới hố (kiểu Hollow Knight)
+### 5.19 Quái Cinder Husk (tụ lực rồi phát nổ)
+
+Quái máy dáng thấp, lõi cam đỏ, cao nhìn thấy ngang Player. Chạm thân không gây sát thương; Player vào tầm thì quái tự tụ lực và bắn một cầu lửa ngang để nhảy né.
+
+Quái quay mặt về Player trong Idle, Hurt và lúc tụ lực. `CinderHusk.asset → knockbackScale = 0`; Hurt không gán lực đẩy từ đòn chém, nên đòn đánh không làm quái văng ngang hay nảy lên. Trọng lực vẫn hoạt động.
+
+#### Hành vi và thông số
+- HP **5** trong config và prefab; `PlayerAttackConfig.damage = 1`, nên cần 5 đòn chém thường để hạ quái. Bị đánh: Hurt 0.15s rồi về Idle, không tự kích hoạt bắn. Đang tụ lực thì đòn chém không reset đồng hồ.
+- Tự bắn: khi Idle, khoảng cách từ điểm bắn đến tâm collider Player **≤10 unit** (`attackRange`), collider Player giao dải cao của cầu lửa và không bị Ground/tường che đường nhìn, quái tụ lực **0.65s** rồi bắn ngang. Khi đã tụ lực, quái hoàn tất phát bắn; Player có thể nhảy/rời vị trí để né. Sau phát bắn phát đuôi animation 0.6s + hồi 0.35s rồi về Idle; còn trong tầm thì bắt đầu lần tiếp theo (chu kỳ khoảng **1.6s**). Chỉ bắt đầu khi có slot đạn rảnh; không kích hoạt khi Player đang tắt vật lý để hồi sinh.
+- Cầu lửa: tốc độ **30 unit/s**, bằng `PlayerMovementConfig.dashSpeed` hiện tại; bán kính va chạm **0.9205314 unit**, tồn tại tối đa **2s**, gây **2 damage** (`fireballDamage`) một lần rồi tắt; chạm Ground/tường cũng tắt sau VFX. Dùng CircleCast để quét đường bay. Hai object tạo sẵn trong prefab được dùng luân phiên, không Instantiate/Destroy lúc chơi. Giá trị tốc độ là cấu hình riêng đã đặt theo dash hiện tại, không tự đổi khi config Player được chỉnh sau này.
+- Hình cầu lửa và lõi lấy chiều cao sprite Idle của `Assets/Character/Player/Player.prefab → Visual`: **1.841063 unit**. Đây là kích thước sprite đã đọc từ Unity, không tính halo/đèn/đuôi lửa. Điểm bắn và điểm xuất hiện lõi nằm ở đáy collider thân + bán kính mới + khoảng hở **0.06 unit** để tránh bắt đầu trong sàn.
+- Cầu chạm Ground/tường: dừng bay ngay, dùng điểm va chạm và pháp tuyến từ CircleCast để bung một mảng lửa/khói ngược ra khỏi bề mặt, có 24 tàn lửa nhỏ. VFX **0.65s**, kích thước shader bằng bán kính cầu × **2** (`wallImpactDuration`, `wallImpactScale`). Không gây thêm sát thương diện rộng; không áp dụng cho va Player. Object giữ trạng thái bận đến khi hiệu ứng tan rồi trả về pool; reset/hồi sinh hủy hiệu ứng. Shader có mode va tường dùng chung material/mesh tạo sẵn.
+- Khi chết, cơ chế `EnemyBase` đang có thả **3 SoulOrb** (`soulOrbs = 3`), mỗi hạt **5 năng lượng Shadow**: tổng **15**. Cần đã mở khóa Shadow và có `SoulOrbPool` trong màn. Hạt nạp năng lượng là vật có lợi, khác với lõi đỏ gây nổ.
+- Sau khi bắn, phát đuôi animation 0.6s và hồi 0.35s rồi trở lại Idle. Idle có 4 khung nhấp nhô nhẹ ở 5 fps. Thân không phóng to khi tấn công; `hitSquash = (1,1)` bỏ bóp phình khi trúng đòn.
+- Khi bị hạ gục: Die 0.28s rồi ẩn thân, để lại **lõi than đỏ** đuổi tâm collider Player ở **4 unit/s**, **xuyên mọi vật cản**. Đã bỏ CircleCast chặn chuyển động của lõi; lõi là hình/VFX không có collider vật lý. Lõi nhấp nháy nhanh dần trong **2s**, sau đó nổ bán kính **5 unit**, gây **3 damage** (`blastDamage`) một lần. Sau nổ 0.75s object tắt. Đếm giờ tiếp tục khi thân ở ngoài khoảng ngủ camera; hồi sinh khôi phục thân, collider, trọng lực và dọn VFX/cầu lửa. `coreCollisionRadius` hiện chỉ dùng căn độ cao lúc xuất hiện, `coreWallSkin` là trường cũ không còn dùng.
+- Sprite frame 64×64, PPU 24.44, Filter Point; phần hình nhìn thấy được có chiều cao ngang Player. Hurt/Attack/Die có 3/6/6 khung.
+
+#### File và scene test
+| Thành phần | Đường dẫn / cấu hình |
+|---|---|
+| Điều khiển | `Assets/Scripts/Enemies/CinderHuskController.cs` (namespace `LuHanh.Enemies`), kế thừa `EnemyBase`; dùng hook `EnemyBase.OnDeath` để trì hoãn nổ/chết |
+| Config | `Assets/Settings/Enemies/CinderHusk.asset` (`CinderHuskConfig`) |
+| Prefab | `Assets/Prefabs/Enemies/CinderHusk.prefab`, layer Enemy, Rigidbody2D + BoxCollider2D, SpriteRenderer Order 10 và Flash Order 11 |
+| Sprite | `Assets/Art/Generated/Enemies/CinderHusk/` |
+| VFX | `CinderHuskFlameVisual.cs` (namespace `LuHanh.Effects`) + `Assets/Shaders/CinderHuskFlame.shader`: khối lửa xoáy và đuôi liền mạch, vỏ lõi kim loại cháy/khe nóng, nổ có vòng xung kích mở rộng. Đã thay các mesh ngọn lửa rời trong prefab; điều khiển bằng MaterialPropertyBlock tái sử dụng, thời gian theo `Time.deltaTime` để dừng cùng HitStop. `CinderHuskExplosionFx.cs` giữ hạt tụ lực, tàn lửa nhỏ, khói và Light2D lõi. Mesh/material nằm trong `Assets/Art/Generated/Enemies/CinderHusk/VFX/`. |
+| Cầu lửa | `Assets/Scripts/Enemies/CinderHuskFireball.cs`, namespace `LuHanh.Enemies`; hai child `CauLua_1/2` trong prefab, tái sử dụng; đường bay giữ tọa độ thế giới khi thân quái quay mặt. Child `KhoiLuaXoay` dùng FlameQuad/FlameBody; hướng shader giữ đuôi lửa phía sau cả khi bắn trái/phải. |
+| Instance test | `TestGamePlay/Enemies/CinderHusk_Test`, vị trí **(53.86, 7, 0)** trên Ground đã dò bằng raycast và kiểm tra vùng trống |
+
+Đã tích hợp controller, config và VFX vào prefab. Instance Cinder Husk đang có trong TestGamePlay nhận thay đổi qua prefab. Các trường cũ `attackBlastRadius`, `attackBurstScale`, `deathBurstScale`, `attackBurstDuration` được giữ để bảo toàn dữ liệu; controller mới không dùng chúng để gây nổ thường hoặc phóng to thân.
+
+Chưa chạy Play Mode; instance đã được đặt để chủ project tự thử combat trong `TestGamePlay`. Không lưu scene đang có thay đổi chưa lưu khi dựng preview.
+
+### 5.20 Vùng chết dưới hố (kiểu Hollow Knight)
 
 **Hành vi** giống Hollow Knight khi rơi xuống vực hoặc chạm gai:
 1. Mất **1 mask**.
@@ -2330,7 +2362,7 @@ Trước khi thêm hoặc chỉnh một hiệu ứng, nên tự hỏi nó phục
 | Ghoul gồng trước khi lao (`ghoul_attack`, đứng yên 0.45s, quầng khói tím `WindupFx`) | Phản hồi + Đọc được | Báo trước đòn lao để người chơi kịp né. Khói phát sáng nên nhìn ra ngay cả trong bóng tối. Chỉnh `dashWindup` trong `Ghoul.asset` | 5.16 |
 | Mask vỡ nảy lên trên HUD | Phản hồi | Cho biết vừa mất máu, mất cục nào | 5.15 |
 | Khựng hình 0.1s khi bị đánh (hitstop) | Cảm giác + Phản hồi | Nhấn mạnh "bị trúng đòn", cho người chơi một nhịp để nhận ra | 5.15 |
-| Màn hình tối khi rơi hố hoặc chết | Phản hồi | Che cú dịch chuyển về chỗ an toàn hay điểm đầu màn, để không bị "nhảy cóc" khó chịu | 5.15, 5.19 |
+| Màn hình tối khi rơi hố hoặc chết | Phản hồi | Che cú dịch chuyển về chỗ an toàn hay điểm đầu màn, để không bị "nhảy cóc" khó chịu | 5.15, 5.20 |
 | Bụi khi bật nhảy (`JumpDust`) | Cảm giác | Lực đạp chân, cho thấy nhân vật thật sự rời mặt đất | 9.4 |
 | Bụi khi đáp (`LandDust`, nhiều theo tốc độ rơi) | Cảm giác + Phản hồi | Cảm giác trọng lượng. Rơi càng mạnh bụi càng nhiều, nên người chơi cảm được độ cao vừa rơi | 9.4 |
 | Bụi chạy (`RunDust`) | Cảm giác | Cảm giác tốc độ và ma sát với đất, chạy nhanh thì bụi dày | 9.4 |
@@ -2650,6 +2682,12 @@ Prefab `Assets/Prefabs/Objects/OneWayPlatform.prefab`: thanh dầm kim loại pi
 - `Player/OneWayDrop` (gắn trên Player): lúc **vừa nhấn** xuống (giữ S không rơi liền nhiều tầng) mà đang đứng trên platform 1 chiều → `Physics2D.IgnoreCollision` với platform đó trong `Drop Time` (0.3s) + đẩy xuống `Drop Speed` (3). Bị tắt giữa chừng (vd bị hút vào cổng) cũng tự trả lại va chạm.
 - Đặt thử: 2 platform trong `TestGamePlay` tại (6, 3.6) và (11, 6.2).
 
+### Platform công nghiệp thân đặc
+
+Ba prefab mới nằm trong `Assets/Prefabs/Object/`: `Platform_Industrial_Fan` (bục ngắn có quạt máy), `Platform_Industrial_Bridge` (sàn dài gân chéo), `Platform_Industrial_Worn` (bục cũ lộ đường ống). Sprite tương ứng trong `Assets/Art/Generated/Props/IndustrialPlatforms/`; đã cắt trong suốt thừa và thu theo điểm ảnh nearest-neighbor để giữ nét pixel, PPU **32**, khớp mật độ hình ảnh platform hiện có. Kích thước theo dữ liệu sprite: Fan **4.125 × 1.5625**, Bridge **6.125 × 1.15625**, Worn **5.125 × 1.40625 unit**.
+
+Cả ba prefab dùng material `Sprite-Unlit-Default`, sorting order **−4**, layer **Ground** và `PolygonCollider2D` đặc, tạo theo phần thân platform; dây cáp trang trí nằm ngoài vùng va chạm. Chúng **chặn người chơi từ mọi phía**, không có `PlatformEffector2D`: nhảy từ dưới không xuyên lên được và nhấn **S** cũng không rơi xuyên qua. Dùng chúng cho bệ máy cố định; dùng `OneWayPlatform` khi cần platform một chiều.
+
 ### Quái rơi xuống vực thì chết
 
 `HazardZone` giờ tác dụng lên **mọi** collider có `IHazardReceiver` (bỏ ô Target Tag), chỉ bỏ qua collider **trigger** (hitbox đòn đánh). `EnemyBase` nhận `IHazardReceiver`: chạm vùng chết / gai → chết ngay (tắt object như bị chém chết), hồi sinh lại khi người chơi chết. Quái tự đi tuần vẫn dừng ở mép vực, chỉ bị đánh văng xuống mới chết.
@@ -2767,7 +2805,7 @@ Dùng: kéo `RT_Industrial` vào Tile Palette, tô bằng cọ / Box Fill – Un
 | Animation nhân vật rung, lệch | Sheet cắt bằng Slice Automatic | Cắt lại Grid By Cell Size, pivot cố định |
 | Nhân vật không chạy trái/phải được (vẫn nhảy/dash được) | `PlayerInput` → **Actions** bị trống nên phím di chuyển không tới `onMove` (Space/Shift vẫn chạy vì code đọc thẳng bàn phím) | Mở `Player.prefab` → `PlayerInput` → kéo `PlayerInputAction` vào ô **Actions**, Default Map = Player. Sau mỗi lần sửa prefab nên kiểm tra lại ô này |
 | Bấm Shift / J không dash, không chém | Event `Dash` / `Attack` của `PlayerInput` chưa nối hàm, hoặc action chưa có binding | Player → `PlayerInput` → Events → Player → ô Dash phải trỏ `PlayerController.onDash`, ô Attack trỏ `PlayerAttack.onAttack`; kiểm tra binding trong `.inputactions` (mục 5.12) |
-| Rơi xuống hố mà không có gì xảy ra | Không có `HazardZone` dưới hố, hoặc collider chưa bật **Is Trigger**, hoặc Player chưa có tag `Player` | Đặt `HazardZone.prefab`, kiểm tra Gizmo hộp đỏ phủ đúng hố (mục 5.19) |
+| Rơi xuống hố mà không có gì xảy ra | Không có `HazardZone` dưới hố, hoặc collider chưa bật **Is Trigger**, hoặc Player chưa có tag `Player` | Đặt `HazardZone.prefab`, kiểm tra Gizmo hộp đỏ phủ đúng hố (mục 5.20) |
 | Quái đi lùi (mặt quay ngược hướng đi) | `Art Faces Right` trong config không khớp hình gốc | Xem hình gốc quay trái hay phải, đặt lại `Art Faces Right` trong `Ghoul.asset` |
 | Quái chạm vào không mất máu | Player chưa có tag `Player` hoặc thiếu `PlayerHealth` | Đặt Tag = Player trên `Player.prefab`, thêm `Health` + `PlayerHealth` |
 | Dơi không bắn | `Bat.asset` thiếu Projectile Prefab, hoặc tường che giữa dơi và người chơi (cần thấy mới bắn) | Gán `Orb.prefab` vào Projectile Prefab; kiểm tra Gizmo vòng tròn phát hiện |
@@ -2900,3 +2938,13 @@ Thông số di chuyển tham khảo từ mã nguồn `Player.cs` được công 
 94. Sửa lỗi "Invalid AABB" khi bấm Play (camera bị NaN): `CameraShake` khởi tạo `kickDuration = 1`, chỉ tính tắt dần khi đã có Kick, và bỏ qua mọi biên độ không hợp lệ (NaN). Chưa xác nhận lại trong Play Mode.
 95. `ShadowShardPickup` thành IResettable: người chơi chết thì tinh thể hiện lại (thanh Shadow đã về 0) để nhặt lại, nạp đầy và xem lại hướng dẫn. Chưa chơi thử.
 96. Sửa chém Shadow đôi khi trượt: nhắm được mục tiêu thì lao tới và **luôn trúng mục tiêu đó** nếu còn trong tầm (homingStopDistance + 0.8); tường chắn khiến không tới được thì không lao, chém thường; vừa lao tới mục tiêu phía dưới thì được chém xuống dù đang đứng đất. **Vùng chém khớp vệt chém**: `SlashSet.hitArea` (vùng có màu thật, đo từ ảnh gốc bằng chuột phải PlayerAttack → *Do vung chem tu sprite vet chem*, đã đo cho 5 bộ), `GetArea` đặt hitArea qua đúng vị trí/xoay/lật/phóng to của vệt chém rồi lấy hộp bao, thu nhỏ `slashHitShrink` 0.9 (`PlayerAttackConfig.hitAreaFromSlash`). Gizmo xanh ngọc vẽ vùng chém thật lúc đang chém (chọn Player trong Play Mode). Chưa chơi thử.
+97. TestGamePlay: thêm `LevelEssentials` (camera, HUD + bình Shadow, pool hạt, RespawnManager, RoomManager, đèn, nền); 7 object lẻ cũ (2 Global Light, Background, CameraRig, HUD, GameSystems, Lighting) gom vào `_Cu_TruocLevelEssentials` và tắt, không xóa. Đã lưu scene. Level1 giữ nguyên: chưa mở khóa Shadow thì quái không rơi hạt (đúng thiết kế).
+98. Thêm enemy Cinder Husk: sprite Idle/Hurt/Attack/Die (4/3/6/6 khung, PPU 24.44), `CinderHuskConfig`, `CinderHuskController` và hook chết `EnemyBase.OnDeath`; HP 3, Hurt 0.15s → tụ lực 0.65s → nổ radius 2.5 gây 1 damage, chết nổ radius 5 với hình nổ gấp đôi. Tạo prefab `Assets/Prefabs/Enemies/CinderHusk.prefab`, config `Assets/Settings/Enemies/CinderHusk.asset`, đặt `CinderHusk_Test` trong TestGamePlay/Enemies tại (53.86, 7, 0). Unity xác nhận sprite frame, config, prefab và scene; chưa chạy Play Mode.
+99. Cinder Husk quay mặt về Player ở Idle/Hurt/Attack; bỏ vận tốc đẩy lùi trong Hurt và đặt knockbackScale 0 trong config riêng. Chuẩn bị `CinderHuskExplosionFx` với hạt tụ lực, vòng xung kích và mảnh pixel đỏ cam; bộ hạt tái sử dụng, không Instantiate/Destroy lúc chơi. VFX đang chờ duyệt ảnh preview trước khi gắn vào prefab; chưa lưu scene hoặc chạy Play Mode.
+100. Cinder Husk: tăng maxHealth trong config lên 5 (đòn thường hiện damage 1); giữ 3 SoulOrb từ cơ chế chết hiện có, tổng 15 năng lượng Shadow nếu đã mở khóa. Chuẩn bị config lõi truy đuổi (4 unit/s, 2s, CircleCast 0.25, khoảng hở 0.02) và VFX lửa pixel ba lớp, khói, tàn lửa, lõi than nhấp nháy; xuất GIF trong preview scene riêng. Unity biên dịch và dựng preview thành công; VFX/controller truy đuổi chưa ghép vào prefab, đang chờ duyệt hình. Không lưu TestGamePlay, chưa chạy Play Mode; không sửa Player, Shadow hoặc SoulOrbPool.
+101. Hoàn tất Cinder Husk theo hướng được duyệt: ghép VFX vào prefab, chết để lại lõi đuổi Player 4 unit/s trong 2s rồi nổ radius 5, tường chặn; đòn thường đổi sang 1 cầu lửa ngang (radius 0.35, tốc độ 8, tối đa 2s, damage 1), hai object tái sử dụng. Bỏ phóng to thân lúc tấn công và đặt hitSquash (1,1). Giữ HP 5 và 3 SoulOrb; đổi tên trường bodyArtScale riêng của Cinder Husk để tránh trùng trường với EnemyBase. Cập nhật reset/hồi sinh, đường bay không đổi khi quái quay mặt. Unity đã thực thi lệnh ghép prefab thành công; chưa chơi thử. Không lưu scene đang có thay đổi của chủ project; không sửa EnemyBase, Player hoặc Shadow trong đợt này.
+102. Hoàn thiện hình cầu lửa Cinder Husk: thêm mesh tròn bậc pixel FireballCircle.asset và ba lớp vỏ đỏ cam/lửa giữa/tâm nóng vào CauLua_1/2; giữ bán kính gameplay 0.35 và tốc độ 8 đã duyệt. Thân quái không thay đổi kích thước. Chỉ sửa asset/prefab của Cinder Husk; không lưu scene hoặc chạy Play Mode.
+103. Làm lại VFX riêng Cinder Husk theo phản hồi: khối cầu lửa xoáy/đuôi liền mạch, lõi kim loại cháy có khe cảnh báo, nổ có vòng xung kích; thêm CinderHuskFlameVisual + CinderHuskFlame shader, gắn trong prefab và bỏ cụm ngọn lửa rời. Đọc chiều cao Visual Idle từ Player.prefab đúng đường dẫn Assets/Character/Player: 1.841063 unit; đặt bán kính va chạm cầu/lõi 0.9205314 theo duyệt. Tăng cầu lửa 8→30 unit/s bằng dashSpeed thực tế của Player; nâng điểm xuất hiện trên sàn với khoảng hở 0.06. Xuất GIF so hình Player/cầu/lõi trong preview scene riêng; chưa chơi thử hoặc đo trong Game View. Không sửa Player/EnemyBase, không lưu scene đang có thay đổi của chủ project.
+104. Cầu lửa Cinder Husk va Ground/tường phát mảng lửa/khói bung theo pháp tuyến bề mặt + 24 tàn lửa rồi tan trong 0.65s; wallImpactScale 2 chỉ điều khiển hình. Dừng đường bay và giữ pool slot bận đến hết VFX, không thêm sát thương diện rộng, không thay va Player. Bổ sung mode shader va tường và tái dùng FlameVisual hiện có; reset/hồi sinh dọn hiệu ứng. Unity đã biên dịch và xuất GIF minh họa trong preview scene riêng; chưa chạy Play Mode. Không sửa Player/EnemyBase hay lưu scene của chủ project.
+105. Cinder Husk tự phát hiện Player trong tầm 10 unit, cùng dải cao đường đạn và không có Ground/tường che; Idle→tụ lực 0.65s→bắn ngang, chu kỳ khoảng 1.6s. Hurt trở về Idle, không còn là điều kiện kích hoạt bắn; bị chém khi đang tụ không reset. Tách fireballDamage 2 khỏi blastDamage 3. Lõi vẫn đuổi Player 4 unit/s trong 2s, bỏ CircleCast chặn chuyển động để xuyên mọi vật cản, ngắm tâm collider Player. Giữ HP5, SoulOrb, tốc độ đạn 30 và VFX va tường. Chỉ sửa ba script/config của Cinder Husk và tài liệu; không sửa Player/EnemyBase hoặc lưu scene. Chưa chạy Play Mode.
+106. Thêm ba platform pixel công nghiệp thân đặc vào `Assets/Prefabs/Object/` và sprite trong `Assets/Art/Generated/Props/IndustrialPlatforms/`: Fan (4.125×1.5625), Bridge (6.125×1.15625), Worn (5.125×1.40625) unit, PPU 32, point filter, Sprite-Unlit-Default, order −4, layer Ground; `PolygonCollider2D` solid bám thân và bỏ cáp trang trí. Đã hỏi và nhận duyệt collider chặn mọi phía. Chưa đặt vào scene, chưa chạy Play Mode.

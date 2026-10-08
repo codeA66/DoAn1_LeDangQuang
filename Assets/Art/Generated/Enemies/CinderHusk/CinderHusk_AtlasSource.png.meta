@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 6c9e45259479188428071a8bc970ee5e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3761061748853333502
+    second: CinderHusk_AtlasSource_0
+  - first:
+      213: 8857374279885240851
+    second: CinderHusk_AtlasSource_1
+  - first:
+      213: 3355449373095824079
+    second: CinderHusk_AtlasSource_2
+  - first:
+      213: 141035220193413446
+    second: CinderHusk_AtlasSource_3
+  - first:
+      213: -2553593653557491573
+    second: CinderHusk_AtlasSource_4
+  - first:
+      213: 1938228412640699884
+    second: CinderHusk_AtlasSource_5
+  - first:
+      213: 6289087750069078670
+    second: CinderHusk_AtlasSource_6
+  - first:
+      213: -1300027525745458581
+    second: CinderHusk_AtlasSource_7
+  - first:
+      213: -8689840622959114124
+    second: CinderHusk_AtlasSource_8
+  - first:
+      213: -2265675467680259491
+    second: CinderHusk_AtlasSource_9
+  - first:
+      213: 4360574349460318997
+    second: CinderHusk_AtlasSource_10
+  - first:
+      213: 2434345604251455402
+    second: CinderHusk_AtlasSource_11
+  - first:
+      213: 4179268943570186556
+    second: CinderHusk_AtlasSource_12
+  - first:
+      213: -8215467013929747911
+    second: CinderHusk_AtlasSource_13
+  - first:
+      213: 7847788086216526502
+    second: CinderHusk_AtlasSource_14
+  - first:
+      213: 5573437155840856982
+    second: CinderHusk_AtlasSource_15
+  - first:
+      213: -3555153607170452276
+    second: CinderHusk_AtlasSource_16
+  - first:
+      213: -8524720069699159487
+    second: CinderHusk_AtlasSource_17
+  - first:
+      213: -3279446745664449734
+    second: CinderHusk_AtlasSource_18
+  - first:
+      213: -359926899908369390
+    second: CinderHusk_AtlasSource_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 503
+        width: 232
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202a94134460ecbc0800000000000000
+      internalID: -3761061748853333502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 779
+        width: 229
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31abd3baaf6bbea70800000000000000
+      internalID: 8857374279885240851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_2
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 527
+        width: 247
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca0f294d63f09e20800000000000000
+      internalID: 3355449373095824079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_3
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 741
+        width: 234
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 649827819ce05f100800000000000000
+      internalID: 141035220193413446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_4
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 531
+        width: 261
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8883030a10df8cd0800000000000000
+      internalID: -2553593653557491573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_5
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 785
+        width: 242
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5a40dd878f5ea10800000000000000
+      internalID: 1938228412640699884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_6
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 767
+        width: 231
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ac028dcf3574750800000000000000
+      internalID: 6289087750069078670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_7
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 513
+        width: 261
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6246b96adf55fde0800000000000000
+      internalID: -1300027525745458581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_8
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 679
+        width: 357
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47843c18efb776780800000000000000
+      internalID: -8689840622959114124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 287
+        width: 263
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52e99c8a24be80e0800000000000000
+      internalID: -2265675467680259491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_10
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 255
+        width: 255
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b234c744fd38c30800000000000000
+      internalID: 4360574349460318997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_11
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 287
+        width: 244
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf01f9ed6888c120800000000000000
+      internalID: 2434345604251455402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_12
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 285
+        width: 265
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c31b25226febff930800000000000000
+      internalID: 4179268943570186556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_13
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 287
+        width: 238
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a37ca374cccfd80800000000000000
+      internalID: -8215467013929747911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_14
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 287
+        width: 246
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aa8a7f5fa1f8ec60800000000000000
+      internalID: 7847788086216526502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_15
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 37
+        width: 229
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6939bdb5093d85d40800000000000000
+      internalID: 5573437155840856982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_16
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 39
+        width: 244
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc418aa51ae89aec0800000000000000
+      internalID: -3555153607170452276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_17
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 39
+        width: 241
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14a30f3334c12b980800000000000000
+      internalID: -8524720069699159487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_18
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 29
+        width: 269
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a331cd06f801d72d0800000000000000
+      internalID: -3279446745664449734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CinderHusk_AtlasSource_19
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 0
+        width: 506
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 214aad93468410bf0800000000000000
+      internalID: -359926899908369390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CinderHusk_AtlasSource_0: -3761061748853333502
+      CinderHusk_AtlasSource_1: 8857374279885240851
+      CinderHusk_AtlasSource_10: 4360574349460318997
+      CinderHusk_AtlasSource_11: 2434345604251455402
+      CinderHusk_AtlasSource_12: 4179268943570186556
+      CinderHusk_AtlasSource_13: -8215467013929747911
+      CinderHusk_AtlasSource_14: 7847788086216526502
+      CinderHusk_AtlasSource_15: 5573437155840856982
+      CinderHusk_AtlasSource_16: -3555153607170452276
+      CinderHusk_AtlasSource_17: -8524720069699159487
+      CinderHusk_AtlasSource_18: -3279446745664449734
+      CinderHusk_AtlasSource_19: -359926899908369390
+      CinderHusk_AtlasSource_2: 3355449373095824079
+      CinderHusk_AtlasSource_3: 141035220193413446
+      CinderHusk_AtlasSource_4: -2553593653557491573
+      CinderHusk_AtlasSource_5: 1938228412640699884
+      CinderHusk_AtlasSource_6: 6289087750069078670
+      CinderHusk_AtlasSource_7: -1300027525745458581
+      CinderHusk_AtlasSource_8: -8689840622959114124
+      CinderHusk_AtlasSource_9: -2265675467680259491
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

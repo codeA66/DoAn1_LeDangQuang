@@ -60,6 +60,11 @@ namespace LuHanh.Enemies
         protected abstract void BuildStates(StateMachine machine);
         /// <summary>Chuan bi trang thai Hurt (vd luu huong day lui). Goi truoc khi bat co HurtRequested.</summary>
         protected abstract void OnHurt(HitInfo hit);
+        /// <summary>
+        /// Cho phep loai quai phat animation/va cham chet truoc khi bi tat. Tra ve true neu
+        /// lop con tu xu ly viec tat object sau khi animation ket thuc.
+        /// </summary>
+        protected virtual bool OnDeath(HitInfo hit) => false;
         /// <summary>Viec rieng sau khi hoi sinh (vd phat lai clip).</summary>
         protected virtual void OnResetState() { }
 
@@ -220,9 +225,11 @@ namespace LuHanh.Enemies
 
             if (health.IsDead)
             {
-                // Tat ngay trong frame chet: xac khong con gay sat thuong, khong ton gi nua.
                 Vector2 centre = bodyCollider ? (Vector2)bodyCollider.bounds.center : (Vector2)transform.position;
                 LuHanh.Player.SoulOrbPool.Spawn(centre, BaseConfig.soulOrbs);
+                if (OnDeath(hit)) return;
+
+                // Mac dinh tat ngay trong frame chet; quai can animation chet co the tre viec tat.
                 gameObject.SetActive(false);
                 return;
             }

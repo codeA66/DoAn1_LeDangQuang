@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f19ce1e392ea84582a5eca16a68a3f, type: 3}
+  m_Name: CinderHusk
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Enemies.CinderHuskConfig
+  maxHealth: 5
+  hitReaction: {fileID: 0}
+  hurtTime: 0.15
+  knockbackScale: 0
+  flashTime: 0.12
+  hitSquash: {x: 1, y: 1}
+  squashTime: 0.1
+  soulOrbs: 3
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  sleepDistance: 25
+  artFacesRight: 1
+  idleFrames:
+  - {fileID: 21300000, guid: cf793fe6ee03d22428eccd0f93c7fc3d, type: 3}
+  - {fileID: 21300000, guid: cc54be8a0b27a3b4299b38a111dcc8e5, type: 3}
+  - {fileID: 21300000, guid: 6404034df5b634746a25db1039636f14, type: 3}
+  - {fileID: 21300000, guid: f3554181d2949b744b5917ac319837fe, type: 3}
+  hurtFrames:
+  - {fileID: 21300000, guid: 31a2e7aa364b3f74e966285314f8f845, type: 3}
+  - {fileID: 21300000, guid: 2d0968adffe250542b35ef3ff242ee2a, type: 3}
+  - {fileID: 21300000, guid: 994b9b6abc4d4774fa52eb1fcb06247a, type: 3}
+  attackFrames:
+  - {fileID: 21300000, guid: a5f7ca6059109e74ca4fd1ea9320c432, type: 3}
+  - {fileID: 21300000, guid: b3a303270a2773c4386c75d3d448f41f, type: 3}
+  - {fileID: 21300000, guid: 85c2796748ccf7c4e9bb85da34aade22, type: 3}
+  - {fileID: 21300000, guid: 9518c712136c91843bc7765b20ec0933, type: 3}
+  - {fileID: 21300000, guid: 1204f9c47e3ef8d418f6aa35493903e3, type: 3}
+  - {fileID: 21300000, guid: e76746801d8d95143a3500025655fc6e, type: 3}
+  dieFrames:
+  - {fileID: 21300000, guid: c87758b0102678a498c62d1aac13373c, type: 3}
+  - {fileID: 21300000, guid: cfa7751b245ce28478c758c33e9e04d3, type: 3}
+  - {fileID: 21300000, guid: 766b7f4a3e3f14541b2c189f3b895bb2, type: 3}
+  - {fileID: 21300000, guid: b6f15844c82c3b24bbb0c00322857516, type: 3}
+  - {fileID: 21300000, guid: 11cb7e2913fb4fa4fa051b571379d18b, type: 3}
+  - {fileID: 21300000, guid: 873e3cff274ef9046b0d073a3f45bc33, type: 3}
+  idleFramesPerSecond: 5
+  hurtDuration: 0.15
+  attackChargeDuration: 0.65
+  attackBurstDuration: 0.12
+  attackRecoveryDuration: 0.35
+  deathBurstDelay: 0.28
+  deathCleanupTime: 0.75
+  blastDamage: 3
+  attackBlastRadius: 2.5
+  deathBlastRadius: 5
+  attackBurstScale: 2
+  deathBurstScale: 4
+  coreFuseDuration: 2
+  coreChaseSpeed: 4
+  coreCollisionRadius: 0.9205314
+  coreWallSkin: 0.02
+  fireBurstDuration: 0.6
+  attackRange: 10
+  fireballDamage: 2
+  fireballRadius: 0.9205314
+  fireballSpeed: 30
+  fireballLifetime: 2
+  wallImpactDuration: 0.65
+  wallImpactScale: 2
