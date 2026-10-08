@@ -26,6 +26,10 @@ namespace LuHanh.Enemies
         [Tooltip("Thoi gian bat ve hinh dang cu (giay).")]
         public float squashTime = 0.1f;
 
+        [Header("Phan thuong")]
+        [Tooltip("So hat nang luong Shadow roi ra khi bi chem chet (roi vuc thi khong roi).")]
+        [Min(0)] public int soulOrbs = 3;
+
         [Header("Dia hinh")]
         public LayerMask groundLayers = 1 << 8;
 

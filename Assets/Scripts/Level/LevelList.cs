@@ -28,10 +28,12 @@ namespace LuHanh.Level
         public string completeScene = "LevelComplete";
 
         [Header("The ten man khi chuyen man")]
-        [Tooltip("Font ma man (vd 1-2).")]
+        [Tooltip("Font ten man chu hoa lon (chu dung, vd Beholden Book Bold).")]
         public Font codeFont;
-        [Tooltip("Font ten man.")]
+        [Tooltip("Font dong ma man nho \"LEVEL 1-2\" (vd Beholden Book Italic).")]
         public Font titleFont;
+        [Tooltip("Hoa van tren ten man (trang, nen trong). Duoi dung cung anh lat nguoc.")]
+        public Sprite titleOrnament;
         [Tooltip("Material lo tron dong/mo man hinh (shader LuHanh/UIIris).")]
         public Material irisMaterial;
 

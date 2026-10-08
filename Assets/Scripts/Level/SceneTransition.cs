@@ -7,8 +7,8 @@ namespace LuHanh.Level
 {
     /// <summary>
     /// Chuyen man kieu Soul Knight:
-    /// chop sang -> man hinh dong lai thanh vong tron vao tam cong -> tai scene -> the ten man
-    /// (duong ke toa ra, ma man truot len, ten man hien tung chu) -> man hinh mo ra tu cho nhan vat
+    /// chop sang -> man hinh dong lai thanh vong tron vao tam cong -> tai scene -> the ten man kieu
+    /// Hollow Knight (hoa van tren/duoi toa ra, ten man chu hoa lon, ma man nho) -> man hinh mo ra tu cho nhan vat
     /// -> cong den mo ra va nhan vat bat ra.
     /// Tu tao lan dau duoc goi va song xuyen cac scene; chay bang thoi gian thuc.
     /// </summary>
@@ -16,18 +16,21 @@ namespace LuHanh.Level
     {
         const float FlashTime = 0.25f;
         const float IrisCloseTime = 0.55f;
-        const float LineTime = 0.35f;
-        const float CodeTime = 0.35f;
-        const float CharTime = 0.045f;
-        const float TitleHoldTime = 0.9f;
-        const float CardFadeTime = 0.3f;
+        const float CardInTime = 0.7f;
+        const float TitleHoldTime = 1.6f;
+        const float CardFadeTime = 0.6f;
+        const int TitleSize = 92;
+        const int TitleCapSize = 118;
+        const float OrnamentY = 118f;
         const float IrisOpenTime = 0.7f;
         const float OpenRadius = 2.2f;
 
         static readonly int CenterId = Shader.PropertyToID("_Center");
         static readonly int RadiusId = Shader.PropertyToID("_Radius");
-        static readonly Color CodeColor = new Color(0.75f, 0.98f, 1f);
-        static readonly Color GlowColor = new Color(0.2f, 0.75f, 1f, 0.6f);
+        static readonly Color CodeColor = new Color(0.72f, 1f, 0.94f, 1f);      // #B8FFF0
+        static readonly Color TitleColor = new Color(0.93f, 0.91f, 0.97f, 1f);
+        static readonly Color GlowColor = new Color(0.62f, 0.55f, 0.85f, 0.35f);
+        static readonly Color OrnamentColor = new Color(0.93f, 0.91f, 0.97f, 0.95f);
 
         static SceneTransition instance;
 
@@ -37,7 +40,7 @@ namespace LuHanh.Level
         CanvasGroup card;
         Text codeText;
         Text titleText;
-        RectTransform lineLeft, lineRight;
+        Image ornTop, ornBottom;
         RectTransform[] motes;
         bool busy;
 
@@ -101,18 +104,24 @@ namespace LuHanh.Level
             card.alpha = 0f;
 
             var fallback = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            codeText = MakeText("Code", card.transform, style && style.codeFont ? style.codeFont : fallback, 120, CodeColor);
-            var outline = codeText.gameObject.AddComponent<Outline>();
-            outline.effectColor = GlowColor;
-            outline.effectDistance = new Vector2(3f, -3f);
-            var shadow = codeText.gameObject.AddComponent<Shadow>();
-            shadow.effectColor = new Color(0.1f, 0.5f, 1f, 0.35f);
-            shadow.effectDistance = new Vector2(0f, -8f);
-            titleText = MakeText("Title", card.transform, style && style.titleFont ? style.titleFont : fallback, 52, new Color(0.88f, 0.85f, 0.96f));
-            ((RectTransform)titleText.transform).anchoredPosition = new Vector2(0f, -70f);
+            // Kieu the ten vung cua Hollow Knight: hoa van tren/duoi, ten man chu hoa lon o giua,
+            // ma man nho phia tren.
+            var ornament = style ? style.titleOrnament : null;
+            ornTop = MakeOrnament("OrnamentTop", ornament, OrnamentY, false);
+            ornBottom = MakeOrnament("OrnamentBottom", ornament, -OrnamentY - 20f, true);
 
-            lineLeft = MakeLine("LineLeft", new Vector2(1f, 0.5f));
-            lineRight = MakeLine("LineRight", new Vector2(0f, 0.5f));
+            codeText = MakeText("Code", card.transform, style && style.titleFont ? style.titleFont : fallback, 34, CodeColor);
+            ((RectTransform)codeText.transform).anchoredPosition = new Vector2(0f, 62f);
+
+            titleText = MakeText("Title", card.transform, style && style.codeFont ? style.codeFont : fallback, TitleSize, TitleColor);
+            titleText.supportRichText = true;
+            ((RectTransform)titleText.transform).anchoredPosition = new Vector2(0f, -10f);
+            var shadow = titleText.gameObject.AddComponent<Shadow>();
+            shadow.effectColor = new Color(0.05f, 0.03f, 0.1f, 0.85f);
+            shadow.effectDistance = new Vector2(3f, -4f);
+            var glow = titleText.gameObject.AddComponent<Outline>();
+            glow.effectColor = GlowColor;
+            glow.effectDistance = new Vector2(1.5f, -1.5f);
 
             motes = new RectTransform[14];
             for (int i = 0; i < motes.Length; i++)
@@ -156,14 +165,31 @@ namespace LuHanh.Level
             return t;
         }
 
-        RectTransform MakeLine(string name, Vector2 pivot)
+        Image MakeOrnament(string name, Sprite sprite, float y, bool flip)
         {
-            var img = MakeImage(name, card.transform, new Color(0.6f, 0.95f, 1f, 0.8f));
+            var img = MakeImage(name, card.transform, OrnamentColor);
+            img.sprite = sprite;
+            img.enabled = sprite;
             var rt = img.rectTransform;
-            rt.pivot = pivot;
-            rt.anchoredPosition = new Vector2(pivot.x > 0.5f ? -110f : 110f, 10f);
-            rt.sizeDelta = new Vector2(0f, 2f);
-            return rt;
+            rt.sizeDelta = new Vector2(720f, 120f);
+            rt.anchoredPosition = new Vector2(0f, y);
+            rt.localScale = new Vector3(1f, flip ? -1f : 1f, 1f);
+            return img;
+        }
+
+        /// <summary>Viet hoa, chu cai dau moi tu to hon (kieu "FOG CANYON" cua Hollow Knight).</summary>
+        static string SmallCaps(string title)
+        {
+            var sb = new System.Text.StringBuilder();
+            bool wordStart = true;
+            foreach (char ch in title.ToUpperInvariant())
+            {
+                if (char.IsWhiteSpace(ch)) { sb.Append(ch); wordStart = true; continue; }
+                if (wordStart) sb.Append("<size=").Append(TitleCapSize).Append('>').Append(ch).Append("</size>");
+                else sb.Append(ch);
+                wordStart = false;
+            }
+            return sb.ToString();
         }
 
         static void Stretch(RectTransform rt)
@@ -257,33 +283,28 @@ namespace LuHanh.Level
         IEnumerator ShowCard(string code, string title)
         {
             codeText.text = "LEVEL " + code;
-            titleText.text = "";
-            var codeRt = (RectTransform)codeText.transform;
+            titleText.text = SmallCaps(title);
+            var titleRt = (RectTransform)titleText.transform;
             foreach (var m in motes)
                 m.anchoredPosition = new Vector2(Random.Range(-700f, 700f), Random.Range(-380f, 380f));
-            card.alpha = 1f;
-            lineLeft.sizeDelta = lineRight.sizeDelta = new Vector2(0f, 2f);
+            card.alpha = 0f;
 
-            // Duong ke toa ra + ma man truot len.
-            float total = Mathf.Max(LineTime, CodeTime);
-            for (float t = 0f; t < total; t += Time.unscaledDeltaTime)
+            // Hien mo dan: hoa van toa tu giua ra, ten man nhich len, ma man hien sau mot chut.
+            for (float t = 0f; t < CardInTime; t += Time.unscaledDeltaTime)
             {
-                float kl = Mathf.Clamp01(t / LineTime);
-                float w = Mathf.Lerp(0f, 520f, 1f - (1f - kl) * (1f - kl));
-                lineLeft.sizeDelta = lineRight.sizeDelta = new Vector2(w, 2f);
-                float kc = Mathf.Clamp01(t / CodeTime);
-                codeRt.anchoredPosition = new Vector2(0f, Mathf.Lerp(-30f, 40f, 1f - (1f - kc) * (1f - kc)));
-                SetAlpha(codeText, kc);
+                float k = t / CardInTime;
+                float e = 1f - (1f - k) * (1f - k);
+                card.alpha = e;
+                float sx = Mathf.Lerp(0.55f, 1f, e);
+                ornTop.rectTransform.localScale = new Vector3(sx, 1f, 1f);
+                ornBottom.rectTransform.localScale = new Vector3(sx, -1f, 1f);
+                titleRt.anchoredPosition = new Vector2(0f, Mathf.Lerp(-28f, -10f, e));
+                SetAlpha(codeText, Mathf.Clamp01(k * 1.6f - 0.6f));
                 DriftMotes();
                 yield return null;
             }
-
-            // Ten man hien tung chu.
-            for (int i = 1; i <= title.Length; i++)
-            {
-                titleText.text = title.Substring(0, i);
-                for (float t = 0f; t < CharTime; t += Time.unscaledDeltaTime) { DriftMotes(); yield return null; }
-            }
+            card.alpha = 1f;
+            SetAlpha(codeText, 1f);
             for (float t = 0f; t < TitleHoldTime; t += Time.unscaledDeltaTime) { DriftMotes(); yield return null; }
 
             for (float t = 0f; t < CardFadeTime; t += Time.unscaledDeltaTime)

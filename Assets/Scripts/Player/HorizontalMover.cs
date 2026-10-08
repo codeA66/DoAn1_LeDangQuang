@@ -13,6 +13,9 @@ namespace LuHanh.Player
         readonly Rigidbody2D body;
         readonly PlayerMovementConfig config;
 
+        /// <summary>Nhan toc do chay toi da (dang Shadow). 1 = binh thuong.</summary>
+        public float SpeedMultiplier { get; set; } = 1f;
+
         public HorizontalMover(Rigidbody2D body, PlayerMovementConfig config)
         {
             this.body = body;
@@ -24,7 +27,7 @@ namespace LuHanh.Player
         public void Move(int moveX, bool grounded, float deltaTime)
         {
             float current = body.linearVelocity.x;
-            float max = config.maxRun;
+            float max = config.maxRun * SpeedMultiplier;
             float mult = grounded ? 1f : config.airMult;
 
             bool overSpeedSameDir = Mathf.Abs(current) > max && (int)Mathf.Sign(current) == moveX;

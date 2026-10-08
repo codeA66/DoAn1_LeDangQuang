@@ -19,6 +19,7 @@ MonoBehaviour:
   flashTime: 0.12
   hitSquash: {x: 1.3, y: 0.7}
   squashTime: 0.1
+  soulOrbs: 2
   groundLayers:
     serializedVersion: 2
     m_Bits: 256

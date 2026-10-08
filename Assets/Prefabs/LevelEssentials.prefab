@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 1473131471963697022}
   - component: {fileID: 877301790299980836}
   - component: {fileID: 6786728110346773876}
+  - component: {fileID: 7148553567225326907}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -120,6 +121,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Level.RoomManager
   probeHeight: 0.9
   upwardBoost: 10
+--- !u!114 &7148553567225326907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477871365633040500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0a577d5b143fa40886fdc53726a2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.SoulOrbPool
+  orbSprite: {fileID: 21300000, guid: baf95d831d67bff49b36c9448a8a77bb, type: 3}
+  glowSprite: {fileID: 21300000, guid: 7509c40cb3a158e4e853c4918f1c8f9a, type: 3}
+  orbColor: {r: 0.72, g: 1, b: 0.94, a: 1}
+  glowColor: {r: 0.27, g: 0.86, b: 0.77, a: 0.55}
+  glowScale: 0.9
+  sortingOrder: 25
+  poolSize: 24
+  burstSpeed: {x: 3, y: 6}
+  burstTime: 0.35
+  homingAccel: 60
+  maxSpeed: 22
+  collectDistance: 0.5
+  chestHeight: 0.9
 --- !u!1001 &309681737007660022
 PrefabInstance:
   m_ObjectHideFlags: 0

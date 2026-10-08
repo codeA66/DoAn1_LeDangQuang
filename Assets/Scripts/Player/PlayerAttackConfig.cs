@@ -32,8 +32,16 @@ namespace LuHanh.Player
         public Vector2 upSize = new Vector2(1.2f, 1.6f);
         public Vector2 downOffset = new Vector2(0f, -0.5f);
         public Vector2 downSize = new Vector2(1.2f, 1.6f);
+        [Tooltip("Bat: vung chem lay theo vet chem dang hien (hitArea cua tung bo vet chem), khop hinh. " +
+                 "Tat hoac bo vet chem chua do: dung cac hop ben tren.")]
+        public bool hitAreaFromSlash = true;
+        [Tooltip("Thu nho vung chem so voi hinh vet chem (1 = bang dung hinh).")]
+        [Range(0.5f, 1.2f)] public float slashHitShrink = 0.9f;
         [Tooltip("Layer cua nhung thu bi chem duoc.")]
         public LayerMask hitLayers = 0;
+        [Tooltip("Ngam ho tro: co muc tieu trong ban kinh nay (unit, tinh tu nguc) thi tu quay mat " +
+                 "va chon huong chem ve phia con gan nhat, khong di chuyen nhan vat. 0 = tat.")]
+        [Min(0f)] public float aimAssistRadius = 2.5f;
 
         [Header("Phan luc len nguoi choi")]
         [Tooltip("Chem xuong trung thi bat len voi van toc nay (pogo). 0 = dung jumpSpeed trong PlayerMovementConfig.")]

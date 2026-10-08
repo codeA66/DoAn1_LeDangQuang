@@ -166,6 +166,12 @@ namespace LuHanh.Player
         }
 
         /// <summary>Bi danh trung: bat ra voi van toc cho truoc, mat dieu khien trong <paramref name="seconds"/>.</summary>
+        /// <summary>Nhan toc do chay toi da (dang Shadow). 1 = binh thuong.</summary>
+        public void SetRunMultiplier(float multiplier) => mover.SpeedMultiplier = multiplier;
+
+        /// <summary>Quay mat theo dau cua <paramref name="direction"/> (vd chem tu dinh vi).</summary>
+        public void Face(float direction) => facing.FaceTowards(direction);
+
         public void Hurt(Vector2 launchVelocity, float seconds)
         {
             hurt.Setup(launchVelocity, seconds);

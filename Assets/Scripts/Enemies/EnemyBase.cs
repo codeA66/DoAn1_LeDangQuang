@@ -221,6 +221,8 @@ namespace LuHanh.Enemies
             if (health.IsDead)
             {
                 // Tat ngay trong frame chet: xac khong con gay sat thuong, khong ton gi nua.
+                Vector2 centre = bodyCollider ? (Vector2)bodyCollider.bounds.center : (Vector2)transform.position;
+                LuHanh.Player.SoulOrbPool.Spawn(centre, BaseConfig.soulOrbs);
                 gameObject.SetActive(false);
                 return;
             }

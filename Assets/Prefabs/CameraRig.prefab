@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 882733004009694242}
   - component: {fileID: 2274332973444373788}
   - component: {fileID: 4168119176678651411}
+  - component: {fileID: 5688905320854602144}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -322,6 +323,20 @@ MonoBehaviour:
   transitionSpeed: 60
   minTransitionTime: 0.35
   maxTransitionTime: 0.6
+--- !u!114 &5688905320854602144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299717014658397691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b0db6aa91680443a2eb7704864bbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Core.CameraShake
+  frequency: 28
+  maxAmplitude: 0.6
 --- !u!1 &3170406572946662200
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +392,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
