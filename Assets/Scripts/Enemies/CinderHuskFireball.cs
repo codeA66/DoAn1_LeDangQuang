@@ -55,7 +55,9 @@ namespace LuHanh.Enemies
             float distance = config.FireballSpeed * Time.deltaTime;
             var filter = new ContactFilter2D();
             filter.SetLayerMask(config.groundLayers.value | (target ? 1 << target.gameObject.layer : 0));
-            filter.useTriggers = true;
+            // Khong tinh trigger: vung trigger (phong khoa, gai...) o layer Default nhu Player se lam cau no ngay
+            // khi sinh ra ben trong. Than Player la collider thuong nen van trung.
+            filter.useTriggers = false;
             int count = Physics2D.CircleCast(worldPosition, config.FireballRadius,
                 direction, filter, hits, distance);
             float nearest = float.MaxValue;

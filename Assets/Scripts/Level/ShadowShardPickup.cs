@@ -7,7 +7,7 @@ namespace LuHanh.Level
 {
     /// <summary>
     /// Vat pham huong dan Shadow (Level2): cham vao thi mo khoa kha nang, nap day thanh de thu ngay
-    /// va hien loi huong dan giu phim; bien hinh lan dau thi loi huong dan tat.
+    /// va (neu bat showScreenPrompt) hien loi huong dan giu phim; bien hinh lan dau thi loi huong dan tat.
     /// Choi lai (da mo khoa tu truoc) hoac nguoi choi chet thi vat pham hien lai de nhat lai va xem lai huong dan.
     /// Loi huong dan tu dung Canvas rieng mot lan trong Awake, khong tao gi them khi choi.
     /// </summary>
@@ -20,6 +20,8 @@ namespace LuHanh.Level
         [SerializeField] float bobSpeed = 2.2f;
 
         [Header("Loi huong dan")]
+        [Tooltip("Hien chu huong dan giua man hinh khi nhat. Mac dinh tat: huong dan dung bien chu dat trong man (kieu Level1).")]
+        [SerializeField] bool showScreenPrompt;
         [SerializeField] Font font;
         [SerializeField] string title = "SHADOW FORM";
         [SerializeField, TextArea] string hint = "Hold  [ Y ]  when the bar is full";
@@ -37,7 +39,7 @@ namespace LuHanh.Level
             GetComponent<Collider2D>().isTrigger = true;
             RespawnManager.Register(this);
             if (visual) visualBase = visual.localPosition;
-            BuildPrompt();
+            if (showScreenPrompt) BuildPrompt();
         }
 
         void Start()

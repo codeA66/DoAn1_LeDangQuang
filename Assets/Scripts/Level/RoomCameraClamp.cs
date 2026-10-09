@@ -1,3 +1,4 @@
+using LuHanh.Core;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -102,6 +103,8 @@ namespace LuHanh.Level
                 // Van toc camera (lam muot) - dung lam van toc bat dau khi chuyen phong.
                 velocity = Vector3.Lerp(velocity, (target - lastPosition) / deltaTime, 0.5f);
             }
+            // Nhin len/xuong (PlayerLook) cong sau khi kep: duoc vuot mep phong, nhin sang phong ke ben.
+            target += (Vector3)CameraLook.Offset;
 
             state.PositionCorrection += target - desired;
             lastDesired = desired;

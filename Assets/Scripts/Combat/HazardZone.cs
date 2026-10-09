@@ -10,7 +10,8 @@ namespace LuHanh.Combat
     [RequireComponent(typeof(Collider2D))]
     public class HazardZone : MonoBehaviour
     {
-        [Min(1)] public int damage = 1;
+        [Tooltip("Mau mat khi roi vao. 0 = chi dua ve cho dung an toan, khong mat mau (vd gai o phong thu gian).")]
+        [Min(0)] public int damage = 1;
 
         void Reset() => GetComponent<Collider2D>().isTrigger = true;
 

@@ -46,3 +46,9 @@ Mã màu là màu tham chiếu khi thiết kế; ánh sáng URP, vật liệu v�
 - [HUONG_DAN_BUILD_LEVEL.md](HUONG_DAN_BUILD_LEVEL.md): quy trình dựng màn.
 
 Khi mô tả kết quả, phân biệt rõ màu mục tiêu, cấu hình đã áp dụng và kết quả thực sự quan sát được. Không tuyên bố đã đo tỷ lệ hoặc đã kiểm tra trong Unity nếu chưa thực hiện.
+
+## Quy tắc dựng màn (bắt buộc)
+
+1. **Tỷ lệ phòng khóa:** `số phòng khóa / tổng số phòng × 100 ≥ 30%`. Phòng khóa = phòng có `RoomEncounter` (cửa sập, đánh theo đợt) hoặc phòng boss. Ví dụ 5 phòng → tối thiểu 2 phòng khóa; 7 phòng → tối thiểu 3. Kiểm tra lại tỷ lệ mỗi khi thêm/bớt phòng và ghi rõ con số khi báo cáo.
+2. **Platform ≠ tileset:** bệ/kệ lơ lửng đặt bằng prefab trong `Assets/Prefabs/Platform/` (khối đặc) hoặc `Assets/Prefabs/Objects/OneWayPlatform` (một chiều). Tilemap chỉ dùng cho nền, tường, trần.
+3. **NGHIÊM CẤM TỰ ĐOÁN — bằng mọi giá.** Khi thiếu thông tin về ý đồ thiết kế (chủ đề màn, tên màn, số phòng, cơ chế, vị trí/loại quái, độ khó, thông số), AI **phải dừng lại và hỏi** chủ project, không được tự chọn rồi làm. Không được coi im lặng, câu trả lời mơ hồ hay một quyết định ở màn khác là sự đồng ý cho màn này. Chỉ được làm theo những gì chủ project đã nói rõ; mọi đề xuất phải được trình bày dưới dạng câu hỏi/phương án và chờ duyệt.

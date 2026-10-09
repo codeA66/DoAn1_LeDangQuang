@@ -39597,6 +39597,7 @@ GameObject:
   - component: {fileID: 8722153123655506339}
   - component: {fileID: 7778245015425867006}
   - component: {fileID: 8171744386610701766}
+  - component: {fileID: 8652344376428202768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -40166,6 +40167,21 @@ MonoBehaviour:
   smoke: {fileID: 7511787783613301040}
   flame: {fileID: 7490598404894215468}
   demonFlame: {fileID: 535078117892180757}
+--- !u!114 &8652344376428202768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774313822008665706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98136ea9ac7985441aaddc8e866f43e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerLook
+  actionName: LookAround
+  distance: 4
+  smoothTime: 0.25
 --- !u!1 &7962428662256493690
 GameObject:
   m_ObjectHideFlags: 0

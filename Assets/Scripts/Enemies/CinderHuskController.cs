@@ -24,6 +24,9 @@ namespace LuHanh.Enemies
         AttackState attack;
         DeathState death;
         readonly Collider2D[] overlapBuffer = new Collider2D[8];
+        readonly Collider2D[] originBuffer = new Collider2D[4];
+        const float OriginLiftStep = 0.05f;
+        const float OriginMaxLift = 0.6f;
         Vector3 bodyArtScale = Vector3.one;
         Vector3 effectsStartPosition;
         float deathElapsed;
@@ -371,7 +374,17 @@ namespace LuHanh.Enemies
             get
             {
                 var centre = CurrentBlastCentre;
-                if (bodyCollider) centre.y = bodyCollider.bounds.min.y + config.FireballRadius + 0.06f;
+                if (!bodyCollider) return centre;
+                // Cau lan sat dat de Player phai nhay ne.
+                centre.y = bodyCollider.bounds.min.y + config.FireballRadius + 0.06f;
+                // Do mat dat: tile/ke duoi chan co the go ghe hoac quai lun nhe -> cau cham dat ngay luc ban
+                // va no tai cho. Nang len tung buoc cho toi khi khong con cham (toi da OriginMaxLift).
+                var filter = new ContactFilter2D { useLayerMask = true, layerMask = config.groundLayers, useTriggers = false };
+                for (float lift = 0f; lift < OriginMaxLift; lift += OriginLiftStep)
+                {
+                    if (Physics2D.OverlapCircle(centre, config.FireballRadius, filter, originBuffer) == 0) break;
+                    centre.y += OriginLiftStep;
+                }
                 return centre;
             }
         }

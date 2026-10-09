@@ -25,6 +25,8 @@ namespace LuHanh.Level
         [SerializeField] float signalIntensity = 1.6f;
         [Tooltip("Giay den xanh tat dan sau khi mo.")]
         [SerializeField] float openGlowTime = 0.8f;
+        [Tooltip("Dong san tu dau (vd cua duong tat, mo bang can gat).")]
+        [SerializeField] bool startClosed;
 
         float amount;          // 0 = mo, 1 = dong
         float target;
@@ -32,7 +34,11 @@ namespace LuHanh.Level
 
         public bool IsClosed => target > 0.5f;
 
-        void Awake() => SetAmount(0f);
+        void Awake()
+        {
+            target = startClosed ? 1f : 0f;
+            SetAmount(target);
+        }
 
         public void Close()
         {

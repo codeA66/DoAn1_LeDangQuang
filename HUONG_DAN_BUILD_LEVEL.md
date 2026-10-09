@@ -324,3 +324,21 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 2. **Tường nền:** `Tilemap_BackDeco` (Order −8) vẽ bằng tile `Art/Tiles/Background` (cột c4–c5), Color (1, 0.55, 0.82). Chừa vài ô làm cửa sổ, đặt Light2D tím sau đó.
 3. **Cột sáng:** mỗi phòng 1 cột (`moon_beam`, unlit, Order −6, xoay ~−14°) ở chỗ muốn người chơi chú ý; đỏ/cam = nguy hiểm, xanh ngọc = có lợi/bí mật, tím = bình thường.
 4. **Tiền cảnh** (unlit, màu #0C0A14, Order 30–31): cỏ sắt mép sàn, dây cáp rủ từ trần, giàn thép đè lên tường. **Không đặt chắn khe nhảy, mép platform hay chỗ né đòn.**
+
+---
+
+## Quy tắc bắt buộc khi dựng màn
+
+- **Phòng khóa ≥ 30% tổng số phòng** (`số phòng khóa / tổng số phòng × 100 ≥ 30%`). Phòng khóa = có `RoomEncounter` hoặc phòng boss.
+- **Platform ≠ tileset:** bệ lơ lửng dùng `Prefabs/Platform/` hoặc `Prefabs/Objects/OneWayPlatform`; tilemap chỉ cho nền/tường/trần.
+- **Không tự đoán:** thiếu thông tin thiết kế thì hỏi chủ project trước (xem `AGENTS.md`).
+
+---
+
+## Đường tắt bằng cần gạt (ví dụ Level2: R4 → R1)
+
+1. Đặt `Prefabs/Level/Gate.prefab` chắn lối tắt. Lối dưới sàn thì xoay Rotation Z = 90 để cửa nằm ngang; tick **Start Closed**.
+2. Kéo `Prefabs/Level/ShortcutLever.prefab` vào **phía bên kia** đường tắt (chỉ mở được từ phía đó). Gán Gate vào `Gates`.
+3. Muốn phải dọn phòng khóa trước mới gạt được: kéo `Encounter_...` vào `Required Encounter` (đèn xanh ngọc sáng khi gạt được).
+4. Đã mở thì giữ mở khi người chơi chết; tải lại màn thì đóng.
+- **Sắp xếp quái trong Hierarchy:** trong nhóm `Enemies`, chèn object rỗng tên `RoomXX` (Room01, Room02...) làm tiêu đề; quái của phòng nào đặt ngay dưới tiêu đề phòng đó. Không đổi cha của quái.

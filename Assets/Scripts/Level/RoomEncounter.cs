@@ -37,6 +37,9 @@ namespace LuHanh.Level
 
         enum Phase { Idle, Fighting, Cleared }
         Phase phase;
+
+        /// <summary>Da diet het cac dot (cua da mo). Nguoi choi chet thi ve false.</summary>
+        public bool IsCleared => phase == Phase.Cleared;
         int wave;
         bool pendingReset;
 

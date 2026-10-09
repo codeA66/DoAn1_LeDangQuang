@@ -192,9 +192,15 @@ namespace LuHanh.Player
 
         // ---- Input System: giu nguyen ten ham de khong phai noi lai UnityEvent trong scene ----
 
+        /// <summary>Huong WASD dang bam - PlayerLook doc de nhin len/xuong.</summary>
+        public Vector2 RawMove => rawMove;
+
+        Vector2 rawMove;
+
         public void onMove(InputAction.CallbackContext callback)
         {
-            input?.SetMove(callback.ReadValue<Vector2>());
+            rawMove = callback.ReadValue<Vector2>();
+            input?.SetMove(rawMove);
         }
 
         public void onJump(InputAction.CallbackContext callback)

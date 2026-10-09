@@ -203,7 +203,8 @@ namespace LuHanh.Player
             for (int i = 0; i < count; i++)
             {
                 var c = homingHits[i];
-                if (c.GetComponentInParent<IDamageable>() == null) continue;
+                // Chi nham quai (bo qua can gat, vat pha duoc...).
+                if (!c.GetComponentInParent<LuHanh.Enemies.EnemyBase>()) continue;
                 float d = ((Vector2)c.bounds.center - chest).sqrMagnitude;
                 if (d < bestDist) { bestDist = d; best = c; }
             }
