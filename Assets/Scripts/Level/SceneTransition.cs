@@ -1,4 +1,5 @@
 using System.Collections;
+using LuHanh.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -80,12 +81,7 @@ namespace LuHanh.Level
 
         void Build(LevelList style)
         {
-            var canvas = gameObject.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 1000;
-            var scaler = gameObject.AddComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1920, 1080);
+            UIBuild.SetupOverlay(gameObject, 1000);
 
             iris = MakeImage("Iris", transform, new Color(0.02f, 0.01f, 0.05f, 1f));
             Stretch(iris.rectTransform);
@@ -110,10 +106,10 @@ namespace LuHanh.Level
             ornTop = MakeOrnament("OrnamentTop", ornament, OrnamentY, false);
             ornBottom = MakeOrnament("OrnamentBottom", ornament, -OrnamentY - 20f, true);
 
-            codeText = MakeText("Code", card.transform, style && style.titleFont ? style.titleFont : fallback, 34, CodeColor);
+            codeText = UIBuild.MakeText("Code", card.transform, style && style.levelCodeFont ? style.levelCodeFont : fallback, 34, CodeColor);
             ((RectTransform)codeText.transform).anchoredPosition = new Vector2(0f, 62f);
 
-            titleText = MakeText("Title", card.transform, style && style.codeFont ? style.codeFont : fallback, TitleSize, TitleColor);
+            titleText = UIBuild.MakeText("Title", card.transform, style && style.nameFont ? style.nameFont : fallback, TitleSize, TitleColor);
             titleText.supportRichText = true;
             ((RectTransform)titleText.transform).anchoredPosition = new Vector2(0f, -10f);
             var shadow = titleText.gameObject.AddComponent<Shadow>();
@@ -147,24 +143,6 @@ namespace LuHanh.Level
             return img;
         }
 
-        static Text MakeText(string name, Transform parent, Font font, int size, Color color)
-        {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Text));
-            go.transform.SetParent(parent, false);
-            var rt = (RectTransform)go.transform;
-            rt.sizeDelta = new Vector2(1600f, 180f);
-            var t = go.GetComponent<Text>();
-            t.font = font;
-            t.fontSize = size;
-            t.alignment = TextAnchor.MiddleCenter;
-            t.horizontalOverflow = HorizontalWrapMode.Overflow;
-            // Font co ascent lon: dong cao hon khung se bi Truncate an ca dong.
-            t.verticalOverflow = VerticalWrapMode.Overflow;
-            t.color = color;
-            t.raycastTarget = false;
-            return t;
-        }
-
         Image MakeOrnament(string name, Sprite sprite, float y, bool flip)
         {
             var img = MakeImage(name, card.transform, OrnamentColor);
@@ -177,20 +155,6 @@ namespace LuHanh.Level
             return img;
         }
 
-        /// <summary>Viet hoa, chu cai dau moi tu to hon (kieu "FOG CANYON" cua Hollow Knight).</summary>
-        static string SmallCaps(string title)
-        {
-            var sb = new System.Text.StringBuilder();
-            bool wordStart = true;
-            foreach (char ch in title.ToUpperInvariant())
-            {
-                if (char.IsWhiteSpace(ch)) { sb.Append(ch); wordStart = true; continue; }
-                if (wordStart) sb.Append("<size=").Append(TitleCapSize).Append('>').Append(ch).Append("</size>");
-                else sb.Append(ch);
-                wordStart = false;
-            }
-            return sb.ToString();
-        }
 
         static void Stretch(RectTransform rt)
         {
@@ -283,7 +247,7 @@ namespace LuHanh.Level
         IEnumerator ShowCard(string code, string title)
         {
             codeText.text = "LEVEL " + code;
-            titleText.text = SmallCaps(title);
+            titleText.text = UIBuild.SmallCaps(title, TitleCapSize);
             var titleRt = (RectTransform)titleText.transform;
             foreach (var m in motes)
                 m.anchoredPosition = new Vector2(Random.Range(-700f, 700f), Random.Range(-380f, 380f));

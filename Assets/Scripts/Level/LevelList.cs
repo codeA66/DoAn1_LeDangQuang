@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LuHanh.Level
 {
@@ -29,9 +30,9 @@ namespace LuHanh.Level
 
         [Header("The ten man khi chuyen man")]
         [Tooltip("Font ten man chu hoa lon (chu dung, vd Beholden Book Bold).")]
-        public Font codeFont;
+        [FormerlySerializedAs("codeFont")] public Font nameFont;
         [Tooltip("Font dong ma man nho \"LEVEL 1-2\" (vd Beholden Book Italic).")]
-        public Font titleFont;
+        [FormerlySerializedAs("titleFont")] public Font levelCodeFont;
         [Tooltip("Hoa van tren ten man (trang, nen trong). Duoi dung cung anh lat nguoc.")]
         public Sprite titleOrnament;
         [Tooltip("Material lo tron dong/mo man hinh (shader LuHanh/UIIris).")]

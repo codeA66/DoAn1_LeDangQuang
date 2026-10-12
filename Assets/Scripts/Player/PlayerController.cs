@@ -46,9 +46,6 @@ namespace LuHanh.Player
         HurtState hurt;
         bool hurtRequested;
 
-        /// <summary>Ten trang thai dang chay - tien cho HUD debug.</summary>
-        public string CurrentStateName => machine?.Current?.GetType().Name ?? "-";
-
         public bool IsMoving => input != null && input.HasHorizontal;
         public bool IsGrounded => ground != null && ground.IsGrounded;
         /// <summary>Collider dang dung len (null neu dang tren khong).</summary>
@@ -165,13 +162,13 @@ namespace LuHanh.Player
             machine.FixedTick(Time.fixedDeltaTime);
         }
 
-        /// <summary>Bi danh trung: bat ra voi van toc cho truoc, mat dieu khien trong <paramref name="seconds"/>.</summary>
         /// <summary>Nhan toc do chay toi da (dang Shadow). 1 = binh thuong.</summary>
         public void SetRunMultiplier(float multiplier) => mover.SpeedMultiplier = multiplier;
 
         /// <summary>Quay mat theo dau cua <paramref name="direction"/> (vd chem tu dinh vi).</summary>
         public void Face(float direction) => facing.FaceTowards(direction);
 
+        /// <summary>Bi danh trung: bat ra voi van toc cho truoc, mat dieu khien trong <paramref name="seconds"/>.</summary>
         public void Hurt(Vector2 launchVelocity, float seconds)
         {
             hurt.Setup(launchVelocity, seconds);

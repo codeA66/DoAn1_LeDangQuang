@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b792cc03a0b9f48b9a26e9e3361bca, type: 3}
+  m_Name: Beetle
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Enemies.EnemyConfig
+  maxHealth: 5
+  hitReaction: {fileID: 0}
+  hurtTime: 0.2
+  knockbackScale: 1
+  flashTime: 0.12
+  hitSquash: {x: 1.3, y: 0.7}
+  squashTime: 0.1
+  soulOrbs: 3
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  sleepDistance: 25
+  artFacesRight: 1
+  patrolSpeed: 1.5
+  chaseSpeed: 3.2
+  detectRange: 7
+  detectHeight: 2
+  loseRange: 9
+  loseTime: 1.5
+  dashTriggerRange: 6
+  dashWindup: 0.6
+  dashSpeed: 12
+  dashTime: 0.9
+  dashRecover: 1
+  dashCooldown: 1.8
+  knockbackUp: 4
+  edgeCheckDepth: 0.5
+  wallCheckDistance: 0.1
+  idleState: beetle_idle
+  walkState: beetle_walk
+  attackState: beetle_attack

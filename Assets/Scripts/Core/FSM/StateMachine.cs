@@ -26,7 +26,8 @@ namespace LuHanh.Core.FSM
 
         static readonly List<Transition> Empty = new List<Transition>(0);
 
-        readonly Dictionary<Type, List<Transition>> transitions = new();
+        // Theo tung trang thai (khong theo kieu): nhieu trang thai cung kieu (vd ActionState) van co luat rieng.
+        readonly Dictionary<IState, List<Transition>> transitions = new();
         readonly List<Transition> anyTransitions = new();
 
         List<Transition> currentTransitions = Empty;
@@ -45,7 +46,7 @@ namespace LuHanh.Core.FSM
             previous?.Exit();
             Current = state;
 
-            if (!transitions.TryGetValue(Current.GetType(), out currentTransitions))
+            if (!transitions.TryGetValue(Current, out currentTransitions))
                 currentTransitions = Empty;
 
             Current.Enter();
@@ -55,11 +56,10 @@ namespace LuHanh.Core.FSM
         /// <summary>Chi chuyen tu <paramref name="from"/> sang <paramref name="to"/>.</summary>
         public void AddTransition(IState from, IState to, Func<bool> condition)
         {
-            var key = from.GetType();
-            if (!transitions.TryGetValue(key, out var list))
+            if (!transitions.TryGetValue(from, out var list))
             {
                 list = new List<Transition>();
-                transitions[key] = list;
+                transitions[from] = list;
             }
             list.Add(new Transition(to, condition));
         }

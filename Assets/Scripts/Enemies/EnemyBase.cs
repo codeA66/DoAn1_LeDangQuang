@@ -77,6 +77,9 @@ namespace LuHanh.Enemies
             if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>();
             if (bodyCollider == null) bodyCollider = GetComponent<Collider2D>();
             ownColliders = GetComponentsInChildren<Collider2D>(true);
+            contactDamages = GetComponentsInChildren<ContactDamage>(true);
+            baseDamage = new int[contactDamages.Length];
+            for (int i = 0; i < contactDamages.Length; i++) baseDamage[i] = contactDamages[i].damage;
 
             body.freezeRotation = true;
             health.SetMax(BaseConfig.maxHealth);
@@ -110,7 +113,10 @@ namespace LuHanh.Enemies
 
         // Physics2D.IgnoreCollision mat hieu luc khi collider bi tat/bat (quai chet roi hoi sinh,
         // quai cua RoomEncounter duoc bat) nen phai dat lai moi lan bat.
-        void OnEnable()
+        protected virtual void OnEnable() => ReapplyIgnorePlayer();
+
+        /// <summary>Dat lai xuyen qua nguoi choi; goi sau khi tu bat lai collider than (vd boss hoi sinh).</summary>
+        protected void ReapplyIgnorePlayer()
         {
             if (playerColliders != null) IgnorePlayer();
         }
@@ -133,14 +139,14 @@ namespace LuHanh.Enemies
             UpdateSleep();
             if (asleep) return;
 
-            Machine.Tick(Time.deltaTime);
+            Machine.Tick(Time.deltaTime * Tempo);
             HurtRequested = false;
         }
 
         void FixedUpdate()
         {
             if (asleep) return;
-            Machine.FixedTick(Time.fixedDeltaTime);
+            Machine.FixedTick(Time.fixedDeltaTime * Tempo);
             KeepInHomeRoom();
         }
 
@@ -153,8 +159,10 @@ namespace LuHanh.Enemies
         {
             if (!homeRoom) return;
             var rect = homeRoom.Bounds;
-            Vector2 half = bodyCollider ? (Vector2)bodyCollider.bounds.extents : Vector2.zero;
-            Vector2 offset = bodyCollider ? (Vector2)bodyCollider.bounds.center - body.position : Vector2.zero;
+            // Collider dang tat (quai chui dat / treo tran) co bounds rong o goc toa do: tinh theo tam body.
+            bool useCollider = bodyCollider && bodyCollider.enabled;
+            Vector2 half = useCollider ? (Vector2)bodyCollider.bounds.extents : Vector2.zero;
+            Vector2 offset = useCollider ?(Vector2)bodyCollider.bounds.center - body.position : Vector2.zero;
             Vector2 centre = body.position + offset;
             Vector2 clamped = new Vector2(
                 Mathf.Clamp(centre.x, rect.xMin + half.x, rect.xMax - half.x),
@@ -208,6 +216,42 @@ namespace LuHanh.Enemies
             asleep = far;
             body.simulated = !far;
             if (animator) animator.enabled = !far;
+        }
+
+        // ---- Buff tu Threadwitch ----
+
+        /// <summary>Nhip hanh dong khi duoc buff: dem gio (bao truoc, hoi chieu) va animation nhanh hon.</summary>
+        public const float BuffTempo = 1.3f;
+        public const int BuffDamageMultiplier = 2;
+        static readonly Color BuffTint = new Color(1f, 0.72f, 0.72f);
+
+        ContactDamage[] contactDamages;
+        int[] baseDamage;
+        int buffCount;
+
+        float Tempo => buffCount > 0 ? BuffTempo : 1f;
+
+        /// <summary>
+        /// Nhan vao toc do khi dat van toc (linearVelocity). Di chuyen bang body.position * dt da nhanh san
+        /// vi dt cua trang thai da nhan Tempo, khong nhan them.
+        /// </summary>
+        protected float SpeedScale => Tempo;
+
+        /// <summary>Threadwitch noi day: hanh dong nhanh hon 30%, sat thuong cham x2. Nhieu day khong cong don.</summary>
+        public void AddBuff() { if (buffCount++ == 0) ApplyBuff(true); }
+
+        public void RemoveBuff()
+        {
+            if (buffCount == 0) return;
+            if (--buffCount == 0) ApplyBuff(false);
+        }
+
+        void ApplyBuff(bool on)
+        {
+            for (int i = 0; i < contactDamages.Length; i++)
+                if (contactDamages[i]) contactDamages[i].damage = baseDamage[i] * (on ? BuffDamageMultiplier : 1);
+            if (animator) animator.speed = on ? BuffTempo : 1f;
+            if (sprite) sprite.color = on ? BuffTint : Color.white;
         }
 
         // ---- Nhan don ----

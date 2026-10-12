@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: 668e3f01c35ef1448982cc8eb7936e5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4040385157116425977
+    second: FG_RootsStone_0
+  - first:
+      213: -4806457789060985211
+    second: FG_RootsStone_1
+  - first:
+      213: 2810053665321707085
+    second: FG_RootsStone_2
+  - first:
+      213: 42216513955667516
+    second: FG_RootsStone_3
+  - first:
+      213: 2589060200283914525
+    second: FG_RootsStone_4
+  - first:
+      213: 2826669483548079764
+    second: FG_RootsStone_5
+  - first:
+      213: -1515935161634614011
+    second: FG_RootsStone_6
+  - first:
+      213: 6733690006742924006
+    second: FG_RootsStone_7
+  - first:
+      213: -700280806649219970
+    second: FG_RootsStone_8
+  - first:
+      213: -1250101191623282320
+    second: FG_RootsStone_9
+  - first:
+      213: 5430855864784366915
+    second: FG_RootsStone_10
+  - first:
+      213: 798615142034235834
+    second: FG_RootsStone_11
+  - first:
+      213: -627767582619781553
+    second: FG_RootsStone_12
+  - first:
+      213: 6704756880703084029
+    second: FG_RootsStone_13
+  - first:
+      213: -2770323374395334875
+    second: FG_RootsStone_14
+  - first:
+      213: 2174130380726813282
+    second: FG_RootsStone_15
+  - first:
+      213: 4128752272435840037
+    second: FG_RootsStone_16
+  - first:
+      213: -8827091640046746521
+    second: FG_RootsStone_17
+  - first:
+      213: 3364345400506386566
+    second: FG_RootsStone_18
+  - first:
+      213: -981606320575284447
+    second: FG_RootsStone_19
+  - first:
+      213: 4099632752933762531
+    second: FG_RootsStone_20
+  - first:
+      213: 2273523606038560278
+    second: FG_RootsStone_21
+  - first:
+      213: 7709171551371368011
+    second: FG_RootsStone_22
+  - first:
+      213: 2344407802823167363
+    second: FG_RootsStone_23
+  - first:
+      213: -4503728205378858006
+    second: FG_RootsStone_24
+  - first:
+      213: 802104585741683970
+    second: FG_RootsStone_25
+  - first:
+      213: -1459065248354204326
+    second: FG_RootsStone_26
+  - first:
+      213: 9136208265151366618
+    second: FG_RootsStone_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FG_RootsStone_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 277
+        width: 695
+        height: 725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70980524b1bade7c0800000000000000
+      internalID: -4040385157116425977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_1
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 427
+        width: 463
+        height: 583
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e4c174b180c4db0800000000000000
+      internalID: -4806457789060985211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_2
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 951
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46e8499be05ff620800000000000000
+      internalID: 2810053665321707085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_3
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 343
+        width: 382
+        height: 659
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3e9bfd12bbf59000800000000000000
+      internalID: 42216513955667516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_4
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 683
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d114604e8803ee320800000000000000
+      internalID: 2589060200283914525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_5
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 589
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496f1504be85a3720800000000000000
+      internalID: 2826669483548079764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_6
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 553
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5059e34900156fae0800000000000000
+      internalID: -1515935161634614011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 517
+        width: 7
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea728f626fd27d50800000000000000
+      internalID: 6733690006742924006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_8
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 517
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7436ac015a1846f0800000000000000
+      internalID: -700280806649219970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 485
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 071700ce69fb6aee0800000000000000
+      internalID: -1250101191623282320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_10
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 463
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34da1d692a64e5b40800000000000000
+      internalID: 5430855864784366915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_11
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 385
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1e23d8d30451b00800000000000000
+      internalID: 798615142034235834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 369
+        width: 53
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46317ca5b8b947f0800000000000000
+      internalID: -627767582619781553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_13
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 393
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df5d9a31cd41c0d50800000000000000
+      internalID: 6704756880703084029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_14
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 383
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f543c9195dd89d0800000000000000
+      internalID: -2770323374395334875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_15
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 11
+        width: 509
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2624b9eef001c2e10800000000000000
+      internalID: 2174130380726813282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_16
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 0
+        width: 303
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524002411564c4930800000000000000
+      internalID: 4128752272435840037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_17
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 351
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 764813bdbeedf7580800000000000000
+      internalID: -8827091640046746521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_18
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 373
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68807e2115e80be20800000000000000
+      internalID: 3364345400506386566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_19
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 357
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12bf4d09042a062f0800000000000000
+      internalID: -981606320575284447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_20
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 321
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e57c2c9442d4e830800000000000000
+      internalID: 4099632752933762531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_21
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 325
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61eb46e8cad2d8f10800000000000000
+      internalID: 2273523606038560278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_22
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 325
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4699085eaa7cfa60800000000000000
+      internalID: 7709171551371368011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_23
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 303
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38dcde7b972098020800000000000000
+      internalID: 2344407802823167363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_24
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 277
+        width: 95
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae35c791f0b8f71c0800000000000000
+      internalID: -4503728205378858006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_25
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 15
+        width: 664
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d48d9fed5a12b00800000000000000
+      internalID: 802104585741683970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_26
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 271
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a550bb713eb50cbe0800000000000000
+      internalID: -1459065248354204326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FG_RootsStone_27
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 279
+        width: 11
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad5c55ee2055ace70800000000000000
+      internalID: 9136208265151366618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FG_RootsStone_0: -4040385157116425977
+      FG_RootsStone_1: -4806457789060985211
+      FG_RootsStone_10: 5430855864784366915
+      FG_RootsStone_11: 798615142034235834
+      FG_RootsStone_12: -627767582619781553
+      FG_RootsStone_13: 6704756880703084029
+      FG_RootsStone_14: -2770323374395334875
+      FG_RootsStone_15: 2174130380726813282
+      FG_RootsStone_16: 4128752272435840037
+      FG_RootsStone_17: -8827091640046746521
+      FG_RootsStone_18: 3364345400506386566
+      FG_RootsStone_19: -981606320575284447
+      FG_RootsStone_2: 2810053665321707085
+      FG_RootsStone_20: 4099632752933762531
+      FG_RootsStone_21: 2273523606038560278
+      FG_RootsStone_22: 7709171551371368011
+      FG_RootsStone_23: 2344407802823167363
+      FG_RootsStone_24: -4503728205378858006
+      FG_RootsStone_25: 802104585741683970
+      FG_RootsStone_26: -1459065248354204326
+      FG_RootsStone_27: 9136208265151366618
+      FG_RootsStone_3: 42216513955667516
+      FG_RootsStone_4: 2589060200283914525
+      FG_RootsStone_5: 2826669483548079764
+      FG_RootsStone_6: -1515935161634614011
+      FG_RootsStone_7: 6733690006742924006
+      FG_RootsStone_8: -700280806649219970
+      FG_RootsStone_9: -1250101191623282320
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

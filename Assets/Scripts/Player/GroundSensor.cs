@@ -10,6 +10,10 @@ namespace LuHanh.Player
     /// </summary>
     public class GroundSensor
     {
+        // Theo SE220 (Dead Cells): mat dat phai huong len du doc, va khong tinh luc dang bay len.
+        const float MinGroundNormalY = 0.7f;
+        const float MaxGroundedRiseSpeed = 0.01f;
+
         readonly Transform origin;
         readonly PlayerMovementConfig config;
         readonly Collider2D selfCollider;
@@ -37,9 +41,6 @@ namespace LuHanh.Player
         /// <summary>Dang thuc su cham dat ngay frame nay.</summary>
         public bool IsGrounded { get; private set; }
 
-        /// <summary>Frame nay vua tiep dat, frame truoc thi chua.</summary>
-        public bool JustLanded { get; private set; }
-
         /// <summary>Con trong cua so coyote - van cho phep nhay.</summary>
         public bool CanCoyoteJump => Time.time - lastGroundedTime <= config.coyoteTime;
 
@@ -48,8 +49,6 @@ namespace LuHanh.Player
         /// <summary>Goi mot lan moi buoc vat ly, truoc khi cac trang thai chay.</summary>
         public void FixedTick()
         {
-            bool wasGrounded = IsGrounded;
-
             int count = Physics2D.OverlapCircle(ProbeCentre, config.groundProbeRadius, filter, hits);
             GroundCollider = null;
             for (int i = 0; i < count; i++)
@@ -59,8 +58,6 @@ namespace LuHanh.Player
                 break;
             }
             IsGrounded = GroundCollider != null;
-
-            JustLanded = IsGrounded && !wasGrounded;
             if (IsGrounded) lastGroundedTime = Time.time;
         }
 
@@ -74,9 +71,29 @@ namespace LuHanh.Player
         bool IsStandable(Collider2D c)
         {
             if (selfCollider && Physics2D.GetIgnoreCollision(selfCollider, c)) return false;
+            // Dang bay len thi khong tinh la cham dat (ca dat thuong lan platform 1 chieu).
+            if (body && body.linearVelocity.y > MaxGroundedRiseSpeed) return false;
+            if (!FacesUp(c)) return false;
             if (!c.usedByEffector || !c.TryGetComponent<PlatformEffector2D>(out var effector) || !effector.useOneWay) return true;
-            if (body && body.linearVelocity.y > 0.01f) return false;
             return ProbeCentre.y >= c.bounds.max.y - 0.1f;
+        }
+
+        /// <summary>
+        /// Duoi vong do phai co mat huong len (khong phai chi cham mat tuong / canh tile khi ca goc).
+        /// Ban 3 tia xuong (giua, hai mep vong do): dung sat tuong thi tia van trung san, dung mep vuc van tinh.
+        /// Khong dung ClosestPoint: Tilemap gop thanh 1 CompositeCollider, sat tuong thi diem gan nhat la mat tuong.
+        /// </summary>
+        bool FacesUp(Collider2D c)
+        {
+            Vector2 centre = ProbeCentre;
+            float r = config.groundProbeRadius;
+            for (int i = -1; i <= 1; i++)
+            {
+                var from = centre + new Vector2(i * r * 0.9f, r);
+                var hit = Physics2D.Raycast(from, Vector2.down, r * 2f + 0.05f, config.groundLayers);
+                if (hit.collider == c && (hit.distance <= 0f || hit.normal.y > MinGroundNormalY)) return true;
+            }
+            return false;
         }
 
         /// <summary>Huy cua so coyote. Goi ngay sau khi nhay de mot cu bam khong bat ra hai lan.</summary>

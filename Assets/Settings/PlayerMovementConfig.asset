@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215bfef304c17e44fbac4e62e0faf285, type: 3}
   m_Name: PlayerMovementConfig
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerMovementConfig
-  maxRun: 11.25
-  runAccel: 125
+  maxRun: 8.3
+  runAccel: 1000
   runReduce: 50
   airMult: 0.65
   jumpSpeed: 13.125
@@ -31,8 +31,8 @@ MonoBehaviour:
   dashCooldown: 0.5
   dashRefillCooldown: 0.1
   maxDashes: 1
-  coyoteTime: 0.1
-  inputBuffer: 0.08
+  coyoteTime: 0.12
+  inputBuffer: 0.12
   cornerCorrection: 0.5
   cornerCorrectionStep: 0.125
   spriteFacesRight: 1

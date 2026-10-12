@@ -57,6 +57,7 @@ namespace LuHanh.Player
 
         public float SpeedMultiplier => IsActive ? config.speedMultiplier : 1f;
         public float RangeMultiplier => IsActive ? config.attackRangeMultiplier : 1f;
+        public int DamageMultiplier => IsActive ? config.damageMultiplier : 1;
         public bool HomingEnabled => IsActive && config.homingRadius > 0f;
 
         void Awake()

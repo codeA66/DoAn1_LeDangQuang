@@ -1,3 +1,4 @@
+using LuHanh.Core;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -27,6 +28,14 @@ namespace LuHanh.Level
         [SerializeField] float openGlowTime = 0.8f;
         [Tooltip("Dong san tu dau (vd cua duong tat, mo bang can gat).")]
         [SerializeField] bool startClosed;
+
+        [Header("Sap manh (cua phong boss)")]
+        [Tooltip("Bui bung ra o chan cua luc sap cham dat (Emit). De trong = khong co.")]
+        [SerializeField] ParticleSystem slamDust;
+        [SerializeField] int slamDustCount = 28;
+        [Tooltip("Do rung camera luc sap cham dat (unit). 0 = khong rung.")]
+        [SerializeField] float slamShake;
+        [SerializeField] float slamShakeTime = 0.35f;
 
         float amount;          // 0 = mo, 1 = dong
         float target;
@@ -65,7 +74,10 @@ namespace LuHanh.Level
         void Update()
         {
             if (!Mathf.Approximately(amount, target))
+            {
                 SetAmount(Mathf.MoveTowards(amount, target, Time.deltaTime / Mathf.Max(0.01f, moveTime)));
+                if (target > 0.5f && amount >= 1f) Slam();
+            }
 
             if (glowTimer > 0f && signal)
             {
@@ -73,6 +85,16 @@ namespace LuHanh.Level
                 signal.intensity = signalIntensity * Mathf.Clamp01(glowTimer / openGlowTime);
                 if (glowTimer <= 0f) signal.enabled = false;
             }
+        }
+
+        void Slam()
+        {
+            if (slamDust)
+            {
+                slamDust.transform.position = transform.position + Vector3.down * height;
+                slamDust.Emit(slamDustCount);
+            }
+            if (slamShake > 0f) CameraShake.Kick(slamShake, slamShakeTime);
         }
 
         void SetAmount(float k)

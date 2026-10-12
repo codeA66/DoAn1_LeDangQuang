@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae638d59151f45a4ebf369f4f115c5c7, type: 3}
+  m_Name: FoundryWarden
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Enemies.FoundryWardenConfig
+  maxHealth: 40
+  hitReaction: {fileID: 0}
+  hurtTime: 0.2
+  knockbackScale: 0
+  flashTime: 0.12
+  hitSquash: {x: 1, y: 1}
+  squashTime: 0.1
+  soulOrbs: 0
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  sleepDistance: 25
+  artFacesRight: 0
+  idle:
+    frames:
+    - {fileID: 21300000, guid: bc65dd0bd1722724b8e3ffa4912ef8c1, type: 3}
+    - {fileID: 21300000, guid: 78f52c99c1681a14b8af3ecea389885c, type: 3}
+    - {fileID: 21300000, guid: 326bbf74ac88dcb4aa82c26ab30a5553, type: 3}
+    - {fileID: 21300000, guid: acf047b084b03124da759ee54079bf1a, type: 3}
+    - {fileID: 21300000, guid: c2b7df286c5d04b4cae063817ae0b62f, type: 3}
+    - {fileID: 21300000, guid: 3bcf25aade439eb4e8b1eefbae05b96d, type: 3}
+    widthScale: 1.4004601
+  attacks:
+  - frames:
+    - {fileID: 21300000, guid: 10e58649449e61f4c941351b07e6d8f4, type: 3}
+    - {fileID: 21300000, guid: 1a24eca7358aa4c488d4d106548c09f0, type: 3}
+    - {fileID: 21300000, guid: 59793b9dff826d84fa56ddaf4cd1920c, type: 3}
+    - {fileID: 21300000, guid: 630f8ba03a1b5ab42989fb2b7394057e, type: 3}
+    - {fileID: 21300000, guid: bad66ee0f365dab47b9f4b686f272648, type: 3}
+    - {fileID: 21300000, guid: f2d45784da36c1242a231170458a317a, type: 3}
+    - {fileID: 21300000, guid: e7bc4722511fde6499024338ba155921, type: 3}
+    - {fileID: 21300000, guid: d09e1351290605042bf9a5b1d2496ccb, type: 3}
+    - {fileID: 21300000, guid: a421328752abf0e48a28884d21cecab1, type: 3}
+    - {fileID: 21300000, guid: 34313d87e45b5354bb74a41ebb709001, type: 3}
+    widthScale: 1.3182485
+  - frames:
+    - {fileID: 21300000, guid: e3ba634728f6d4643bdea40ff27fb198, type: 3}
+    - {fileID: 21300000, guid: 02978cc5afc09244bb1a40cb8223a66a, type: 3}
+    - {fileID: 21300000, guid: 490bb86f9f0f1e540b4e1201de533e45, type: 3}
+    - {fileID: 21300000, guid: ba34129f43f63ff4280844f8d65e16c8, type: 3}
+    - {fileID: 21300000, guid: 7c94f60cc3796d54d826b06e95b0bbad, type: 3}
+    - {fileID: 21300000, guid: 99cad88cd2d344e409a3d112fab31b43, type: 3}
+    - {fileID: 21300000, guid: 5ec948680a9b9b745a25770dadb02833, type: 3}
+    - {fileID: 21300000, guid: 821afa0c242f5e14fa2b1572eb24ec68, type: 3}
+    - {fileID: 21300000, guid: 0b80965c729f8f84dba8d2d1d659ed44, type: 3}
+    - {fileID: 21300000, guid: ebb83416adb5c3a498eb9d7026c18f24, type: 3}
+    widthScale: 1.7756187
+  - frames:
+    - {fileID: 21300000, guid: e57c59a76d8ff264c9c3696b6761d5c7, type: 3}
+    - {fileID: 21300000, guid: 30517876b8868fa4ab624576301e1b83, type: 3}
+    - {fileID: 21300000, guid: 8f1abc527be34da44a9b55f67f1c29ad, type: 3}
+    - {fileID: 21300000, guid: 22554e7eaf1e72c48923882d0f87dfb9, type: 3}
+    - {fileID: 21300000, guid: 7b9d7f30f2f23fe46a8503f464090906, type: 3}
+    - {fileID: 21300000, guid: b0577db93308ab94bac307fdad3154c3, type: 3}
+    - {fileID: 21300000, guid: 472dd386c939c9746a74b010eddb2252, type: 3}
+    - {fileID: 21300000, guid: 51461eff7190e4740b341f918e61557f, type: 3}
+    - {fileID: 21300000, guid: f2423b921e0cd97499c912e725f64abb, type: 3}
+    - {fileID: 21300000, guid: b1e50c999375d50408f9ad68a9629ea9, type: 3}
+    widthScale: 1.556697
+  - frames:
+    - {fileID: 21300000, guid: c2c7acce2bf9c524392181b0174261ff, type: 3}
+    - {fileID: 21300000, guid: 9e8abbfee5207a54599b112bb8a471d7, type: 3}
+    - {fileID: 21300000, guid: 3cb057baf75969644bbef99e3c13ac23, type: 3}
+    - {fileID: 21300000, guid: adb39cf85660d5e4bb4b10e4eef78d87, type: 3}
+    - {fileID: 21300000, guid: 059a1d665fac5104eb256a0444ef95a7, type: 3}
+    - {fileID: 21300000, guid: bd5db0cf25f5bb24b99c8807094bc350, type: 3}
+    - {fileID: 21300000, guid: dac58e26729339547b7359243685581a, type: 3}
+    - {fileID: 21300000, guid: 6d7440f9c3e97c145996d825636209a8, type: 3}
+    - {fileID: 21300000, guid: acdf8ae2c33c50a448db33676a5a4660, type: 3}
+    - {fileID: 21300000, guid: 087d04f5aa3f7b74eaa2fbcf32a92ab6, type: 3}
+    widthScale: 1.6403929
+  synchronizedAttacks: 1
+  attackTimings:
+  - impactFrame: 5
+    recoveryFrame: 8
+    strikeSource: {x: -4.1430354, y: 5.4700804}
+  - impactFrame: 5
+    recoveryFrame: 8
+    strikeSource: {x: 0, y: 0}
+  - impactFrame: 5
+    recoveryFrame: 8
+    strikeSource: {x: -0.016662655, y: 0.32111558}
+  - impactFrame: 4
+    recoveryFrame: 8
+    strikeSource: {x: -0.014519549, y: 1.7171451}
+  hurt:
+    frames:
+    - {fileID: 21300000, guid: 521a4d78801ae57448d9c011c19e71c1, type: 3}
+    - {fileID: 21300000, guid: b527fc947507eef458e02d4112cf7c30, type: 3}
+    - {fileID: 21300000, guid: b946569c108317343b9445b0fdc05714, type: 3}
+    - {fileID: 21300000, guid: 59d1aec6997db2e48a482ea339595025, type: 3}
+    widthScale: 1.3833721
+  die:
+    frames:
+    - {fileID: 21300000, guid: c6d284646051b1a4bba208e4b5efacf3, type: 3}
+    - {fileID: 21300000, guid: fd64f5185b1cf5248bfbfbd371ce171e, type: 3}
+    - {fileID: 21300000, guid: 328ac437264f23c46ae4604cb0dfa89e, type: 3}
+    - {fileID: 21300000, guid: ff53a06f3a6ab094d8c34cf8feb5061a, type: 3}
+    - {fileID: 21300000, guid: ba29b40665e5f49449fe3fab11266b0a, type: 3}
+    - {fileID: 21300000, guid: 350b5e7054246564ca0fb5ef4e31b963, type: 3}
+    - {fileID: 21300000, guid: f5af4bc4f21e4af4cbe92f38a60e6b5a, type: 3}
+    - {fileID: 21300000, guid: f26feb0f9b2094540977632fd1a1652e, type: 3}
+    - {fileID: 21300000, guid: 03caefb6ee0666c428aeb9f95f0860d0, type: 3}
+    - {fileID: 21300000, guid: 6f81e54b4c1eb5a40a76e54c0cfef5f0, type: 3}
+    widthScale: 1.8272637
+  idleFps: 6
+  hurtDuration: 0.2
+  deathDuration: 1.5
+  detectRange: 20
+  attackDamage: 2
+  chargeDuration: 0.8
+  recoveryDuration: 1
+  restDuration: 1
+  meleeDuration: 0.25
+  shieldCycleEnabled: 1
+  shieldDuration: 5
+  vulnerableDuration: 3
+  rockDiameter: 1.5
+  rockFlightDuration: 1.2
+  rockArcHeight: 6
+  ramSpeed: 20
+  ramDistance: 12
+  waveSize: {x: 1.5, y: 1.8410628}
+  waveSpeed: 8
+  waveDistance: 16
+  ventSize: {x: 1.5, y: 4.5}
+  ventOffsets:
+  - -12
+  - -9
+  - -6
+  - -3
+  - 0
+  - 3
+  - 6
+  - 9
+  - 12
+  ventDuration: 1
+  ventWaveInterval: 0.25

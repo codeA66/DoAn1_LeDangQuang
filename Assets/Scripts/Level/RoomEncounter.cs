@@ -33,6 +33,8 @@ namespace LuHanh.Level
         [SerializeField] int spawnFxCount = 14;
         [Tooltip("Khung hinh dung lai mot thoang khi cua sap (giay thuc). 0 = tat.")]
         [SerializeField] float lockHitStop = 0.06f;
+        [Tooltip("Goi ngay khi cua sap (vd den phong boss bung sang).")]
+        [SerializeField] UnityEvent onStarted;
         [SerializeField] UnityEvent onCleared;
 
         enum Phase { Idle, Fighting, Cleared }
@@ -64,6 +66,7 @@ namespace LuHanh.Level
             phase = Phase.Fighting;
             foreach (var g in gates) if (g) g.Close();
             if (lockHitStop > 0f) HitStop.Request(lockHitStop);
+            onStarted?.Invoke();
 
             for (wave = 0; wave < waves.Length; wave++)
             {

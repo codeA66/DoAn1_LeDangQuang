@@ -1,12 +1,14 @@
 # Hướng dẫn build level – Lữ Hành Bí Ẩn
 
+**Bộ art vùng đất:** đọc [ASSET_GUIDE.md](Assets/Art/Environment/BuriedDepths/ASSET_GUIDE.md) trước khi dùng ảnh trong `Assets/Art/Environment/BuriedDepths/`. Có 27 PNG cảnh/terrain/platform/gai; chưa có RuleTile, prefab hoặc collider. Tile đã chốt 32×32, PPU 32 nhưng importer chưa cấu hình trong lần gom ảnh. Năm art quái vẫn ở `output/Art/BuriedDepths/`, chưa đưa vào folder dựng level theo yêu cầu chủ project.
+
 > Trước khi chọn màu tilemap, đèn, nền hoặc tiền cảnh, đọc [AGENTS.md — Quy chuẩn màu sắc](AGENTS.md). Tỷ lệ màu là mục tiêu bố cục khung hình, không phải thông số intensity của đèn.
 
 File này hướng dẫn dựng một màn chơi mới từ đầu đến khi chơi được: tạo scene, vẽ map bằng Rule Tile, chia phòng cho camera, đặt vật cản/quái, nối cổng sang màn tiếp theo, và **cách thiết kế từng phòng theo phong cách Hollow Knight**.
 
 Chi tiết kỹ thuật của từng hệ thống (code, thông số) nằm trong `TUTORIAL.md`. File này chỉ tập trung vào **cách làm**.
 
-**Animation Player:** prefab `Assets/Character/Player/Player.prefab` đã gắn `PlayerActionAnimation` và bộ TravelerActions (chém ba hướng, Hurt, Land, Death, Respawn). Kéo prefab này vào màn mới thì có sẵn cấu hình; chỉnh animation ở prefab, không tạo override từng scene. Cần `RespawnManager` trong LevelEssentials để Death/Respawn khớp tối–sáng. Land chỉ phát khi tiếp đất đứng yên; đang chạy tiếp tục chạy. Hết máu thì điều khiển được trả lại sau khi fade-in xong.
+**Animation Player:** prefab `Assets/Prefabs/Player.prefab` đã gắn `PlayerActionAnimation` và bộ TravelerActions (chém ba hướng, Hurt, Land, Death, Respawn). Kéo prefab này vào màn mới thì có sẵn cấu hình; chỉnh animation ở prefab, không tạo override từng scene. Cần `RespawnManager` trong LevelEssentials để Death/Respawn khớp tối–sáng. Land chỉ phát khi tiếp đất đứng yên; đang chạy tiếp tục chạy. Hết máu thì điều khiển được trả lại sau khi fade-in xong.
 
 ---
 
@@ -30,7 +32,7 @@ Chi tiết kỹ thuật của từng hệ thống (code, thông số) nằm tron
 | Thành phần | Prefab / vị trí | Bắt buộc |
 |---|---|---|
 | Hệ thống chung (camera, HUD, hồi sinh, đèn toàn cục, hậu kỳ, nền parallax, mở đầu màn, quản lý phòng) | `Assets/Prefabs/LevelEssentials.prefab` | ✔ |
-| Nhân vật (đã có đủ hiệu ứng lướt/chém/trúng đòn) | `Assets/Character/Player/Player.prefab` | ✔ |
+| Nhân vật (đã có đủ hiệu ứng lướt/chém/trúng đòn) | `Assets/Prefabs/Player.prefab` | ✔ |
 | Mặt đất | Grid + Tilemap `Tilemap_Ground` (vẽ bằng `RT_Industrial`) | ✔ |
 | Phòng | Object `Rooms` chứa các `Room` | ✔ |
 | Cổng ra | `Assets/Prefabs/Level/LevelPortal.prefab` | ✔ |
@@ -236,7 +238,7 @@ Hollow Knight nổi tiếng vì **mỗi phòng có mục đích riêng, có đi�
 
 | Kéo | Từ | Ghi chú |
 |---|---|---|
-| Platform 1 chiều | `Prefabs/Objects/OneWayPlatform` | Kéo dài: chỉnh `SpriteRenderer → Size` (collider tự theo). Nhảy từ dưới xuyên lên, đứng được, nhấn **S** rơi xuống, lướt từ trên xuống không xuyên |
+| Platform 1 chiều | `Prefabs/Platform/OneWayPlatform` | Kéo dài: chỉnh `SpriteRenderer → Size` (collider tự theo). Nhảy từ dưới xuyên lên, đứng được, nhấn **S** rơi xuống, lướt từ trên xuống không xuyên |
 | Hố gai | `Prefabs/Objects/SpikePit_JumpTutorial` | Đã có HazardZone |
 | Ghoul | `Prefabs/Enemies/Ghoul` | Tuần tra, gồng rồi lao. Thông số: `Settings/Enemies/Ghoul.asset` |
 | Dơi | `Prefabs/Enemies/Bat` | Bay, bắn cầu. `Settings/Enemies/Bat.asset` (Knockback Scale 0.35) |
@@ -330,7 +332,7 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 ## Quy tắc bắt buộc khi dựng màn
 
 - **Phòng khóa ≥ 30% tổng số phòng** (`số phòng khóa / tổng số phòng × 100 ≥ 30%`). Phòng khóa = có `RoomEncounter` hoặc phòng boss.
-- **Platform ≠ tileset:** bệ lơ lửng dùng `Prefabs/Platform/` hoặc `Prefabs/Objects/OneWayPlatform`; tilemap chỉ cho nền/tường/trần.
+- **Platform ≠ tileset:** bệ lơ lửng dùng `Prefabs/Platform/` hoặc `Prefabs/Platform/OneWayPlatform`; tilemap chỉ cho nền/tường/trần.
 - **Không tự đoán:** thiếu thông tin thiết kế thì hỏi chủ project trước (xem `AGENTS.md`).
 
 ---
@@ -342,3 +344,16 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 3. Muốn phải dọn phòng khóa trước mới gạt được: kéo `Encounter_...` vào `Required Encounter` (đèn xanh ngọc sáng khi gạt được).
 4. Đã mở thì giữ mở khi người chơi chết; tải lại màn thì đóng.
 - **Sắp xếp quái trong Hierarchy:** trong nhóm `Enemies`, chèn object rỗng tên `RoomXX` (Room01, Room02...) làm tiêu đề; quái của phòng nào đặt ngay dưới tiêu đề phòng đó. Không đổi cha của quái.
+
+## Phòng boss kiểu Hollow Knight (ví dụ Level2: R8)
+
+1. Dựng phòng như phòng khóa: `Room` + `Gate` ở mọi lối vào + `RoomEncounter` một đợt chỉ chứa boss (boss đặt **tắt sẵn**, **trên cao** trong phòng để rơi xuống).
+2. Cửa sập mạnh: trên `Gate` gán `Slam Dust` (ParticleSystem bụi, nhân bản từ `Player/LandDust`) và `Slam Shake` (~0,35); `Move Time` ~0,1.
+3. Thêm object có `BossTitleCard` (tên boss, font Beholden) và `BossEntrance` (gán boss, title, bụi tiếp đất). Boss chạm đất → bụi + rung + khựng + hiện tên; boss chờ tên hiện xong mới đánh.
+4. `onCleared` của Encounter boss gọi `LevelPortal.Open` nếu là phòng cuối.
+
+## Bộ lòng đất (BuriedDepths) — dùng cho Level3
+
+- Tile: vẽ bằng `Art/Tiles/BuriedDepths/RT_Earth` (RuleTile). Platform: `Prefabs/Platform/Platform_Stone_*`. Nền: thay `Background` trong LevelEssentials bằng `Prefabs/Background_LongDat` (tắt Background cũ, đặt Background_LongDat cùng chỗ).
+- Quái: `Prefabs/Enemies/Beetle|EarthGolem|RootCrawler|Scorpion|Worm`, thông số ở `Settings/Enemies/<Ten>.asset`.
+- Ánh sáng: tham khảo `Scenes/Test/Test_LongDat` (cột sáng khe trần, đèn dẫn đường, tiền cảnh tối, DustMotes, `DamageLightDip`). Không dùng ánh sáng cam.

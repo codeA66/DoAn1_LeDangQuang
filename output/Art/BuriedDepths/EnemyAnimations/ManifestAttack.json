@@ -1,0 +1,42 @@
+[
+  {
+    "id": "Worm",
+    "name": "Giun đá",
+    "state": "Attack",
+    "ref": "D:/DoAn1_LeDangQuang/output/Art/BuriedDepths/Enemy_Worm.png",
+    "prompt": "Create a detailed pixelart 2D sideview enemy ATTACK SPRITESHEET matching supplied approved DESIGN reference, warm orange-brown earth and dark slate armor, crimson danger eyes. Preserve anatomy, do not redesign. Exactly 12 UNIQUE DRAWN POSES, 4 equal columns and 3 equal rows, rowmajor chronological. Transparent background TRUE alpha. No text/grid/scene/opaque background, no atmospheric glow behind sprites. All face RIGHT. Entire creature within each cell with generous 15% empty margins; fit BIGGEST attack pose to cell, same body scale all12, do NOT enlarge neutral poses to fill cell. Motion must be FORCEFUL, extreme anticipation and unmistakable contact keyframes, redrawing articulation not rotating/scaling/translating idle copies. Stable footbaseline and body anchor across cells. Pose sequence: 0 upright guard; 1 neck pulls BACK; 2 bends into deep backward S curve; 3 head rises above normal; 4 maximum tall backward arch, jaw WIDE; 5 neck uncoils diagonally down; 6 mouth lunges forward/down, body near horizontal; 7 JAWS CLAMP AT GROUND far ahead, flattened neck; 8 biting follow-through pressed low; 9 jaw opens and neck pulls up; 10 rises halfway; 11 returns toward upright. Midattack silhouette MUST radically differ from idle upright worm.",
+    "source": "C:\\Users\\DANG QUANG\\.codex\\generated_images\\01a0fbee-92d3-7981-8b0b-6dc84739dedc\\exec-11cee911-a4e8-484f-9045-b0ece6b126cf.png"
+  },
+  {
+    "id": "Beetle",
+    "name": "Bọ giáp đá",
+    "state": "Attack",
+    "ref": "D:/DoAn1_LeDangQuang/output/Art/BuriedDepths/Enemy_Beetle.png",
+    "prompt": "Create a detailed pixelart 2D sideview enemy ATTACK SPRITESHEET matching supplied approved DESIGN reference, warm orange-brown earth and dark slate armor, crimson danger eyes. Preserve anatomy, do not redesign. Exactly 12 UNIQUE DRAWN POSES, 4 equal columns and 3 equal rows, rowmajor chronological. Transparent background TRUE alpha. No text/grid/scene/opaque background, no atmospheric glow behind sprites. All face RIGHT. Entire creature within each cell with generous 15% empty margins; fit BIGGEST attack pose to cell, same body scale all12, do NOT enlarge neutral poses to fill cell. Motion must be FORCEFUL, extreme anticipation and unmistakable contact keyframes, redrawing articulation not rotating/scaling/translating idle copies. Stable footbaseline and body anchor across cells. Pose sequence: 0 guard; 1 head tucks; 2 front legs fold; 3 rear legs bend deeply and body leans BACK; 4 extreme low compact charged crouch; 5 rear legs drive and front legs leave ground; 6 completely EXTENDED horizontal RAM, head thrust forward, rear legs stretched backward; 7 full lunging impact pose head low/front, hind legs airborne; 8 forelegs brake wide, carapace tilts forward; 9 body recoils and rear legs land; 10 head lifts; 11 settles. Show actual articulated legs and tilted carapace, not idle variations.",
+    "source": "C:\\Users\\DANG QUANG\\.codex\\generated_images\\01a0fbee-92d3-7981-8b0b-6dc84739dedc\\exec-dd99d1a3-94ca-49ae-8f18-dd5cb43f4951.png"
+  },
+  {
+    "id": "RootCrawler",
+    "name": "Sinh vật rễ",
+    "state": "Attack",
+    "ref": "D:/DoAn1_LeDangQuang/output/Art/BuriedDepths/Enemy_RootCrawler.png",
+    "prompt": "Create a detailed pixelart 2D sideview enemy ATTACK SPRITESHEET matching supplied approved DESIGN reference, warm orange-brown earth and dark slate armor, crimson danger eyes. Preserve anatomy, do not redesign. Exactly 12 UNIQUE DRAWN POSES, 4 equal columns and 3 equal rows, rowmajor chronological. Transparent background TRUE alpha. No text/grid/scene/opaque background, no atmospheric glow behind sprites. All face RIGHT. Entire creature within each cell with generous 15% empty margins; fit BIGGEST attack pose to cell, same body scale all12, do NOT enlarge neutral poses to fill cell. Motion must be FORCEFUL, extreme anticipation and unmistakable contact keyframes, redrawing articulation not rotating/scaling/translating idle copies. Stable footbaseline and body anchor across cells. Pose sequence: 0 guard; 1 plants rear feet widely; 2 front ROOT ARMS unfold UP; 3 front torso rises tall balanced on rear legs; 4 BOTH root arms overhead fully raised, body upright forehalf; 5 root arms slash sharply DOWN; 6 long sharp root arms pierce below footline; 7 body bows deeply, roots driven down, shoulders very low; 8 maximum buried-root pulse, soil chips; 9 tears root arms back out; 10 forelegs lower and torso descends; 11 quadruped guard. Strong upright-to-collapsed motion, same root beast not humanoid.",
+    "source": "C:\\Users\\DANG QUANG\\.codex\\generated_images\\01a0fbee-92d3-7981-8b0b-6dc84739dedc\\exec-920b16f7-599f-4677-afec-2fb7bbf658a5.png"
+  },
+  {
+    "id": "EarthGolem",
+    "name": "Golem đất",
+    "state": "Attack",
+    "ref": "D:/DoAn1_LeDangQuang/output/Art/BuriedDepths/Enemy_EarthGolem.png",
+    "prompt": "Create a detailed pixelart 2D sideview enemy ATTACK SPRITESHEET matching supplied approved DESIGN reference, warm orange-brown earth and dark slate armor, crimson danger eyes. Preserve anatomy, do not redesign. Exactly 12 UNIQUE DRAWN POSES, 4 equal columns and 3 equal rows, rowmajor chronological. Transparent background TRUE alpha. No text/grid/scene/opaque background, no atmospheric glow behind sprites. All face RIGHT. Entire creature within each cell with generous 15% empty margins; fit BIGGEST attack pose to cell, same body scale all12, do NOT enlarge neutral poses to fill cell. Motion must be FORCEFUL, extreme anticipation and unmistakable contact keyframes, redrawing articulation not rotating/scaling/translating idle copies. Stable footbaseline and body anchor across cells. Pose sequence: 0 fists hanging; 1 bends knees; 2 elbows pull BACK; 3 both fists at shoulder height; 4 both fists ABOVE HEAD fully overhead; 5 maximum high arms, backward arch; 6 swings BOTH giant fists down through chest height; 7 BOTH fists IMPACT ground, torso folded far forward, knees deep; 8 lowest follow-through fists on ground, small stone chips; 9 starts lifting fists; 10 torso rises halfway; 11 fists lower toward guard. Overhead and groundimpact silhouettes must be unmistakable.",
+    "source": "C:\\Users\\DANG QUANG\\.codex\\generated_images\\01a0fbee-92d3-7981-8b0b-6dc84739dedc\\exec-e7514bb7-458a-4190-9edc-62393e559ed8.png"
+  },
+  {
+    "id": "Scorpion",
+    "name": "Bọ cạp đất",
+    "state": "Attack",
+    "ref": "D:/DoAn1_LeDangQuang/output/Art/BuriedDepths/Enemy_Scorpion.png",
+    "prompt": "Create a detailed pixelart 2D sideview enemy ATTACK SPRITESHEET matching supplied approved DESIGN reference, warm orange-brown earth and dark slate armor, crimson danger eyes. Preserve anatomy, do not redesign. Exactly 12 UNIQUE DRAWN POSES, 4 equal columns and 3 equal rows, rowmajor chronological. Transparent background TRUE alpha. No text/grid/scene/opaque background, no atmospheric glow behind sprites. All face RIGHT. Entire creature within each cell with generous 15% empty margins; fit BIGGEST attack pose to cell, same body scale all12, do NOT enlarge neutral poses to fill cell. Motion must be FORCEFUL, extreme anticipation and unmistakable contact keyframes, redrawing articulation not rotating/scaling/translating idle copies. Stable footbaseline and body anchor across cells. Pose sequence: 0 guard; 1 front pincers anchor wide; 2 tail recoils BACK; 3 tail coils tightly behind carapace; 4 tail lifts VERY high sting pointing forward; 5 unfurls over head; 6 sting sweeps forward diagonally; 7 full forward STAB low beyond claws, tail extended almost horizontally; 8 maximum stab extension body pressed low; 9 tail sharply retracts upward; 10 tail curls halfway; 11 guarded arch. Tail tip must travel a huge arc relative to body, not static uprighttail.",
+    "source": "C:\\Users\\DANG QUANG\\.codex\\generated_images\\01a0fbee-92d3-7981-8b0b-6dc84739dedc\\exec-3cab0102-5fe3-4fa0-bd7f-a5a0c36d9238.png"
+  }
+]

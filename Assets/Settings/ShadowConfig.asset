@@ -19,6 +19,7 @@ MonoBehaviour:
   transformHitStop: 0.1
   speedMultiplier: 1.4
   attackRangeMultiplier: 1.5
+  damageMultiplier: 2
   homingRadius: 6
   homingStopDistance: 1.1
   bodyTint: {r: 0.55, g: 0.85, b: 0.85, a: 1}

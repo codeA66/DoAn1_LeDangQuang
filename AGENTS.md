@@ -21,6 +21,17 @@ Tỷ lệ là mục tiêu diện tích màu nhìn thấy trong một khung hình
 
 Mã màu là màu tham chiếu khi thiết kế; ánh sáng URP, vật liệu và hậu kỳ có thể làm màu hiển thị khác. Đánh giá kết quả bằng ảnh trong Game View, không chỉ bằng màu sprite gốc.
 
+### Tông màu theo từng màn
+
+"Màn" là chủ đề (không phải tên scene LevelX). Mỗi màn có tông nền và ánh sáng riêng; các nhóm Người chơi, Ánh sáng an toàn, Nguy hiểm giữ nguyên ở mọi màn. Không dùng ánh sáng màu cam.
+
+| Màn | Scene | Nền xa / ánh sáng chung | Ghi chú |
+|---|---|---|---|
+| 1 – Nhà máy | Level1, Level2 | Tím đêm theo bảng trên | Mặc định của prefab |
+| 2 – Vùng đất (Rêu đá ẩm) | `Test_LongDat` (đang dựng) | Nền `#121A14` / `#22302A`, ánh sáng `#A9C2A8` | Override trong scene, không sửa prefab dùng chung; thông số đầy đủ ở TUTORIAL.md mục 9d |
+
+Quái phải tách khỏi nền ở mọi màn: đèn riêng trung tính và viền đỏ tối `#8F393D` (TUTORIAL.md mục 9d).
+
 ## Quy tắc sử dụng
 
 1. Giữ phần lớn khung cảnh tối và trầm; dùng màu sáng để hướng mắt tới thông tin gameplay.
@@ -30,7 +41,7 @@ Mã màu là màu tham chiếu khi thiết kế; ánh sáng URP, vật liệu v�
 5. Có thể biến thiên sắc độ để tạo khối và chất liệu, nhưng phải giữ vai trò của từng nhóm. Đề xuất và xin duyệt trước khi bổ sung màu nhấn chủ đạo mới.
 6. Tỷ lệ được phép thay đổi theo tình huống: nơi nghỉ tăng ánh vàng; lúc báo đòn tăng đỏ. Không cố giữ tỷ lệ tuyệt đối trong mọi frame hoặc hiệu ứng chớp sáng.
 7. Khi tạo asset, xác định trước lớp hiển thị và vai trò: nền xa, kiến trúc, tiền cảnh, có lợi, an toàn hay nguy hiểm. Đối chiếu kích thước pixel, PPU, pivot, độ trong suốt và sorting với asset thật trong project; không tự đoán thông số.
-8. Tên màn và chữ trong game bằng tiếng Anh. Font dùng Beholden Book trong `Assets/Art/Fronts`, không dùng font mặc định. Trao đổi và tên hiển thị cho chủ project bằng tiếng Việt.
+8. Tên màn và chữ trong game bằng tiếng Anh. Font dùng Beholden Book trong `Assets/Art/Fonts`, không dùng font mặc định. Trao đổi và tên hiển thị cho chủ project bằng tiếng Việt.
 
 ## Quy trình bắt buộc trước khi thay đổi
 
@@ -50,5 +61,5 @@ Khi mô tả kết quả, phân biệt rõ màu mục tiêu, cấu hình đã á
 ## Quy tắc dựng màn (bắt buộc)
 
 1. **Tỷ lệ phòng khóa:** `số phòng khóa / tổng số phòng × 100 ≥ 30%`. Phòng khóa = phòng có `RoomEncounter` (cửa sập, đánh theo đợt) hoặc phòng boss. Ví dụ 5 phòng → tối thiểu 2 phòng khóa; 7 phòng → tối thiểu 3. Kiểm tra lại tỷ lệ mỗi khi thêm/bớt phòng và ghi rõ con số khi báo cáo.
-2. **Platform ≠ tileset:** bệ/kệ lơ lửng đặt bằng prefab trong `Assets/Prefabs/Platform/` (khối đặc) hoặc `Assets/Prefabs/Objects/OneWayPlatform` (một chiều). Tilemap chỉ dùng cho nền, tường, trần.
+2. **Platform ≠ tileset:** bệ/kệ lơ lửng đặt bằng prefab trong `Assets/Prefabs/Platform/` (khối đặc) hoặc `Assets/Prefabs/Platform/OneWayPlatform` (một chiều). Tilemap chỉ dùng cho nền, tường, trần.
 3. **NGHIÊM CẤM TỰ ĐOÁN — bằng mọi giá.** Khi thiếu thông tin về ý đồ thiết kế (chủ đề màn, tên màn, số phòng, cơ chế, vị trí/loại quái, độ khó, thông số), AI **phải dừng lại và hỏi** chủ project, không được tự chọn rồi làm. Không được coi im lặng, câu trả lời mơ hồ hay một quyết định ở màn khác là sự đồng ý cho màn này. Chỉ được làm theo những gì chủ project đã nói rõ; mọi đề xuất phải được trình bày dưới dạng câu hỏi/phương án và chờ duyệt.

@@ -1,0 +1,16 @@
+r0c0: source crop x=0 y=0 width=311 height=309
+r0c1: source crop x=319 y=0 width=303 height=309
+r0c2: source crop x=629 y=0 width=311 height=309
+r0c3: source crop x=949 y=11 width=295 height=294
+r1c0: source crop x=0 y=318 width=311 height=309
+r1c1: source crop x=319 y=318 width=302 height=309
+r1c2: source crop x=628 y=317 width=312 height=310
+r1c3: source crop x=950 y=319 width=288 height=295
+r2c0: source crop x=0 y=627 width=311 height=313
+r2c1: source crop x=319 y=627 width=302 height=313
+r2c2: source crop x=628 y=627 width=312 height=313
+r2c3: source crop x=951 y=632 width=294 height=308
+r3c0: source crop x=29 y=940 width=282 height=292
+r3c1: source crop x=319 y=940 width=302 height=292
+r3c2: source crop x=628 y=940 width=281 height=292
+r3c3: source crop x=951 y=940 width=287 height=292

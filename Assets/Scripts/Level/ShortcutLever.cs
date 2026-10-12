@@ -31,7 +31,6 @@ namespace LuHanh.Level
         bool used;
         float flipTimer = -1f;
 
-        public bool IsUsed => used;
         bool Ready => !used && (!requiredEncounter || requiredEncounter.IsCleared);
 
         void Awake()

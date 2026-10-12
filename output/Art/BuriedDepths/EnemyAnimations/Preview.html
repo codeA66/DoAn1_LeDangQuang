@@ -1,0 +1,15 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><title>BuriedDepths — Duyệt hoạt ảnh</title>
+<style>body{margin:24px;background:#171329;color:#eee;font:16px system-ui}h1{font-size:24px}select,button,input{padding:8px;margin:6px}main{max-width:1000px;margin:auto}.stage{height:480px;background:repeating-conic-gradient(#292734 0% 25%,#302345 0% 50%) 0/32px 32px;display:grid;place-items:center;border:1px solid #454052}.stage img{width:460px;height:440px;object-fit:contain;image-rendering:pixelated}p{line-height:1.5}a{color:#b8fff0}</style>
+<main><h1>BuriedDepths — Duyệt hoạt ảnh</h1><p>12 frame mỗi bộ. Tốc độ bên dưới chỉ dùng xem ảnh, chưa phải FPS gameplay. Ảnh chưa căn pivot hoặc ghép vào Animator.</p>
+<select id="enemy"><option value="Worm">Giun đá</option><option value="Beetle">Bọ giáp đá</option><option value="RootCrawler">Sinh vật rễ</option><option value="EarthGolem">Golem đất</option><option value="Scorpion">Bọ cạp đất</option></select><select id="state"></select><button id="play">Tạm dừng</button><button id="prev">←</button><button id="next">→</button><label>FPS xem thử <input id="fps" type="number" min="1" max="30" value="8"></label><label><input type="checkbox" id="loop" checked>Lặp</label>
+<div class="stage"><img id="sprite" alt="Frame hoạt ảnh"></div><p id="info"></p><a id="sheet" target="_blank">Xem sheet 12 frame</a></main>
+<script>
+const base='../../../../Assets/Art/Generated/Enemies/BuriedDepths/';let frame=0,playing=true,last=0;const $=id=>document.getElementById(id);
+function states(){let old=$('state').value;$('state').replaceChildren();for(const s of ['Idle','Move','Attack','Hurt','Die',...($('enemy').value==='Worm'?['Emerge','Burrow']:[])]){let o=document.createElement('option');o.value=o.textContent=s;$('state').append(o)}if([...$('state').options].some(o=>o.value===old))$('state').value=old;reset()}
+function show(){let dir=base+$('enemy').value;let s=$('state').value;$('sprite').src=dir+'/Frames/'+s+'/'+s+'_'+String(frame).padStart(2,'0')+'.png';$('info').textContent=$('enemy').selectedOptions[0].textContent+' · '+s+' · frame '+String(frame).padStart(2,'0')+' / 11';$('sheet').href=dir+'/Source/'+s+'.png'}
+function reset(){frame=0;last=performance.now();show()}
+$('enemy').onchange=states;$('state').onchange=reset;$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Tạm dừng':'Phát'};
+function step(d){playing=false;$('play').textContent='Phát';frame=(frame+d+12)%12;show()}
+$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);states();
+function tick(t){if(playing&&t-last>=1000/Math.max(1,Number($('fps').value)||8)){if(frame<11)frame++;else if($('loop').checked)frame=0;else playing=false;show();last=t}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+</script></html>

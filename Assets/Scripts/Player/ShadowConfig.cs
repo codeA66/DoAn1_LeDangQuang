@@ -27,6 +27,8 @@ namespace LuHanh.Player
         [Min(1f)] public float speedMultiplier = 1.4f;
         [Tooltip("Nhan kich thuoc vung chem va vet chem.")]
         [Min(1f)] public float attackRangeMultiplier = 1.5f;
+        [Tooltip("Nhan sat thuong moi nhat chem.")]
+        [Min(1)] public int damageMultiplier = 2;
         [Tooltip("Ban kinh tim quai de chem tu dinh vi (unit). 0 = tat.")]
         [Min(0f)] public float homingRadius = 6f;
         [Tooltip("Dung cach quai bao xa sau khi lao toi (unit).")]

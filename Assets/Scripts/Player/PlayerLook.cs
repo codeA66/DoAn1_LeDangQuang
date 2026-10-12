@@ -35,15 +35,6 @@ namespace LuHanh.Player
             float target = dir != 0 && holdTimer >= holdDelay ? dir * distance : 0f;
             offset = Mathf.SmoothDamp(offset, target, ref velocity, smoothTime, Mathf.Infinity, Time.unscaledDeltaTime);
             CameraLook.Offset = new Vector2(0f, offset);
-#if UNITY_EDITOR
-            // TAM - do loi W lia nguoc. Xoa sau khi kiem tra.
-            if (dir != 0 && Time.frameCount % 20 == 0)
-            {
-                var cam = Camera.main;
-                Debug.Log($"[LookDebug] moveY={move.y:F2} dir={dir} grounded={controller.IsGrounded} hold={holdTimer:F2} " +
-                          $"target={target:F2} offset={offset:F2} playerY={transform.position.y:F2} camY={(cam ? cam.transform.position.y : 0f):F2}");
-            }
-#endif
         }
 
         void OnDisable()

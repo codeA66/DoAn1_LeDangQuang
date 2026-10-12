@@ -44,6 +44,7 @@ namespace LuHanh.Player
         PlayerActionAnimation actionAnimation;
         PlayerShadow shadow;
         float rangeScale = 1f;      // chot luc bam chem: dang Shadow thi lon hon
+        int damageScale = 1;        // chot luc bam chem: dang Shadow thi nhan len
         readonly Collider2D[] homingHits = new Collider2D[16];
         readonly RaycastHit2D[] homingCast = new RaycastHit2D[8];
         int groundMask;
@@ -131,6 +132,7 @@ namespace LuHanh.Player
 
             homingTarget = null;
             rangeScale = shadow ? shadow.RangeMultiplier : 1f;
+            damageScale = shadow ? shadow.DamageMultiplier : 1;
             // Dang Shadow: lao toi quai gan nhat va chem theo huong cua no; khong co quai thi chem thuong.
             bool homed = shadow && shadow.HomingEnabled && TryHoming();
             // Danh thuong: ngam ho tro - chi quay mat + chon huong, khong lao toi.
@@ -299,7 +301,7 @@ namespace LuHanh.Player
             var direction = HitDirection();
             target.TakeHit(new HitInfo
             {
-                damage = config.damage,
+                damage = config.damage * damageScale,
                 direction = direction,
                 knockback = config.knockback,
                 source = gameObject

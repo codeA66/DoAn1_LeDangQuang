@@ -1,5 +1,6 @@
 using LuHanh.Core;
 using LuHanh.Player;
+using LuHanh.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -99,43 +100,27 @@ namespace LuHanh.Level
 
         void BuildPrompt()
         {
-            var canvasGo = new GameObject("ShadowTutorial", typeof(Canvas), typeof(CanvasScaler), typeof(CanvasGroup));
+            var canvasGo = new GameObject("ShadowTutorial", typeof(CanvasGroup));
             canvasGo.transform.SetParent(transform, false);
-            var canvas = canvasGo.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 50;
-            var scaler = canvasGo.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1920, 1080);
+            UIBuild.SetupOverlay(canvasGo, 50);
             prompt = canvasGo.GetComponent<CanvasGroup>();
             prompt.alpha = 0f;
             prompt.blocksRaycasts = false;
 
-            var f = font ? font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            MakeText(canvasGo.transform, title, f, 54, new Color(0.72f, 1f, 0.94f), -150f);
-            MakeText(canvasGo.transform, hint, f, 40, new Color(0.9f, 0.88f, 0.97f), -215f);
-            MakeText(canvasGo.transform, detail, f, 28, new Color(0.7f, 0.66f, 0.82f), -285f);
+            MakeLine(canvasGo.transform, title, 54, new Color(0.72f, 1f, 0.94f), -150f);
+            MakeLine(canvasGo.transform, hint, 40, new Color(0.9f, 0.88f, 0.97f), -215f);
+            MakeLine(canvasGo.transform, detail, 28, new Color(0.7f, 0.66f, 0.82f), -285f);
         }
 
-        static void MakeText(Transform parent, string value, Font font, int size, Color color, float y)
+        /// <summary>Mot dong chu neo mep tren man hinh, co vien toi.</summary>
+        void MakeLine(Transform parent, string value, int size, Color color, float y)
         {
-            var go = new GameObject("Text", typeof(RectTransform), typeof(Text), typeof(Outline));
-            go.transform.SetParent(parent, false);
-            var rt = (RectTransform)go.transform;
-            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 1f);
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = new Vector2(0f, y);
-            rt.sizeDelta = new Vector2(1600f, 120f);
-            var t = go.GetComponent<Text>();
-            t.font = font;
-            t.fontSize = size;
+            var t = UIBuild.MakeText("Text", parent, font, size, color);
             t.text = value;
-            t.color = color;
-            t.alignment = TextAnchor.MiddleCenter;
-            t.horizontalOverflow = HorizontalWrapMode.Overflow;
-            t.verticalOverflow = VerticalWrapMode.Overflow;
-            t.raycastTarget = false;
-            go.GetComponent<Outline>().effectColor = new Color(0.05f, 0.04f, 0.08f, 0.9f);
+            var rt = t.rectTransform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 1f);
+            rt.anchoredPosition = new Vector2(0f, y);
+            t.gameObject.AddComponent<Outline>().effectColor = new Color(0.05f, 0.04f, 0.08f, 0.9f);
         }
     }
 }
