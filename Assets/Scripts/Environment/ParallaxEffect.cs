@@ -27,6 +27,9 @@ namespace LuHanh.Environment
         [Tooltip("Cho tang troi theo ca chieu doc.")]
         public bool followVertical = false;
         [Range(0f, 1f)] public float verticalDamping = 0.3f;
+        [Tooltip("Tat: chieu doc chi nhan verticalDamping (bo qua he so parallax) - dung cho man co phong cao nhieu tang, " +
+                 "neu khong tang nen tut khoi khung hinh khi len cao.")]
+        public bool verticalUsesFactor = true;
 
         Vector3 startingPosition;
         Vector3 startingCamPosition;
@@ -104,7 +107,7 @@ namespace LuHanh.Environment
 
             float x = startingPosition.x + camDelta.x * factor;
             float y = followVertical
-                ? startingPosition.y + camDelta.y * factor * verticalDamping
+                ? startingPosition.y + camDelta.y * (verticalUsesFactor ? factor : 1f) * verticalDamping
                 : startingPosition.y;
 
             // Keo tang ve gan camera khi da troi qua tron mot tile -> cuon vo han.

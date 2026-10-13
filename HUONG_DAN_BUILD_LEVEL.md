@@ -331,7 +331,7 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 
 ## Quy tắc bắt buộc khi dựng màn
 
-- **Phòng khóa ≥ 30% tổng số phòng** (`số phòng khóa / tổng số phòng × 100 ≥ 30%`). Phòng khóa = có `RoomEncounter` hoặc phòng boss.
+- **Phòng khóa không bắt buộc** (bỏ quy tắc ≥ 30% từ 2026-10-13, dựng kiểu Hollow Knight). Chỉ dùng `RoomEncounter` / phòng boss khi chủ project yêu cầu.
 - **Platform ≠ tileset:** bệ lơ lửng dùng `Prefabs/Platform/` hoặc `Prefabs/Platform/OneWayPlatform`; tilemap chỉ cho nền/tường/trần.
 - **Không tự đoán:** thiếu thông tin thiết kế thì hỏi chủ project trước (xem `AGENTS.md`).
 
@@ -363,3 +363,62 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 - **Ghế checkpoint:** kéo `Assets/Prefabs/Level/Checkpoint_Bench.prefab`, chân ghế chạm mặt đất. Đặt ở đầu khu vực mới hoặc trước phòng khó / phòng boss; chừa khoảng trống ±1,6 ô hai bên để đứng bấm E. Ngồi ghế làm quái hồi sinh, nên không đặt ngay giữa phòng khóa.
 - **Vật phẩm kỹ năng:** `Assets/Prefabs/Level/SkillPickup_WallCling.prefab` (bám tường), `SkillPickup_OrbShot.prefab` (bắn cầu). Đặt trước đoạn đường cần kỹ năng đó (tường cao cần nhảy tường, quái ở xa / sau khe cần bắn).
 - Chi tiết thông số và cách hoạt động: TUTORIAL.md mục 9e.
+
+## Vùng đất màn 2 — `Scenes/Level/Level3.unity` (bản dựng thô 10 phòng)
+
+Dựng theo quy trình Team Cherry kể lại (sketch → dựng thô bằng tile → chơi thử đường đi → art → quái). Không có phòng khóa. Phòng 1 cho luôn bám tường + bắn cầu.
+
+| Phòng | Khung (x, y) | Loại | Nội dung |
+|---|---|---|---|
+| R1 | 0→40, −3→13 | Nghỉ | Điểm vào, 2 vật phẩm kỹ năng (x 14, 18), ghế (x 30) |
+| R2 | 40→88, −3→13 | Platform nhẹ | Hố 4 và 5 ô, bậc cao 2 ô, 1 Hushmole |
+| R3 | 88→120, −3→29 | Ngã tư | Hành lang thấp + giếng bám tường rộng 4 ô (x 103→107) đi lên; Lampsnuffer, Dripfang dưới bệ |
+| R4 | 120→176, −4→16 | Platform thử thách | Hố 4 ô, hố dài 26 ô với 3 bệ đá, 2 Dripfang dưới nhũ đá |
+| R5 | 176→216, −4→16 | Đánh quái | 3 Hushmole + Threadwitch, 2 bệ né |
+| R6 | 88→120, 29→61 | Platform | Giếng bám tường tiếp tục, gờ nghỉ ở y 39, buồng trên có Lampsnuffer |
+| R7 | 120→164, 46→66 | Đánh quái | Hushmole, Echoling, Threadwitch, Lampsnuffer |
+| R8 | 164→200, 46→66 | Nghỉ | Ghế (x 184). Giếng đường tắt xuống R4 đã đắp kín, để dành nối phòng mới |
+| R9 | 200→256, 46→66 | Đánh quái + platform | 2 hố, khối cao 3 ô, 2 Lampsnuffer + Echoling |
+| R10 | 256→296, 46→66 | Platform | 3 bệ; tường phải để đục tiếp khi mở rộng vùng |
+
+- Tile: `Tilemap_Ground` (RT_Earth, có collider) + `Tilemap_Backing` (cùng ô). `Tilemap_DarkFill` (Order −4) phủ tối lõi đất, chừa 1 ô viền quanh mọi mặt tiếp xúc khoảng trống (khối đất đen như Hollow Knight nhưng vẫn thấy mép sàn, tường, trần). Hố có gai `Spike_Ground` (order −3) + HazardZone cao 1,6 ô; đục/đắp lại địa hình thì phải tạo lại lớp này.
+- Collider tilemap tự tạo lại mỗi lần lưu scene (`TilemapColliderOnSave`). Thấy tường tàng hình / rơi xuyên đất: menu **LuHanh → Level → Tao lai collider tilemap** rồi lưu.
+- Nền parallax: map có phòng cao nhiều tầng nên các lớp `Background_LongDat` trong scene đặt `Vertical Uses Factor` = tắt, `Vertical Damping` 0,95 (nếu không, lớp nền tụt khỏi khung hình khi lên cao).
+
+**Mở rộng R11–R15** (cần gạt R8 mở sàn sập xuống R11):
+
+| Phòng | Khung (x, y) | Loại | Nội dung |
+|---|---|---|---|
+| R11 | 164→200, 24→46 | Platform | Rơi từ sàn sập R8 xuống; hố gai 5 ô + bệ đá, Dripfang dưới nhũ đá |
+| R12 | 200→244, 24→46 | Đánh quái | 2 Hushmole + Threadwitch, 2 bệ né |
+| R13 | 244→300, 24→46 | Platform | Hố gai 4 ô, hố gai 22 ô có 3 bệ đá; giếng cuối phòng (x 290→294) rơi xuống R14 |
+| R14 | 280→316, 4→24 | Nghỉ | Ghế (x 304); lối trái sang R15 |
+| R15 | 216→280, −4→16 | Đánh quái | Echoling + 2 Lampsnuffer; bệ đá bậc thang bên phải để leo ngược lên R14; tường trái thông vào R5 |
+
+## Tự dựng thêm phòng cho Level3 (vùng đất màn 2)
+
+**Thước đo** (theo `PlayerMovementConfig`, 1 ô = 1 unit):
+
+| Động tác | Tới được | Dùng khi thiết kế |
+|---|---|---|
+| Nhảy | ≈ 3,5 ô cao | Bậc thường ≤ 3 ô |
+| Nhảy + **W + dash** (lướt lên, cơ chế chính) | ≈ 8 ô cao (3,5 + lướt 4,5) | Bậc khó / thử thách 6–8 ô |
+| Chạy nhảy xa | ≈ 7 ô | Hố an toàn 4–5 ô |
+| Nhảy + dash ngang | ≈ 9 ô | Hố thử thách 7–9 ô |
+| Nhân vật cao | ≈ 2 ô | Trần / hành lang ≥ 3 ô |
+| Bám tường, nhảy tường | — | Giếng rộng ~4 ô để nhảy qua lại hai vách |
+
+**Các bước**
+
+1. **Mở `Scenes/Level/Level3`.** Không dựng khi đang Play.
+2. **Đục / đắp đất:** Window → 2D → Tile Palette, chọn palette **EarthPalette** (ô dropdown đầu khung palette), bấm ô `RT_Earth`, Active Tilemap = `Tilemap_Ground`. Phím: **B** cọ, **U** tô khối, **Shift + kéo** (hoặc **D**) xoá = đục khoảng trống. Map là một khối đất liền, phòng là chỗ đục rỗng. Sàn đứng được = mép trên ô − 0,31.
+3. **Bấm menu LuHanh → Level → Lam lai nen + phu toi dat** sau mỗi lần sửa đất (làm lại `Tilemap_Backing` + `Tilemap_DarkFill`).
+4. **Tạo phòng:** chọn `Rooms`, nhân bản một `Room_XX` (Ctrl+D), đổi tên, kéo cạnh xanh trong Scene view cho ôm hết chỗ đục. Phòng ≥ 29 × 16 ô, các phòng sát nhau không hở, ranh giới đặt trên đất phẳng.
+5. **Bệ lơ lửng:** kéo `Prefabs/Platform/Platform_Stone_Roots | Pipe | Beams` (rộng ≈ 4,6 ô) vào nhóm `Platforms`. Không vẽ bệ bằng tile.
+6. **Hố gai:** nhân bản một cặp `HazardZone` + `Spikes_<x>` trong nhóm `Hazards`, đặt ở đáy hố; `HazardZone` Scale X = bề rộng hố, Scale Y = 1,6, đáy collider chạm đáy hố.
+7. **Quái:** kéo prefab `Prefabs/Enemies/Man2/*` vào nhóm `Enemies`, ngay dưới object rỗng `RoomXX` của phòng đó. Quái đi bộ đặt Y = mặt sàn (−0,31 so với mép ô); Dripfang đặt ngay dưới trần thấp hoặc dưới bệ đá (≤ 8 ô trên sàn); quái bay đặt lơ lửng.
+8. **Ghế / cửa / cần gạt:** `Prefabs/Level/Checkpoint_Bench` (chân chạm sàn), `Gate` (sàn sập: Rotation Z 90, Height = bề rộng lỗ, Start Closed) + `ShortcutLever` (kéo Gate vào ô `Gates`). Đặt trong `Checkpoints_KyNang`.
+9. **Ánh sáng:** nhân bản cặp `CotSang_KheTran` + `DenKheTran` trong `AnhSang_LongDat`, đặt sát trần phòng mới.
+10. **Ctrl + S.** Collider tilemap tự tạo lại khi lưu. Bấm Play thử; nếu xuất hiện ở ghế cũ thì xoá file lưu (LuHanh → Save → Xoa file luu).
+
+**Lỗi hay gặp:** tường tàng hình / rơi xuyên đất → LuHanh → Level → Tao lai collider tilemap rồi lưu. Đất sáng loá, không có lớp đen → quên bước 3. Camera lộ phòng bên → khung Room nhỏ hơn 29 × 16 hoặc hai phòng hở nhau.
