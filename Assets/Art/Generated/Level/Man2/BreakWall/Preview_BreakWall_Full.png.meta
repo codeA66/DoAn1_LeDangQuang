@@ -1,0 +1,4615 @@
+fileFormatVersion: 2
+guid: d103272b4a7a15c448efd311b1e9d00f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1690283228171125527
+    second: Preview_BreakWall_Full_0
+  - first:
+      213: -1847273107955476327
+    second: Preview_BreakWall_Full_1
+  - first:
+      213: 5054381476247381848
+    second: Preview_BreakWall_Full_2
+  - first:
+      213: -7231579714921421564
+    second: Preview_BreakWall_Full_3
+  - first:
+      213: -6269357392285558543
+    second: Preview_BreakWall_Full_4
+  - first:
+      213: 6966196755388037067
+    second: Preview_BreakWall_Full_5
+  - first:
+      213: -6127862594187657731
+    second: Preview_BreakWall_Full_6
+  - first:
+      213: -7631240084469774016
+    second: Preview_BreakWall_Full_7
+  - first:
+      213: -2610163823416456937
+    second: Preview_BreakWall_Full_8
+  - first:
+      213: -2443305585198747220
+    second: Preview_BreakWall_Full_9
+  - first:
+      213: 2136675655193816504
+    second: Preview_BreakWall_Full_10
+  - first:
+      213: -7114838295806377462
+    second: Preview_BreakWall_Full_11
+  - first:
+      213: -1545405213968166205
+    second: Preview_BreakWall_Full_12
+  - first:
+      213: -8428831886777752061
+    second: Preview_BreakWall_Full_13
+  - first:
+      213: 6132608466215103375
+    second: Preview_BreakWall_Full_14
+  - first:
+      213: 889853925965364815
+    second: Preview_BreakWall_Full_15
+  - first:
+      213: 1319583933989903092
+    second: Preview_BreakWall_Full_16
+  - first:
+      213: -5534454692762276490
+    second: Preview_BreakWall_Full_17
+  - first:
+      213: -6609919130910585347
+    second: Preview_BreakWall_Full_18
+  - first:
+      213: -1208185734223501959
+    second: Preview_BreakWall_Full_19
+  - first:
+      213: 4686754225052000191
+    second: Preview_BreakWall_Full_20
+  - first:
+      213: -6922013718120119073
+    second: Preview_BreakWall_Full_21
+  - first:
+      213: -3552475990109456541
+    second: Preview_BreakWall_Full_22
+  - first:
+      213: 368502342491789382
+    second: Preview_BreakWall_Full_23
+  - first:
+      213: 3109489209205509817
+    second: Preview_BreakWall_Full_24
+  - first:
+      213: -8763282740815105747
+    second: Preview_BreakWall_Full_25
+  - first:
+      213: 3708682043836359548
+    second: Preview_BreakWall_Full_26
+  - first:
+      213: -8885222085832372174
+    second: Preview_BreakWall_Full_27
+  - first:
+      213: -6644495488466674914
+    second: Preview_BreakWall_Full_28
+  - first:
+      213: 1995258611664323532
+    second: Preview_BreakWall_Full_29
+  - first:
+      213: 3197330083136601951
+    second: Preview_BreakWall_Full_30
+  - first:
+      213: -1627679967639128891
+    second: Preview_BreakWall_Full_31
+  - first:
+      213: -6482903622410105296
+    second: Preview_BreakWall_Full_32
+  - first:
+      213: 973381425370479286
+    second: Preview_BreakWall_Full_33
+  - first:
+      213: -4649963317123385358
+    second: Preview_BreakWall_Full_34
+  - first:
+      213: 4822912986835636859
+    second: Preview_BreakWall_Full_35
+  - first:
+      213: -3575474893149390279
+    second: Preview_BreakWall_Full_36
+  - first:
+      213: -8185127081130895436
+    second: Preview_BreakWall_Full_37
+  - first:
+      213: 170879726328051787
+    second: Preview_BreakWall_Full_38
+  - first:
+      213: 250362055992905153
+    second: Preview_BreakWall_Full_39
+  - first:
+      213: -8282317799855313710
+    second: Preview_BreakWall_Full_40
+  - first:
+      213: 590417721277883048
+    second: Preview_BreakWall_Full_41
+  - first:
+      213: -7329232314079844119
+    second: Preview_BreakWall_Full_42
+  - first:
+      213: -1081291378336529157
+    second: Preview_BreakWall_Full_43
+  - first:
+      213: 2827920054741205876
+    second: Preview_BreakWall_Full_44
+  - first:
+      213: -6331586658211590900
+    second: Preview_BreakWall_Full_45
+  - first:
+      213: 1572207503952637047
+    second: Preview_BreakWall_Full_46
+  - first:
+      213: 2813058510612796338
+    second: Preview_BreakWall_Full_47
+  - first:
+      213: 2962317028101151254
+    second: Preview_BreakWall_Full_48
+  - first:
+      213: -5218910651763308860
+    second: Preview_BreakWall_Full_49
+  - first:
+      213: 7732378804497411631
+    second: Preview_BreakWall_Full_50
+  - first:
+      213: -7440993216407713726
+    second: Preview_BreakWall_Full_51
+  - first:
+      213: -8630656986141724565
+    second: Preview_BreakWall_Full_52
+  - first:
+      213: 3599981105181430557
+    second: Preview_BreakWall_Full_53
+  - first:
+      213: -137829323829979112
+    second: Preview_BreakWall_Full_54
+  - first:
+      213: -7023478629048383306
+    second: Preview_BreakWall_Full_55
+  - first:
+      213: 4392890219629061391
+    second: Preview_BreakWall_Full_56
+  - first:
+      213: -6287119899794798164
+    second: Preview_BreakWall_Full_57
+  - first:
+      213: 7786312330502427893
+    second: Preview_BreakWall_Full_58
+  - first:
+      213: 8930624283037931764
+    second: Preview_BreakWall_Full_59
+  - first:
+      213: -5922421167718292988
+    second: Preview_BreakWall_Full_60
+  - first:
+      213: -2786747096825764070
+    second: Preview_BreakWall_Full_61
+  - first:
+      213: -6859260743604033856
+    second: Preview_BreakWall_Full_62
+  - first:
+      213: 6101377190873954046
+    second: Preview_BreakWall_Full_63
+  - first:
+      213: 8961392165369903398
+    second: Preview_BreakWall_Full_64
+  - first:
+      213: 9037348432625716445
+    second: Preview_BreakWall_Full_65
+  - first:
+      213: 6167702733720337139
+    second: Preview_BreakWall_Full_66
+  - first:
+      213: -6667683273586470483
+    second: Preview_BreakWall_Full_67
+  - first:
+      213: 8458180047612328708
+    second: Preview_BreakWall_Full_68
+  - first:
+      213: -4815242028223109244
+    second: Preview_BreakWall_Full_69
+  - first:
+      213: 7746892100986254616
+    second: Preview_BreakWall_Full_70
+  - first:
+      213: 6213466783018884938
+    second: Preview_BreakWall_Full_71
+  - first:
+      213: -7506671312800186747
+    second: Preview_BreakWall_Full_72
+  - first:
+      213: 5610202663382092774
+    second: Preview_BreakWall_Full_73
+  - first:
+      213: -2186393747688467500
+    second: Preview_BreakWall_Full_74
+  - first:
+      213: -6326882568716819292
+    second: Preview_BreakWall_Full_75
+  - first:
+      213: 8210031397759801795
+    second: Preview_BreakWall_Full_76
+  - first:
+      213: -7583636901805039767
+    second: Preview_BreakWall_Full_77
+  - first:
+      213: 6026053690848382396
+    second: Preview_BreakWall_Full_78
+  - first:
+      213: 2482307264727715937
+    second: Preview_BreakWall_Full_79
+  - first:
+      213: 8906535848649568913
+    second: Preview_BreakWall_Full_80
+  - first:
+      213: 4003592481724154765
+    second: Preview_BreakWall_Full_81
+  - first:
+      213: 30565980958363426
+    second: Preview_BreakWall_Full_82
+  - first:
+      213: 5338322616788127740
+    second: Preview_BreakWall_Full_83
+  - first:
+      213: 5118666287717893528
+    second: Preview_BreakWall_Full_84
+  - first:
+      213: 4517851716208732228
+    second: Preview_BreakWall_Full_85
+  - first:
+      213: -6527500038048640690
+    second: Preview_BreakWall_Full_86
+  - first:
+      213: 8603009296137210384
+    second: Preview_BreakWall_Full_87
+  - first:
+      213: 3078039392988265933
+    second: Preview_BreakWall_Full_88
+  - first:
+      213: -6182037593431335253
+    second: Preview_BreakWall_Full_89
+  - first:
+      213: 7363130138504089883
+    second: Preview_BreakWall_Full_90
+  - first:
+      213: -1966092436635583048
+    second: Preview_BreakWall_Full_91
+  - first:
+      213: 2635295309737821684
+    second: Preview_BreakWall_Full_92
+  - first:
+      213: 5256026304444304707
+    second: Preview_BreakWall_Full_93
+  - first:
+      213: 980958350479181994
+    second: Preview_BreakWall_Full_94
+  - first:
+      213: 9022851803754817193
+    second: Preview_BreakWall_Full_95
+  - first:
+      213: 2977962484325600817
+    second: Preview_BreakWall_Full_96
+  - first:
+      213: -1869638250939322997
+    second: Preview_BreakWall_Full_97
+  - first:
+      213: 7922416985260004482
+    second: Preview_BreakWall_Full_98
+  - first:
+      213: 6980550774135513492
+    second: Preview_BreakWall_Full_99
+  - first:
+      213: -9110963300792196201
+    second: Preview_BreakWall_Full_100
+  - first:
+      213: 1059124165013746379
+    second: Preview_BreakWall_Full_101
+  - first:
+      213: -614537631906436888
+    second: Preview_BreakWall_Full_102
+  - first:
+      213: -8234997494829373344
+    second: Preview_BreakWall_Full_103
+  - first:
+      213: -1390269943691173239
+    second: Preview_BreakWall_Full_104
+  - first:
+      213: 4484011481320658360
+    second: Preview_BreakWall_Full_105
+  - first:
+      213: -7636725363695188787
+    second: Preview_BreakWall_Full_106
+  - first:
+      213: 7348956708052929525
+    second: Preview_BreakWall_Full_107
+  - first:
+      213: 1292093976766249004
+    second: Preview_BreakWall_Full_108
+  - first:
+      213: 4004427023795974112
+    second: Preview_BreakWall_Full_109
+  - first:
+      213: 7065411026343149396
+    second: Preview_BreakWall_Full_110
+  - first:
+      213: -869578902970150746
+    second: Preview_BreakWall_Full_111
+  - first:
+      213: 4638565358253348494
+    second: Preview_BreakWall_Full_112
+  - first:
+      213: 7364678563807665076
+    second: Preview_BreakWall_Full_113
+  - first:
+      213: -5152131090151776350
+    second: Preview_BreakWall_Full_114
+  - first:
+      213: 1572369633951741063
+    second: Preview_BreakWall_Full_115
+  - first:
+      213: 564964033562161196
+    second: Preview_BreakWall_Full_116
+  - first:
+      213: 7280298487741719960
+    second: Preview_BreakWall_Full_117
+  - first:
+      213: 1558845471893417816
+    second: Preview_BreakWall_Full_118
+  - first:
+      213: 49770774275592580
+    second: Preview_BreakWall_Full_119
+  - first:
+      213: -7544414975794629251
+    second: Preview_BreakWall_Full_120
+  - first:
+      213: -8110928362132070586
+    second: Preview_BreakWall_Full_121
+  - first:
+      213: 3422489873989028957
+    second: Preview_BreakWall_Full_122
+  - first:
+      213: 9181159952315633217
+    second: Preview_BreakWall_Full_123
+  - first:
+      213: 7925041943245499494
+    second: Preview_BreakWall_Full_124
+  - first:
+      213: 7716182273115359766
+    second: Preview_BreakWall_Full_125
+  - first:
+      213: -1614314477258652268
+    second: Preview_BreakWall_Full_126
+  - first:
+      213: 3424673828338946675
+    second: Preview_BreakWall_Full_127
+  - first:
+      213: 7383868915177335812
+    second: Preview_BreakWall_Full_128
+  - first:
+      213: -3637358779180302878
+    second: Preview_BreakWall_Full_129
+  - first:
+      213: 4679677524860040992
+    second: Preview_BreakWall_Full_130
+  - first:
+      213: -8925145736266816345
+    second: Preview_BreakWall_Full_131
+  - first:
+      213: 6193983231792509413
+    second: Preview_BreakWall_Full_132
+  - first:
+      213: -7578481299933668853
+    second: Preview_BreakWall_Full_133
+  - first:
+      213: 7378727442998245546
+    second: Preview_BreakWall_Full_134
+  - first:
+      213: -5906325492491763862
+    second: Preview_BreakWall_Full_135
+  - first:
+      213: 8396259211068463659
+    second: Preview_BreakWall_Full_136
+  - first:
+      213: -9165732439616377441
+    second: Preview_BreakWall_Full_137
+  - first:
+      213: -1753168385693701177
+    second: Preview_BreakWall_Full_138
+  - first:
+      213: 1362661782151687333
+    second: Preview_BreakWall_Full_139
+  - first:
+      213: 5470660567197484770
+    second: Preview_BreakWall_Full_140
+  - first:
+      213: 1448074348157366249
+    second: Preview_BreakWall_Full_141
+  - first:
+      213: -4795433925511425852
+    second: Preview_BreakWall_Full_142
+  - first:
+      213: -176639745759254177
+    second: Preview_BreakWall_Full_143
+  - first:
+      213: -264931443163705685
+    second: Preview_BreakWall_Full_144
+  - first:
+      213: -3075102975515234672
+    second: Preview_BreakWall_Full_145
+  - first:
+      213: -1916305438044381286
+    second: Preview_BreakWall_Full_146
+  - first:
+      213: -349338966453676709
+    second: Preview_BreakWall_Full_147
+  - first:
+      213: -4635188877797674977
+    second: Preview_BreakWall_Full_148
+  - first:
+      213: 2235150247600129796
+    second: Preview_BreakWall_Full_149
+  - first:
+      213: 977625570421925316
+    second: Preview_BreakWall_Full_150
+  - first:
+      213: 2092657918877750483
+    second: Preview_BreakWall_Full_151
+  - first:
+      213: 6048387308902565310
+    second: Preview_BreakWall_Full_152
+  - first:
+      213: -1526350946508161346
+    second: Preview_BreakWall_Full_153
+  - first:
+      213: 4676765893138886987
+    second: Preview_BreakWall_Full_154
+  - first:
+      213: -1483725607720582481
+    second: Preview_BreakWall_Full_155
+  - first:
+      213: -3599994441127705751
+    second: Preview_BreakWall_Full_156
+  - first:
+      213: 7383893755471682641
+    second: Preview_BreakWall_Full_157
+  - first:
+      213: 7753983838274877215
+    second: Preview_BreakWall_Full_158
+  - first:
+      213: 8551348569473334886
+    second: Preview_BreakWall_Full_159
+  - first:
+      213: -5159119090006928658
+    second: Preview_BreakWall_Full_160
+  - first:
+      213: -3070605799265560925
+    second: Preview_BreakWall_Full_161
+  - first:
+      213: -5712622948624037364
+    second: Preview_BreakWall_Full_162
+  - first:
+      213: 2996642585533919422
+    second: Preview_BreakWall_Full_163
+  - first:
+      213: -7717596537777172197
+    second: Preview_BreakWall_Full_164
+  - first:
+      213: 9076925568369431639
+    second: Preview_BreakWall_Full_165
+  - first:
+      213: 140751046871064594
+    second: Preview_BreakWall_Full_166
+  - first:
+      213: -9010697941003460440
+    second: Preview_BreakWall_Full_167
+  - first:
+      213: 7185323006366698441
+    second: Preview_BreakWall_Full_168
+  - first:
+      213: 2595449980474977620
+    second: Preview_BreakWall_Full_169
+  - first:
+      213: 6006495493901024106
+    second: Preview_BreakWall_Full_170
+  - first:
+      213: -2483171076472116439
+    second: Preview_BreakWall_Full_171
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2426
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 713c0f8f3a7157710800000000000000
+      internalID: 1690283228171125527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 2425
+        width: 59
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9989e2545ea2d56e0800000000000000
+      internalID: -1847273107955476327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 2425
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8572a036c25c42640800000000000000
+      internalID: 5054381476247381848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2426
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4052037509444ab90800000000000000
+      internalID: -7231579714921421564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_4
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 2426
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f899de0ba4cef8a0800000000000000
+      internalID: -6269357392285558543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_5
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 2425
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7f1606a07eca060800000000000000
+      internalID: 6966196755388037067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_6
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 2425
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd7a09ff6575faa0800000000000000
+      internalID: -6127862594187657731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_7
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 2426
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04905714393681690800000000000000
+      internalID: -7631240084469774016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2426
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 719cfa3f4d5d6cbd0800000000000000
+      internalID: -2610163823416456937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_9
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 2425
+        width: 30
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca13084f382a71ed0800000000000000
+      internalID: -2443305585198747220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_10
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 2426
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd6d04103ff6ad10800000000000000
+      internalID: 2136675655193816504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_11
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 2426
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a028d181444034d90800000000000000
+      internalID: -7114838295806377462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_12
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 2426
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c21463552e9d8ae0800000000000000
+      internalID: -1545405213968166205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2426
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 306602d8e06c60b80800000000000000
+      internalID: -8428831886777752061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_14
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 2425
+        width: 30
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8bed4778e66b1550800000000000000
+      internalID: 6132608466215103375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_15
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 2422
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ef6275e65695c00800000000000000
+      internalID: 889853925965364815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_16
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 2426
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fad7c4b89a105210800000000000000
+      internalID: 1319583933989903092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_17
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 2426
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d296c97caa133b0800000000000000
+      internalID: -5534454692762276490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2393
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd04004299d444a0800000000000000
+      internalID: -6609919130910585347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_19
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 2393
+        width: 29
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975e9e8d979ab3fe0800000000000000
+      internalID: -1208185734223501959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_20
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2394
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbf19cdd222ba0140800000000000000
+      internalID: 4686754225052000191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_21
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 2393
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4c111a23110ff90800000000000000
+      internalID: -6922013718120119073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_22
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 2394
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 367fb68a8e113bec0800000000000000
+      internalID: -3552475990109456541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_23
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 2394
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6485f179dee2d1500800000000000000
+      internalID: 368502342491789382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_24
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 2394
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9beca9306ff172b20800000000000000
+      internalID: 3109489209205509817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_25
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 2393
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21776fe6c0926680800000000000000
+      internalID: -8763282740815105747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_26
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 2394
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c736cbf5ba2e77330800000000000000
+      internalID: 3708682043836359548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_27
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 2393
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230918fb69951b480800000000000000
+      internalID: -8885222085832372174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_28
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 2394
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b124aae820ac3a0800000000000000
+      internalID: -6644495488466674914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_29
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 2394
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc38a4fc22590bb10800000000000000
+      internalID: 1995258611664323532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_30
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 2394
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ff60b35c23f5c20800000000000000
+      internalID: 3197330083136601951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_31
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 2393
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4b9d871b15969e0800000000000000
+      internalID: -1627679967639128891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_32
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 2394
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e0729d0891806a0800000000000000
+      internalID: -6482903622410105296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_33
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 2393
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6babb2acf35228d00800000000000000
+      internalID: 973381425370479286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_34
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 2394
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f77348eff2087fb0800000000000000
+      internalID: -4649963317123385358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_35
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 2394
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b72d4f20fcd6ee240800000000000000
+      internalID: 4822912986835636859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_36
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 2394
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ab082478c516ec0800000000000000
+      internalID: -3575474893149390279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_37
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 2393
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b753cf4946986e80800000000000000
+      internalID: -8185127081130895436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_38
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 2394
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b48791ba4361f5200800000000000000
+      internalID: 170879726328051787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_39
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 2394
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd81b4a6f6797300800000000000000
+      internalID: 250362055992905153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_40
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 2394
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dcaab6b7db4f0d80800000000000000
+      internalID: -8282317799855313710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_41
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 2394
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a22dd11ac5913800800000000000000
+      internalID: 590417721277883048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_42
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 2394
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8e4f2da06594a90800000000000000
+      internalID: -7329232314079844119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_43
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 2394
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf40f87683b7ef0f0800000000000000
+      internalID: -1081291378336529157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_44
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 2394
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4738d0c8e4ace3720800000000000000
+      internalID: 2827920054741205876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_45
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 2394
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d02b40b7fa128a0800000000000000
+      internalID: -6331586658211590900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_46
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 2391
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77cec4a156a91d510800000000000000
+      internalID: 1572207503952637047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_47
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 2393
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b31779afcdf90720800000000000000
+      internalID: 2813058510612796338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_48
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 2394
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a5f0c54a34c1920800000000000000
+      internalID: 2962317028101151254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_49
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 2394
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c64527c964b297b0800000000000000
+      internalID: -5218910651763308860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_50
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 2394
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ee3d60e8dee4b60800000000000000
+      internalID: 7732378804497411631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_51
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 2394
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2484deff7184cb890800000000000000
+      internalID: -7440993216407713726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_52
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 2393
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6077c2c23fb93880800000000000000
+      internalID: -8630656986141724565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_53
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 2391
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13157cddb3b5f130800000000000000
+      internalID: 3599981105181430557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_54
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1033
+        width: 258
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8185b71d5f4561ef0800000000000000
+      internalID: -137829323829979112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_55
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1033
+        width: 258
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b8060c1667978e90800000000000000
+      internalID: -7023478629048383306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_56
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1033
+        width: 258
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f052746516ea6fc30800000000000000
+      internalID: 4392890219629061391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_57
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1033
+        width: 258
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9017003c9afb8a0800000000000000
+      internalID: -6287119899794798164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_58
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 2157
+        width: 162
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f457d99fc98e0c60800000000000000
+      internalID: 7786312330502427893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_59
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 2149
+        width: 194
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f814fc0873ffeb70800000000000000
+      internalID: 8930624283037931764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_60
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 2137
+        width: 94
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402a5e783555fcda0800000000000000
+      internalID: -5922421167718292988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_61
+      rect:
+        serializedVersion: 2
+        x: 2045
+        y: 2145
+        width: 154
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1769deb74c7359d0800000000000000
+      internalID: -2786747096825764070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_62
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c623b312b20fc0a0800000000000000
+      internalID: -6859260743604033856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_63
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef676b68a327ca450800000000000000
+      internalID: 6101377190873954046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_64
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62977d5e1b24d5c70800000000000000
+      internalID: 8961392165369903398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_65
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddcc61e748c1b6d70800000000000000
+      internalID: 9037348432625716445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_66
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa3b9b55f4189550800000000000000
+      internalID: 6167702733720337139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_67
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1901bb361a773a0800000000000000
+      internalID: -6667683273586470483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_68
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 983
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40bba30a0fd716570800000000000000
+      internalID: 8458180047612328708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_69
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487ea3833e2dc2db0800000000000000
+      internalID: -4815242028223109244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_70
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 815b090325d728b60800000000000000
+      internalID: 7746892100986254616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_71
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f97896e1baa3650800000000000000
+      internalID: 6213466783018884938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_72
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58efdea8632f2d790800000000000000
+      internalID: -7506671312800186747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_73
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb07d429917bdd40800000000000000
+      internalID: 5610202663382092774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_74
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d3d4e1787e58a1e0800000000000000
+      internalID: -2186393747688467500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_75
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 983
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4e50433d56238a0800000000000000
+      internalID: -6326882568716819292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_76
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9d642ce04efe170800000000000000
+      internalID: 8210031397759801795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_77
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96fdd5aea6281c690800000000000000
+      internalID: -7583636901805039767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_78
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd037887e7d0a350800000000000000
+      internalID: 6026053690848382396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_79
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16097713e4de27220800000000000000
+      internalID: 2482307264727715937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_80
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1923a0e5a2f5a9b70800000000000000
+      internalID: 8906535848649568913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_81
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d83c792762e9f8730800000000000000
+      internalID: 4003592481724154765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_82
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 983
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22f0c3509979c6000800000000000000
+      internalID: 30565980958363426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_83
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 984
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff0716e228851a40800000000000000
+      internalID: 5338322616788127740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_84
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895413b6ed7290740800000000000000
+      internalID: 5118666287717893528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_85
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 448a2840332a2be30800000000000000
+      internalID: 4517851716208732228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_86
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4113c0bc49a965a0800000000000000
+      internalID: -6527500038048640690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_87
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01a44a7cf57046770800000000000000
+      internalID: 8603009296137210384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_88
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd79bf058467ba20800000000000000
+      internalID: 3078039392988265933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_89
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bae1a67009df43aa0800000000000000
+      internalID: -6182037593431335253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_90
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 983
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11528479d71f2660800000000000000
+      internalID: 7363130138504089883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_91
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdf0ce785907b4e0800000000000000
+      internalID: -1966092436635583048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_92
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f50d2f2f13729420800000000000000
+      internalID: 2635295309737821684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_93
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d0386831821f840800000000000000
+      internalID: 5256026304444304707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_94
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa8c3c32c601d9d00800000000000000
+      internalID: 980958350479181994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_95
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a66ccf09eb973d70800000000000000
+      internalID: 9022851803754817193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_96
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ecaa00a19d35920800000000000000
+      internalID: 2977962484325600817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_97
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 983
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8d6742aae5bd06e0800000000000000
+      internalID: -1869638250939322997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_98
+      rect:
+        serializedVersion: 2
+        x: 1991
+        y: 984
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28491f8f54412fd60800000000000000
+      internalID: 7922416985260004482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_99
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491ececc1f5efd060800000000000000
+      internalID: 6980550774135513492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_100
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 984
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79329ae562b5f8180800000000000000
+      internalID: -9110963300792196201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_101
+      rect:
+        serializedVersion: 2
+        x: 2024
+        y: 984
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc23dac01d3c2be00800000000000000
+      internalID: 1059124165013746379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_102
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 984
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e86b1d9749b877f0800000000000000
+      internalID: -614537631906436888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_103
+      rect:
+        serializedVersion: 2
+        x: 2058
+        y: 984
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068a67ac86967bd80800000000000000
+      internalID: -8234997494829373344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_104
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 983
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 982a2682ad4c4bce0800000000000000
+      internalID: -1390269943691173239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_105
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b514e85fa86a3e30800000000000000
+      internalID: 4484011481320658360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_106
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc48bb92eb6e40690800000000000000
+      internalID: -7636725363695188787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_107
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb0835803dbcf560800000000000000
+      internalID: 7348956708052929525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_108
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28f29540a07ee110800000000000000
+      internalID: 1292093976766249004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_109
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef655a6925929730800000000000000
+      internalID: 4004427023795974112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_110
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 519
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45fbf41f4e16d0260800000000000000
+      internalID: 7065411026343149396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_111
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a05a405892aee3f0800000000000000
+      internalID: -869578902970150746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_112
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e869f1efd9e7f5040800000000000000
+      internalID: 4638565358253348494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_113
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb90b05228943660800000000000000
+      internalID: 7364678563807665076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_114
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2afd1471214ff78b0800000000000000
+      internalID: -5152131090151776350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_115
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784fd4fe9dd22d510800000000000000
+      internalID: 1572369633951741063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_116
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2038539bc727d700800000000000000
+      internalID: 564964033562161196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_117
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 895a8a4e6e0d80560800000000000000
+      internalID: 7280298487741719960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_118
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85feee392b122a510800000000000000
+      internalID: 1558845471893417816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_119
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 474
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48194e86142d0b000800000000000000
+      internalID: 49770774275592580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_120
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75bf913d8adc4790800000000000000
+      internalID: -7544414975794629251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_121
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f1a70d0a1307f80800000000000000
+      internalID: -8110928362132070586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_122
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ccc7248602f7f20800000000000000
+      internalID: 3422489873989028957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_123
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ec0df25580a6f70800000000000000
+      internalID: 9181159952315633217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_124
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66c2831a8a76bfd60800000000000000
+      internalID: 7925041943245499494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_125
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a053335e2651b60800000000000000
+      internalID: 7716182273115359766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_126
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4954a33398dc899e0800000000000000
+      internalID: -1614314477258652268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_127
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37258b1c3b2e68f20800000000000000
+      internalID: 3424673828338946675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_128
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 474
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40ca13d28a5c87660800000000000000
+      internalID: 7383868915177335812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_129
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed3f4e3671858dc0800000000000000
+      internalID: -3637358779180302878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_130
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02779a43aed81f040800000000000000
+      internalID: 4679677524860040992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_131
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a469358d33832480800000000000000
+      internalID: -8925145736266816345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_132
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e1f7b3aee275f550800000000000000
+      internalID: 6193983231792509413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_133
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a53840963d3d690800000000000000
+      internalID: -7578481299933668853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_134
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa83656e381866660800000000000000
+      internalID: 7378727442998245546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_135
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6fb134f144880ea0800000000000000
+      internalID: -5906325492491763862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_136
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2a56d56441858470800000000000000
+      internalID: 8396259211068463659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_137
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9d246688e6ccc080800000000000000
+      internalID: -9165732439616377441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_138
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 474
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb284354ae7ba7e0800000000000000
+      internalID: -1753168385693701177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_139
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ace622dba529e210800000000000000
+      internalID: 1362661782151687333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_140
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e60b821dc0bbeb40800000000000000
+      internalID: 5470660567197484770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_141
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef664a82f7981410800000000000000
+      internalID: 1448074348157366249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_142
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c0d8068042337db0800000000000000
+      internalID: -4795433925511425852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_143
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f59edcc46137c8df0800000000000000
+      internalID: -176639745759254177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_144
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bae45609146c25cf0800000000000000
+      internalID: -264931443163705685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_145
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09eeaa8e22a0355d0800000000000000
+      internalID: -3075102975515234672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_146
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f173c6b5ae765e0800000000000000
+      internalID: -1916305438044381286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_147
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 474
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5593569f06e62bf0800000000000000
+      internalID: -349338966453676709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_148
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10370026408cafb0800000000000000
+      internalID: -4635188877797674977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_149
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40705dfce49d40f10800000000000000
+      internalID: 2235150247600129796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_150
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c56650d649319d00800000000000000
+      internalID: 977625570421925316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_151
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d4dd133a4d9a0d10800000000000000
+      internalID: 2092657918877750483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_152
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb54e13363030f350800000000000000
+      internalID: 6048387308902565310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_153
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebebccea6ef41dae0800000000000000
+      internalID: -1526350946508161346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_154
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b41b43e1dc537e040800000000000000
+      internalID: 4676765893138886987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_155
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa20aafbb6fb86be0800000000000000
+      internalID: -1483725607720582481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_156
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 473
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963c33f11204a0ec0800000000000000
+      internalID: -3599994441127705751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_157
+      rect:
+        serializedVersion: 2
+        x: 1991
+        y: 474
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c5d12cf3cd87660800000000000000
+      internalID: 7383893755471682641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_158
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f177e72f73fab9b60800000000000000
+      internalID: 7753983838274877215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_159
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 474
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66eb00a873e7ca670800000000000000
+      internalID: 8551348569473334886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_160
+      rect:
+        serializedVersion: 2
+        x: 2024
+        y: 474
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee2533695802768b0800000000000000
+      internalID: -5159119090006928658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_161
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 474
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a695895b440365d0800000000000000
+      internalID: -3070605799265560925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_162
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 474
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0a058be1bfa8b0b0800000000000000
+      internalID: -5712622948624037364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_163
+      rect:
+        serializedVersion: 2
+        x: 2056
+        y: 474
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb0be8dfd86369920800000000000000
+      internalID: 2996642585533919422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_164
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 473
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11d106a6d695e490800000000000000
+      internalID: -7717596537777172197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_165
+      rect:
+        serializedVersion: 2
+        x: 2089
+        y: 474
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754125b76b7b7fd70800000000000000
+      internalID: 9076925568369431639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_166
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 9
+        width: 338
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210a386d45c04f100800000000000000
+      internalID: 140751046871064594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_167
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 9
+        width: 337
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a02520a6f193f280800000000000000
+      internalID: -9010697941003460440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_168
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 9
+        width: 336
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cbcdee643567b360800000000000000
+      internalID: 7185323006366698441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_169
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 9
+        width: 336
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d61868104e40420800000000000000
+      internalID: 2595449980474977620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_170
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 9
+        width: 336
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b74f2f3db5b5350800000000000000
+      internalID: 6006495493901024106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_BreakWall_Full_171
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 9
+        width: 339
+        height: 386
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92bea56ff010a8dd0800000000000000
+      internalID: -2483171076472116439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Preview_BreakWall_Full_0: 1690283228171125527
+      Preview_BreakWall_Full_1: -1847273107955476327
+      Preview_BreakWall_Full_10: 2136675655193816504
+      Preview_BreakWall_Full_100: -9110963300792196201
+      Preview_BreakWall_Full_101: 1059124165013746379
+      Preview_BreakWall_Full_102: -614537631906436888
+      Preview_BreakWall_Full_103: -8234997494829373344
+      Preview_BreakWall_Full_104: -1390269943691173239
+      Preview_BreakWall_Full_105: 4484011481320658360
+      Preview_BreakWall_Full_106: -7636725363695188787
+      Preview_BreakWall_Full_107: 7348956708052929525
+      Preview_BreakWall_Full_108: 1292093976766249004
+      Preview_BreakWall_Full_109: 4004427023795974112
+      Preview_BreakWall_Full_11: -7114838295806377462
+      Preview_BreakWall_Full_110: 7065411026343149396
+      Preview_BreakWall_Full_111: -869578902970150746
+      Preview_BreakWall_Full_112: 4638565358253348494
+      Preview_BreakWall_Full_113: 7364678563807665076
+      Preview_BreakWall_Full_114: -5152131090151776350
+      Preview_BreakWall_Full_115: 1572369633951741063
+      Preview_BreakWall_Full_116: 564964033562161196
+      Preview_BreakWall_Full_117: 7280298487741719960
+      Preview_BreakWall_Full_118: 1558845471893417816
+      Preview_BreakWall_Full_119: 49770774275592580
+      Preview_BreakWall_Full_12: -1545405213968166205
+      Preview_BreakWall_Full_120: -7544414975794629251
+      Preview_BreakWall_Full_121: -8110928362132070586
+      Preview_BreakWall_Full_122: 3422489873989028957
+      Preview_BreakWall_Full_123: 9181159952315633217
+      Preview_BreakWall_Full_124: 7925041943245499494
+      Preview_BreakWall_Full_125: 7716182273115359766
+      Preview_BreakWall_Full_126: -1614314477258652268
+      Preview_BreakWall_Full_127: 3424673828338946675
+      Preview_BreakWall_Full_128: 7383868915177335812
+      Preview_BreakWall_Full_129: -3637358779180302878
+      Preview_BreakWall_Full_13: -8428831886777752061
+      Preview_BreakWall_Full_130: 4679677524860040992
+      Preview_BreakWall_Full_131: -8925145736266816345
+      Preview_BreakWall_Full_132: 6193983231792509413
+      Preview_BreakWall_Full_133: -7578481299933668853
+      Preview_BreakWall_Full_134: 7378727442998245546
+      Preview_BreakWall_Full_135: -5906325492491763862
+      Preview_BreakWall_Full_136: 8396259211068463659
+      Preview_BreakWall_Full_137: -9165732439616377441
+      Preview_BreakWall_Full_138: -1753168385693701177
+      Preview_BreakWall_Full_139: 1362661782151687333
+      Preview_BreakWall_Full_14: 6132608466215103375
+      Preview_BreakWall_Full_140: 5470660567197484770
+      Preview_BreakWall_Full_141: 1448074348157366249
+      Preview_BreakWall_Full_142: -4795433925511425852
+      Preview_BreakWall_Full_143: -176639745759254177
+      Preview_BreakWall_Full_144: -264931443163705685
+      Preview_BreakWall_Full_145: -3075102975515234672
+      Preview_BreakWall_Full_146: -1916305438044381286
+      Preview_BreakWall_Full_147: -349338966453676709
+      Preview_BreakWall_Full_148: -4635188877797674977
+      Preview_BreakWall_Full_149: 2235150247600129796
+      Preview_BreakWall_Full_15: 889853925965364815
+      Preview_BreakWall_Full_150: 977625570421925316
+      Preview_BreakWall_Full_151: 2092657918877750483
+      Preview_BreakWall_Full_152: 6048387308902565310
+      Preview_BreakWall_Full_153: -1526350946508161346
+      Preview_BreakWall_Full_154: 4676765893138886987
+      Preview_BreakWall_Full_155: -1483725607720582481
+      Preview_BreakWall_Full_156: -3599994441127705751
+      Preview_BreakWall_Full_157: 7383893755471682641
+      Preview_BreakWall_Full_158: 7753983838274877215
+      Preview_BreakWall_Full_159: 8551348569473334886
+      Preview_BreakWall_Full_16: 1319583933989903092
+      Preview_BreakWall_Full_160: -5159119090006928658
+      Preview_BreakWall_Full_161: -3070605799265560925
+      Preview_BreakWall_Full_162: -5712622948624037364
+      Preview_BreakWall_Full_163: 2996642585533919422
+      Preview_BreakWall_Full_164: -7717596537777172197
+      Preview_BreakWall_Full_165: 9076925568369431639
+      Preview_BreakWall_Full_166: 140751046871064594
+      Preview_BreakWall_Full_167: -9010697941003460440
+      Preview_BreakWall_Full_168: 7185323006366698441
+      Preview_BreakWall_Full_169: 2595449980474977620
+      Preview_BreakWall_Full_17: -5534454692762276490
+      Preview_BreakWall_Full_170: 6006495493901024106
+      Preview_BreakWall_Full_171: -2483171076472116439
+      Preview_BreakWall_Full_18: -6609919130910585347
+      Preview_BreakWall_Full_19: -1208185734223501959
+      Preview_BreakWall_Full_2: 5054381476247381848
+      Preview_BreakWall_Full_20: 4686754225052000191
+      Preview_BreakWall_Full_21: -6922013718120119073
+      Preview_BreakWall_Full_22: -3552475990109456541
+      Preview_BreakWall_Full_23: 368502342491789382
+      Preview_BreakWall_Full_24: 3109489209205509817
+      Preview_BreakWall_Full_25: -8763282740815105747
+      Preview_BreakWall_Full_26: 3708682043836359548
+      Preview_BreakWall_Full_27: -8885222085832372174
+      Preview_BreakWall_Full_28: -6644495488466674914
+      Preview_BreakWall_Full_29: 1995258611664323532
+      Preview_BreakWall_Full_3: -7231579714921421564
+      Preview_BreakWall_Full_30: 3197330083136601951
+      Preview_BreakWall_Full_31: -1627679967639128891
+      Preview_BreakWall_Full_32: -6482903622410105296
+      Preview_BreakWall_Full_33: 973381425370479286
+      Preview_BreakWall_Full_34: -4649963317123385358
+      Preview_BreakWall_Full_35: 4822912986835636859
+      Preview_BreakWall_Full_36: -3575474893149390279
+      Preview_BreakWall_Full_37: -8185127081130895436
+      Preview_BreakWall_Full_38: 170879726328051787
+      Preview_BreakWall_Full_39: 250362055992905153
+      Preview_BreakWall_Full_4: -6269357392285558543
+      Preview_BreakWall_Full_40: -8282317799855313710
+      Preview_BreakWall_Full_41: 590417721277883048
+      Preview_BreakWall_Full_42: -7329232314079844119
+      Preview_BreakWall_Full_43: -1081291378336529157
+      Preview_BreakWall_Full_44: 2827920054741205876
+      Preview_BreakWall_Full_45: -6331586658211590900
+      Preview_BreakWall_Full_46: 1572207503952637047
+      Preview_BreakWall_Full_47: 2813058510612796338
+      Preview_BreakWall_Full_48: 2962317028101151254
+      Preview_BreakWall_Full_49: -5218910651763308860
+      Preview_BreakWall_Full_5: 6966196755388037067
+      Preview_BreakWall_Full_50: 7732378804497411631
+      Preview_BreakWall_Full_51: -7440993216407713726
+      Preview_BreakWall_Full_52: -8630656986141724565
+      Preview_BreakWall_Full_53: 3599981105181430557
+      Preview_BreakWall_Full_54: -137829323829979112
+      Preview_BreakWall_Full_55: -7023478629048383306
+      Preview_BreakWall_Full_56: 4392890219629061391
+      Preview_BreakWall_Full_57: -6287119899794798164
+      Preview_BreakWall_Full_58: 7786312330502427893
+      Preview_BreakWall_Full_59: 8930624283037931764
+      Preview_BreakWall_Full_6: -6127862594187657731
+      Preview_BreakWall_Full_60: -5922421167718292988
+      Preview_BreakWall_Full_61: -2786747096825764070
+      Preview_BreakWall_Full_62: -6859260743604033856
+      Preview_BreakWall_Full_63: 6101377190873954046
+      Preview_BreakWall_Full_64: 8961392165369903398
+      Preview_BreakWall_Full_65: 9037348432625716445
+      Preview_BreakWall_Full_66: 6167702733720337139
+      Preview_BreakWall_Full_67: -6667683273586470483
+      Preview_BreakWall_Full_68: 8458180047612328708
+      Preview_BreakWall_Full_69: -4815242028223109244
+      Preview_BreakWall_Full_7: -7631240084469774016
+      Preview_BreakWall_Full_70: 7746892100986254616
+      Preview_BreakWall_Full_71: 6213466783018884938
+      Preview_BreakWall_Full_72: -7506671312800186747
+      Preview_BreakWall_Full_73: 5610202663382092774
+      Preview_BreakWall_Full_74: -2186393747688467500
+      Preview_BreakWall_Full_75: -6326882568716819292
+      Preview_BreakWall_Full_76: 8210031397759801795
+      Preview_BreakWall_Full_77: -7583636901805039767
+      Preview_BreakWall_Full_78: 6026053690848382396
+      Preview_BreakWall_Full_79: 2482307264727715937
+      Preview_BreakWall_Full_8: -2610163823416456937
+      Preview_BreakWall_Full_80: 8906535848649568913
+      Preview_BreakWall_Full_81: 4003592481724154765
+      Preview_BreakWall_Full_82: 30565980958363426
+      Preview_BreakWall_Full_83: 5338322616788127740
+      Preview_BreakWall_Full_84: 5118666287717893528
+      Preview_BreakWall_Full_85: 4517851716208732228
+      Preview_BreakWall_Full_86: -6527500038048640690
+      Preview_BreakWall_Full_87: 8603009296137210384
+      Preview_BreakWall_Full_88: 3078039392988265933
+      Preview_BreakWall_Full_89: -6182037593431335253
+      Preview_BreakWall_Full_9: -2443305585198747220
+      Preview_BreakWall_Full_90: 7363130138504089883
+      Preview_BreakWall_Full_91: -1966092436635583048
+      Preview_BreakWall_Full_92: 2635295309737821684
+      Preview_BreakWall_Full_93: 5256026304444304707
+      Preview_BreakWall_Full_94: 980958350479181994
+      Preview_BreakWall_Full_95: 9022851803754817193
+      Preview_BreakWall_Full_96: 2977962484325600817
+      Preview_BreakWall_Full_97: -1869638250939322997
+      Preview_BreakWall_Full_98: 7922416985260004482
+      Preview_BreakWall_Full_99: 6980550774135513492
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

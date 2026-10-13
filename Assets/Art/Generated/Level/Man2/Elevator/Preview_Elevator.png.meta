@@ -1,0 +1,3809 @@
+fileFormatVersion: 2
+guid: 3622b389de724ac47b3e3683fed654af
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8154049204065990717
+    second: Preview_Elevator_0
+  - first:
+      213: 4665566506773827464
+    second: Preview_Elevator_1
+  - first:
+      213: 562989269074169954
+    second: Preview_Elevator_2
+  - first:
+      213: 942123450513110988
+    second: Preview_Elevator_3
+  - first:
+      213: 2013987271876822160
+    second: Preview_Elevator_4
+  - first:
+      213: -8982728229130833008
+    second: Preview_Elevator_5
+  - first:
+      213: 649574195264378124
+    second: Preview_Elevator_6
+  - first:
+      213: 6785890502093425797
+    second: Preview_Elevator_7
+  - first:
+      213: -195928913544090755
+    second: Preview_Elevator_8
+  - first:
+      213: -2011693312884877577
+    second: Preview_Elevator_9
+  - first:
+      213: 7996667272014676613
+    second: Preview_Elevator_10
+  - first:
+      213: 1291784919277618487
+    second: Preview_Elevator_11
+  - first:
+      213: 1885913834141119550
+    second: Preview_Elevator_12
+  - first:
+      213: 8559298257098998023
+    second: Preview_Elevator_13
+  - first:
+      213: -6735380516108128085
+    second: Preview_Elevator_14
+  - first:
+      213: -6759661217168112726
+    second: Preview_Elevator_15
+  - first:
+      213: 2511557201060337238
+    second: Preview_Elevator_16
+  - first:
+      213: 7810102502896691146
+    second: Preview_Elevator_17
+  - first:
+      213: -7140271496407214198
+    second: Preview_Elevator_18
+  - first:
+      213: 3743627529145191651
+    second: Preview_Elevator_19
+  - first:
+      213: 6543383301789682216
+    second: Preview_Elevator_20
+  - first:
+      213: -6473507589294156661
+    second: Preview_Elevator_21
+  - first:
+      213: 1456083505957655403
+    second: Preview_Elevator_22
+  - first:
+      213: 2294829735155139639
+    second: Preview_Elevator_23
+  - first:
+      213: -94841925952804338
+    second: Preview_Elevator_24
+  - first:
+      213: -6369522270242864657
+    second: Preview_Elevator_25
+  - first:
+      213: -4567413974516255809
+    second: Preview_Elevator_26
+  - first:
+      213: -7880593016012369661
+    second: Preview_Elevator_27
+  - first:
+      213: -3793050463774039104
+    second: Preview_Elevator_28
+  - first:
+      213: 4613869385466368866
+    second: Preview_Elevator_29
+  - first:
+      213: 1719846889904822727
+    second: Preview_Elevator_30
+  - first:
+      213: -8217045913979156584
+    second: Preview_Elevator_31
+  - first:
+      213: 7079801330258115684
+    second: Preview_Elevator_32
+  - first:
+      213: 1207832613602927491
+    second: Preview_Elevator_33
+  - first:
+      213: -5447723202877622422
+    second: Preview_Elevator_34
+  - first:
+      213: -1870790388867361987
+    second: Preview_Elevator_35
+  - first:
+      213: 3731018974043059852
+    second: Preview_Elevator_36
+  - first:
+      213: 44373499838126449
+    second: Preview_Elevator_37
+  - first:
+      213: 4005996188313331323
+    second: Preview_Elevator_38
+  - first:
+      213: 3067591050577130826
+    second: Preview_Elevator_39
+  - first:
+      213: -2877370497086987221
+    second: Preview_Elevator_40
+  - first:
+      213: -7582154969284299976
+    second: Preview_Elevator_41
+  - first:
+      213: -4090598877917713250
+    second: Preview_Elevator_42
+  - first:
+      213: 3840047122298392821
+    second: Preview_Elevator_43
+  - first:
+      213: 585370613393761902
+    second: Preview_Elevator_44
+  - first:
+      213: 1814470819322609411
+    second: Preview_Elevator_45
+  - first:
+      213: -3993858997333927671
+    second: Preview_Elevator_46
+  - first:
+      213: 6393703339950178080
+    second: Preview_Elevator_47
+  - first:
+      213: 5094010296954502161
+    second: Preview_Elevator_48
+  - first:
+      213: 8554173662360683404
+    second: Preview_Elevator_49
+  - first:
+      213: 3002996584227874677
+    second: Preview_Elevator_50
+  - first:
+      213: 5781119024789422339
+    second: Preview_Elevator_51
+  - first:
+      213: -8957935817686258996
+    second: Preview_Elevator_52
+  - first:
+      213: 5112168979757536021
+    second: Preview_Elevator_53
+  - first:
+      213: -3825984522306893159
+    second: Preview_Elevator_54
+  - first:
+      213: -2996331213613267252
+    second: Preview_Elevator_55
+  - first:
+      213: -5075223734635646283
+    second: Preview_Elevator_56
+  - first:
+      213: -1649319359664509377
+    second: Preview_Elevator_57
+  - first:
+      213: -6475342158284362760
+    second: Preview_Elevator_58
+  - first:
+      213: 4752113669126136729
+    second: Preview_Elevator_59
+  - first:
+      213: -5872013434838640680
+    second: Preview_Elevator_60
+  - first:
+      213: -3588316725960980319
+    second: Preview_Elevator_61
+  - first:
+      213: -7487783473211472993
+    second: Preview_Elevator_62
+  - first:
+      213: -234337060993762714
+    second: Preview_Elevator_63
+  - first:
+      213: -8160484014489114881
+    second: Preview_Elevator_64
+  - first:
+      213: -4494653662536928157
+    second: Preview_Elevator_65
+  - first:
+      213: -9047345443587218825
+    second: Preview_Elevator_66
+  - first:
+      213: -8350454119521165762
+    second: Preview_Elevator_67
+  - first:
+      213: 7699718655361257866
+    second: Preview_Elevator_68
+  - first:
+      213: -8165239743604645427
+    second: Preview_Elevator_69
+  - first:
+      213: -3285914411982370954
+    second: Preview_Elevator_70
+  - first:
+      213: 1497095613303010506
+    second: Preview_Elevator_71
+  - first:
+      213: 147225358898504921
+    second: Preview_Elevator_72
+  - first:
+      213: 1132331417421134641
+    second: Preview_Elevator_73
+  - first:
+      213: 7896463103963213978
+    second: Preview_Elevator_74
+  - first:
+      213: 4123989873835351729
+    second: Preview_Elevator_75
+  - first:
+      213: -2563386436833474653
+    second: Preview_Elevator_76
+  - first:
+      213: -2069899721800260706
+    second: Preview_Elevator_77
+  - first:
+      213: -3882544764662446954
+    second: Preview_Elevator_78
+  - first:
+      213: -1790488118171664058
+    second: Preview_Elevator_79
+  - first:
+      213: 6055985740852119170
+    second: Preview_Elevator_80
+  - first:
+      213: 6140873439628100883
+    second: Preview_Elevator_81
+  - first:
+      213: -2517755535841284914
+    second: Preview_Elevator_82
+  - first:
+      213: 5646900842969956436
+    second: Preview_Elevator_83
+  - first:
+      213: -5688963336137040175
+    second: Preview_Elevator_84
+  - first:
+      213: -1378073465711093339
+    second: Preview_Elevator_85
+  - first:
+      213: 2250413023824161145
+    second: Preview_Elevator_86
+  - first:
+      213: -7203102898472248406
+    second: Preview_Elevator_87
+  - first:
+      213: 8923447384775744067
+    second: Preview_Elevator_88
+  - first:
+      213: -2878638321158397909
+    second: Preview_Elevator_89
+  - first:
+      213: 2476023681034266437
+    second: Preview_Elevator_90
+  - first:
+      213: 3605293387320186904
+    second: Preview_Elevator_91
+  - first:
+      213: -5311010030296895813
+    second: Preview_Elevator_92
+  - first:
+      213: -7329702410160315531
+    second: Preview_Elevator_93
+  - first:
+      213: -4213156365010799825
+    second: Preview_Elevator_94
+  - first:
+      213: 1985155231642322602
+    second: Preview_Elevator_95
+  - first:
+      213: -8374298582572895745
+    second: Preview_Elevator_96
+  - first:
+      213: 7961245124340939180
+    second: Preview_Elevator_97
+  - first:
+      213: 9075426456283572755
+    second: Preview_Elevator_98
+  - first:
+      213: -9147863714955472804
+    second: Preview_Elevator_99
+  - first:
+      213: -2197571195728787029
+    second: Preview_Elevator_100
+  - first:
+      213: 1112545019720655047
+    second: Preview_Elevator_101
+  - first:
+      213: -5374790209627111335
+    second: Preview_Elevator_102
+  - first:
+      213: 7170312754717813043
+    second: Preview_Elevator_103
+  - first:
+      213: -8166482192308494498
+    second: Preview_Elevator_104
+  - first:
+      213: 1093649237789810898
+    second: Preview_Elevator_105
+  - first:
+      213: -4099748077411517621
+    second: Preview_Elevator_106
+  - first:
+      213: 5929782228979084535
+    second: Preview_Elevator_107
+  - first:
+      213: 2453393265336834001
+    second: Preview_Elevator_108
+  - first:
+      213: -8519981044392397610
+    second: Preview_Elevator_109
+  - first:
+      213: -365769979305040441
+    second: Preview_Elevator_110
+  - first:
+      213: -6806127676983245152
+    second: Preview_Elevator_111
+  - first:
+      213: 5242351929155584283
+    second: Preview_Elevator_112
+  - first:
+      213: -1917076612791138392
+    second: Preview_Elevator_113
+  - first:
+      213: 7122422496466348776
+    second: Preview_Elevator_114
+  - first:
+      213: -7532909284238979010
+    second: Preview_Elevator_115
+  - first:
+      213: -6390450418714437055
+    second: Preview_Elevator_116
+  - first:
+      213: 1346954067378930283
+    second: Preview_Elevator_117
+  - first:
+      213: -3488876677631929194
+    second: Preview_Elevator_118
+  - first:
+      213: 1957127118243865297
+    second: Preview_Elevator_119
+  - first:
+      213: 8843726786627465869
+    second: Preview_Elevator_120
+  - first:
+      213: 371566128294187266
+    second: Preview_Elevator_121
+  - first:
+      213: -1519311046656492834
+    second: Preview_Elevator_122
+  - first:
+      213: -1936801937145748069
+    second: Preview_Elevator_123
+  - first:
+      213: 4838527874123832931
+    second: Preview_Elevator_124
+  - first:
+      213: -8162944459268349112
+    second: Preview_Elevator_125
+  - first:
+      213: 2463167579476210782
+    second: Preview_Elevator_126
+  - first:
+      213: 7812389997067430344
+    second: Preview_Elevator_127
+  - first:
+      213: 8333992627757601949
+    second: Preview_Elevator_128
+  - first:
+      213: 2872836015921988672
+    second: Preview_Elevator_129
+  - first:
+      213: -6076499832250027446
+    second: Preview_Elevator_130
+  - first:
+      213: -2288192030567315627
+    second: Preview_Elevator_131
+  - first:
+      213: -1117683626744463155
+    second: Preview_Elevator_132
+  - first:
+      213: 8465679990443613586
+    second: Preview_Elevator_133
+  - first:
+      213: -2053420588477604300
+    second: Preview_Elevator_134
+  - first:
+      213: -5325268877220534713
+    second: Preview_Elevator_135
+  - first:
+      213: -7078001621341893562
+    second: Preview_Elevator_136
+  - first:
+      213: 5478306747195049434
+    second: Preview_Elevator_137
+  - first:
+      213: 5955199327731893109
+    second: Preview_Elevator_138
+  - first:
+      213: 7597093961658942547
+    second: Preview_Elevator_139
+  - first:
+      213: 5560879563804567266
+    second: Preview_Elevator_140
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Preview_Elevator_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1290
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c7079e637ff6de80800000000000000
+      internalID: -8154049204065990717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1290
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88fc638c40c6fb040800000000000000
+      internalID: 4665566506773827464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1291
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 260d583e1c320d700800000000000000
+      internalID: 562989269074169954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1291
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc736626948131d00800000000000000
+      internalID: 942123450513110988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_4
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1291
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0944062d0ce13fb10800000000000000
+      internalID: 2013987271876822160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_5
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1291
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09378c4a440f65380800000000000000
+      internalID: -8982728229130833008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_6
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1291
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c055efbf940c30900800000000000000
+      internalID: 649574195264378124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_7
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 1290
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cc9fd55735c2e50800000000000000
+      internalID: 6785890502093425797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1291
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7be9f2f0bbe74df0800000000000000
+      internalID: -195928913544090755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1291
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6d77027970514e0800000000000000
+      internalID: -2011693312884877577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 1291
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5824d67048ed9fe60800000000000000
+      internalID: 7996667272014676613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1291
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735cfb73a875de110800000000000000
+      internalID: 1291784919277618487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_12
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1291
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34f9f0e3ac1c2a10800000000000000
+      internalID: 1885913834141119550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_13
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1291
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701810d6a6cb8c670800000000000000
+      internalID: 8559298257098998023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_14
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1291
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0b94e2b1f1782a0800000000000000
+      internalID: -6735380516108128085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_15
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1291
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3c5bcefebd032a0800000000000000
+      internalID: -6759661217168112726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_16
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1290
+        width: 29
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6569642b7f7dad220800000000000000
+      internalID: 2511557201060337238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_17
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1291
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac7eb80c8de036c60800000000000000
+      internalID: 7810102502896691146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_18
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1291
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a871dc0a7e8a8ec90800000000000000
+      internalID: -7140271496407214198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_19
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1291
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec8216376904f330800000000000000
+      internalID: 3743627529145191651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_20
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1290
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a8564d174ceca50800000000000000
+      internalID: 6543383301789682216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_21
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1254
+        width: 44
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b849359452b7926a0800000000000000
+      internalID: -6473507589294156661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_22
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1259
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6359e7eb3c053410800000000000000
+      internalID: 1456083505957655403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_23
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1259
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7340def4c7fd8df10800000000000000
+      internalID: 2294829735155139639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_24
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1258
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0ae4c555cd0faef0800000000000000
+      internalID: -94841925952804338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_25
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1261
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe10c3d0e39ea97a0800000000000000
+      internalID: -6369522270242864657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_26
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1254
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb3bdca70394d90c0800000000000000
+      internalID: -4567413974516255809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_27
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1259
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3019825b76282a290800000000000000
+      internalID: -7880593016012369661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_28
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1259
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c32e9b13b06c5bc0800000000000000
+      internalID: -3793050463774039104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_29
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1254
+        width: 69
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263d5c0c2c1c70040800000000000000
+      internalID: 4613869385466368866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_30
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1259
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c956dc52af1ed710800000000000000
+      internalID: 1719846889904822727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_31
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1259
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897823ae64037fd80800000000000000
+      internalID: -8217045913979156584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_32
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1259
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c7f5aacc1804260800000000000000
+      internalID: 7079801330258115684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_33
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 1259
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3832fe9dc5513c010800000000000000
+      internalID: 1207832613602927491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_34
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 1259
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6773d93c9cc564b0800000000000000
+      internalID: -5447723202877622422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_35
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 1259
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d33985e9d0e9906e0800000000000000
+      internalID: -1870790388867361987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_36
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1254
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8634163dfd37c330800000000000000
+      internalID: 3731018974043059852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_37
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1259
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179da478675ad9000800000000000000
+      internalID: 44373499838126449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_38
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1259
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b762cfffe48289730800000000000000
+      internalID: 4005996188313331323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_39
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 1259
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4531d5cec5429a20800000000000000
+      internalID: 3067591050577130826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_40
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 731
+        width: 722
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b24e0f127c68118d0800000000000000
+      internalID: -2877370497086987221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_41
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 731
+        width: 722
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 833b8d73a36c6c690800000000000000
+      internalID: -7582154969284299976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_42
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 682
+        width: 39
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9c6a135ef54b37c0800000000000000
+      internalID: -4090598877917713250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_43
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 678
+        width: 37
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f05b5523869a4530800000000000000
+      internalID: 3840047122298392821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_44
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 682
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66a941b877af1800800000000000000
+      internalID: 585370613393761902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_45
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 683
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f3901c89b4e2910800000000000000
+      internalID: 1814470819322609411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_46
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 683
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 909d9ecf666f298c0800000000000000
+      internalID: -3993858997333927671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_47
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 682
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f75f8ff4ffab850800000000000000
+      internalID: 6393703339950178080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_48
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 683
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11cb728306f81b640800000000000000
+      internalID: 5094010296954502161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_49
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 683
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c83c20cbf9786b670800000000000000
+      internalID: 8554173662360683404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_50
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 683
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5772d989b79cca920800000000000000
+      internalID: 3002996584227874677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_51
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 683
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30183d49f19aa3050800000000000000
+      internalID: 5781119024789422339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_52
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 683
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccaef02c5d40fa380800000000000000
+      internalID: -8957935817686258996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_53
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 683
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51318360a9212f640800000000000000
+      internalID: 5112168979757536021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_54
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 682
+        width: 46
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a41cf095f57eac0800000000000000
+      internalID: -3825984522306893159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_55
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 683
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc68a2fe2a4ea66d0800000000000000
+      internalID: -2996331213613267252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_56
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 682
+        width: 31
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b2396d27ee2199b0800000000000000
+      internalID: -5075223734635646283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_57
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 682
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ea506e7c07c19e0800000000000000
+      internalID: -1649319359664509377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_58
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 682
+        width: 50
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb69586d96f226a0800000000000000
+      internalID: -6475342158284362760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_59
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 683
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993aa8c4436e2f140800000000000000
+      internalID: 4752113669126136729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_60
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 683
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d71f1c64ea628ea0800000000000000
+      internalID: -5872013434838640680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_61
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 683
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a8c08f03fcb33ec0800000000000000
+      internalID: -3588316725960980319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_62
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 683
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9380346a9c061890800000000000000
+      internalID: -7487783473211472993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_63
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 681
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66af1c14fa77fbcf0800000000000000
+      internalID: -234337060993762714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_64
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 683
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff66f11660320ce80800000000000000
+      internalID: -8160484014489114881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_65
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 682
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 364f310ce48cf91c0800000000000000
+      internalID: -4494653662536928157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_66
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 683
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7722cb2014f517280800000000000000
+      internalID: -9047345443587218825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_67
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 683
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3e5ebc883a3d1c80800000000000000
+      internalID: -8350454119521165762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_68
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 682
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a81914b7255eada60800000000000000
+      internalID: 7699718655361257866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_69
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 147
+        width: 722
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc12b88e6bd3fae80800000000000000
+      internalID: -8165239743604645427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_70
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 187
+        width: 70
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 677447770461662d0800000000000000
+      internalID: -3285914411982370954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_71
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 147
+        width: 330
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac4b8b14780c6c410800000000000000
+      internalID: 1497095613303010506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_72
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 332
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d423131fac0b0200800000000000000
+      internalID: 147225358898504921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_73
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 333
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13bb66fbc69d6bf00800000000000000
+      internalID: 1132331417421134641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_74
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 332
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a90b4b51b5fd59d60800000000000000
+      internalID: 7896463103963213978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_75
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 304
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1be934fb0fa5b3930800000000000000
+      internalID: 4123989873835351729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_76
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 263
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a78c7afd950d6cd0800000000000000
+      internalID: -2563386436833474653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_77
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 147
+        width: 130
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e936a697b2d3643e0800000000000000
+      internalID: -2069899721800260706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_78
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 104
+        width: 34
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6940ebd6b1e6e1ac0800000000000000
+      internalID: -3882544764662446954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_79
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 100
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64102ddfa88e627e0800000000000000
+      internalID: -1790488118171664058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_80
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 103
+        width: 36
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286425002fe2b0450800000000000000
+      internalID: 6055985740852119170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_81
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 103
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3150aab8bd3c83550800000000000000
+      internalID: 6140873439628100883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_82
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 103
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc28e60ea22f0dd0800000000000000
+      internalID: -2517755535841284914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_83
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 100
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450041be562dd5e40800000000000000
+      internalID: 5646900842969956436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_84
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 103
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de9459bcfdbc01b0800000000000000
+      internalID: -5688963336137040175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_85
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 104
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a916e9fb7910ece0800000000000000
+      internalID: -1378073465711093339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_86
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 103
+        width: 31
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979a3f2d8b21b3f10800000000000000
+      internalID: 2250413023824161145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_87
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 104
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab99f7d310790c90800000000000000
+      internalID: -7203102898472248406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_88
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 103
+        width: 63
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a52753e1476db70800000000000000
+      internalID: 8923447384775744067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_89
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 100
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b20e686d2b50d08d0800000000000000
+      internalID: -2878638321158397909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_90
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 104
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 547a08b5b6a9c5220800000000000000
+      internalID: 2476023681034266437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_91
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 104
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 818d84eeb33980230800000000000000
+      internalID: 3605293387320186904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_92
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 104
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbeed9134808b46b0800000000000000
+      internalID: -5311010030296895813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_93
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 100
+        width: 76
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573e11d0e7aa74a90800000000000000
+      internalID: -7329702410160315531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_94
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 104
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23fa58bb9cd785c0800000000000000
+      internalID: -4213156365010799825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_95
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 104
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa68c065a20bc8b10800000000000000
+      internalID: 1985155231642322602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_96
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 100
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff17faedec388cb80800000000000000
+      internalID: -8374298582572895745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_97
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 104
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9f62692460c7e60800000000000000
+      internalID: 7961245124340939180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_98
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 104
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ae6ff374462fd70800000000000000
+      internalID: 9075426456283572755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_99
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 104
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50d4603b624c0180800000000000000
+      internalID: -9147863714955472804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_100
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 100
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba984f504a8a081e0800000000000000
+      internalID: -2197571195728787029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_101
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 104
+        width: 40
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c064190dcd807f00800000000000000
+      internalID: 1112545019720655047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_102
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 100
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950cdecf7c8e865b0800000000000000
+      internalID: -5374790209627111335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_103
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 53
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3396861e571128360800000000000000
+      internalID: 7170312754717813043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_104
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 53
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f16e6c6b3daae80800000000000000
+      internalID: -8166482192308494498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_105
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 53
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0a657ff2c6d2f00800000000000000
+      internalID: 1093649237789810898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_106
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 53
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4bbb4158d4ca17c0800000000000000
+      internalID: -4099748077411517621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_107
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 38
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fce8b91581da4250800000000000000
+      internalID: 5929782228979084535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_108
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 38
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d7dcba1d243c0220800000000000000
+      internalID: 2453393265336834001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_109
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 38
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d4fde38162f2c980800000000000000
+      internalID: -8519981044392397610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_110
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 38
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c5650a44268ceaf0800000000000000
+      internalID: -365769979305040441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_111
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 38
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6857d20f6cb81a0800000000000000
+      internalID: -6806127676983245152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_112
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 38
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1107eced4390c840800000000000000
+      internalID: 5242351929155584283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_113
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 38
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7006f4afc2565e0800000000000000
+      internalID: -1917076612791138392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_114
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 38
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eaa02a368de7d260800000000000000
+      internalID: 7122422496466348776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_115
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 38
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3091b3caeab57790800000000000000
+      internalID: -7532909284238979010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_116
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 38
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14a97c5c33f8057a0800000000000000
+      internalID: -6390450418714437055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_117
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 38
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6283ea769751b210800000000000000
+      internalID: 1346954067378930283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_118
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 38
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6949a948525059fc0800000000000000
+      internalID: -3488876677631929194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_119
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 38
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d2a537aebc192b10800000000000000
+      internalID: 1957127118243865297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_120
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 38
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82798708aa3bba70800000000000000
+      internalID: 8843726786627465869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_121
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 2
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 201da8fcc61182500800000000000000
+      internalID: 371566128294187266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_122
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 6
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda76b817a25aeae0800000000000000
+      internalID: -1519311046656492834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_123
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b95a32856e81f15e0800000000000000
+      internalID: -1936801937145748069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_124
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 6
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e1af44777e52340800000000000000
+      internalID: 4838527874123832931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_125
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 6
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8432110734567be80800000000000000
+      internalID: -8162944459268349112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_126
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 2
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5430f4fcddee2220800000000000000
+      internalID: 2463167579476210782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_127
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 6
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c9e40e7f4f2b6c60800000000000000
+      internalID: 7812389997067430344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_128
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 2
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94573ab32a48a370800000000000000
+      internalID: 8333992627757601949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_129
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 6
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0448af2b22d5ed720800000000000000
+      internalID: 2872836015921988672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_130
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 6
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a423405e89febaba0800000000000000
+      internalID: -6076499832250027446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_131
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 2
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 557c728b875be30e0800000000000000
+      internalID: -2288192030567315627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_132
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 6
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc040a8c9a03d70f0800000000000000
+      internalID: -1117683626744463155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_133
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 2
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d168429132c7570800000000000000
+      internalID: 8465679990443613586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_134
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 6
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e9151bad8c083e0800000000000000
+      internalID: -2053420588477604300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_135
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 6
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 746a3dfab28d816b0800000000000000
+      internalID: -5325268877220534713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_136
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 2
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c0748b603e5cd90800000000000000
+      internalID: -7078001621341893562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_137
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 6
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad5cf2516fad60c40800000000000000
+      internalID: 5478306747195049434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_138
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 2
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573ca109c3e15a250800000000000000
+      internalID: 5955199327731893109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_139
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 6
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35442fdf4bc4e6960800000000000000
+      internalID: 7597093961658942547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_Elevator_140
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 6
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6ec4f10863c2d40800000000000000
+      internalID: 5560879563804567266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Preview_Elevator_0: -8154049204065990717
+      Preview_Elevator_1: 4665566506773827464
+      Preview_Elevator_10: 7996667272014676613
+      Preview_Elevator_100: -2197571195728787029
+      Preview_Elevator_101: 1112545019720655047
+      Preview_Elevator_102: -5374790209627111335
+      Preview_Elevator_103: 7170312754717813043
+      Preview_Elevator_104: -8166482192308494498
+      Preview_Elevator_105: 1093649237789810898
+      Preview_Elevator_106: -4099748077411517621
+      Preview_Elevator_107: 5929782228979084535
+      Preview_Elevator_108: 2453393265336834001
+      Preview_Elevator_109: -8519981044392397610
+      Preview_Elevator_11: 1291784919277618487
+      Preview_Elevator_110: -365769979305040441
+      Preview_Elevator_111: -6806127676983245152
+      Preview_Elevator_112: 5242351929155584283
+      Preview_Elevator_113: -1917076612791138392
+      Preview_Elevator_114: 7122422496466348776
+      Preview_Elevator_115: -7532909284238979010
+      Preview_Elevator_116: -6390450418714437055
+      Preview_Elevator_117: 1346954067378930283
+      Preview_Elevator_118: -3488876677631929194
+      Preview_Elevator_119: 1957127118243865297
+      Preview_Elevator_12: 1885913834141119550
+      Preview_Elevator_120: 8843726786627465869
+      Preview_Elevator_121: 371566128294187266
+      Preview_Elevator_122: -1519311046656492834
+      Preview_Elevator_123: -1936801937145748069
+      Preview_Elevator_124: 4838527874123832931
+      Preview_Elevator_125: -8162944459268349112
+      Preview_Elevator_126: 2463167579476210782
+      Preview_Elevator_127: 7812389997067430344
+      Preview_Elevator_128: 8333992627757601949
+      Preview_Elevator_129: 2872836015921988672
+      Preview_Elevator_13: 8559298257098998023
+      Preview_Elevator_130: -6076499832250027446
+      Preview_Elevator_131: -2288192030567315627
+      Preview_Elevator_132: -1117683626744463155
+      Preview_Elevator_133: 8465679990443613586
+      Preview_Elevator_134: -2053420588477604300
+      Preview_Elevator_135: -5325268877220534713
+      Preview_Elevator_136: -7078001621341893562
+      Preview_Elevator_137: 5478306747195049434
+      Preview_Elevator_138: 5955199327731893109
+      Preview_Elevator_139: 7597093961658942547
+      Preview_Elevator_14: -6735380516108128085
+      Preview_Elevator_140: 5560879563804567266
+      Preview_Elevator_15: -6759661217168112726
+      Preview_Elevator_16: 2511557201060337238
+      Preview_Elevator_17: 7810102502896691146
+      Preview_Elevator_18: -7140271496407214198
+      Preview_Elevator_19: 3743627529145191651
+      Preview_Elevator_2: 562989269074169954
+      Preview_Elevator_20: 6543383301789682216
+      Preview_Elevator_21: -6473507589294156661
+      Preview_Elevator_22: 1456083505957655403
+      Preview_Elevator_23: 2294829735155139639
+      Preview_Elevator_24: -94841925952804338
+      Preview_Elevator_25: -6369522270242864657
+      Preview_Elevator_26: -4567413974516255809
+      Preview_Elevator_27: -7880593016012369661
+      Preview_Elevator_28: -3793050463774039104
+      Preview_Elevator_29: 4613869385466368866
+      Preview_Elevator_3: 942123450513110988
+      Preview_Elevator_30: 1719846889904822727
+      Preview_Elevator_31: -8217045913979156584
+      Preview_Elevator_32: 7079801330258115684
+      Preview_Elevator_33: 1207832613602927491
+      Preview_Elevator_34: -5447723202877622422
+      Preview_Elevator_35: -1870790388867361987
+      Preview_Elevator_36: 3731018974043059852
+      Preview_Elevator_37: 44373499838126449
+      Preview_Elevator_38: 4005996188313331323
+      Preview_Elevator_39: 3067591050577130826
+      Preview_Elevator_4: 2013987271876822160
+      Preview_Elevator_40: -2877370497086987221
+      Preview_Elevator_41: -7582154969284299976
+      Preview_Elevator_42: -4090598877917713250
+      Preview_Elevator_43: 3840047122298392821
+      Preview_Elevator_44: 585370613393761902
+      Preview_Elevator_45: 1814470819322609411
+      Preview_Elevator_46: -3993858997333927671
+      Preview_Elevator_47: 6393703339950178080
+      Preview_Elevator_48: 5094010296954502161
+      Preview_Elevator_49: 8554173662360683404
+      Preview_Elevator_5: -8982728229130833008
+      Preview_Elevator_50: 3002996584227874677
+      Preview_Elevator_51: 5781119024789422339
+      Preview_Elevator_52: -8957935817686258996
+      Preview_Elevator_53: 5112168979757536021
+      Preview_Elevator_54: -3825984522306893159
+      Preview_Elevator_55: -2996331213613267252
+      Preview_Elevator_56: -5075223734635646283
+      Preview_Elevator_57: -1649319359664509377
+      Preview_Elevator_58: -6475342158284362760
+      Preview_Elevator_59: 4752113669126136729
+      Preview_Elevator_6: 649574195264378124
+      Preview_Elevator_60: -5872013434838640680
+      Preview_Elevator_61: -3588316725960980319
+      Preview_Elevator_62: -7487783473211472993
+      Preview_Elevator_63: -234337060993762714
+      Preview_Elevator_64: -8160484014489114881
+      Preview_Elevator_65: -4494653662536928157
+      Preview_Elevator_66: -9047345443587218825
+      Preview_Elevator_67: -8350454119521165762
+      Preview_Elevator_68: 7699718655361257866
+      Preview_Elevator_69: -8165239743604645427
+      Preview_Elevator_7: 6785890502093425797
+      Preview_Elevator_70: -3285914411982370954
+      Preview_Elevator_71: 1497095613303010506
+      Preview_Elevator_72: 147225358898504921
+      Preview_Elevator_73: 1132331417421134641
+      Preview_Elevator_74: 7896463103963213978
+      Preview_Elevator_75: 4123989873835351729
+      Preview_Elevator_76: -2563386436833474653
+      Preview_Elevator_77: -2069899721800260706
+      Preview_Elevator_78: -3882544764662446954
+      Preview_Elevator_79: -1790488118171664058
+      Preview_Elevator_8: -195928913544090755
+      Preview_Elevator_80: 6055985740852119170
+      Preview_Elevator_81: 6140873439628100883
+      Preview_Elevator_82: -2517755535841284914
+      Preview_Elevator_83: 5646900842969956436
+      Preview_Elevator_84: -5688963336137040175
+      Preview_Elevator_85: -1378073465711093339
+      Preview_Elevator_86: 2250413023824161145
+      Preview_Elevator_87: -7203102898472248406
+      Preview_Elevator_88: 8923447384775744067
+      Preview_Elevator_89: -2878638321158397909
+      Preview_Elevator_9: -2011693312884877577
+      Preview_Elevator_90: 2476023681034266437
+      Preview_Elevator_91: 3605293387320186904
+      Preview_Elevator_92: -5311010030296895813
+      Preview_Elevator_93: -7329702410160315531
+      Preview_Elevator_94: -4213156365010799825
+      Preview_Elevator_95: 1985155231642322602
+      Preview_Elevator_96: -8374298582572895745
+      Preview_Elevator_97: 7961245124340939180
+      Preview_Elevator_98: 9075426456283572755
+      Preview_Elevator_99: -9147863714955472804
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

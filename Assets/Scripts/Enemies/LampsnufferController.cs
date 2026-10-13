@@ -52,6 +52,9 @@ namespace LuHanh.Enemies
 
         protected override IState InitialState => wander;
 
+        // Khung chuan bi va bo nhao: co giap. Dang hut sang van danh ngat duoc (cach khac che).
+        protected override bool CanStagger() => Machine.Current != windup && Machine.Current != dive;
+
         protected override void Awake()
         {
             base.Awake();

@@ -55,6 +55,9 @@ namespace LuHanh.Enemies
 
         protected override IState InitialState => drift;
 
+        // Dang noi day: co giap.
+        protected override bool CanStagger() => Machine.Current != bind;
+
         protected override void Awake()
         {
             hand = new GameObject("Hand").transform;

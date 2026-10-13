@@ -11,6 +11,10 @@ namespace LuHanh.Enemies
     [CreateAssetMenu(menuName = "LuHanh/Enemies/Buried Enemy Config", fileName = "BuriedEnemy")]
     public class BuriedEnemyConfig : EnemyConfigBase
     {
+        [Header("Chong khoa don")]
+        [Tooltip("Sau mot lan bi khung lai, trong khoang nay (giay) trung don van mat mau + chop nhung khong bi ngat.")]
+        [Min(0f)] public float staggerCooldown = 1f;
+
         [Header("Di chuyen / phat hien")]
         public float moveSpeed = 1.6f;
         [Tooltip("Thay nguoi choi trong khoang nay (unit). Nen xa hon tam chem cua nguoi choi.")]

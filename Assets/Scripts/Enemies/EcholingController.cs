@@ -49,6 +49,9 @@ namespace LuHanh.Enemies
 
         protected override IState InitialState => drift;
 
+        // Tha ban sao: co giap. Dang ghi hinh van danh ngat duoc (cach khac che).
+        protected override bool CanStagger() => Machine.Current != release;
+
         protected override void Awake()
         {
             if (echoPrefab) echo = Instantiate(echoPrefab);

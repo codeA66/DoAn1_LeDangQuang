@@ -42,7 +42,11 @@ namespace LuHanh.Enemies
             SetAttackHitbox(false);
 
             hurt = new ActionState(
-                enter: () => { SetAttackHitbox(false); PlayWindupFx(false); SetVelocity(hurtVelocity); PlayHurtAnim(); },
+                enter: () =>
+                {
+                    staggerReadyTime = Time.time + config.hurtTime + config.staggerCooldown;
+                    SetAttackHitbox(false); PlayWindupFx(false); SetVelocity(hurtVelocity); PlayHurtAnim();
+                },
                 // Ham dan luc day lui, khong truot mai.
                 fixedTick: dt => SetHorizontalSpeed(Mathf.MoveTowards(body.linearVelocity.x, 0f, 30f * dt)));
             base.Awake();
@@ -53,8 +57,12 @@ namespace LuHanh.Enemies
 
         protected bool HurtFinished => hurt.Elapsed >= config.hurtTime;
 
-        /// <summary>Vua trung don va duoc phep khung lai. Quai nang tra false luc dang ra don (khong bi ngat don).</summary>
-        protected bool ShouldStagger => HurtRequested && CanStagger();
+        /// <summary>
+        /// Vua trung don va duoc phep khung lai. Quai tra false luc dang ra don (giap, khong bi ngat don);
+        /// vua bi khung xong thi co staggerCooldown giay khong bi khung tiep (chem lien tuc khong khoa duoc).
+        /// </summary>
+        protected bool ShouldStagger => HurtRequested && CanStagger() && Time.time >= staggerReadyTime;
+        float staggerReadyTime;
         protected virtual bool CanStagger() => true;
 
         // ---- Tien ich ----

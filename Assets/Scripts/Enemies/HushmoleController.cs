@@ -8,8 +8,9 @@ namespace LuHanh.Enemies
 {
     /// <summary>
     /// Chuot chui mu (Hushmole): khong nhin, chi nghe. Nghe tieng dong (nguoi choi chay, nhay, roi, dash)
-    /// -> dung nghe (khe do sang, bao truoc) -> chui xuong dat -> dao toi CHO PHAT RA TIENG CUOI CUNG
-    /// (dang dao ma nghe tieng moi thi doi huong) -> dat nut + anh do (bao truoc) -> troi len gay sat thuong.
+    /// -> dung nghe (khe do sang, bao truoc) -> chui xuong dat -> dao bam theo VI TRI NGUOI CHOI (trong tam,
+    /// ke ca dung yen; xa hon thi theo tieng dong) -> dat nut + anh do (bao truoc, khoa vi tri) -> vo bat len
+    /// toi do cao nguoi choi, gay sat thuong suot luc bay len.
     /// Troi len ma nguoi choi o gan va van gay tieng thi luot toi vo; khong thi dung nghe (khoang ho de danh).
     /// Duoi dat: tat collider, khong danh duoc.
     /// </summary>
@@ -34,6 +35,21 @@ namespace LuHanh.Enemies
         [Tooltip("Khoang thoi gian gay sat thuong luc troi len.")]
         [SerializeField] float emergeHitTime = 0.3f;
         [SerializeField] float emergeRecover = 0.4f;
+        [Tooltip("Dang dao ma nguoi choi trong ban kinh = hearRadius x so nay thi bam theo vi tri that (ke ca dung yen).")]
+        [SerializeField] float trackRadiusMul = 1.5f;
+
+        [Header("Phan don khi bi danh")]
+        [Tooltip("Vua bi danh ma nguoi choi ngung danh khoang nay (giay) thi chui xuong dao toi vo len luon.")]
+        [SerializeField] float counterDelay = 0.5f;
+        [Tooltip("Chi phan don neu lan trung don cuoi con trong khoang nay (giay).")]
+        [SerializeField] float counterWindow = 3f;
+
+        [Header("Vo len khi troi")]
+        [Tooltip("Nhay toi cao hon nguoi choi bao nhieu (unit).")]
+        [SerializeField] float popAimAbove = 1.2f;
+        [SerializeField] float popHeightMin = 2.5f;
+        [SerializeField] float popHeightMax = 6f;
+        [SerializeField] float popMaxHorizontal = 6f;
 
         [Header("Luot vo")]
         [Tooltip("Troi len ma nguoi choi trong khoang nay va dang gay tieng thi luot toi vo.")]
@@ -83,7 +99,9 @@ namespace LuHanh.Enemies
 
         bool PlayerInLungeRange() => Mathf.Abs(PlayerDx) <= lungeRange && Mathf.Abs(PlayerDy) < 1.5f;
 
-        protected override bool CanStagger() => !hidden;
+        // Duoi dat, luc bao truoc, vo len va luot vo: co giap (trung don van mat mau, khong bi ngat).
+        protected override bool CanStagger() =>
+            !hidden && Machine.Current != telegraph && Machine.Current != emerge && Machine.Current != lunge;
 
         protected override void BuildStates(StateMachine machine)
         {
@@ -95,15 +113,15 @@ namespace LuHanh.Enemies
             burrow = new ActionState(enter: () => { Stop(); PlayBurrow(); groundY = body.position.y; }, fixedTick: _ => Stop());
             tunnel = new ActionState(
                 enter: () => { SetHidden(true); PlayAnimHash(TunnelHash); },
-                tick: _ => HearPlayer(),
+                tick: _ => TrackPlayer(),
                 fixedTick: TunnelStep);
             telegraph = new ActionState(
                 enter: () => { HoldUnderground(); PlayEmerge(); CameraShake.Kick(0.1f, emergeTelegraph); },
                 fixedTick: _ => HoldUnderground());
             emerge = new ActionState(
-                enter: () => { SetHidden(false); FacePlayer(); SetAttackHitbox(true); },
-                tick: _ => { if (emerge.Elapsed >= emergeHitTime) SetAttackHitbox(false); },
-                fixedTick: _ => Stop(),
+                enter: () => { SetHidden(false); FacePlayer(); SetAttackHitbox(true); PlayAttack(); Pop(); },
+                // Gay sat thuong suot luc bay len, tat khi bat dau roi.
+                tick: _ => { if (emerge.Elapsed >= emergeHitTime && body.linearVelocity.y <= 0f) SetAttackHitbox(false); },
                 exit: () => SetAttackHitbox(false));
             alert = new ActionState(enter: () => { Stop(); PlayIdle(); }, fixedTick: _ => Stop());
             lunge = new ActionState(
@@ -129,13 +147,17 @@ namespace LuHanh.Enemies
 
             machine.AddAnyTransition(hurt, () => ShouldStagger);
             machine.AddTransition(hurt, alert, () => HurtFinished);
+            // Phan don: vua bi danh, nguoi choi ngung tay mot nhip -> chui xuong vo len ngay (khong can nghe tieng).
+            machine.AddTransition(alert, burrow, WantsCounter);
+            machine.AddTransition(walk, burrow, WantsCounter);
+            machine.AddTransition(listen, burrow, WantsCounter);
             machine.AddTransition(walk, listen, HearPlayer);
             machine.AddTransition(listen, burrow, () => listen.Elapsed >= listenTime);
             machine.AddTransition(burrow, tunnel, () => burrow.Elapsed >= burrowTime);
             machine.AddTransition(tunnel, telegraph, () => Mathf.Abs(noiseX - body.position.x) <= 0.3f || tunnel.Elapsed >= maxTunnelTime);
             machine.AddTransition(telegraph, emerge, () => telegraph.Elapsed >= emergeTelegraph);
-            machine.AddTransition(emerge, lunge, () => emerge.Elapsed >= emergeRecover && HearPlayer() && PlayerInLungeRange());
-            machine.AddTransition(emerge, alert, () => emerge.Elapsed >= emergeRecover);
+            machine.AddTransition(emerge, lunge, () => Landed() && HearPlayer() && PlayerInLungeRange());
+            machine.AddTransition(emerge, alert, Landed);
             machine.AddTransition(lunge, alert, () => lunge.Elapsed >= lungeWindup + lungeDashTime + lungeRecover && IsGrounded());
             machine.AddTransition(alert, lunge, () => alert.Elapsed >= 0.3f && HearPlayer() && PlayerInLungeRange());
             machine.AddTransition(alert, listen, () => alert.Elapsed >= 0.3f && HearPlayer());
@@ -155,6 +177,49 @@ namespace LuHanh.Enemies
             if (on) body.position = new Vector2(body.position.x, groundY);
             else ReapplyIgnorePlayer();
         }
+
+        float lastHitTime = -100f;
+
+        protected override void OnHurt(HitInfo hit)
+        {
+            base.OnHurt(hit);
+            lastHitTime = Time.time;
+        }
+
+        bool WantsCounter()
+        {
+            float since = Time.time - lastHitTime;
+            if (since < counterDelay || since > counterWindow || !Player || !Player.gameObject.activeInHierarchy) return false;
+            float r = hearRadius * trackRadiusMul;
+            if ((Player.position - transform.position).sqrMagnitude > r * r) return false;
+            lastHitTime = -100f;
+            noiseX = Player.position.x;
+            return true;
+        }
+
+        /// <summary>Dang dao: nguoi choi trong tam thi bam theo vi tri that; xa hon thi chi nghe tieng nhu cu.</summary>
+        void TrackPlayer()
+        {
+            if (!HearPlayer() && Player && Player.gameObject.activeInHierarchy)
+            {
+                float r = hearRadius * trackRadiusMul;
+                if ((Player.position - transform.position).sqrMagnitude <= r * r) noiseX = Player.position.x;
+            }
+        }
+
+        /// <summary>Troi len bang cu vo: nhay toi cao hon nguoi choi popAimAbove, troi ngang ve phia nguoi choi.</summary>
+        void Pop()
+        {
+            float g = Mathf.Abs(Physics2D.gravity.y) * gravity;
+            if (g <= 0.01f) return;
+            float h = Mathf.Clamp(PlayerDy + popAimAbove, popHeightMin, popHeightMax);
+            float vy = Mathf.Sqrt(2f * g * h);
+            float vx = Mathf.Clamp(PlayerDx / (vy / g), -popMaxHorizontal, popMaxHorizontal);
+            SetVelocity(new Vector2(vx * SpeedScale, vy));
+        }
+
+        // Da nhay len va cham dat lai, them khoang nghi emergeRecover.
+        bool Landed() => emerge.Elapsed >= 0.2f && IsGrounded() && emerge.Elapsed >= emergeRecover;
 
         void HoldUnderground()
         {

@@ -391,9 +391,8 @@ Dựng theo quy trình Team Cherry kể lại (sketch → dựng thô bằng til
 |---|---|---|---|
 | R11 | 164→200, 24→46 | Platform | Rơi từ sàn sập R8 xuống; hố gai 5 ô + bệ đá, Dripfang dưới nhũ đá |
 | R12 | 200→244, 24→46 | Đánh quái | 2 Hushmole + Threadwitch, 2 bệ né |
-| R13 | 244→300, 24→46 | Platform | Hố gai 4 ô, hố gai 22 ô có 3 bệ đá; giếng cuối phòng (x 290→294) rơi xuống R14 |
-| R14 | 280→316, 4→24 | Nghỉ | Ghế (x 304); lối trái sang R15 |
-| R15 | 216→280, −4→16 | Đánh quái | Echoling + 2 Lampsnuffer; bệ đá bậc thang bên phải để leo ngược lên R14; tường trái thông vào R5 |
+| R13 | 244→300, 24→46 | Platform | 3 bệ đá; thiết bị phá được trên bệ cao (x 273) — phá xong thì tường đá ở R8 (x 195) sập |
+| R15 | 216→280, −4→16 | Đánh quái | Echoling + 2 Lampsnuffer; chỉ thông với R5 (R14 đã xoá) |
 
 ## Tự dựng thêm phòng cho Level3 (vùng đất màn 2)
 
@@ -422,3 +421,15 @@ Dựng theo quy trình Team Cherry kể lại (sketch → dựng thô bằng til
 10. **Ctrl + S.** Collider tilemap tự tạo lại khi lưu. Bấm Play thử; nếu xuất hiện ở ghế cũ thì xoá file lưu (LuHanh → Save → Xoa file luu).
 
 **Lỗi hay gặp:** tường tàng hình / rơi xuyên đất → LuHanh → Level → Tao lai collider tilemap rồi lưu. Đất sáng loá, không có lớp đen → quên bước 3. Camera lộ phòng bên → khung Room nhỏ hơn 29 × 16 hoặc hai phòng hở nhau.
+
+**Mở rộng R16–R20** (nối tường phải R10, khu sau bức tường sập R8):
+
+| Phòng | Khung (x, y) | Loại | Nội dung |
+|---|---|---|---|
+| R16 | 296→328, 46→96 | Thang máy | Giếng thang máy: chém cần trên bệ để lên/xuống; cần gọi ở đáy (x 302) và ở lối trên (x 320) |
+| R17 | 328→392, 84→104 | Platform (tối) | Hố gai 30 ô, 4 bệ cao thấp (bậc 5 ô cần W + dash), 2 Dripfang phục kích trên bệ cao, Lampsnuffer |
+| R18 | 392→424, 84→104 | Nghỉ | Ghế (x 406) |
+| R19 | 424→468, 84→116 | Leo + đánh | 5 bệ zigzag đi lên (bậc 4 ô cần W + dash), Echoling thả bản sao đuổi, Threadwitch + 2 Hushmole dưới đáy |
+| R20 | 468→532, 104→124 | Câu đố bắn cầu | Hố gai 26 ô có 3 bệ; bắn cầu qua khe cao 1 ô ở chân tường phải phá thiết bị trong hốc → tường sập mở lối ra cao (y 114) |
+
+- **Thang máy:** kéo `Prefabs/Level/Elevator`, đặt bệ (`Platform`) ở điểm dưới, nhập `Bottom Y` / `Top Y` (toạ độ tâm bệ = mặt sàn − 0,3). Cần gọi `Prefabs/Level/ElevatorCallSwitch` ở mỗi đầu: kéo Elevator vào ô `Elevator`, chọn `Mode` CallBottom / CallTop.

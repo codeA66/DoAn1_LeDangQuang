@@ -657,16 +657,23 @@ MonoBehaviour:
   windupFx: {fileID: 1601212841414531210}
   hearRadius: 7
   noiseSpeed: 0.5
-  listenTime: 0.6
+  listenTime: 0.35
   alertTime: 1.2
   burrowTime: 0.67
-  tunnelSpeed: 12
+  tunnelSpeed: 14
   maxTunnelTime: 4
-  emergeTelegraph: 0.5
+  emergeTelegraph: 0.35
   emergeHitTime: 0.3
-  emergeRecover: 0.4
+  emergeRecover: 0.25
+  trackRadiusMul: 1.5
+  counterDelay: 0.5
+  counterWindow: 3
+  popAimAbove: 1.2
+  popHeightMin: 2.5
+  popHeightMax: 6
+  popMaxHorizontal: 6
   lungeRange: 2.5
-  lungeWindup: 0.3
+  lungeWindup: 0.2
   lungeDashTime: 0.3
   lungeMaxDistance: 5.5
   lungeHop: 3
