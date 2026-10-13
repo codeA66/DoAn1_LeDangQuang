@@ -357,3 +357,9 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 - Tile: vẽ bằng `Art/Tiles/BuriedDepths/RT_Earth` (RuleTile). Platform: `Prefabs/Platform/Platform_Stone_*`. Nền: thay `Background` trong LevelEssentials bằng `Prefabs/Background_LongDat` (tắt Background cũ, đặt Background_LongDat cùng chỗ).
 - Quái: `Prefabs/Enemies/Beetle|EarthGolem|RootCrawler|Scorpion|Worm`, thông số ở `Settings/Enemies/<Ten>.asset`.
 - Ánh sáng: tham khảo `Scenes/Test/Test_LongDat` (cột sáng khe trần, đèn dẫn đường, tiền cảnh tối, DustMotes, `DamageLightDip`). Không dùng ánh sáng cam.
+
+## Checkpoint và vật phẩm kỹ năng (màn 2)
+
+- **Ghế checkpoint:** kéo `Assets/Prefabs/Level/Checkpoint_Bench.prefab`, chân ghế chạm mặt đất. Đặt ở đầu khu vực mới hoặc trước phòng khó / phòng boss; chừa khoảng trống ±1,6 ô hai bên để đứng bấm E. Ngồi ghế làm quái hồi sinh, nên không đặt ngay giữa phòng khóa.
+- **Vật phẩm kỹ năng:** `Assets/Prefabs/Level/SkillPickup_WallCling.prefab` (bám tường), `SkillPickup_OrbShot.prefab` (bắn cầu). Đặt trước đoạn đường cần kỹ năng đó (tường cao cần nhảy tường, quái ở xa / sau khe cần bắn).
+- Chi tiết thông số và cách hoạt động: TUTORIAL.md mục 9e.

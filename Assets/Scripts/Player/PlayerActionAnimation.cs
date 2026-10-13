@@ -33,8 +33,18 @@ namespace LuHanh.Player
         Sequence death = new Sequence { duration = 0.6f };
         [SerializeField, Tooltip("Tu lai khi hoi sinh.")]
         Sequence respawn = new Sequence { duration = 0.5f };
+        [SerializeField, Tooltip("Ban cau khi dung / chay.")]
+        Sequence cast = new Sequence { duration = 0.4f };
+        [SerializeField, Tooltip("Ban cau tren khong.")]
+        Sequence castAir = new Sequence { duration = 0.4f };
+        [SerializeField, Tooltip("Ngoi xuong ghe checkpoint.")]
+        Sequence sitDown = new Sequence { duration = 0.45f };
+        [SerializeField, Tooltip("Ngoi nghi (lap cho toi khi dung day).")]
+        Sequence sit = new Sequence { duration = 1.2f };
+        [SerializeField, Tooltip("Dung day khoi ghe.")]
+        Sequence standUp = new Sequence { duration = 0.45f };
 
-        enum ActionKind { None, Attack, Land, Death, Respawn }
+        enum ActionKind { None, Attack, Land, Death, Respawn, Cast, SitDown, Sit, StandUp }
         PlayerController controller;
         Sequence active;
         ActionKind kind;
@@ -57,6 +67,20 @@ namespace LuHanh.Player
                 return false;
             return Begin(land, ActionKind.Land);
         }
+
+        /// <summary>Dong tac ban cau. Bi danh / dash thi ngat nhu don chem.</summary>
+        public bool PlayCast(bool air)
+        {
+            if (!controller || controller.IsHurt || controller.IsDashing ||
+                kind == ActionKind.Death || kind == ActionKind.Respawn) return false;
+            return Begin(air ? castAir : cast, ActionKind.Cast);
+        }
+
+        /// <summary>Ngoi ghe: ngoi xuong roi tu chuyen sang ngoi nghi lap cho toi khi goi <see cref="PlayStandUp"/>.</summary>
+        public void PlaySit() => Begin(sitDown, ActionKind.SitDown);
+
+        /// <summary>Dung day khoi ghe. Tra ve thoi luong dong tac (giay).</summary>
+        public float PlayStandUp() => Begin(standUp, ActionKind.StandUp) ? standUp.duration : 0f;
 
         public void PlayDeath(float seconds) => Begin(death, ActionKind.Death, true, seconds);
         public void PlayRespawn(float seconds) => Begin(respawn, ActionKind.Respawn, true, seconds);
@@ -85,7 +109,7 @@ namespace LuHanh.Player
         void LateUpdate()
         {
             if (kind == ActionKind.None || !visual) return;
-            if ((kind == ActionKind.Attack || kind == ActionKind.Land) &&
+            if ((kind == ActionKind.Attack || kind == ActionKind.Land || kind == ActionKind.Cast) &&
                 (!controller.enabled || controller.IsHurt || controller.IsDashing ||
                  (kind == ActionKind.Land && (!controller.IsGrounded || controller.IsMoving))))
             {
@@ -93,6 +117,18 @@ namespace LuHanh.Player
                 return;
             }
             float elapsed = (unscaled ? Time.unscaledTime : Time.time) - started;
+            if (kind == ActionKind.SitDown && elapsed >= duration)
+            {
+                Begin(sit, ActionKind.Sit);
+                elapsed = 0f;
+            }
+            if (kind == ActionKind.Sit)
+            {
+                // Ngoi nghi lap vo han.
+                int loop = Mathf.FloorToInt(elapsed / duration * active.frames.Length) % active.frames.Length;
+                visual.sprite = active.frames[loop];
+                return;
+            }
             if (elapsed >= duration && kind != ActionKind.Death && kind != ActionKind.Respawn)
             {
                 Cancel();

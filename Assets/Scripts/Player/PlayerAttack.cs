@@ -69,6 +69,8 @@ namespace LuHanh.Player
         HitEffect hitEffect;
 
         public bool IsAttacking => activeTimer > 0f;
+        /// <summary>Moi lan nhat chem trung mot quai (nap thanh nang luong ban).</summary>
+        public event System.Action EnemyHit;
         void Awake()
         {
             controller = GetComponent<PlayerController>();
@@ -309,6 +311,7 @@ namespace LuHanh.Player
             // Diem tren collider muc tieu gan tam vung chem nhat = cho loe sang.
             if (hitEffect) hitEffect.Play(col.ClosestPoint(centre), direction);
             ReactToHit();
+            if (col.GetComponentInParent<LuHanh.Enemies.EnemyBase>()) EnemyHit?.Invoke();
         }
 
         Vector2 HitDirection()

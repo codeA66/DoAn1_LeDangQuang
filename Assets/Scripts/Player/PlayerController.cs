@@ -44,6 +44,8 @@ namespace LuHanh.Player
         FallState fall;
         DashState dash;
         HurtState hurt;
+        WallSlideState wallSlide;
+        WallJumpState wallJump;
         bool hurtRequested;
 
         public bool IsMoving => input != null && input.HasHorizontal;
@@ -58,6 +60,9 @@ namespace LuHanh.Player
         /// <summary>-1 dang giu xuong, 1 dang giu len, 0 khong giu.</summary>
         public int MoveY => input != null ? input.MoveY : 0;
         public bool IsHurt => machine != null && machine.Current == hurt;
+        public bool IsWallSliding => machine != null && machine.Current == wallSlide;
+        /// <summary>Tuong dang bam: 1 phai, -1 trai (chi co nghia khi IsWallSliding).</summary>
+        public int WallDir => wallSlide != null ? wallSlide.WallDir : 0;
 
         /// <summary>Ban ra moi khi doi trang thai: (cu, moi). Hieu ung, am thanh nghe o day.</summary>
         public event System.Action<IState, IState> StateChanged;
@@ -106,12 +111,17 @@ namespace LuHanh.Player
             fall = new FallState(context);
             dash = new DashState(context);
             hurt = new HurtState(context);
+            wallSlide = new WallSlideState(context);
+            wallJump = new WallJumpState(context, () => wallSlide.WallDir);
 
             // Bi danh trung de len moi thu khac.
             machine.AddAnyTransition(hurt, () => hurtRequested);
 
             // Dash uu tien cao nhat, giong Celeste xet dash truoc nhay.
             machine.AddAnyTransition(dash, () => machine.Current != hurt && context.WantsDash && context.CanDash);
+
+            // Dang bam tuong ma bam nhay: dap tuong bat ra (xet truoc nhay thuong).
+            machine.AddAnyTransition(wallJump, () => machine.Current == wallSlide && context.WantsJump);
 
             // Nhay: dung o dau cung nhay duoc mien la con coyote va con lenh trong dem,
             // tru luc dang dash. Nho vay bam nhay luon phan hoi ngay, khong tre frame nao.
@@ -141,6 +151,14 @@ namespace LuHanh.Player
             machine.AddTransition(jump, run, () => ground.IsGrounded && context.VerticalVelocity <= 0f && input.HasHorizontal);
             machine.AddTransition(jump, idle, () => ground.IsGrounded && context.VerticalVelocity <= 0f && !input.HasHorizontal);
 
+            // Bam tuong (ky nang mo khoa): dang roi, sat tuong, bam phim ve phia tuong.
+            machine.AddTransition(fall, wallSlide, CanWallSlide);
+            machine.AddTransition(wallJump, wallSlide, () => context.VerticalVelocity <= 0f && CanWallSlide());
+            machine.AddTransition(wallSlide, run, () => ground.IsGrounded && input.HasHorizontal);
+            machine.AddTransition(wallSlide, idle, () => ground.IsGrounded && !input.HasHorizontal);
+            machine.AddTransition(wallSlide, fall, () => context.WallDir == 0 || input.MoveX == -wallSlide.WallDir);
+            machine.AddTransition(wallJump, fall, () => context.VerticalVelocity <= 0f);
+
             // Qua lai giua dung va chay
             machine.AddTransition(idle, run, () => input.HasHorizontal);
             machine.AddTransition(run, idle, () => !input.HasHorizontal);
@@ -158,9 +176,14 @@ namespace LuHanh.Player
         {
             // Cam bien chay truoc: trang thai va luat chuyen deu doc ket qua cua frame nay.
             ground.FixedTick();
+            context.CheckWall();
             context.TickDash(Time.fixedDeltaTime, dashing: machine.Current == dash);
             machine.FixedTick(Time.fixedDeltaTime);
         }
+
+        bool CanWallSlide() =>
+            PlayerSkills.Has(Skill.WallCling) && !ground.IsGrounded && !context.NearGround && context.VerticalVelocity <= 0f &&
+            context.WallDir != 0 && input.MoveX == context.WallDir;
 
         /// <summary>Nhan toc do chay toi da (dang Shadow). 1 = binh thuong.</summary>
         public void SetRunMultiplier(float multiplier) => mover.SpeedMultiplier = multiplier;

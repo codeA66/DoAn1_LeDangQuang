@@ -22,6 +22,7 @@ Mỗi mục có **Làm gì** (thao tác) và **Vì sao** (lý do kỹ thuật).
    - 9b. Màn chơi và chuyển màn (kiểu Soul Knight)
    - 9c. Phòng kiểu Celeste, camera theo phòng, Rule Tile
    - 9d. Tông màu theo từng màn (màn 2: Rêu đá ẩm)
+   - 9e. Kỹ năng mở khóa, checkpoint, lưu game
 10. [Lỗi hay gặp và cách xử lý](#10-lỗi-hay-gặp-và-cách-xử-lý)
 
 > Dựng màn mới từng bước + thiết kế phòng kiểu Hollow Knight: xem `HUONG_DAN_BUILD_LEVEL.md`.
@@ -2863,6 +2864,33 @@ Mỗi **màn** (chủ đề, không phải tên scene LevelX) có một tông á
 
 
 
+## 9e. Kỹ năng mở khóa, checkpoint, lưu game (màn 2)
+
+### Lưu game — `Core/SaveGame.cs`
+- File JSON `save.json` trong `Application.persistentDataPath` (Windows: `%USERPROFILE%/AppData/LocalLow/DefaultCompany/Shadow Knight`). Lưu: scene + vị trí ghế ngồi cuối, kỹ năng đã mở (`wallCling`, `orbShot`). Shadow vẫn lưu bằng PlayerPrefs như cũ.
+- Chơi lại từ đầu: menu **LuHanh → Save → Xoa file luu (choi lai tu dau)**.
+
+### Kỹ năng — `Player/PlayerSkills.cs` + vật phẩm `Level/SkillPickup.cs`
+- Prefab vật phẩm: `Prefabs/Level/SkillPickup_WallCling.prefab`, `SkillPickup_OrbShot.prefab` (trigger, chạm là mở khóa + lưu + hiện chữ hướng dẫn 4 s). Hình vật phẩm hiện tạm dùng frame quả cầu (Orb / OrbShadow) — chưa có art riêng.
+- Đặt vật phẩm: kéo prefab vào scene, chân prefab chạm mặt đất.
+
+### Bám tường + nhảy tường — `States/WallSlideState.cs`, `States/WallJumpState.cs`
+- Đang rơi, sát tường (không tính platform một chiều), bấm phím về phía tường → trượt chậm; bấm nhảy → bật ra phía ngược tường. Giữ phím về tường thì bám lại → leo lên bằng nhảy tường liên tục (như Hollow Knight). Chạm tường hồi lượt dash. Không bám khi chân đã cách đất < 0,4 ô.
+- Thông số trong `Settings/PlayerMovementConfig.asset`, nhóm **Bam tuong**: `wallSlideSpeed` 3, `wallJumpHSpeed` 9, `wallJumpVRatio` 0,95, `wallJumpLockTime` 0,16 s, `wallCheckDistance` 0,08.
+- Animation: state `player_wallslide` / `player_walljump` trong `Character/Player/AC_player.controller` (clip cùng thư mục). Hình WallSlide vẽ tường bên phải, mặt quay ra ngoài; pivot frame WallSlide = (0,883; 0,031) để chỗ tay chạm tường trùng mép collider (đổi bề ngang collider người chơi thì tính lại: pivotX = (250 − nửa bề ngang × 80) / 256).
+
+### Bắn cầu năng lượng (phím K) — `Player/PlayerOrbShot.cs`, `Combat/OrbProjectile.cs`, `Player/PlayerEnergy.cs`
+- Chỉ bắn **ngang** theo hướng nhìn (đang bám tường thì bắn ra phía ngoài tường). Đạn bay 16 ô/s, xa 11 ô, **xuyên quái** (mỗi con trúng 1 lần), chạm đất/tường thì nổ. Sát thương 2 (×2 khi Shadow). Đang **Shadow** thì quả cầu to gấp đôi (bộ frame OrbShadow, bán kính trúng 0,55).
+- Năng lượng: thanh 6 nạc (HUD, dưới hàng máu — `UI/EnergyBarUI.cs`, object `HUD/EnergyBar`, vị trí (221; −150), nạc 14 px), **chém trúng quái +1**, mỗi phát tốn **2**, hồi chiêu 0,4 s; chết thì về 0. Đủ năng lượng thì các nạc nhấp nháy.
+- Prefab đạn: `Prefabs/Projectiles/PlayerOrb.prefab` (Sprite-Unlit ×1,6 + vệt sáng TrailRenderer + đèn xanh ngọc). Lúc bắn sinh `Prefabs/Fx/OrbCastWave.prefab` (chùm tia gai + sóng dựng đứng + vòng ngoài + bụi sáng, `CastShockwave`), rung camera / khựng hình chỉnh ở `PlayerOrbShot` (castShake, castHitStop). Thông số: component `OrbProjectile` trên prefab; năng lượng: `PlayerEnergy` trên Player; phím / độ trễ / điểm bắn: `PlayerOrbShot` trên Player.
+- Input: action `Shoot` (K) và `Interact` (E) thêm vào `Character/Player/PlayerInputAction.inputactions`.
+
+### Checkpoint (ghế kiểu Hollow Knight) — `Level/Checkpoint.cs`, prefab `Prefabs/Level/Checkpoint_Bench.prefab`
+- Đứng gần ghế (±1,6 ô) hiện chữ **"E - Rest"**; bấm **E**: ngồi xuống (SitDown → Sit lặp), **hồi đầy máu**, đặt điểm hồi sinh, **lưu game**, **quái đã chết ở các phòng khác hồi sinh** (giống Hollow Knight: quái trong phòng đang ngồi ghế và quái của phòng khóa không hồi sinh; quái còn sống giữ nguyên — `RespawnManager.RespawnDefeatedEnemies`). Bấm trái/phải/nhảy để đứng dậy (StandUp).
+- Ghế: BenchIdle (chưa ngồi) → BenchActive (vừa ngồi, tinh thể sáng dần) → BenchLit (đã kích hoạt). Đèn tinh thể xanh ngọc `#B8FFF0` (`CrystalLight`, 0,35 → 1,1).
+- Tắt game mở lại: người chơi xuất hiện ở ghế đã ngồi cuối (nếu cùng scene).
+- Đặt ghế: kéo prefab, chân ghế chạm mặt đất; chỗ ngồi = gốc prefab (`seatOffset` 0).
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3116,3 +3144,14 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 169. Hiệu ứng báo đòn `WindupFx` của 4 quái `Man2` đổi tím → đỏ cam #EA6547 (nhóm Nguy hiểm): material mới `Shaders/M_WindupRed.mat` (shader `LuHanh/SpriteFlash`, vẽ khối màu phẳng theo hình frame VFX), SpriteRenderer color trắng alpha 0,85. Nhân màu vào M_SpriteAdditive không đủ vì ảnh VFX gốc tím đậm.
 170. Quái Echoling: `EcholingController` (không gây sát thương khi chạm; lơ lửng cách người chơi 4–6 ô, cao 2 ô; thấy người chơi trong 8 ô thì Record 2 s ghi vị trí + tư thế mỗi bước vật lý, bị đánh thì ngắt; Release tha bản sao; hồi chiêu 4 s, mỗi lúc 1 bản sao; chết thì bản sao tan) và `EchoGhost` (bản sao bóng đi lại đúng đường từ chỗ bắt đầu ghi, tư thế stand/run/jump/slash; thân chạm gây 1 máu, đoạn người chơi chém thì bật `SlashHitbox` 1 máu; không có IDamageable nên đòn chém đi xuyên). Tạo `Character/Enemies/Echoling` (echoling_idle/record/release/hurt/die + AC_echoling; echo_stand/run/jump/slash + AC_echo; 12 fps), `Settings/Enemies/Echoling.asset` (2 máu, bay 2,5), `Prefabs/Enemies/Man2/Echo.prefab`, `Prefabs/Enemies/Man2/Echoling.prefab` (bỏ Hitbox, có viền + đèn + WindupFx đỏ như quái màn 2; thân đo theo physics shape frame Idle). Frame Echoling đổi Full Rect. `Test_LongDat`: đặt Echoling tại (62; 2,5). Đã test trong Play: ghi và phát lại bản sao chạy đúng.
 171. `Test_LongDat`: dời Dripfang từ dưới trần cao (≈18 ô, ngoài khung camera) xuống dưới bệ `Platform_Stone_Pipe` (x = 29, mặt dưới bệ y = 6,2). Không sửa code: `DripfangController` bám vào bất cứ collider layer Ground nào ngay phía trên chỗ đặt, kể cả platform prefab. Đã test trong Play: bám đúng mặt dưới bệ, người chơi đi vào dưới thì tỉnh, rơi, cắm sàn y = -0,31 và bật bệ đứng.
+172. Thêm `Assets/Art/Generated/Player/NewSkills/README.md`: đặc tả art cho AI vẽ — bám tường (WallSlide 8, WallJump 6), bắn cầu (Cast 8, CastAir 8; đạn Orb/OrbHit/OrbShadow/OrbShadowHit 8 frame, xanh ngọc, bản Shadow to gấp đôi có khói tím đen), ghế checkpoint kiểu Hollow Knight (BenchIdle/BenchActive/BenchLit 8 frame, ghế đá rêu + tinh thể xanh ngọc) và nhân vật ngồi (SitDown 6, Sit 8, StandUp 6). Tổng 106 frame. Quy cách đo từ art nhân vật hiện có (PPU 80, cao ~136 px).
+173. Sửa lỗi giữ Y không biến Shadow (dù thanh đầy và phím vào bình thường): `PlayerShadow` cộng dồn `hold` qua `SetHold`, hàm này bỏ qua thay đổi rất nhỏ (`Mathf.Approximately`) nên `hold` có thể kẹt ở 0,99999994 và điều kiện `hold >= 1` không bao giờ đúng. Đổi sang so bằng giá trị vừa cộng (`next >= 1`). Lỗi phụ thuộc tốc độ khung hình nên lúc được lúc không.
+174. Kỹ năng mới + checkpoint (màn 2), xem mục 9e: lưu game JSON `SaveGame`; `PlayerSkills` + `SkillPickup` (mở khóa bằng vật phẩm); bám tường + nhảy tường (`WallSlideState`, `WallJumpState`, thông số mới trong PlayerMovementConfig, state animator `player_wallslide`/`player_walljump`); bắn cầu phím K (`PlayerOrbShot`, `OrbProjectile`, prefab `PlayerOrb`; bản Shadow to gấp đôi) với thanh năng lượng 6 nạc (`PlayerEnergy`, `EnergyBarUI` trong HUD; chém trúng quái +1, bắn tốn 2; `PlayerAttack.EnemyHit`); ghế checkpoint (`Checkpoint`, prefab `Checkpoint_Bench`: E ngồi → hồi đầy máu, lưu, quái hồi sinh; tắt game mở lại xuất hiện ở ghế); `PlayerActionAnimation` thêm Cast/CastAir/SitDown/Sit (lặp)/StandUp; `RespawnManager.ResetAllExcept`. Input thêm `Shoot` (K), `Interact` (E). Import 106 frame NewSkills (PPU 80, Full Rect). `Test_LongDat`: đặt 2 vật phẩm (x 4, 6) và ghế (x 9,5) trong `Checkpoints_KyNang`. Đã test trong Play: nhặt vật phẩm mở khóa, bám tường trượt 3 ô/s, nhảy tường (9; 12,5), bắn trúng Echoling −2 máu, ngồi ghế hồi 1→5 máu + lưu, đứng dậy, mở lại Play xuất hiện ở ghế.
+175. Sửa config 5 quái màn 2 còn tên state chép từ Scorpion (`scorpion_burrow` / `scorpion_emerge`) → `burrow` / `emerge`: trước đó Hushmole không chạy animation chui xuống / trồi lên.
+176. Sửa nhân vật lấn vào tường khi bám tường: art WallSlide vẽ tay/chân chạm tường ở x = 250/256 px (sát mép phải khung) nhưng pivot ở giữa khung, nên hình lệch về phía tường ~1,5 ô. Đổi pivot 8 frame WallSlide thành (0,883; 0,031) để chỗ chạm tường nằm đúng mép collider người chơi (nửa bề ngang 0,3 ô). WallJump giữ pivot giữa (art nằm giữa khung).
+177. HUD: thanh năng lượng (`HUD/EnergyBar`) bị chồng lên hàng mặt nạ máu → dời xuống dưới hàng máu (anchoredPosition (221; −150), hàng máu kéo từ −62 xuống −134), nạc nhỏ lại 14 px, cách nhau 10 px. Thanh chỉ hiện sau khi nhặt vật phẩm Spirit Orb.
+178. Checkpoint làm theo Hollow Knight (wiki: ghế "respawn defeated enemies, excluding enemies in the current room"): bỏ `RespawnManager.ResetAllExcept`, thay bằng `RespawnDefeatedEnemies(phòng hiện tại)` — chỉ hồi sinh quái đã chết (object đã tắt), bỏ qua quái có phòng gốc là phòng đang ngồi ghế và quái do phòng khóa quản lý (`RoomEncounter.Manages`). Quái còn sống giữ nguyên. Chết vẫn đặt lại toàn bộ như cũ.
+179. Hiệu ứng ghế checkpoint: hạt sáng xanh ngọc bay lên từ tinh thể (`CrystalMotes`, 1 hạt/s khi chưa ngồi, 7 hạt/s khi đã kích hoạt); lúc vừa ngồi: vòng hạt bung ra (`SitBurst`, 40 hạt), đèn tinh thể lóe rộng (bán kính 3,5 → 9, cường độ 2,6, thu về trong 0,7 s), chớp sáng toàn màn hình (#B8FFF0, alpha 0,28, 0,5 s), chữ "Game Saved" góc dưới phải 2,2 s; hồi máu từng mặt nạ (0,22 s/mặt nạ) thay vì đầy một lúc — `Health.Heal`. HUD: mặt nạ hồi máu = các mảnh vỡ bay lại ghép thành mặt nạ (ngược với hiệu ứng vỡ khi mất máu; `HealthUI.Assemble`, 0,2 s, mảnh xuất phát cách tâm 1,3 lần bề rộng mặt nạ), ghép xong mặt nạ mới đầy và nảy lên.
+180. Hiệu ứng bắn cầu theo mẫu Hollow Knight (Vengeful Spirit): quả cầu to hơn (Visual ×1,6, bán kính trúng 0,45 / Shadow 0,8), vệt sáng kéo phía sau (TrailRenderer 0,16 s, M_GlowSoft), đèn mạnh hơn (1,2, bán kính 2,4). Lúc bắn: prefab `Prefabs/Fx/OrbCastWave` (`Effects/CastShockwave.cs`): chùm tia gai sáng (`BurstSpikes.png`), sóng dựng đứng mép xù và vòng ngoài mờ (`ShockwaveRing.png`, ảnh tạo bằng code trong `Art/Generated/Player/NewSkills/Fx`), 26 hạt bụi sáng bung ra; rung camera 0,12 và khựng hình 0,03 s; bản Shadow sóng to ×1,5.
+181. README art `Player/NewSkills` thêm mục 10: đặc tả hiệu ứng pixel art vẽ tay theo frame (CastBurst, CastWave, OrbTrail, OrbImpactBig, BenchActivate, HealShard + bản Shadow) để thay hiệu ứng tạo bằng code (gradient mịn, lạc tông với pixel art).
+182. README art `Player/NewSkills` mục 10 thêm `OrbBig` (192×128, lõi cao ~110 px) và `OrbBigShadow` (256×192, ~160 px) thay quả cầu `Orb` cũ: đo prefab thật quả cầu chỉ cao 0.86 u so với nhân vật 1.7 u, lại đang phóng ×1.6 nên pixel lệch nhân vật. Art mới dùng scale 1, PPU 80.

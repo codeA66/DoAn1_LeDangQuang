@@ -25,6 +25,24 @@ namespace LuHanh.Core
 
         public static void Unregister(IResettable item) => Resettables.Remove(item);
 
+        /// <summary>
+        /// Ngoi ghe checkpoint (theo Hollow Knight: "hoi sinh quai da bi giet, tru quai trong phong hien tai"):
+        /// chi hoi sinh quai DA CHET (object da tat), bo qua quai co phong goc la <paramref name="currentRoom"/>
+        /// va quai do phong khoa (RoomEncounter) quan ly. Quai con song giu nguyen.
+        /// </summary>
+        public static void RespawnDefeatedEnemies(LuHanh.Level.Room currentRoom)
+        {
+            var encounters = FindObjectsByType<LuHanh.Level.RoomEncounter>(FindObjectsInactive.Include);
+            for (int i = Resettables.Count - 1; i >= 0; i--)
+            {
+                if (!(Resettables[i] is LuHanh.Enemies.EnemyBase enemy) || enemy.gameObject.activeSelf) continue;
+                if (currentRoom && LuHanh.Level.Room.At(enemy.StartPosition) == currentRoom) continue;
+                bool managed = false;
+                foreach (var e in encounters) if (e.Manages(enemy)) { managed = true; break; }
+                if (!managed) enemy.ResetState();
+            }
+        }
+
         [Tooltip("Lop phu den toan man hinh (alpha 0 luc binh thuong).")]
         [SerializeField] CanvasGroup fade;
         [SerializeField] float fadeOutTime = 0.6f;

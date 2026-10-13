@@ -141,8 +141,11 @@ namespace LuHanh.Player
             bool pressed = action != null && action.IsPressed();
             if (!pressed || !IsFull) { SetHold(0f); return; }
 
-            SetHold(hold + Time.deltaTime / config.holdTime);
-            if (hold >= 1f) Begin();
+            // So bang gia tri vua cong, khong doc lai hold: SetHold bo qua thay doi rat nho (Approximately)
+            // nen hold co the ket o 0.99999994 va khong bao gio dat 1.
+            float next = hold + Time.deltaTime / config.holdTime;
+            SetHold(next);
+            if (next >= 1f) Begin();
         }
 
         void Begin()

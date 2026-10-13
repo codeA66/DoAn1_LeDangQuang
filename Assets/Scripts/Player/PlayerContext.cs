@@ -152,6 +152,55 @@ namespace LuHanh.Player
                 DashesLeft = Config.maxDashes;
         }
 
+        // ---- Bam tuong ----
+
+        /// <summary>1 = tuong ben phai, -1 = ben trai, 0 = khong sat tuong. Cap nhat moi buoc vat ly.</summary>
+        public int WallDir { get; private set; }
+
+        /// <summary>Do tuong hai ben bang hop thu nho theo chieu doc (khong tinh platform mot chieu).</summary>
+        /// <summary>Chan gan sat mat dat (khong cho bam tuong ngay tren san - tranh nhay qua lai Run/Fall/WallSlide).</summary>
+        public bool NearGround { get; private set; }
+
+        public void CheckWall()
+        {
+            WallDir = 0;
+            NearGround = false;
+            if (Collider == null) return;
+            var b = Collider.bounds;
+            // Tia thang xuong tu giua chan (hop rong se cham luon tuong dang ap sat).
+            NearGround = Physics2D.Raycast(new Vector2(b.center.x, b.min.y + 0.05f), Vector2.down, 0.4f, Config.groundLayers);
+            var size = new Vector2(b.size.x * 0.5f, b.size.y * 0.6f);
+            int mask = Config.groundLayers;
+            for (int dir = -1; dir <= 1; dir += 2)
+            {
+                var hit = Physics2D.BoxCast(b.center, size, 0f, new Vector2(dir, 0f), b.extents.x * 0.5f + Config.wallCheckDistance, mask);
+                if (!hit.collider || hit.collider.usedByEffector || Mathf.Abs(hit.normal.x) < 0.9f) continue;
+                WallDir = dir;
+                return;
+            }
+        }
+
+        /// <summary>Dap tuong bat ra phia nguoc tuong; giu nhay van keo dai nhu nhay thuong.</summary>
+        public void ExecuteWallJump(int wallDir)
+        {
+            var v = new Vector2(-wallDir * Config.wallJumpHSpeed, Config.jumpSpeed * Config.wallJumpVRatio);
+            Body.linearVelocity = v;
+            varJumpSpeed = v.y;
+            varJumpTimer = Config.varJumpTime;
+            Input.ConsumeJump();
+            Ground.ConsumeCoyote();
+        }
+
+        /// <summary>Truot tuong: trong luc binh thuong nhung khong roi nhanh hon wallSlideSpeed.</summary>
+        public void ApplyWallSlide(float deltaTime)
+        {
+            var v = Body.linearVelocity;
+            v.x = 0f;
+            v.y = Mathf.Max(Mathf.MoveTowards(v.y, -Config.wallSlideSpeed, Config.gravity * deltaTime), -Config.wallSlideSpeed);
+            Body.linearVelocity = v;
+            currentMaxFall = Config.maxFall;
+        }
+
         // ---- Corner correction ----
 
         /// <summary>

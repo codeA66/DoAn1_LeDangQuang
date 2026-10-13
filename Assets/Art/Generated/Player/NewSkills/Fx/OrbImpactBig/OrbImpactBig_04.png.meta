@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 238758bef685700448229b306da1fb86
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1466515113425347891
+    second: OrbImpactBig_04_0
+  - first:
+      213: -5432698926748509181
+    second: OrbImpactBig_04_1
+  - first:
+      213: 4939165933356233878
+    second: OrbImpactBig_04_2
+  - first:
+      213: -8101486758807504892
+    second: OrbImpactBig_04_3
+  - first:
+      213: 2946974012041104162
+    second: OrbImpactBig_04_4
+  - first:
+      213: 7841794059704373766
+    second: OrbImpactBig_04_5
+  - first:
+      213: -5624829180267965602
+    second: OrbImpactBig_04_6
+  - first:
+      213: 6835993472401988860
+    second: OrbImpactBig_04_7
+  - first:
+      213: 607992754228104443
+    second: OrbImpactBig_04_8
+  - first:
+      213: 5167566402904831962
+    second: OrbImpactBig_04_9
+  - first:
+      213: -4630465861154199853
+    second: OrbImpactBig_04_10
+  - first:
+      213: 1522831079900205123
+    second: OrbImpactBig_04_11
+  - first:
+      213: -4853768911994481681
+    second: OrbImpactBig_04_12
+  - first:
+      213: -5428577315081208127
+    second: OrbImpactBig_04_13
+  - first:
+      213: 9101027619174234482
+    second: OrbImpactBig_04_14
+  - first:
+      213: 6966329504902782932
+    second: OrbImpactBig_04_15
+  - first:
+      213: 3775668588503961326
+    second: OrbImpactBig_04_16
+  - first:
+      213: -5878943751396209596
+    second: OrbImpactBig_04_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OrbImpactBig_04_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 122
+        width: 103
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca5a863644e5abe0800000000000000
+      internalID: -1466515113425347891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 200
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c528b1c1d2b94b0800000000000000
+      internalID: -5432698926748509181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 179
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 694b8606f317b8440800000000000000
+      internalID: 4939165933356233878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_3
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 178
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4087fb467bcb19f80800000000000000
+      internalID: -8101486758807504892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_4
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 146
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22b840e0041c5e820800000000000000
+      internalID: 2946974012041104162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 113
+        width: 73
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60292725626a3dc60800000000000000
+      internalID: 7841794059704373766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_6
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 155
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5350e389a790f1b0800000000000000
+      internalID: -5624829180267965602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 118
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfcd86138d35ede50800000000000000
+      internalID: 6835993472401988860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_8
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 117
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc07cd4036007800800000000000000
+      internalID: 607992754228104443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_9
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 43
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad7b266b342e6b740800000000000000
+      internalID: 5167566402904831962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_10
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 100
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d6a45125d74dbfb0800000000000000
+      internalID: -4630465861154199853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_11
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 87
+        width: 39
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34050628cce222510800000000000000
+      internalID: 1522831079900205123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_12
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 67
+        width: 35
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe31cb214e2f3acb0800000000000000
+      internalID: -4853768911994481681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 26
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce37da91b1d9a4b0800000000000000
+      internalID: -5428577315081208127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_14
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 86
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27936eb76685d4e70800000000000000
+      internalID: 9101027619174234482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_15
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 68
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4df9d0886cf5da060800000000000000
+      internalID: 6966329504902782932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_16
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 19
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eee016fa39ed56430800000000000000
+      internalID: 3775668588503961326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbImpactBig_04_17
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 25
+        width: 22
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44cc68b5ecbc96ea0800000000000000
+      internalID: -5878943751396209596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      OrbImpactBig_04_0: -1466515113425347891
+      OrbImpactBig_04_1: -5432698926748509181
+      OrbImpactBig_04_10: -4630465861154199853
+      OrbImpactBig_04_11: 1522831079900205123
+      OrbImpactBig_04_12: -4853768911994481681
+      OrbImpactBig_04_13: -5428577315081208127
+      OrbImpactBig_04_14: 9101027619174234482
+      OrbImpactBig_04_15: 6966329504902782932
+      OrbImpactBig_04_16: 3775668588503961326
+      OrbImpactBig_04_17: -5878943751396209596
+      OrbImpactBig_04_2: 4939165933356233878
+      OrbImpactBig_04_3: -8101486758807504892
+      OrbImpactBig_04_4: 2946974012041104162
+      OrbImpactBig_04_5: 7841794059704373766
+      OrbImpactBig_04_6: -5624829180267965602
+      OrbImpactBig_04_7: 6835993472401988860
+      OrbImpactBig_04_8: 607992754228104443
+      OrbImpactBig_04_9: 5167566402904831962
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

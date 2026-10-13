@@ -42,6 +42,15 @@ namespace LuHanh.Level
 
         /// <summary>Da diet het cac dot (cua da mo). Nguoi choi chet thi ve false.</summary>
         public bool IsCleared => phase == Phase.Cleared;
+
+        /// <summary>Quai nay thuoc mot dot cua phong khoa (do phong khoa tu bat / tat).</summary>
+        public bool Manages(EnemyBase enemy)
+        {
+            if (waves == null) return false;
+            foreach (var w in waves)
+                if (w.enemies != null && System.Array.IndexOf(w.enemies, enemy) >= 0) return true;
+            return false;
+        }
         int wave;
         bool pendingReset;
 

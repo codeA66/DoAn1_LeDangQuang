@@ -39598,6 +39598,8 @@ GameObject:
   - component: {fileID: 7778245015425867006}
   - component: {fileID: 8171744386610701766}
   - component: {fileID: 8652344376428202768}
+  - component: {fileID: 8329219454522739597}
+  - component: {fileID: 2161069893273297341}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -39686,6 +39688,8 @@ MonoBehaviour:
     fallState: player_fall
     dashState: player_dash
     hurtState: player_hurt
+    wallSlideState: player_wallslide
+    wallJumpState: player_walljump
   drawGroundGizmo: 1
 --- !u!114 &6674216230490119835
 MonoBehaviour:
@@ -40118,6 +40122,57 @@ MonoBehaviour:
     - {fileID: -2136846969, guid: c7b40a8a287f10846b5ce569a7f1c410, type: 3}
     - {fileID: -862984069, guid: c7b40a8a287f10846b5ce569a7f1c410, type: 3}
     duration: 0.5
+  cast:
+    frames:
+    - {fileID: 21300000, guid: 5c0752b6244aefc4295a8aa59d49c132, type: 3}
+    - {fileID: 21300000, guid: 3341b36c5c5810e418c77e82aa31d3b8, type: 3}
+    - {fileID: 21300000, guid: 0d114cfe0c70da54fb9d9e34f940e311, type: 3}
+    - {fileID: 21300000, guid: c2572532ff2e4f54a8d64d31ca26db62, type: 3}
+    - {fileID: 21300000, guid: c42112fdf6e8d2846be66c3453b3a994, type: 3}
+    - {fileID: 21300000, guid: e5548d9f1e26d7747a1e95cdea92f518, type: 3}
+    - {fileID: 21300000, guid: f2d5b2cdc6e5a7149bbf185fe0e67077, type: 3}
+    - {fileID: 21300000, guid: d78f32a520d9ca34795f525aa9c523f2, type: 3}
+    duration: 0.45
+  castAir:
+    frames:
+    - {fileID: 21300000, guid: 1846334f65c24274ca892530bf3fb82d, type: 3}
+    - {fileID: 21300000, guid: b1c51f4bd3dadd0489ecb717617c11de, type: 3}
+    - {fileID: 21300000, guid: 0485b80f3a18d0d46b181ecff6e53fc7, type: 3}
+    - {fileID: 21300000, guid: 0fcd8eefb0babfa458d1fcb6eedff75f, type: 3}
+    - {fileID: 21300000, guid: 22478a6d631abca43859170e558e3688, type: 3}
+    - {fileID: 21300000, guid: cd1abf50b20d7df4b995d9fd3e1d2580, type: 3}
+    - {fileID: 21300000, guid: b47de8c7569badf458a748ec3549f549, type: 3}
+    - {fileID: 21300000, guid: e6e6f0d1a105dd74cad1cfd97c390741, type: 3}
+    duration: 0.45
+  sitDown:
+    frames:
+    - {fileID: 21300000, guid: 2809fb91100d6b547a053ba8b0349c8e, type: 3}
+    - {fileID: 21300000, guid: 3dfc18ed527cf71488db72b39ba76f48, type: 3}
+    - {fileID: 21300000, guid: 00c803f4c0723ff40b478401dedb00cf, type: 3}
+    - {fileID: 21300000, guid: e9a5053bd07f4ca41ba8177b1872f210, type: 3}
+    - {fileID: 21300000, guid: 11b624b98bd155e4ea168a88b66f30c1, type: 3}
+    - {fileID: 21300000, guid: e51f3f4ad14a51e44a5b110d286802b7, type: 3}
+    duration: 0.45
+  sit:
+    frames:
+    - {fileID: 21300000, guid: feeabecd3ade4b24f9739766fc37be02, type: 3}
+    - {fileID: 21300000, guid: cd4540115ea5e014e8eb83e294f1b42e, type: 3}
+    - {fileID: 21300000, guid: 691b61bf28814a24392d67e89d383bd8, type: 3}
+    - {fileID: 21300000, guid: 38f97852cd49b6a409a1cf30db596e3a, type: 3}
+    - {fileID: 21300000, guid: 1c5e9e1fe18283e49b0c762f2291439b, type: 3}
+    - {fileID: 21300000, guid: b00585fd0c2049540a9152ff3f7b183a, type: 3}
+    - {fileID: 21300000, guid: 8e17228c7794a3846bad30635bcb6ddb, type: 3}
+    - {fileID: 21300000, guid: 8db7e2f59e3094d44ba15d37f8737f53, type: 3}
+    duration: 1.2
+  standUp:
+    frames:
+    - {fileID: 21300000, guid: 64232b05351d8e845a18acb9561456b2, type: 3}
+    - {fileID: 21300000, guid: 8a79828a3503d64479f3a77469dbca7e, type: 3}
+    - {fileID: 21300000, guid: fa1b7f16d9f4fa84597d6465be8209a9, type: 3}
+    - {fileID: 21300000, guid: 37a750f4976adfa479c99cba5246354d, type: 3}
+    - {fileID: 21300000, guid: a0b36bb67e3917a4b93240bb1f004cb0, type: 3}
+    - {fileID: 21300000, guid: 28fd977df4e5b5b44933f46a1446d6e9, type: 3}
+    duration: 0.45
 --- !u!114 &7778245015425867006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40182,6 +40237,41 @@ MonoBehaviour:
   distance: 4
   holdDelay: 0.6
   smoothTime: 0.25
+--- !u!114 &8329219454522739597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774313822008665706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f43e06f9a625044862392afde4fec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerEnergy
+  maxEnergy: 6
+  shotCost: 2
+  gainPerHit: 1
+--- !u!114 &2161069893273297341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774313822008665706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe8420276f036545ad8d78afb177061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerOrbShot
+  orbPrefab: {fileID: 1961682043059902379, guid: 668bde11af7b69441b436cd16c0824ae, type: 3}
+  castFxPrefab: {fileID: 676504489890467249, guid: cba51cf801f64894fa2a87669330ddff, type: 3}
+  castShake: 0.12
+  castHitStop: 0.03
+  actionName: Shoot
+  releaseDelay: 0.15
+  cooldown: 0.4
+  muzzleOffset: {x: 0.9, y: 1}
 --- !u!1 &7962428662256493690
 GameObject:
   m_ObjectHideFlags: 0

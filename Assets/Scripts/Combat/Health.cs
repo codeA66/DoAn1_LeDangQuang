@@ -41,6 +41,14 @@ namespace LuHanh.Combat
             return true;
         }
 
+        /// <summary>Hoi <paramref name="amount"/> mau (khong vuot toi da). Da chet thi khong hoi.</summary>
+        public void Heal(int amount)
+        {
+            if (IsDead || amount <= 0 || Current >= maxHealth) return;
+            Current = Mathf.Min(maxHealth, Current + amount);
+            Changed?.Invoke(Current, maxHealth);
+        }
+
         public void Refill()
         {
             Current = maxHealth;

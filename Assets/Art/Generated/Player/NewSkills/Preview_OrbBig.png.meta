@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: 0ac1225a0402ace45bcf6109dfeea07c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5736544558328181771
+    second: Preview_OrbBig_0
+  - first:
+      213: -7745461013545737502
+    second: Preview_OrbBig_1
+  - first:
+      213: 2644501077884620054
+    second: Preview_OrbBig_2
+  - first:
+      213: 2234640437869500473
+    second: Preview_OrbBig_3
+  - first:
+      213: -7789392671706953968
+    second: Preview_OrbBig_4
+  - first:
+      213: 136443061451315454
+    second: Preview_OrbBig_5
+  - first:
+      213: -3650270445517496856
+    second: Preview_OrbBig_6
+  - first:
+      213: 6657491459642084553
+    second: Preview_OrbBig_7
+  - first:
+      213: -3888270537648904549
+    second: Preview_OrbBig_8
+  - first:
+      213: 2706685847125964750
+    second: Preview_OrbBig_9
+  - first:
+      213: -6671161888776396461
+    second: Preview_OrbBig_10
+  - first:
+      213: 1849920913821796531
+    second: Preview_OrbBig_11
+  - first:
+      213: 2331184623473326231
+    second: Preview_OrbBig_12
+  - first:
+      213: 3881172577478022433
+    second: Preview_OrbBig_13
+  - first:
+      213: 3848210079637124197
+    second: Preview_OrbBig_14
+  - first:
+      213: 3636657654851444350
+    second: Preview_OrbBig_15
+  - first:
+      213: 8968514444982646125
+    second: Preview_OrbBig_16
+  - first:
+      213: -6884418588938627830
+    second: Preview_OrbBig_17
+  - first:
+      213: 6388838822088032599
+    second: Preview_OrbBig_18
+  - first:
+      213: 315635377597675078
+    second: Preview_OrbBig_19
+  - first:
+      213: 5768659006832401663
+    second: Preview_OrbBig_20
+  - first:
+      213: -3864090711350206289
+    second: Preview_OrbBig_21
+  - first:
+      213: 6874213701722207636
+    second: Preview_OrbBig_22
+  - first:
+      213: 8680871986192294310
+    second: Preview_OrbBig_23
+  - first:
+      213: -7999501032396829751
+    second: Preview_OrbBig_24
+  - first:
+      213: 1676121034646983481
+    second: Preview_OrbBig_25
+  - first:
+      213: -7537089795566377970
+    second: Preview_OrbBig_26
+  - first:
+      213: -48009810701458706
+    second: Preview_OrbBig_27
+  - first:
+      213: 6156013156931872097
+    second: Preview_OrbBig_28
+  - first:
+      213: 3204475266499744248
+    second: Preview_OrbBig_29
+  - first:
+      213: 6618944100613912408
+    second: Preview_OrbBig_30
+  - first:
+      213: 7843138456551353689
+    second: Preview_OrbBig_31
+  - first:
+      213: 2121574637344202976
+    second: Preview_OrbBig_32
+  - first:
+      213: 5426642328502358022
+    second: Preview_OrbBig_33
+  - first:
+      213: 5635971966506053473
+    second: Preview_OrbBig_34
+  - first:
+      213: -1883299869767063937
+    second: Preview_OrbBig_35
+  - first:
+      213: 5039434956592410532
+    second: Preview_OrbBig_36
+  - first:
+      213: 912272402022576794
+    second: Preview_OrbBig_37
+  - first:
+      213: -3654151795898879895
+    second: Preview_OrbBig_38
+  - first:
+      213: -2827493250991795972
+    second: Preview_OrbBig_39
+  - first:
+      213: -8340332869419261465
+    second: Preview_OrbBig_40
+  - first:
+      213: 3232516888616254671
+    second: Preview_OrbBig_41
+  - first:
+      213: 2549714099383772209
+    second: Preview_OrbBig_42
+  - first:
+      213: 2073333079267966301
+    second: Preview_OrbBig_43
+  - first:
+      213: -3955259443910427728
+    second: Preview_OrbBig_44
+  - first:
+      213: -5037640538119659862
+    second: Preview_OrbBig_45
+  - first:
+      213: -1938519459728530359
+    second: Preview_OrbBig_46
+  - first:
+      213: -8370142354687194073
+    second: Preview_OrbBig_47
+  - first:
+      213: -8130837077075687923
+    second: Preview_OrbBig_48
+  - first:
+      213: -4905977215354836731
+    second: Preview_OrbBig_49
+  - first:
+      213: 1699512064169495820
+    second: Preview_OrbBig_50
+  - first:
+      213: -7481962676547190654
+    second: Preview_OrbBig_51
+  - first:
+      213: 2589915269164104844
+    second: Preview_OrbBig_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Preview_OrbBig_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 322
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb06a22e13b360b0800000000000000
+      internalID: -5736544558328181771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 322
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e228f1de38928490800000000000000
+      internalID: -7745461013545737502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 322
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d437b18b723b420800000000000000
+      internalID: 2644501077884620054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 322
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9385feb73a9030f10800000000000000
+      internalID: 2234640437869500473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_4
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 322
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01740e292a486e390800000000000000
+      internalID: -7789392671706953968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_5
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 322
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef85fd1dd3eb4e100800000000000000
+      internalID: 136443061451315454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 321
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ed92d8ae52a75dc0800000000000000
+      internalID: -3650270445517496856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 322
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ccc92ba539246c50800000000000000
+      internalID: 6657491459642084553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 321
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96e1d40c861a0ac0800000000000000
+      internalID: -3888270537648904549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_9
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 321
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec73584ff64109520800000000000000
+      internalID: 2706685847125964750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_10
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 322
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 351eb548b954b63a0800000000000000
+      internalID: -6671161888776396461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_11
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 322
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b80ae2154d3ca910800000000000000
+      internalID: 1849920913821796531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_12
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 318
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798fafb50180a5020800000000000000
+      internalID: 2331184623473326231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_13
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 322
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 125909855e1bcd530800000000000000
+      internalID: 3881172577478022433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_14
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 322
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56439d1cda6976530800000000000000
+      internalID: 3848210079637124197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_15
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 322
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7e10278ed0087230800000000000000
+      internalID: 3636657654851444350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 322
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d657628de50967c70800000000000000
+      internalID: 8968514444982646125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_17
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 322
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a059731c4c1a570a0800000000000000
+      internalID: -6884418588938627830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_18
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 322
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75148c52f07b9a850800000000000000
+      internalID: 6388838822088032599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_19
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 322
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 646714024bc516400800000000000000
+      internalID: 315635377597675078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_20
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 322
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffc5a949dc46e0050800000000000000
+      internalID: 5768659006832401663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_21
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 322
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0a51a88fdff5ac0800000000000000
+      internalID: -3864090711350206289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_22
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 285
+        width: 42
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4957649c0fc166f50800000000000000
+      internalID: 6874213701722207636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_23
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 285
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1a1a50417a87870800000000000000
+      internalID: 8680871986192294310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_24
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 286
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cbcd97b1301cf090800000000000000
+      internalID: -7999501032396829751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_25
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 286
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93391b65337c24710800000000000000
+      internalID: 1676121034646983481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_26
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 285
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e046b0f93c0e66790800000000000000
+      internalID: -7537089795566377970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_27
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 286
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee2e76fd45f655ff0800000000000000
+      internalID: -48009810701458706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_28
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 283
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1652e8ba95d8e6550800000000000000
+      internalID: 6156013156931872097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_29
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 286
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f11e3fd645987c20800000000000000
+      internalID: 3204475266499744248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_30
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 283
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 857724147963bdb50800000000000000
+      internalID: 6618944100613912408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_31
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 286
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95de2fa1fdc68dc60800000000000000
+      internalID: 7843138456551353689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_32
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 286
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e0216f54e8517d10800000000000000
+      internalID: 2121574637344202976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_33
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 286
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6005b79327e4f4b40800000000000000
+      internalID: 5426642328502358022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_34
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 286
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f27a394aef63e40800000000000000
+      internalID: 5635971966506053473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_35
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 286
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76aef02fbc2dd5e0800000000000000
+      internalID: -1883299869767063937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_36
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 282
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af6068946bafe540800000000000000
+      internalID: 5039434956592410532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_37
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 21
+        width: 207
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92b2fc8aea09ac00800000000000000
+      internalID: 912272402022576794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_38
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 120
+        width: 76
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 960771a5d48d94dc0800000000000000
+      internalID: -3654151795898879895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_39
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 153
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf0d1d17ed9b2c8d0800000000000000
+      internalID: -2827493250991795972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_40
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 159
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e120c9b17f214c80800000000000000
+      internalID: -8340332869419261465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_41
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 86
+        width: 149
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc3c6ccbf43cdc20800000000000000
+      internalID: 3232516888616254671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_42
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 119
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1342394e677626320800000000000000
+      internalID: 2549714099383772209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_43
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 7
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5d75da5375f5cc10800000000000000
+      internalID: 2073333079267966301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_44
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 8
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bbb53bdd781c19c0800000000000000
+      internalID: -3955259443910427728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_45
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 7
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aae15430f94b61ab0800000000000000
+      internalID: -5037640538119659862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_46
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 944e2b472def815e0800000000000000
+      internalID: -1938519459728530359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_47
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 8
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c0b6510e747db80800000000000000
+      internalID: -8370142354687194073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_48
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d060456e1c6792f80800000000000000
+      internalID: -8130837077075687923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_49
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 8
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5096d9237b77aebb0800000000000000
+      internalID: -4905977215354836731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_50
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 8
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d405cc731e59710800000000000000
+      internalID: 1699512064169495820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_51
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 8
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2808ca9369aba2890800000000000000
+      internalID: -7481962676547190654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Preview_OrbBig_52
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 8
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8cf2e0273a31f320800000000000000
+      internalID: 2589915269164104844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Preview_OrbBig_0: -5736544558328181771
+      Preview_OrbBig_1: -7745461013545737502
+      Preview_OrbBig_10: -6671161888776396461
+      Preview_OrbBig_11: 1849920913821796531
+      Preview_OrbBig_12: 2331184623473326231
+      Preview_OrbBig_13: 3881172577478022433
+      Preview_OrbBig_14: 3848210079637124197
+      Preview_OrbBig_15: 3636657654851444350
+      Preview_OrbBig_16: 8968514444982646125
+      Preview_OrbBig_17: -6884418588938627830
+      Preview_OrbBig_18: 6388838822088032599
+      Preview_OrbBig_19: 315635377597675078
+      Preview_OrbBig_2: 2644501077884620054
+      Preview_OrbBig_20: 5768659006832401663
+      Preview_OrbBig_21: -3864090711350206289
+      Preview_OrbBig_22: 6874213701722207636
+      Preview_OrbBig_23: 8680871986192294310
+      Preview_OrbBig_24: -7999501032396829751
+      Preview_OrbBig_25: 1676121034646983481
+      Preview_OrbBig_26: -7537089795566377970
+      Preview_OrbBig_27: -48009810701458706
+      Preview_OrbBig_28: 6156013156931872097
+      Preview_OrbBig_29: 3204475266499744248
+      Preview_OrbBig_3: 2234640437869500473
+      Preview_OrbBig_30: 6618944100613912408
+      Preview_OrbBig_31: 7843138456551353689
+      Preview_OrbBig_32: 2121574637344202976
+      Preview_OrbBig_33: 5426642328502358022
+      Preview_OrbBig_34: 5635971966506053473
+      Preview_OrbBig_35: -1883299869767063937
+      Preview_OrbBig_36: 5039434956592410532
+      Preview_OrbBig_37: 912272402022576794
+      Preview_OrbBig_38: -3654151795898879895
+      Preview_OrbBig_39: -2827493250991795972
+      Preview_OrbBig_4: -7789392671706953968
+      Preview_OrbBig_40: -8340332869419261465
+      Preview_OrbBig_41: 3232516888616254671
+      Preview_OrbBig_42: 2549714099383772209
+      Preview_OrbBig_43: 2073333079267966301
+      Preview_OrbBig_44: -3955259443910427728
+      Preview_OrbBig_45: -5037640538119659862
+      Preview_OrbBig_46: -1938519459728530359
+      Preview_OrbBig_47: -8370142354687194073
+      Preview_OrbBig_48: -8130837077075687923
+      Preview_OrbBig_49: -4905977215354836731
+      Preview_OrbBig_5: 136443061451315454
+      Preview_OrbBig_50: 1699512064169495820
+      Preview_OrbBig_51: -7481962676547190654
+      Preview_OrbBig_52: 2589915269164104844
+      Preview_OrbBig_6: -3650270445517496856
+      Preview_OrbBig_7: 6657491459642084553
+      Preview_OrbBig_8: -3888270537648904549
+      Preview_OrbBig_9: 2706685847125964750
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -69,6 +69,18 @@ namespace LuHanh.Player
         [Tooltip("Buoc thu khi tim cho truot. Celeste thu tung pixel = 1/8 unit.")]
         public float cornerCorrectionStep = 0.125f;
 
+        [Header("Bam tuong (ky nang mo khoa)")]
+        [Tooltip("Toc do truot xuong toi da khi bam tuong (Hollow Knight truot cham).")]
+        public float wallSlideSpeed = 3f;
+        [Tooltip("Van toc ngang khi dap tuong bat ra.")]
+        public float wallJumpHSpeed = 9f;
+        [Tooltip("Van toc len khi dap tuong (ty le so voi jumpSpeed).")]
+        [Range(0.5f, 1.2f)] public float wallJumpVRatio = 0.95f;
+        [Tooltip("Sau khi dap tuong, bo qua phim trai/phai trong bao lau de khong dinh lai tuong ngay.")]
+        public float wallJumpLockTime = 0.16f;
+        [Tooltip("Khoang do tuong canh hai ben collider.")]
+        public float wallCheckDistance = 0.08f;
+
         [Header("Huong nhin")]
         [Tooltip("Ban ve goc cua nhan vat quay sang phai hay trai. " +
                  "Bo sprite hien tai (stand-Sheet, run-Sheet...) quay TRAI nen de tat.")]
