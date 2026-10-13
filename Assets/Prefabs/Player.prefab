@@ -40265,7 +40265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerOrbShot
   orbPrefab: {fileID: 1961682043059902379, guid: 668bde11af7b69441b436cd16c0824ae, type: 3}
-  castFxPrefab: {fileID: 676504489890467249, guid: cba51cf801f64894fa2a87669330ddff, type: 3}
+  castFxPrefab: {fileID: 5200998197260094594, guid: 58247f200538fb447a06309844044c9a, type: 3}
   castShake: 0.12
   castHitStop: 0.03
   actionName: Shoot
