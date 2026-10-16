@@ -63,6 +63,16 @@ namespace LuHanh.Level
         }
 
         /// <summary>Mo ngay, khong hieu ung (dung khi hoi sinh).</summary>
+        /// <summary>Ve trang thai ban dau ngay, khong hieu ung (cua dong san thi dong lai, con lai mo).</summary>
+        public void ResetInstant()
+        {
+            if (!startClosed) { OpenInstant(); return; }
+            target = 1f;
+            glowTimer = 0f;
+            SetAmount(1f);
+            if (signal) signal.enabled = false;
+        }
+
         public void OpenInstant()
         {
             target = 0f;

@@ -52,8 +52,27 @@ namespace LuHanh.Enemies
             base.Awake();
         }
 
-        protected override void OnHurt(HitInfo hit) =>
+        protected override void OnHurt(HitInfo hit)
+        {
             hurtVelocity = new Vector2(hit.direction.x * hit.knockback, 0f);
+            if (!config.staggerOnHit && CanBeNudged()) Nudge(Mathf.Sign(hit.direction.x));
+        }
+
+        /// <summary>Day lui nhe khi trung don (khong doi trang thai, khong ngat chieu). Co tuong phia sau thi dung o mep tuong.</summary>
+        void Nudge(float dir)
+        {
+            if (Mathf.Abs(dir) < 0.01f || config.hitNudge <= 0f) return;
+            float dist = config.hitNudge;
+            var col = GetComponent<Collider2D>();
+            var origin = col ? (Vector2)col.bounds.center : body.position;
+            float halfW = col ? col.bounds.extents.x : 0.3f;
+            var hitWall = Physics2D.Raycast(origin, new Vector2(dir, 0f), halfW + dist, config.groundLayers);
+            if (hitWall.collider) dist = Mathf.Max(0f, hitWall.distance - halfW - 0.02f);
+            body.position += new Vector2(dir * dist, 0f);
+        }
+
+        /// <summary>Quai co the bi day lui khi trung don (vd Dripfang dang lam be thi khong).</summary>
+        protected virtual bool CanBeNudged() => true;
 
         protected bool HurtFinished => hurt.Elapsed >= config.hurtTime;
 
@@ -61,7 +80,7 @@ namespace LuHanh.Enemies
         /// Vua trung don va duoc phep khung lai. Quai tra false luc dang ra don (giap, khong bi ngat don);
         /// vua bi khung xong thi co staggerCooldown giay khong bi khung tiep (chem lien tuc khong khoa duoc).
         /// </summary>
-        protected bool ShouldStagger => HurtRequested && CanStagger() && Time.time >= staggerReadyTime;
+        protected bool ShouldStagger => config.staggerOnHit && HurtRequested && CanStagger() && Time.time >= staggerReadyTime;
         float staggerReadyTime;
         protected virtual bool CanStagger() => true;
 

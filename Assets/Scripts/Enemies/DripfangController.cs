@@ -82,6 +82,8 @@ namespace LuHanh.Enemies
 
         // Chi danh duoc luc cam san.
         protected override bool CanStagger() => Machine.Current == embedded;
+        // Dang cam san lam be: khong day lui (be khong truot duoi chan nguoi choi).
+        protected override bool CanBeNudged() => false;
 
         // Khong bi day lui (Kinematic: van toc se lam no troi di).
         protected override void OnHurt(HitInfo hit) { }

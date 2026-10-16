@@ -19,6 +19,8 @@ namespace LuHanh.Enemies
         [SerializeField] float acceleration = 20f;
 
         [Header("Hut sang")]
+        [Tooltip("Bat: dung lai hut sang (man toi dan). Tat (mac dinh): chi luon va bo nhao.")]
+        [SerializeField] bool canDrain = false;
         [SerializeField] float drainTime = 0.8f;
         [SerializeField] float drainCooldown = 4f;
         [Tooltip("Moi lan hut lam anh sang chung giam bao nhieu (0.25 = 25%).")]
@@ -81,7 +83,7 @@ namespace LuHanh.Enemies
 
         float DiveSpeed => diveSpeed * (1f + drainSpeedBonus * stacks) * SpeedScale;
 
-        bool ReadyToDrain => PlayerInRoom && stacks < maxDrainStacks && drainTimer <= 0f;
+        bool ReadyToDrain => canDrain && PlayerInRoom && stacks < maxDrainStacks && drainTimer <= 0f;
 
         protected override void BuildStates(StateMachine machine)
         {
@@ -149,6 +151,14 @@ namespace LuHanh.Enemies
             drainTimer -= dt;
             // Nguoi choi roi phong: man sang lai (giu so lan hut, quay lai van toi nhu cu).
             AmbientDarkness.Set(this, PlayerInRoom ? darknessPerDrain * stacks : 0f);
+        }
+
+        // Chay ca khi quai dang ngu (Update bi bo qua): nguoi choi khong o phong nay thi tra lai anh sang,
+        // neu khong man se toi ket khi nguoi choi roi phong truoc luc quai kip cap nhat.
+        protected override void LateUpdate()
+        {
+            base.LateUpdate();
+            if (!PlayerInRoom) AmbientDarkness.Set(this, 0f);
         }
 
         void PickWanderTarget() =>

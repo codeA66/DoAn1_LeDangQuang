@@ -124,7 +124,8 @@ namespace LuHanh.Level
         {
             StopAllCoroutines();
             phase = Phase.Idle;
-            foreach (var g in gates) if (g) g.OpenInstant();
+            // Ve trang thai ban dau: cua ra dong san (Start Closed) dong lai, khong de nguoi choi chet roi di tat.
+            foreach (var g in gates) if (g) g.ResetInstant();
             // Quai cung tu ResetState (bat lai) trong cung luot, thu tu khong co dinh:
             // de sang frame sau moi tat quai cua phong.
             pendingReset = true;
