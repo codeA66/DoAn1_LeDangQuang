@@ -16,6 +16,20 @@ namespace LuHanh.Core
         float endRealtime;
         bool active;
         int holds;
+        float slowEndRealtime, slowScale = 1f;
+
+        /// <summary>
+        /// Tua cham: sau khi het dung hinh, game chay o toc do <paramref name="scale"/> trong <paramref name="seconds"/> giay thuc
+        /// (vd nguoi choi trung don kieu Hollow Knight). Dung hinh / giu dung van uu tien hon.
+        /// </summary>
+        public static void SlowMotion(float scale, float seconds)
+        {
+            if (seconds <= 0f) return;
+            var hs = Ensure();
+            hs.slowScale = Mathf.Clamp(scale, 0.05f, 1f);
+            hs.slowEndRealtime = Mathf.Max(hs.slowEndRealtime, Time.unscaledTime + seconds);
+            hs.TryResume();
+        }
 
         /// <summary>Dung hinh <paramref name="seconds"/> giay thuc. Tu tao object dieu khien lan dau.</summary>
         public static void Request(float seconds)
@@ -60,11 +74,15 @@ namespace LuHanh.Core
                 active = false;
                 TryResume();
             }
+            else if (!active && holds == 0 && slowScale < 1f) TryResume(); // het tua cham thi tra ve 1
         }
 
         void TryResume()
         {
-            if (!active && holds == 0) Time.timeScale = 1f;
+            if (active || holds > 0) return;
+            bool slow = Time.unscaledTime < slowEndRealtime;
+            if (!slow) slowScale = 1f;
+            Time.timeScale = slow ? slowScale : 1f;
         }
 
         // Bi huy giua luc dung hinh (doi scene, thoat Play) thi khong de game dung mai.
@@ -72,6 +90,8 @@ namespace LuHanh.Core
         {
             active = false;
             holds = 0;
+            slowScale = 1f;
+            slowEndRealtime = 0f;
             Time.timeScale = 1f;
         }
     }
