@@ -435,3 +435,6 @@ Dựng theo quy trình Team Cherry kể lại (sketch → dựng thô bằng til
 - **Thang máy:** kéo `Prefabs/Level/Elevator`, đặt bệ (`Platform`) ở điểm dưới, nhập `Bottom Y` / `Top Y` (toạ độ tâm bệ = mặt sàn − 0,3). Cần gọi `Prefabs/Level/ElevatorCallSwitch` ở mỗi đầu: kéo Elevator vào ô `Elevator`, chọn `Mode` CallBottom / CallTop.
 | R21 | 532→580, 104→124 | Đấu trường | Vào phòng thì cửa sập 2 đầu, 3 đợt quái (`Encounter_R21`), dọn xong cửa phải mở sang R22 |
 | R22 | 580→660, 96→136 | Platform cực khó | Sàn gai; bệ cách 8,5 ô → giếng nhảy tường có gai so le → 2 bậc 5 ô (W + dash) → hành lang trần gai lướt ngang → gờ đích có ghế |
+| R23 | 660→692, 126→190 | Đi lên | Ống khói 4 ô có gai → bậc 5 ô (W + dash) → ống khói gai hai vách (W + dash xuyên) → bệ một chiều, lối ra trên |
+| R24 | 692→756, 170→190 | Di chuyển | Sàn gai, bệ nhỏ 2 ô, đoạn trần gai thấp phải lướt ngang |
+| R25 | 756→800, 176→196 | Combat (không khóa) | Gò giữa, 2 bệ né; 2 Hushmole, Threadwitch, Echoling, Lampsnuffer; tường phải để mở rộng |
