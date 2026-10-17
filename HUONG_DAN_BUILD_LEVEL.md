@@ -352,6 +352,8 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 3. Thêm object có `BossTitleCard` (tên boss, font Beholden) và `BossEntrance` (gán boss, title, bụi tiếp đất). Boss chạm đất → bụi + rung + khựng + hiện tên; boss chờ tên hiện xong mới đánh.
 4. `onCleared` của Encounter boss gọi `LevelPortal.Open` nếu là phòng cuối.
 
+**Boss xuất hiện bằng dịch chuyển (ví dụ Rootwraith ở `Test_LongDat`):** không cần `BossEntrance`. Đặt boss **đứng trên sàn** giữa đấu trường (độ cao đặt = sàn đấu), gán `Title` (BossTitleCard) ngay trên boss và nhập `Arena Left / Right / Top` = mép trong của đấu trường để đòn không mọc trong tường. Đổi nền khi vào trận: thêm `BossArenaTint` (liệt kê sprite nền / sương và Global Light của màn), `onStarted` → `FadeIn`, `onCleared` → `FadeOut`. Đấu trường kiểu Hollow Knight: sàn phẳng, không bệ, rộng ~1,2 màn hình, ghế nghỉ ngay trước cửa.
+
 ## Bộ lòng đất (BuriedDepths) — dùng cho Level3
 
 - Tile: vẽ bằng `Art/Tiles/BuriedDepths/RT_Earth` (RuleTile). Platform: `Prefabs/Platform/Platform_Stone_*`. Nền: thay `Background` trong LevelEssentials bằng `Prefabs/Background_LongDat` (tắt Background cũ, đặt Background_LongDat cùng chỗ).
