@@ -124,7 +124,9 @@ namespace LuHanh.Player
             machine.AddAnyTransition(dash, () => machine.Current != hurt && context.WantsDash && context.CanDash);
 
             // Dang bam tuong ma bam nhay: dap tuong bat ra (xet truoc nhay thuong).
-            machine.AddAnyTransition(wallJump, () => machine.Current == wallSlide && context.WantsJump);
+            // Con trong cua so coyote (vua roi khoi mep) thi de nhay thuong xu ly: bam nhay ngay sau khi buoc khoi mep
+            // ma lo cham mat ben mep dat thi khong bi dap tuong bat ra xa.
+            machine.AddAnyTransition(wallJump, () => machine.Current == wallSlide && context.WantsJump && !context.CanJump);
 
             // Nhay: dung o dau cung nhay duoc mien la con coyote va con lenh trong dem,
             // tru luc dang dash. Nho vay bam nhay luon phan hoi ngay, khong tre frame nao.

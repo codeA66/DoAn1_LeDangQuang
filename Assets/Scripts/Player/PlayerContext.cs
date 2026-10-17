@@ -190,6 +190,11 @@ namespace LuHanh.Player
             {
                 var hit = Physics2D.BoxCast(b.center, size, 0f, new Vector2(dir, 0f), b.extents.x * 0.5f + Config.wallCheckDistance, mask);
                 if (!hit.collider || hit.collider.usedByEffector || Mathf.Abs(hit.normal.x) < 0.9f) continue;
+                // Tuong phai du cao: tia o 1/4 va 3/4 chieu cao than deu trung (canh be da mong khong tinh la tuong).
+                float reach = b.extents.x + Config.wallCheckDistance + 0.05f;
+                bool low = Physics2D.Raycast(new Vector2(b.center.x, b.min.y + b.size.y * 0.25f), new Vector2(dir, 0f), reach, mask);
+                bool high = Physics2D.Raycast(new Vector2(b.center.x, b.min.y + b.size.y * 0.75f), new Vector2(dir, 0f), reach, mask);
+                if (!low || !high) continue;
                 WallDir = dir;
                 return;
             }
