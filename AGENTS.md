@@ -42,6 +42,7 @@ Quái phải tách khỏi nền ở mọi màn: đèn riêng trung tính và vi�
 6. Tỷ lệ được phép thay đổi theo tình huống: nơi nghỉ tăng ánh vàng; lúc báo đòn tăng đỏ. Không cố giữ tỷ lệ tuyệt đối trong mọi frame hoặc hiệu ứng chớp sáng.
 7. Khi tạo asset, xác định trước lớp hiển thị và vai trò: nền xa, kiến trúc, tiền cảnh, có lợi, an toàn hay nguy hiểm. Đối chiếu kích thước pixel, PPU, pivot, độ trong suốt và sorting với asset thật trong project; không tự đoán thông số.
 8. Tên màn và chữ trong game bằng tiếng Anh. Font dùng Beholden Book trong `Assets/Art/Fonts`, không dùng font mặc định. Trao đổi và tên hiển thị cho chủ project bằng tiếng Việt.
+9. **Đồ vật, vật tương tác, đèn và đạo cụ không dùng chung tông màu với tilemap địa hình và ánh sáng chung của màn** (chủ project yêu cầu 2026-10-17). Ở màn 2 (đất nâu cam, ánh sáng xanh rêu): thang máy, đèn, đạo cụ dùng **trắng + xanh dương** — trắng ngà `#F2F4F8`, xanh dương nhạt `#BFD8F2`, xanh dương `#4A7FC1`, bóng `#1E3557`; đèn lõi trắng, quầng xanh dương nhạt. Không cam/vàng phát sáng, không đỏ, không xanh ngọc `#45DCC4`, không xanh rêu. Không viết "hòa vào nền / ít tương phản" cho đồ vật; kiểm tra trên ảnh Game View xem vật có nổi khỏi đất không.
 
 ## Quy trình bắt buộc trước khi thay đổi
 
