@@ -132,6 +132,7 @@ namespace LuHanh.Level
             if (blocker) blocker.enabled = false;
             if (debris) debris.Emit(debrisCount);
             if (dust) dust.Play();
+            Sfx.Play(SfxId.WallCollapse);
             if (cameraShake > 0f) CameraShake.Kick(cameraShake, sinkTime);
             for (float t = 0f; t < sinkTime; t += Time.unscaledDeltaTime)
             {

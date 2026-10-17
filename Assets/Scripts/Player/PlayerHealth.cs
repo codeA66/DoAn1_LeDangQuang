@@ -6,8 +6,8 @@ namespace LuHanh.Player
 {
     /// <summary>
     /// Mau nguoi choi: moi don mat 1 mask, khung hinh khung lai mot thoang va bi bat lui.
-    /// Khong co bat tu sau khi trung don - moi don cua quai tu lo chi trung 1 lan
-    /// (dan bien mat khi trung, cu lao cua Ghoul tat hitbox sau khi trung).
+    /// Sau khi trung don co bat tu <c>invulnerableTime</c> giay (khong nhap nhay), kem rung man hinh va tua cham nhu Hollow Knight:
+    /// trong luc bat tu moi don cua quai deu bi bo qua (khong tinh roi ho / bay).
     /// Het mask thi hoi sinh o checkpoint.
     /// Roi vao ho / bay thi mat 1 mask va hien lai o cho dung an toan gan nhat.
     /// So mau nam o <see cref="Health"/>; lop nay lo phan phan ung.
@@ -23,6 +23,14 @@ namespace LuHanh.Player
         [Tooltip("Lop phu de chop sang (SpriteRenderer con, material LuHanh/SpriteFlash), chep hinh tu Visual.")]
         [SerializeField] SpriteRenderer hurtFlash;
         [SerializeField] SpriteRenderer visual;
+        [Tooltip("Bat tu sau khi trung don (giay). 0 = tat.")]
+        [SerializeField] float invulnerableTime = 1.3f;
+        [Tooltip("Rung man hinh khi trung don: bien do (unit) / thoi gian tat dan (giay).")]
+        [SerializeField] float hurtShake = 0.45f;
+        [SerializeField] float hurtShakeTime = 0.35f;
+        [Tooltip("Tua cham sau khi trung don kieu Hollow Knight: toc do game / bao lau (giay thuc).")]
+        [Range(0.05f, 1f)][SerializeField] float hurtSlowScale = 0.3f;
+        [SerializeField] float hurtSlowTime = 0.3f;
 
         [Header("Roi vao bay / ho")]
         [Tooltip("Dung vung tren dat lien tuc bao lau thi vi tri do moi duoc nho lam cho an toan.")]
@@ -46,8 +54,11 @@ namespace LuHanh.Player
         Vector2 checkpoint;
         Vector2 safePosition;
         float groundedTimer;
+        float invulnerableTimer;
 
         public Health Health => health;
+        /// <summary>Dang trong khoang bat tu sau khi trung don.</summary>
+        public bool IsInvulnerable => invulnerableTimer > 0f;
 
         void Awake()
         {
@@ -70,8 +81,9 @@ namespace LuHanh.Player
 
         public void TakeHit(HitInfo hit)
         {
-            if (dead || hazardRespawning) return;
+            if (dead || hazardRespawning || IsInvulnerable) return;
             if (!health.Damage(hit.damage)) return;
+            Sfx.Play(SfxId.PlayerHurt);
 
             if (health.IsDead)
             {
@@ -80,6 +92,9 @@ namespace LuHanh.Player
                 return;
             }
 
+            invulnerableTimer = invulnerableTime;
+            CameraShake.Kick(hurtShake, hurtShakeTime);
+            HitStop.SlowMotion(hurtSlowScale, hurtSlowTime);
             var reaction = hit.reaction ? hit.reaction : defaultReaction;
             if (reaction) reaction.Apply(this, hit);
             else StartHitStop();
@@ -159,7 +174,7 @@ namespace LuHanh.Player
         {
             if (dead || hazardRespawning) return;
 
-            if (health.Damage(damage)) StartHitStop();
+            if (health.Damage(damage)) { StartHitStop(); Sfx.Play(SfxId.PlayerHurt); }
             if (health.IsDead)
             {
                 Die();
@@ -189,7 +204,16 @@ namespace LuHanh.Player
         {
             TrackSafeGround();
             UpdateFlash();
+            UpdateInvulnerable();
         }
+
+        /// <summary>Dem bat tu bang thoi gian game (dung trong luc hitstop). Nhu Hollow Knight: khong nhap nhay.</summary>
+        void UpdateInvulnerable()
+        {
+            if (invulnerableTimer > 0f) invulnerableTimer -= Time.deltaTime;
+        }
+
+        void ClearInvulnerable() => invulnerableTimer = 0f;
 
         /// <summary>Nho vi tri moi khi da dung vung tren dat du lau (khong tinh luc bi danh bat ra).</summary>
         void TrackSafeGround()
@@ -238,6 +262,9 @@ namespace LuHanh.Player
         {
             dead = true;
             StopFlash();
+            ClearInvulnerable();
+            // Roi het Shards thanh tui o cho an toan gan nhat (khong roi giua ho gai).
+            ShardPool.DropOnDeath(safePosition);
 
             // Dung hinh tai cho trong luc man hinh toi dan.
             Freeze();

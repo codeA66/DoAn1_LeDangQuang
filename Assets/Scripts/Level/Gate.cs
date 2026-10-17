@@ -99,6 +99,7 @@ namespace LuHanh.Level
 
         void Slam()
         {
+            Sfx.Play(SfxId.GateSlam);
             if (slamDust)
             {
                 slamDust.transform.position = transform.position + Vector3.down * height;

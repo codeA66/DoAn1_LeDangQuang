@@ -1,0 +1,829 @@
+[
+  {
+    "name": "Idle",
+    "count": 8,
+    "frames": [
+      {
+        "name": "Idle_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Idle_01.png",
+        "bbox_alpha24": [
+          93,
+          36,
+          227,
+          252
+        ],
+        "sha256": "3e4568505e5a56739e30ffcebf472090977b5c5ca99db9f74abf6db92f1b56c6"
+      },
+      {
+        "name": "Idle_02.png",
+        "bbox_alpha24": [
+          90,
+          33,
+          229,
+          252
+        ],
+        "sha256": "909062b0fc455c48da6873a054017fec0eaccb5ed0cccd1dd02277563da72d32"
+      },
+      {
+        "name": "Idle_03.png",
+        "bbox_alpha24": [
+          94,
+          39,
+          225,
+          252
+        ],
+        "sha256": "a76c6d7c010c29ba85ba9661cef5627c02399d7bd787c8fbbdce055f2a5ce587"
+      },
+      {
+        "name": "Idle_04.png",
+        "bbox_alpha24": [
+          94,
+          37,
+          226,
+          252
+        ],
+        "sha256": "818f7604feab6950cb42b9771465dfc0d0d8795b312730764716079d4dda6979"
+      },
+      {
+        "name": "Idle_05.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "a245a9e4349f615897e966c5d086833da8842417869f9b5050ca279e364e5056"
+      },
+      {
+        "name": "Idle_06.png",
+        "bbox_alpha24": [
+          90,
+          39,
+          229,
+          252
+        ],
+        "sha256": "9dd9b1117a2d1bf0017a8ed0ab89e0f0af609786771476be8105773b475bb1cb"
+      },
+      {
+        "name": "Idle_07.png",
+        "bbox_alpha24": [
+          97,
+          37,
+          222,
+          252
+        ],
+        "sha256": "fead02a6f5439da7233e5ca7ec1baaafd26c9a4c99b0d1343abd1c19cfca06cf"
+      }
+    ]
+  },
+  {
+    "name": "Hurt",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Hurt_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Hurt_01.png",
+        "bbox_alpha24": [
+          82,
+          44,
+          237,
+          252
+        ],
+        "sha256": "a511f45cc68b13c63e8bbe5682a837765cdc23bdb33c6be374e252517fc29ad7"
+      },
+      {
+        "name": "Hurt_02.png",
+        "bbox_alpha24": [
+          99,
+          62,
+          221,
+          252
+        ],
+        "sha256": "457f5a897523294838c11be715f20475e946d9e064ff78715542ce31e2eb77a6"
+      },
+      {
+        "name": "Hurt_03.png",
+        "bbox_alpha24": [
+          88,
+          54,
+          232,
+          252
+        ],
+        "sha256": "a223a3060a48c73d1b2d1c5287f8a75bfc917a2c02f99c218fc090ecdd3d46de"
+      },
+      {
+        "name": "Hurt_04.png",
+        "bbox_alpha24": [
+          92,
+          53,
+          227,
+          252
+        ],
+        "sha256": "aa2bfd037c6f45c8cddc0154d6c9cf5182d10bf26424da3f7a2954913a83cf44"
+      },
+      {
+        "name": "Hurt_05.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      }
+    ]
+  },
+  {
+    "name": "Teleport_Out",
+    "count": 7,
+    "frames": [
+      {
+        "name": "Teleport_Out_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Teleport_Out_01.png",
+        "bbox_alpha24": [
+          110,
+          48,
+          210,
+          252
+        ],
+        "sha256": "d66ff23d58cab93a7135a66acbc2d0263d4d0880753f1b0f746b770fa0319ff4"
+      },
+      {
+        "name": "Teleport_Out_02.png",
+        "bbox_alpha24": [
+          118,
+          68,
+          201,
+          252
+        ],
+        "sha256": "312ecfb7b3ac8f391750cc6b34f6a9fba098594d5b0465994e7d534ecba3e62f"
+      },
+      {
+        "name": "Teleport_Out_03.png",
+        "bbox_alpha24": [
+          122,
+          120,
+          197,
+          252
+        ],
+        "sha256": "b53f6fb921921cef8462c7dc0a82c292bdc7172e2fc414aedba9233f1ddf537d"
+      },
+      {
+        "name": "Teleport_Out_04.png",
+        "bbox_alpha24": [
+          114,
+          124,
+          205,
+          252
+        ],
+        "sha256": "e0d67cc4d2b4968025fd938c0d3d789f18cc16ae77626965cb72c61b5cbc64d5"
+      },
+      {
+        "name": "Teleport_Out_05.png",
+        "bbox_alpha24": [
+          128,
+          159,
+          192,
+          252
+        ],
+        "sha256": "428cfb4f98ae4726a9f2bd7d2ac77b33cb0b42b0966913c0f7fc5eb37cf934e0"
+      },
+      {
+        "name": "Teleport_Out_06.png",
+        "bbox_alpha24": null,
+        "sha256": "93d9ed456911de7457b9c93d70113366924f2fa017045ebab93ce2185368639a"
+      }
+    ]
+  },
+  {
+    "name": "Teleport_In",
+    "count": 7,
+    "frames": [
+      {
+        "name": "Teleport_In_00.png",
+        "bbox_alpha24": null,
+        "sha256": "93d9ed456911de7457b9c93d70113366924f2fa017045ebab93ce2185368639a"
+      },
+      {
+        "name": "Teleport_In_01.png",
+        "bbox_alpha24": [
+          128,
+          159,
+          192,
+          252
+        ],
+        "sha256": "428cfb4f98ae4726a9f2bd7d2ac77b33cb0b42b0966913c0f7fc5eb37cf934e0"
+      },
+      {
+        "name": "Teleport_In_02.png",
+        "bbox_alpha24": [
+          114,
+          124,
+          205,
+          252
+        ],
+        "sha256": "e0d67cc4d2b4968025fd938c0d3d789f18cc16ae77626965cb72c61b5cbc64d5"
+      },
+      {
+        "name": "Teleport_In_03.png",
+        "bbox_alpha24": [
+          122,
+          120,
+          197,
+          252
+        ],
+        "sha256": "b53f6fb921921cef8462c7dc0a82c292bdc7172e2fc414aedba9233f1ddf537d"
+      },
+      {
+        "name": "Teleport_In_04.png",
+        "bbox_alpha24": [
+          118,
+          68,
+          201,
+          252
+        ],
+        "sha256": "312ecfb7b3ac8f391750cc6b34f6a9fba098594d5b0465994e7d534ecba3e62f"
+      },
+      {
+        "name": "Teleport_In_05.png",
+        "bbox_alpha24": [
+          110,
+          48,
+          210,
+          252
+        ],
+        "sha256": "d66ff23d58cab93a7135a66acbc2d0263d4d0880753f1b0f746b770fa0319ff4"
+      },
+      {
+        "name": "Teleport_In_06.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      }
+    ]
+  },
+  {
+    "name": "Dive_Windup",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Dive_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Dive_Windup_01.png",
+        "bbox_alpha24": [
+          101,
+          84,
+          219,
+          252
+        ],
+        "sha256": "3f2daa3328d83ea0285819fd6349b0ee41aa9f0fff552d91a5a55c83360083d4"
+      },
+      {
+        "name": "Dive_Windup_02.png",
+        "bbox_alpha24": [
+          92,
+          45,
+          228,
+          252
+        ],
+        "sha256": "df20cebfeab001f6b9f90c2a605c48f8bc0d3b857e462b22a54c8182c04739a4"
+      },
+      {
+        "name": "Dive_Windup_03.png",
+        "bbox_alpha24": [
+          89,
+          89,
+          231,
+          252
+        ],
+        "sha256": "ba108c59e75b82a442be9bb259f21997f77cd46b9b39339e1a6ddcdbd1b1d26c"
+      },
+      {
+        "name": "Dive_Windup_04.png",
+        "bbox_alpha24": [
+          114,
+          86,
+          228,
+          252
+        ],
+        "sha256": "45b909d472d9264d8f00e787db105e4ff0b465589f4b83ce148293d58db8ce73"
+      },
+      {
+        "name": "Dive_Windup_05.png",
+        "bbox_alpha24": [
+          91,
+          72,
+          229,
+          252
+        ],
+        "sha256": "dad3f409ef01757992bb35cddc8518175389924c8d3247f26bf988b3ce19d25d"
+      }
+    ]
+  },
+  {
+    "name": "Dive",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Dive_00.png",
+        "bbox_alpha24": [
+          91,
+          72,
+          229,
+          252
+        ],
+        "sha256": "dad3f409ef01757992bb35cddc8518175389924c8d3247f26bf988b3ce19d25d"
+      },
+      {
+        "name": "Dive_01.png",
+        "bbox_alpha24": [
+          42,
+          16,
+          279,
+          252
+        ],
+        "sha256": "7dbbf144ebdf251a4b36220e84945acada114c0494f73b5e509243e3ea6e09c3"
+      },
+      {
+        "name": "Dive_02.png",
+        "bbox_alpha24": [
+          41,
+          18,
+          279,
+          252
+        ],
+        "sha256": "7212ef08b254479a752904b03a2d5a6960258ad28bcdfdaa7d85de3a3976a18f"
+      },
+      {
+        "name": "Dive_03.png",
+        "bbox_alpha24": [
+          42,
+          35,
+          278,
+          252
+        ],
+        "sha256": "19de9c7a9377cf87111898714bbfb8e17fc8f84c7dcb2ee5e7a1fdc202ed12c5"
+      },
+      {
+        "name": "Dive_04.png",
+        "bbox_alpha24": [
+          44,
+          27,
+          277,
+          252
+        ],
+        "sha256": "4de7011fe9b226e7a1b94652aa01ca16abd3129b04a442e21e6f16b8c3e24836"
+      },
+      {
+        "name": "Dive_05.png",
+        "bbox_alpha24": [
+          43,
+          66,
+          277,
+          252
+        ],
+        "sha256": "7cb850fc8dd956a4fe99096d6884362b9a24428bc03f5c65cc94a929b4590f00"
+      }
+    ]
+  },
+  {
+    "name": "Volley_Windup",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Volley_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Volley_Windup_01.png",
+        "bbox_alpha24": [
+          108,
+          35,
+          211,
+          252
+        ],
+        "sha256": "2b3ad687f39cbbdc3c1c7bef7da19b5149c2505018a7829a461d88909b2a2145"
+      },
+      {
+        "name": "Volley_Windup_02.png",
+        "bbox_alpha24": [
+          94,
+          36,
+          227,
+          252
+        ],
+        "sha256": "c36c94f9f63b8cb96b3e3dc04454f027038abe6767a33e572f2fa288cab6c97a"
+      },
+      {
+        "name": "Volley_Windup_03.png",
+        "bbox_alpha24": [
+          86,
+          42,
+          232,
+          252
+        ],
+        "sha256": "f529764b49e8fd384de088ad29f30ca8e5aa5353c8d7d3e376f871f351a31cc3"
+      },
+      {
+        "name": "Volley_Windup_04.png",
+        "bbox_alpha24": [
+          76,
+          42,
+          243,
+          252
+        ],
+        "sha256": "46d50a8e43895c7d93057dab63dba4715ade74ac7d629eb07a9e89c9c447a946"
+      },
+      {
+        "name": "Volley_Windup_05.png",
+        "bbox_alpha24": [
+          76,
+          44,
+          244,
+          252
+        ],
+        "sha256": "caeb63d3d76a9f03db63d03321ed4c62c3a7006531d4a06f36469c3e278766f7"
+      }
+    ]
+  },
+  {
+    "name": "Volley_Fire",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Volley_Fire_00.png",
+        "bbox_alpha24": [
+          76,
+          36,
+          244,
+          252
+        ],
+        "sha256": "33285eae6b722be3713a3d145eb0b01ba77823cad44a561e363692d51d05b51c"
+      },
+      {
+        "name": "Volley_Fire_01.png",
+        "bbox_alpha24": [
+          74,
+          47,
+          245,
+          252
+        ],
+        "sha256": "4af3901907e6ae8c830c0c6d67d28b92cfac39082cb57cd9ff6325a91722d4a0"
+      },
+      {
+        "name": "Volley_Fire_02.png",
+        "bbox_alpha24": [
+          76,
+          39,
+          244,
+          252
+        ],
+        "sha256": "85864c3c3b1c6adf9e398501f50fd5a484ef6a38fd7014cdb3eea20472052905"
+      },
+      {
+        "name": "Volley_Fire_03.png",
+        "bbox_alpha24": [
+          85,
+          44,
+          235,
+          252
+        ],
+        "sha256": "232659299440299e8c2a9810d93f0547ed34b57fb28225227e115fd4cde55c36"
+      },
+      {
+        "name": "Volley_Fire_04.png",
+        "bbox_alpha24": [
+          87,
+          45,
+          233,
+          252
+        ],
+        "sha256": "337d66e386a46627597ff8207a4547d8d59cf92f01c4cab64009a80f1428c6bb"
+      },
+      {
+        "name": "Volley_Fire_05.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      }
+    ]
+  },
+  {
+    "name": "Pillar_Windup",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Pillar_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Pillar_Windup_01.png",
+        "bbox_alpha24": [
+          98,
+          36,
+          223,
+          252
+        ],
+        "sha256": "7b3181164f99acb667dfcda94afeed6e379a3ff6e73081ffa6d6bb1c24b46d2f"
+      },
+      {
+        "name": "Pillar_Windup_02.png",
+        "bbox_alpha24": [
+          109,
+          30,
+          233,
+          252
+        ],
+        "sha256": "f31dd5a31e92f806ae7587ee221f1e79d3f327800abd0ccf75481f70e1fcc68d"
+      },
+      {
+        "name": "Pillar_Windup_03.png",
+        "bbox_alpha24": [
+          98,
+          63,
+          223,
+          252
+        ],
+        "sha256": "4aa62da7c1d413ceafa20e8129508eacc3a325f24f50c38548e98fe104ded88f"
+      },
+      {
+        "name": "Pillar_Windup_04.png",
+        "bbox_alpha24": [
+          104,
+          47,
+          217,
+          252
+        ],
+        "sha256": "f4f2acfa6f9ebca3416e3ac4f1f41156b2a3c4d68e2f38b05d321f2ebc7d2263"
+      },
+      {
+        "name": "Pillar_Windup_05.png",
+        "bbox_alpha24": [
+          100,
+          49,
+          221,
+          252
+        ],
+        "sha256": "32b7a470c234ac43f53abd836196245d76ee2a687232d926351a85879f397fc8"
+      }
+    ]
+  },
+  {
+    "name": "Pillar_Slam",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Pillar_Slam_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "7c11113da920356ba19ad7ad8bb03d7e322f7eefcbcf12691e350b8ee6495907"
+      },
+      {
+        "name": "Pillar_Slam_01.png",
+        "bbox_alpha24": [
+          100,
+          39,
+          221,
+          252
+        ],
+        "sha256": "eb2ca5975533c3369a6305df4f38571201bdbe67e879e03f2b1b3fc39e01aa02"
+      },
+      {
+        "name": "Pillar_Slam_02.png",
+        "bbox_alpha24": [
+          86,
+          82,
+          233,
+          252
+        ],
+        "sha256": "7120cfe1ddc7b30ac49e692e7e610d0ec4437967da8bfc836e3c17ec2a03d60f"
+      },
+      {
+        "name": "Pillar_Slam_03.png",
+        "bbox_alpha24": [
+          94,
+          48,
+          227,
+          252
+        ],
+        "sha256": "c7f2c73cfdfeab5bb2e62d1a2799b2c50477d962953bfceb66f4f2f7f78c8c3d"
+      },
+      {
+        "name": "Pillar_Slam_04.png",
+        "bbox_alpha24": [
+          96,
+          46,
+          223,
+          252
+        ],
+        "sha256": "daaf27186be66bc574b88d0884c86cf832cb2c86461e2644dfcfb43e3b9d4d43"
+      },
+      {
+        "name": "Pillar_Slam_05.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      }
+    ]
+  },
+  {
+    "name": "Phase_Shift",
+    "count": 6,
+    "frames": [
+      {
+        "name": "Phase_Shift_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Phase_Shift_01.png",
+        "bbox_alpha24": [
+          108,
+          56,
+          212,
+          252
+        ],
+        "sha256": "546cc456bb26e2c6d7411b19f982d2441ef01267fc1b07a11396f889f81c1faa"
+      },
+      {
+        "name": "Phase_Shift_02.png",
+        "bbox_alpha24": [
+          86,
+          37,
+          233,
+          252
+        ],
+        "sha256": "421ae0e9fe0a05bd5e25c4cbe901524e5e951c71b653b7f7959569b3882e71ca"
+      },
+      {
+        "name": "Phase_Shift_03.png",
+        "bbox_alpha24": [
+          79,
+          51,
+          241,
+          252
+        ],
+        "sha256": "147d91815788f8b34131ddbb14a6a7344cf2fee17d77675ca97de4fe43f1c5c4"
+      },
+      {
+        "name": "Phase_Shift_04.png",
+        "bbox_alpha24": [
+          74,
+          48,
+          247,
+          252
+        ],
+        "sha256": "f4ffa1d30892588ac132cc87d119fad6355ca2c0a52e982e4d2589401c291b26"
+      },
+      {
+        "name": "Phase_Shift_05.png",
+        "bbox_alpha24": [
+          86,
+          49,
+          235,
+          252
+        ],
+        "sha256": "8244268ae0651a5a1351755246a8f0c69d9618386de38df354efdb007d0b0dac"
+      }
+    ]
+  },
+  {
+    "name": "Death",
+    "count": 7,
+    "frames": [
+      {
+        "name": "Death_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "sha256": "0bc96be27991b288997370802d98f9d9e066c74b65b06ae4c1fa8394df667576"
+      },
+      {
+        "name": "Death_01.png",
+        "bbox_alpha24": [
+          98,
+          56,
+          223,
+          252
+        ],
+        "sha256": "080cd8f60e0d59a487b9e71c54ea905f0ddd88589b736190b84ae829602254c9"
+      },
+      {
+        "name": "Death_02.png",
+        "bbox_alpha24": [
+          98,
+          95,
+          223,
+          252
+        ],
+        "sha256": "4b61d354422ec8842e64e184ec65361bf4550299bdf081b261453f446f6d7c4f"
+      },
+      {
+        "name": "Death_03.png",
+        "bbox_alpha24": [
+          86,
+          149,
+          235,
+          252
+        ],
+        "sha256": "f540bbd6fcf65bc28fbcade39e74a02a0a87e3b82ad959b6baf4440fcccd1418"
+      },
+      {
+        "name": "Death_04.png",
+        "bbox_alpha24": [
+          101,
+          148,
+          237,
+          252
+        ],
+        "sha256": "b26f375fa48a244608c45940e55dec159e25037ff90122863824181c552f0e30"
+      },
+      {
+        "name": "Death_05.png",
+        "bbox_alpha24": [
+          114,
+          165,
+          206,
+          252
+        ],
+        "sha256": "46e5ba21bc5ea59f1720174aa88bbc2f4ae802fbff0e5a8e98e9f964b30c302b"
+      },
+      {
+        "name": "Death_06.png",
+        "bbox_alpha24": null,
+        "sha256": "93d9ed456911de7457b9c93d70113366924f2fa017045ebab93ce2185368639a"
+      }
+    ]
+  }
+]

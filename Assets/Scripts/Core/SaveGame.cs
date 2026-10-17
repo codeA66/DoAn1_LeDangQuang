@@ -13,6 +13,15 @@ namespace LuHanh.Core
         public Vector2 checkpointPosition;
         public bool wallCling;
         public bool orbShot;
+
+        [Tooltip("So Shards dang co.")]
+        public int shards;
+        [Tooltip("Shards roi lai cho chet (kieu Hollow Knight). 0 = khong co tui nao.")]
+        public int lostShards;
+        public string lostScene;
+        public Vector2 lostPosition;
+        [Tooltip("Quai da roi Shards (scene/ten/vi tri dat): hoi sinh roi giet lai khong roi nua, chong cay tien.")]
+        public System.Collections.Generic.List<string> lootedEnemies = new();
     }
 
     /// <summary>

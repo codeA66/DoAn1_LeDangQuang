@@ -153,6 +153,7 @@ namespace LuHanh.Player
             lastSwingTime = Time.time;
 
             PlaySwingPose();
+            LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Swing);
             ShowSlash();
             DetectHits();   // trung ngay trong frame bam, khong doi buoc vat ly
         }
@@ -310,6 +311,7 @@ namespace LuHanh.Player
             });
             // Diem tren collider muc tieu gan tam vung chem nhat = cho loe sang.
             if (hitEffect) hitEffect.Play(col.ClosestPoint(centre), direction);
+            LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.HitEnemy);
             ReactToHit();
             if (col.GetComponentInParent<LuHanh.Enemies.EnemyBase>()) EnemyHit?.Invoke();
         }
@@ -331,7 +333,8 @@ namespace LuHanh.Player
             reactedThisSwing = true;
 
             // Khung hinh khung lai mot thoang: luoi kiem nhu "cam vao" muc tieu.
-            HitStop.Request(config.hitStopTime);
+            // Pogo (chem xuong trung) khung lau hon mot chut cho cu nay "nang tay".
+            HitStop.Request(currentDirection == Direction.Down ? config.hitStopTime * 1.6f : config.hitStopTime);
 
             var v = body.linearVelocity;
             if (currentDirection == Direction.Down)

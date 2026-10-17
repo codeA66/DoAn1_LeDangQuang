@@ -1,0 +1,1586 @@
+[
+  {
+    "name": "Idle",
+    "scale_y": 0.4118773946360153,
+    "scale_x": 0.3869047619047619,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          15,
+          19,
+          351,
+          541
+        ],
+        "source_rect": [
+          0,
+          0,
+          359,
+          543
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_01.png",
+        "bbox_alpha24": [
+          93,
+          36,
+          227,
+          252
+        ],
+        "source_cell_bbox": [
+          11,
+          19,
+          358,
+          541
+        ],
+        "source_rect": [
+          359,
+          0,
+          717,
+          543
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_02.png",
+        "bbox_alpha24": [
+          90,
+          33,
+          229,
+          252
+        ],
+        "source_cell_bbox": [
+          19,
+          9,
+          379,
+          539
+        ],
+        "source_rect": [
+          717,
+          0,
+          1096,
+          543
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_03.png",
+        "bbox_alpha24": [
+          94,
+          39,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          15,
+          25,
+          352,
+          541
+        ],
+        "source_rect": [
+          1096,
+          0,
+          1448,
+          543
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_04.png",
+        "bbox_alpha24": [
+          94,
+          37,
+          226,
+          252
+        ],
+        "source_cell_bbox": [
+          19,
+          12,
+          359,
+          534
+        ],
+        "source_rect": [
+          0,
+          543,
+          359,
+          1086
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_05.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          18,
+          12,
+          355,
+          535
+        ],
+        "source_rect": [
+          359,
+          543,
+          717,
+          1086
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_06.png",
+        "bbox_alpha24": [
+          90,
+          39,
+          229,
+          252
+        ],
+        "source_cell_bbox": [
+          19,
+          12,
+          376,
+          530
+        ],
+        "source_rect": [
+          717,
+          543,
+          1096,
+          1086
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Idle/Idle_07.png",
+        "bbox_alpha24": [
+          97,
+          37,
+          222,
+          252
+        ],
+        "source_cell_bbox": [
+          24,
+          14,
+          346,
+          535
+        ],
+        "source_rect": [
+          1096,
+          543,
+          1448,
+          1086
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 8
+  },
+  {
+    "name": "Hurt",
+    "scale_y": 0.41779497098646035,
+    "scale_x": 0.31100478468899523,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          43,
+          10,
+          461,
+          527
+        ],
+        "source_rect": [
+          0,
+          0,
+          505,
+          527
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_01.png",
+        "bbox_alpha24": [
+          82,
+          44,
+          237,
+          252
+        ],
+        "source_cell_bbox": [
+          25,
+          30,
+          522,
+          527
+        ],
+        "source_rect": [
+          505,
+          0,
+          1027,
+          527
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_02.png",
+        "bbox_alpha24": [
+          99,
+          62,
+          221,
+          252
+        ],
+        "source_cell_bbox": [
+          92,
+          67,
+          484,
+          521
+        ],
+        "source_rect": [
+          1027,
+          0,
+          1536,
+          527
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_03.png",
+        "bbox_alpha24": [
+          88,
+          54,
+          232,
+          252
+        ],
+        "source_cell_bbox": [
+          43,
+          13,
+          505,
+          486
+        ],
+        "source_rect": [
+          0,
+          527,
+          505,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_04.png",
+        "bbox_alpha24": [
+          92,
+          53,
+          227,
+          252
+        ],
+        "source_cell_bbox": [
+          51,
+          10,
+          486,
+          487
+        ],
+        "source_rect": [
+          505,
+          527,
+          1027,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Hurt/Hurt_05.png",
+        "bbox_alpha24": [
+          96,
+          49,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          52,
+          9,
+          467,
+          494
+        ],
+        "source_rect": [
+          1027,
+          527,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Dive",
+    "scale_y": 0.47368421052631576,
+    "scale_x": 0.47368421052631576,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_00.png",
+        "bbox_alpha24": [
+          56,
+          36,
+          263,
+          252
+        ],
+        "source_cell_bbox": [
+          59,
+          48,
+          493,
+          504
+        ],
+        "source_rect": [
+          0,
+          0,
+          518,
+          523
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_01.png",
+        "bbox_alpha24": [
+          42,
+          16,
+          279,
+          252
+        ],
+        "source_cell_bbox": [
+          2,
+          19,
+          502,
+          517
+        ],
+        "source_rect": [
+          518,
+          0,
+          1020,
+          523
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_02.png",
+        "bbox_alpha24": [
+          41,
+          18,
+          279,
+          252
+        ],
+        "source_cell_bbox": [
+          0,
+          17,
+          503,
+          510
+        ],
+        "source_rect": [
+          1020,
+          0,
+          1536,
+          523
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_03.png",
+        "bbox_alpha24": [
+          42,
+          35,
+          278,
+          252
+        ],
+        "source_cell_bbox": [
+          21,
+          12,
+          518,
+          471
+        ],
+        "source_rect": [
+          0,
+          523,
+          518,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_04.png",
+        "bbox_alpha24": [
+          44,
+          27,
+          277,
+          252
+        ],
+        "source_cell_bbox": [
+          9,
+          4,
+          501,
+          478
+        ],
+        "source_rect": [
+          518,
+          523,
+          1020,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive/Dive_05.png",
+        "bbox_alpha24": [
+          43,
+          66,
+          277,
+          252
+        ],
+        "source_cell_bbox": [
+          11,
+          63,
+          503,
+          455
+        ],
+        "source_rect": [
+          1020,
+          523,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Volley_Windup",
+    "scale_y": 0.432,
+    "scale_x": 0.3359173126614987,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          74,
+          13,
+          461,
+          513
+        ],
+        "source_rect": [
+          0,
+          0,
+          476,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_01.png",
+        "bbox_alpha24": [
+          108,
+          35,
+          211,
+          252
+        ],
+        "source_cell_bbox": [
+          146,
+          13,
+          454,
+          515
+        ],
+        "source_rect": [
+          476,
+          0,
+          1023,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_02.png",
+        "bbox_alpha24": [
+          94,
+          36,
+          227,
+          252
+        ],
+        "source_cell_bbox": [
+          75,
+          12,
+          472,
+          511
+        ],
+        "source_rect": [
+          1023,
+          0,
+          1536,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_03.png",
+        "bbox_alpha24": [
+          86,
+          42,
+          232,
+          252
+        ],
+        "source_cell_bbox": [
+          38,
+          3,
+          474,
+          488
+        ],
+        "source_rect": [
+          0,
+          515,
+          476,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_04.png",
+        "bbox_alpha24": [
+          76,
+          42,
+          243,
+          252
+        ],
+        "source_cell_bbox": [
+          51,
+          4,
+          547,
+          489
+        ],
+        "source_rect": [
+          476,
+          515,
+          1023,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Windup/Volley_Windup_05.png",
+        "bbox_alpha24": [
+          76,
+          44,
+          244,
+          252
+        ],
+        "source_cell_bbox": [
+          2,
+          3,
+          502,
+          482
+        ],
+        "source_rect": [
+          1023,
+          515,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Pillar_Slam",
+    "scale_y": 0.4277227722772277,
+    "scale_x": 0.29082774049217003,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          27,
+          10,
+          474,
+          515
+        ],
+        "source_rect": [
+          0,
+          0,
+          480,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_01.png",
+        "bbox_alpha24": [
+          100,
+          39,
+          221,
+          252
+        ],
+        "source_cell_bbox": [
+          73,
+          17,
+          490,
+          514
+        ],
+        "source_rect": [
+          480,
+          0,
+          988,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_02.png",
+        "bbox_alpha24": [
+          86,
+          82,
+          233,
+          252
+        ],
+        "source_cell_bbox": [
+          22,
+          116,
+          528,
+          514
+        ],
+        "source_rect": [
+          988,
+          0,
+          1536,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_03.png",
+        "bbox_alpha24": [
+          94,
+          48,
+          227,
+          252
+        ],
+        "source_cell_bbox": [
+          23,
+          21,
+          480,
+          497
+        ],
+        "source_rect": [
+          0,
+          515,
+          480,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_04.png",
+        "bbox_alpha24": [
+          96,
+          46,
+          223,
+          252
+        ],
+        "source_cell_bbox": [
+          70,
+          17,
+          504,
+          498
+        ],
+        "source_rect": [
+          480,
+          515,
+          988,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Slam/Pillar_Slam_05.png",
+        "bbox_alpha24": [
+          99,
+          46,
+          221,
+          252
+        ],
+        "source_cell_bbox": [
+          88,
+          16,
+          506,
+          498
+        ],
+        "source_rect": [
+          988,
+          515,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Phase_Shift",
+    "scale_y": 0.4227005870841487,
+    "scale_x": 0.33678756476683935,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          95,
+          19,
+          481,
+          530
+        ],
+        "source_rect": [
+          0,
+          0,
+          503,
+          530
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_01.png",
+        "bbox_alpha24": [
+          108,
+          56,
+          212,
+          252
+        ],
+        "source_cell_bbox": [
+          118,
+          58,
+          424,
+          521
+        ],
+        "source_rect": [
+          503,
+          0,
+          1041,
+          530
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_02.png",
+        "bbox_alpha24": [
+          86,
+          37,
+          233,
+          252
+        ],
+        "source_cell_bbox": [
+          22,
+          21,
+          458,
+          530
+        ],
+        "source_rect": [
+          1041,
+          0,
+          1536,
+          530
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_03.png",
+        "bbox_alpha24": [
+          79,
+          51,
+          241,
+          252
+        ],
+        "source_cell_bbox": [
+          24,
+          1,
+          503,
+          476
+        ],
+        "source_rect": [
+          0,
+          530,
+          503,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_04.png",
+        "bbox_alpha24": [
+          74,
+          48,
+          247,
+          252
+        ],
+        "source_cell_bbox": [
+          24,
+          0,
+          538,
+          482
+        ],
+        "source_rect": [
+          503,
+          530,
+          1041,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Phase_Shift/Phase_Shift_05.png",
+        "bbox_alpha24": [
+          86,
+          49,
+          235,
+          252
+        ],
+        "source_cell_bbox": [
+          30,
+          2,
+          471,
+          482
+        ],
+        "source_rect": [
+          1041,
+          530,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Teleport_Out",
+    "scale_y": 0.36486486486486486,
+    "scale_x": 0.27253668763102723,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          55,
+          9,
+          532,
+          601
+        ],
+        "source_rect": [
+          0,
+          0,
+          532,
+          601
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_01.png",
+        "bbox_alpha24": [
+          110,
+          48,
+          210,
+          252
+        ],
+        "source_cell_bbox": [
+          88,
+          32,
+          454,
+          589
+        ],
+        "source_rect": [
+          532,
+          0,
+          988,
+          601
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_02.png",
+        "bbox_alpha24": [
+          118,
+          68,
+          201,
+          252
+        ],
+        "source_cell_bbox": [
+          149,
+          65,
+          451,
+          568
+        ],
+        "source_rect": [
+          988,
+          0,
+          1536,
+          601
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_03.png",
+        "bbox_alpha24": [
+          122,
+          120,
+          197,
+          252
+        ],
+        "source_cell_bbox": [
+          167,
+          36,
+          444,
+          397
+        ],
+        "source_rect": [
+          0,
+          601,
+          532,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_04.png",
+        "bbox_alpha24": [
+          114,
+          124,
+          205,
+          252
+        ],
+        "source_cell_bbox": [
+          109,
+          40,
+          441,
+          392
+        ],
+        "source_rect": [
+          532,
+          601,
+          988,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Teleport_Out/Teleport_Out_05.png",
+        "bbox_alpha24": [
+          128,
+          159,
+          192,
+          252
+        ],
+        "source_cell_bbox": [
+          202,
+          97,
+          436,
+          352
+        ],
+        "source_rect": [
+          988,
+          601,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 7
+  },
+  {
+    "name": "Volley_Fire",
+    "scale_y": 0.421875,
+    "scale_x": 0.3366733466933868,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_00.png",
+        "bbox_alpha24": [
+          76,
+          36,
+          244,
+          252
+        ],
+        "source_cell_bbox": [
+          15,
+          7,
+          514,
+          519
+        ],
+        "source_rect": [
+          0,
+          0,
+          514,
+          519
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_01.png",
+        "bbox_alpha24": [
+          74,
+          47,
+          245,
+          252
+        ],
+        "source_cell_bbox": [
+          3,
+          31,
+          508,
+          517
+        ],
+        "source_rect": [
+          514,
+          0,
+          1023,
+          519
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_02.png",
+        "bbox_alpha24": [
+          76,
+          39,
+          244,
+          252
+        ],
+        "source_cell_bbox": [
+          0,
+          9,
+          499,
+          514
+        ],
+        "source_rect": [
+          1023,
+          0,
+          1536,
+          519
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_03.png",
+        "bbox_alpha24": [
+          85,
+          44,
+          235,
+          252
+        ],
+        "source_cell_bbox": [
+          34,
+          0,
+          478,
+          492
+        ],
+        "source_rect": [
+          0,
+          519,
+          514,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_04.png",
+        "bbox_alpha24": [
+          87,
+          45,
+          233,
+          252
+        ],
+        "source_cell_bbox": [
+          41,
+          0,
+          475,
+          491
+        ],
+        "source_rect": [
+          514,
+          519,
+          1023,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Volley_Fire/Volley_Fire_05.png",
+        "bbox_alpha24": [
+          90,
+          45,
+          230,
+          252
+        ],
+        "source_cell_bbox": [
+          70,
+          5,
+          486,
+          496
+        ],
+        "source_rect": [
+          1023,
+          519,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Pillar_Windup",
+    "scale_y": 0.43636363636363634,
+    "scale_x": 0.28199566160520606,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          28,
+          20,
+          489,
+          515
+        ],
+        "source_rect": [
+          0,
+          0,
+          495,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_01.png",
+        "bbox_alpha24": [
+          98,
+          36,
+          223,
+          252
+        ],
+        "source_cell_bbox": [
+          63,
+          20,
+          508,
+          514
+        ],
+        "source_rect": [
+          495,
+          0,
+          1003,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_02.png",
+        "bbox_alpha24": [
+          109,
+          30,
+          233,
+          252
+        ],
+        "source_cell_bbox": [
+          74,
+          2,
+          512,
+          510
+        ],
+        "source_rect": [
+          1003,
+          0,
+          1536,
+          515
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_03.png",
+        "bbox_alpha24": [
+          98,
+          63,
+          223,
+          252
+        ],
+        "source_cell_bbox": [
+          54,
+          12,
+          495,
+          446
+        ],
+        "source_rect": [
+          0,
+          515,
+          495,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_04.png",
+        "bbox_alpha24": [
+          104,
+          47,
+          217,
+          252
+        ],
+        "source_cell_bbox": [
+          87,
+          12,
+          487,
+          480
+        ],
+        "source_rect": [
+          495,
+          515,
+          1003,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Pillar_Windup/Pillar_Windup_05.png",
+        "bbox_alpha24": [
+          100,
+          49,
+          221,
+          252
+        ],
+        "source_cell_bbox": [
+          75,
+          12,
+          504,
+          478
+        ],
+        "source_rect": [
+          1003,
+          515,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  },
+  {
+    "name": "Death",
+    "scale_y": 0.37305699481865284,
+    "scale_x": 0.3051643192488263,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          60,
+          25,
+          486,
+          604
+        ],
+        "source_rect": [
+          0,
+          0,
+          527,
+          616
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_01.png",
+        "bbox_alpha24": [
+          98,
+          56,
+          223,
+          252
+        ],
+        "source_cell_bbox": [
+          64,
+          81,
+          471,
+          606
+        ],
+        "source_rect": [
+          527,
+          0,
+          1027,
+          616
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_02.png",
+        "bbox_alpha24": [
+          98,
+          95,
+          223,
+          252
+        ],
+        "source_cell_bbox": [
+          68,
+          194,
+          477,
+          616
+        ],
+        "source_rect": [
+          1027,
+          0,
+          1536,
+          616
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_03.png",
+        "bbox_alpha24": [
+          86,
+          149,
+          235,
+          252
+        ],
+        "source_cell_bbox": [
+          38,
+          103,
+          527,
+          377
+        ],
+        "source_rect": [
+          0,
+          616,
+          527,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_04.png",
+        "bbox_alpha24": [
+          101,
+          148,
+          237,
+          252
+        ],
+        "source_cell_bbox": [
+          57,
+          95,
+          500,
+          373
+        ],
+        "source_rect": [
+          527,
+          616,
+          1027,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Death/Death_05.png",
+        "bbox_alpha24": [
+          114,
+          165,
+          206,
+          252
+        ],
+        "source_cell_bbox": [
+          130,
+          126,
+          431,
+          359
+        ],
+        "source_rect": [
+          1027,
+          616,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 7
+  },
+  {
+    "name": "Dive_Windup",
+    "scale_y": 0.4,
+    "scale_x": 0.2968036529680365,
+    "frames": [
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_00.png",
+        "bbox_alpha24": [
+          95,
+          36,
+          225,
+          252
+        ],
+        "source_cell_bbox": [
+          42,
+          9,
+          480,
+          549
+        ],
+        "source_rect": [
+          0,
+          0,
+          520,
+          549
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_01.png",
+        "bbox_alpha24": [
+          101,
+          84,
+          219,
+          252
+        ],
+        "source_cell_bbox": [
+          57,
+          109,
+          455,
+          528
+        ],
+        "source_rect": [
+          520,
+          0,
+          988,
+          549
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_02.png",
+        "bbox_alpha24": [
+          92,
+          45,
+          228,
+          252
+        ],
+        "source_cell_bbox": [
+          70,
+          14,
+          528,
+          532
+        ],
+        "source_rect": [
+          988,
+          0,
+          1536,
+          549
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_03.png",
+        "bbox_alpha24": [
+          89,
+          89,
+          231,
+          252
+        ],
+        "source_cell_bbox": [
+          40,
+          48,
+          520,
+          455
+        ],
+        "source_rect": [
+          0,
+          549,
+          520,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_04.png",
+        "bbox_alpha24": [
+          114,
+          86,
+          228,
+          252
+        ],
+        "source_cell_bbox": [
+          75,
+          28,
+          459,
+          443
+        ],
+        "source_rect": [
+          520,
+          549,
+          988,
+          1024
+        ],
+        "touches_canvas": false
+      },
+      {
+        "file": "Assets/Art/Generated/Enemies/Rootwraith/HandDrawn_v2/Frames/Dive_Windup/Dive_Windup_05.png",
+        "bbox_alpha24": [
+          91,
+          72,
+          229,
+          252
+        ],
+        "source_cell_bbox": [
+          61,
+          6,
+          526,
+          456
+        ],
+        "source_rect": [
+          988,
+          549,
+          1536,
+          1024
+        ],
+        "touches_canvas": false
+      }
+    ],
+    "count": 6
+  }
+]

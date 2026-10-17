@@ -78,6 +78,7 @@ namespace LuHanh.Level
         {
             moving = true;
             SetClosed(true);
+            Sfx.Play(SfxId.Elevator);
             if (startShake > 0f) CameraShake.Kick(startShake, 0.2f);
             yield return new WaitForSeconds(startDelay);
             if (rideEnemyPrefab && (top || !spawnOnlyGoingUp)) SpawnRideEnemies();

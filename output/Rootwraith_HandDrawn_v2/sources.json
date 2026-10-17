@@ -1,0 +1,57 @@
+{
+  "Idle": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-7e685dde-9f1b-4219-8d3c-bf9c349066c6.png",
+    "cols": 4,
+    "rows": 2
+  },
+  "Hurt": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-3c5e4558-086e-4bb4-b783-83e9697d88ab.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Dive": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-72c5c42f-d6d1-4476-a134-7ac5d6026f22.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Volley_Windup": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-b72d5ca8-436b-4bb0-a0be-2f83bbf3de09.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Pillar_Slam": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-1ac15fcd-a07a-49a3-9a6e-5a442ddddbf8.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Phase_Shift": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-2306f7e9-1f72-4d16-8dda-2f9b6a29aa16.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Teleport_Out": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-29295383-35a7-4c83-9944-ab5060d63ba2.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Volley_Fire": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-84d92bfe-6a64-44ba-ac50-abff0a80a493.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Pillar_Windup": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-0d211dad-53a3-4cd7-b2a0-6d535458edd4.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Death": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-72dbdafe-fed8-4493-9ed1-959f34bb36c7.png",
+    "cols": 3,
+    "rows": 2
+  },
+  "Dive_Windup": {
+    "path": "C:/Users/DANG QUANG/.codex/generated_images/01a14a75-73f9-71d2-a670-9eae2ee36735/exec-78fb60ef-043c-4ebc-b351-63d429e23316.png",
+    "cols": 3,
+    "rows": 2
+  }
+}

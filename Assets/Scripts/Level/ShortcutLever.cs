@@ -44,6 +44,7 @@ namespace LuHanh.Level
             if (!Ready) return;
             used = true;
             flipTimer = 0f;
+            Sfx.Play(SfxId.Lever);
             if (hitStop > 0f) HitStop.Request(hitStop);
             CameraShake.Kick(shake, 0.3f);
             foreach (var g in gates) if (g) g.Open();

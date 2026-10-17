@@ -86,14 +86,20 @@ namespace LuHanh.Player
             bool nowGround = to is IdleState || to is RunState;
             running = to is RunState;
 
+            if (to is DashState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Dash);
+            else if (to is WallSlideState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.WallCling);
+            else if (to is WallJumpState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Jump);
+
             if (to is JumpState)
             {
+                LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Jump);
                 if (jumpDust) jumpDust.Play();
                 SetScale(jumpStretch);
             }
             else if (wasAir && nowGround)
             {
                 float t = Mathf.Clamp01(lastFallSpeed / hardLandingSpeed);
+                LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Land, Mathf.Lerp(0.4f, 1f, t));
                 if (landDust) landDust.Emit(Mathf.RoundToInt(Mathf.Lerp(minLandParticles, maxLandParticles, t)));
                 if (!actionAnimation || !actionAnimation.PlayLanding())
                     SetScale(Vector2.Lerp(Vector2.one, landSquash, t));

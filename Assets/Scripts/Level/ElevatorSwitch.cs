@@ -39,6 +39,7 @@ namespace LuHanh.Level
             if (!elevator || elevator.IsMoving) return;
             if (hitStop > 0f) HitStop.Request(hitStop);
             flipped = !flipped;
+            Sfx.Play(SfxId.Lever);
             fromAngle = flipped ? angle : -angle;
             toAngle = -fromAngle;
             flipTimer = 0f;

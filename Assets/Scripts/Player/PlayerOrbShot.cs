@@ -88,6 +88,7 @@ namespace LuHanh.Player
                 var fx = Instantiate(castFxPrefab, pos, Quaternion.identity);
                 fx.Play(pendingDir, shadowForm);
             }
+            Sfx.Play(SfxId.OrbCast);
             if (castShake > 0f) CameraShake.Kick(castShake, 0.15f);
             if (castHitStop > 0f) HitStop.Request(castHitStop);
         }

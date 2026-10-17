@@ -1,6 +1,6 @@
 # PROMPTS USED — Props preview
 
-Date: 2026-10-17. Built-in ImageGen. Preview only: 16 static samples; full animations and remaining variants await approval.
+Date: 2026-10-17. Built-in ImageGen. Initial preview: 16 static samples. Full set subsequently approved and installed; see FULL SET section below.
 
 ## References
 - Elevator/Cabin/Cabin_00.png: white/blue palette and pixel finish.
@@ -110,3 +110,166 @@ Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efd
 Use case: stylized-concept. ONE native pixelart decorative MossTuft_00 SAMPLE, Unity2D buriedearthlevel, logicalframe128x64,128px/tile. ONE veryLOW softMOSS/shortFERNtuft withroundedtinyleaves, paleWHITE andBLUE ONLY, darkbluefibers atflatbase, gentlycurledstems, notgreenandnotsharpgrassspikes. Tinyfloortrimlesshalfatilehigh, leavesgroupedinreadablepixelclusters. Reference1 elevator WHITE/BLUEpalette andfinepixelartdensity. Reference2 buriedplatform MATERIALTEXTUREONLY, DO NOT copybrowncolors. AllmajorvisiblemasseswhiteandBLUE tostandoutagainstbrownsoil/mossgreenambient. Strictflatpalette ONLY #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 contour#0C0A14. NO green/mossgreen, turquoise/teal/mint #45DCC4, red, orange/yellow/brown, warmLIGHT. Flatbottomfootprintwithnothingbelowbaseline. Fine1–2nativepixelstair-steps andweatheredtinytextureclusters, notgiant8bitblocks. Wholeisolatedobjectfullyinsideframe, actualtransparentbackground alpha0 andopaquehardpixels. No blur/antialias/glow/gradient/softshadow/text/grid/labels/scene/ground. ONLY onestaticitem, no animation/extra variants, decorative/nonhazard.
 
 Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-9cd96dc7-0fe7-4418-abe7-15944af0755b.png`
+
+
+# FULL SET — approved 2026-10-17
+
+Installed all 29 requested PNG into Light/ and Deco/. Built-in ImageGen produced 7 distinct extra variants and two horizontal 4-frame animation sheets using approved sprites as references. Original static samples retained. Animation sheets sliced into equal cells, alpha-cropped, resized with one common scale per sequence, anchored at ground or fixed ceiling mount; no soft light/code gradient added. Palette normalized to five approved colors and alpha thresholded to 0/255. The two animated frame-00 files use the new sheet renders of the approved design. Registration cleanup limits lamp sway to 2 native pixels, ceiling mount fixed; dim mushroom frame preserves body and only uses the generated cap highlight pattern to replace white with pale blue, avoiding excessive darkening.
+
+## Measured file report
+
+| File | Measured size | Alpha | Palette | Result |
+|---|---|---|---|---|
+| Deco\Chain_Hang.png | 64x512 | 0/255 | 5 allowed colors | PASS |
+| Deco\Minecart_Wrecked.png | 320x192 | 0/255 | 5 allowed colors | PASS |
+| Deco\MossTuft_00.png | 128x64 | 0/255 | 5 allowed colors | PASS |
+| Deco\MossTuft_01.png | 128x64 | 0/255 | 5 allowed colors | PASS |
+| Deco\MossTuft_02.png | 128x64 | 0/255 | 5 allowed colors | PASS |
+| Deco\MossTuft_03.png | 128x64 | 0/255 | 5 allowed colors | PASS |
+| Deco\Pipe_Broken_00.png | 384x192 | 0/255 | 5 allowed colors | PASS |
+| Deco\Pipe_Broken_01.png | 384x192 | 0/255 | 5 allowed colors | PASS |
+| Deco\RootHang_L.png | 192x640 | 0/255 | 5 allowed colors | PASS |
+| Deco\RootHang_M.png | 128x448 | 0/255 | 5 allowed colors | PASS |
+| Deco\RootHang_S.png | 128x256 | 0/255 | 5 allowed colors | PASS |
+| Deco\RootWall_00.png | 256x256 | 0/255 | 5 allowed colors | PASS |
+| Deco\RootWall_01.png | 256x256 | 0/255 | 5 allowed colors | PASS |
+| Deco\Rubble_00.png | 192x96 | 0/255 | 5 allowed colors | PASS |
+| Deco\Rubble_01.png | 192x96 | 0/255 | 5 allowed colors | PASS |
+| Deco\Rubble_02.png | 192x96 | 0/255 | 5 allowed colors | PASS |
+| Deco\Stalactite_00.png | 64x128 | 0/255 | 5 allowed colors | PASS |
+| Deco\Stalactite_01.png | 96x192 | 0/255 | 5 allowed colors | PASS |
+| Deco\Stalactite_02.png | 128x256 | 0/255 | 5 allowed colors | PASS |
+| Deco\Support_Beam.png | 192x512 | 0/255 | 5 allowed colors | PASS |
+| Light\CrystalCluster_00.png | 192x192 | 0/255 | 5 allowed colors | PASS |
+| Light\GlowMushroom_00.png | 128x128 | 0/255 | 5 allowed colors | PASS |
+| Light\GlowMushroom_01.png | 128x128 | 0/255 | 5 allowed colors | PASS |
+| Light\GlowMushroom_02.png | 128x128 | 0/255 | 5 allowed colors | PASS |
+| Light\GlowMushroom_03.png | 128x128 | 0/255 | 5 allowed colors | PASS |
+| Light\HangingLamp_00.png | 128x320 | 0/255 | 5 allowed colors | PASS |
+| Light\HangingLamp_01.png | 128x320 | 0/255 | 5 allowed colors | PASS |
+| Light\HangingLamp_02.png | 128x320 | 0/255 | 5 allowed colors | PASS |
+| Light\HangingLamp_03.png | 128x320 | 0/255 | 5 allowed colors | PASS |
+
+## Animation measurements
+
+{
+  "GlowMushroom": {
+    "unique_frames": 4,
+    "changed_pixels_including_wrap": [
+      1547,
+      1550,
+      2727,
+      1563
+    ],
+    "bounds": [
+      [
+        6,
+        0,
+        122,
+        128
+      ],
+      [
+        6,
+        0,
+        122,
+        128
+      ],
+      [
+        6,
+        0,
+        122,
+        128
+      ],
+      [
+        6,
+        0,
+        122,
+        128
+      ]
+    ]
+  },
+  "HangingLamp": {
+    "unique_frames": 4,
+    "changed_pixels_including_wrap": [
+      6260,
+      6524,
+      5709,
+      5981
+    ],
+    "bounds": [
+      [
+        24,
+        0,
+        104,
+        320
+      ],
+      [
+        25,
+        0,
+        105,
+        320
+      ],
+      [
+        24,
+        0,
+        104,
+        320
+      ],
+      [
+        23,
+        0,
+        103,
+        320
+      ]
+    ]
+  }
+}
+
+All four frames in each loop differ. Changed pixel counts include 03→00; this checks uniqueness and wrap distance, not Unity playback. No Unity import settings, scene/prefab edits or Game View test performed. PPU128 remains an import target in README; existing .meta files were not edited.
+
+## Additional exact prompts
+
+### GlowMushroom_Loop
+Use case: stylized-concept. Production native pixel art Unity2D decorative cave prop GlowMushroom_Loop, logical frame 128x128. Four animation frames in ONE horizontal row of four equal cells, 512x128 logical sheet. Preserve EXACT mushroom cluster anatomy, silhouette, baseline and position from reference in every cell. ONLY cap white/pale-blue pixel highlights pulse very gently: medium, bright, medium, dim, seamlessly repeat. No waving, no added mushrooms. Use attached APPROVED sprite as strict style/material/palette/scale reference. Transparent background actual alpha, hard opaque pixel edges. Strict ONLY #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green, turquoise, red, orange, yellow, brown; no soft glow, blur, antialias or smooth gradients. Fine 1-2 native pixel stair steps and small weathered clusters, not oversized coarse pixels. Whole object visible. No labels, grid, backdrop, ground plane or extra items. Decoration only, no dangerous spikes. EXACTLY FOUR equal cells aligned horizontally; SAME sprite scale and anchor in all cells.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-e5dba904-7959-47f5-95eb-b7384b0767a4.png`
+
+### HangingLamp_Loop
+Use case: stylized-concept. Production native pixel art Unity2D decorative cave prop HangingLamp_Loop, logical frame 128x320. Four animation frames in ONE horizontal row of four equal cells, 512x320 logical sheet. Preserve EXACT lantern cage, chain link count and ceiling mount of reference. Very slight pendulum sway in pixel art: center, 2 pixels right, center, 2 pixels left; top mount fixed at same top center in every cell. Bulb varies very gently white/pale blue. Keep complete lamp inside each cell, same height and size, seamless loop. Use attached APPROVED sprite as strict style/material/palette/scale reference. Transparent background actual alpha, hard opaque pixel edges. Strict ONLY #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green, turquoise, red, orange, yellow, brown; no soft glow, blur, antialias or smooth gradients. Fine 1-2 native pixel stair steps and small weathered clusters, not oversized coarse pixels. Whole object visible. No labels, grid, backdrop, ground plane or extra items. Decoration only, no dangerous spikes. EXACTLY FOUR equal cells aligned horizontally; SAME sprite scale and anchor in all cells.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-34f7803b-3e4c-42f2-8d2b-5926aebb3fea.png`
+
+### RootWall_01
+Use case: stylized-concept. Production native pixel art Unity2D decorative cave prop RootWall_01, logical frame 256x256. One distinct second variant wall root fan, not mirror/copy: thick knotted main root along LEFT edge, two broad arcing branches curl RIGHT, sparse smaller trailing root fibers. Match reference material, fine pixel density, white-blue mineralized bark. Attach at LEFT frame edge. Use attached APPROVED sprite as strict style/material/palette/scale reference. Transparent background actual alpha, hard opaque pixel edges. Strict ONLY #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green, turquoise, red, orange, yellow, brown; no soft glow, blur, antialias or smooth gradients. Fine 1-2 native pixel stair steps and small weathered clusters, not oversized coarse pixels. Whole object visible. No labels, grid, backdrop, ground plane or extra items. Decoration only, no dangerous spikes. ONLY one isolated sprite.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-e9462bc3-ceeb-4b5a-bce9-afb736a6f9c4.png`
+
+### Pipe_Broken_01
+Create one native pixel art sprite Pipe_Broken_01, logical frame 384x192. One distinct second broken pipe variant: a short horizontal industrial pipe with fractured OPEN RIGHT mouth, left flange and small upward broken elbow at left, riveted white-blue repair plates and chipped paint, flat stone resting base. Different silhouette and damage from reference, same cold material. Use attached approved sprite as strict material, palette and fine pixel-density reference. Entire object isolated on actual transparent background. ONLY colors #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green/teal/red/orange/yellow. Hard pixel edges, no antialiasing/blur/softglow/gradient. Flat resting bottom; no text or backdrop. One sprite, not a sheet.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-51b556c2-3d39-45b4-809c-ea3e3998461b.png`
+
+### Rubble_01
+Use case: stylized-concept. Production native pixel art Unity2D decorative cave prop Rubble_01, logical frame 192x96. One low rubble pile variant, central wide flat cracked boulder with smaller stones and tiny pale-blue moss along sides, flat bottom. Different silhouette and stone arrangement from reference, same fine pixel finish. Use attached APPROVED sprite as strict style/material/palette/scale reference. Transparent background actual alpha, hard opaque pixel edges. Strict ONLY #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green, turquoise, red, orange, yellow, brown; no soft glow, blur, antialias or smooth gradients. Fine 1-2 native pixel stair steps and small weathered clusters, not oversized coarse pixels. Whole object visible. No labels, grid, backdrop, ground plane or extra items. Decoration only, no dangerous spikes. ONLY one isolated sprite.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-66547eb2-b6dd-4273-9e99-4d366ff00355.png`
+
+### Rubble_02
+Create one native pixel art sprite Rubble_02, logical frame 192x96. One low rubble pile variant, two rounded stone groups with shallow valley between, small bent white-blue riveted metal scrap partly buried, pale-blue moss. Flat bottom, distinct from reference. Use attached approved sprite as strict material, palette and fine pixel-density reference. Entire object isolated on actual transparent background. ONLY colors #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green/teal/red/orange/yellow. Hard pixel edges, no antialiasing/blur/softglow/gradient. Flat resting bottom; no text or backdrop. One sprite, not a sheet.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-8f3f9472-b1f3-4c3e-acaa-376ec3b7647f.png`
+
+### MossTuft_01
+Create one native pixel art sprite MossTuft_01, logical frame 128x64. One very low blue-white moss tuft variant, rounded cushion-like little leaf clusters with a few curled fern stems leaning left; flat base, no sharp grass, distinct arrangement from reference. Use attached approved sprite as strict material, palette and fine pixel-density reference. Entire object isolated on actual transparent background. ONLY colors #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green/teal/red/orange/yellow. Hard pixel edges, no antialiasing/blur/softglow/gradient. Flat resting bottom; no text or backdrop. One sprite, not a sheet.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-111b5829-bcfe-47c2-ba8d-65ab4e8d86d7.png`
+
+### MossTuft_02
+Create one native pixel art sprite MossTuft_02, logical frame 128x64. One very low blue-white moss tuft variant, two small separated rosettes of rounded leaves and tiny curled fiddleheads between, flat base, distinct arrangement from reference. Use attached approved sprite as strict material, palette and fine pixel-density reference. Entire object isolated on actual transparent background. ONLY colors #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green/teal/red/orange/yellow. Hard pixel edges, no antialiasing/blur/softglow/gradient. Flat resting bottom; no text or backdrop. One sprite, not a sheet.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-74c4f05a-417e-46bf-9848-335883e7dd82.png`
+
+### MossTuft_03
+Create one native pixel art sprite MossTuft_03, logical frame 128x64. One very low blue-white moss tuft variant, asymmetric tiny broad round leaves with a few soft fern fronds leaning right and creeping stems, flat base, distinct arrangement from reference. Use attached approved sprite as strict material, palette and fine pixel-density reference. Entire object isolated on actual transparent background. ONLY colors #F2F4F8 #BFD8F2 #4A7FC1 #1E3557 #0C0A14. No green/teal/red/orange/yellow. Hard pixel edges, no antialiasing/blur/softglow/gradient. Flat resting bottom; no text or backdrop. One sprite, not a sheet.
+
+Source: `C:\Users\DANG QUANG\.codex\generated_images\01a1243a-44c0-7aa0-b8a8-efdabc3667e9\exec-a3380ef7-ac2c-4e60-8f96-f16f997af98a.png`

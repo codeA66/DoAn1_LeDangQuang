@@ -29,6 +29,8 @@ namespace LuHanh.Enemies
         [Header("Phan thuong")]
         [Tooltip("So hat nang luong Shadow roi ra khi bi chem chet (roi vuc thi khong roi).")]
         [Min(0)] public int soulOrbs = 3;
+        [Tooltip("So Shards (tien) roi ra khi bi chem chet (roi vuc thi khong roi).")]
+        [Min(0)] public int shardDrop = 3;
 
         [Header("Dia hinh")]
         public LayerMask groundLayers = 1 << 8;

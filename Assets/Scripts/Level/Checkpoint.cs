@@ -225,12 +225,14 @@ namespace LuHanh.Level
             {
                 yield return new WaitForSeconds(healInterval);
                 h.Heal(1);
+                Sfx.Play(SfxId.Heal, 0.6f);
             }
         }
 
         /// <summary>Luc vua ngoi: hat bung ra, den loe rong roi thu ve, chop sang man hinh, chu "Game Saved".</summary>
         System.Collections.IEnumerator SitFx()
         {
+            Sfx.Play(SfxId.Bench);
             if (burst) burst.Emit(burstCount);
             if (activateFx) activateFx.Play();
             if (flash) flash.color = flashColor;

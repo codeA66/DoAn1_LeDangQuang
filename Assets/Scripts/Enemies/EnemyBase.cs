@@ -50,6 +50,10 @@ namespace LuHanh.Enemies
         public float FacingSign => FacingRight ? 1f : -1f;
         public Vector3 StartPosition => startPosition;
 
+        /// <summary>Khoa nhan dien quai de nho da roi Shards: scene + ten loai + vi tri dat ban dau (lam tron).</summary>
+        string LootId => gameObject.scene.name + "/" + name.Replace("(Clone)", "").Trim() + "/"
+            + Mathf.RoundToInt(startPosition.x * 2f) + "," + Mathf.RoundToInt(startPosition.y * 2f);
+
         public float PlayerDistanceSqr =>
             Player ? ((Vector2)(Player.position - transform.position)).sqrMagnitude : float.MaxValue;
 
@@ -270,7 +274,16 @@ namespace LuHanh.Enemies
             if (health.IsDead)
             {
                 Vector2 centre = bodyCollider ? (Vector2)bodyCollider.bounds.center : (Vector2)transform.position;
+                LuHanh.Effects.KillFx.Play(centre);
                 LuHanh.Player.SoulOrbPool.Spawn(centre, BaseConfig.soulOrbs);
+                // Moi con chi roi Shards mot lan (hoi sinh o ghe roi giet lai khong roi nua).
+                var looted = LuHanh.Core.SaveGame.Data.lootedEnemies;
+                string lootId = LootId;
+                if (BaseConfig.shardDrop > 0 && !looted.Contains(lootId))
+                {
+                    looted.Add(lootId);
+                    LuHanh.Player.ShardPool.Spawn(centre, BaseConfig.shardDrop);
+                }
                 if (OnDeath(hit)) return;
 
                 // Mac dinh tat ngay trong frame chet; quai can animation chet co the tre viec tat.

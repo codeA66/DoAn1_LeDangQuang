@@ -58,6 +58,7 @@ namespace LuHanh.Level
         {
             if (taken || !other.CompareTag("Player")) return;
             PlayerSkills.Unlock(skill);
+            LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.SkillPickup);
             Hide();
             promptTimer = promptTime;
         }

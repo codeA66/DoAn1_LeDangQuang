@@ -130,6 +130,7 @@ namespace LuHanh.Combat
 
         void SpawnImpact(Vector2 at)
         {
+            LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.HitEnemy);
             if (!look.impact) return;
             var fx = Instantiate(look.impact, at, Quaternion.identity);
             var sc = fx.transform.localScale;
@@ -141,6 +142,7 @@ namespace LuHanh.Combat
 
         void Explode()
         {
+            LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.OrbImpact, 0.7f);
             exploding = true;
             if (trail) trail.Stop();
             frame = 0;
