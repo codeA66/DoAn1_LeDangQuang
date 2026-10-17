@@ -77,8 +77,23 @@ namespace LuHanh.Player
         /// Trong luc + giu phim nhay + roi nhanh. Goi moi buoc vat ly o moi trang thai
         /// tru dash (dash khong co trong luc).
         /// </summary>
+        float airHoldTimer;
+
+        /// <summary>Khung lo lung giua khong trung (vd ban cau tren khong): het trong luc va dung yen trong <paramref name="seconds"/> giay.</summary>
+        public void HoldInAir(float seconds)
+        {
+            airHoldTimer = Mathf.Max(airHoldTimer, seconds);
+            varJumpTimer = 0f;
+        }
+
         public void ApplyGravity(float deltaTime)
         {
+            if (airHoldTimer > 0f)
+            {
+                airHoldTimer -= deltaTime;
+                Body.linearVelocity = Vector2.zero;
+                return;
+            }
             var v = Body.linearVelocity;
 
             // Buoc truoc da dat dung varJumpSpeed; nho hon nghia la vua dung tran -> het giu nhay,

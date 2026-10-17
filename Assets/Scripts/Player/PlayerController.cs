@@ -36,6 +36,9 @@ namespace LuHanh.Player
         HorizontalMover mover;
         FacingController facing;
         PlayerContext context;
+
+        /// <summary>Khung lo lung giua khong trung (ban cau tren khong).</summary>
+        public void HoldInAir(float seconds) => context?.HoldInAir(seconds);
         StateMachine machine;
 
         IdleState idle;
