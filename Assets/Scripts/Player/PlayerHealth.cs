@@ -199,8 +199,39 @@ namespace LuHanh.Player
                 groundedTimer = 0f;
                 return;
             }
+            // Dung sat mep (mot ben chan lo lung) hoac tren vat di chuyen thi khong tinh la cho an toan:
+            // hoi sinh o day se truot xuong vuc.
+            if (!OnSolidGround())
+            {
+                groundedTimer = 0f;
+                return;
+            }
             groundedTimer += Time.deltaTime;
             if (groundedTimer >= safeGroundTime) safePosition = transform.position;
+        }
+
+        [Tooltip("Cho an toan phai co dat ca hai ben chan, du them bao nhieu (unit) tinh tu mep than.")]
+        [SerializeField] float safeEdgeMargin = 0.25f;
+
+        readonly RaycastHit2D[] safeHits = new RaycastHit2D[4];
+
+        /// <summary>Ca hai ben chan (mo rong safeEdgeMargin) deu cham dat dung yen (khong phai thang may, Dripfang...).</summary>
+        bool OnSolidGround()
+        {
+            var col = GetComponent<Collider2D>();
+            if (!col) return true;
+            var b = col.bounds;
+            int mask = LayerMask.GetMask("Ground");
+            return SolidBelow(new Vector2(b.min.x - safeEdgeMargin, b.min.y + 0.1f), mask)
+                && SolidBelow(new Vector2(b.max.x + safeEdgeMargin, b.min.y + 0.1f), mask);
+        }
+
+        bool SolidBelow(Vector2 origin, int mask)
+        {
+            var hit = Physics2D.Raycast(origin, Vector2.down, 0.45f, mask);
+            if (!hit.collider) return false;
+            var rb = hit.collider.attachedRigidbody;
+            return !rb || rb.bodyType == RigidbodyType2D.Static;
         }
 
         void Die()
