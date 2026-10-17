@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01271afed00e48b4bb58444034cb4673, type: 3}
+  m_Name: Rootwraith
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Enemies.RootwraithConfig
+  maxHealth: 60
+  hitReaction: {fileID: 0}
+  hurtTime: 0.2
+  knockbackScale: 1
+  flashTime: 0.12
+  hitSquash: {x: 1.08, y: 0.94}
+  squashTime: 0.1
+  soulOrbs: 12
+  shardDrop: 40
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  sleepDistance: 40
+  artFacesRight: 1
+  restPhase1: 1.1
+  restPhase2: 0.5
+  phase2At: 0.5
+  teleportOutTime: 0.44
+  teleportInTime: 0.44
+  hiddenTime: 0.12
+  recoverTime: 0.55
+  contactDamage: 1
+  diveDamage: 2
+  spikeDamage: 2
+  orbDamage: 1
+  diveStartHeight: 7
+  diveStartSide: 6.5
+  diveWindup: 0.5
+  diveSpeed: 26
+  slideDistance: 5
+  slideSpeed: 20
+  phase2DiveCount: 2
+  volleyWindup: 0.5
+  volleyCountPhase1: 3
+  volleyCountPhase2: 5
+  volleyInterval: 0.28
+  orbSpeed: 11
+  orbHighLane: 2.3
+  orbLowLane: 0.7
+  orbWaveAmp: 0.25
+  orbWaveFreq: 5
+  orbRadius: 0.32
+  pillarWindup: 0.55
+  spikeWarn: 0.65
+  spikeRise: 0.1
+  spikeHold: 0.45
+  spikeRetract: 0.2
+  spikeSpacing: 1.25
+  spikeWidth: 0.8
+  spikeHeight: 2.2
+  spikeGapEvery: 3
+  secondWaveDelay: 0.75
+  phaseShiftHeight: 4.5
+  phaseShiftDuration: 3.2
+  burstInterval: 0.38
+  burstCount: 10
+  burstSpeed: 6.5
+  introGatherTime: 1.6
+  introRoarTime: 1.1
+  introShake: 0.7
+  diveLandShake: 0.55
+  spikeShake: 0.4
+  phaseShake: 0.35
+  deathShake: 0.9
+  hitStopOnLand: 0.06
