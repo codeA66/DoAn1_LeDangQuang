@@ -195,7 +195,7 @@ MonoBehaviour:
     trailOffset: {x: -1.7, y: 0}
     impact: {fileID: 9090909743255138485, guid: 8f928269db7cef24c90ff8cb3ca6be6c, type: 3}
   speed: 16
-  maxDistance: 11
+  maxDistance: 0
   damage: 2
   knockback: 6
   fps: 14

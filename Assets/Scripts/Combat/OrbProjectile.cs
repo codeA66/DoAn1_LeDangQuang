@@ -30,7 +30,8 @@ namespace LuHanh.Combat
         [SerializeField] Look normal = new Look();
         [SerializeField] Look shadow = new Look { radius = 0.6f };
         [SerializeField] float speed = 16f;
-        [SerializeField] float maxDistance = 11f;
+        [Tooltip("Quang bay toi da (unit). 0 = khong gioi han: bay toi khi cham dat/tuong, ra khoi phong luc ban thi tu bien mat.")]
+        [SerializeField] float maxDistance = 0f;
         [SerializeField] int damage = 2;
         [SerializeField] float knockback = 6f;
         [SerializeField] float fps = 14f;
@@ -46,6 +47,7 @@ namespace LuHanh.Combat
         Look look;
         Vector2 direction;
         float travelled, frameTimer, damageScale;
+        LuHanh.Level.Room launchRoom;
         int frame;
         bool exploding;
         GameObject owner;
@@ -57,6 +59,7 @@ namespace LuHanh.Combat
             direction = new Vector2(Mathf.Sign(dirX), 0f);
             damageScale = damageMultiplier;
             owner = source;
+            launchRoom = LuHanh.Level.Room.At(transform.position);
             var s = transform.localScale;
             s.x = Mathf.Abs(s.x) * direction.x;
             transform.localScale = s;
@@ -101,7 +104,9 @@ namespace LuHanh.Combat
             transform.position = pos;
             travelled += step;
             DamageOverlaps(pos);
-            if (travelled >= maxDistance) Explode();
+            if (maxDistance > 0f && travelled >= maxDistance) Explode();
+            // Khong gioi han quang bay: ra khoi phong luc ban (ngoai tam nhin) thi bien mat, khong bay mai.
+            else if (launchRoom && !launchRoom.Contains(pos)) Destroy(gameObject);
         }
 
         void DamageOverlaps(Vector2 pos)
