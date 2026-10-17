@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 4
   hitReaction: {fileID: 0}
   hurtTime: 0.2
-  knockbackScale: 1
+  knockbackScale: 0.3
   flashTime: 0.12
   hitSquash: {x: 1.3, y: 0.7}
   squashTime: 0.1
@@ -25,6 +25,9 @@ MonoBehaviour:
     m_Bits: 256
   sleepDistance: 25
   artFacesRight: 1
+  staggerOnHit: 0
+  hitNudge: 0.3
+  staggerCooldown: 1
   moveSpeed: 2
   detectRange: 9
   detectHeight: 2.5
