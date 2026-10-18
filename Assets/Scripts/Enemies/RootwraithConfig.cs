@@ -22,8 +22,8 @@ namespace LuHanh.Enemies
 
         [Header("Sát thương")]
         public int contactDamage = 1;
-        public int diveDamage = 2;
-        public int spikeDamage = 2;
+        public int diveDamage = 1;
+        public int spikeDamage = 1;
         public int orbDamage = 1;
 
         [Header("Lao chéo")]
@@ -54,18 +54,20 @@ namespace LuHanh.Enemies
 
         [Header("Gai trồi")]
         public float pillarWindup = 0.55f;
-        public float spikeWarn = 0.65f;
+        public float spikeWarn = 0.9f;
         public float spikeRise = 0.1f;
         public float spikeHold = 0.45f;
         public float spikeRetract = 0.2f;
         [Tooltip("Khoảng cách giữa các cây gai / chiều rộng mỗi cây / chiều cao.")]
-        public float spikeSpacing = 1.25f;
+        public float spikeSpacing = 1.4f;
         public float spikeWidth = 0.8f;
         public float spikeHeight = 2.2f;
         [Tooltip("Cứ N cây thì chừa một khe trống (kiểu Grimm).")]
-        public int spikeGapEvery = 3;
+        public int spikeGapEvery = 4;
+        [Tooltip("Số cây bỏ trống liên tiếp ở mỗi khe (khe rộng hơn = dễ né hơn).")]
+        public int spikeGapWidth = 2;
         [Tooltip("Giai đoạn 2: đợt gai thứ hai lệch nửa ô, trồi sau đợt đầu.")]
-        public float secondWaveDelay = 0.75f;
+        public float secondWaveDelay = 1.1f;
 
         [Header("Chuyển giai đoạn")]
         public float phaseShiftHeight = 4.5f;

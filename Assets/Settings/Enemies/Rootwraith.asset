@@ -34,8 +34,8 @@ MonoBehaviour:
   hiddenTime: 0.12
   recoverTime: 0.55
   contactDamage: 1
-  diveDamage: 2
-  spikeDamage: 2
+  diveDamage: 1
+  spikeDamage: 1
   orbDamage: 1
   diveStartHeight: 7
   diveStartSide: 6.5
@@ -55,15 +55,16 @@ MonoBehaviour:
   orbWaveFreq: 5
   orbRadius: 0.32
   pillarWindup: 0.55
-  spikeWarn: 0.65
+  spikeWarn: 0.9
   spikeRise: 0.1
   spikeHold: 0.45
   spikeRetract: 0.2
-  spikeSpacing: 1.25
+  spikeSpacing: 1.4
   spikeWidth: 0.8
   spikeHeight: 2.2
-  spikeGapEvery: 3
-  secondWaveDelay: 0.75
+  spikeGapEvery: 4
+  spikeGapWidth: 2
+  secondWaveDelay: 1.1
   phaseShiftHeight: 4.5
   phaseShiftDuration: 3.2
   burstInterval: 0.38
