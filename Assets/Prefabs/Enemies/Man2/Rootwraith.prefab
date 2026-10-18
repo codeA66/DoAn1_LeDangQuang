@@ -49,6 +49,85 @@ MonoBehaviour:
   alphaMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   orbSprite: {fileID: 0}
   spikeSprite: {fileID: 0}
+  orbFrames:
+  - {fileID: 21300000, guid: a77f0563f3c744a283b656d60a977f42, type: 3}
+  - {fileID: 21300000, guid: 96a3a21a1ee542c88454e994246be263, type: 3}
+  - {fileID: 21300000, guid: 1721ff8254374eb9a61f01f3f899af1d, type: 3}
+  - {fileID: 21300000, guid: 47ec841e48a74081824c1a4ea7234d8b, type: 3}
+  - {fileID: 21300000, guid: c4a3a01dc12a4d02a189ecce108f4bad, type: 3}
+  orbFps: 10
+  popFrames:
+  - {fileID: 21300000, guid: 1d6438b3a4324096aae7ec7d5a045291, type: 3}
+  - {fileID: 21300000, guid: 5f98e3dc78fd43c5be695844db851cb7, type: 3}
+  - {fileID: 21300000, guid: bc582a5e3f074eba8e474f7d0ee76f68, type: 3}
+  - {fileID: 21300000, guid: 373c129f075243c0af416dc01b00af59, type: 3}
+  - {fileID: 21300000, guid: 0a2a039142d7493fb758bb3a14d270cf, type: 3}
+  popFps: 12
+  spikeFrames:
+  - {fileID: 21300000, guid: ca8c933ae0004886938a29d63e7857e6, type: 3}
+  - {fileID: 21300000, guid: 735ced6834874977999ecff2e086505a, type: 3}
+  - {fileID: 21300000, guid: 32251ad2b1d142c7a7d4bddfd6868ecf, type: 3}
+  - {fileID: 21300000, guid: c08405d5be54453896e4d73e1a73cee5, type: 3}
+  - {fileID: 21300000, guid: f7a1ba57c6dd4f99807258e22d539527, type: 3}
+  - {fileID: 21300000, guid: 8f7f9c1f521e4255bdc0c3ee95490c94, type: 3}
+  spikeAlphaHeights:
+  - 32
+  - 107
+  - 177
+  - 161
+  - 95
+  - 25
+  spikeAlphaWidth: 68
+  warnFrames:
+  - {fileID: 21300000, guid: c979b559b3dc4f41b42f25000036a7bf, type: 3}
+  - {fileID: 21300000, guid: db50e81df89c42d8a65f1c608ed77683, type: 3}
+  - {fileID: 21300000, guid: 0de1cece30854691811ddbb5d5323c24, type: 3}
+  warnFps: 8
+  trailFrames:
+  - {fileID: 21300000, guid: 62303c47dd404804b0936730ebdea66e, type: 3}
+  - {fileID: 21300000, guid: 55deba4cf03b43a787453f8a4bc41df7, type: 3}
+  - {fileID: 21300000, guid: b3f45e4f4fda4e7681900f9651382541, type: 3}
+  - {fileID: 21300000, guid: 229a773f4f814081982bf35cc2ef21e6, type: 3}
+  trailFps: 12
+  impactFrames:
+  - {fileID: 21300000, guid: bf0d6838db0c4c399585b1cc99a2dfcb, type: 3}
+  - {fileID: 21300000, guid: e05971f91dfc4efc9f22381c8600dbb1, type: 3}
+  - {fileID: 21300000, guid: f8fbd2f3bf2641688078e2802d6dd221, type: 3}
+  - {fileID: 21300000, guid: 383508b76bac46b6957fb8981fda3cfc, type: 3}
+  - {fileID: 21300000, guid: 6732860cec7a4cdc8807dfd4ccb0c346, type: 3}
+  - {fileID: 21300000, guid: bc25a0f7eaf945d3ac36745365af787a, type: 3}
+  impactFps: 12
+  ringFrames:
+  - {fileID: 21300000, guid: 29225f5eb9914eb8ad71f630cab78ffa, type: 3}
+  - {fileID: 21300000, guid: f01c89b15e5b423a8481deb03d51fd4b, type: 3}
+  - {fileID: 21300000, guid: b6abee9e8729448bb60f0df084c35a29, type: 3}
+  - {fileID: 21300000, guid: 7cfad53ea0b045cb9a9876129e57036b, type: 3}
+  - {fileID: 21300000, guid: 8fefea8c7cf941569bad2014eac58a87, type: 3}
+  eyeFrames:
+  - {fileID: 21300000, guid: a4c60ee90de742aaba9ba639691b6512, type: 3}
+  - {fileID: 21300000, guid: fcecaeec33474b74bdac53e0a29852ae, type: 3}
+  - {fileID: 21300000, guid: 0cf9064d64744b2491772bbf510ba3c6, type: 3}
+  eyeFps: 12
+  smokeFrames:
+  - {fileID: 21300000, guid: 385e53063e0043b7b5c5a7fc2cb7d817, type: 3}
+  - {fileID: 21300000, guid: a6a42188a09d49798066789cca680a69, type: 3}
+  - {fileID: 21300000, guid: 972a3f4907a9457491f5d075109dfb44, type: 3}
+  - {fileID: 21300000, guid: 5f2496c828984b59a9be1059a6316257, type: 3}
+  - {fileID: 21300000, guid: 452596cdbb8844768689fd78eaafe248, type: 3}
+  - {fileID: 21300000, guid: c6fe945f7d0e4ec6ad7873676eaaeaaa, type: 3}
+  - {fileID: 21300000, guid: 5603300570c74990ba58becedf70bbda, type: 3}
+  smokeFps: 12
+  deathFrames:
+  - {fileID: 21300000, guid: 392391c2897343158a816480756e7213, type: 3}
+  - {fileID: 21300000, guid: 20098e51e2f24ca1b74e3a4377eeb013, type: 3}
+  - {fileID: 21300000, guid: 3d0fbee338174b52a1f802acc333e54d, type: 3}
+  - {fileID: 21300000, guid: 0a29d4d4ad154240b373d0a07c758251, type: 3}
+  - {fileID: 21300000, guid: c15ed700d4fe4460afb7831779adbf61, type: 3}
+  - {fileID: 21300000, guid: f86effb1d1d74d25a2fb82abe476106a, type: 3}
+  - {fileID: 21300000, guid: 962e5334fbd34a6b8a2be5f2fa0e31dd, type: 3}
+  - {fileID: 21300000, guid: 2222a069ab164b2cbe2128820987e6ef, type: 3}
+  deathFps: 10
+  deathCoreOffset: {x: 0, y: 0.75}
   hot: {r: 1, g: 0.88, b: 0.78, a: 1}
   danger: {r: 0.918, g: 0.396, b: 0.278, a: 1}
   darkRed: {r: 0.561, g: 0.224, b: 0.239, a: 1}

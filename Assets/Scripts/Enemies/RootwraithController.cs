@@ -38,6 +38,7 @@ namespace LuHanh.Enemies
         IDamageable target;
         Rect arena;
         float floorY;
+        float spikeRenderFloorY;
         bool dead, hidden, invulnerable, diving, phase2, phase2Pending;
         float deathTimer;
         int lastAttack = -1;
@@ -115,6 +116,12 @@ namespace LuHanh.Enemies
             floorY = StartPosition.y;
             if (arenaRight > arenaLeft)
                 arena = Rect.MinMaxRect(arenaLeft, floorY - 1f, arenaRight, arenaTop > floorY ? arenaTop : arena.yMax);
+            // Tilemap có thể lệch mép collider so với mốc đặt boss. Chỉ căn hình
+            // gai/cảnh báo theo mặt đất thật; floorY cho gameplay giữ nguyên.
+            spikeRenderFloorY = floorY;
+            var ground = Physics2D.Raycast(new Vector2(arena.center.x, floorY + 0.5f), Vector2.down, 2f, config.groundLayers);
+            if (ground.collider && !ground.collider.isTrigger) spikeRenderFloorY = ground.point.y;
+            if (fx) fx.ConfigureSpikeMask(arena, spikeRenderFloorY, config.spikeHeight);
             stack.Clear();
             wait = 0f;
             stack.Push(Brain());
@@ -152,12 +159,14 @@ namespace LuHanh.Enemies
         {
             if (dead) return true;
             dead = true;
+            ClearHitFlash();
+            if (sprite) sprite.color = Color.white;
             stack.Clear();
             diving = false;
             body.linearVelocity = Vector2.zero;
             bodyCollider.enabled = false;
             ClearAttacks();
-            if (fx) { fx.Trail(Vector2.zero, Vector2.right, false); fx.HideEyeFlare(); fx.DeathBurst(Centre); }
+            if (fx) { fx.Trail(Vector2.zero, Vector2.right, false); fx.HideEyeFlare(); fx.DeathBurst(Centre, sprite); }
             Play("Death");
             CameraShake.Kick(config.deathShake, 0.8f);
             HitStop.Request(0.18f);
@@ -485,6 +494,7 @@ namespace LuHanh.Enemies
                     go.transform.SetParent(world, false);
                     o.sr = go.AddComponent<SpriteRenderer>();
                     o.sr.sprite = fx.OrbSprite;
+                    if (fx.AlphaMaterial) o.sr.sharedMaterial = fx.AlphaMaterial;
                     o.sr.sortingLayerName = fx.SortingLayer;
                     o.sr.sortingOrder = fx.SortingOrder + 3;
                 }
@@ -497,7 +507,14 @@ namespace LuHanh.Enemies
             {
                 o.sr.enabled = true;
                 o.sr.transform.position = pos;
-                if (!(fx && fx.OrbSprite)) o.sr.transform.localScale = Vector3.one * config.orbRadius * 3.2f;
+                if (fx && fx.OrbSprite)
+                {
+                    o.sr.sprite = fx.OrbFrame(0f);
+                    o.sr.transform.localScale = Vector3.one;
+                    float angle = fx.HasOrbFrames ? Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg : 0f;
+                    o.sr.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                }
+                else o.sr.transform.localScale = Vector3.one * config.orbRadius * 3.2f;
             }
         }
 
@@ -509,7 +526,11 @@ namespace LuHanh.Enemies
                 o.age += step;
                 o.pos += o.vel * step;
                 if (o.wave) o.pos.y = o.baseY + config.orbWaveAmp * Mathf.Sin(o.age * config.orbWaveFreq * Mathf.PI * 2f);
-                if (o.sr) o.sr.transform.position = o.pos;
+                if (o.sr)
+                {
+                    o.sr.transform.position = o.pos;
+                    if (fx && fx.HasOrbFrames) o.sr.sprite = fx.OrbFrame(o.age);
+                }
                 bool gone = o.age > 6f || !arena.Contains(o.pos) ||
                             Physics2D.OverlapCircle(o.pos, config.orbRadius * 0.5f, config.groundLayers);
                 if (!gone && playerBody && DistanceToPlayer(o.pos) < config.orbRadius)
@@ -532,7 +553,8 @@ namespace LuHanh.Enemies
             for (float x = arena.xMin + 0.8f + offset; x <= arena.xMax - 0.8f; x += config.spikeSpacing, idx++)
             {
                 int gapEvery = Mathf.Max(2, config.spikeGapEvery);
-                if ((idx + waveIndex * (gapEvery / 2 + 1)) % gapEvery == gapEvery - 1) continue; // khe trống
+                int gapWidth = Mathf.Clamp(config.spikeGapWidth, 1, gapEvery - 1);
+                if ((idx + waveIndex * (gapEvery / 2)) % gapEvery >= gapEvery - gapWidth) continue; // khe trống rộng gapWidth cây
                 SpawnSpike(x);
             }
         }
@@ -555,7 +577,9 @@ namespace LuHanh.Enemies
                     if (fx.AlphaMaterial) s.body.sharedMaterial = fx.AlphaMaterial;
                     s.body.sortingLayerName = fx.SortingLayer;
                     s.body.sortingOrder = fx.SortingOrder;
-                    s.warn = fx.MakeEnergy(world, "SpikeWarn", 1, 2.2f);
+                    s.warn = fx.HasWarnFrames
+                        ? fx.MakeFrameRenderer(world, "SpikeWarn", fx.WarnFrame(0f), fx.SortingOrder + 1)
+                        : fx.MakeEnergy(world, "SpikeWarn", 1, 2.2f);
                 }
                 spikes.Add(s);
             }
@@ -565,8 +589,13 @@ namespace LuHanh.Enemies
             if (s.warn)
             {
                 s.warn.enabled = !harmless;
-                s.warn.transform.position = new Vector3(x, floorY + 0.35f, 0f);
-                s.warn.transform.localScale = new Vector3(config.spikeWidth * 1.6f, 0.7f, 1f);
+                bool animated = fx && fx.HasWarnFrames;
+                s.warn.transform.position = new Vector3(x, animated ? spikeRenderFloorY : floorY + 0.35f, 0f);
+                s.warn.transform.localScale = animated
+                    ? new Vector3(config.spikeWidth * 1.6f / 1.3f, 1f, 1f)
+                    : new Vector3(config.spikeWidth * 1.6f, 0.7f, 1f);
+                s.warn.color = Color.white;
+                if (animated) s.warn.sprite = fx.WarnFrame(0f);
             }
         }
 
@@ -583,7 +612,11 @@ namespace LuHanh.Enemies
                 if (t < warn)
                 {
                     h = 0f;
-                    if (s.warn) s.warn.color = new Color(1f, 1f, 1f, 0.35f + 0.65f * Mathf.PingPong(t * 6f, 1f));
+                    if (s.warn)
+                    {
+                        if (fx && fx.HasWarnFrames) s.warn.sprite = fx.WarnFrame(t);
+                        else s.warn.color = new Color(1f, 1f, 1f, 0.35f + 0.65f * Mathf.PingPong(t * 6f, 1f));
+                    }
                 }
                 else if (t < warn + rise) h = (t - warn) / rise;
                 else if (t < warn + rise + hold) h = 1f;
@@ -601,12 +634,21 @@ namespace LuHanh.Enemies
                     s.burst = true;
                     anyBurstThisFrame = true;
                     if (s.warn) s.warn.enabled = false;
-                    if (fx) fx.SpikeBurst(new Vector2(s.x, floorY));
+                    if (fx) fx.SpikeBurst(new Vector2(s.x, spikeRenderFloorY));
                 }
                 if (s.body)
                 {
                     s.body.enabled = h > 0f;
-                    s.body.transform.localScale = new Vector3(config.spikeWidth, config.spikeHeight * h, 1f);
+                    if (fx && fx.HasSpikeReveal)
+                    {
+                        fx.ApplySpikeReveal(s.body, s.x, spikeRenderFloorY, h, t >= warn + rise + hold, config.spikeWidth, config.spikeHeight);
+                    }
+                    else if (fx && fx.HasSpikeFrames)
+                    {
+                        s.body.sprite = fx.SpikeFrame(t - warn, rise, hold, retract);
+                        s.body.transform.localScale = new Vector3(config.spikeWidth / 0.8f, config.spikeHeight / 2.2f, 1f);
+                    }
+                    else s.body.transform.localScale = new Vector3(config.spikeWidth, config.spikeHeight * h, 1f);
                 }
                 if (h > 0.3f && !s.hit && t < warn + rise + hold)
                 {
