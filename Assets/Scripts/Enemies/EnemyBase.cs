@@ -195,6 +195,13 @@ namespace LuHanh.Enemies
             flash.color = c;
         }
 
+        /// <summary>Dừng lớp lóe khi một hiệu ứng riêng cần giữ silhouette (chỉ khi lớp con gọi).</summary>
+        protected void ClearHitFlash()
+        {
+            flashTimer = 0f;
+            if (flash) flash.enabled = false;
+        }
+
         /// <summary>
         /// Bop hinh khi trung don roi bat ve: scale cua object Visual di tu hitSquash ve 1 trong
         /// squashTime. Dem bang Time.deltaTime nen dung yen trong luc hitstop -> thay ro hinh bi bop.
