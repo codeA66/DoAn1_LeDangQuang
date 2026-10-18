@@ -105,6 +105,7 @@ namespace LuHanh.Effects
         }
         public void ConfigureSpikeMask(Rect arena, float floorY, float height)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             if (!HasSpikeReveal) return;
             Build();
             if (!spikeFloorMask)
@@ -127,6 +128,7 @@ namespace LuHanh.Effects
 
         public void ApplySpikeReveal(SpriteRenderer renderer, float x, float floorY, float h, bool retracting, float width, float height)
         {
+            if (!renderer) return;
             float desiredPixels = Mathf.Clamp01(h) * spikeAlphaHeights[2];
             int frame = 2;
             // Chọn hình đủ cao rồi kéo xuống dưới mặt sàn; mask cắt phần dư.
@@ -226,6 +228,8 @@ namespace LuHanh.Effects
         }
 
         GameObject worldRoot;
+        /// <summary>Da dung xong va object goc hieu ung con ton tai (Unity huy object theo thu tu bat ky khi thoat Play / doi scene).</summary>
+        bool Alive => built && worldRoot;
         void OnDestroy()
         {
             if (worldRoot) Destroy(worldRoot);
@@ -238,6 +242,7 @@ namespace LuHanh.Effects
         /// <summary>Khói tối bung ra + tàn đỏ khi tan biến / hiện ra.</summary>
         public void Smoke(Vector2 pos, float size = 1f)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             smokePool?.Play(pos, size);
             Emit(smokePs, pos, (int)(28 * size), smoke, new Vector2(0.6f, 1.6f) * size, 1.2f * size);
             Emit(emberPs, pos, (int)(22 * size), danger, new Vector2(0.08f, 0.2f), 1.1f * size);
@@ -249,6 +254,7 @@ namespace LuHanh.Effects
         /// </summary>
         public void Gather(Vector2 centre, float radius, float k)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             Build();
             int n = Mathf.RoundToInt(Mathf.Lerp(1f, 6f, k));
             var p = new ParticleSystem.EmitParams();
@@ -279,6 +285,7 @@ namespace LuHanh.Effects
         /// <summary>Ánh mắt lóe lên báo đòn. <paramref name="k"/> 0..1 theo tiến độ báo đòn.</summary>
         public void EyeFlare(Vector2 pos, float k)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             if (!eyeFlare.enabled) eyeAge = 0f;
             eyeFlare.enabled = k > 0f && k < 1f;
             if (!eyeFlare.enabled) return;
@@ -296,6 +303,7 @@ namespace LuHanh.Effects
         /// <summary>Vệt lao kéo theo boss, xoay theo hướng bay.</summary>
         public void Trail(Vector2 pos, Vector2 dir, bool on)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             if (!trail.enabled) trailAge = 0f;
             trail.enabled = on;
             if (!on) return;
@@ -312,6 +320,7 @@ namespace LuHanh.Effects
         /// <summary>Chạm sàn sau cú lao: bụi, tia lửa, vòng sóng.</summary>
         public void Impact(Vector2 pos, float strength = 1f)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             impactPool?.Play(pos, strength);
             Emit(dustPs, pos, (int)(24 * strength), new Color(0.2f, 0.16f, 0.2f, 0.85f), new Vector2(0.5f, 1.1f), 1f);
             EmitCone(sparkPs, pos, (int)(30 * strength), hot, 25f, 155f);
@@ -322,6 +331,7 @@ namespace LuHanh.Effects
         /// <summary>Gai trồi lên: mảnh đất văng + tia lửa ở chân gai.</summary>
         public void SpikeBurst(Vector2 pos)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             EmitCone(debrisPs, pos, 5, new Color(0.14f, 0.1f, 0.12f), 60f, 120f);
             EmitCone(sparkPs, pos, 6, danger, 70f, 110f);
         }
@@ -329,6 +339,7 @@ namespace LuHanh.Effects
         /// <summary>Nòng bắn: chớp sáng nhỏ.</summary>
         public void Muzzle(Vector2 pos, float dirSign)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             EmitCone(sparkPs, pos, 10, hot, dirSign > 0 ? -35f : 145f, dirSign > 0 ? 35f : 215f);
             Ring(pos, 1.2f, 0.18f);
         }
@@ -336,6 +347,7 @@ namespace LuHanh.Effects
         /// <summary>Đạn vỡ.</summary>
         public void OrbPop(Vector2 pos)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             popPool?.Play(pos, 1f);
             Emit(sparkPs, pos, 8, danger, new Vector2(0.05f, 0.12f), 0.3f);
         }
@@ -343,6 +355,7 @@ namespace LuHanh.Effects
         /// <summary>Vòng sóng xung kích.</summary>
         public void Ring(Vector2 pos, float size, float life, float alpha = 1f)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             int i = nextRing;
             nextRing = (nextRing + 1) % rings.Length;
             rings[i].enabled = true;
@@ -360,6 +373,7 @@ namespace LuHanh.Effects
         /// <summary>Chết: co lõi, bung vương miện rễ, vòng/khói lệch nhịp rồi tàn tới 1,6 s.</summary>
         public void DeathBurst(Vector2 pos, SpriteRenderer body = null)
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             if (deathArt)
             {
                 Clear();
@@ -386,6 +400,7 @@ namespace LuHanh.Effects
         /// <summary>Dọn hết (người chơi hồi sinh / boss chết).</summary>
         public void Clear()
         {
+            if (!Alive) return; // thoat Play / doi scene: object hieu ung co the da bi huy truoc
             if (!built) return;
             foreach (var ps in new[] { smokePs, sparkPs, dustPs, debrisPs, emberPs }) if (ps) ps.Clear();
             if (trail) trail.enabled = false;
@@ -405,6 +420,7 @@ namespace LuHanh.Effects
 
         void Update()
         {
+            if (!Alive) return;
             TickDeath(Time.deltaTime);
             popPool?.Tick(Time.deltaTime);
             impactPool?.Tick(Time.deltaTime);
@@ -608,11 +624,12 @@ namespace LuHanh.Effects
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     int candidate = (next + i) % renderers.Length;
-                    if (!renderers[candidate].enabled) { slot = candidate; break; }
+                    if (renderers[candidate] && !renderers[candidate].enabled) { slot = candidate; break; }
                 }
                 next = (slot + 1) % renderers.Length;
                 ages[slot] = 0f;
                 var sr = renderers[slot];
+                if (!sr) return;
                 sr.sprite = frames[0];
                 sr.transform.position = pos;
                 sr.transform.localScale = Vector3.one * scale;
@@ -625,14 +642,14 @@ namespace LuHanh.Effects
                 for (int i = 0; i < renderers.Length; i++)
                 {
                     var sr = renderers[i];
-                    if (!sr.enabled) continue;
+                    if (!sr || !sr.enabled) continue;
                     ages[i] += step;
                     if (ages[i] * fps >= frames.Length) { sr.enabled = false; continue; }
                     sr.sprite = FrameAt(frames, ages[i], fps, false);
                 }
             }
 
-            public void Clear() { foreach (var sr in renderers) sr.enabled = false; }
+            public void Clear() { foreach (var sr in renderers) if (sr) sr.enabled = false; }
         }
 
         // ---------- Sprite năng lượng cho đạn/gai (do controller quản lý) ----------
