@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 672020746973244007}
   - component: {fileID: 4170270850209019894}
   - component: {fileID: 6771880450037749403}
+  - component: {fileID: 4139460403954293900}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -348,6 +349,19 @@ MonoBehaviour:
   shake: 0.18
   shakeTime: 0.18
   sortingOrder: 24
+--- !u!114 &4139460403954293900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477871365633040500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c25620f35d20ae46b2effb749f217bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Upgrades.UpgradeSystem
+  catalog: {fileID: 11400000, guid: ef85fadd547959a47bfdeaaa2c195a06, type: 2}
 --- !u!1001 &309681737007660022
 PrefabInstance:
   m_ObjectHideFlags: 0
