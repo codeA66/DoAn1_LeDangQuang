@@ -4,6 +4,14 @@ using UnityEngine;
 
 namespace LuHanh.Core
 {
+    /// <summary>Cap da mua cua mot nang cap (luu theo id, khong theo vi tri trong danh sach).</summary>
+    [Serializable]
+    public class UpgradeEntry
+    {
+        public string id;
+        public int level;
+    }
+
     /// <summary>Du lieu luu giua cac lan choi: checkpoint cuoi va ky nang da mo.</summary>
     [Serializable]
     public class SaveData
@@ -17,6 +25,9 @@ namespace LuHanh.Core
         public bool wallCling;
         [Tooltip("Cu - chi doc de chuyen file luu cu sang unlockedSkills.")]
         public bool orbShot;
+
+        [Tooltip("Cap nang cap da mua o tho ren (id trong UpgradeDefinition).")]
+        public System.Collections.Generic.List<UpgradeEntry> upgrades = new();
 
         [Tooltip("So Shards dang co.")]
         public int shards;
