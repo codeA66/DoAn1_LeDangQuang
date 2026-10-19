@@ -20,6 +20,7 @@ MonoBehaviour:
   hitSquash: {x: 1, y: 1}
   squashTime: 0.1
   soulOrbs: 0
+  shardDrop: 30
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
