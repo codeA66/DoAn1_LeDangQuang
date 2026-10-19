@@ -11,7 +11,11 @@ namespace LuHanh.Core
         [Tooltip("Ten scene co checkpoint ngoi gan nhat (rong = chua ngoi lan nao).")]
         public string checkpointScene;
         public Vector2 checkpointPosition;
+        [Tooltip("Ky nang da mo (ten trong enum Skill). Them ky nang moi khong can them truong.")]
+        public System.Collections.Generic.List<string> unlockedSkills = new();
+        [Tooltip("Cu - chi doc de chuyen file luu cu sang unlockedSkills.")]
         public bool wallCling;
+        [Tooltip("Cu - chi doc de chuyen file luu cu sang unlockedSkills.")]
         public bool orbShot;
 
         [Tooltip("So Shards dang co.")]
