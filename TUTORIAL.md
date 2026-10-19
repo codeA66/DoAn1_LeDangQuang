@@ -23,6 +23,7 @@ Mỗi mục có **Làm gì** (thao tác) và **Vì sao** (lý do kỹ thuật).
    - 9c. Phòng kiểu Celeste, camera theo phòng, Rule Tile
    - 9d. Tông màu theo từng màn (màn 2: Rêu đá ẩm)
    - 9e. Kỹ năng mở khóa, checkpoint, lưu game
+   - 9f. Kiến trúc mở rộng (thêm tính năng không phải sửa code cũ)
 10. [Lỗi hay gặp và cách xử lý](#10-lỗi-hay-gặp-và-cách-xử-lý)
 
 > Dựng màn mới từng bước + thiết kế phòng kiểu Hollow Knight: xem `HUONG_DAN_BUILD_LEVEL.md`.
@@ -1224,7 +1225,7 @@ protected override void BuildStates(StateMachine machine)    // tạo state + Ad
 protected override void OnHurt(HitInfo hit)                  // chuẩn bị state Hurt (hướng đẩy lùi)
 ```
 
-Còn có thể override thêm `OnResetState()` (phát lại clip sau khi hồi sinh) và `Awake()`. Trong `Awake` nhớ **kiểm tra config khác null trước**, rồi mới gọi `base.Awake()`.
+Còn có thể override thêm `OnResetState()` (phát lại clip sau khi hồi sinh), `Awake()` và `TakeHit(HitInfo)` (chặn đòn khi có khiên / bất tử, nhớ gọi `base.TakeHit`). Trong `Awake` nhớ **kiểm tra config khác null trước**, rồi mới gọi `base.Awake()`.
 
 - Luật bị thương dùng chung: `machine.AddAnyTransition(hurt, () => HurtRequested)`. `EnemyBase` bật cờ `HurtRequested` khi trúng đòn và tắt sau mỗi frame.
 - **Đổi sang lớp cha không làm mất thông số đã gắn.** Unity lưu field theo **tên**, và các field chuyển lên lớp cha (`sprite`, `flash`, `bodyCollider`, `maxHealth`…) vẫn giữ nguyên tên. Tên class `EnemyController` và GUID file cũng giữ nguyên, nên `Ghoul.prefab` và `Ghoul.asset` vẫn đúng như cũ.
@@ -2893,7 +2894,7 @@ Mỗi **màn** (chủ đề, không phải tên scene LevelX) có một tông á
 ## 9e. Kỹ năng mở khóa, checkpoint, lưu game (màn 2)
 
 ### Lưu game — `Core/SaveGame.cs`
-- File JSON `save.json` trong `Application.persistentDataPath` (Windows: `%USERPROFILE%/AppData/LocalLow/DefaultCompany/Shadow Knight`). Lưu: scene + vị trí ghế ngồi cuối, kỹ năng đã mở (`wallCling`, `orbShot`). Shadow vẫn lưu bằng PlayerPrefs như cũ.
+- File JSON `save.json` trong `Application.persistentDataPath` (Windows: `%USERPROFILE%/AppData/LocalLow/DefaultCompany/Shadow Knight`). Lưu: scene + vị trí ghế ngồi cuối, kỹ năng đã mở (`unlockedSkills`: danh sách tên trong enum `Skill`; hai trường cũ `wallCling` / `orbShot` chỉ còn để đọc file lưu cũ — xem mục 9f). Shadow vẫn lưu bằng PlayerPrefs như cũ.
 - Chơi lại từ đầu: menu **LuHanh → Save → Xoa file luu (choi lai tu dau)**.
 
 ### Kỹ năng — `Player/PlayerSkills.cs` + vật phẩm `Level/SkillPickup.cs`
@@ -2916,6 +2917,59 @@ Mỗi **màn** (chủ đề, không phải tên scene LevelX) có một tông á
 - Ghế: BenchIdle (chưa ngồi) → BenchActive (vừa ngồi, tinh thể sáng dần) → BenchLit (đã kích hoạt). Đèn tinh thể xanh ngọc `#B8FFF0` (`CrystalLight`, 0,35 → 1,1).
 - Tắt game mở lại: người chơi xuất hiện ở ghế đã ngồi cuối (nếu cùng scene).
 - Đặt ghế: kéo prefab, chân ghế chạm mặt đất; chỗ ngồi = gốc prefab (`seatOffset` 0).
+
+## 9f. Kiến trúc mở rộng (thêm tính năng không phải sửa code cũ)
+
+Nguyên tắc Open/Closed: **mở để mở rộng, đóng để sửa đổi**. Thêm loại quái, nguồn tăng chỉ số hay kỹ năng mới thì **viết thêm** lớp / asset, không sửa các lớp dùng chung đang chạy. Bảng dưới là các "điểm mở rộng" hiện có.
+
+| Muốn thêm | Điểm mở rộng | Làm thế nào |
+|---|---|---|
+| Loại quái mới | `Enemies/EnemyBase.cs` (lớp trừu tượng) | Kế thừa, viết `BaseConfig`, `InitialState`, `BuildStates`, `OnHurt` (mục 5.17). Config kế thừa `EnemyConfigBase` |
+| Quái/boss chặn đòn (khiên, bất tử, đang ẩn) | `EnemyBase.TakeHit` là **`virtual`** | `public override void TakeHit(HitInfo hit) { if (đang bất tử) return; base.TakeHit(hit); }` — xem `FoundryWardenController`, `RootwraithController`. **Không** dùng `new` + khai báo lại `IDamageable` như trước |
+| Kiểu phản ứng khi người chơi trúng đòn | `Combat/HitReaction.cs` (ScriptableObject trừu tượng) | Tạo lớp con override `Apply`, tạo asset, gán vào config quái |
+| Thứ nhận sát thương / hồi sinh / chạm bẫy | `IDamageable`, `IResettable`, `IHazardReceiver` | Cài interface, tự đăng ký `RespawnManager` nếu cần |
+| Nguồn tăng/giảm chỉ số người chơi (nâng cấp, charm, buff) | `Player/PlayerStats.cs` | Viết lớp cài `IPlayerStatSource`, gọi `PlayerStats.Register(nguồn)`; đổi giá trị thì `PlayerStats.NotifyChanged()` |
+| Chỉ số mới có thể nâng cấp | enum `PlayerStat` | Thêm tên vào enum, rồi tại chỗ dùng chỉ số đó đọc `PlayerStats.Apply(PlayerStat.X, giá trị gốc)` (sửa **một lần**) |
+| Kỹ năng mở khóa mới | enum `Skill` trong `Player/PlayerSkills.cs` | Chỉ thêm tên vào enum. Lưu theo tên trong `SaveData.unlockedSkills`, **không** thêm trường vào `SaveData` |
+
+### `PlayerStats` — nơi duy nhất tính chỉ số cuối cùng của người chơi
+
+- Công thức: **(gốc + tổng cộng) × tích nhân**, cộng từ mọi nguồn đã đăng ký.
+- **Giá trị gốc vẫn nằm ở chỗ cũ**: `PlayerAttackConfig.damage` / `cooldown`, `Health.maxHealth` trên Player. **Không sửa ScriptableObject lúc chạy** — trong Editor thay đổi đó ghi đè thẳng vào asset.
+- Chưa có nguồn nào → chỉ số = gốc, gameplay không đổi (đã kiểm tra: sát thương 1, hồi chiêu 0,35 s, 5 mask).
+- Chỉ số đang nối:
+
+| `PlayerStat` | Gốc | Nơi đọc |
+|---|---|---|
+| `AttackDamage` | `PlayerAttackConfig.damage` | `PlayerAttack` lúc chém trúng (rồi mới nhân hệ số Shadow như cũ) |
+| `AttackCooldown` | `PlayerAttackConfig.cooldown` | `PlayerAttack.StartSwing` |
+| `MaxMasks` | `Health.maxHealth` trên Player (5) | `PlayerHealth`: lúc Start (hồi đầy) và khi `PlayerStats.Changed` (giữ máu hiện tại) |
+
+- Ví dụ một nguồn (dùng cho hệ thống nâng cấp sắp làm):
+
+```csharp
+class BladeUpgrade : IPlayerStatSource
+{
+    public int level;
+    public void Collect(PlayerStat stat, ref float add, ref float multiply)
+    {
+        if (stat == PlayerStat.AttackDamage) add += level;          // +1 sát thương mỗi cấp
+    }
+}
+// PlayerStats.Register(blade);  ...  blade.level++; PlayerStats.NotifyChanged();
+```
+
+- Vào Play mà không reload domain: danh sách nguồn tự xóa (`RuntimeInitializeOnLoadMethod`).
+
+### `Health.SetMax(max, refill)`
+
+- `SetMax(max)` (cũ, quái dùng): đổi tối đa **và hồi đầy** — hành vi không đổi.
+- `SetMax(max, false)`: đổi tối đa, **giữ máu hiện tại** (chỉ cắt bớt nếu vượt tối đa mới) — dùng khi nâng cấp thêm mask giữa lúc chơi. HUD tự thêm/bớt mask vì `HealthUI.Refresh` dựng lại theo `max` mỗi lần máu đổi.
+
+### Kỹ năng lưu theo tên
+
+- `PlayerSkills.Has` / `Unlock` đọc/ghi `SaveData.unlockedSkills` (tên enum).
+- File lưu cũ (chỉ có `wallCling` / `orbShot`) vẫn đọc được: `Has` kiểm tra thêm hai trường cũ. `JsonUtility` đọc file cũ cho danh sách rỗng (đã kiểm tra), code vẫn phòng trường hợp null.
 
 ## 10. Lỗi hay gặp và cách xử lý
 
@@ -3242,3 +3296,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 232. Level3 thêm 2 phòng sau R25 (chủ project duyệt: boss Rootwraith, phòng nghỉ nhỏ, thắng boss mở cổng, đi tiếp sang phải): hành lang cao 5 ô qua tường x 798–799 (sàn y 182); R26 Phòng nghỉ (Room_26 x 800→825, y 176→198; trong lòng x 800–823, cao 14 ô; `Checkpoint_Bench_R26` (812; 181,69), đèn `DenPhongNghi_R26` chép từ DenKheTran); R27 Đấu trường boss (Room_27 x 825→862, y 176→204; trong lòng x 826–859, y 182–199, sàn phẳng không bệ; `BossArena_R27`: Gate_Boss x 825, BossEncounter_R27 trigger x 830–858 + BossTitleCard "Rootwraith", BossArenaTint giống Test_LongDat, LevelPortal (855; 182,9) Open On Start tắt, mở khi onCleared). Boss Rootwraith tắt sẵn ở (843, 182), Arena 826/860/200, tiêu đề Enemies/Room_27. DarkFill/Backing vùng mới tính lại theo quy tắc hiện có. Đã lưu scene, chưa chơi thử.
 233. Sửa cửa sập phòng boss nhảy qua được: gốc prefab Gate là MÉP TRÊN (cửa kéo xuống 5 unit), trước đặt ở giữa khe nên hở 2,5 ô phía trên. Level3 Gate_Boss y 184,5 → 187 (khe 182–187); Test_LongDat Gate_Boss y 2,5 → 5 (khe 0–5). Test_LongDat đã lưu; Level3 đã dời nhưng chưa lưu (scene đang có thay đổi khác chưa lưu).
 234. Sửa lỗi MissingReferenceException khi thoát Play (RootwraithFx.FramePool.Clear từ RootwraithController.OnDisable): Unity hủy object theo thứ tự bất kỳ nên RootwraithFx_World có thể bị hủy trước OnDisable của boss. Thêm `Alive` (built && worldRoot còn) chặn ở 12 hàm công khai + Update; FramePool bỏ qua renderer đã hủy (Play/Tick/Clear); ApplySpikeReveal bỏ qua renderer null. Đã tái hiện: Play → bật boss (58 object hiệu ứng) → thoát Play: Console không lỗi. Level3 Gate_Boss y 187 đã lưu (kiểm tra lại sau Play: 187).
+235. Chỉnh cấu trúc code theo nguyên tắc mở rộng (mục 9f mới): thêm `Player/PlayerStats.cs` (enum PlayerStat AttackDamage/AttackCooldown/MaxMasks, interface IPlayerStatSource, (gốc + cộng) × nhân, không sửa ScriptableObject); PlayerAttack đọc sát thương + hồi chiêu qua PlayerStats; PlayerHealth đọc mask tối đa qua PlayerStats (Start hồi đầy, Changed giữ máu); `Health.SetMax(max, refill)` (SetMax(max) cũ giữ nguyên hồi đầy); PlayerSkills lưu theo tên trong `SaveData.unlockedSkills` (đọc được file cũ wallCling/orbShot); `EnemyBase.TakeHit` thành virtual, FoundryWarden/Rootwraith đổi `new` + IDamageable sang `override`. Đã kiểm tra: biên dịch sạch; chưa có nguồn thì chỉ số y như cũ (1 / 0,35 / 5); nguồn thử +2/×0,85/+1 cho 3 / 6 mask; Health giữ máu 3/6; JSON cũ → danh sách rỗng + orbShot cũ vẫn đúng; Play Level1: Player 5/5, Ghoul nhận đòn 3→2; Rootwraith đang màn xuất hiện không mất máu (60→60), sau màn xuất hiện mất máu (60→55). Gameplay không đổi.
