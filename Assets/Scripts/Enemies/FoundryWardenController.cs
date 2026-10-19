@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LuHanh.Enemies
 {
     /// <summary>Boss bốn đòn tuần tự, có húc ngang; dùng FSM và vòng đời EnemyBase hiện có.</summary>
-    public sealed class FoundryWardenController : EnemyBase, IDamageable
+    public sealed class FoundryWardenController : EnemyBase
     {
         [Tooltip("Cấu hình riêng của boss.")][SerializeField] FoundryWardenConfig config;
         [Tooltip("Các hiệu ứng đặt sẵn trong prefab, tái sử dụng mỗi đòn.")]
@@ -54,9 +54,7 @@ namespace LuHanh.Enemies
             blockedShieldTime = float.NegativeInfinity;
         }
 
-        // Reimplement IDamageable riêng: EnemyBase.TakeHit không virtual.
-        // PlayerAttack hiện truy cập mục tiêu qua interface; không sửa lớp dùng chung.
-        public new void TakeHit(HitInfo hit)
+        public override void TakeHit(HitInfo hit)
         {
             if (deathStarted) return;
             if (IsInvulnerable)
@@ -66,7 +64,6 @@ namespace LuHanh.Enemies
             }
             base.TakeHit(hit);
         }
-        void IDamageable.TakeHit(HitInfo hit) => TakeHit(hit);
 
         protected override void Awake()
         {

@@ -267,7 +267,8 @@ namespace LuHanh.Enemies
 
         // ---- Nhan don ----
 
-        public void TakeHit(HitInfo hit)
+        /// <summary>Lop con chan don (khien, bat tu, dang an...) bang override roi goi base.TakeHit.</summary>
+        public virtual void TakeHit(HitInfo hit)
         {
             if (!health.Damage(hit.damage)) return;
 

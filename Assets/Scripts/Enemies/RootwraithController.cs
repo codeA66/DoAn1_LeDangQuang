@@ -21,7 +21,7 @@ namespace LuHanh.Enemies
     /// biên phòng = Room chứa điểm đặt. Logic chạy bằng chuỗi lệnh (IEnumerator) bước theo deltaTime của FSM
     /// nên ngủ / buff / hồi sinh đều đúng như quái khác.
     /// </summary>
-    public sealed class RootwraithController : EnemyBase, IDamageable
+    public sealed class RootwraithController : EnemyBase
     {
         [SerializeField] RootwraithConfig config;
         [SerializeField] RootwraithFx fx;
@@ -145,7 +145,7 @@ namespace LuHanh.Enemies
 
         protected override void OnHurt(HitInfo hit) { } // boss không khựng/lùi khi bị chém (giống Hollow Knight)
 
-        public new void TakeHit(HitInfo hit)
+        public override void TakeHit(HitInfo hit)
         {
             if (dead || hidden || invulnerable) return;
             base.TakeHit(hit);
@@ -153,7 +153,6 @@ namespace LuHanh.Enemies
                 health.Current <= Mathf.CeilToInt(health.Max * config.phase2At))
                 phase2Pending = true;
         }
-        void IDamageable.TakeHit(HitInfo hit) => TakeHit(hit);
 
         protected override bool OnDeath(HitInfo hit)
         {
