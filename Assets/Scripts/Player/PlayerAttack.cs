@@ -125,7 +125,7 @@ namespace LuHanh.Player
 
         void StartSwing()
         {
-            cooldownTimer = config.cooldown;
+            cooldownTimer = PlayerStats.Apply(PlayerStat.AttackCooldown, config.cooldown);
             activeTimer = config.activeTime;
             slashTimer = config.slashVisualTime;
             facingRightAtStart = controller.FacingRight;
@@ -304,7 +304,7 @@ namespace LuHanh.Player
             var direction = HitDirection();
             target.TakeHit(new HitInfo
             {
-                damage = config.damage * damageScale,
+                damage = PlayerStats.ApplyInt(PlayerStat.AttackDamage, config.damage) * damageScale,
                 direction = direction,
                 knockback = config.knockback,
                 source = gameObject
