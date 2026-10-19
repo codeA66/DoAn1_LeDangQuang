@@ -85,6 +85,7 @@ Assets/
 | `Scripts/Enemies/States/` | `LuHanh.Enemies.States` |
 | `Scripts/Enemies/States/Flying/` | `LuHanh.Enemies.States.Flying` |
 | `Scripts/UI/` | `LuHanh.UI` |
+| `Scripts/Upgrades/` | `LuHanh.Upgrades` |
 
 Không để class ở namespace toàn cục. File mới tạo phải bọc trong `namespace … { }` đúng thư mục.
 
@@ -2966,6 +2967,27 @@ class BladeUpgrade : IPlayerStatSource
 - `SetMax(max)` (cũ, quái dùng): đổi tối đa **và hồi đầy** — hành vi không đổi.
 - `SetMax(max, false)`: đổi tối đa, **giữ máu hiện tại** (chỉ cắt bớt nếu vượt tối đa mới) — dùng khi nâng cấp thêm mask giữa lúc chơi. HUD tự thêm/bớt mask vì `HealthUI.Refresh` dựng lại theo `max` mỗi lần máu đổi.
 
+### Hệ thống nâng cấp bằng Shards (lõi dữ liệu — chưa có NPC / bảng mua)
+
+| File | Vai trò |
+|---|---|
+| `Upgrades/UpgradeDefinition.cs` (ScriptableObject) | Một nâng cấp: `id` (khóa lưu, **không đổi sau khi phát hành**), `displayName`, `description` (tiếng Anh), `icon`, `stat` (`PlayerStat`), `mode` Add/Multiply, `valuePerLevel`, `costs[]` (số cấp = số phần tử) |
+| `Upgrades/UpgradeCatalog.cs` (ScriptableObject) | Danh sách nâng cấp bán ở thợ rèn, theo thứ tự hiển thị |
+| `Upgrades/PlayerUpgrades.cs` (static) | `Level`, `IsMaxed`, `NextCost`, `Check`, `TryBuy` → `Ok / NotEnoughShards / Maxed / Invalid`; trừ tiền qua `ShardWallet.TrySpend` (tự lưu save); event `Purchased` |
+| `Upgrades/UpgradeSystem.cs` (MonoBehaviour, `IPlayerStatSource`) | Trên `LevelEssentials/GameSystems`, gán `Settings/Upgrades/UpgradeCatalog.asset`; cộng hiệu ứng mọi nâng cấp đã mua vào `PlayerStats` |
+| `SaveData.upgrades` (`Core/SaveGame.cs`) | Danh sách `UpgradeEntry { id, level }` |
+
+Asset hiện có (`Assets/Settings/Upgrades/`):
+
+| Asset | id | Chỉ số | Mỗi cấp | Giá từng cấp |
+|---|---|---|---|---|
+| `UP_KeenBlade` | `keen_blade` | `AttackDamage` | +1 | 50 / 100 / 175 |
+| `UP_SwiftStrike` | `swift_strike` | `AttackCooldown` | ×0,85 | 60 / 125 |
+| `UP_SpareMask` | `spare_mask` | `MaxMasks` | +1 | 40 / 65 / 100 / 150 |
+
+- Thêm nâng cấp mới: **Create → LuHanh → Upgrades → Upgrade**, điền thông số, kéo vào `UpgradeCatalog`. Chỉ số chưa có trong `PlayerStat` thì thêm vào enum và đọc `PlayerStats.Apply` tại chỗ dùng (mục trên).
+- Tổng Shards cả game (mỗi quái rơi 1 lần): Level1 48, Level2 78 (FoundryWarden nay rơi 30), Level3 268 → **394**; tổng giá mọi nâng cấp 865 (cố ý không mua hết trong 3 màn đầu).
+
 ### Kỹ năng lưu theo tên
 
 - `PlayerSkills.Has` / `Unlock` đọc/ghi `SaveData.unlockedSkills` (tên enum).
@@ -3297,3 +3319,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 233. Sửa cửa sập phòng boss nhảy qua được: gốc prefab Gate là MÉP TRÊN (cửa kéo xuống 5 unit), trước đặt ở giữa khe nên hở 2,5 ô phía trên. Level3 Gate_Boss y 184,5 → 187 (khe 182–187); Test_LongDat Gate_Boss y 2,5 → 5 (khe 0–5). Test_LongDat đã lưu; Level3 đã dời nhưng chưa lưu (scene đang có thay đổi khác chưa lưu).
 234. Sửa lỗi MissingReferenceException khi thoát Play (RootwraithFx.FramePool.Clear từ RootwraithController.OnDisable): Unity hủy object theo thứ tự bất kỳ nên RootwraithFx_World có thể bị hủy trước OnDisable của boss. Thêm `Alive` (built && worldRoot còn) chặn ở 12 hàm công khai + Update; FramePool bỏ qua renderer đã hủy (Play/Tick/Clear); ApplySpikeReveal bỏ qua renderer null. Đã tái hiện: Play → bật boss (58 object hiệu ứng) → thoát Play: Console không lỗi. Level3 Gate_Boss y 187 đã lưu (kiểm tra lại sau Play: 187).
 235. Chỉnh cấu trúc code theo nguyên tắc mở rộng (mục 9f mới): thêm `Player/PlayerStats.cs` (enum PlayerStat AttackDamage/AttackCooldown/MaxMasks, interface IPlayerStatSource, (gốc + cộng) × nhân, không sửa ScriptableObject); PlayerAttack đọc sát thương + hồi chiêu qua PlayerStats; PlayerHealth đọc mask tối đa qua PlayerStats (Start hồi đầy, Changed giữ máu); `Health.SetMax(max, refill)` (SetMax(max) cũ giữ nguyên hồi đầy); PlayerSkills lưu theo tên trong `SaveData.unlockedSkills` (đọc được file cũ wallCling/orbShot); `EnemyBase.TakeHit` thành virtual, FoundryWarden/Rootwraith đổi `new` + IDamageable sang `override`. Đã kiểm tra: biên dịch sạch; chưa có nguồn thì chỉ số y như cũ (1 / 0,35 / 5); nguồn thử +2/×0,85/+1 cho 3 / 6 mask; Health giữ máu 3/6; JSON cũ → danh sách rỗng + orbShot cũ vẫn đúng; Play Level1: Player 5/5, Ghoul nhận đòn 3→2; Rootwraith đang màn xuất hiện không mất máu (60→60), sau màn xuất hiện mất máu (60→55). Gameplay không đổi.
+236. Hệ thống nâng cấp - giai đoạn 1 (lõi dữ liệu, mục 9f): `Upgrades/UpgradeDefinition.cs`, `UpgradeCatalog.cs`, `PlayerUpgrades.cs`, `UpgradeSystem.cs` (namespace LuHanh.Upgrades); `SaveData.upgrades` (UpgradeEntry id + level); asset `Settings/Upgrades/` UP_KeenBlade (+1 sát thương, 50/100/175), UP_SwiftStrike (hồi chiêu ×0,85, 60/125), UP_SpareMask (+1 mask, 40/65/100/150) + UpgradeCatalog; UpgradeSystem gắn vào LevelEssentials/GameSystems. FoundryWarden.asset shardDrop 3 → 30 (chủ project duyệt). Đã kiểm tra trong Play (save thật được sao lưu rồi khôi phục): thiếu tiền → NotEnoughShards, không trừ; mua Keen Blade 1 → sát thương 1→2, trừ 50; Swift Strike 1 → hồi chiêu 0,35→0,2975, trừ 60; Spare Mask khi máu 3/5 → 3/6, trừ 40; Keen Blade cấp 3 → Maxed, NextCost −1; save ghi đúng 3 mục. Console sạch (chỉ còn cảnh báo của gói Unity AI). Chưa có NPC / bảng mua.
