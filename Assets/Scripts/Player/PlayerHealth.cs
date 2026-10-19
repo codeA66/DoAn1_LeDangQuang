@@ -55,6 +55,7 @@ namespace LuHanh.Player
         Vector2 safePosition;
         float groundedTimer;
         float invulnerableTimer;
+        int baseMaxMasks;   // so mask goc tren Health; mask toi da that = PlayerStats.Apply(MaxMasks, goc)
 
         public Health Health => health;
         /// <summary>Dang trong khoang bat tu sau khi trung don.</summary>
@@ -74,6 +75,18 @@ namespace LuHanh.Player
             // Chua co ghe/checkpoint: hoi sinh tai cho bat dau man.
             checkpoint = transform.position;
             safePosition = checkpoint;
+            baseMaxMasks = health.Max;
+        }
+
+        void Start() => health.SetMax(PlayerStats.ApplyInt(PlayerStat.MaxMasks, baseMaxMasks), true);
+        void OnEnable() => PlayerStats.Changed += OnStatsChanged;
+        void OnDisable() => PlayerStats.Changed -= OnStatsChanged;
+
+        /// <summary>Nang cap / bo nang cap mask giua luc choi: doi toi da, giu mau hien tai.</summary>
+        void OnStatsChanged()
+        {
+            int max = PlayerStats.ApplyInt(PlayerStat.MaxMasks, baseMaxMasks);
+            if (max != health.Max) health.SetMax(max, false);
         }
 
         /// <summary>Doi diem hoi sinh (ghe ngoi, cua man...).</summary>

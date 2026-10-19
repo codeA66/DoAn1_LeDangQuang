@@ -24,10 +24,18 @@ namespace LuHanh.Combat
         void Awake() => Current = maxHealth;
 
         /// <summary>Doi mau toi da (vd tu config cua quai) va hoi day.</summary>
-        public void SetMax(int max)
+        public void SetMax(int max) => SetMax(max, true);
+
+        /// <summary>
+        /// Doi mau toi da. <paramref name="refill"/> = false: giu mau hien tai (chi cat bot neu vuot toi da moi),
+        /// dung cho nang cap them mask giua luc choi.
+        /// </summary>
+        public void SetMax(int max, bool refill)
         {
             maxHealth = Mathf.Max(1, max);
-            Refill();
+            if (refill) { Refill(); return; }
+            Current = Mathf.Min(Current, maxHealth);
+            Changed?.Invoke(Current, maxHealth);
         }
 
         /// <summary>Tru mau. Tra ve false neu da chet tu truoc hoac luong &lt;= 0.</summary>
