@@ -511,3 +511,12 @@ Thay dạng màn nối tiếp (Level1 → Level2 → Level3 qua cổng). **Mỗi
 **Phần thưởng:** 4 mảnh mặt nạ (A10, A19, B10, B18), đủ 4 = thêm 1 mặt nạ máu; 3 kho Shards (A11, A22, B23).
 
 **Thứ tự làm:** (0) hệ thống mỗi phòng 1 scene + 2 phòng thử → (1) kỹ năng khóa lối → (2) bản đồ, rơi Shards khi chết, trạm di chuyển nhanh → (3) dựng Vùng A → (4) dựng Vùng B → (5) gỡ Level1/2/3 và luồng cổng cũ. Kích thước, địa hình, quái từng phòng: hỏi chủ project khi dựng.
+
+### Dựng một phòng thế giới (kỹ thuật chi tiết: TUTORIAL.md mục 9g)
+
+1. **LuHanh → World → Tao phong moi** → chọn vùng, gõ mã (vd `A03`) → scene mới ở `Scenes/World/<Vùng>/A03.unity`, đã có trong Build Profile.
+2. Vẽ địa hình trên `Grid/Tilemap_Ground` (Rule Tile của vùng). Phòng mẫu là hộp kín 40×22 (tâm 0;0, nền y = −7): kéo `Room` cho vừa phòng, xóa tường chỗ có lối đi. Vẽ xong chạy lại viền mép đất (cùng logic menu **Tao vien mep dat**; khi mở nhiều scene thì chỉ để phòng đang sửa).
+3. Cửa: kéo `Prefabs/World/RoomDoor` vào `Doors`, đặt gốc ở **chân lỗ cửa** (cửa trái/phải: giữa bề dày tường, ngang mặt nền; cửa trên/dưới: giữa lỗ). Điền `Door Id`, `Side`, `Target Scene`, `Target Door`. Phòng bên kia cũng phải có cửa trỏ ngược lại. Nền nên kéo dài ra ngoài lỗ cửa vài ô để nhân vật không rơi trong lúc màn hình tối.
+4. **LuHanh → World → Kiem tra cua** → Console phải báo "không có lỗi".
+5. Lưu phòng, bấm Play ngay trong phòng để thử (Editor tự mở Core).
+6. Vật cần nhớ trạng thái (tường sập, cần gạt, thiết bị phá): điền ô **World Flag**.

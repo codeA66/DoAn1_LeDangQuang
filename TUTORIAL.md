@@ -24,6 +24,7 @@ Mỗi mục có **Làm gì** (thao tác) và **Vì sao** (lý do kỹ thuật).
    - 9d. Tông màu theo từng màn (màn 2: Rêu đá ẩm)
    - 9e. Kỹ năng mở khóa, checkpoint, lưu game
    - 9f. Kiến trúc mở rộng (thêm tính năng không phải sửa code cũ)
+   - 9g. Thế giới kiểu Hollow Knight: mỗi phòng 1 scene (đang làm)
 10. [Lỗi hay gặp và cách xử lý](#10-lỗi-hay-gặp-và-cách-xử-lý)
 
 > Dựng màn mới từng bước + thiết kế phòng kiểu Hollow Knight: xem `HUONG_DAN_BUILD_LEVEL.md`.
@@ -3014,6 +3015,38 @@ Asset hiện có (`Assets/Settings/Upgrades/`):
 - `PlayerSkills.Has` / `Unlock` đọc/ghi `SaveData.unlockedSkills` (tên enum).
 - File lưu cũ (chỉ có `wallCling` / `orbShot`) vẫn đọc được: `Has` kiểm tra thêm hai trường cũ. `JsonUtility` đọc file cũ cho danh sách rỗng (đã kiểm tra), code vẫn phòng trường hợp null.
 
+## 9g. Thế giới kiểu Hollow Knight: mỗi phòng 1 scene (đang làm)
+
+Sơ đồ 50 phòng đã duyệt: `HUONG_DAN_BUILD_LEVEL.md` mục "Thế giới kiểu Hollow Knight". Level1–3 vẫn chạy cách cũ (không có `WorldLoader`) cho tới giai đoạn 5.
+
+### Cấu trúc
+
+| Thứ | Ở đâu | Vai trò |
+|---|---|---|
+| `Scenes/World/Core.unity` | luôn tải, không bị gỡ | `CoreEssentials` (CameraRig, HUD, GameSystems + `WorldLoader`) + `Player` |
+| `Scenes/World/Foundry/A01.unity`… | tải thêm (Additive), mỗi lúc 1 phòng | địa hình, `Room` (khung camera), `ZoneEssentials_Foundry` (đèn toàn cục, Lighting, Background), `WorldRoom`, cửa, quái |
+| `Scenes/World/_RoomTemplate_Foundry.unity` | mẫu | hộp kín 40×22, nền y = −7, viền mép đất, `WorldRoom` + `Spawn` (−15, −7), nhóm rỗng Doors/Enemies/Props |
+| `Prefabs/World/CoreEssentials.prefab`, `ZoneEssentials_Foundry.prefab` | tách từ `LevelEssentials` (prefab gốc giữ nguyên) | Core không có đèn toàn cục; mỗi phòng có đúng 1 bộ đèn của vùng |
+| `Prefabs/World/RoomDoor.prefab` | trong Doors của phòng | BoxCollider2D trigger 1×4, offset (0; 2), gốc ở chân lỗ cửa |
+
+### Script (`Assets/Scripts/World/`, namespace `LuHanh.World`)
+
+- `WorldLoader` (GameSystems trong Core): tải/gỡ phòng, phòng đang tải là Active Scene. Qua cửa: nhân vật tự đi tiếp (`PlayerController.ForceMove`) + tối 0,2 s → gỡ phòng cũ, tải phòng mới → đặt ở `SpawnPoint` của cửa đích, cửa đích tạm khoá tới khi ra khỏi trigger → sáng 0,25 s → tự đi thêm 0,3 s rồi trả điều khiển. Đi lên: vận tốc dọc tối thiểu 12. Chết: `RespawnAtBench` tải phòng có ghế cuối (`SaveData.checkpointScene`, chưa có thì `firstRoom` = A01) và đặt lên ghế; `RespawnManager` đợi `WorldLoader.IsBusy` rồi mới đặt lại quái và sáng lại. Vào vùng mới lần đầu: thẻ tên vùng (`SceneTransition.ShowAreaTitle`, cờ `Zone/<id>`). Mốc parallax của background = camera ở tâm phòng (`ParallaxEffect.Rebase`), nên vào phòng qua cửa nào background cũng cùng chỗ và giống hệt lúc nhìn trong Editor.
+- `RoomDoor`: `doorId` (L, R, T, B…), `side`, `targetScene`, `targetDoor`, `spawnDistance` = 1,5. Gizmo xanh ngọc = đã nối, đỏ = chưa nối.
+- `WorldRoom`: mã vùng (`Foundry`), tên vùng (`Forgotten Foundry`), `defaultSpawn`.
+- `Core/WorldState`: cờ thế giới trong `SaveData.worldFlags`, khoá "TênScene/tên". `CollapsingWall`, `BreakableDevice`, `ShortcutLever` có ô **World Flag**: điền tên (vd `Wall`) thì vào lại phòng vẫn giữ trạng thái; để trống = như cũ.
+- Sửa kèm: `RoomManager.Refresh`, `RoomTransitionFx.FadeOut/FadeIn(time)`, `PlayerHealth.ResetSafePosition` (chỗ đứng an toàn cũ thuộc phòng cũ), `Checkpoint` (trong thế giới chỉ sáng đèn ghế đã ngồi, không kéo người chơi lên ghế khi vào phòng bằng cửa), `ShardPool` (đổi phòng: Shards đang bay cộng thẳng vào ví; túi Shards chỉ hiện ở phòng đã chết), `LevelIntro` (không chạy trong thế giới).
+
+### Editor
+
+- Bấm **Play khi đang mở một scene phòng** (`Scenes/World/...`): `WorldEditorBoot` đặt `playModeStartScene` = Core, WorldLoader tải đúng phòng đó, người chơi ở `Spawn`. Phòng tải từ đĩa nên phải lưu phòng trước (Editor chỉ hỏi lưu riêng phòng đó). Scene khác Play như cũ.
+- **LuHanh → World → Tao phong moi**: chọn vùng + mã → chép scene mẫu sang `Scenes/World/<Vùng>/<Mã>.unity`, thêm vào Build Profile, mở ra.
+- **LuHanh → World → Kiem tra cua**: chỉ đọc; báo cửa trỏ tới scene / cửa không có, hoặc cửa bên kia không trỏ ngược lại.
+
+### Đã kiểm tra trong Play (2026-11-20)
+
+Play từ A01 → Core + A01 tải, nhân vật ở (−15; −7) trên nền, camera kẹp trong phòng. Qua cửa A01/R → A02 tải, A01 gỡ, nhân vật vào từ cửa trái, đứng trên nền, trả điều khiển, camera sang A02. A02/L → về A01 bên phải, quay mặt trái. Chết → tải lại A01, về Spawn, đầy máu. Console không lỗi khi chạy. (Qua cửa được gọi bằng `WorldLoader.GoThrough` – đúng hàm cửa gọi khi chạm, chưa thử bằng phím thật.)
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3349,3 +3382,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 242. Làm lại Focus + K theo Hollow Knight (thay mục 240–241): bỏ thanh 6 nạc (xóa `PlayerEnergy.cs`, `EnergyBarUI.cs`, component trên Player.prefab, object EnergyBar trong HUD.prefab). K và Focus dùng chung bình Shadow: chém trúng +11, hạt +5, K tốn 33, Focus (giữ Y 0,9 s, `PlayerFocus.cs` mới) tốn 33 hồi 1 mask. `PlayerShadow.featureEnabled = false` tắt biến hình, bình luôn hiện. Vì bất tử chỉ 0,1 s: Rootwraith gây sát thương chạm tối đa 1 lần/giây (`contactCooldown = 1`) và 1 lần mỗi cú lao; EchoGhost chỉ bật hitbox chém lúc vừa chuyển sang tư thế Slash. Ghế / thợ rèn khóa cả PlayerFocus.
 243. Chữ hướng dẫn Shadow → Focus: Level1 `Level1_Tutorial/ControlsPrompts/09_Shadow` — Label_Shadow "Focus", Label_Sub "spend soul to heal 1 mask" (giữ "Hold" + phím Y). Prefab `Objects/ShadowShard` (lời hướng dẫn trên màn hình, showScreenPrompt đang tắt): title "FOCUS", hint "Hold [ Y ] to heal 1 mask", detail "Strike enemies to gather soul. / Focus and [ K ] both spend soul." Vật phẩm ở Level2 vẫn nạp đầy bình khi nhặt để thử Focus ngay.
 244. Chốt kế hoạch dựng lại thế giới kiểu Hollow Knight (chủ project duyệt): mỗi phòng 1 scene, 2 vùng Forgotten Foundry (A01–A25, boss FoundryWarden) và Mossy Depths (B01–B25, boss cuối Rootwraith), thứ tự kỹ năng Dash → Bám tường → Bắn cầu K → Pogo → Nhảy đôi, 4 mảnh mặt nạ + 3 kho Shards bí mật, ghế A03/A12/A18/B02/B12/B22, trạm A09/B03, thợ rèn ở A18 và B22. Sơ đồ đầy đủ: HUONG_DAN_BUILD_LEVEL.md mục "Thế giới kiểu Hollow Knight". Chưa sửa code/scene.
+245. Thế giới kiểu Hollow Knight – giai đoạn 0 xong (mục 9g): Core.unity, CoreEssentials / ZoneEssentials_Foundry / RoomDoor prefab, scene mẫu _RoomTemplate_Foundry, phòng thử A01 ↔ A02 (khung đơn giản), Core + A01 + A02 trong Build Profile (Level1 vẫn đứng đầu). Background vùng hạ 3 unit (chân lớp núi/đồi/cây dưới mặt nền y = −7, trước đó hở dải sáng); mốc parallax = tâm phòng (trước đó lấy chỗ camera lúc phòng vừa tải → lớp trời tụt, hở dải trên). Parallax ngoài Play không gán camera của scene khác. WorldEditorBoot chỉ hỏi lưu riêng phòng đang Play; Kiem tra cua chỉ đọc. Đã chạy Play: khởi động A01, qua cửa A01↔A02 hai chiều, chết hồi sinh – đúng, Console sạch. Biên dịch Unity từng crash (bee_backend −1073741819) vì ổ C: còn 253 MB; xóa cache NuGet + npm (chủ project đồng ý) → biên dịch qua.
