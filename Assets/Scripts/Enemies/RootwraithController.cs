@@ -40,7 +40,8 @@ namespace LuHanh.Enemies
         float floorY;
         float spikeRenderFloorY;
         bool dead, hidden, invulnerable, diving, phase2, phase2Pending;
-        float deathTimer;
+        float deathTimer, contactReady;
+        bool diveHit;
         int lastAttack = -1;
 
         // Bộ chạy chuỗi lệnh: yield return float = chờ N giây, null = sang frame sau, IEnumerator = chạy chuỗi con.
@@ -192,8 +193,20 @@ namespace LuHanh.Enemies
         {
             if (dead) return;
             TickOrbs(deltaTime);
+            // Bat tu cua nguoi choi chi 0,1 s: kiem tra moi frame vat ly se tru mau ~10 lan/giay khi dung trong boss.
+            // Cham than: 1 lan moi contactCooldown; cu lao: 1 lan moi luot lao.
             if (!hidden && bodyCollider.enabled && Overlaps(bodyCollider.bounds))
-                Damage(diving ? config.diveDamage : config.contactDamage, Centre);
+            {
+                if (diving)
+                {
+                    if (!diveHit) { diveHit = true; contactReady = Time.time + config.contactCooldown; Damage(config.diveDamage, Centre); }
+                }
+                else if (Time.time >= contactReady)
+                {
+                    contactReady = Time.time + config.contactCooldown;
+                    Damage(config.contactDamage, Centre);
+                }
+            }
         }
 
         void Step()
@@ -364,6 +377,7 @@ namespace LuHanh.Enemies
                 Face(dir.x);
                 Play("Dive");
                 diving = true;
+                diveHit = false;
                 if (fx) fx.Ring(Centre, 2f, 0.2f);
                 for (float t = 0f; t < 1.6f; t += dt)
                 {

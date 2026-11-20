@@ -25,6 +25,8 @@ namespace LuHanh.Enemies
         public int diveDamage = 1;
         public int spikeDamage = 1;
         public int orbDamage = 1;
+        [Tooltip("Cham than boss chi tru mau 1 lan trong khoang nay (giay) - bat tu cua nguoi choi chi 0,1 s.")]
+        public float contactCooldown = 1f;
 
         [Header("Lao chéo")]
         [Tooltip("Độ cao và khoảng cách ngang so với người chơi khi hiện ra trước cú lao.")]

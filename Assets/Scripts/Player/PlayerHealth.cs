@@ -24,7 +24,7 @@ namespace LuHanh.Player
         [SerializeField] SpriteRenderer hurtFlash;
         [SerializeField] SpriteRenderer visual;
         [Tooltip("Bat tu sau khi trung don (giay). 0 = tat.")]
-        [SerializeField] float invulnerableTime = 1.3f;
+        [SerializeField] float invulnerableTime = 0.1f;
         [Tooltip("Rung man hinh khi trung don: bien do (unit) / thoi gian tat dan (giay).")]
         [SerializeField] float hurtShake = 0.45f;
         [SerializeField] float hurtShakeTime = 0.35f;

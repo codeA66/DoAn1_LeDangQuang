@@ -33,6 +33,7 @@ namespace LuHanh.Enemies
         Animator animator;
         int index;
         int currentHash;
+        Pose lastPose = Pose.Stand;
 
         public bool Playing => gameObject.activeSelf;
 
@@ -49,6 +50,7 @@ namespace LuHanh.Enemies
             samples.AddRange(path);
             index = 0;
             currentHash = 0;
+            lastPose = Pose.Stand;
             transform.SetParent(null, true);
             gameObject.SetActive(true);
             Apply(samples[0]);
@@ -69,7 +71,14 @@ namespace LuHanh.Enemies
             var scale = transform.localScale;
             scale.x = Mathf.Abs(scale.x) * (s.facingRight ? 1f : -1f);
             transform.localScale = scale;
-            if (slashHitbox) slashHitbox.enabled = s.pose == Pose.Slash;
+            // Chi bat vung chem luc VUA vao tu the chem (moi nhat chem trung toi da 1 lan); bat lai moi frame se
+            // trung nhieu lan vi bat tu cua nguoi choi chi 0,1 s.
+            if (slashHitbox)
+            {
+                if (s.pose == Pose.Slash && lastPose != Pose.Slash) slashHitbox.enabled = true;
+                else if (s.pose != Pose.Slash) slashHitbox.enabled = false;
+            }
+            lastPose = s.pose;
 
             int hash = PoseHashes[(int)s.pose];
             if (hash == currentHash || !animator) return;
