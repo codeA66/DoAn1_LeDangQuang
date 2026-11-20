@@ -43,8 +43,9 @@ namespace LuHanh.EditorTools
             {
                 var active = SceneManager.GetActiveScene();
                 if (!IsRoomScene(active)) { EditorSceneManager.playModeStartScene = null; return; }
-                // Phong tai tu dia: thay doi chua luu se khong co trong Play -> hoi luu (nguoi dung chon).
-                if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                // Phong tai tu dia: thay doi chua luu se khong co trong Play -> hoi luu RIENG phong nay
+                // (khong dung toi scene khac dang mo, vd scene chu project dang sua do).
+                if (active.isDirty && !EditorSceneManager.SaveModifiedScenesIfUserWantsTo(new[] { active }))
                 {
                     EditorApplication.isPlaying = false;
                     return;

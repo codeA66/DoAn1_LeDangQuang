@@ -52,7 +52,13 @@ namespace LuHanh.Environment
 
         void OnEnable()
         {
-            if (cam == null) cam = Camera.main;
+            if (cam == null)
+            {
+                var main = Camera.main;
+                // Ngoai Play: khong gan camera cua scene khac (vd sua phong the gioi khi dang mo scene khac co camera)
+                // - tham chieu cheo scene khong luu duoc va lam Unity canh bao moi lan luu.
+                if (Application.isPlaying || (main && main.gameObject.scene == gameObject.scene)) cam = main;
+            }
             Initialise();
         }
 
@@ -67,6 +73,17 @@ namespace LuHanh.Environment
                 BuildTiles();
 
             initialised = true;
+        }
+
+        /// <summary>
+        /// Dat lai moc camera: vi tri tang hien dung nhu luc dat trong scene khi camera o <paramref name="cameraReference"/>.
+        /// The gioi moi phong 1 scene (WorldLoader) dung tam phong lam moc, nen vao phong qua cua nao background cung
+        /// nam cung mot cho, va khong bi lech theo cho camera dung luc phong vua tai.
+        /// </summary>
+        public void Rebase(Vector3 cameraReference)
+        {
+            if (!initialised) Initialise();
+            startingCamPosition = cameraReference;
         }
 
         /// <summary>Nhan ban sprite goc sang trai va phai mot khoang bang be rong cua no.</summary>

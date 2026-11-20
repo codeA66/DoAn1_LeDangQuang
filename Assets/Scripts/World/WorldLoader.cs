@@ -240,6 +240,7 @@ namespace LuHanh.World
         void EnterRoom(WorldRoom room)
         {
             if (rooms) rooms.Refresh();
+            RebaseParallax(room);
             // Vao vung moi lan dau: hien ten vung (luu trong co the gioi).
             string zoneKey = "Zone/" + room.ZoneId;
             if (!WorldState.Has(zoneKey))
@@ -248,6 +249,18 @@ namespace LuHanh.World
                 if (!string.IsNullOrEmpty(room.ZoneTitle)) SceneTransition.ShowAreaTitle(areaHeader, room.ZoneTitle, titleStyle);
             }
             RoomEntered?.Invoke(room);
+        }
+
+        /// <summary>Moc parallax cua cac tang background trong phong = camera o tam phong (khong phai cho camera luc tai).</summary>
+        void RebaseParallax(WorldRoom room)
+        {
+            var cam = Camera.main;
+            if (!cam) return;
+            Vector2 centre = rooms && rooms.Current ? rooms.Current.Bounds.center : (Vector2)room.transform.position;
+            var reference = new Vector3(centre.x, centre.y, cam.transform.position.z);
+            foreach (var root in room.gameObject.scene.GetRootGameObjects())
+                foreach (var layer in root.GetComponentsInChildren<LuHanh.Environment.ParallaxEffect>(true))
+                    layer.Rebase(reference);
         }
 
         // ---- Danh sach phong ----

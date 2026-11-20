@@ -73,30 +73,28 @@ namespace LuHanh.EditorTools
         [MenuItem("LuHanh/World/Kiem tra cua")]
         static void Validate()
         {
-            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
-            var setup = EditorSceneManager.GetSceneManagerSetup();
+            // Chi doc: mo them phong nao chua mo roi dong lai ngay, khong luu, khong dong scene khac.
             var rooms = EditorBuildSettings.scenes
                 .Where(s => s.path.StartsWith(WorldLoader.WorldFolder) && s.path != WorldEditorBoot.CorePath)
                 .Select(s => s.path).ToList();
             var doors = new List<DoorInfo>();
             var noRoom = new List<string>();
-            try
+            foreach (var path in rooms)
             {
-                foreach (var path in rooms)
+                var scene = SceneManager.GetSceneByPath(path);
+                bool opened = !scene.isLoaded;
+                if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+                try
                 {
-                    var scene = SceneManager.GetSceneByPath(path);
-                    bool opened = !scene.isLoaded;
-                    if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
                     var roots = scene.GetRootGameObjects();
                     if (!roots.Any(r => r.GetComponentInChildren<WorldRoom>(true))) noRoom.Add(scene.name);
                     foreach (var d in roots.SelectMany(r => r.GetComponentsInChildren<RoomDoor>(true)))
                         doors.Add(new DoorInfo { scene = scene.name, id = d.DoorId, target = d.TargetScene, targetDoor = d.TargetDoor });
+                }
+                finally
+                {
                     if (opened) EditorSceneManager.CloseScene(scene, true);
                 }
-            }
-            finally
-            {
-                EditorSceneManager.RestoreSceneManagerSetup(setup);
             }
 
             var names = new HashSet<string>(rooms.Select(Path.GetFileNameWithoutExtension));
