@@ -19,6 +19,8 @@ namespace LuHanh.Level
         void Start()
         {
             if (!playOnStart || SceneTransition.IsBusy || !levels || !portalPrefab) return;
+            // The gioi kieu Hollow Knight khong co cong dau man; ten vung do WorldLoader hien.
+            if (LuHanh.World.WorldLoader.Active) return;
             var entry = levels.Get(levels.IndexOf(SceneManager.GetActiveScene().name));
             var arrival = Instantiate(portalPrefab);
             arrival.MarkAsArrival();

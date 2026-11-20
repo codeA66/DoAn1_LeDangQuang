@@ -71,6 +71,17 @@ namespace LuHanh.Level
             instance.StartCoroutine(instance.Intro(code, title, arrival));
         }
 
+        /// <summary>
+        /// The ten vung kieu Hollow Knight (vao vung moi lan dau): hien de len luc dang choi, khong che man hinh,
+        /// khong khoa dieu khien. <paramref name="header"/> la dong nho phia tren (vd "AREA").
+        /// </summary>
+        public static void ShowAreaTitle(string header, string title, LevelList style)
+        {
+            if (!instance) Create(style);
+            if (instance.busy) return;
+            instance.StartCoroutine(instance.ShowCard(header, title));
+        }
+
         static void Create(LevelList style)
         {
             var go = new GameObject("SceneTransition");
@@ -228,7 +239,7 @@ namespace LuHanh.Level
             var player = GameObject.FindWithTag("Player");
             if (arrival && player) arrival.BeginArrival(player);
 
-            if (!string.IsNullOrEmpty(code)) yield return ShowCard(code, title ?? "");
+            if (!string.IsNullOrEmpty(code)) yield return ShowCard("LEVEL " + code, title ?? "");
 
             Vector2 open = player ? ToViewport(player.transform.position + Vector3.up * 0.9f) : new Vector2(0.5f, 0.5f);
             if (arrival && player) arrival.PlayArrival();
@@ -244,9 +255,9 @@ namespace LuHanh.Level
             busy = false;
         }
 
-        IEnumerator ShowCard(string code, string title)
+        IEnumerator ShowCard(string header, string title)
         {
-            codeText.text = "LEVEL " + code;
+            codeText.text = header;
             titleText.text = UIBuild.SmallCaps(title, TitleCapSize);
             var titleRt = (RectTransform)titleText.transform;
             foreach (var m in motes)

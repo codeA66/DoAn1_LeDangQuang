@@ -59,6 +59,18 @@ namespace LuHanh.Level
 
         public IEnumerator FadeIn() => FadeTo(0f, fadeInTime);
 
+        /// <summary>Toi / sang voi thoi gian rieng (chuyen phong giua cac scene - WorldLoader).</summary>
+        public IEnumerator FadeOut(float time)
+        {
+            if (running != null) StopCoroutine(running);
+            running = null;
+            if (volume) volume.weight = 0f;
+            if (streaks) streaks.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            yield return FadeTo(1f, time);
+        }
+
+        public IEnumerator FadeIn(float time) => FadeTo(0f, time);
+
         IEnumerator FadeTo(float target, float duration)
         {
             if (!HasFade) yield break;

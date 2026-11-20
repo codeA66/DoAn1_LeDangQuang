@@ -10,10 +10,13 @@ namespace LuHanh.Level
     /// <see cref="Trigger"/>: game dung (HitStop.Hold), camera lia tu nguoi choi sang tuong (xuyen phong),
     /// tuong rung + nut, lun xuong san kem bui / da vun / rung camera -> camera lia ve nguoi choi.
     /// Hinh dat order thap hon tilemap dat nen phan lun xuong bi san che. Chay bang thoi gian thuc.
-    /// Chua luu vao file save: tai lai man thi tuong dung lai.
+    /// Co <see cref="worldFlag"/> thi luu vao file save (the gioi kieu Hollow Knight): vao lai phong tuong da sap san.
+    /// De trong thi nhu cu (Level1-3): tai lai man thi tuong dung lai.
     /// </summary>
     public class CollapsingWall : MonoBehaviour
     {
+        [Tooltip("Ten co luu trang thai trong phong (vd Wall). De trong = khong luu.")]
+        [SerializeField] string worldFlag;
         [Tooltip("Goc chua hinh tuong - phan nay rung va lun xuong.")]
         [SerializeField] Transform visualRoot;
         [Tooltip("Hinh chinh doi theo frame nut (de trong = bo qua).")]
@@ -50,10 +53,25 @@ namespace LuHanh.Level
         bool running;
         public bool IsDown { get; private set; }
 
+        void Start()
+        {
+            if (WorldState.Has(this, worldFlag)) SetDownInstant();
+        }
+
         public void Trigger()
         {
             if (IsDown || running) return;
+            // Luu ngay luc bat dau: roi phong giua canh sap thi vao lai tuong van da sap.
+            WorldState.Set(this, worldFlag);
             StartCoroutine(Cutscene());
+        }
+
+        /// <summary>Da sap tu truoc (co the gioi): tat collider va hinh, khong chay canh sap.</summary>
+        void SetDownInstant()
+        {
+            if (blocker) blocker.enabled = false;
+            (visualRoot ? visualRoot : transform).gameObject.SetActive(false);
+            IsDown = true;
         }
 
         IEnumerator Cutscene()

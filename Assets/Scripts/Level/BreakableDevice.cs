@@ -10,11 +10,14 @@ namespace LuHanh.Level
     /// Thiet bi pha duoc (chem hoac ban cau): chiu <see cref="hits"/> don, moi don chop sang + toe tia;
     /// don cuoi vo, tat den roi goi <see cref="CollapsingWall.Trigger"/> (camera chuyen sang tuong sap).
     /// Collider trigger o layer bi chem (Enemy) de PlayerAttack / OrbProjectile tim thay qua IDamageable.
-    /// Chua luu vao file save: tai lai man thi thiet bi lanh lai.
+    /// Co <see cref="worldFlag"/> thi luu vao file save (vao lai phong thiet bi da vo); de trong thi nhu cu:
+    /// tai lai man thi thiet bi lanh lai.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class BreakableDevice : MonoBehaviour, IDamageable
     {
+        [Tooltip("Ten co luu trang thai trong phong (vd Device). De trong = khong luu.")]
+        [SerializeField] string worldFlag;
         [SerializeField] CollapsingWall target;
         [SerializeField] int hits = 3;
 
@@ -52,6 +55,20 @@ namespace LuHanh.Level
             if (visual) baseColor = visual.color;
         }
 
+        void Start()
+        {
+            if (!WorldState.Has(this, worldFlag)) return;
+            // Da pha tu truoc (co the gioi): hien khung vo cuoi, khong pha lai, tuong lien ket tu doc co rieng.
+            broken = true;
+            GetComponent<Collider2D>().enabled = false;
+            if (coreLight) coreLight.enabled = false;
+            if (visual && breakFrames != null && breakFrames.Length > 0)
+            {
+                frame = breakFrames.Length - 1;
+                visual.sprite = breakFrames[frame];
+            }
+        }
+
         public void TakeHit(HitInfo hit)
         {
             if (broken) return;
@@ -67,6 +84,7 @@ namespace LuHanh.Level
         void Break()
         {
             broken = true;
+            WorldState.Set(this, worldFlag);
             frame = 0;
             frameTimer = 0f;
             GetComponent<Collider2D>().enabled = false;

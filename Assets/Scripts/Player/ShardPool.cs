@@ -76,10 +76,31 @@ namespace LuHanh.Player
             if (d.lostShards > 0 && d.lostScene == SceneManager.GetActiveScene().name) ShowCache(d.lostPosition);
             ShardWallet.Changed += OnChanged;
             OnChanged(ShardWallet.Count);
+            LuHanh.World.WorldLoader.RoomEntered += OnRoomEntered;
+        }
+
+        /// <summary>
+        /// The gioi moi phong 1 scene: pool nay song trong Core, nen doi phong thi Shards dang bay cong luon vao vi,
+        /// tui Shards roi khi chet chi hien o dung phong da chet.
+        /// </summary>
+        void OnRoomEntered(LuHanh.World.WorldRoom room)
+        {
+            for (int i = 0; i < shards.Length; i++)
+            {
+                if (!shards[i].alive) continue;
+                shards[i].alive = false;
+                shards[i].transform.gameObject.SetActive(false);
+                ShardWallet.Add(1);
+                MarkDirty();
+            }
+            var d = SaveGame.Data;
+            if (d.lostShards > 0 && d.lostScene == room.RoomId) ShowCache(d.lostPosition);
+            else HideCache();
         }
 
         void OnDestroy()
         {
+            LuHanh.World.WorldLoader.RoomEntered -= OnRoomEntered;
             ShardWallet.Changed -= OnChanged;
             if (instance == this) instance = null;
             if (saveTimer >= 0f) SaveGame.Save();

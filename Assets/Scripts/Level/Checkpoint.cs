@@ -107,9 +107,15 @@ namespace LuHanh.Level
             SetFrames(idleFrames);
             if (glow) glow.intensity = idleIntensity;
 
+            bool isSaved = SaveGame.HasCheckpointIn(gameObject.scene.name) &&
+                           Vector2.Distance(SaveGame.Data.checkpointPosition, Seat) < 0.5f;
+            // The gioi moi phong 1 scene: WorldLoader dat nguoi choi (vao qua cua thi khong keo len ghe), ghe chi sang den.
+            if (LuHanh.World.WorldLoader.Active)
+            {
+                if (isSaved) Light();
+            }
             // Mo game / vao man: dua nguoi choi ve ghe da ngoi cuoi trong scene nay.
-            if (!restoredThisLoad && controller && SaveGame.HasCheckpointIn(gameObject.scene.name) &&
-                Vector2.Distance(SaveGame.Data.checkpointPosition, Seat) < 0.5f)
+            else if (!restoredThisLoad && controller && isSaved)
             {
                 restoredThisLoad = true;
                 controller.Respawn(Seat);

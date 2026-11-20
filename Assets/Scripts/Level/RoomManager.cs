@@ -70,6 +70,21 @@ namespace LuHanh.Level
             return null;
         }
 
+        /// <summary>
+        /// Vua tai phong moi (the gioi moi phong 1 scene - WorldLoader): bo phong cu, dat camera thang vao phong
+        /// dang chua nguoi choi, khong truot.
+        /// </summary>
+        public void Refresh()
+        {
+            if (!player) return;
+            // Khong ResetFade: WorldLoader dang dung chung lop phu den cua RoomTransitionFx.
+            StopAllCoroutines();
+            ReleaseTime();
+            IsTransitioning = false;
+            Current = null;
+            Enter(FindRoom(Probe), skipDamping: true);
+        }
+
         void Enter(Room room, bool skipDamping)
         {
             if (!room) return;

@@ -37,6 +37,9 @@ namespace LuHanh.Core
         public Vector2 lostPosition;
         [Tooltip("Quai da roi Shards (scene/ten/vi tri dat): hoi sinh roi giet lai khong roi nua, chong cay tien.")]
         public System.Collections.Generic.List<string> lootedEnemies = new();
+
+        [Tooltip("Trang thai the gioi da thay doi (scene/ten): tuong da sap, can gat da gat, vung da vao... Xem WorldState.")]
+        public System.Collections.Generic.List<string> worldFlags = new();
     }
 
     /// <summary>

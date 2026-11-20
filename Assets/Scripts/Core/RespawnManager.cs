@@ -114,6 +114,8 @@ namespace LuHanh.Core
             yield return Fade(0f, 1f, fadeOutTime);
 
             placePlayer?.Invoke();
+            // The gioi moi phong 1 scene: dang tai phong co ghe, doi xong moi dat lai quai / sang lai.
+            while (LuHanh.World.WorldLoader.IsBusy) yield return null;
             ResetAll();
 
             yield return new WaitForSecondsRealtime(holdTime);

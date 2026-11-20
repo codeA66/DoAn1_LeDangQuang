@@ -92,6 +92,13 @@ namespace LuHanh.Player
         /// <summary>Doi diem hoi sinh (ghe ngoi, cua man...).</summary>
         public void SetCheckpoint(Vector2 position) => checkpoint = position;
 
+        /// <summary>Vua sang phong khac (WorldLoader): cho dung an toan cu thuoc phong cu, dat lai ve cho vua xuat hien.</summary>
+        public void ResetSafePosition(Vector2 position)
+        {
+            safePosition = position;
+            groundedTimer = 0f;
+        }
+
         public void TakeHit(HitInfo hit)
         {
             if (dead || hazardRespawning || IsInvulnerable) return;
@@ -297,10 +304,17 @@ namespace LuHanh.Player
         void Revive()
         {
             StopFlash();
+            health.Refill();
+            // The gioi moi phong 1 scene: ghe co the o phong khac -> WorldLoader tai phong roi dat len ghe
+            // (RespawnManager doi tai xong moi sang lai).
+            if (LuHanh.World.WorldLoader.Active)
+            {
+                LuHanh.World.WorldLoader.Instance.RespawnAtBench();
+                return;
+            }
             controller.Respawn(checkpoint);
             safePosition = checkpoint;
             groundedTimer = 0f;
-            health.Refill();
         }
 
         void RevealRespawn()

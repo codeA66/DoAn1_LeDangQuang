@@ -9,12 +9,15 @@ namespace LuHanh.Level
     /// Can gat duong tat kieu Hollow Knight: chem (J) vao thi bat sang, mo cac Gate duoc gan.
     /// Dat o phia ben kia duong tat nen chi mo duoc tu mot phia.
     /// Neu gan <see cref="requiredEncounter"/> thi phai don xong phong do moi chem duoc (can tat den, chem khong an).
-    /// Da mo thi giu mo khi nguoi choi chet (phan thuong); tai lai man thi ve dong (khong luu).
+    /// Da mo thi giu mo khi nguoi choi chet (phan thuong). Co <see cref="worldFlag"/> thi luu vao file save
+    /// (vao lai phong cua van mo); de trong thi nhu cu: tai lai man thi ve dong.
     /// Collider trigger o layer bi chem (Enemy) de PlayerAttack tim thay qua IDamageable.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class ShortcutLever : MonoBehaviour, IDamageable
     {
+        [Tooltip("Ten co luu trang thai trong phong (vd Lever). De trong = khong luu.")]
+        [SerializeField] string worldFlag;
         [SerializeField] Gate[] gates;
         [Tooltip("Phong khoa phai don xong moi chem duoc can. De trong = luc nao cung chem duoc.")]
         [SerializeField] RoomEncounter requiredEncounter;
@@ -39,10 +42,20 @@ namespace LuHanh.Level
             if (handle) handle.localRotation = Quaternion.Euler(0f, 0f, offAngle);
         }
 
+        void Start()
+        {
+            if (!WorldState.Has(this, worldFlag)) return;
+            // Da gat tu truoc (co the gioi): can o vi tri bat, cua mo san.
+            used = true;
+            if (handle) handle.localRotation = Quaternion.Euler(0f, 0f, onAngle);
+            foreach (var g in gates) if (g) g.OpenInstant();
+        }
+
         public void TakeHit(HitInfo hit)
         {
             if (!Ready) return;
             used = true;
+            WorldState.Set(this, worldFlag);
             flipTimer = 0f;
             Sfx.Play(SfxId.Lever);
             if (hitStop > 0f) HitStop.Request(hitStop);

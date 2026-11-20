@@ -222,22 +222,48 @@ namespace LuHanh.Player
 
         Vector2 rawMove;
 
+        bool forcedMove;
+
+        /// <summary>Dang tu di (qua cua phong): bo qua phim di chuyen / nhay / dash cua nguoi choi.</summary>
+        public bool IsForcedMove => forcedMove;
+
+        /// <summary>
+        /// Tu di theo huong <paramref name="directionX"/> (-1, 0, 1) cho toi khi goi <see cref="ReleaseForcedMove"/>.
+        /// Dung khi buoc qua cua phong kieu Hollow Knight: nhan vat tu di ra / vao phong.
+        /// </summary>
+        public void ForceMove(float directionX)
+        {
+            forcedMove = true;
+            input?.SetMove(new Vector2(Mathf.Sign(directionX) * (Mathf.Abs(directionX) > 0.01f ? 1f : 0f), 0f));
+            input?.ReleaseJump();
+            ClearBufferedInput();
+        }
+
+        /// <summary>Tra lai dieu khien sau <see cref="ForceMove"/>: ap phim dang giu, bo lenh nhay/dash bam trong luc tu di.</summary>
+        public void ReleaseForcedMove()
+        {
+            if (!forcedMove) return;
+            forcedMove = false;
+            input?.SetMove(rawMove);
+            ClearBufferedInput();
+        }
+
         public void onMove(InputAction.CallbackContext callback)
         {
             rawMove = callback.ReadValue<Vector2>();
-            input?.SetMove(rawMove);
+            if (!forcedMove) input?.SetMove(rawMove);
         }
 
         public void onJump(InputAction.CallbackContext callback)
         {
-            if (input == null) return;
+            if (input == null || forcedMove) return;
             if (callback.started) input.PressJump();
             else if (callback.canceled) input.ReleaseJump();
         }
 
         public void onDash(InputAction.CallbackContext callback)
         {
-            if (callback.started) input?.PressDash();
+            if (callback.started && !forcedMove) input?.PressDash();
         }
 
         /// <summary>
