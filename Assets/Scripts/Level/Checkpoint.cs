@@ -70,7 +70,7 @@ namespace LuHanh.Level
         float baseRadius;
         float frameTimer, standTimer = -1f;
         int frame;
-        bool lit, sitting;
+        bool sitting;
 
         Vector2 Seat => (Vector2)transform.position + seatOffset;
 
@@ -91,7 +91,8 @@ namespace LuHanh.Level
                 actionAnimation = p.GetComponent<PlayerActionAnimation>();
                 blockWhileSitting = new MonoBehaviour[]
                 {
-                    controller, p.GetComponent<PlayerAttack>(), p.GetComponent<PlayerOrbShot>(), p.GetComponent<PlayerShadow>()
+                    controller, p.GetComponent<PlayerAttack>(), p.GetComponent<PlayerOrbShot>(), p.GetComponent<PlayerShadow>(),
+                    p.GetComponent<PlayerFocus>()
                 };
                 var input = p.GetComponent<PlayerInput>();
                 if (input)
@@ -168,7 +169,6 @@ namespace LuHanh.Level
 
             frame = 0;
             SetFrames(activeFrames);
-            lit = true;
         }
 
         void FinishStand()
@@ -181,7 +181,6 @@ namespace LuHanh.Level
 
         void Light()
         {
-            lit = true;
             SetFrames(litFrames);
             if (glow) glow.intensity = litIntensity;
             SetMotes(motesLitRate);

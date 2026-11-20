@@ -3,7 +3,7 @@ using UnityEngine;
 namespace LuHanh.Player
 {
     /// <summary>
-    /// Thong so dang Shadow: thanh nang luong, cach bien hinh va suc manh khi dang Shadow.
+    /// Thong so binh nang luong (kieu Soul Vessel): cach nap, gia ban cau K / Focus, va dang Shadow (hien tat).
     /// Tach ScriptableObject de can bang game ma khong sua code.
     /// </summary>
     [CreateAssetMenu(menuName = "LuHanh/Shadow Config", fileName = "ShadowConfig")]
@@ -13,6 +13,16 @@ namespace LuHanh.Player
         [Min(1f)] public float maxEnergy = 100f;
         [Tooltip("Moi hat nang luong cong bao nhieu.")]
         [Min(0f)] public float energyPerOrb = 5f;
+        [Tooltip("Moi nhat chem trung quai cong bao nhieu (Hollow Knight: 11 / 99).")]
+        [Min(0f)] public float energyPerHit = 11f;
+
+        [Header("Ban cau K + Focus (tieu tu binh nay)")]
+        [Tooltip("Moi phat ban cau K ton bao nhieu (Hollow Knight: 33 / 99).")]
+        [Min(0f)] public float shotCost = 33f;
+        [Tooltip("Moi lan Focus hoi 1 mask ton bao nhieu (Hollow Knight: 33 / 99).")]
+        [Min(1f)] public float focusCost = 33f;
+        [Tooltip("Giu phim Focus (Y) bao lau thi hoi 1 mask (giay, Hollow Knight ~0,9).")]
+        [Min(0.05f)] public float focusTime = 0.9f;
 
         [Header("Bien hinh")]
         [Tooltip("Giu phim Shadow (Y) bao lau khi thanh day thi bien hinh (giay).")]

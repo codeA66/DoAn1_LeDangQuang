@@ -8,7 +8,8 @@ namespace LuHanh.Player
 {
     /// <summary>
     /// Ky nang ban cau (phim K): chi ban ngang theo huong dang nhin (dang bam tuong thi ban ra phia ngoai tuong).
-    /// Ton nang luong <see cref="PlayerEnergy"/>; phat dong tac Cast / CastAir roi tha cau sau mot nhip ngan.
+    /// Ton nang luong tu binh <see cref="PlayerShadow"/> (ShadowConfig.shotCost, dung chung voi Focus);
+    /// phat dong tac Cast / CastAir roi tha cau sau mot nhip ngan.
     /// Dang Shadow thi cau to hon va sat thuong nhan theo Shadow. Can mo khoa bang vat pham.
     /// </summary>
     [RequireComponent(typeof(PlayerController))]
@@ -29,7 +30,6 @@ namespace LuHanh.Player
         [SerializeField] Vector2 muzzleOffset = new Vector2(0.9f, 1.0f);
 
         PlayerController controller;
-        PlayerEnergy energy;
         PlayerShadow shadow;
         PlayerActionAnimation actionAnimation;
         PlayerInput playerInput;
@@ -39,7 +39,6 @@ namespace LuHanh.Player
         void Awake()
         {
             controller = GetComponent<PlayerController>();
-            energy = GetComponent<PlayerEnergy>();
             shadow = GetComponent<PlayerShadow>();
             actionAnimation = GetComponent<PlayerActionAnimation>();
             playerInput = GetComponent<PlayerInput>();
@@ -65,7 +64,8 @@ namespace LuHanh.Player
 
             if (action == null || !action.WasPressedThisFrame()) return;
             if (!PlayerSkills.Has(Skill.OrbShot) || !controller.enabled || controller.IsHurt || controller.IsDashing) return;
-            if (cooldownTimer > 0f || !orbPrefab || !energy || !energy.TrySpendShot()) return;
+            // Ton nang luong tu binh dung chung voi Focus: nguoi choi chon ban hay hoi mau.
+            if (cooldownTimer > 0f || !orbPrefab || !shadow || !shadow.TrySpend(shadow.Config.shotCost)) return;
 
             pendingDir = controller.IsWallSliding ? -controller.WallDir : (controller.FacingRight ? 1f : -1f);
             if (controller.IsWallSliding) controller.Face(pendingDir);

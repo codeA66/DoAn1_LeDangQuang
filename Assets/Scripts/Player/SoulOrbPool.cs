@@ -6,7 +6,7 @@ namespace LuHanh.Player
     /// Hat nang luong Shadow roi ra khi quai chet: bung ra mot thoang roi bay hut ve nguc nguoi choi,
     /// cham toi thi cong vao <see cref="PlayerShadow"/>.
     /// Pool tao san trong Awake (dat trong LevelEssentials/GameSystems), khong Instantiate khi choi.
-    /// Nguoi choi chua mo khoa Shadow thi khong roi hat.
+    /// Binh chua hien (bat bien hinh Shadow nhung chua mo khoa) thi khong roi hat.
     /// </summary>
     public class SoulOrbPool : MonoBehaviour
     {
@@ -91,7 +91,7 @@ namespace LuHanh.Player
 
         void SpawnInternal(Vector2 position, int count)
         {
-            if (!shadow || !shadow.IsUnlocked) return;
+            if (!shadow || !shadow.VesselShown) return;
             for (int n = 0; n < count; n++)
             {
                 int i = FindFree();

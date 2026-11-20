@@ -13,12 +13,16 @@ namespace LuHanh.Player
     /// Kha nang phai duoc mo khoa (nhat vat pham o Level2), luu bang PlayerPrefs.
     /// Nguoi choi chet: thanh ve 0, het dang Shadow (IResettable).
     /// Code khac chi doc <see cref="IsActive"/> va cac he so, khong tu bat/tat.
+    /// HIEN TAT (featureEnabled = false): phim Y dung cho Focus (<see cref="PlayerFocus"/>), Shadow khong mo khoa,
+    /// nen hat nang luong (SoulOrbPool), thanh Shadow (ShadowBarUI) va vat pham ShadowShardPickup deu khong hoat dong.
     /// </summary>
     [RequireComponent(typeof(PlayerController))]
     public class PlayerShadow : MonoBehaviour, IResettable
     {
         const string UnlockKey = "LuHanh.ShadowUnlocked";
 
+        [Tooltip("Tat = khong bao gio mo khoa Shadow (phim Y danh cho Focus - PlayerFocus). Bat lai de dung Shadow.")]
+        [SerializeField] bool featureEnabled = false;
         [SerializeField] ShadowConfig config;
         [Tooltip("SpriteRenderer than nhan vat (Visual).")]
         [SerializeField] SpriteRenderer visual;
@@ -29,6 +33,7 @@ namespace LuHanh.Player
 
         PlayerController controller;
         PlayerMovementFx movementFx;
+        PlayerAttack attack;
         Rigidbody2D body;
         InputAction action;
         Color baseColor = Color.white;
@@ -54,6 +59,23 @@ namespace LuHanh.Player
         public bool IsActive { get; private set; }
         public bool IsFull => energy >= config.maxEnergy - 0.001f;
         public float Energy01 => energy / config.maxEnergy;
+        public float Energy => energy;
+        /// <summary>Bien hinh Shadow co bat khong (tat = binh chi dung cho ban cau K + Focus).</summary>
+        public bool TransformEnabled => featureEnabled;
+        /// <summary>Binh nang luong co hien / nap duoc khong: luon co khi tat bien hinh; khi bat thi phai mo khoa.</summary>
+        public bool VesselShown => !featureEnabled || IsUnlocked;
+        public bool CanAfford(float amount) => VesselShown && !IsActive && energy >= amount - 0.001f;
+
+        /// <summary>Tieu <paramref name="amount"/> nang luong (ban cau K, Focus). Tra ve false neu khong du.</summary>
+        public bool TrySpend(float amount)
+        {
+            if (!CanAfford(amount)) return false;
+            SetEnergy(energy - amount);
+            return true;
+        }
+
+        /// <summary>Tien do giu phim 0..1 de binh UI ve vong sang (Focus dung khi tat bien hinh).</summary>
+        public void ShowHoldProgress(float progress) => SetHold(progress);
 
         public float SpeedMultiplier => IsActive ? config.speedMultiplier : 1f;
         public float RangeMultiplier => IsActive ? config.attackRangeMultiplier : 1f;
@@ -64,6 +86,7 @@ namespace LuHanh.Player
         {
             controller = GetComponent<PlayerController>();
             movementFx = GetComponent<PlayerMovementFx>();
+            attack = GetComponent<PlayerAttack>();
             body = GetComponent<Rigidbody2D>();
             if (!config)
             {
@@ -71,7 +94,7 @@ namespace LuHanh.Player
                 Debug.LogWarning("PlayerShadow chua duoc gan config, dang dung bo so mac dinh.", this);
             }
             if (visual) baseColor = visual.color;
-            IsUnlocked = PlayerPrefs.GetInt(UnlockKey, 0) == 1;
+            IsUnlocked = featureEnabled && PlayerPrefs.GetInt(UnlockKey, 0) == 1;
 
             var playerInput = GetComponent<PlayerInput>();
             if (playerInput) action = playerInput.actions.FindAction(actionName);
@@ -80,6 +103,11 @@ namespace LuHanh.Player
             BuildGhostPool();
             RespawnManager.Register(this);
         }
+
+        // Nap binh moi nhat chem trung (nhu SOUL cua Hollow Knight), khong chi khi quai chet.
+        void OnEnable() { if (attack) attack.EnemyHit += OnEnemyHit; }
+        void OnDisable() { if (attack) attack.EnemyHit -= OnEnemyHit; }
+        void OnEnemyHit() => AddEnergy(config.energyPerHit);
 
         void OnDestroy()
         {
@@ -92,7 +120,7 @@ namespace LuHanh.Player
         /// <summary>Mo khoa kha nang (vat pham huong dan). Luu lai cho cac lan choi sau.</summary>
         public void Unlock()
         {
-            if (IsUnlocked) return;
+            if (IsUnlocked || !featureEnabled) return;
             IsUnlocked = true;
             PlayerPrefs.SetInt(UnlockKey, 1);
             PlayerPrefs.Save();
@@ -102,7 +130,7 @@ namespace LuHanh.Player
         /// <summary>Cong nang luong (hat nang luong). Dang Shadow thi khong cong.</summary>
         public void AddEnergy(float amount)
         {
-            if (!IsUnlocked || IsActive || amount <= 0f) return;
+            if (!VesselShown || IsActive || amount <= 0f) return;
             SetEnergy(energy + amount);
         }
 
@@ -128,6 +156,7 @@ namespace LuHanh.Player
         void Update()
         {
             UpdateGhosts();
+            if (!featureEnabled) return; // tien do giu phim do PlayerFocus dieu khien
             if (!IsUnlocked || !controller.enabled) { SetHold(0f); return; }
 
             if (IsActive)

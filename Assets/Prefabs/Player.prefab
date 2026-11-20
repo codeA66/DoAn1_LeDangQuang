@@ -39598,8 +39598,8 @@ GameObject:
   - component: {fileID: 7778245015425867006}
   - component: {fileID: 8171744386610701766}
   - component: {fileID: 8652344376428202768}
-  - component: {fileID: 8329219454522739597}
   - component: {fileID: 2161069893273297341}
+  - component: {fileID: 2335128387625714519}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -40013,7 +40013,13 @@ MonoBehaviour:
   hitStopTime: 0.1
   hurtFlash: {fileID: 2309425236508590537}
   visual: {fileID: 7630255942092001789}
+  invulnerableTime: 0.1
+  hurtShake: 0.45
+  hurtShakeTime: 0.35
+  hurtSlowScale: 0.3
+  hurtSlowTime: 0.3
   safeGroundTime: 0.2
+  safeEdgeMargin: 0.25
 --- !u!114 &4902688804160488018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40185,6 +40191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45bbac2e0f1e504c9dc03c9509e8624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerShadow
+  featureEnabled: 0
   config: {fileID: 11400000, guid: 74bd164ce42697a4094b01798839230d, type: 2}
   visual: {fileID: 7630255942092001789}
   actionName: Shadow
@@ -40237,21 +40244,6 @@ MonoBehaviour:
   distance: 4
   holdDelay: 0.6
   smoothTime: 0.25
---- !u!114 &8329219454522739597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7774313822008665706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f43e06f9a625044862392afde4fec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerEnergy
-  maxEnergy: 6
-  shotCost: 2
-  gainPerHit: 1
 --- !u!114 &2161069893273297341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40271,7 +40263,22 @@ MonoBehaviour:
   actionName: Shoot
   releaseDelay: 0.15
   cooldown: 0.4
+  airHoldTime: 0.25
   muzzleOffset: {x: 0.9, y: 1}
+--- !u!114 &2335128387625714519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774313822008665706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb327ec263a98c0448cd9a6b9d17ba7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.Player.PlayerFocus
+  actionName: Shadow
+  healFlash: {r: 0.72, g: 1, b: 0.94, a: 1}
 --- !u!1 &7962428662256493690
 GameObject:
   m_ObjectHideFlags: 0

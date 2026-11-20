@@ -9,7 +9,8 @@ namespace LuHanh.UI
     /// Chat long (Image Filled Vertical) dang len theo nang luong, mat nuoc gon song o dinh.
     /// Day binh thi vien sang nhap nhay moi giu phim; dang giu phim thi vong sang chay quanh binh
     /// (Filled Radial); dang Shadow thi chat long sang hon va can dan.
-    /// An khi chua mo khoa. Nghe su kien cua <see cref="PlayerShadow"/>, chi lam hieu ung moi frame.
+    /// Khi tat bien hinh: day la binh nang luong cho ban cau K + Focus (luon hien); vong sang = tien do Focus.
+    /// An khi bat bien hinh ma chua mo khoa. Nghe su kien cua <see cref="PlayerShadow"/>, chi lam hieu ung moi frame.
     /// </summary>
     public class ShadowBarUI : MonoBehaviour
     {
@@ -44,7 +45,7 @@ namespace LuHanh.UI
             target = shadow.Energy01;
             if (fill) fill.fillAmount = target;
             OnHold(0f);
-            if (group) group.alpha = shadow.IsUnlocked ? 1f : 0f;
+            if (group) group.alpha = shadow.VesselShown ? 1f : 0f;
         }
 
         void OnDestroy()
@@ -64,14 +65,18 @@ namespace LuHanh.UI
             if (!shadow || !fill) return;
             // Tu luc: chat long bi rut can dan vao nguoi choi theo tien do giu phim (tha ra thi dang lai).
             // Dang Shadow: binh da can, vong sang dem nguoc thoi gian con lai (Energy01 dang giam dan).
-            float shown = shadow.IsActive ? 0f : target * (1f - hold);
+            // Tat bien hinh: dang Focus thi chat long rut dan dung bang gia mot lan Focus (khong rut can ca binh).
+            float shown = shadow.IsActive ? 0f
+                : shadow.TransformEnabled ? target * (1f - hold)
+                : Mathf.Max(0f, target - hold * shadow.Config.focusCost / shadow.Config.maxEnergy);
             fill.fillAmount = Mathf.Lerp(fill.fillAmount, shown, 1f - Mathf.Exp(-fillSmooth * Time.unscaledDeltaTime));
             if (holdFill) holdFill.fillAmount = shadow.IsActive ? shadow.Energy01 : hold;
             fill.color = shadow.IsActive ? activeColor : fillColor;
             UpdateSurface();
 
             if (!glow) return;
-            bool lit = shadow.IsActive || shadow.IsFull;
+            // Tat bien hinh: vien sang khi du nang luong de Focus.
+            bool lit = shadow.IsActive || (shadow.TransformEnabled ? shadow.IsFull : shadow.CanAfford(shadow.Config.focusCost));
             var c = glow.color;
             c.a = lit ? 0.35f + 0.35f * Mathf.Sin(Time.unscaledTime * pulseSpeed) : 0f;
             glow.color = c;
