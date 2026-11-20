@@ -4,7 +4,7 @@ using LuHanh.Core;
 namespace LuHanh.Player
 {
     /// <summary>Them ky nang moi: chi them ten vao enum (luu theo ten, khong can them truong vao SaveData).</summary>
-    public enum Skill { WallCling, OrbShot }
+    public enum Skill { WallCling, OrbShot, Dash, Pogo, DoubleJump }
 
     /// <summary>
     /// Ky nang mo khoa bang vat pham (<see cref="LuHanh.Level.SkillPickup"/>), luu trong
@@ -15,6 +15,13 @@ namespace LuHanh.Player
         public static event Action<Skill> Unlocked;
 
         public static bool Has(Skill skill) => List.Contains(skill.ToString()) || LegacyHas(skill);
+
+        /// <summary>
+        /// Ky nang dung duoc luc nay. Dash va Pogo chi phai nhat trong the gioi kieu Hollow Knight (WorldLoader);
+        /// Level1-3 cu van co san tu dau. Ky nang khac phai nhat o moi noi.
+        /// </summary>
+        public static bool Usable(Skill skill) =>
+            (skill == Skill.Dash || skill == Skill.Pogo) && !LuHanh.World.WorldLoader.Active || Has(skill);
 
         public static void Unlock(Skill skill)
         {

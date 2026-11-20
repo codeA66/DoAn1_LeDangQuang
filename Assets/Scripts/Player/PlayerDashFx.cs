@@ -86,6 +86,8 @@ namespace LuHanh.Player
 
         void OnStateChanged(IState from, IState to)
         {
+            // Nhay doi: bung hat sang (dung chung burst cua dash), toe xuong duoi chan.
+            if (to is DoubleJumpState) { EmitBurst(Vector2.up); return; }
             if (!(to is DashState)) return;
             // Huong dash da duoc DashState.Enter dat vao van toc truoc khi bao doi trang thai.
             Vector2 dir = body.linearVelocity.sqrMagnitude > 0.01f

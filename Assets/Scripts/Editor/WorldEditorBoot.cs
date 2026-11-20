@@ -24,8 +24,9 @@ namespace LuHanh.EditorTools
             EditorApplication.delayCall += Refresh;
         }
 
+        // Scene mau (_RoomTemplate_...) bat dau bang "_" khong phai phong.
         public static bool IsRoomScene(Scene scene) =>
-            scene.IsValid() && scene.path.StartsWith(WorldLoader.WorldFolder) && scene.path != CorePath;
+            scene.IsValid() && scene.path.StartsWith(WorldLoader.WorldFolder) && scene.path != CorePath && !scene.name.StartsWith("_");
 
         static void Refresh()
         {

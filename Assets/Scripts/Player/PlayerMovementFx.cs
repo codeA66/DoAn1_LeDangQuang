@@ -82,13 +82,18 @@ namespace LuHanh.Player
 
         void OnStateChanged(IState from, IState to)
         {
-            bool wasAir = from is JumpState || from is FallState || from is DashState;
+            bool wasAir = from is JumpState || from is DoubleJumpState || from is FallState || from is DashState;
             bool nowGround = to is IdleState || to is RunState;
             running = to is RunState;
 
             if (to is DashState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Dash);
             else if (to is WallSlideState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.WallCling);
             else if (to is WallJumpState) LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Jump);
+            else if (to is DoubleJumpState)
+            {
+                LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.Jump);
+                SetScale(jumpStretch);
+            }
 
             if (to is JumpState)
             {

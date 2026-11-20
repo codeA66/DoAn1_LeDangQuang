@@ -190,9 +190,14 @@ namespace LuHanh.Player
         /// Roi vao ho / bay: mat mau, man hinh toi nhanh, hien lai o cho dung an toan cuoi cung.
         /// Het mau thi chet nhu binh thuong.
         /// </summary>
+        float hazardGraceTimer;
+
+        /// <summary>Vua nay khoi gai (Pogo): bo qua vung chet trong <paramref name="seconds"/> giay (thoi gian game).</summary>
+        public void IgnoreHazardsFor(float seconds) => hazardGraceTimer = Mathf.Max(hazardGraceTimer, seconds);
+
         public void TakeHazardHit(int damage)
         {
-            if (dead || hazardRespawning) return;
+            if (dead || hazardRespawning || hazardGraceTimer > 0f) return;
 
             if (health.Damage(damage)) { StartHitStop(); Sfx.Play(SfxId.PlayerHurt); }
             if (health.IsDead)
@@ -231,6 +236,7 @@ namespace LuHanh.Player
         void UpdateInvulnerable()
         {
             if (invulnerableTimer > 0f) invulnerableTimer -= Time.deltaTime;
+            if (hazardGraceTimer > 0f) hazardGraceTimer -= Time.deltaTime;
         }
 
         void ClearInvulnerable() => invulnerableTimer = 0f;

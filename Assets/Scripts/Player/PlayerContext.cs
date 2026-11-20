@@ -121,11 +121,39 @@ namespace LuHanh.Player
             Body.linearVelocity = v;
         }
 
+        // ---- Nhay doi (ky nang mo khoa) ----
+
+        /// <summary>Con bao nhieu lan nhay tren khong (1 khi da mo khoa Nhay doi). Hoi lai khi cham dat / bam tuong.</summary>
+        public int AirJumpsLeft { get; private set; } = 1;
+
+        public bool CanAirJump => AirJumpsLeft > 0 && PlayerSkills.Usable(Skill.DoubleJump);
+
+        public void RefillAirJump() => AirJumpsLeft = 1;
+
+        /// <summary>Nhay lan hai tren khong: cao bang nhay thuong (giu phim thi cao hon), dat lai van toc roi.</summary>
+        public void ExecuteAirJump()
+        {
+            AirJumpsLeft--;
+            airHoldTimer = 0f;
+            var v = Body.linearVelocity;
+            v.x += Config.jumpHBoost * Input.MoveX;
+            v.y = Config.jumpSpeed;
+            Body.linearVelocity = v;
+
+            varJumpSpeed = v.y;
+            varJumpTimer = Config.varJumpTime;
+            Input.ConsumeJump();
+        }
+
         /// <summary>Huy nhay giu phim (vd khi bi danh bat ra) de khong bi keo len tiep.</summary>
         public void CancelJumpHold() => varJumpTimer = 0f;
 
         /// <summary>Hoi lai luot dash ngay (vd khi hoi sinh).</summary>
-        public void RefillDash() => DashesLeft = Config.maxDashes;
+        public void RefillDash()
+        {
+            DashesLeft = Config.maxDashes;
+            AirJumpsLeft = 1;
+        }
 
         // ---- Dash ----
 
@@ -165,6 +193,7 @@ namespace LuHanh.Player
 
             if (!dashing && dashRefillTimer <= 0f && Ground.IsGrounded)
                 DashesLeft = Config.maxDashes;
+            if (Ground.IsGrounded) AirJumpsLeft = 1;
         }
 
         // ---- Bam tuong ----

@@ -15,5 +15,7 @@ namespace LuHanh.Combat
         public GameObject source;
         /// <summary>Phan ung cua nguoi choi khi trung don nay. Null = phan ung mac dinh cua nguoi choi.</summary>
         public HitReaction reaction;
+        /// <summary>Don tu cau nang luong (phim K) - vat chi vo bang cau (BreakableDevice.orbOnly) doc co nay.</summary>
+        public bool fromOrb;
     }
 }

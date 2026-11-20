@@ -20,6 +20,8 @@ namespace LuHanh.Level
         [SerializeField] string worldFlag;
         [SerializeField] CollapsingWall target;
         [SerializeField] int hits = 3;
+        [Tooltip("Chi vo bang cau nang luong (phim K) - loi can ky nang Ban cau. Chem vao chi toe tia + keng, khong mat do ben.")]
+        [SerializeField] bool orbOnly;
 
         [Header("Hinh")]
         [SerializeField] SpriteRenderer visual;
@@ -72,6 +74,13 @@ namespace LuHanh.Level
         public void TakeHit(HitInfo hit)
         {
             if (broken) return;
+            if (orbOnly && !hit.fromOrb)
+            {
+                // Chem khong an: bao bang tia + tieng kim loai, khong rung, khong mat do ben.
+                if (hitSparks) hitSparks.Emit(Mathf.Max(1, sparkCount / 3));
+                Sfx.Play(SfxId.Lever, 0.6f);
+                return;
+            }
             hp--;
             flashTimer = hitFlashTime;
             if (visual) visual.color = hitColor;

@@ -46,6 +46,11 @@ namespace LuHanh.Player
         [Header("Phan luc len nguoi choi")]
         [Tooltip("Chem xuong trung thi bat len voi van toc nay (pogo). 0 = dung jumpSpeed trong PlayerMovementConfig.")]
         public float pogoSpeed = 0f;
+        [Tooltip("Pogo tren gai: vung do gai keo dai them bao nhieu unit xuong duoi vung chem (chem xuong + roi nhanh thi than " +
+                 "cham gai gan nhu cung luc vet chem cham gai).")]
+        public float pogoHazardReach = 0.75f;
+        [Tooltip("Nay khoi gai xong thi mien sat thuong gai bao lau (giay) - khong bi tinh cham gai cung khung hinh voi luc nay.")]
+        public float pogoHazardGrace = 0.15f;
         [Tooltip("Chem ngang trung thi nguoi choi bi day lui voi van toc nay.")]
         public float recoilSpeed = 4f;
 

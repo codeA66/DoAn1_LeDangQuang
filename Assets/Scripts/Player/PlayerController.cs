@@ -49,6 +49,7 @@ namespace LuHanh.Player
         HurtState hurt;
         WallSlideState wallSlide;
         WallJumpState wallJump;
+        DoubleJumpState doubleJump;
         bool hurtRequested;
 
         public bool IsMoving => input != null && input.HasHorizontal;
@@ -116,12 +117,14 @@ namespace LuHanh.Player
             hurt = new HurtState(context);
             wallSlide = new WallSlideState(context);
             wallJump = new WallJumpState(context, () => wallSlide.WallDir);
+            doubleJump = new DoubleJumpState(context);
 
             // Bi danh trung de len moi thu khac.
             machine.AddAnyTransition(hurt, () => hurtRequested);
 
             // Dash uu tien cao nhat, giong Celeste xet dash truoc nhay.
-            machine.AddAnyTransition(dash, () => machine.Current != hurt && context.WantsDash && context.CanDash);
+            // The gioi kieu Hollow Knight: Dash phai nhat (PlayerSkills.Usable), Level1-3 co san.
+            machine.AddAnyTransition(dash, () => machine.Current != hurt && context.WantsDash && context.CanDash && PlayerSkills.Usable(Skill.Dash));
 
             // Dang bam tuong ma bam nhay: dap tuong bat ra (xet truoc nhay thuong).
             // Con trong cua so coyote (vua roi khoi mep) thi de nhay thuong xu ly: bam nhay ngay sau khi buoc khoi mep
@@ -131,6 +134,11 @@ namespace LuHanh.Player
             // Nhay: dung o dau cung nhay duoc mien la con coyote va con lenh trong dem,
             // tru luc dang dash. Nho vay bam nhay luon phan hoi ngay, khong tre frame nao.
             machine.AddAnyTransition(jump, () => machine.Current != dash && machine.Current != hurt && context.WantsJump && context.CanJump);
+
+            // Nhay doi (ky nang mo khoa): dang tren khong (het coyote, khong bam tuong) ma bam nhay.
+            machine.AddAnyTransition(doubleJump, () =>
+                (machine.Current == fall || machine.Current == jump || machine.Current == wallJump) &&
+                context.WantsJump && !context.CanJump && context.CanAirJump);
 
             // Het dash
             machine.AddTransition(dash, fall, () => dash.Finished && !ground.IsGrounded);
@@ -148,6 +156,7 @@ namespace LuHanh.Player
 
             // Het da di len thi chuyen sang roi
             machine.AddTransition(jump, fall, () => context.VerticalVelocity <= 0f);
+            machine.AddTransition(doubleJump, fall, () => context.VerticalVelocity <= 0f);
 
             // Tiep dat: vao thang Idle hay Run tuy con giu phim khong
             machine.AddTransition(fall, run, () => ground.IsGrounded && input.HasHorizontal);
@@ -155,6 +164,8 @@ namespace LuHanh.Player
             // Chi tiep dat khi da het di len: ngay sau khi nhay cam bien van con bao cham dat vai frame.
             machine.AddTransition(jump, run, () => ground.IsGrounded && context.VerticalVelocity <= 0f && input.HasHorizontal);
             machine.AddTransition(jump, idle, () => ground.IsGrounded && context.VerticalVelocity <= 0f && !input.HasHorizontal);
+            machine.AddTransition(doubleJump, run, () => ground.IsGrounded && context.VerticalVelocity <= 0f && input.HasHorizontal);
+            machine.AddTransition(doubleJump, idle, () => ground.IsGrounded && context.VerticalVelocity <= 0f && !input.HasHorizontal);
 
             // Bam tuong (ky nang mo khoa): dang roi, sat tuong, bam phim ve phia tuong.
             machine.AddTransition(fall, wallSlide, CanWallSlide);

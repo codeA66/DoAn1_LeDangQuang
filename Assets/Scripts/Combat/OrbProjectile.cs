@@ -123,7 +123,8 @@ namespace LuHanh.Combat
                     damage = Mathf.RoundToInt(damage * damageScale),
                     direction = direction,
                     knockback = knockback,
-                    source = owner
+                    source = owner,
+                    fromOrb = true
                 });
             }
         }

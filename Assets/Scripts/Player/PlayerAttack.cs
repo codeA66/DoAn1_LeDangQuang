@@ -78,6 +78,7 @@ namespace LuHanh.Player
             movementFx = GetComponent<PlayerMovementFx>();
             actionAnimation = GetComponent<PlayerActionAnimation>();
             shadow = GetComponent<PlayerShadow>();
+            playerHealth = GetComponent<PlayerHealth>();
             groundMask = LayerMask.GetMask("Ground");
 
             if (config == null)
@@ -284,6 +285,7 @@ namespace LuHanh.Player
             int count = Physics2D.OverlapBox(centre, size, 0f, filter, hits);
 
             for (int i = 0; i < count; i++) Hit(hits[i], centre);
+            if (currentDirection == Direction.Down) PogoOffHazards(centre, size);
 
             // Chem tu dinh vi: da lao toi thi muc tieu do chac chan trung (neu van trong tam voi),
             // ke ca khi no lech khoi hop chem vi dang di chuyen hoac o cheo.
@@ -293,6 +295,33 @@ namespace LuHanh.Player
                 float reach = shadow.Config.homingStopDistance + HomingReachSlack;
                 if (((Vector2)homingTarget.ClosestPoint(chest) - chest).sqrMagnitude <= reach * reach)
                     Hit(homingTarget, centre);
+            }
+        }
+
+        readonly Collider2D[] hazardHits = new Collider2D[8];
+        PlayerHealth playerHealth;
+
+        /// <summary>
+        /// Pogo tren gai kieu Hollow Knight: chem xuong trung vung chet (HazardZone, vd gai) thi nay len nhu trung quai,
+        /// khong mat mau. Can ky nang Pogo (PlayerSkills.Usable).
+        /// </summary>
+        void PogoOffHazards(Vector2 centre, Vector2 size)
+        {
+            if (reactedThisSwing || !PlayerSkills.Usable(Skill.Pogo)) return;
+            var any = new ContactFilter2D { useTriggers = true };
+            any.NoFilter();
+            // Keo dai vung do xuong duoi: giu S de chem xuong thi dang roi nhanh, than cham gai gan nhu cung luc vet chem.
+            float reach = Mathf.Max(0f, config.pogoHazardReach);
+            int count = Physics2D.OverlapBox(centre + Vector2.down * reach * 0.5f, size + Vector2.up * reach, 0f, any, hazardHits);
+            for (int i = 0; i < count; i++)
+            {
+                var hazard = hazardHits[i].GetComponent<HazardZone>();
+                if (!hazard || !hazard.enabled) continue;
+                if (hitEffect) hitEffect.Play(hazardHits[i].ClosestPoint(centre), Vector2.down);
+                LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.HitEnemy);
+                if (playerHealth) playerHealth.IgnoreHazardsFor(config.pogoHazardGrace);
+                ReactToHit();
+                return;
             }
         }
 
@@ -339,7 +368,8 @@ namespace LuHanh.Player
             var v = body.linearVelocity;
             if (currentDirection == Direction.Down)
             {
-                v.y = config.pogoSpeed > 0f ? config.pogoSpeed : controller.Config.jumpSpeed;
+                // The gioi kieu Hollow Knight: chua nhat Pogo thi chem xuong van gay sat thuong nhung khong nay.
+                if (PlayerSkills.Usable(Skill.Pogo)) v.y = config.pogoSpeed > 0f ? config.pogoSpeed : controller.Config.jumpSpeed;
             }
             else if (currentDirection == Direction.Side)
             {
