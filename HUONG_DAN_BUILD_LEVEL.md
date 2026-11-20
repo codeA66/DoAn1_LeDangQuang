@@ -363,6 +363,7 @@ Thứ tự độ sáng: **tiền cảnh đen nhất → đất tối → tườn
 ## Checkpoint và vật phẩm kỹ năng (màn 2)
 
 - **Ghế checkpoint:** kéo `Assets/Prefabs/Level/Checkpoint_Bench.prefab`, chân ghế chạm mặt đất. Đặt ở đầu khu vực mới hoặc trước phòng khó / phòng boss; chừa khoảng trống ±1,6 ô hai bên để đứng bấm E. Ngồi ghế làm quái hồi sinh, nên không đặt ngay giữa phòng khóa.
+- **NPC thợ rèn (nâng cấp):** kéo `Assets/Prefabs/NPC/OldAnvil.prefab`, gốc prefab = chân NPC chạm mặt đất. Đặt trong phòng an toàn (thường là phòng có ghế, trước boss), cách ghế ≥ 5 ô để vùng "E - Talk" (±2,2 ô) không chồng vùng "E - Rest" (±1,6 ô). Đặt vào nhóm `Checkpoints_KyNang`.
 - **Vật phẩm kỹ năng:** `Assets/Prefabs/Level/SkillPickup_WallCling.prefab` (bám tường), `SkillPickup_OrbShot.prefab` (bắn cầu). Đặt trước đoạn đường cần kỹ năng đó (tường cao cần nhảy tường, quái ở xa / sau khe cần bắn).
 - Chi tiết thông số và cách hoạt động: TUTORIAL.md mục 9e.
 
