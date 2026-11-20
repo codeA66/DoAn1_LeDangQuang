@@ -87,12 +87,11 @@ MonoBehaviour:
   bobHeight: 0.2
   bobSpeed: 2.2
   font: {fileID: 12800000, guid: f28aa2ace5175bc40acfe6a284180287, type: 3}
-  title: SHADOW FORM
-  hint: Hold  [ Y ]  when the bar is full
-  detail: 'Defeat enemies to collect soul energy.
+  title: FOCUS
+  hint: Hold  [ Y ]  to heal 1 mask
+  detail: 'Strike enemies to gather soul.
 
-    Shadow form: faster, longer
-    reach, strikes seek enemies.'
+    Focus and [ K ] both spend soul.'
   fadeTime: 0.4
 --- !u!1 &1628457975458204626
 GameObject:
