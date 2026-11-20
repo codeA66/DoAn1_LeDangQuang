@@ -441,3 +441,73 @@ Dựng theo quy trình Team Cherry kể lại (sketch → dựng thô bằng til
 | R23 | 660→692, 126→190 | Đi lên | Ống khói 4 ô có gai → bậc 5 ô (W + dash) → ống khói gai hai vách (W + dash xuyên) → bệ một chiều, lối ra trên |
 | R24 | 692→756, 170→190 | Di chuyển | Sàn gai, bệ nhỏ 2 ô, đoạn trần gai thấp phải lướt ngang |
 | R25 | 756→800, 176→196 | Combat (không khóa) | Gò giữa, 2 bệ né; 2 Hushmole, Threadwitch, Echoling, Lampsnuffer; tường phải để mở rộng |
+
+## Thế giới kiểu Hollow Knight (đã duyệt 2026-11-20, đang làm)
+
+Thay dạng màn nối tiếp (Level1 → Level2 → Level3 qua cổng). **Mỗi phòng 1 scene**, đi qua cửa mép phòng sang scene kế bên, quay lại tự do. Level1/2/3 và Test_LongDat giữ để tham khảo, xóa khi thế giới mới chạy được. Hệ thống đi kèm: bản đồ, chết rơi Shards quay lại nhặt, kỹ năng khóa lối, trạm di chuyển nhanh.
+
+**Thứ tự kỹ năng:** Dash (phải nhặt) → Bám tường → hạ FoundryWarden được Bắn cầu K → Pogo (phải nhặt) → Nhảy đôi (mới) → boss cuối.
+
+### Vùng A – Forgotten Foundry (nhà máy, tông tím đêm, 25 phòng)
+
+| Phòng | Nội dung | Nối với (✱ = cần kỹ năng) |
+|---|---|---|
+| A01 | Bắt đầu | A02 |
+| A02 | | A01, A03 |
+| A03 | Ghế | A02, A04, A06 |
+| A04 | | A03, A05 |
+| A05 | Nhặt Dash | A04, A07 |
+| A06 | | A03, A10 ✱Nhảy đôi |
+| A07 | | A05, A08, A12 ✱Dash |
+| A08 | | A07, A09 |
+| A09 | Trạm di chuyển nhanh | A08, A14 |
+| A10 | Bí mật: mảnh mặt nạ | A06 |
+| A11 | Bí mật: kho Shards | A12 |
+| A12 | Ghế | A07, A11, A13, A15 ✱Bám tường |
+| A13 | | A12, A14 |
+| A14 | Nhặt Bám tường | A09, A13, A16 ✱Bám tường |
+| A15 | | A12, A20 |
+| A16 | | A14, A17 |
+| A17 | | A16, A18, A22 ✱K (công tắc) |
+| A18 | Ghế + thợ rèn OldAnvil | A17, A23 |
+| A19 | Bí mật: mảnh mặt nạ | A20 ✱Pogo |
+| A20 | | A15, A19, A21 |
+| A21 | | A20, A24 ✱K (tường phá) |
+| A22 | Bí mật: kho Shards | A17 |
+| A23 | Boss FoundryWarden | A18, A25 |
+| A24 | Lối sang Vùng B | A21, B01 |
+| A25 | Nhận Bắn cầu K | A23 |
+
+### Vùng B – Mossy Depths (rêu đá, nền #121A14 / ánh sáng #A9C2A8, 25 phòng)
+
+| Phòng | Nội dung | Nối với (✱ = cần kỹ năng) |
+|---|---|---|
+| B01 | Lối vào từ A24 | A24, B02 |
+| B02 | Ghế | B01, B03, B06 |
+| B03 | Trạm di chuyển nhanh | B02, B04; nhận lối tắt một chiều từ B11 |
+| B04 | | B03, B05, B07 |
+| B05 | | B04, B08 |
+| B06 | | B02, B10 ✱Nhảy đôi |
+| B07 | | B04, B08, B12 |
+| B08 | Nhặt Pogo | B05, B07, B09 |
+| B09 | | B08, B13 ✱Pogo |
+| B10 | Bí mật: mảnh mặt nạ | B06 |
+| B11 | Lối tắt một chiều lên B03 | B12, B03 (một chiều) |
+| B12 | Ghế | B07, B11, B15 |
+| B13 | Hố gai | B09, B14 |
+| B14 | | B13, B16 |
+| B15 | | B12, B19 |
+| B16 | Nhặt Nhảy đôi | B14, B17 |
+| B17 | | B16, B21 ✱Nhảy đôi |
+| B18 | Bí mật: mảnh mặt nạ | B19 ✱Pogo |
+| B19 | | B15, B18, B20 |
+| B20 | | B19, B23 |
+| B21 | | B17, B22 |
+| B22 | Ghế + thợ rèn OldAnvil | B21, B24 |
+| B23 | Bí mật: kho Shards | B20 |
+| B24 | Boss cuối Rootwraith | B22, B25 |
+| B25 | Kết thúc | B24 |
+
+**Phần thưởng:** 4 mảnh mặt nạ (A10, A19, B10, B18), đủ 4 = thêm 1 mặt nạ máu; 3 kho Shards (A11, A22, B23).
+
+**Thứ tự làm:** (0) hệ thống mỗi phòng 1 scene + 2 phòng thử → (1) kỹ năng khóa lối → (2) bản đồ, rơi Shards khi chết, trạm di chuyển nhanh → (3) dựng Vùng A → (4) dựng Vùng B → (5) gỡ Level1/2/3 và luồng cổng cũ. Kích thước, địa hình, quái từng phòng: hỏi chủ project khi dựng.
