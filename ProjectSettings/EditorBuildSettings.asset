@@ -20,6 +20,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level/LevelComplete.unity
     guid: 0a37a65334ac7fd439eeed39cf1f721d
+  - enabled: 1
+    path: Assets/Scenes/World/Core.unity
+    guid: 3149f7806e930bc439f6a5dee557cc48
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A01.unity
+    guid: d56963bfc431db944990c4364d277f4b
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A02.unity
+    guid: a6c1cc9b4c2875247a1b9752ccd528fd
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
