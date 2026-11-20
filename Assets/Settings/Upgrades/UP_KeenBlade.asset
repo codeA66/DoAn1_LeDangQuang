@@ -15,7 +15,7 @@ MonoBehaviour:
   id: keen_blade
   displayName: Keen Blade
   description: A sharper edge. Each strike deals +1 damage.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ec0619547d2a6ef49af6ec8eedf29888, type: 3}
   stat: 0
   mode: 0
   valuePerLevel: 1

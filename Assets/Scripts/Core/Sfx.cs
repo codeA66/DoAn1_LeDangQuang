@@ -5,7 +5,9 @@ namespace LuHanh.Core
     public enum SfxId
     {
         Swing, HitEnemy, EnemyDeath, PlayerHurt, Jump, Land, Dash, WallCling,
-        OrbCast, OrbImpact, Bench, Heal, SkillPickup, ShardPickup, WallCollapse, GateSlam, Lever, Elevator
+        OrbCast, OrbImpact, Bench, Heal, SkillPickup, ShardPickup, WallCollapse, GateSlam, Lever, Elevator,
+        // Them moi o CUOI: Sfx.entries luu id theo so thu tu, chen giua se lam lech tieng da gan.
+        UpgradeBuy, UpgradeDenied
     }
 
     /// <summary>

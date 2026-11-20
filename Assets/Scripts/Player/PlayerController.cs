@@ -240,6 +240,17 @@ namespace LuHanh.Player
             if (callback.started) input?.PressDash();
         }
 
+        /// <summary>
+        /// Bo lenh nhay / dash dang dem. Goi khi tra dieu khien sau khi tam khoa (hoi thoai NPC, menu...):
+        /// su kien phim van vao luc controller bi tat, khong xoa thi phim Space bam de xac nhan se lam nhan vat nhay.
+        /// </summary>
+        public void ClearBufferedInput()
+        {
+            if (input == null) return;
+            input.ConsumeJump();
+            input.ConsumeDash();
+        }
+
         void OnDrawGizmosSelected()
         {
             if (drawGroundGizmo && ground != null) ground.DrawGizmos();

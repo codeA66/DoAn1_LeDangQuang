@@ -15,7 +15,7 @@ MonoBehaviour:
   id: swift_strike
   displayName: Swift Strike
   description: Lighter swings. Attack recovery is 15% faster.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b200049460fedbe44a94dedaedd777b7, type: 3}
   stat: 1
   mode: 1
   valuePerLevel: 0.85
