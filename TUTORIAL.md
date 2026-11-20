@@ -3047,6 +3047,22 @@ Sơ đồ 50 phòng đã duyệt: `HUONG_DAN_BUILD_LEVEL.md` mục "Thế giới
 
 Play từ A01 → Core + A01 tải, nhân vật ở (−15; −7) trên nền, camera kẹp trong phòng. Qua cửa A01/R → A02 tải, A01 gỡ, nhân vật vào từ cửa trái, đứng trên nền, trả điều khiển, camera sang A02. A02/L → về A01 bên phải, quay mặt trái. Chết → tải lại A01, về Spawn, đầy máu. Console không lỗi khi chạy. (Qua cửa được gọi bằng `WorldLoader.GoThrough` – đúng hàm cửa gọi khi chạm, chưa thử bằng phím thật.)
 
+### Kỹ năng khóa lối (giai đoạn 1)
+
+Thứ tự đã duyệt: Dash → Bám tường → (hạ FoundryWarden) Bắn cầu K → Pogo → Nhảy đôi.
+
+| Kỹ năng | Code | Ghi chú |
+|---|---|---|
+| `Skill.Dash`, `Skill.Pogo` | `PlayerSkills.Usable` | Chỉ phải nhặt **trong thế giới mới** (`WorldLoader.Active`); Level1–3 vẫn có sẵn. Chưa có Pogo: chém xuống vẫn gây sát thương nhưng không nảy. |
+| `Skill.DoubleJump` | `States/DoubleJumpState`, `PlayerContext.AirJumpsLeft / ExecuteAirJump` | 1 lần nhảy trên không, cao bằng nhảy thường (giữ phím cao hơn); hồi khi chạm đất, bám tường (`RefillDash`) hoặc hồi sinh. Hạt sáng: burst của `PlayerDashFx` (bắn xuống chân); tiếng nhảy + kéo giãn: `PlayerMovementFx`. |
+| Pogo trên gai | `PlayerAttack.PogoOffHazards` | Chém xuống trúng `HazardZone` thì nảy như trúng quái. Vùng dò gai kéo dài thêm `pogoHazardReach` = 0,75 xuống dưới vùng chém (giữ S là đang rơi nhanh); nảy xong miễn sát thương gai `pogoHazardGrace` = 0,15 s (`PlayerHealth.IgnoreHazardsFor`). Thông số ở `PlayerAttackConfig`. |
+| Vật chỉ vỡ bằng cầu K | `HitInfo.fromOrb` (OrbProjectile đặt true), `BreakableDevice` ô **Orb Only** | Chém vào: tóe ít tia + tiếng `Lever` nhỏ, không mất độ bền. Dùng cho lối cần K (A17 công tắc, A21 tường). |
+| Vật phẩm | `Prefabs/Level/SkillPickup_Dash / _Pogo / _DoubleJump` | Chép từ `SkillPickup_WallCling` (dùng tạm hình có sẵn). Title "Dash" / "Pogo" / "Double Jump"; hint: "Press Shift to dash - hold a direction to dash 8 ways", "In the air, attack downward (S + J) to bounce off enemies and spikes", "Press Space again in the air to jump a second time". |
+
+Đã kiểm tra trong Play (A02, phím giả lập qua bàn phím ảo ghép vào PlayerInput): chưa có Dash bấm Shift không dash, có thì dash (vận tốc 30); chưa có Nhảy đôi không nhảy lần hai, có thì nhảy thêm ~3 unit; Orb Only: 2 nhát chém không vỡ, 2 phát cầu vỡ; chưa có Pogo chém xuống không nảy. Pogo trên gai: chủ project thử tay trên hố gai tạm trong A02 – nảy được, không mất máu (hố gai tạm đã xóa, A02 về bản commit).
+
+Lưu ý khi thử bằng phím giả lập: KHÔNG gán `InputSystem.settings` bằng bản sao tạm trong Editor – Unity giữ nó như cấu hình project, nạp lại script thì bản sao bị hủy → Input System lỗi khởi tạo (TypeInitializationException), phải khởi động lại Unity.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3383,3 +3399,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 243. Chữ hướng dẫn Shadow → Focus: Level1 `Level1_Tutorial/ControlsPrompts/09_Shadow` — Label_Shadow "Focus", Label_Sub "spend soul to heal 1 mask" (giữ "Hold" + phím Y). Prefab `Objects/ShadowShard` (lời hướng dẫn trên màn hình, showScreenPrompt đang tắt): title "FOCUS", hint "Hold [ Y ] to heal 1 mask", detail "Strike enemies to gather soul. / Focus and [ K ] both spend soul." Vật phẩm ở Level2 vẫn nạp đầy bình khi nhặt để thử Focus ngay.
 244. Chốt kế hoạch dựng lại thế giới kiểu Hollow Knight (chủ project duyệt): mỗi phòng 1 scene, 2 vùng Forgotten Foundry (A01–A25, boss FoundryWarden) và Mossy Depths (B01–B25, boss cuối Rootwraith), thứ tự kỹ năng Dash → Bám tường → Bắn cầu K → Pogo → Nhảy đôi, 4 mảnh mặt nạ + 3 kho Shards bí mật, ghế A03/A12/A18/B02/B12/B22, trạm A09/B03, thợ rèn ở A18 và B22. Sơ đồ đầy đủ: HUONG_DAN_BUILD_LEVEL.md mục "Thế giới kiểu Hollow Knight". Chưa sửa code/scene.
 245. Thế giới kiểu Hollow Knight – giai đoạn 0 xong (mục 9g): Core.unity, CoreEssentials / ZoneEssentials_Foundry / RoomDoor prefab, scene mẫu _RoomTemplate_Foundry, phòng thử A01 ↔ A02 (khung đơn giản), Core + A01 + A02 trong Build Profile (Level1 vẫn đứng đầu). Background vùng hạ 3 unit (chân lớp núi/đồi/cây dưới mặt nền y = −7, trước đó hở dải sáng); mốc parallax = tâm phòng (trước đó lấy chỗ camera lúc phòng vừa tải → lớp trời tụt, hở dải trên). Parallax ngoài Play không gán camera của scene khác. WorldEditorBoot chỉ hỏi lưu riêng phòng đang Play; Kiem tra cua chỉ đọc. Đã chạy Play: khởi động A01, qua cửa A01↔A02 hai chiều, chết hồi sinh – đúng, Console sạch. Biên dịch Unity từng crash (bee_backend −1073741819) vì ổ C: còn 253 MB; xóa cache NuGet + npm (chủ project đồng ý) → biên dịch qua.
+246. Thế giới – giai đoạn 1 kỹ năng khóa lối (mục 9g): Skill thêm Dash, Pogo, DoubleJump; Dash/Pogo chỉ phải nhặt trong thế giới mới (PlayerSkills.Usable); Nhảy đôi (DoubleJumpState, cao bằng nhảy thường, hồi khi chạm đất/bám tường); Pogo nảy trên gai (PlayerAttack.PogoOffHazards, pogoHazardReach 0,75, pogoHazardGrace 0,15 s); BreakableDevice ô Orb Only (HitInfo.fromOrb); 3 prefab SkillPickup_Dash/Pogo/DoubleJump (hình tạm của WallCling). WorldEditorBoot bỏ qua scene mẫu bắt đầu bằng "_". Đã thử trong Play; Pogo trên gai do chủ project thử tay – nảy, không mất máu. Gặp lỗi Input System do gán InputSettings tạm khi thử → khởi động lại Unity (không ảnh hưởng project).
