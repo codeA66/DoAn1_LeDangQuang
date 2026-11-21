@@ -3140,6 +3140,22 @@ PNG đã duyệt nằm ở `Assets/Art/Generated/Hazards/Foundry/`, chia theo `S
 
 Khi tích hợp: dùng PPU 32, Filter Point, không nén, tắt mipmap; cắt theo kích thước khung trong prompt, chọn pivot theo bộ phận và đối chiếu collider khi gắn prefab. Các thông số này là mục tiêu import. Hiện mới xuất PNG; các `TrapSlot` trong phòng vẫn là chỗ đánh dấu, chưa có prefab hoặc hành vi cho bộ bẫy mới.
 
+### Dựng lại địa hình Vùng A – đợt 1 (2026-11-21)
+
+Chủ project chơi thấy phòng là "hộp rỗng": nền phẳng, bệ lơ lửng giữa trời, cưa đặt trên sàn trống. Dựng lại hình khối A01, A02, A04, A05, A06, A07, A08 theo sơ đồ đã duyệt (cửa nối, thứ tự kỹ năng, vật phẩm giữ nguyên; A03, A09 giữ nguyên). Bố cục cũ sao lưu ngoài project trước khi ghi đè.
+
+| Phòng | Thay đổi | Mục đích |
+|---|---|---|
+| A01 | Bỏ bệ lơ lửng; thêm mái xưởng nhô ra bên phải | Ngoài trời bước vào nhà máy |
+| A02 | Thùng hàng + 2 giá một chiều gắn thân máy thay 3 bệ; thân máy kéo xuống (gầm 5 ô) có cưa chạy dưới; bỏ Ghoul cạnh cưa | Đường lên tường giả bí mật; dạy cưa có trần thấp |
+| A04 | Khối xưởng đặc thay khoảng trống dưới kệ (bỏ cưa sàn); thùng + 2 giá gắn khối để leo; bệ cầu sang gờ mảnh bản đồ; Ghoul trên khối canh lối ra; dơi giữa | Leo lên lối ra; nhánh thưởng |
+| A05 | Bệ Dash dưới mái vòm; hố gai 7 ô ngay sau bệ; cửa xuống A07 dời qua bên kia hố; bỏ 2 hơi nóng | Nhặt Dash rồi thử ngay |
+| A06 | Gờ đá gắn tường trái + khối tường dày bên phải thay 8 bệ zic-zắc; bậc thấp qua gai tới khe tường giả A10; bỏ gai tường | Giếng leo về A03 |
+| A07 | Thùng + giá + tháp gắn liền; gờ dưới cửa trên; cầu thép nối tháp → cửa A08 (cưa trên cầu); hố gai 8 ô tầng dưới | Leo về A05; Dash lần 2 xuống A12 |
+| A08 | Thùng + gờ tường thay 2 bệ lên hành lang lối tránh; cột đặc thay bệ lơ lửng | Lên hành lang; Dash sang gờ bí mật |
+
+Ảnh chụp ngoài Play hở mảng đen hai bên vì nền parallax chỉ tự nhân bản khi Play; trong Play nền phủ kín (đã kiểm tra ảnh Game View), không cần sửa prefab.
+
 ### Bẫy Vùng A (script + đặt vào phòng)
 
 | Phần | File | Ghi chú |
@@ -3152,9 +3168,9 @@ Phân bổ (mục đích):
 
 | Phòng | Bẫy | Mục đích |
 |---|---|---|
-| A02 | Cưa sàn chậm (2 u/s) sau hố gai | Dạy cưa |
-| A04 | Cưa sàn giữa 2 Ghoul; cưa trên bệ mảnh bản đồ I | Kết hợp; canh thưởng |
-| A05 | 2 ống hơi giữa hố gai và bệ Dash | Dạy hơi nóng |
+| A02 | Cưa chậm (2 u/s) dưới gầm thân máy (trần thấp) | Dạy cưa, canh nhịp |
+| A04 | Cưa trên gờ mảnh bản đồ I | Canh thưởng |
+| A05 | (bỏ hơi nóng) hố gai 7 ô ngay sau bệ Dash | Thử Dash vừa nhặt |
 | A07 | Cưa trên cầu | Thử nhịp |
 | A08 | 2 búa treo dưới hành lang trên cao; laser dọc chặn khe Dash lên gờ bí mật; hành lang trên cao có cửa (mở bằng cần gạt `Bypass` ở đầu kia) | Dạy búa; canh thưởng; lối tránh |
 | A11 | 2 cưa dọc trước kho Shards | Canh thưởng |
@@ -3517,3 +3533,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 253. Bẫy Vùng A: 5 script bẫy (cưa ray ngang/dọc, laser nhịp, búa dập, hơi nóng, sàn sập) + WorldTrapFactory cắt art và dựng bẫy từ mục `tr` của file bố cục; đặt 15 phòng theo mục đích kiểu Hollow Knight (dạy / thử / kết hợp / canh thưởng / Pogo), A08 thêm hành lang lối tránh + cần gạt, A19 hố gai Pogo, A24 sàn sập; bẫy vẽ trên VisionMask + đèn đỏ `#EA6547`. Sửa camera chọn đúng phòng vừa vào (RoomManager.Refresh(scene)) và bỏ tự đi khi chuyển phòng. Đã chạy Play chụp từng phòng; save trả về như cũ.
 254. Sửa lỗi quay lại cửa vừa đi qua bị "mất camera": RoomDoor khóa cửa vừa đến nhưng chỉ mở lại ở OnTriggerExit2D, mà người chơi xuất hiện ngoài trigger (cách cửa 1.5) nên cửa khóa mãi, đi ngược lại thì rơi ra ngoài phòng. Nay RoomDoor tự mở khóa trong FixedUpdate khi người chơi không còn chạm lỗ cửa. Đã chạy Play cho nhân vật thật sự chạm cửa đi rồi quay về qua toàn bộ cửa Vùng A: 40 lượt đúng phòng + camera; các cửa còn lại bị chặn đúng thiết kế (tường giả A06/A12, cửa hầm boss A23, miệng cửa A14 không có gờ); save trả về như cũ.
 255. Quái không hồi sinh khi ra vào phòng (chống đi đi về về để cày): `Core/WorldKills` ghi quái thế giới đã giết (cùng mã với lootedEnemies, bỏ qua quái phòng khóa/boss); EnemyBase.Start ẩn quái đã giết khi phòng tải lại; Checkpoint.Sit và WorldLoader hồi sinh khi chết thì xóa danh sách → quái cả vùng hồi lại. Không lưu file. Đã chạy Play: giết 2 quái A04, sang A03 rồi về A04 vẫn 0/2 sống; xóa danh sách (như ngồi ghế) rồi vào lại thì hồi đủ; save trả về như cũ.
+256. Dựng lại địa hình Vùng A đợt 1 (A01, A02, A04, A05, A06, A07, A08) theo sơ đồ đã duyệt, rút nguyên tắc từ video Hollow Knight: bỏ bệ lơ lửng / thang zic-zắc, thay bằng thùng hàng, giá đỡ, gờ gắn tường, khối xưởng; cưa A02 chạy dưới gầm máy, A05 hố Dash ngay sau bệ Dash (bỏ 2 hơi nóng), A04 lấp khoảng trống dưới kệ (TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 1"); HUONG_DAN thêm nguyên tắc bố cục phòng. Đã chạy Play: 13 lượt đi rồi quay về qua cửa đúng phòng + camera (A06/R chặn bởi tường giả đúng thiết kế), ảnh Game View nền phủ kín; save trả về như cũ. Chưa chơi tay vượt từng phòng.
