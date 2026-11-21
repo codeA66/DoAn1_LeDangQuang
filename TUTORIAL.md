@@ -3156,6 +3156,21 @@ Chủ project chơi thấy phòng là "hộp rỗng": nền phẳng, bệ lơ l�
 
 Ảnh chụp ngoài Play hở mảng đen hai bên vì nền parallax chỉ tự nhân bản khi Play; trong Play nền phủ kín (đã kiểm tra ảnh Game View), không cần sửa prefab.
 
+### Dựng lại địa hình Vùng A – đợt 2 (2026-11-21)
+
+Theo cùng nguyên tắc đợt 1 (cửa nối, kỹ năng, vật phẩm giữ nguyên; A18 giữ nguyên).
+
+| Phòng | Thay đổi | Mục đích |
+|---|---|---|
+| A10 | Trần thấp (phòng bí mật nhỏ), bệ mảnh mặt nạ | Phần thưởng sau tường giả A06 |
+| A11 | Trần thấp thành hành lang, 2 cưa dọc chạy trong hành lang | Canh nhịp lấy kho Shards |
+| A12 | Tháp đặc dưới cửa trên (rơi từ A07 đứng lên tháp); gờ so le gắn tháp + tường phải thành giếng leo; ghế ở chân giếng; thùng + bậc lên kệ trái tới tường giả A11; lỗ xuống A15 dưới kệ | Sảnh nghỉ, đường leo về A07 |
+| A13 | Bỏ 2 cưa sàn; thêm trần hai đầu, thùng chắn trước CinderHusk thứ hai | Đánh quái dưới gai trần |
+| A14 | Khối đặc dưới cửa trái (đến nơi đứng trên khối rồi chủ ý nhảy xuống); khối phải dưới cửa A16; gờ một chiều gắn tường phải dưới cửa trên (cần gạt S1) | Dạy Bám tường: nhặt ở đáy, leo vách khối/tường để ra |
+| A15 | Tường dày hai bên làm giếng hẹp; gờ gắn tường so le; laser ngắn ở cột giữa | Giếng leo/xuống A20 |
+| A16 | Trần thấp dài, 3 hơi nóng, bỏ 3 bệ lơ lửng + cưa sàn | Dạy hơi nóng |
+| A17 | Bệ công tắc K treo bằng cột từ trần; bỏ 2 bệ lơ lửng | Công tắc bắn cầu K, búa dập |
+
 ### Bẫy Vùng A (script + đặt vào phòng)
 
 | Phần | File | Ghi chú |
@@ -3173,10 +3188,10 @@ Phân bổ (mục đích):
 | A05 | (bỏ hơi nóng) hố gai 7 ô ngay sau bệ Dash | Thử Dash vừa nhặt |
 | A07 | Cưa trên cầu | Thử nhịp |
 | A08 | 2 búa treo dưới hành lang trên cao; laser dọc chặn khe Dash lên gờ bí mật; hành lang trên cao có cửa (mở bằng cần gạt `Bypass` ở đầu kia) | Dạy búa; canh thưởng; lối tránh |
-| A11 | 2 cưa dọc trước kho Shards | Canh thưởng |
-| A13 | Gai trần + 2 cưa sàn + CinderHusk | Kết hợp |
-| A15 | 3 tầng laser ngang qua giếng | Thử nhịp khi xuống |
-| A16 | Cưa + 3 hơi (1 cạnh sàn giả che đồ giấu) | Thử; canh thưởng |
+| A11 | 2 cưa dọc trong hành lang trần thấp trước kho Shards | Canh thưởng |
+| A13 | Gai trần dưới khối treo + 2 CinderHusk (bỏ 2 cưa sàn) | Kết hợp |
+| A15 | 3 laser ngắn ở cột giữa giếng (đường rơi + cú nhảy giữa 2 bên) | Thử nhịp khi leo/xuống |
+| A16 | 3 hơi nóng dưới trần thấp (bỏ cưa), sàn giả sau hơi cuối | Dạy hơi nóng; canh thưởng |
 | A17 | 2 búa + CinderHusk | Kết hợp |
 | A19 | Hố gai 13 ô + 2 cưa để Pogo, canh mảnh mặt nạ | Pogo + canh thưởng |
 | A20 | 2 cưa trên bãi gai Pogo; laser dọc + hơi | Pogo; thử |
@@ -3534,3 +3549,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 254. Sửa lỗi quay lại cửa vừa đi qua bị "mất camera": RoomDoor khóa cửa vừa đến nhưng chỉ mở lại ở OnTriggerExit2D, mà người chơi xuất hiện ngoài trigger (cách cửa 1.5) nên cửa khóa mãi, đi ngược lại thì rơi ra ngoài phòng. Nay RoomDoor tự mở khóa trong FixedUpdate khi người chơi không còn chạm lỗ cửa. Đã chạy Play cho nhân vật thật sự chạm cửa đi rồi quay về qua toàn bộ cửa Vùng A: 40 lượt đúng phòng + camera; các cửa còn lại bị chặn đúng thiết kế (tường giả A06/A12, cửa hầm boss A23, miệng cửa A14 không có gờ); save trả về như cũ.
 255. Quái không hồi sinh khi ra vào phòng (chống đi đi về về để cày): `Core/WorldKills` ghi quái thế giới đã giết (cùng mã với lootedEnemies, bỏ qua quái phòng khóa/boss); EnemyBase.Start ẩn quái đã giết khi phòng tải lại; Checkpoint.Sit và WorldLoader hồi sinh khi chết thì xóa danh sách → quái cả vùng hồi lại. Không lưu file. Đã chạy Play: giết 2 quái A04, sang A03 rồi về A04 vẫn 0/2 sống; xóa danh sách (như ngồi ghế) rồi vào lại thì hồi đủ; save trả về như cũ.
 256. Dựng lại địa hình Vùng A đợt 1 (A01, A02, A04, A05, A06, A07, A08) theo sơ đồ đã duyệt, rút nguyên tắc từ video Hollow Knight: bỏ bệ lơ lửng / thang zic-zắc, thay bằng thùng hàng, giá đỡ, gờ gắn tường, khối xưởng; cưa A02 chạy dưới gầm máy, A05 hố Dash ngay sau bệ Dash (bỏ 2 hơi nóng), A04 lấp khoảng trống dưới kệ (TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 1"); HUONG_DAN thêm nguyên tắc bố cục phòng. Đã chạy Play: 13 lượt đi rồi quay về qua cửa đúng phòng + camera (A06/R chặn bởi tường giả đúng thiết kế), ảnh Game View nền phủ kín; save trả về như cũ. Chưa chơi tay vượt từng phòng.
+257. Dựng lại địa hình Vùng A đợt 2 (A10–A17) theo cùng nguyên tắc (TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 2"): bỏ bệ lơ lửng/thang zic-zắc, A12 tháp + giếng leo quanh ghế, A14 phòng dạy Bám tường bằng vách khối, A15 giếng tường dày + laser ở cột giữa, A16 trần thấp với 3 hơi nóng, A13 bỏ cưa sàn. Đã chạy Play: 14 lượt đi rồi quay về đúng phòng + camera; 4 lượt không qua đúng thiết kế (tường giả A06/A12, laser giữa giếng A15); save trả về như cũ. Chưa chơi tay vượt từng phòng.
