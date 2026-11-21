@@ -23,6 +23,11 @@ namespace LuHanh.EditorTools
     {
         public const string LayoutFolder = "Assets/Settings/WorldLayouts/";
         const int Margin = 4;
+        /// <summary>
+        /// Mau nhan cua Tilemap_Ground (kieu Hollow Knight: than dat gan den, nen xa sang hon; chu project duyet 2026-11-21).
+        /// Vien mep (Tilemap_GroundEdge, Unlit) giu nguyen nen mep tren noi len tren khoi toi.
+        /// </summary>
+        public static readonly Color GroundTint = new Color(0.32f, 0.30f, 0.38f, 1f);
 
         // ---------- Du lieu bo cuc ----------
         [Serializable] public class R4 { public int x, y, w, h; }
@@ -140,6 +145,7 @@ namespace LuHanh.EditorTools
             var edge = grid.transform.Find("Tilemap_GroundEdge").GetComponent<Tilemap>();
             ground.ClearAllTiles();
             edge.ClearAllTiles();
+            ground.color = GroundTint;
             for (int i = grid.transform.childCount - 1; i >= 0; i--)
             {
                 var c = grid.transform.GetChild(i);
@@ -473,7 +479,13 @@ namespace LuHanh.EditorTools
             var top = AssetDatabase.LoadAssetAtPath<TileBase>(TopTile);
             for (int y = fk.y; y < fk.y + fk.h; y++)
             for (int x = fk.x; x < fk.x + fk.w; x++)
-                tm.SetTile(cell(x, y), floor && y == fk.y ? top : fill);
+            {
+                bool isTop = floor && y == fk.y;
+                var c = cell(x, y);
+                tm.SetTile(c, isTop ? top : fill);
+                // Than tuong/san gia cung mau than dat (GroundTint); o mep tren san gia giu sang nhu vien mep that.
+                if (!isTop) { tm.SetTileFlags(c, TileFlags.None); tm.SetColor(c, GroundTint); }
+            }
             // Lop tilemap con dat lech theo goc cha: bu lai de o trung khop luoi.
             tilesGo.transform.localPosition = -centre;
 

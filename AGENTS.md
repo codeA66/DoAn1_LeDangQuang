@@ -13,7 +13,7 @@ Tỷ lệ là mục tiêu diện tích màu nhìn thấy trong một khung hình
 | Nhóm | Tỷ lệ mục tiêu | Màu chuẩn (sRGB HEX) | Vai trò |
 |---|---:|---|---|
 | Nền xa | 40% | Tím đêm `#171329`, tím khói `#302345` | Bầu trời, bóng công trình, cảnh xa |
-| Địa hình và kiến trúc | 30% | Xám tím `#454052`, thép tối `#292734` | Sàn, tường, platform, máy móc; mép đường đi sáng hơn nền |
+| Địa hình và kiến trúc | 30% | Xám tím `#454052`, thép tối `#292734` (màu sprite gốc; trong thế giới mới thân đất nhân `GroundTint` (0,32; 0,30; 0,38) nên hiển thị gần đen) | Sàn, tường, platform, máy móc; **thân đất tối hơn nền xa, mép trên sáng** (kiểu Hollow Knight, chủ project duyệt 2026-11-21) |
 | Tiền cảnh và vùng tối sâu | 15% | Đen tím `#0C0A14` | Cột, xích, mép hang, bóng khuất; ưu tiên quanh mép màn |
 | Người chơi và thứ có lợi | 7% | Xanh ngọc `#45DCC4`, sáng nhạt `#B8FFF0` | Điểm nhấn nhân vật, kỹ năng, lõi năng lượng, vật phẩm, checkpoint |
 | Ánh sáng an toàn | 5% | Vàng cam `#E7AA59`, lõi kem `#FFE0A3` | Đèn đường, chỗ nghỉ, điểm thu hút chú ý an toàn |
