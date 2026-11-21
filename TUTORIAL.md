@@ -3171,6 +3171,19 @@ Theo cùng nguyên tắc đợt 1 (cửa nối, kỹ năng, vật phẩm giữ n
 | A16 | Trần thấp dài, 3 hơi nóng, bỏ 3 bệ lơ lửng + cưa sàn | Dạy hơi nóng |
 | A17 | Bệ công tắc K treo bằng cột từ trần; bỏ 2 bệ lơ lửng | Công tắc bắn cầu K, búa dập |
 
+### Dựng lại địa hình Vùng A – đợt 3 (2026-11-21)
+
+Chủ project bảo làm tiếp các phòng còn lại theo cùng nguyên tắc. A18 (ghế + thợ rèn) và A23 (phòng boss) giữ nguyên.
+
+| Phòng | Thay đổi | Mục đích |
+|---|---|---|
+| A19 | Thêm trần thấp (phòng bí mật nhỏ) | Mảnh mặt nạ sau hố gai Pogo |
+| A20 | Tháp đặc dưới cửa trên + giàn bệ một chiều gắn mặt tháp thay thang zic-zắc; laser dời x41, hơi x45, Ghoul x50 | Leo về A15; thử nhịp trên đường chính |
+| A21 | Thùng + bậc đặc + gờ gắn tường trái tới mảnh bản đồ III (thay 2 bệ + bệ đặc lơ lửng); bỏ cưa sàn | Nhánh thưởng; búa dập trên đường chính |
+| A22 | Cửa trên dời sang trái, bậc đá gắn tường trái (thay 4 bệ zic-zắc) | Leo về A17; laser canh kho Shards |
+| A24 | Cửa trên dời sang trái, giàn bệ một chiều gắn tường trái (thay 4 bệ giữa phòng) | Leo về A21; chuỗi sàn sập qua hố gai |
+| A25 | Bệ đặc dài thành gờ một chiều gắn tường phải; bệ thấp thành thùng hàng | Đường về A23 sau khi bắn vỡ tường bằng cầu K |
+
 ### Bẫy Vùng A (script + đặt vào phòng)
 
 | Phần | File | Ghi chú |
@@ -3195,7 +3208,7 @@ Phân bổ (mục đích):
 | A17 | 2 búa + CinderHusk | Kết hợp |
 | A19 | Hố gai 13 ô + 2 cưa để Pogo, canh mảnh mặt nạ | Pogo + canh thưởng |
 | A20 | 2 cưa trên bãi gai Pogo; laser dọc + hơi | Pogo; thử |
-| A21 | Búa + cưa trước tường K | Thử trước cổng |
+| A21 | Búa dập trên đường chính trước tường K (bỏ cưa sàn) | Thử trước cổng |
 | A22 | Laser dọc trước kho Shards | Canh thưởng |
 | A24 | Hố gai sâu + 4 sàn sập | Thử cuối vùng |
 | A14, A18, A23 | Không | Phòng dạy Bám tường / nghỉ / boss |
@@ -3550,3 +3563,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 255. Quái không hồi sinh khi ra vào phòng (chống đi đi về về để cày): `Core/WorldKills` ghi quái thế giới đã giết (cùng mã với lootedEnemies, bỏ qua quái phòng khóa/boss); EnemyBase.Start ẩn quái đã giết khi phòng tải lại; Checkpoint.Sit và WorldLoader hồi sinh khi chết thì xóa danh sách → quái cả vùng hồi lại. Không lưu file. Đã chạy Play: giết 2 quái A04, sang A03 rồi về A04 vẫn 0/2 sống; xóa danh sách (như ngồi ghế) rồi vào lại thì hồi đủ; save trả về như cũ.
 256. Dựng lại địa hình Vùng A đợt 1 (A01, A02, A04, A05, A06, A07, A08) theo sơ đồ đã duyệt, rút nguyên tắc từ video Hollow Knight: bỏ bệ lơ lửng / thang zic-zắc, thay bằng thùng hàng, giá đỡ, gờ gắn tường, khối xưởng; cưa A02 chạy dưới gầm máy, A05 hố Dash ngay sau bệ Dash (bỏ 2 hơi nóng), A04 lấp khoảng trống dưới kệ (TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 1"); HUONG_DAN thêm nguyên tắc bố cục phòng. Đã chạy Play: 13 lượt đi rồi quay về qua cửa đúng phòng + camera (A06/R chặn bởi tường giả đúng thiết kế), ảnh Game View nền phủ kín; save trả về như cũ. Chưa chơi tay vượt từng phòng.
 257. Dựng lại địa hình Vùng A đợt 2 (A10–A17) theo cùng nguyên tắc (TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 2"): bỏ bệ lơ lửng/thang zic-zắc, A12 tháp + giếng leo quanh ghế, A14 phòng dạy Bám tường bằng vách khối, A15 giếng tường dày + laser ở cột giữa, A16 trần thấp với 3 hơi nóng, A13 bỏ cưa sàn. Đã chạy Play: 14 lượt đi rồi quay về đúng phòng + camera; 4 lượt không qua đúng thiết kế (tường giả A06/A12, laser giữa giếng A15); save trả về như cũ. Chưa chơi tay vượt từng phòng.
+258. Dựng lại địa hình Vùng A đợt 3 (A19, A20, A21, A22, A24, A25; TUTORIAL mục 9g "Dựng lại địa hình Vùng A – đợt 3"): thay thang zic-zắc bằng tháp/bậc/giàn gắn tường, A21 nhánh mảnh bản đồ III bằng thùng + bậc + gờ tường, bỏ cưa sàn A21; A22 và A24 dời cửa trên sang trái (cửa nối không đổi). Đã chạy Play: 9 lượt đi rồi quay về đúng phòng + camera; save trả về như cũ. Chưa chơi tay vượt từng phòng.
