@@ -69,6 +69,23 @@ namespace LuHanh.World
             if (Instance == this) Instance = null;
         }
 
+        [Tooltip("Nguoi choi ra ngoai phong hien tai qua bao nhieu unit thi dua ve cho dung an toan (luoi an toan).")]
+        [SerializeField, Min(1f)] float outOfRoomMargin = 3f;
+
+        // Luoi an toan: vi ly do nao do nguoi choi lot ra ngoai phong (khong qua cua) thi khong de roi mai
+        // ngoai khung camera - dua ve cho dung an toan nhu cham bay nhung khong mat mau.
+        void Update()
+        {
+            if (busy || !player || !health || !rooms || !rooms.Current) return;
+            if (RespawnManager.Instance && RespawnManager.Instance.IsRespawning) return;
+            var b = rooms.Current.Bounds;
+            Vector2 p = player.position;
+            float m = outOfRoomMargin;
+            if (p.x >= b.xMin - m && p.x <= b.xMax + m && p.y >= b.yMin - m && p.y <= b.yMax + m) return;
+            Debug.LogWarning($"WorldLoader: nguoi choi ra ngoai phong {CurrentRoom} tai {p} (khong qua cua) - dua ve cho an toan.", this);
+            health.TakeHazardHit(0);
+        }
+
         IEnumerator Start()
         {
             busy = true;

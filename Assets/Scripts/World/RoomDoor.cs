@@ -74,10 +74,16 @@ namespace LuHanh.World
         /// <summary>Nguoi choi vua den qua cua nay: bo qua cho toi khi khong con cham trigger.</summary>
         public void Disarm() => armed = false;
 
-        void OnTriggerEnter2D(Collider2D other)
+        void OnTriggerEnter2D(Collider2D other) => TryEnter(other);
+
+        // Cham cua dung luc WorldLoader con ban (vua toi noi, dang sang lai) thi GoThrough bo qua:
+        // thu lai moi buoc vat ly khi nguoi choi con trong lo cua, khong de nguoi choi di xuyen ra ngoai phong.
+        void OnTriggerStay2D(Collider2D other) => TryEnter(other);
+
+        void TryEnter(Collider2D other)
         {
             if (!armed || other.isTrigger || !other.CompareTag("Player")) return;
-            if (string.IsNullOrEmpty(targetScene) || !WorldLoader.Instance) return;
+            if (string.IsNullOrEmpty(targetScene) || !WorldLoader.Instance || WorldLoader.IsBusy) return;
             WorldLoader.Instance.GoThrough(this);
         }
 
