@@ -29,6 +29,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World/Foundry/A02.unity
     guid: a6c1cc9b4c2875247a1b9752ccd528fd
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A03.unity
+    guid: 721575990a2587c40afb0bcc4cd56863
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A04.unity
+    guid: b77d1a314bb1a9a4bb03f1258c7052da
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A05.unity
+    guid: 8b75fa0fc3f336d4e937ac5e18f7aea1
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A06.unity
+    guid: 05e891b6e528eb147978832700a70669
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A07.unity
+    guid: 7d0a0ea4aeb5c3642b6441ee3a658dc1
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A08.unity
+    guid: 475f48e89e96cd845b77e38a1346c88c
+  - enabled: 1
+    path: Assets/Scenes/World/Foundry/A09.unity
+    guid: 1d609963c63931142ac23c40c0153d9a
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

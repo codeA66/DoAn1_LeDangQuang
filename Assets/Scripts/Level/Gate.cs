@@ -28,6 +28,9 @@ namespace LuHanh.Level
         [SerializeField] float openGlowTime = 0.8f;
         [Tooltip("Dong san tu dau (vd cua duong tat, mo bang can gat).")]
         [SerializeField] bool startClosed;
+        [Tooltip("The gioi: co nay da co trong save thi mo san luc vao phong (vd \"A14/S1\" = can gat S1 o phong A14). " +
+                 "Dung cho duong tat ma can gat nam o scene khac.")]
+        [SerializeField] string openIfWorldFlag;
 
         [Header("Sap manh (cua phong boss)")]
         [Tooltip("Bui bung ra o chan cua luc sap cham dat (Emit). De trong = khong co.")]
@@ -47,6 +50,11 @@ namespace LuHanh.Level
         {
             target = startClosed ? 1f : 0f;
             SetAmount(target);
+        }
+
+        void Start()
+        {
+            if (WorldState.Has(openIfWorldFlag)) OpenInstant();
         }
 
         public void Close()

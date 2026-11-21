@@ -528,6 +528,8 @@ Thay dạng màn nối tiếp (Level1 → Level2 → Level3 qua cổng). **Mỗi
 4. **LuHanh → World → Kiem tra cua** → Console phải báo "không có lỗi".
 5. Lưu phòng, bấm Play ngay trong phòng để thử (Editor tự mở Core).
 6. Vật cần nhớ trạng thái (tường sập, cần gạt, thiết bị phá): điền ô **World Flag**.
+
+**Cách nhanh (từ đợt 1 Vùng A):** viết sơ đồ phòng thành file `Assets/Settings/WorldLayouts/<Vùng>/<Mã>.json` (cú pháp: TUTORIAL.md mục 9g "Dựng Vùng A – đợt 1"), chọn file trong Project rồi **LuHanh → World → Dung phong tu bo cuc**. Công cụ tạo/ghi đè scene, đặt đất, viền mép, cửa, platform, gai, tường/sàn giả, quái, ghế, trạm, chỗ chừa bẫy. Dựng lại sẽ **xoá đồ đặt tay** trong Doors/Enemies/Props – đồ trang trí thêm tay nên để trong object khác. Xong vẫn chạy bước 4–5.
 7. Bản đồ: mở `Assets/Settings/WorldMap.asset`, kiểm tra phòng có đúng ô lưới, loại (Bench/Station/Boss/Secret…), mảnh và cửa nối như đã dựng. Phòng mới chưa có trong asset thì không hiện trên bản đồ.
 8. Phòng có mảnh bản đồ: kéo `Prefabs/Level/MapPiece_<Vùng>1/3` (mảnh 1 ở A04 / B04). Phòng thợ rèn: trên instance OldAnvil điền **Map** = WorldMap và **Map Pieces For Sale** = `Foundry.2` (A18) hoặc `Mossy.2` (B22).
 9. Phòng trạm (A09, B03): kéo `Prefabs/World/FastTravelStation`, gốc đặt trên mặt nền, chừa ~1,5 unit bên phải làm chỗ đến.

@@ -3085,6 +3085,20 @@ Bản đồ kiểu Hollow Knight: mỗi vùng chia 3 mảnh, phải nhặt hoặ
 - Nhặt `MapPiece_Foundry1`: có cờ mảnh, hiện chữ "Forgotten Foundry Map I / Hold M to view your map".
 - Mua `Foundry.2` ở OldAnvil (tạo tạm lúc Play): 150 → 50 Shards, có mảnh; mua lần nữa báo "Already owned". Trường hợp thiếu Shards chưa thử riêng.
 
+### Dựng Vùng A – đợt 1 (A01–A09, giai đoạn 3)
+
+| Phần | File | Ghi chú |
+|---|---|---|
+| Bố cục phòng | `Assets/Settings/WorldLayouts/Foundry/A01..A09.json` | Đúng sơ đồ đã duyệt: ô (x, y) tính từ góc trên-trái phòng, 1 ô = 1 unit, phòng đặt tâm ở gốc toạ độ. `f` = hàng mặt sàn chính; `air` khoét, `sol` đắp đất; `ow` platform một chiều; `pl` platform đặc (prefab Platform_Industrial_Worn, ≥ 6 ô dùng Bridge); `sp` gai, `spL` gai trên mặt tường; `fk` tường/sàn giả; `tr` chỗ chừa bẫy; `mk` điểm (P xuất phát, g/b/c quái, B ghế, S trạm, K Dash, M mảnh bản đồ I, $ chỗ đồ giấu); `doors`; `gates` cửa sập. |
+| Công cụ dựng | `Editor/WorldRoomBuilder.cs`, menu **LuHanh → World → Dung phong tu bo cuc** (chọn file .json) | Chưa có scene thì chép từ `_RoomTemplate_Foundry` và thêm vào Build Profile; đã có thì **xoá sạch** đất, viền mép, cửa, quái, đồ vật rồi dựng lại (giữ Background, đèn vùng, Room, WorldRoom). Đất dùng `RT_Industrial`, lề ngoài phòng 4 ô; cửa nối thì khoét ra ngoài lề. Cửa trên/dưới: trigger nằm ngang, phải có platform một chiều che lỗ (nhấn S để rơi xuống), `dist` = khoảng từ cửa tới mặt platform để người chơi đi lên đứng được. |
+| Tường / sàn giả | `Level/SecretWall.cs` | Tile của vùng (tilemap con) + vết nứt nhẹ `Art/Generated/Secret/SecretCrack.png`. Wall: chém 3 nhát (collider con "Hitbox" layer Enemy); Floor: đứng lên rung 0,35 s rồi sụp. Lưu cờ `<phòng>/<flag>`. |
+| Cửa sập đường tắt | `Gate` thêm ô **Open If World Flag** | A09: Gate xoay ngang trên lỗ, mở sẵn khi có cờ `A14/S1` (cần gạt S1 ở A14, đợt 2). |
+| Nền phòng cao | `ZoneEssentials_Foundry/Background` | Thêm `L5_TreesNear/GroundFill` (màu chân rừng `#0E081B`) và `L0_Sky/SkyFill` (`#0B081C`) – phòng cao hơn 22 ô không lộ dải trống. Sprite `Art/Generated/Background/SolidFill.png`. |
+
+Tạm thời (làm ở đợt 2): A06 tường giả sang A10 chưa có cửa phía sau; lỗ A07 xuống A12 chỉ sâu 2 ô, chưa có cửa; A09 cửa sập chưa có cửa xuống A14. Chỗ chừa bẫy là object rỗng `TrapSlot_<loại>_<rộng>x<cao>` trong Props; chỗ đồ giấu là `SecretSpot (de trong)`.
+
+Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua cửa A02→A01→A02→A03→A06 (xuống)→A03 (lên)→A04→A05→A07 (xuống)→A08→A09→A08, tới nơi đều đứng trên đất; Kiem tra cua: 9 phòng, 16 cửa, không lỗi. Chưa thử tay: nhảy/dash qua từng khe, phá tường giả, sàn giả, đánh quái.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3424,3 +3438,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 246. Thế giới – giai đoạn 1 kỹ năng khóa lối (mục 9g): Skill thêm Dash, Pogo, DoubleJump; Dash/Pogo chỉ phải nhặt trong thế giới mới (PlayerSkills.Usable); Nhảy đôi (DoubleJumpState, cao bằng nhảy thường, hồi khi chạm đất/bám tường); Pogo nảy trên gai (PlayerAttack.PogoOffHazards, pogoHazardReach 0,75, pogoHazardGrace 0,15 s); BreakableDevice ô Orb Only (HitInfo.fromOrb); 3 prefab SkillPickup_Dash/Pogo/DoubleJump (hình tạm của WallCling). WorldEditorBoot bỏ qua scene mẫu bắt đầu bằng "_". Đã thử trong Play; Pogo trên gai do chủ project thử tay – nảy, không mất máu. Gặp lỗi Input System do gán InputSettings tạm khi thử → khởi động lại Unity (không ảnh hưởng project).
 247. Thế giới – giai đoạn 2 bản đồ + trạm (mục 9g): WorldMapData + Settings/WorldMap.asset (50 phòng, 6 mảnh, 3 mảnh/vùng); WorldMapUI giữ M xem bản đồ (chỉ hiện phòng thuộc mảnh đã có, phòng chưa đến mờ, phòng bí mật chỉ hiện khi đã đến); SkillPickup thêm ô Map Piece + 4 prefab MapPiece_Foundry1/3, Mossy1/3; UpgradeShopUI bán mảnh bản đồ (mảnh 2 = 100 Shards); FastTravelStation (E mở trạm, bảng chọn, WorldLoader.TravelToStation) + prefab dùng tạm hình thang máy; WorldLoader đặt cờ Visited khi vào phòng. Đã thử trong Play: bản đồ, trạm, nhặt mảnh, mua mảnh (chưa thử riêng trường hợp thiếu Shards). Scene, prefab OldAnvil và save đã trả về như cũ.
 248. Thế giới – giai đoạn 3 chốt thiết kế metroidvania Vùng A (HUONG_DAN_BUILD_LEVEL.md mục Vùng A): dựng 3 đợt theo mảnh bản đồ, sơ đồ từng phòng duyệt trước; đường tắt S1 (A09↔A14 cần gạt), S2 (A16→A14), S3 (A20→A15); bí mật: tường giả, sàn giả, vật giấu; bẫy mới cưa ray / laser / búa dập / hơi nóng / sàn sập chờ art (prompt `PROMPT_VE_BAY.md`, 32 px = 1 ô), chỗ đặt bẫy để trống. Chưa sửa scene/prefab.
+249. Thế giới – giai đoạn 3 đợt 1: dựng 9 phòng A01–A09 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 1"): file bố cục JSON + công cụ WorldRoomBuilder; script SecretWall (tường giả chém vỡ, sàn giả sụp, vết nứt nhẹ); Gate thêm Open If World Flag (cửa sập A09, mở bằng cần gạt S1 ở A14); Background vùng thêm lớp phủ dưới rừng/trên trời cho phòng cao. Chỗ bẫy và đồ giấu để trống. Đã chạy Play qua toàn bộ cửa đợt 1, Kiem tra cua không lỗi; save trả về như cũ.
