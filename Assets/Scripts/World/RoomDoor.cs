@@ -48,11 +48,30 @@ namespace LuHanh.World
         /// <summary>Cho dat chan nguoi choi khi vao phong qua cua nay.</summary>
         public Vector2 SpawnPoint => (Vector2)transform.position + Inward * spawnDistance;
 
-        void Awake() => GetComponent<BoxCollider2D>().isTrigger = true;
+        BoxCollider2D box;
+        static readonly Collider2D[] overlap = new Collider2D[8];
+
+        void Awake()
+        {
+            box = GetComponent<BoxCollider2D>();
+            box.isTrigger = true;
+        }
+
+        // Dang khoa ma nguoi choi khong con trong lo cua (vd xuat hien ngoai trigger) thi mo lai:
+        // OnTriggerExit2D khong bao gio den neu nguoi choi chua tung o trong trigger.
+        void FixedUpdate()
+        {
+            if (armed) return;
+            var b = box.bounds;
+            int n = Physics2D.OverlapBox(b.center, b.size, 0f, ContactFilter2D.noFilter, overlap);
+            for (int i = 0; i < n; i++)
+                if (overlap[i] && !overlap[i].isTrigger && overlap[i].CompareTag("Player")) return;
+            armed = true;
+        }
         void OnEnable() => all.Add(this);
         void OnDisable() => all.Remove(this);
 
-        /// <summary>Nguoi choi vua den qua cua nay: bo qua cho toi khi ra khoi trigger.</summary>
+        /// <summary>Nguoi choi vua den qua cua nay: bo qua cho toi khi khong con cham trigger.</summary>
         public void Disarm() => armed = false;
 
         void OnTriggerEnter2D(Collider2D other)
