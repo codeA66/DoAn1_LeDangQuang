@@ -85,14 +85,24 @@
    "y": 9,
    "w": 24,
    "h": 1,
-   "type": "Laser"
+   "type": "Laser",
+   "speed": 0
+  },
+  {
+   "x": 2,
+   "y": 18,
+   "w": 24,
+   "h": 1,
+   "type": "Laser",
+   "speed": 0
   },
   {
    "x": 2,
    "y": 24,
    "w": 24,
    "h": 1,
-   "type": "Laser"
+   "type": "Laser",
+   "speed": 0
   }
  ],
  "mk": [

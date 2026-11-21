@@ -43,8 +43,6 @@ namespace LuHanh.World
         [Header("Chuyen phong")]
         [SerializeField, Min(0f)] float fadeOutTime = 0.2f;
         [SerializeField, Min(0f)] float fadeInTime = 0.25f;
-        [Tooltip("Sau khi sang lai, nhan vat tu di them bao lau (giay thuc) roi moi tra dieu khien.")]
-        [SerializeField, Min(0f)] float walkInTime = 0.3f;
         [Tooltip("Di len qua cua tren: van toc doc toi thieu o phong moi de khong roi lai cua cu.")]
         [SerializeField] float upwardBoost = 12f;
 
@@ -141,11 +139,8 @@ namespace LuHanh.World
         {
             busy = true;
             bool horizontal = exitSide == RoomDoor.Side.Left || exitSide == RoomDoor.Side.Right;
-            float dirX = exitSide == RoomDoor.Side.Right ? 1f : exitSide == RoomDoor.Side.Left ? -1f : 0f;
             try
             {
-                // Nhan vat tu di tiep ra khoi phong trong luc toi dan.
-                if (horizontal) controller.ForceMove(dirX);
                 if (fx && fx.HasFade) yield return fx.FadeOut(fadeOutTime);
 
                 Vector2 velocity = body.linearVelocity;
@@ -171,7 +166,6 @@ namespace LuHanh.World
                 yield return null;
                 yield return null;
                 if (fx && fx.HasFade) yield return fx.FadeIn(fadeInTime);
-                if (horizontal && walkInTime > 0f) yield return new WaitForSecondsRealtime(walkInTime);
             }
             finally
             {
@@ -278,7 +272,9 @@ namespace LuHanh.World
 
         void EnterRoom(WorldRoom room)
         {
-            if (rooms) rooms.Refresh();
+            // Moi phong deu dat tam o goc toa do: phong cu dang go co the van con trong Room.All,
+            // nen chon thang Room cua scene vua vao.
+            if (rooms) rooms.Refresh(room.gameObject.scene);
             RebaseParallax(room);
             WorldState.Set(WorldMapData.VisitedFlag + room.RoomId);
             // Vao vung moi lan dau: hien ten vung (luu trong co the gioi).

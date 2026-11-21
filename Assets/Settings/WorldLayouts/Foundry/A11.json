@@ -38,5 +38,23 @@
    "dist": 1.5
   }
  ],
- "zone": "Foundry"
+ "zone": "Foundry",
+ "tr": [
+  {
+   "x": 22,
+   "y": 3,
+   "w": 1,
+   "h": 9,
+   "type": "Saw",
+   "speed": 3.0
+  },
+  {
+   "x": 18,
+   "y": 3,
+   "w": 1,
+   "h": 9,
+   "type": "Saw",
+   "speed": 3.0
+  }
+ ]
 }

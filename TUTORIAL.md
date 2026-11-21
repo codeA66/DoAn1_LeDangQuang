@@ -3134,6 +3134,43 @@ Code thêm: `RoomEncounter` ô **World Flag** (dọn xong lưu save; vào lại 
 
 Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua 25 cửa (A02→…→A15→A20→A19→A20→A21→A24→A21→A20→A15→A12→A13→A14→A16→A17→A22→A17→A18→A23→A25→A23), tới nơi đứng trên đất; boss xuất hiện khi vào A23, cho boss chết bằng code → cờ `A23/Boss` có, cửa sập mở; A25 chém công tắc 2 nhát không vỡ, bắn cầu (fromOrb) vỡ → tường sập, có cờ; vào lại A23 boss không hiện, cửa sập vẫn mở. Kiem tra cua: 25 phòng, 51 cửa, chỉ A24/R chưa nối. Chưa thử tay: đánh boss thật, Pogo qua bãi gai, bắn K ở A21.
 
+### Art bẫy Forgotten Foundry
+
+PNG đã duyệt nằm ở `Assets/Art/Generated/Hazards/Foundry/`, chia theo `Saw`, `Laser`, `Crusher`, `Steam` và `Crumble`. Có 16 PNG RGBA, 45 khung, mỗi sheet một hàng. Kích thước từng khung theo `PROMPT_VE_BAY.md`. `Steam_Jet` có 3 khung khởi động (0–2) và 4 khung lặp (3–6); `Crumble_Debris` có 4 mảnh riêng. `Laser_Warning` có alpha 128 ở nét tia, các sprite còn lại dùng alpha 0/255.
+
+Khi tích hợp: dùng PPU 32, Filter Point, không nén, tắt mipmap; cắt theo kích thước khung trong prompt, chọn pivot theo bộ phận và đối chiếu collider khi gắn prefab. Các thông số này là mục tiêu import. Hiện mới xuất PNG; các `TrapSlot` trong phòng vẫn là chỗ đánh dấu, chưa có prefab hoặc hành vi cho bộ bẫy mới.
+
+### Bẫy Vùng A (script + đặt vào phòng)
+
+| Phần | File | Ghi chú |
+|---|---|---|
+| Script | `Level/Traps/SawTrap, LaserTrap, CrusherTrap, SteamTrap, CrumblePlatform, TrapClock` | Phần gây sát thương là collider trigger + `HazardZone` (mất 1 máu, về chỗ đứng an toàn; Pogo nảy được). Bẫy theo nhịp lệch pha theo thứ tự trong phòng. Laser: tắt 1,4 s → tia mờ báo 0,6 s → bắn 1,2 s. Hơi: nghỉ 1,6 s → khe đỏ + khói 0,6 s → phụt 1,4 s. Búa: chờ 1,3 s → rung + đèn đỏ 0,5 s → dập 26 u/s → giữ 0,35 s → lên 4 u/s, rung camera nhẹ khi dập (nếu đang thấy). Cưa: qua lại trên ray (mặc định 3,5 u/s, quay 540°/s). Sàn sập: đứng lên nứt 0,6 s → vỡ → 3 s hiện lại. |
+| Dựng | `Editor/WorldTrapFactory.cs`, menu **LuHanh → World → Nhap art bay** | Cắt sheet (PPU 32, Point, không nén; ray/tia/trục piston Full Rect để Tiled). Order 42–45: **trên lớp tối VisionMask (40)** để bẫy luôn nhìn rõ. Cưa và đầu búa có Light2D điểm đỏ `#EA6547` cường độ 0,6. Búa tự tìm trần phía trên (trục piston nối từ trần) và sàn phía dưới (hành trình). Laser / cưa: chỗ chừa cao hơn rộng → chạy dọc. |
+| Cửa dọc + cần gạt | `gates[].vertical`, điểm `L` | Cần gạt tự nối Gate có Open If World Flag = `<phòng>/<flag>`. |
+
+Phân bổ (mục đích):
+
+| Phòng | Bẫy | Mục đích |
+|---|---|---|
+| A02 | Cưa sàn chậm (2 u/s) sau hố gai | Dạy cưa |
+| A04 | Cưa sàn giữa 2 Ghoul; cưa trên bệ mảnh bản đồ I | Kết hợp; canh thưởng |
+| A05 | 2 ống hơi giữa hố gai và bệ Dash | Dạy hơi nóng |
+| A07 | Cưa trên cầu | Thử nhịp |
+| A08 | 2 búa treo dưới hành lang trên cao; laser dọc chặn khe Dash lên gờ bí mật; hành lang trên cao có cửa (mở bằng cần gạt `Bypass` ở đầu kia) | Dạy búa; canh thưởng; lối tránh |
+| A11 | 2 cưa dọc trước kho Shards | Canh thưởng |
+| A13 | Gai trần + 2 cưa sàn + CinderHusk | Kết hợp |
+| A15 | 3 tầng laser ngang qua giếng | Thử nhịp khi xuống |
+| A16 | Cưa + 3 hơi (1 cạnh sàn giả che đồ giấu) | Thử; canh thưởng |
+| A17 | 2 búa + CinderHusk | Kết hợp |
+| A19 | Hố gai 13 ô + 2 cưa để Pogo, canh mảnh mặt nạ | Pogo + canh thưởng |
+| A20 | 2 cưa trên bãi gai Pogo; laser dọc + hơi | Pogo; thử |
+| A21 | Búa + cưa trước tường K | Thử trước cổng |
+| A22 | Laser dọc trước kho Shards | Canh thưởng |
+| A24 | Hố gai sâu + 4 sàn sập | Thử cuối vùng |
+| A14, A18, A23 | Không | Phòng dạy Bám tường / nghỉ / boss |
+
+Đã kiểm tra (2026-11-21, Play): ảnh từng phòng – bẫy hiện rõ, chạy đúng nhịp; cưa A07 và A04 chém mất máu và đưa về chỗ an toàn; sàn sập A24 vỡ khi đứng lên. Camera quay về phòng cũ: A01↔A02↔A03 camera đúng phòng; chuyển phòng không còn tự đi. Chưa thử tay: vượt từng bẫy bằng tay, Pogo trên cưa A19/A20, cần gạt lối tránh A08.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3476,3 +3513,5 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 249. Thế giới – giai đoạn 3 đợt 1: dựng 9 phòng A01–A09 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 1"): file bố cục JSON + công cụ WorldRoomBuilder; script SecretWall (tường giả chém vỡ, sàn giả sụp, vết nứt nhẹ); Gate thêm Open If World Flag (cửa sập A09, mở bằng cần gạt S1 ở A14); Background vùng thêm lớp phủ dưới rừng/trên trời cho phòng cao. Chỗ bẫy và đồ giấu để trống. Đã chạy Play qua toàn bộ cửa đợt 1, Kiem tra cua không lỗi; save trả về như cũ.
 250. Thế giới – giai đoạn 3 đợt 2: dựng 9 phòng A10–A18 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 2"), nối A06→A10, A07→A12, A09→A14; BreakableDevice thêm Open Gates; WorldRoomBuilder thêm gai trần, cần gạt, công tắc K, thợ rèn, vật Bám tường. Chỗ mảnh mặt nạ / kho Shards để trống. Đã chạy Play qua 26 cửa, Kiem tra cua chỉ còn A18→A23 chưa nối; save trả về như cũ.
 251. Thế giới – giai đoạn 3 đợt 3: dựng 7 phòng A19–A25 (mục 9g "Dựng Vùng A – đợt 3"): bãi gai Pogo A20, tường sập + công tắc K ở A21 và A25, mảnh bản đồ III ở A21, phòng boss A23 chép bộ FoundryWarden từ Level2 (Level2 không đổi); RoomEncounter thêm World Flag; nối A15→A20, A17→A22, A18→A23; bỏ đường tắt S3. Vùng A đủ 25 phòng. Đã chạy Play qua 25 cửa + thử boss/cửa sập/công tắc K bằng code; save trả về như cũ.
+252. Xuất art 5 bẫy Forgotten Foundry từ mẫu chủ project duyệt: 16 PNG RGBA / 45 khung trong `Assets/Art/Generated/Hazards/Foundry/` (mục 9g). Đã xem các sprite trên nền tím và đối chiếu kích thước, số khung, alpha và mép lặp ở mức file. Chưa cấu hình import hoặc kiểm tra trong Game View.
+253. Bẫy Vùng A: 5 script bẫy (cưa ray ngang/dọc, laser nhịp, búa dập, hơi nóng, sàn sập) + WorldTrapFactory cắt art và dựng bẫy từ mục `tr` của file bố cục; đặt 15 phòng theo mục đích kiểu Hollow Knight (dạy / thử / kết hợp / canh thưởng / Pogo), A08 thêm hành lang lối tránh + cần gạt, A19 hố gai Pogo, A24 sàn sập; bẫy vẽ trên VisionMask + đèn đỏ `#EA6547`. Sửa camera chọn đúng phòng vừa vào (RoomManager.Refresh(scene)) và bỏ tự đi khi chuyển phòng. Đã chạy Play chụp từng phòng; save trả về như cũ.

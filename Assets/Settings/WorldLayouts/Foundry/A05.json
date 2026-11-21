@@ -83,5 +83,23 @@
    "dist": 4.6
   }
  ],
- "zone": "Foundry"
+ "zone": "Foundry",
+ "tr": [
+  {
+   "x": 15,
+   "y": 15,
+   "w": 2,
+   "h": 2,
+   "type": "Steam",
+   "speed": 0
+  },
+  {
+   "x": 18,
+   "y": 15,
+   "w": 2,
+   "h": 2,
+   "type": "Steam",
+   "speed": 0
+  }
+ ]
 }

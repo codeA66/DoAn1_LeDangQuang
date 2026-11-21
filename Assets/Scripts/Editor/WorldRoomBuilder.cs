@@ -27,10 +27,10 @@ namespace LuHanh.EditorTools
         // ---------- Du lieu bo cuc ----------
         [Serializable] public class R4 { public int x, y, w, h; }
         [Serializable] public class Fake { public int x, y, w, h; public string mode = "Wall"; public string flag; }
-        [Serializable] public class Trap { public int x, y, w, h; public string type; }
+        [Serializable] public class Trap { public int x, y, w, h; public string type; public float speed; }
         [Serializable] public class Mark { public string k; public int x, y; public string flag; }
         [Serializable] public class Door { public string id, side, target, targetDoor; public int x, y, w, h; public float dist = 1.5f; }
-        [Serializable] public class GateSpec { public int x, y, w; public string flag; }
+        [Serializable] public class GateSpec { public int x, y, w; public string flag; public bool vertical; }
         [Serializable]
         public class RoomSpec
         {
@@ -311,9 +311,12 @@ namespace LuHanh.EditorTools
             // --- Tuong / san gia ---
             foreach (var fk in r.fk) BuildSecret(grid.transform, fk, Cell, WX, WTop);
 
-            // --- Cho chua bay (de trong) ---
+            // --- Bay (WorldTrapFactory); loai chua co art thi de cho trong ---
+            bool IsSolid(int x, int y) => !In(x, y) || solid[x + Margin, y + Margin];
+            int trapIndex = 0;
             foreach (var t in r.tr)
             {
+                if (WorldTrapFactory.Create(t.type, props, t.x, t.y, t.w, t.h, IsSolid, WX, WTop, trapIndex++, t.speed)) continue;
                 var go = new GameObject($"TrapSlot_{t.type}_{t.w}x{t.h}");
                 go.transform.SetParent(props, false);
                 go.transform.position = new Vector3(WX(t.x) + t.w * 0.5f, WTop(t.y) - t.h * 0.5f, 0f);
@@ -325,10 +328,19 @@ namespace LuHanh.EditorTools
             foreach (var g in r.gates)
             {
                 var go = (GameObject)PrefabUtility.InstantiatePrefab(gatePf, props);
-                go.name = "Gate_Hatch";
-                // Goc Gate = mep tren, keo dai xuong; xoay +90 do -> keo dai sang phai.
-                go.transform.position = new Vector3(WX(g.x), WTop(g.y) - 0.5f, 0f);
-                go.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                if (g.vertical)
+                {
+                    // Cua dung: o (x, y) la o tren cung cua lo, cao w o.
+                    go.name = "Gate_Door";
+                    go.transform.position = new Vector3(WX(g.x) + 0.5f, WTop(g.y), 0f);
+                }
+                else
+                {
+                    go.name = "Gate_Hatch";
+                    // Goc Gate = mep tren, keo dai xuong; xoay +90 do -> keo dai sang phai.
+                    go.transform.position = new Vector3(WX(g.x), WTop(g.y) - 0.5f, 0f);
+                    go.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                }
                 var gso = new SerializedObject(go.GetComponent<Gate>());
                 gso.FindProperty("height").floatValue = g.w;
                 gso.FindProperty("width").floatValue = 1f;
@@ -370,6 +382,11 @@ namespace LuHanh.EditorTools
                 {
                     var lso = new SerializedObject(inst.GetComponent<ShortcutLever>());
                     lso.FindProperty("worldFlag").stringValue = m.flag ?? "";
+                    // Cua cung phong co Open If World Flag = "[phong]/[flag]" -> can gat mo cua do.
+                    var lg = builtGates.FindAll(gt => new SerializedObject(gt).FindProperty("openIfWorldFlag").stringValue == $"{r.id}/{m.flag}");
+                    var larr = lso.FindProperty("gates");
+                    larr.arraySize = lg.Count;
+                    for (int i = 0; i < lg.Count; i++) larr.GetArrayElementAtIndex(i).objectReferenceValue = lg[i];
                     lso.ApplyModifiedPropertiesWithoutUndo();
                 }
                 else if (m.k == "X")

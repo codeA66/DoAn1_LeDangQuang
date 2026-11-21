@@ -64,5 +64,15 @@
    "dist": 2.5
   }
  ],
- "zone": "Foundry"
+ "zone": "Foundry",
+ "tr": [
+  {
+   "x": 19,
+   "y": 2,
+   "w": 1,
+   "h": 14,
+   "type": "Laser",
+   "speed": 0
+  }
+ ]
 }

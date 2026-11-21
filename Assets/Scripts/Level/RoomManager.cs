@@ -85,6 +85,23 @@ namespace LuHanh.Level
             Enter(FindRoom(Probe), skipDamping: true);
         }
 
+        /// <summary>Nhu Refresh nhung chi xet Room thuoc scene cho truoc (the gioi: cac phong chong toa do).</summary>
+        public void Refresh(UnityEngine.SceneManagement.Scene scene)
+        {
+            if (!player) return;
+            StopAllCoroutines();
+            ReleaseTime();
+            IsTransitioning = false;
+            Current = null;
+            Room pick = null;
+            foreach (var r in Room.All)
+            {
+                if (r.gameObject.scene != scene) continue;
+                if (!pick || r.Contains(Probe)) pick = r;
+            }
+            Enter(pick ? pick : FindRoom(Probe), skipDamping: true);
+        }
+
         void Enter(Room room, bool skipDamping)
         {
             if (!room) return;

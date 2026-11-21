@@ -483,7 +483,7 @@ Thay dạng màn nối tiếp (Level1 → Level2 → Level3 qua cổng). **Mỗi
 - Cổng kỹ năng phải **nhìn thấy trước** khi có kỹ năng (khe gai A07, gờ cao A06…).
 - Đường tắt: **S1** cửa sập A09↔A14 mở bằng cần gạt phía A14; **S2** rơi một chiều A16→A14. **S3 đã bỏ** (2026-11-21: A20 nằm dưới A15 nên không rơi lên được; giếng A15 có sẵn platform leo về ghế A12). Mảnh bản đồ III đặt ở A21 (bệ cao bên trái).
 - Bí mật: tường giả chém vỡ (`CollapsingWall`), sàn giả sụp, vật giấu trong phòng thường (`ShadowShard` trên gờ cao / sau tường giả, 3–4 cái mỗi đợt). Không dùng lối xuyên tiền cảnh.
-- Bẫy: gai (có sẵn) + cưa ray, laser nhịp, búa dập, hơi nóng, sàn sập (chưa có art – prompt ở `PROMPT_VE_BAY.md`). Chưa có art thì **để trống chỗ đặt bẫy**. Giới thiệu từng loại ở chỗ an toàn trước, sau đó thử thách, cuối cùng kết hợp với quái.
+- Bẫy (đã đặt, 2026-11-21): gai, cưa ray (ngang/dọc), laser nhịp, búa dập, hơi nóng, sàn sập – khai báo trong file bố cục ở mục `tr` (`type` = Saw / Laser / Crusher / Steam / Crumble, `speed` cho cưa), WorldRoomBuilder dựng bằng `WorldTrapFactory`. Nguyên tắc kiểu Hollow Knight: **mỗi bẫy có mục đích** – dạy (lần đầu, thấy trước), thử nhịp trên đường chính, kết hợp với quái, canh phần thưởng (nhánh phụ dày bẫy), điểm nảy Pogo; đường chính nhẹ, khó dồn vào nhánh có thưởng; có lối tránh sau lần đầu (A08 hành lang trên cao, cần gạt mở cửa từ phía bên kia); luôn báo trước (tia mờ, rung, khói). Phân bổ Vùng A: xem TUTORIAL.md mục 9g "Bẫy Vùng A".
 - Chiều sâu: nền parallax + lớp máy móc giữa (không che trời) + tiền cảnh cột/xích `#0C0A14` ở mép màn, mỗi phòng một điểm mốc dễ nhớ.
 
 ### Vùng B – Mossy Depths (rêu đá, nền #121A14 / ánh sáng #A9C2A8, 25 phòng)
