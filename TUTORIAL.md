@@ -3099,6 +3099,25 @@ Tạm thời (làm ở đợt 2): A06 tường giả sang A10 chưa có cửa ph
 
 Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua cửa A02→A01→A02→A03→A06 (xuống)→A03 (lên)→A04→A05→A07 (xuống)→A08→A09→A08, tới nơi đều đứng trên đất; Kiem tra cua: 9 phòng, 16 cửa, không lỗi. Chưa thử tay: nhảy/dash qua từng khe, phá tường giả, sàn giả, đánh quái.
 
+### Dựng Vùng A – đợt 2 (A10–A18)
+
+| Phòng | Nội dung đã dựng |
+|---|---|
+| A10 / A11 | Phòng bí mật nhỏ; chỗ mảnh mặt nạ `MaskShardSpot` và kho Shards `ShardCacheSpot` **để trống** (chờ vật phẩm). |
+| A12 | Ghế; ống leo có mái ở góc trái (vào từ sàn, nhảy bật hai vách 6 ô, chui khe vào hố rơi xuống A15); tường giả sang A11 trên nóc mái; cầu thang platform lên lỗ A07. |
+| A13 | Hành lang, trần hạ có gai trần (`spD`), 2 hố gai, 2 CinderHusk, 2 chỗ chừa cưa. |
+| A14 | Giếng 30×40: từ A13 rơi xuống đáy lấy Bám tường; giếng trái leo về + lên bệ cần gạt **S1** (`ShortcutLever` cờ `S1` → `A14/S1` mở cửa sập A09); giếng phải có cửa A16 cao 10 ô (S2: từ A16 về là rơi xuống đáy). |
+| A15 | Giếng xuống, 2 chỗ chừa laser ngang, 2 Bat; đáy chưa nối A20 (đợt 3). |
+| A16 | Chỗ chừa cưa + 2 hơi nóng, sàn giả che đồ giấu, 2 Ghoul, 1 Bat. |
+| A17 | Công tắc K (`BreakableDevice` Orb Only) trên bệ cao, mở cửa sập xuống A22 (cờ `A17/KSwitch`); 2 chỗ chừa búa dập. |
+| A18 | Ghế + thợ rèn OldAnvil bán `Foundry.2`; cửa phải sang A23 chưa nối. |
+
+Đợt 1 sửa để nối: A06 mở cửa sau tường giả sang A10; A07 lỗ xuống A12 sâu 5 ô + platform che + cửa; A09 lỗ dưới cửa sập + platform che + cửa xuống A14.
+
+Code thêm: `BreakableDevice` ô **Open Gates** (mở Gate khi vỡ); WorldRoomBuilder thêm `spD` gai trần, điểm `W` Bám tường, `L` cần gạt (flag), `X` công tắc K (flag, tự nối Gate có Open If World Flag = `<phòng>/<flag>`), `A` thợ rèn (flag = mảnh bán, vd `Foundry.2`), `H`/`C` chỗ để trống.
+
+Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua 26 cửa A02→…→A07→A12→A11→A12→A15→A12→A13→A14→A16→A17→A18 và quay về A14→A09 (lên qua cửa sập)→A08→A07→A05→A04→A03→A06→A10→A06, tới nơi đứng trên đất; Kiem tra cua: 18 phòng, 37 cửa, chỉ A18/R chưa nối (A23). Chưa thử tay: leo ống A12 / giếng A14 bằng Bám tường, cần gạt S1, công tắc K, mua mảnh II ở A18.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3439,3 +3458,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 247. Thế giới – giai đoạn 2 bản đồ + trạm (mục 9g): WorldMapData + Settings/WorldMap.asset (50 phòng, 6 mảnh, 3 mảnh/vùng); WorldMapUI giữ M xem bản đồ (chỉ hiện phòng thuộc mảnh đã có, phòng chưa đến mờ, phòng bí mật chỉ hiện khi đã đến); SkillPickup thêm ô Map Piece + 4 prefab MapPiece_Foundry1/3, Mossy1/3; UpgradeShopUI bán mảnh bản đồ (mảnh 2 = 100 Shards); FastTravelStation (E mở trạm, bảng chọn, WorldLoader.TravelToStation) + prefab dùng tạm hình thang máy; WorldLoader đặt cờ Visited khi vào phòng. Đã thử trong Play: bản đồ, trạm, nhặt mảnh, mua mảnh (chưa thử riêng trường hợp thiếu Shards). Scene, prefab OldAnvil và save đã trả về như cũ.
 248. Thế giới – giai đoạn 3 chốt thiết kế metroidvania Vùng A (HUONG_DAN_BUILD_LEVEL.md mục Vùng A): dựng 3 đợt theo mảnh bản đồ, sơ đồ từng phòng duyệt trước; đường tắt S1 (A09↔A14 cần gạt), S2 (A16→A14), S3 (A20→A15); bí mật: tường giả, sàn giả, vật giấu; bẫy mới cưa ray / laser / búa dập / hơi nóng / sàn sập chờ art (prompt `PROMPT_VE_BAY.md`, 32 px = 1 ô), chỗ đặt bẫy để trống. Chưa sửa scene/prefab.
 249. Thế giới – giai đoạn 3 đợt 1: dựng 9 phòng A01–A09 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 1"): file bố cục JSON + công cụ WorldRoomBuilder; script SecretWall (tường giả chém vỡ, sàn giả sụp, vết nứt nhẹ); Gate thêm Open If World Flag (cửa sập A09, mở bằng cần gạt S1 ở A14); Background vùng thêm lớp phủ dưới rừng/trên trời cho phòng cao. Chỗ bẫy và đồ giấu để trống. Đã chạy Play qua toàn bộ cửa đợt 1, Kiem tra cua không lỗi; save trả về như cũ.
+250. Thế giới – giai đoạn 3 đợt 2: dựng 9 phòng A10–A18 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 2"), nối A06→A10, A07→A12, A09→A14; BreakableDevice thêm Open Gates; WorldRoomBuilder thêm gai trần, cần gạt, công tắc K, thợ rèn, vật Bám tường. Chỗ mảnh mặt nạ / kho Shards để trống. Đã chạy Play qua 26 cửa, Kiem tra cua chỉ còn A18→A23 chưa nối; save trả về như cũ.

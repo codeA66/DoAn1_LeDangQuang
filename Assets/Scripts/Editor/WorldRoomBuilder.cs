@@ -28,7 +28,7 @@ namespace LuHanh.EditorTools
         [Serializable] public class R4 { public int x, y, w, h; }
         [Serializable] public class Fake { public int x, y, w, h; public string mode = "Wall"; public string flag; }
         [Serializable] public class Trap { public int x, y, w, h; public string type; }
-        [Serializable] public class Mark { public string k; public int x, y; }
+        [Serializable] public class Mark { public string k; public int x, y; public string flag; }
         [Serializable] public class Door { public string id, side, target, targetDoor; public int x, y, w, h; public float dist = 1.5f; }
         [Serializable] public class GateSpec { public int x, y, w; public string flag; }
         [Serializable]
@@ -36,7 +36,7 @@ namespace LuHanh.EditorTools
         {
             public string id, zone = "Foundry";
             public int w, h, f;
-            public R4[] air = new R4[0], sol = new R4[0], ow = new R4[0], pl = new R4[0], sp = new R4[0], spL = new R4[0];
+            public R4[] air = new R4[0], sol = new R4[0], ow = new R4[0], pl = new R4[0], sp = new R4[0], spL = new R4[0], spD = new R4[0];
             public Fake[] fk = new Fake[0];
             public Trap[] tr = new Trap[0];
             public Mark[] mk = new Mark[0];
@@ -59,7 +59,19 @@ namespace LuHanh.EditorTools
             { "S", "Assets/Prefabs/World/FastTravelStation.prefab" },
             { "K", "Assets/Prefabs/Level/SkillPickup_Dash.prefab" },
             { "M", "Assets/Prefabs/Level/MapPiece_Foundry1.prefab" },
+            { "W", "Assets/Prefabs/Level/SkillPickup_WallCling.prefab" },
+            { "L", "Assets/Prefabs/Level/ShortcutLever.prefab" },
+            { "X", "Assets/Prefabs/Level/BreakableDevice.prefab" },
+            { "A", "Assets/Prefabs/NPC/OldAnvil.prefab" },
         };
+        // Diem danh dau de trong (cho vat pham lam sau): ten object.
+        static readonly Dictionary<string, string> EmptySpots = new()
+        {
+            { "$", "SecretSpot (de trong)" },
+            { "H", "MaskShardSpot (de trong)" },
+            { "C", "ShardCacheSpot (de trong)" },
+        };
+        const string MapAsset = "Assets/Settings/WorldMap.asset";
 
         [MenuItem("LuHanh/World/Dung phong tu bo cuc")]
         static void BuildSelected()
@@ -278,6 +290,21 @@ namespace LuHanh.EditorTools
                 }
             }
 
+            foreach (var a in r.spD)
+            {
+                // Gai treo tran, chia xuong (tran o phia tren hang o).
+                int n = Mathf.Max(1, Mathf.RoundToInt(a.w / 4f));
+                float seg = a.w / (float)n;
+                for (int i = 0; i < n; i++)
+                {
+                    var go = (GameObject)PrefabUtility.InstantiatePrefab(spikePf, props);
+                    go.name = "Spikes_Ceiling";
+                    go.transform.position = new Vector3(WX(a.x) + seg * (i + 0.5f), WTop(a.y) - 0.375f, 0f);
+                    go.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                    go.transform.localScale = new Vector3(seg / 3.8f, 1f, 1f);
+                }
+            }
+
             // --- Tuong / san gia ---
             foreach (var fk in r.fk) BuildSecret(grid.transform, fk, Cell, WX, WTop);
 
@@ -291,6 +318,7 @@ namespace LuHanh.EditorTools
 
             // --- Cua sap (Gate xoay ngang nam tren lo) ---
             var gatePf = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Level/Gate.prefab");
+            var builtGates = new List<Gate>();
             foreach (var g in r.gates)
             {
                 var go = (GameObject)PrefabUtility.InstantiatePrefab(gatePf, props);
@@ -304,6 +332,7 @@ namespace LuHanh.EditorTools
                 gso.FindProperty("startClosed").boolValue = true;
                 gso.FindProperty("openIfWorldFlag").stringValue = g.flag ?? "";
                 gso.ApplyModifiedPropertiesWithoutUndo();
+                builtGates.Add(go.GetComponent<Gate>());
             }
 
             // --- Diem danh dau ---
@@ -311,9 +340,9 @@ namespace LuHanh.EditorTools
             {
                 var foot = new Vector3(WX(m.x) + 0.5f, WTop(m.y + 1), 0f);
                 if (m.k == "P") { spawn.position = foot; continue; }
-                if (m.k == "$")
+                if (EmptySpots.TryGetValue(m.k, out var spotName))
                 {
-                    var spot = new GameObject("SecretSpot (de trong)");
+                    var spot = new GameObject(spotName);
                     spot.transform.SetParent(props, false);
                     spot.transform.position = foot + Vector3.up * 0.5f;
                     continue;
@@ -322,8 +351,37 @@ namespace LuHanh.EditorTools
                 var pf = AssetDatabase.LoadAssetAtPath<GameObject>(pfPath);
                 bool enemy = m.k == "g" || m.k == "b" || m.k == "c";
                 var inst = (GameObject)PrefabUtility.InstantiatePrefab(pf, enemy ? enemies : props);
-                bool floating = m.k == "b" || m.k == "K" || m.k == "M";
+                bool floating = m.k == "b" || m.k == "K" || m.k == "M" || m.k == "W";
                 inst.transform.position = floating ? foot + Vector3.up * 0.5f : foot;
+                if (m.k == "L")
+                {
+                    var lso = new SerializedObject(inst.GetComponent<ShortcutLever>());
+                    lso.FindProperty("worldFlag").stringValue = m.flag ?? "";
+                    lso.ApplyModifiedPropertiesWithoutUndo();
+                }
+                else if (m.k == "X")
+                {
+                    // Cong tac chi vo bang cau K; mo cac Gate co Open If World Flag = "[phong]/[flag]".
+                    var dso = new SerializedObject(inst.GetComponent<BreakableDevice>());
+                    dso.FindProperty("worldFlag").stringValue = m.flag ?? "";
+                    dso.FindProperty("orbOnly").boolValue = true;
+                    var list = builtGates.FindAll(gt => new SerializedObject(gt).FindProperty("openIfWorldFlag").stringValue == $"{r.id}/{m.flag}");
+                    var arr = dso.FindProperty("openGates");
+                    arr.arraySize = list.Count;
+                    for (int i = 0; i < list.Count; i++) arr.GetArrayElementAtIndex(i).objectReferenceValue = list[i];
+                    dso.ApplyModifiedPropertiesWithoutUndo();
+                }
+                else if (m.k == "A")
+                {
+                    var shop = inst.GetComponentInChildren<LuHanh.UI.UpgradeShopUI>();
+                    var sso = new SerializedObject(shop);
+                    sso.FindProperty("map").objectReferenceValue = AssetDatabase.LoadAssetAtPath<WorldMapData>(MapAsset);
+                    var pieces = sso.FindProperty("mapPiecesForSale");
+                    var ids = string.IsNullOrEmpty(m.flag) ? new string[0] : m.flag.Split(',');
+                    pieces.arraySize = ids.Length;
+                    for (int i = 0; i < ids.Length; i++) pieces.GetArrayElementAtIndex(i).stringValue = ids[i].Trim();
+                    sso.ApplyModifiedPropertiesWithoutUndo();
+                }
             }
 
             EditorSceneManager.MarkSceneDirty(s);

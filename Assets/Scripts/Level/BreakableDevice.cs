@@ -19,6 +19,8 @@ namespace LuHanh.Level
         [Tooltip("Ten co luu trang thai trong phong (vd Device). De trong = khong luu.")]
         [SerializeField] string worldFlag;
         [SerializeField] CollapsingWall target;
+        [Tooltip("Cua (Gate) mo khi thiet bi vo. The gioi: dat Open If World Flag cua Gate = \"[phong]/[World Flag cua thiet bi]\" de vao lai phong cua van mo.")]
+        [SerializeField] Gate[] openGates = new Gate[0];
         [SerializeField] int hits = 3;
         [Tooltip("Chi vo bang cau nang luong (phim K) - loi can ky nang Ban cau. Chem vao chi toe tia + keng, khong mat do ben.")]
         [SerializeField] bool orbOnly;
@@ -108,6 +110,7 @@ namespace LuHanh.Level
         {
             yield return new WaitForSecondsRealtime(delayBeforeWall);
             if (target) target.Trigger();
+            foreach (var g in openGates) if (g) g.Open();
         }
 
         void Update()

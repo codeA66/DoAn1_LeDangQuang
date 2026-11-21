@@ -21,6 +21,12 @@
    "y": 30,
    "w": 3,
    "h": 2
+  },
+  {
+   "x": 26,
+   "y": 22,
+   "w": 2,
+   "h": 3
   }
  ],
  "sol": [
@@ -154,6 +160,17 @@
    "target": "A03",
    "targetDoor": "B",
    "dist": 2.5
+  },
+  {
+   "id": "R",
+   "side": "Right",
+   "x": 26,
+   "y": 22,
+   "w": 2,
+   "h": 3,
+   "target": "A10",
+   "targetDoor": "L",
+   "dist": 1.5
   }
  ],
  "zone": "Foundry"

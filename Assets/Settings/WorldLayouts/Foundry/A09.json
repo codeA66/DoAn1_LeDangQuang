@@ -14,7 +14,7 @@
    "x": 25,
    "y": 13,
    "w": 4,
-   "h": 2
+   "h": 5
   }
  ],
  "mk": [
@@ -48,7 +48,26 @@
    "target": "A08",
    "targetDoor": "R",
    "dist": 1.5
+  },
+  {
+   "id": "B",
+   "side": "Bottom",
+   "x": 25,
+   "y": 17,
+   "w": 4,
+   "h": 1,
+   "target": "A14",
+   "targetDoor": "T",
+   "dist": 4.6
   }
  ],
- "zone": "Foundry"
+ "zone": "Foundry",
+ "ow": [
+  {
+   "x": 25,
+   "y": 13,
+   "w": 4,
+   "h": 1
+  }
+ ]
 }
