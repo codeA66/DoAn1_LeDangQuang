@@ -171,6 +171,8 @@ namespace LuHanh.Level
             SaveGame.Data.checkpointPosition = Seat;
             SaveGame.Save();
             StartCoroutine(SitFx());
+            // The gioi: quai cac phong khac hoi lai khi vao lai phong.
+            WorldKills.Clear();
             RespawnManager.RespawnDefeatedEnemies(Room.At(Seat));
 
             frame = 0;

@@ -113,6 +113,21 @@ namespace LuHanh.Enemies
             if (Camera.main) cameraTransform = Camera.main.transform;
             // Start chay sau moi OnEnable nen luc nay moi Room da dang ky.
             homeRoom = Room.At(startPosition);
+            // The gioi: quai da giet truoc khi roi phong thi van nam yen cho toi khi ngoi ghe / chet.
+            if (LuHanh.World.WorldLoader.Active && LuHanh.Core.WorldKills.Has(LootId) && !ManagedByEncounter())
+                gameObject.SetActive(false);
+        }
+
+        bool ManagedByEncounter()
+        {
+            foreach (var e in FindObjectsByType<RoomEncounter>(FindObjectsInactive.Include))
+                if (e.gameObject.scene == gameObject.scene && e.Manages(this)) return true;
+            return false;
+        }
+
+        void RememberKill()
+        {
+            if (LuHanh.World.WorldLoader.Active && !ManagedByEncounter()) LuHanh.Core.WorldKills.Add(LootId);
         }
 
         // Physics2D.IgnoreCollision mat hieu luc khi collider bi tat/bat (quai chet roi hoi sinh,
@@ -292,6 +307,7 @@ namespace LuHanh.Enemies
                     looted.Add(lootId);
                     LuHanh.Player.ShardPool.Spawn(centre, BaseConfig.shardDrop);
                 }
+                RememberKill();
                 if (OnDeath(hit)) return;
 
                 // Mac dinh tat ngay trong frame chet; quai can animation chet co the tre viec tat.
@@ -309,6 +325,7 @@ namespace LuHanh.Enemies
         {
             if (health.IsDead) return;
             health.Damage(health.Current);
+            RememberKill();
             gameObject.SetActive(false);
         }
 

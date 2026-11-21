@@ -233,6 +233,8 @@ namespace LuHanh.World
             {
                 var d = SaveGame.Data;
                 bool bench = IsWorldRoom(d.checkpointScene);
+                // Chet: quai ca vung hoi lai (nhu ngoi ghe).
+                WorldKills.Clear();
                 body.simulated = false;
                 // Kieu Hollow Knight: luon tai lai phong (ke ca cung phong) de quai ve ban dau.
                 yield return SwapTo(bench ? d.checkpointScene : firstRoom);
