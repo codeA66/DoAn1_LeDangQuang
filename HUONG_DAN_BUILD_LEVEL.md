@@ -481,7 +481,7 @@ Thay dạng màn nối tiếp (Level1 → Level2 → Level3 qua cổng). **Mỗi
 **Yếu tố metroidvania Vùng A (duyệt 2026-11-21):**
 - Dựng theo 3 đợt khớp mảnh bản đồ (A01–A09, A10–A18, A19–A25), mỗi đợt phác sơ đồ → duyệt → dựng → chơi thử → commit. Kích thước phòng đa dạng theo vai trò (tối thiểu 1 khung camera 28×16). Quái: Ghoul, Bat, CinderHusk.
 - Cổng kỹ năng phải **nhìn thấy trước** khi có kỹ năng (khe gai A07, gờ cao A06…).
-- Đường tắt: **S1** cửa sập A09↔A14 mở bằng cần gạt phía A14; **S2** rơi một chiều A16→A14; **S3** sàn sập A20→A15.
+- Đường tắt: **S1** cửa sập A09↔A14 mở bằng cần gạt phía A14; **S2** rơi một chiều A16→A14. **S3 đã bỏ** (2026-11-21: A20 nằm dưới A15 nên không rơi lên được; giếng A15 có sẵn platform leo về ghế A12). Mảnh bản đồ III đặt ở A21 (bệ cao bên trái).
 - Bí mật: tường giả chém vỡ (`CollapsingWall`), sàn giả sụp, vật giấu trong phòng thường (`ShadowShard` trên gờ cao / sau tường giả, 3–4 cái mỗi đợt). Không dùng lối xuyên tiền cảnh.
 - Bẫy: gai (có sẵn) + cưa ray, laser nhịp, búa dập, hơi nóng, sàn sập (chưa có art – prompt ở `PROMPT_VE_BAY.md`). Chưa có art thì **để trống chỗ đặt bẫy**. Giới thiệu từng loại ở chỗ an toàn trước, sau đó thử thách, cuối cùng kết hợp với quái.
 - Chiều sâu: nền parallax + lớp máy móc giữa (không che trời) + tiền cảnh cột/xích `#0C0A14` ở mép màn, mỗi phòng một điểm mốc dễ nhớ.

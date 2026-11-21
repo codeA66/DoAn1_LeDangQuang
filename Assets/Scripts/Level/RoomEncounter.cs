@@ -36,6 +36,9 @@ namespace LuHanh.Level
         [Tooltip("Goi ngay khi cua sap (vd den phong boss bung sang).")]
         [SerializeField] UnityEvent onStarted;
         [SerializeField] UnityEvent onCleared;
+        [Tooltip("The gioi: co luu trong save khi don xong (vd phong boss). Vao lai phong / hoi sinh: phong da xong, " +
+                 "quai khong hien lai. Key = [scene]/[co]. De trong = nhu cu (chet la danh lai).")]
+        [SerializeField] string worldFlag;
 
         enum Phase { Idle, Fighting, Cleared }
         Phase phase;
@@ -59,6 +62,11 @@ namespace LuHanh.Level
             GetComponent<Collider2D>().isTrigger = true;
             RespawnManager.Register(this);
             HideAll();
+        }
+
+        void Start()
+        {
+            if (WorldState.Has(this, worldFlag)) phase = Phase.Cleared;
         }
 
         void OnDestroy() => RespawnManager.Unregister(this);
@@ -87,6 +95,7 @@ namespace LuHanh.Level
             }
 
             phase = Phase.Cleared;
+            WorldState.Set(this, worldFlag);
             foreach (var g in gates) if (g) g.Open();
             onCleared?.Invoke();
         }
@@ -123,6 +132,12 @@ namespace LuHanh.Level
         public void ResetState()
         {
             StopAllCoroutines();
+            if (WorldState.Has(this, worldFlag))
+            {
+                // Da don xong (luu trong save): giu nguyen, chi tat lai quai vua duoc ResetState bat len.
+                pendingReset = true;
+                return;
+            }
             phase = Phase.Idle;
             // Ve trang thai ban dau: cua ra dong san (Start Closed) dong lai, khong de nguoi choi chet roi di tat.
             foreach (var g in gates) if (g) g.ResetInstant();

@@ -20,7 +20,7 @@
    "x": 20,
    "y": 21,
    "w": 4,
-   "h": 2
+   "h": 5
   }
  ],
  "pl": [
@@ -129,6 +129,17 @@
    "target": "A18",
    "targetDoor": "L",
    "dist": 1.5
+  },
+  {
+   "id": "B",
+   "side": "Bottom",
+   "x": 20,
+   "y": 25,
+   "w": 4,
+   "h": 1,
+   "target": "A22",
+   "targetDoor": "T",
+   "dist": 4.6
   }
  ],
  "zone": "Foundry"

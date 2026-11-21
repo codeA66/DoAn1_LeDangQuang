@@ -56,8 +56,8 @@
    "y": 11,
    "w": 2,
    "h": 4,
-   "target": "",
-   "targetDoor": "",
+   "target": "A23",
+   "targetDoor": "L",
    "dist": 1.5
   }
  ],

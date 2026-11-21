@@ -3118,6 +3118,22 @@ Code thêm: `BreakableDevice` ô **Open Gates** (mở Gate khi vỡ); WorldRoomB
 
 Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua 26 cửa A02→…→A07→A12→A11→A12→A15→A12→A13→A14→A16→A17→A18 và quay về A14→A09 (lên qua cửa sập)→A08→A07→A05→A04→A03→A06→A10→A06, tới nơi đứng trên đất; Kiem tra cua: 18 phòng, 37 cửa, chỉ A18/R chưa nối (A23). Chưa thử tay: leo ống A12 / giếng A14 bằng Bám tường, cần gạt S1, công tắc K, mua mảnh II ở A18.
 
+### Dựng Vùng A – đợt 3 (A19–A25)
+
+| Phòng | Nội dung đã dựng |
+|---|---|
+| A19 | Bí mật nhỏ, `MaskShardSpot` để trống; vào từ A20 qua bãi gai Pogo. |
+| A20 | Xuống từ A15 bằng cầu thang platform; bãi gai 16 ô (chỉ qua bằng Pogo, không có vách để bám); chỗ chừa laser dọc + hơi nóng; Ghoul, 2 Bat. |
+| A21 | Mảnh bản đồ III (`MapPiece_Foundry3`) trên bệ cao trái; đoạn trần thấp có tường sập `CollapsingWall` (cờ `OrbWall`) chặn lối xuống A24, công tắc K trước tường (cờ `OrbSwitch`); chỗ chừa búa dập + cưa; 2 CinderHusk. |
+| A22 | Bí mật: xuống từ cửa sập A17, `ShardCacheSpot` để trống, platform leo về. |
+| A23 | Boss FoundryWarden – bộ boss **chép từ Level2** (FoundryWarden, Encounter, cửa khóa vào, bụi, BossIntro/thẻ tên, đèn đấu trường R8) vào root `Boss` (WorldRoomBuilder không xoá root này). RoomEncounter cờ `Boss`; hạ boss → cửa sập sàn (`Gate_Hatch`, Open If World Flag `A23/Boss`) mở xuống A25. Bước vào cửa là trận bắt đầu (cửa vào nằm trong vùng kích hoạt). |
+| A24 | Xuống từ A21; cửa phải sang B01 chưa nối (Vùng B). |
+| A25 | Nhận Bắn cầu K trên bệ; lối leo về A23 bị tường sập chặn, phải bắn công tắc K để mở (tập dùng K ngay). |
+
+Code thêm: `RoomEncounter` ô **World Flag** (dọn xong lưu save; vào lại / hồi sinh không đánh lại, quái không hiện); WorldRoomBuilder thêm điểm `O` (Bắn cầu K), `N` (mảnh bản đồ III), `Z` (tường sập, flag) và công tắc `X` tự nối tường sập gần nhất. Đợt 2 sửa để nối: A15 đáy xuống A20, A17 cửa sập xuống A22, A18 cửa phải sang A23. Đường tắt S3 bỏ (chủ project duyệt).
+
+Đã kiểm tra (2026-11-21): ảnh toàn phòng khớp sơ đồ; Play đi qua 25 cửa (A02→…→A15→A20→A19→A20→A21→A24→A21→A20→A15→A12→A13→A14→A16→A17→A22→A17→A18→A23→A25→A23), tới nơi đứng trên đất; boss xuất hiện khi vào A23, cho boss chết bằng code → cờ `A23/Boss` có, cửa sập mở; A25 chém công tắc 2 nhát không vỡ, bắn cầu (fromOrb) vỡ → tường sập, có cờ; vào lại A23 boss không hiện, cửa sập vẫn mở. Kiem tra cua: 25 phòng, 51 cửa, chỉ A24/R chưa nối. Chưa thử tay: đánh boss thật, Pogo qua bãi gai, bắn K ở A21.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3459,3 +3475,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 248. Thế giới – giai đoạn 3 chốt thiết kế metroidvania Vùng A (HUONG_DAN_BUILD_LEVEL.md mục Vùng A): dựng 3 đợt theo mảnh bản đồ, sơ đồ từng phòng duyệt trước; đường tắt S1 (A09↔A14 cần gạt), S2 (A16→A14), S3 (A20→A15); bí mật: tường giả, sàn giả, vật giấu; bẫy mới cưa ray / laser / búa dập / hơi nóng / sàn sập chờ art (prompt `PROMPT_VE_BAY.md`, 32 px = 1 ô), chỗ đặt bẫy để trống. Chưa sửa scene/prefab.
 249. Thế giới – giai đoạn 3 đợt 1: dựng 9 phòng A01–A09 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 1"): file bố cục JSON + công cụ WorldRoomBuilder; script SecretWall (tường giả chém vỡ, sàn giả sụp, vết nứt nhẹ); Gate thêm Open If World Flag (cửa sập A09, mở bằng cần gạt S1 ở A14); Background vùng thêm lớp phủ dưới rừng/trên trời cho phòng cao. Chỗ bẫy và đồ giấu để trống. Đã chạy Play qua toàn bộ cửa đợt 1, Kiem tra cua không lỗi; save trả về như cũ.
 250. Thế giới – giai đoạn 3 đợt 2: dựng 9 phòng A10–A18 theo sơ đồ đã duyệt (mục 9g "Dựng Vùng A – đợt 2"), nối A06→A10, A07→A12, A09→A14; BreakableDevice thêm Open Gates; WorldRoomBuilder thêm gai trần, cần gạt, công tắc K, thợ rèn, vật Bám tường. Chỗ mảnh mặt nạ / kho Shards để trống. Đã chạy Play qua 26 cửa, Kiem tra cua chỉ còn A18→A23 chưa nối; save trả về như cũ.
+251. Thế giới – giai đoạn 3 đợt 3: dựng 7 phòng A19–A25 (mục 9g "Dựng Vùng A – đợt 3"): bãi gai Pogo A20, tường sập + công tắc K ở A21 và A25, mảnh bản đồ III ở A21, phòng boss A23 chép bộ FoundryWarden từ Level2 (Level2 không đổi); RoomEncounter thêm World Flag; nối A15→A20, A17→A22, A18→A23; bỏ đường tắt S3. Vùng A đủ 25 phòng. Đã chạy Play qua 25 cửa + thử boss/cửa sập/công tắc K bằng code; save trả về như cũ.

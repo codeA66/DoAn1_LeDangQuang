@@ -63,6 +63,9 @@ namespace LuHanh.EditorTools
             { "L", "Assets/Prefabs/Level/ShortcutLever.prefab" },
             { "X", "Assets/Prefabs/Level/BreakableDevice.prefab" },
             { "A", "Assets/Prefabs/NPC/OldAnvil.prefab" },
+            { "O", "Assets/Prefabs/Level/SkillPickup_OrbShot.prefab" },
+            { "N", "Assets/Prefabs/Level/MapPiece_Foundry3.prefab" },
+            { "Z", "Assets/Prefabs/Level/CollapsingWall.prefab" },
         };
         // Diem danh dau de trong (cho vat pham lam sau): ten object.
         static readonly Dictionary<string, string> EmptySpots = new()
@@ -335,8 +338,11 @@ namespace LuHanh.EditorTools
                 builtGates.Add(go.GetComponent<Gate>());
             }
 
-            // --- Diem danh dau ---
-            foreach (var m in r.mk)
+            // --- Diem danh dau --- (tuong sap Z dat truoc de cong tac X noi vao)
+            var builtWalls = new List<CollapsingWall>();
+            var marks = new List<Mark>(r.mk);
+            marks.Sort((a, b) => (a.k == "Z" ? 0 : 1).CompareTo(b.k == "Z" ? 0 : 1));
+            foreach (var m in marks)
             {
                 var foot = new Vector3(WX(m.x) + 0.5f, WTop(m.y + 1), 0f);
                 if (m.k == "P") { spawn.position = foot; continue; }
@@ -351,9 +357,16 @@ namespace LuHanh.EditorTools
                 var pf = AssetDatabase.LoadAssetAtPath<GameObject>(pfPath);
                 bool enemy = m.k == "g" || m.k == "b" || m.k == "c";
                 var inst = (GameObject)PrefabUtility.InstantiatePrefab(pf, enemy ? enemies : props);
-                bool floating = m.k == "b" || m.k == "K" || m.k == "M" || m.k == "W";
+                bool floating = m.k == "b" || m.k == "K" || m.k == "M" || m.k == "W" || m.k == "O" || m.k == "N";
                 inst.transform.position = floating ? foot + Vector3.up * 0.5f : foot;
-                if (m.k == "L")
+                if (m.k == "Z")
+                {
+                    var wso = new SerializedObject(inst.GetComponent<CollapsingWall>());
+                    wso.FindProperty("worldFlag").stringValue = m.flag ?? "";
+                    wso.ApplyModifiedPropertiesWithoutUndo();
+                    builtWalls.Add(inst.GetComponent<CollapsingWall>());
+                }
+                else if (m.k == "L")
                 {
                     var lso = new SerializedObject(inst.GetComponent<ShortcutLever>());
                     lso.FindProperty("worldFlag").stringValue = m.flag ?? "";
@@ -365,6 +378,11 @@ namespace LuHanh.EditorTools
                     var dso = new SerializedObject(inst.GetComponent<BreakableDevice>());
                     dso.FindProperty("worldFlag").stringValue = m.flag ?? "";
                     dso.FindProperty("orbOnly").boolValue = true;
+                    // Tuong sap gan nhat trong phong (neu co).
+                    CollapsingWall nearest = null;
+                    foreach (var w in builtWalls)
+                        if (!nearest || Vector2.Distance(w.transform.position, inst.transform.position) < Vector2.Distance(nearest.transform.position, inst.transform.position)) nearest = w;
+                    dso.FindProperty("target").objectReferenceValue = nearest;
                     var list = builtGates.FindAll(gt => new SerializedObject(gt).FindProperty("openIfWorldFlag").stringValue == $"{r.id}/{m.flag}");
                     var arr = dso.FindProperty("openGates");
                     arr.arraySize = list.Count;
