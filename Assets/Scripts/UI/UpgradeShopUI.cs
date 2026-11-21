@@ -19,6 +19,10 @@ namespace LuHanh.UI
         [SerializeField] BlacksmithNpc npc;
         [SerializeField] Font font;
         [SerializeField] string title = "Upgrades";
+        [Header("Manh ban do ban them (the gioi kieu Hollow Knight)")]
+        [SerializeField] LuHanh.World.WorldMapData map;
+        [Tooltip("Id manh ban do ban o tho ren nay (vd Foundry.2). Gia lay tu WorldMapData.")]
+        [SerializeField] string[] mapPiecesForSale = new string[0];
 
         [Header("Mau")]
         [SerializeField] Color dimColor = new(0f, 0f, 0f, 0.6f);
@@ -30,6 +34,7 @@ namespace LuHanh.UI
         [SerializeField] Color warnColor = new(0.92f, 0.4f, 0.28f);               // #EA6547
 
         UpgradeDefinition[] items;
+        readonly System.Collections.Generic.List<LuHanh.World.WorldMapData.Piece> pieces = new();
         GameObject root;
         Text[] rowTexts;
         Text detailName, detailDesc, detailLevel, detailNow, detailNext, detailCost, shardsText, messageText;
@@ -46,6 +51,14 @@ namespace LuHanh.UI
         {
             var sys = FindAnyObjectByType<UpgradeSystem>();
             items = sys && sys.Catalog ? sys.Catalog.upgrades : null;
+            items ??= new UpgradeDefinition[0];
+            if (map)
+                foreach (var id in mapPiecesForSale)
+                {
+                    var piece = map.GetPiece(id);
+                    if (piece != null) pieces.Add(piece);
+                    else Debug.LogWarning($"UpgradeShopUI: khong co manh ban do '{id}' trong WorldMapData.", this);
+                }
             if (!npc) npc = GetComponent<BlacksmithNpc>();
             var p = GameObject.FindWithTag("Player");
             var input = p ? p.GetComponent<PlayerInput>() : null;
@@ -71,7 +84,7 @@ namespace LuHanh.UI
         public void Open()
         {
             if (open) return;
-            if (items == null || items.Length == 0)
+            if (Count == 0)
             {
                 Debug.LogWarning("UpgradeShopUI: khong co nang cap (thieu UpgradeSystem / UpgradeCatalog).", this);
                 if (npc) npc.EndTalk();
@@ -121,7 +134,7 @@ namespace LuHanh.UI
             if (sign != 0f && sign != lastMoveSign)
             {
                 rowTexts[selected].transform.localScale = Vector3.one;
-                selected = (selected - (int)sign + items.Length) % items.Length; // len = giam chi so
+                selected = (selected - (int)sign + Count) % Count; // len = giam chi so
                 Refresh();
             }
             lastMoveSign = sign;
@@ -132,8 +145,36 @@ namespace LuHanh.UI
         static bool Pressed(InputAction a) => a != null && a.WasPressedThisFrame();
         static bool IsHeld(InputAction a) => a != null && a.IsPressed();
 
+        /// <summary>So dong trong bang: nang cap truoc, manh ban do sau.</summary>
+        int Count => items.Length + pieces.Count;
+        LuHanh.World.WorldMapData.Piece PieceAt(int i) => i >= items.Length ? pieces[i - items.Length] : null;
+
+        void TryBuyPiece(LuHanh.World.WorldMapData.Piece piece)
+        {
+            if (LuHanh.World.WorldMapData.HasPiece(piece.id))
+            {
+                Sfx.Play(SfxId.UpgradeDenied);
+                ShowMessage("Already owned", mutedColor);
+            }
+            else if (!ShardWallet.TrySpend(piece.price))
+            {
+                Sfx.Play(SfxId.UpgradeDenied);
+                ShowMessage("Not enough Shards", warnColor);
+            }
+            else
+            {
+                LuHanh.World.WorldMapData.GivePiece(piece.id);
+                Sfx.Play(SfxId.UpgradeBuy);
+                ShowMessage(piece.displayName + " added to your map!", accentColor);
+                punchTimer = 0.18f;
+            }
+            Refresh();
+        }
+
         void TryBuy()
         {
+            var piece = PieceAt(selected);
+            if (piece != null) { TryBuyPiece(piece); return; }
             var def = items[selected];
             var r = PlayerUpgrades.TryBuy(def);
             switch (r)
@@ -167,15 +208,24 @@ namespace LuHanh.UI
             for (int i = 0; i < rowTexts.Length; i++)
             {
                 var row = rowTexts[i];
-                bool has = i < items.Length && items[i];
+                var rowPiece = i < Count ? PieceAt(i) : null;
+                bool has = rowPiece != null || (i < items.Length && items[i]);
                 row.gameObject.SetActive(has);
                 if (!has) continue;
-                var def = items[i];
-                int lv = PlayerUpgrades.Level(def);
-                row.text = (i == selected ? "> " : "   ") + def.displayName + "   " + Pips(lv, def.MaxLevel);
+                if (rowPiece != null)
+                    row.text = (i == selected ? "> " : "   ") + rowPiece.displayName + "   " +
+                               (LuHanh.World.WorldMapData.HasPiece(rowPiece.id) ? "●" : "○");
+                else
+                {
+                    var def = items[i];
+                    int lv = PlayerUpgrades.Level(def);
+                    row.text = (i == selected ? "> " : "   ") + def.displayName + "   " + Pips(lv, def.MaxLevel);
+                }
                 row.color = i == selected ? accentColor : textColor;
             }
 
+            var piece = PieceAt(selected);
+            if (piece != null) { RefreshPiece(piece); return; }
             var d = items[selected];
             int level = PlayerUpgrades.Level(d);
             bool maxed = PlayerUpgrades.IsMaxed(d);
@@ -194,6 +244,25 @@ namespace LuHanh.UI
             shardsText.text = "Shards:  " + ShardWallet.Count;
             detailIcon.enabled = d.icon;
             detailIcon.sprite = d.icon;
+        }
+
+        void RefreshPiece(LuHanh.World.WorldMapData.Piece p)
+        {
+            bool owned = LuHanh.World.WorldMapData.HasPiece(p.id);
+            detailName.text = p.displayName;
+            detailDesc.text = p.description;
+            detailLevel.text = "Map";
+            detailNow.text = owned ? "Owned" : "Not owned";
+            detailNext.text = "";
+            if (owned) { detailCost.text = "OWNED"; detailCost.color = mutedColor; }
+            else
+            {
+                detailCost.text = "Cost:  " + p.price + " Shards";
+                detailCost.color = ShardWallet.Count >= p.price ? accentColor : warnColor;
+            }
+            shardsText.text = "Shards:  " + ShardWallet.Count;
+            detailIcon.enabled = p.icon;
+            detailIcon.sprite = p.icon;
         }
 
         static string Pips(int level, int max)

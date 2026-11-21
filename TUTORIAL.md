@@ -3063,6 +3063,28 @@ Thứ tự đã duyệt: Dash → Bám tường → (hạ FoundryWarden) Bắn c
 
 Lưu ý khi thử bằng phím giả lập: KHÔNG gán `InputSystem.settings` bằng bản sao tạm trong Editor – Unity giữ nó như cấu hình project, nạp lại script thì bản sao bị hủy → Input System lỗi khởi tạo (TypeInitializationException), phải khởi động lại Unity.
 
+Phím giả lập chỉ tới game khi **Game View đang được chọn** (focus). Nếu `Keyboard.jKey.isPressed` vẫn false sau khi gửi sự kiện thì gọi `EditorApplication.ExecuteMenuItem("Window/General/Game")` trước.
+
+### Bản đồ, trạm di chuyển nhanh (giai đoạn 2)
+
+Bản đồ kiểu Hollow Knight: mỗi vùng chia 3 mảnh, phải nhặt hoặc mua mới thấy. Mảnh 1: A01–A09 / B01–B09; mảnh 2: A10–A18 / B10–B18; mảnh 3: A19–A25 / B19–B25.
+
+| Phần | File | Ghi chú |
+|---|---|---|
+| Dữ liệu bản đồ | `World/WorldMapData.cs`, `Assets/Settings/WorldMap.asset` | 50 phòng (ô lưới, loại phòng, mảnh, cửa nối hai chiều), vùng Foundry gốc (0;0), Mossy gốc (5;6). 6 mảnh `Foundry.1..3`, `Mossy.1..3` ("Forgotten Foundry Map I/II/III", "Mossy Depths Map I/II/III"); giá mảnh 2 = 100 Shards. Cờ lưu: `MapPiece/<id>`, `Visited/<phòng>` (WorldLoader đặt khi vào phòng). Thêm phòng mới vào thế giới phải thêm vào asset này. |
+| Hiện phòng | `WorldMapData.IsShown` | Có mảnh chứa phòng mới hiện; phòng đã đến sáng, chưa đến mờ; phòng **Secret** chỉ hiện sau khi đã đến. Không có mảnh thì dù đã đi qua vẫn không hiện. |
+| Xem bản đồ | `UI/WorldMapUI.cs` trên `CoreEssentials/GameSystems` | Giữ **M** (action `Map`) khi đứng trên đất; nhân vật đứng yên (ForceMove 0, tắt chém/bắn/Focus), game vẫn chạy. Overlay sort 1100 (trên thẻ tên vùng 1000). Ô phòng 74×42, khoảng cách 92×58, căn giữa các phòng đang hiện. Màu: ghế `#E7AA59`, trạm `#4A7FC1`, boss `#EA6547`, người chơi `#45DCC4`, túi Shards rơi `#BFD8F2`. Phòng hiện tại chưa có mảnh: "You have no map of <vùng>". |
+| Nhặt mảnh | `SkillPickup` ô **Map Piece**; prefab `Prefabs/Level/MapPiece_Foundry1 / _Foundry3 / _Mossy1 / _Mossy3` | Chép từ `SkillPickup_WallCling` (hình tạm). Hint "Hold M to view your map". Đã có mảnh thì vật tự ẩn. Mảnh 1 đặt ở A04 / B04; phòng đặt mảnh 3: hỏi chủ project khi dựng. |
+| Mua mảnh | `UpgradeShopUI` ô **Map** + **Map Pieces For Sale** | Dòng mảnh nằm dưới các nâng cấp. Thợ rèn A18 bán `Foundry.2`, B22 bán `Mossy.2` – điền trên instance khi đặt OldAnvil, không sửa prefab. Thông báo: "<tên> added to your map!", "Already owned", "Not enough Shards". |
+| Trạm | `World/FastTravelStation.cs`, `Prefabs/World/FastTravelStation.prefab` | Dùng tạm hình Cabin + đèn của thang máy. Đứng gần (1,8 unit) bấm **E**: lần đầu mở trạm miễn phí (cờ `Station/<phòng>`), rồi hiện bảng các trạm đã mở (phòng loại Station trong WorldMap.asset). Game dừng lúc mở bảng; Lên/Xuống chọn, J/Enter/E/Space đi, Esc thoát. Tới nơi đứng tại `ArrivalPoint` (gốc trạm + (1,5;0)). Trạm đã duyệt: A09, B03. |
+| Rơi Shards khi chết | `ShardPool` (giữ như cũ) | Chạm túi để nhặt lại; bản đồ có thêm dấu chỗ túi Shards. |
+
+Đã kiểm tra trong Play (2026-11-21, A01/A02, phím giả lập):
+- Bản đồ chưa có mảnh: hiện đúng câu báo. Có mảnh I + II: hiện A01–A18, ẩn phòng bí mật và phần mảnh III, có chấm người chơi. Giữ M nhân vật đứng yên, thả ra thì điều khiển lại được.
+- Trạm (tạm đặt A01/A02 làm trạm rồi trả lại): bấm E mở trạm, bảng dừng game, A02 → A01 tới (1,5; −7), điều khiển lại bình thường.
+- Nhặt `MapPiece_Foundry1`: có cờ mảnh, hiện chữ "Forgotten Foundry Map I / Hold M to view your map".
+- Mua `Foundry.2` ở OldAnvil (tạo tạm lúc Play): 150 → 50 Shards, có mảnh; mua lần nữa báo "Already owned". Trường hợp thiếu Shards chưa thử riêng.
+
 ## 10. Lỗi hay gặp và cách xử lý
 
 | Triệu chứng | Nguyên nhân | Cách xử lý |
@@ -3400,3 +3422,4 @@ Tile: đã duyệt 32×32, PPU 32; xuất 16 PNG kích thước thật 32×32 tr
 244. Chốt kế hoạch dựng lại thế giới kiểu Hollow Knight (chủ project duyệt): mỗi phòng 1 scene, 2 vùng Forgotten Foundry (A01–A25, boss FoundryWarden) và Mossy Depths (B01–B25, boss cuối Rootwraith), thứ tự kỹ năng Dash → Bám tường → Bắn cầu K → Pogo → Nhảy đôi, 4 mảnh mặt nạ + 3 kho Shards bí mật, ghế A03/A12/A18/B02/B12/B22, trạm A09/B03, thợ rèn ở A18 và B22. Sơ đồ đầy đủ: HUONG_DAN_BUILD_LEVEL.md mục "Thế giới kiểu Hollow Knight". Chưa sửa code/scene.
 245. Thế giới kiểu Hollow Knight – giai đoạn 0 xong (mục 9g): Core.unity, CoreEssentials / ZoneEssentials_Foundry / RoomDoor prefab, scene mẫu _RoomTemplate_Foundry, phòng thử A01 ↔ A02 (khung đơn giản), Core + A01 + A02 trong Build Profile (Level1 vẫn đứng đầu). Background vùng hạ 3 unit (chân lớp núi/đồi/cây dưới mặt nền y = −7, trước đó hở dải sáng); mốc parallax = tâm phòng (trước đó lấy chỗ camera lúc phòng vừa tải → lớp trời tụt, hở dải trên). Parallax ngoài Play không gán camera của scene khác. WorldEditorBoot chỉ hỏi lưu riêng phòng đang Play; Kiem tra cua chỉ đọc. Đã chạy Play: khởi động A01, qua cửa A01↔A02 hai chiều, chết hồi sinh – đúng, Console sạch. Biên dịch Unity từng crash (bee_backend −1073741819) vì ổ C: còn 253 MB; xóa cache NuGet + npm (chủ project đồng ý) → biên dịch qua.
 246. Thế giới – giai đoạn 1 kỹ năng khóa lối (mục 9g): Skill thêm Dash, Pogo, DoubleJump; Dash/Pogo chỉ phải nhặt trong thế giới mới (PlayerSkills.Usable); Nhảy đôi (DoubleJumpState, cao bằng nhảy thường, hồi khi chạm đất/bám tường); Pogo nảy trên gai (PlayerAttack.PogoOffHazards, pogoHazardReach 0,75, pogoHazardGrace 0,15 s); BreakableDevice ô Orb Only (HitInfo.fromOrb); 3 prefab SkillPickup_Dash/Pogo/DoubleJump (hình tạm của WallCling). WorldEditorBoot bỏ qua scene mẫu bắt đầu bằng "_". Đã thử trong Play; Pogo trên gai do chủ project thử tay – nảy, không mất máu. Gặp lỗi Input System do gán InputSettings tạm khi thử → khởi động lại Unity (không ảnh hưởng project).
+247. Thế giới – giai đoạn 2 bản đồ + trạm (mục 9g): WorldMapData + Settings/WorldMap.asset (50 phòng, 6 mảnh, 3 mảnh/vùng); WorldMapUI giữ M xem bản đồ (chỉ hiện phòng thuộc mảnh đã có, phòng chưa đến mờ, phòng bí mật chỉ hiện khi đã đến); SkillPickup thêm ô Map Piece + 4 prefab MapPiece_Foundry1/3, Mossy1/3; UpgradeShopUI bán mảnh bản đồ (mảnh 2 = 100 Shards); FastTravelStation (E mở trạm, bảng chọn, WorldLoader.TravelToStation) + prefab dùng tạm hình thang máy; WorldLoader đặt cờ Visited khi vào phòng. Đã thử trong Play: bản đồ, trạm, nhặt mảnh, mua mảnh (chưa thử riêng trường hợp thiếu Shards). Scene, prefab OldAnvil và save đã trả về như cũ.

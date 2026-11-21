@@ -1,0 +1,519 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abebcdec9cdb0834dbf3f97574c41aff, type: 3}
+  m_Name: WorldMap
+  m_EditorClassIdentifier: Assembly-CSharp::LuHanh.World.WorldMapData
+  zones:
+  - id: Foundry
+    title: Forgotten Foundry
+    origin: {x: 0, y: 0}
+  - id: Mossy
+    title: Mossy Depths
+    origin: {x: 5, y: 6}
+  rooms:
+  - id: A01
+    zone: Foundry
+    cell: {x: 0, y: 0}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A02
+  - id: A02
+    zone: Foundry
+    cell: {x: 1, y: 0}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A01
+    - A03
+  - id: A03
+    zone: Foundry
+    cell: {x: 2, y: 0}
+    kind: 1
+    shop: 0
+    piece: 1
+    links:
+    - A02
+    - A04
+    - A06
+  - id: A04
+    zone: Foundry
+    cell: {x: 3, y: 0}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A03
+    - A05
+  - id: A05
+    zone: Foundry
+    cell: {x: 4, y: 0}
+    kind: 3
+    shop: 0
+    piece: 1
+    links:
+    - A04
+    - A07
+  - id: A06
+    zone: Foundry
+    cell: {x: 2, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A03
+    - A10
+  - id: A07
+    zone: Foundry
+    cell: {x: 4, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A05
+    - A08
+    - A12
+  - id: A08
+    zone: Foundry
+    cell: {x: 5, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - A07
+    - A09
+  - id: A09
+    zone: Foundry
+    cell: {x: 6, y: 1}
+    kind: 2
+    shop: 0
+    piece: 1
+    links:
+    - A08
+    - A14
+  - id: A10
+    zone: Foundry
+    cell: {x: 2, y: 2}
+    kind: 5
+    shop: 0
+    piece: 2
+    links:
+    - A06
+  - id: A11
+    zone: Foundry
+    cell: {x: 3, y: 2}
+    kind: 5
+    shop: 0
+    piece: 2
+    links:
+    - A12
+  - id: A12
+    zone: Foundry
+    cell: {x: 4, y: 2}
+    kind: 1
+    shop: 0
+    piece: 2
+    links:
+    - A07
+    - A11
+    - A13
+    - A15
+  - id: A13
+    zone: Foundry
+    cell: {x: 5, y: 2}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - A12
+    - A14
+  - id: A14
+    zone: Foundry
+    cell: {x: 6, y: 2}
+    kind: 3
+    shop: 0
+    piece: 2
+    links:
+    - A09
+    - A13
+    - A16
+  - id: A15
+    zone: Foundry
+    cell: {x: 4, y: 3}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - A12
+    - A20
+  - id: A16
+    zone: Foundry
+    cell: {x: 6, y: 3}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - A14
+    - A17
+  - id: A17
+    zone: Foundry
+    cell: {x: 7, y: 3}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - A16
+    - A18
+    - A22
+  - id: A18
+    zone: Foundry
+    cell: {x: 8, y: 3}
+    kind: 1
+    shop: 1
+    piece: 2
+    links:
+    - A17
+    - A23
+  - id: A19
+    zone: Foundry
+    cell: {x: 3, y: 4}
+    kind: 5
+    shop: 0
+    piece: 3
+    links:
+    - A20
+  - id: A20
+    zone: Foundry
+    cell: {x: 4, y: 4}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - A15
+    - A19
+    - A21
+  - id: A21
+    zone: Foundry
+    cell: {x: 5, y: 4}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - A20
+    - A24
+  - id: A22
+    zone: Foundry
+    cell: {x: 7, y: 4}
+    kind: 5
+    shop: 0
+    piece: 3
+    links:
+    - A17
+  - id: A23
+    zone: Foundry
+    cell: {x: 8, y: 4}
+    kind: 4
+    shop: 0
+    piece: 3
+    links:
+    - A18
+    - A25
+  - id: A24
+    zone: Foundry
+    cell: {x: 5, y: 5}
+    kind: 6
+    shop: 0
+    piece: 3
+    links:
+    - A21
+    - B01
+  - id: A25
+    zone: Foundry
+    cell: {x: 8, y: 5}
+    kind: 3
+    shop: 0
+    piece: 3
+    links:
+    - A23
+  - id: B01
+    zone: Mossy
+    cell: {x: 0, y: 0}
+    kind: 6
+    shop: 0
+    piece: 1
+    links:
+    - A24
+    - B02
+  - id: B02
+    zone: Mossy
+    cell: {x: 1, y: 0}
+    kind: 1
+    shop: 0
+    piece: 1
+    links:
+    - B01
+    - B03
+    - B06
+  - id: B03
+    zone: Mossy
+    cell: {x: 2, y: 0}
+    kind: 2
+    shop: 0
+    piece: 1
+    links:
+    - B02
+    - B04
+    - B11
+  - id: B04
+    zone: Mossy
+    cell: {x: 3, y: 0}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - B03
+    - B05
+    - B07
+  - id: B05
+    zone: Mossy
+    cell: {x: 4, y: 0}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - B04
+    - B08
+  - id: B06
+    zone: Mossy
+    cell: {x: 1, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - B02
+    - B10
+  - id: B07
+    zone: Mossy
+    cell: {x: 3, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - B04
+    - B08
+    - B12
+  - id: B08
+    zone: Mossy
+    cell: {x: 4, y: 1}
+    kind: 3
+    shop: 0
+    piece: 1
+    links:
+    - B05
+    - B07
+    - B09
+  - id: B09
+    zone: Mossy
+    cell: {x: 5, y: 1}
+    kind: 0
+    shop: 0
+    piece: 1
+    links:
+    - B08
+    - B13
+  - id: B10
+    zone: Mossy
+    cell: {x: 1, y: 2}
+    kind: 5
+    shop: 0
+    piece: 2
+    links:
+    - B06
+  - id: B11
+    zone: Mossy
+    cell: {x: 2, y: 2}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - B12
+    - B03
+  - id: B12
+    zone: Mossy
+    cell: {x: 3, y: 2}
+    kind: 1
+    shop: 0
+    piece: 2
+    links:
+    - B07
+    - B11
+    - B15
+  - id: B13
+    zone: Mossy
+    cell: {x: 5, y: 2}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - B09
+    - B14
+  - id: B14
+    zone: Mossy
+    cell: {x: 6, y: 2}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - B13
+    - B16
+  - id: B15
+    zone: Mossy
+    cell: {x: 3, y: 3}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - B12
+    - B19
+  - id: B16
+    zone: Mossy
+    cell: {x: 6, y: 3}
+    kind: 3
+    shop: 0
+    piece: 2
+    links:
+    - B14
+    - B17
+  - id: B17
+    zone: Mossy
+    cell: {x: 7, y: 3}
+    kind: 0
+    shop: 0
+    piece: 2
+    links:
+    - B16
+    - B21
+  - id: B18
+    zone: Mossy
+    cell: {x: 2, y: 4}
+    kind: 5
+    shop: 0
+    piece: 2
+    links:
+    - B19
+  - id: B19
+    zone: Mossy
+    cell: {x: 3, y: 4}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - B15
+    - B18
+    - B20
+  - id: B20
+    zone: Mossy
+    cell: {x: 4, y: 4}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - B19
+    - B23
+  - id: B21
+    zone: Mossy
+    cell: {x: 7, y: 4}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - B17
+    - B22
+  - id: B22
+    zone: Mossy
+    cell: {x: 8, y: 4}
+    kind: 1
+    shop: 1
+    piece: 3
+    links:
+    - B21
+    - B24
+  - id: B23
+    zone: Mossy
+    cell: {x: 4, y: 5}
+    kind: 5
+    shop: 0
+    piece: 3
+    links:
+    - B20
+  - id: B24
+    zone: Mossy
+    cell: {x: 8, y: 5}
+    kind: 4
+    shop: 0
+    piece: 3
+    links:
+    - B22
+    - B25
+  - id: B25
+    zone: Mossy
+    cell: {x: 7, y: 5}
+    kind: 0
+    shop: 0
+    piece: 3
+    links:
+    - B24
+  pieces:
+  - id: Foundry.1
+    zone: Foundry
+    index: 1
+    displayName: Forgotten Foundry Map I
+    description: Charts part of the Forgotten Foundry.
+    price: 0
+    icon: {fileID: 0}
+  - id: Foundry.2
+    zone: Foundry
+    index: 2
+    displayName: Forgotten Foundry Map II
+    description: Charts part of the Forgotten Foundry.
+    price: 100
+    icon: {fileID: 0}
+  - id: Foundry.3
+    zone: Foundry
+    index: 3
+    displayName: Forgotten Foundry Map III
+    description: Charts part of the Forgotten Foundry.
+    price: 0
+    icon: {fileID: 0}
+  - id: Mossy.1
+    zone: Mossy
+    index: 1
+    displayName: Mossy Depths Map I
+    description: Charts part of the Mossy Depths.
+    price: 0
+    icon: {fileID: 0}
+  - id: Mossy.2
+    zone: Mossy
+    index: 2
+    displayName: Mossy Depths Map II
+    description: Charts part of the Mossy Depths.
+    price: 100
+    icon: {fileID: 0}
+  - id: Mossy.3
+    zone: Mossy
+    index: 3
+    displayName: Mossy Depths Map III
+    description: Charts part of the Mossy Depths.
+    price: 0
+    icon: {fileID: 0}

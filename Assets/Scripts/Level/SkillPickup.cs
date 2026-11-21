@@ -14,6 +14,8 @@ namespace LuHanh.Level
     public class SkillPickup : MonoBehaviour
     {
         [SerializeField] Skill skill;
+        [Tooltip("Dien id manh ban do (vd Foundry.1) thi vat pham nay la manh ban do thay vi ky nang (WorldMapData).")]
+        [SerializeField] string mapPiece;
         [SerializeField] SpriteRenderer visual;
         [Tooltip("Lat frame cho hinh vat pham (de trong = giu sprite dang co).")]
         [SerializeField] Sprite[] frames;
@@ -34,7 +36,7 @@ namespace LuHanh.Level
         {
             basePos = visual ? visual.transform.localPosition : Vector3.zero;
             BuildPrompt();
-            if (PlayerSkills.Has(skill)) Hide();
+            if (Owned) Hide();
         }
 
         void Update()
@@ -57,11 +59,15 @@ namespace LuHanh.Level
         void OnTriggerEnter2D(Collider2D other)
         {
             if (taken || !other.CompareTag("Player")) return;
-            PlayerSkills.Unlock(skill);
+            if (IsMapPiece) LuHanh.World.WorldMapData.GivePiece(mapPiece);
+            else PlayerSkills.Unlock(skill);
             LuHanh.Core.Sfx.Play(LuHanh.Core.SfxId.SkillPickup);
             Hide();
             promptTimer = promptTime;
         }
+
+        bool IsMapPiece => !string.IsNullOrEmpty(mapPiece);
+        bool Owned => IsMapPiece ? LuHanh.World.WorldMapData.HasPiece(mapPiece) : PlayerSkills.Has(skill);
 
         void Hide()
         {

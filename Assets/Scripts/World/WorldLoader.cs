@@ -181,6 +181,45 @@ namespace LuHanh.World
             }
         }
 
+        // ---- Tram di chuyen nhanh ----
+
+        /// <summary>
+        /// Di chuyen nhanh toi tram cua phong <paramref name="sceneName"/>: toi man hinh, tai phong, dat nguoi choi o
+        /// <see cref="FastTravelStation"/> cua phong do, sang lai. Goi tu bang chon tram (game dang dung thi van chay).
+        /// </summary>
+        public void TravelToStation(string sceneName)
+        {
+            if (busy || !player || !IsWorldRoom(sceneName)) return;
+            StartCoroutine(StationTravel(sceneName));
+        }
+
+        IEnumerator StationTravel(string sceneName)
+        {
+            busy = true;
+            try
+            {
+                if (fx && fx.HasFade) yield return fx.FadeOut(fadeOutTime * 2f);
+                body.simulated = false;
+                yield return SwapTo(sceneName);
+                var room = WorldRoom.Current;
+                var station = FindAnyObjectByType<FastTravelStation>();
+                Vector2 pos = station && station.gameObject.scene == current ? station.ArrivalPoint
+                    : room ? room.DefaultSpawn : (Vector2)player.position;
+                controller.Respawn(pos);
+                if (health) health.ResetSafePosition(pos);
+                body.simulated = true;
+                if (room) EnterRoom(room);
+                yield return null;
+                yield return null;
+                if (fx && fx.HasFade) yield return fx.FadeIn(fadeInTime * 2f);
+            }
+            finally
+            {
+                if (body) body.simulated = true;
+                busy = false;
+            }
+        }
+
         // ---- Hoi sinh ----
 
         /// <summary>
@@ -241,6 +280,7 @@ namespace LuHanh.World
         {
             if (rooms) rooms.Refresh();
             RebaseParallax(room);
+            WorldState.Set(WorldMapData.VisitedFlag + room.RoomId);
             // Vao vung moi lan dau: hien ten vung (luu trong co the gioi).
             string zoneKey = "Zone/" + room.ZoneId;
             if (!WorldState.Has(zoneKey))
